@@ -8,18 +8,10 @@ const Example = struct {
 };
 
 const examples = [_]Example{
-    .{
-        .name = "uisettings",
-        .path = "examples/uisettings.zig",
-    },
-    .{
-        .name = "reactive_theme",
-        .path = "examples/reactive_theme.zig",
-    },
-    .{
-        .name = "notification",
-        .path = "examples/notification.zig",
-    },
+    .{ .name = "uisettings", .path = "examples/uisettings.zig" },
+    .{ .name = "reactive_theme", .path = "examples/reactive_theme.zig" },
+    .{ .name = "notification", .path = "examples/notification.zig" },
+    .{ .name = "dialog", .path = "examples/dialog.zig" },
 };
 
 pub const MODULE_NAME = "windows";
