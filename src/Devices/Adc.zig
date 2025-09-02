@@ -67,11 +67,11 @@ pub const AdcController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(AdcController) {
-        const _f = @This().IAdcControllerStatics2Cache.get();
+        const _f = try @This()._IAdcControllerStatics2Cache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn GetControllersAsync(provider: *IAdcProvider) core.HResult!*IAsyncOperation(IVectorView(AdcController)) {
-        const _f = @This().IAdcControllerStaticsCache.get();
+        const _f = try @This()._IAdcControllerStaticsCache.get();
         return try _f.GetControllersAsync(provider);
     }
     pub const NAME: []const u8 = "Windows.Devices.Adc.AdcController";

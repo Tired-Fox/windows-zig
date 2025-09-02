@@ -61,11 +61,11 @@ pub const BackgroundAudioTrack = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromEmbeddedAudioTrack(embeddedAudioTrack: *EmbeddedAudioTrack) core.HResult!*BackgroundAudioTrack {
-        const _f = @This().IBackgroundAudioTrackStaticsCache.get();
+        const _f = try @This()._IBackgroundAudioTrackStaticsCache.get();
         return try _f.CreateFromEmbeddedAudioTrack(embeddedAudioTrack);
     }
     pub fn CreateFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(BackgroundAudioTrack) {
-        const _f = @This().IBackgroundAudioTrackStaticsCache.get();
+        const _f = try @This()._IBackgroundAudioTrackStaticsCache.get();
         return try _f.CreateFromFileAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.BackgroundAudioTrack";
@@ -853,19 +853,19 @@ pub const MediaClip = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromSurface(surface: *IDirect3DSurface, originalDuration: TimeSpan) core.HResult!*MediaClip {
-        const _f = @This().IMediaClipStatics2Cache.get();
+        const _f = try @This()._IMediaClipStatics2Cache.get();
         return try _f.CreateFromSurface(surface, originalDuration);
     }
     pub fn CreateFromColor(color: Color, originalDuration: TimeSpan) core.HResult!*MediaClip {
-        const _f = @This().IMediaClipStaticsCache.get();
+        const _f = try @This()._IMediaClipStaticsCache.get();
         return try _f.CreateFromColor(color, originalDuration);
     }
     pub fn CreateFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(MediaClip) {
-        const _f = @This().IMediaClipStaticsCache.get();
+        const _f = try @This()._IMediaClipStaticsCache.get();
         return try _f.CreateFromFileAsync(file);
     }
     pub fn CreateFromImageFileAsync(file: *IStorageFile, originalDuration: TimeSpan) core.HResult!*IAsyncOperation(MediaClip) {
-        const _f = @This().IMediaClipStaticsCache.get();
+        const _f = try @This()._IMediaClipStaticsCache.get();
         return try _f.CreateFromImageFileAsync(file, originalDuration);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaClip";
@@ -952,7 +952,7 @@ pub const MediaComposition = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaComposition.IID)));
     }
     pub fn LoadAsync(file: *StorageFile) core.HResult!*IAsyncOperation(MediaComposition) {
-        const _f = @This().IMediaCompositionStaticsCache.get();
+        const _f = try @This()._IMediaCompositionStaticsCache.get();
         return try _f.LoadAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaComposition";
@@ -1009,11 +1009,11 @@ pub const MediaOverlay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(clip: *MediaClip) core.HResult!*MediaOverlay {
-        const _f = @This().IMediaOverlayFactoryCache.get();
+        const _f = try @This()._IMediaOverlayFactoryCache.get();
         return try _f.Create(clip);
     }
     pub fn CreateWithPositionAndOpacity(clip: *MediaClip, position: Rect, opacity: f64) core.HResult!*MediaOverlay {
-        const _f = @This().IMediaOverlayFactoryCache.get();
+        const _f = try @This()._IMediaOverlayFactoryCache.get();
         return try _f.CreateWithPositionAndOpacity(clip, position, opacity);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaOverlay";
@@ -1045,7 +1045,7 @@ pub const MediaOverlayLayer = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaOverlayLayer.IID)));
     }
     pub fn CreateWithCompositorDefinition(compositorDefinition: *IVideoCompositorDefinition) core.HResult!*MediaOverlayLayer {
-        const _f = @This().IMediaOverlayLayerFactoryCache.get();
+        const _f = try @This()._IMediaOverlayLayerFactoryCache.get();
         return try _f.CreateWithCompositorDefinition(compositorDefinition);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaOverlayLayer";

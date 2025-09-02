@@ -1194,27 +1194,27 @@ pub const WindowsUpdateAdministrator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRegisteredAdministrator(organizationName: HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.GetRegisteredAdministrator(organizationName);
     }
     pub fn RegisterForAdministration(organizationName: HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.RegisterForAdministration(organizationName, options);
     }
     pub fn UnregisterForAdministration(organizationName: HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.UnregisterForAdministration(organizationName);
     }
     pub fn GetRegisteredAdministratorName() core.HResult!HSTRING {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.GetRegisteredAdministratorName();
     }
     pub fn RequestRestart(restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!HSTRING {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.RequestRestart(restartOptions);
     }
     pub fn CancelRestartRequest(requestRestartToken: HSTRING) core.HResult!void {
-        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.CancelRestartRequest(requestRestartToken);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateAdministrator";
@@ -1496,7 +1496,7 @@ pub const WindowsUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(clientId: HSTRING) core.HResult!*WindowsUpdateManager {
-        const _f = @This().IWindowsUpdateManagerFactoryCache.get();
+        const _f = try @This()._IWindowsUpdateManagerFactoryCache.get();
         return try _f.CreateInstance(clientId);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateManager";
@@ -1588,7 +1588,7 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowsUpdateRestartRequestOptions.IID)));
     }
     pub fn CreateInstance(title: HSTRING, description: HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
-        const _f = @This().IWindowsUpdateRestartRequestOptionsFactoryCache.get();
+        const _f = try @This()._IWindowsUpdateRestartRequestOptionsFactoryCache.get();
         return try _f.CreateInstance(title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateRestartRequestOptions";
@@ -1740,11 +1740,11 @@ pub const PreviewBuildsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PreviewBuildsManager {
-        const _f = @This().IPreviewBuildsManagerStaticsCache.get();
+        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IPreviewBuildsManagerStaticsCache.get();
+        const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
         return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsManager";

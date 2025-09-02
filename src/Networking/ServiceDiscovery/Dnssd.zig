@@ -111,7 +111,7 @@ pub const DnssdServiceInstance = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(dnssdServiceInstanceName: HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
-        const _f = @This().IDnssdServiceInstanceFactoryCache.get();
+        const _f = try @This()._IDnssdServiceInstanceFactoryCache.get();
         return try _f.Create(dnssdServiceInstanceName, hostName, port);
     }
     pub const NAME: []const u8 = "Windows.Networking.ServiceDiscovery.Dnssd.DnssdServiceInstance";

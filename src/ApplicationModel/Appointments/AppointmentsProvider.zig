@@ -37,23 +37,23 @@ pub const AppointmentsProviderLaunchActionVerbs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAddAppointment() core.HResult!HSTRING {
-        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try _f.getAddAppointment();
     }
     pub fn getReplaceAppointment() core.HResult!HSTRING {
-        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try _f.getReplaceAppointment();
     }
     pub fn getRemoveAppointment() core.HResult!HSTRING {
-        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try _f.getRemoveAppointment();
     }
     pub fn getShowTimeFrame() core.HResult!HSTRING {
-        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try _f.getShowTimeFrame();
     }
     pub fn getShowAppointmentDetails() core.HResult!HSTRING {
-        const _f = @This().IAppointmentsProviderLaunchActionVerbsStatics2Cache.get();
+        const _f = try @This()._IAppointmentsProviderLaunchActionVerbsStatics2Cache.get();
         return try _f.getShowAppointmentDetails();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentsProvider.AppointmentsProviderLaunchActionVerbs";

@@ -1,3 +1,5 @@
+pub const Authentication = @import("./Security/Authentication.zig");
+pub const Authorization = @import("./Security/Authorization.zig");
 pub const Credentials = @import("./Security/Credentials.zig");
 pub const Cryptography = @import("./Security/Cryptography.zig");
 pub const DataProtection = @import("./Security/DataProtection.zig");

@@ -51,11 +51,11 @@ pub const CustomSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(interfaceId: *Guid) core.HResult!HSTRING {
-        const _f = @This().ICustomSensorStaticsCache.get();
+        const _f = try @This()._ICustomSensorStaticsCache.get();
         return try _f.GetDeviceSelector(interfaceId);
     }
     pub fn FromIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
-        const _f = @This().ICustomSensorStaticsCache.get();
+        const _f = try @This()._ICustomSensorStaticsCache.get();
         return try _f.FromIdAsync(sensorId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Custom.CustomSensor";

@@ -9,7 +9,7 @@ pub const GpioPinProviderValueChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(edge: ProviderGpioPinEdge) core.HResult!*GpioPinProviderValueChangedEventArgs {
-        const _f = @This().IGpioPinProviderValueChangedEventArgsFactoryCache.get();
+        const _f = try @This()._IGpioPinProviderValueChangedEventArgsFactoryCache.get();
         return try _f.Create(edge);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.GpioPinProviderValueChangedEventArgs";

@@ -46,11 +46,11 @@ pub const CoreAutomationRegistrar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterAnnotationType(guid: *Guid) core.HResult!AutomationAnnotationTypeRegistration {
-        const _f = @This().ICoreAutomationRegistrarStaticsCache.get();
+        const _f = try @This()._ICoreAutomationRegistrarStaticsCache.get();
         return try _f.RegisterAnnotationType(guid);
     }
     pub fn UnregisterAnnotationType(registration: AutomationAnnotationTypeRegistration) core.HResult!void {
-        const _f = @This().ICoreAutomationRegistrarStaticsCache.get();
+        const _f = try @This()._ICoreAutomationRegistrarStaticsCache.get();
         return try _f.UnregisterAnnotationType(registration);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.CoreAutomationRegistrar";
@@ -584,11 +584,11 @@ pub const RemoteAutomationClientSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(name: HSTRING) core.HResult!*RemoteAutomationClientSession {
-        const _f = @This().IRemoteAutomationClientSessionFactoryCache.get();
+        const _f = try @This()._IRemoteAutomationClientSessionFactoryCache.get();
         return try _f.CreateInstance(name);
     }
     pub fn CreateInstance2(name: HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
-        const _f = @This().IRemoteAutomationClientSessionFactoryCache.get();
+        const _f = try @This()._IRemoteAutomationClientSessionFactoryCache.get();
         return try _f.CreateInstance2(name, sessionId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.RemoteAutomationClientSession";
@@ -632,7 +632,7 @@ pub const RemoteAutomationServer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportSession(sessionId: *Guid) core.HResult!void {
-        const _f = @This().IRemoteAutomationServerStaticsCache.get();
+        const _f = try @This()._IRemoteAutomationServerStaticsCache.get();
         return try _f.ReportSession(sessionId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.RemoteAutomationServer";

@@ -520,15 +520,15 @@ pub const Lamp = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ILampStaticsCache.get();
+        const _f = try @This()._ILampStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Lamp) {
-        const _f = @This().ILampStaticsCache.get();
+        const _f = try @This()._ILampStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(Lamp) {
-        const _f = @This().ILampStaticsCache.get();
+        const _f = try @This()._ILampStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Lamp";
@@ -666,11 +666,11 @@ pub const LampArray = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ILampArrayStaticsCache.get();
+        const _f = try @This()._ILampArrayStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LampArray) {
-        const _f = @This().ILampArrayStaticsCache.get();
+        const _f = try @This()._ILampArrayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.LampArray";

@@ -139,15 +139,15 @@ pub const PreallocatedWorkItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWorkItem(handler: *WorkItemHandler) core.HResult!*PreallocatedWorkItem {
-        const _f = @This().IPreallocatedWorkItemFactoryCache.get();
+        const _f = try @This()._IPreallocatedWorkItemFactoryCache.get();
         return try _f.CreateWorkItem(handler);
     }
     pub fn CreateWorkItemWithPriority(handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*PreallocatedWorkItem {
-        const _f = @This().IPreallocatedWorkItemFactoryCache.get();
+        const _f = try @This()._IPreallocatedWorkItemFactoryCache.get();
         return try _f.CreateWorkItemWithPriority(handler, priority);
     }
     pub fn CreateWorkItemWithPriorityAndOptions(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*PreallocatedWorkItem {
-        const _f = @This().IPreallocatedWorkItemFactoryCache.get();
+        const _f = try @This()._IPreallocatedWorkItemFactoryCache.get();
         return try _f.CreateWorkItemWithPriorityAndOptions(handler, priority, options);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.PreallocatedWorkItem";
@@ -258,19 +258,19 @@ pub const SignalNotifier = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AttachToEvent(name: HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
-        const _f = @This().ISignalNotifierStaticsCache.get();
+        const _f = try @This()._ISignalNotifierStaticsCache.get();
         return try _f.AttachToEvent(name, handler);
     }
     pub fn AttachToEventWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
-        const _f = @This().ISignalNotifierStaticsCache.get();
+        const _f = try @This()._ISignalNotifierStaticsCache.get();
         return try _f.AttachToEventWithTimeout(name, handler, timeout);
     }
     pub fn AttachToSemaphore(name: HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
-        const _f = @This().ISignalNotifierStaticsCache.get();
+        const _f = try @This()._ISignalNotifierStaticsCache.get();
         return try _f.AttachToSemaphore(name, handler);
     }
     pub fn AttachToSemaphoreWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
-        const _f = @This().ISignalNotifierStaticsCache.get();
+        const _f = try @This()._ISignalNotifierStaticsCache.get();
         return try _f.AttachToSemaphoreWithTimeout(name, handler, timeout);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.SignalNotifier";

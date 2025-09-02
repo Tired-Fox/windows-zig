@@ -51,7 +51,7 @@ pub const WebError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const _f = @This().IWebErrorStaticsCache.get();
+        const _f = try @This()._IWebErrorStaticsCache.get();
         return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Web.WebError";

@@ -5,27 +5,27 @@ pub const CommunicationBlockingAccessManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsBlockingActive() core.HResult!bool {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.getIsBlockingActive();
     }
     pub fn IsBlockedNumberAsync(number: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.IsBlockedNumberAsync(number);
     }
     pub fn ShowBlockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowBlockNumbersUI(phoneNumbers);
     }
     pub fn ShowUnblockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowUnblockNumbersUI(phoneNumbers);
     }
     pub fn ShowBlockedCallsUI() core.HResult!void {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowBlockedCallsUI();
     }
     pub fn ShowBlockedMessagesUI() core.HResult!void {
-        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowBlockedMessagesUI();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingAccessManager";
@@ -38,15 +38,15 @@ pub const CommunicationBlockingAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsCurrentAppActiveBlockingApp() core.HResult!bool {
-        const _f = @This().ICommunicationBlockingAppManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAppManagerStaticsCache.get();
         return try _f.getIsCurrentAppActiveBlockingApp();
     }
     pub fn ShowCommunicationBlockingSettingsUI() core.HResult!void {
-        const _f = @This().ICommunicationBlockingAppManagerStaticsCache.get();
+        const _f = try @This()._ICommunicationBlockingAppManagerStaticsCache.get();
         return try _f.ShowCommunicationBlockingSettingsUI();
     }
     pub fn RequestSetAsActiveBlockingAppAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ICommunicationBlockingAppManagerStatics2Cache.get();
+        const _f = try @This()._ICommunicationBlockingAppManagerStatics2Cache.get();
         return try _f.RequestSetAsActiveBlockingAppAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingAppManager";

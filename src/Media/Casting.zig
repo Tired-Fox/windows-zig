@@ -111,19 +111,19 @@ pub const CastingDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!HSTRING {
-        const _f = @This().ICastingDeviceStaticsCache.get();
+        const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(ty);
     }
     pub fn GetDeviceSelectorFromCastingSourceAsync(castingSource: *CastingSource) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICastingDeviceStaticsCache.get();
+        const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorFromCastingSourceAsync(castingSource);
     }
     pub fn FromIdAsync(value: HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
-        const _f = @This().ICastingDeviceStaticsCache.get();
+        const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.FromIdAsync(value);
     }
     pub fn DeviceInfoSupportsCastingAsync(device: *DeviceInformation) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ICastingDeviceStaticsCache.get();
+        const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.DeviceInfoSupportsCastingAsync(device);
     }
     pub const NAME: []const u8 = "Windows.Media.Casting.CastingDevice";

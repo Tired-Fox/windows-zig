@@ -1612,7 +1612,7 @@ pub const PhoneCall = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromId(callId: HSTRING) core.HResult!*PhoneCall {
-        const _f = @This().IPhoneCallStaticsCache.get();
+        const _f = try @This()._IPhoneCallStaticsCache.get();
         return try _f.GetFromId(callId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCall";
@@ -1633,23 +1633,23 @@ pub const PhoneCallBlocking = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBlockUnknownNumbers() core.HResult!bool {
-        const _f = @This().IPhoneCallBlockingStaticsCache.get();
+        const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.getBlockUnknownNumbers();
     }
     pub fn putBlockUnknownNumbers(value: bool) core.HResult!void {
-        const _f = @This().IPhoneCallBlockingStaticsCache.get();
+        const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.putBlockUnknownNumbers(value);
     }
     pub fn getBlockPrivateNumbers() core.HResult!bool {
-        const _f = @This().IPhoneCallBlockingStaticsCache.get();
+        const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.getBlockPrivateNumbers();
     }
     pub fn putBlockPrivateNumbers(value: bool) core.HResult!void {
-        const _f = @This().IPhoneCallBlockingStaticsCache.get();
+        const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.putBlockPrivateNumbers(value);
     }
     pub fn SetCallBlockingListAsync(phoneNumberList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IPhoneCallBlockingStaticsCache.get();
+        const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.SetCallBlockingListAsync(phoneNumberList);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallBlocking";
@@ -1699,31 +1699,31 @@ pub const PhoneCallManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowPhoneCallUI(phoneNumber: HSTRING, displayName: HSTRING) core.HResult!void {
-        const _f = @This().IPhoneCallManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallManagerStaticsCache.get();
         return try _f.ShowPhoneCallUI(phoneNumber, displayName);
     }
     pub fn addCallStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.addCallStateChanged(handler);
     }
     pub fn removeCallStateChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.removeCallStateChanged(token);
     }
     pub fn getIsCallActive() core.HResult!bool {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.getIsCallActive();
     }
     pub fn getIsCallIncoming() core.HResult!bool {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.getIsCallIncoming();
     }
     pub fn ShowPhoneCallSettingsUI() core.HResult!void {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.ShowPhoneCallSettingsUI();
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(PhoneCallStore) {
-        const _f = @This().IPhoneCallManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallManagerStatics2Cache.get();
         return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallManager";
@@ -1789,7 +1789,7 @@ pub const PhoneCallVideoCapabilitiesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCapabilitiesAsync(phoneNumber: HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
-        const _f = @This().IPhoneCallVideoCapabilitiesManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallVideoCapabilitiesManagerStaticsCache.get();
         return try _f.GetCapabilitiesAsync(phoneNumber);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallVideoCapabilitiesManager";
@@ -1986,7 +1986,7 @@ pub const PhoneLine = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(lineId: *Guid) core.HResult!*IAsyncOperation(PhoneLine) {
-        const _f = @This().IPhoneLineStaticsCache.get();
+        const _f = try @This()._IPhoneLineStaticsCache.get();
         return try _f.FromIdAsync(lineId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneLine";
@@ -2156,15 +2156,15 @@ pub const PhoneLineTransportDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(id: HSTRING) core.HResult!*PhoneLineTransportDevice {
-        const _f = @This().IPhoneLineTransportDeviceStaticsCache.get();
+        const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.FromId(id);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IPhoneLineTransportDeviceStaticsCache.get();
+        const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithTransport(transport: PhoneLineTransport) core.HResult!HSTRING {
-        const _f = @This().IPhoneLineTransportDeviceStaticsCache.get();
+        const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithTransport(transport);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneLineTransportDevice";
@@ -2360,7 +2360,7 @@ pub const AcceptedVoipPhoneCallOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAcceptedVoipPhoneCallOptions.IID)));
     }
     pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
-        const _f = @This().IAcceptedVoipPhoneCallOptionsFactoryCache.get();
+        const _f = try @This()._IAcceptedVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.AcceptedVoipPhoneCallOptions";
@@ -2425,7 +2425,7 @@ pub const AppInitiatedVoipPhoneCallOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppInitiatedVoipPhoneCallOptions.IID)));
     }
     pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
-        const _f = @This().IAppInitiatedVoipPhoneCallOptionsFactoryCache.get();
+        const _f = try @This()._IAppInitiatedVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.AppInitiatedVoipPhoneCallOptions";
@@ -3659,7 +3659,7 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IIncomingVoipPhoneCallOptions.IID)));
     }
     pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
-        const _f = @This().IIncomingVoipPhoneCallOptionsFactoryCache.get();
+        const _f = try @This()._IIncomingVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.IncomingVoipPhoneCallOptions";
@@ -3728,7 +3728,7 @@ pub const OutgoingVoipPhoneCallOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IOutgoingVoipPhoneCallOptions.IID)));
     }
     pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
-        const _f = @This().IOutgoingVoipPhoneCallOptionsFactoryCache.get();
+        const _f = try @This()._IOutgoingVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.OutgoingVoipPhoneCallOptions";
@@ -3841,15 +3841,15 @@ pub const VoipCallCoordinator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*VoipCallCoordinator {
-        const _f = @This().IVoipCallCoordinatorStaticsCache.get();
+        const _f = try @This()._IVoipCallCoordinatorStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn IsCallControlDeviceKindSupportedForAssociation(kind: VoipCallControlDeviceKind) core.HResult!bool {
-        const _f = @This().IVoipCallCoordinatorStatics2Cache.get();
+        const _f = try @This()._IVoipCallCoordinatorStatics2Cache.get();
         return try _f.IsCallControlDeviceKindSupportedForAssociation(kind);
     }
     pub fn GetDeviceSelectorForCallControl() core.HResult!HSTRING {
-        const _f = @This().IVoipCallCoordinatorStatics2Cache.get();
+        const _f = try @This()._IVoipCallCoordinatorStatics2Cache.get();
         return try _f.GetDeviceSelectorForCallControl();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.VoipCallCoordinator";
@@ -4756,7 +4756,7 @@ pub const PhoneCallHistoryEntryAddress = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryAddress.IID)));
     }
     pub fn Create(rawAddress: HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
-        const _f = @This().IPhoneCallHistoryEntryAddressFactoryCache.get();
+        const _f = try @This()._IPhoneCallHistoryEntryAddressFactoryCache.get();
         return try _f.Create(rawAddress, rawAddressKind);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryEntryAddress";
@@ -4831,11 +4831,11 @@ pub const PhoneCallHistoryManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync(accessType: PhoneCallHistoryStoreAccessType) core.HResult!*IAsyncOperation(PhoneCallHistoryStore) {
-        const _f = @This().IPhoneCallHistoryManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallHistoryManagerStaticsCache.get();
         return try _f.RequestStoreAsync(accessType);
     }
     pub fn GetForUser(user: *User) core.HResult!*PhoneCallHistoryManagerForUser {
-        const _f = @This().IPhoneCallHistoryManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallHistoryManagerStatics2Cache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneCallHistoryManager";

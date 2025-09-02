@@ -21,11 +21,11 @@ pub const CoreFrameworkInputView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*CoreFrameworkInputView {
-        const _f = @This().ICoreFrameworkInputViewStaticsCache.get();
+        const _f = try @This()._ICoreFrameworkInputViewStaticsCache.get();
         return try _f.GetForUIContext(context);
     }
     pub fn GetForCurrentView() core.HResult!*CoreFrameworkInputView {
-        const _f = @This().ICoreFrameworkInputViewStaticsCache.get();
+        const _f = try @This()._ICoreFrameworkInputViewStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.CoreFrameworkInputView";
@@ -199,11 +199,11 @@ pub const CoreInputView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*CoreInputView {
-        const _f = @This().ICoreInputViewStatics2Cache.get();
+        const _f = try @This()._ICoreInputViewStatics2Cache.get();
         return try _f.GetForUIContext(context);
     }
     pub fn GetForCurrentView() core.HResult!*CoreInputView {
-        const _f = @This().ICoreInputViewStaticsCache.get();
+        const _f = try @This()._ICoreInputViewStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.CoreInputView";
@@ -1051,7 +1051,7 @@ pub const UISettingsController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestDefaultAsync() core.HResult!*IAsyncOperation(UISettingsController) {
-        const _f = @This().IUISettingsControllerStaticsCache.get();
+        const _f = try @This()._IUISettingsControllerStaticsCache.get();
         return try _f.RequestDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.UISettingsController";

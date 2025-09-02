@@ -301,7 +301,7 @@ pub const HolographicDisplay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*HolographicDisplay {
-        const _f = @This().IHolographicDisplayStaticsCache.get();
+        const _f = try @This()._IHolographicDisplayStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicDisplay";
@@ -534,11 +534,11 @@ pub const HolographicQuadLayer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(size: Size) core.HResult!*HolographicQuadLayer {
-        const _f = @This().IHolographicQuadLayerFactoryCache.get();
+        const _f = try @This()._IHolographicQuadLayerFactoryCache.get();
         return try _f.Create(size);
     }
     pub fn CreateWithPixelFormat(size: Size, pixelFormat: DirectXPixelFormat) core.HResult!*HolographicQuadLayer {
-        const _f = @This().IHolographicQuadLayerFactoryCache.get();
+        const _f = try @This()._IHolographicQuadLayerFactoryCache.get();
         return try _f.CreateWithPixelFormat(size, pixelFormat);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicQuadLayer";
@@ -673,27 +673,27 @@ pub const HolographicSpace = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsSupported() core.HResult!bool {
-        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        const _f = try @This()._IHolographicSpaceStatics2Cache.get();
         return try _f.getIsSupported();
     }
     pub fn getIsAvailable() core.HResult!bool {
-        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        const _f = try @This()._IHolographicSpaceStatics2Cache.get();
         return try _f.getIsAvailable();
     }
     pub fn addIsAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        const _f = try @This()._IHolographicSpaceStatics2Cache.get();
         return try _f.addIsAvailableChanged(handler);
     }
     pub fn removeIsAvailableChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        const _f = try @This()._IHolographicSpaceStatics2Cache.get();
         return try _f.removeIsAvailableChanged(token);
     }
     pub fn CreateForCoreWindow(window: *CoreWindow) core.HResult!*HolographicSpace {
-        const _f = @This().IHolographicSpaceStaticsCache.get();
+        const _f = try @This()._IHolographicSpaceStaticsCache.get();
         return try _f.CreateForCoreWindow(window);
     }
     pub fn getIsConfigured() core.HResult!bool {
-        const _f = @This().IHolographicSpaceStatics3Cache.get();
+        const _f = try @This()._IHolographicSpaceStatics3Cache.get();
         return try _f.getIsConfigured();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicSpace";

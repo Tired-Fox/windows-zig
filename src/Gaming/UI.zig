@@ -207,27 +207,27 @@ pub const GameBar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn addVisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.addVisibilityChanged(handler);
     }
     pub fn removeVisibilityChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.removeVisibilityChanged(token);
     }
     pub fn addIsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.addIsInputRedirectedChanged(handler);
     }
     pub fn removeIsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.removeIsInputRedirectedChanged(token);
     }
     pub fn getVisible() core.HResult!bool {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.getVisible();
     }
     pub fn getIsInputRedirected() core.HResult!bool {
-        const _f = @This().IGameBarStaticsCache.get();
+        const _f = try @This()._IGameBarStaticsCache.get();
         return try _f.getIsInputRedirected();
     }
     pub const NAME: []const u8 = "Windows.Gaming.UI.GameBar";
@@ -256,7 +256,7 @@ pub const GameChatOverlay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameChatOverlay {
-        const _f = @This().IGameChatOverlayStaticsCache.get();
+        const _f = try @This()._IGameChatOverlayStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Gaming.UI.GameChatOverlay";

@@ -43,7 +43,7 @@ pub const DesignerAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(appUserModelId: HSTRING) core.HResult!*DesignerAppManager {
-        const _f = @This().IDesignerAppManagerFactoryCache.get();
+        const _f = try @This()._IDesignerAppManagerFactoryCache.get();
         return try _f.Create(appUserModelId);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.DesignerAppManager";
@@ -135,7 +135,7 @@ pub const DesktopWindowXamlSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DesktopWindowXamlSource {
-        const _f = @This().IDesktopWindowXamlSourceFactoryCache.get();
+        const _f = try @This()._IDesktopWindowXamlSourceFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.DesktopWindowXamlSource";
@@ -825,7 +825,7 @@ pub const WindowsXamlManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn InitializeForCurrentThread() core.HResult!*WindowsXamlManager {
-        const _f = @This().IWindowsXamlManagerStaticsCache.get();
+        const _f = try @This()._IWindowsXamlManagerStaticsCache.get();
         return try _f.InitializeForCurrentThread();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.WindowsXamlManager";
@@ -863,15 +863,15 @@ pub const XamlSourceFocusNavigationRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(reason: XamlSourceFocusNavigationReason) core.HResult!*XamlSourceFocusNavigationRequest {
-        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        const _f = try @This()._IXamlSourceFocusNavigationRequestFactoryCache.get();
         return try _f.CreateInstance(reason);
     }
     pub fn CreateInstanceWithHintRect(reason: XamlSourceFocusNavigationReason, hintRect: Rect) core.HResult!*XamlSourceFocusNavigationRequest {
-        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        const _f = try @This()._IXamlSourceFocusNavigationRequestFactoryCache.get();
         return try _f.CreateInstanceWithHintRect(reason, hintRect);
     }
     pub fn CreateInstanceWithHintRectAndCorrelationId(reason: XamlSourceFocusNavigationReason, hintRect: Rect, correlationId: *Guid) core.HResult!*XamlSourceFocusNavigationRequest {
-        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        const _f = try @This()._IXamlSourceFocusNavigationRequestFactoryCache.get();
         return try _f.CreateInstanceWithHintRectAndCorrelationId(reason, hintRect, correlationId);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest";
@@ -891,7 +891,7 @@ pub const XamlSourceFocusNavigationResult = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(focusMoved: bool) core.HResult!*XamlSourceFocusNavigationResult {
-        const _f = @This().IXamlSourceFocusNavigationResultFactoryCache.get();
+        const _f = try @This()._IXamlSourceFocusNavigationResultFactoryCache.get();
         return try _f.CreateInstance(focusMoved);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlSourceFocusNavigationResult";
@@ -943,27 +943,27 @@ pub const XamlUIPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFlyoutPlacementTargetInfo(placementTarget: *FrameworkElement, preferredPlacement: FlyoutPlacementMode, targetPreferredPlacement: FlyoutPlacementMode, allowFallbacks: bool) core.HResult!Rect {
-        const _f = @This().IXamlUIPresenterStatics2Cache.get();
+        const _f = try @This()._IXamlUIPresenterStatics2Cache.get();
         return try _f.GetFlyoutPlacementTargetInfo(placementTarget, preferredPlacement, targetPreferredPlacement, allowFallbacks);
     }
     pub fn GetFlyoutPlacement(placementTargetBounds: Rect, controlSize: Size, minControlSize: Size, containerRect: Rect, targetPreferredPlacement: FlyoutPlacementMode, allowFallbacks: bool, chosenPlacement: FlyoutPlacementMode) core.HResult!Rect {
-        const _f = @This().IXamlUIPresenterStatics2Cache.get();
+        const _f = try @This()._IXamlUIPresenterStatics2Cache.get();
         return try _f.GetFlyoutPlacement(placementTargetBounds, controlSize, minControlSize, containerRect, targetPreferredPlacement, allowFallbacks, chosenPlacement);
     }
     pub fn getCompleteTimelinesAutomatically() core.HResult!bool {
-        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        const _f = try @This()._IXamlUIPresenterStaticsCache.get();
         return try _f.getCompleteTimelinesAutomatically();
     }
     pub fn putCompleteTimelinesAutomatically(value: bool) core.HResult!void {
-        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        const _f = try @This()._IXamlUIPresenterStaticsCache.get();
         return try _f.putCompleteTimelinesAutomatically(value);
     }
     pub fn SetHost(host: *IXamlUIPresenterHost) core.HResult!void {
-        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        const _f = try @This()._IXamlUIPresenterStaticsCache.get();
         return try _f.SetHost(host);
     }
     pub fn NotifyWindowSizeChanged() core.HResult!void {
-        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        const _f = try @This()._IXamlUIPresenterStaticsCache.get();
         return try _f.NotifyWindowSizeChanged();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlUIPresenter";
@@ -980,43 +980,43 @@ pub const ElementCompositionPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetImplicitShowAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
         return try _f.SetImplicitShowAnimation(element, animation);
     }
     pub fn SetImplicitHideAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
         return try _f.SetImplicitHideAnimation(element, animation);
     }
     pub fn SetIsTranslationEnabled(element: *UIElement, value: bool) core.HResult!void {
-        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
         return try _f.SetIsTranslationEnabled(element, value);
     }
     pub fn GetPointerPositionPropertySet(targetElement: *UIElement) core.HResult!*CompositionPropertySet {
-        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics2Cache.get();
         return try _f.GetPointerPositionPropertySet(targetElement);
     }
     pub fn SetAppWindowContent(appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
-        const _f = @This().IElementCompositionPreviewStatics3Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
         return try _f.SetAppWindowContent(appWindow, xamlContent);
     }
     pub fn GetAppWindowContent(appWindow: *AppWindow) core.HResult!*UIElement {
-        const _f = @This().IElementCompositionPreviewStatics3Cache.get();
+        const _f = try @This()._IElementCompositionPreviewStatics3Cache.get();
         return try _f.GetAppWindowContent(appWindow);
     }
     pub fn GetElementVisual(element: *UIElement) core.HResult!*Visual {
-        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
         return try _f.GetElementVisual(element);
     }
     pub fn GetElementChildVisual(element: *UIElement) core.HResult!*Visual {
-        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
         return try _f.GetElementChildVisual(element);
     }
     pub fn SetElementChildVisual(element: *UIElement, visual: *Visual) core.HResult!void {
-        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
         return try _f.SetElementChildVisual(element, visual);
     }
     pub fn GetScrollViewerManipulationPropertySet(scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
-        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        const _f = try @This()._IElementCompositionPreviewStaticsCache.get();
         return try _f.GetScrollViewerManipulationPropertySet(scrollViewer);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.ElementCompositionPreview";

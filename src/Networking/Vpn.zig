@@ -2321,7 +2321,7 @@ pub const VpnAppId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ty: VpnAppIdType, value: HSTRING) core.HResult!*VpnAppId {
-        const _f = @This().IVpnAppIdFactoryCache.get();
+        const _f = try @This()._IVpnAppIdFactoryCache.get();
         return try _f.Create(ty, value);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnAppId";
@@ -2550,7 +2550,7 @@ pub const VpnChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ProcessEventAsync(thirdPartyPlugIn: *IInspectable, event: *IInspectable) core.HResult!void {
-        const _f = @This().IVpnChannelStaticsCache.get();
+        const _f = try @This()._IVpnChannelStaticsCache.get();
         return try _f.ProcessEventAsync(thirdPartyPlugIn, event);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnChannel";
@@ -3288,7 +3288,7 @@ pub const VpnDomainNameInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnDomainNameInfo(name: HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
-        const _f = @This().IVpnDomainNameInfoFactoryCache.get();
+        const _f = try @This()._IVpnDomainNameInfoFactoryCache.get();
         return try _f.CreateVpnDomainNameInfo(name, nameType, dnsServerList, proxyServerList);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnDomainNameInfo";
@@ -3378,7 +3378,7 @@ pub const VpnInterfaceId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnInterfaceId(address: [*]u8) core.HResult!*VpnInterfaceId {
-        const _f = @This().IVpnInterfaceIdFactoryCache.get();
+        const _f = try @This()._IVpnInterfaceIdFactoryCache.get();
         return try _f.CreateVpnInterfaceId(address);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnInterfaceId";
@@ -3529,7 +3529,7 @@ pub const VpnNamespaceInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnNamespaceInfo(name: HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
-        const _f = @This().IVpnNamespaceInfoFactoryCache.get();
+        const _f = try @This()._IVpnNamespaceInfoFactoryCache.get();
         return try _f.CreateVpnNamespaceInfo(name, dnsServerList, proxyServerList);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnNamespaceInfo";
@@ -3726,7 +3726,7 @@ pub const VpnPacketBuffer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnPacketBuffer(parentBuffer: *VpnPacketBuffer, offset: u32, length: u32) core.HResult!*VpnPacketBuffer {
-        const _f = @This().IVpnPacketBufferFactoryCache.get();
+        const _f = try @This()._IVpnPacketBufferFactoryCache.get();
         return try _f.CreateVpnPacketBuffer(parentBuffer, offset, length);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnPacketBuffer";
@@ -3942,7 +3942,7 @@ pub const VpnRoute = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnRoute(address: *HostName, prefixSize: u8) core.HResult!*VpnRoute {
-        const _f = @This().IVpnRouteFactoryCache.get();
+        const _f = try @This()._IVpnRouteFactoryCache.get();
         return try _f.CreateVpnRoute(address, prefixSize);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnRoute";
@@ -4074,7 +4074,7 @@ pub const VpnTrafficFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(appId: *VpnAppId) core.HResult!*VpnTrafficFilter {
-        const _f = @This().IVpnTrafficFilterFactoryCache.get();
+        const _f = try @This()._IVpnTrafficFilterFactoryCache.get();
         return try _f.Create(appId);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnTrafficFilter";

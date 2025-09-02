@@ -1148,23 +1148,23 @@ pub const UserDataAccountSystemAccessManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddAndShowDeviceAccountsAsync(accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        const _f = @This().IUserDataAccountSystemAccessManagerStaticsCache.get();
+        const _f = try @This()._IUserDataAccountSystemAccessManagerStaticsCache.get();
         return try _f.AddAndShowDeviceAccountsAsync(accounts);
     }
     pub fn SuppressLocalAccountWithAccountAsync(userDataAccountId: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.SuppressLocalAccountWithAccountAsync(userDataAccountId);
     }
     pub fn CreateDeviceAccountAsync(account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.CreateDeviceAccountAsync(account);
     }
     pub fn DeleteDeviceAccountAsync(accountId: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.DeleteDeviceAccountAsync(accountId);
     }
     pub fn GetDeviceAccountConfigurationAsync(accountId: HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
-        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.GetDeviceAccountConfigurationAsync(accountId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.UserDataAccountSystemAccessManager";

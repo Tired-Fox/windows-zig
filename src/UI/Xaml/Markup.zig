@@ -715,7 +715,7 @@ pub const MarkupExtension = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MarkupExtension {
-        const _f = @This().IMarkupExtensionFactoryCache.get();
+        const _f = try @This()._IMarkupExtensionFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.MarkupExtension";
@@ -736,7 +736,7 @@ pub const XamlBinaryWriter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Write(inputStreams: *IVector(IRandomAccessStream), outputStreams: *IVector(IRandomAccessStream), xamlMetadataProvider: *IXamlMetadataProvider) core.HResult!XamlBinaryWriterErrorInformation {
-        const _f = @This().IXamlBinaryWriterStaticsCache.get();
+        const _f = try @This()._IXamlBinaryWriterStaticsCache.get();
         return try _f.Write(inputStreams, outputStreams, xamlMetadataProvider);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.XamlBinaryWriter";
@@ -757,95 +757,95 @@ pub const XamlBindingHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDataTemplateComponentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.getDataTemplateComponentProperty();
     }
     pub fn GetDataTemplateComponent(element: *DependencyObject) core.HResult!*IDataTemplateComponent {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.GetDataTemplateComponent(element);
     }
     pub fn SetDataTemplateComponent(element: *DependencyObject, value: *IDataTemplateComponent) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetDataTemplateComponent(element, value);
     }
     pub fn SuspendRendering(target: *UIElement) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SuspendRendering(target);
     }
     pub fn ResumeRendering(target: *UIElement) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.ResumeRendering(target);
     }
     pub fn ConvertValue(ty: TypeName, value: *IInspectable) core.HResult!*IInspectable {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.ConvertValue(ty, value);
     }
     pub fn SetPropertyFromString(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: HSTRING) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromString(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromBoolean(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: bool) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromBoolean(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromChar16(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u16) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromChar16(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromDateTime(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: DateTime) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromDateTime(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromDouble(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: f64) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromDouble(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromInt32(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: i32) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromInt32(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromUInt32(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u32) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromUInt32(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromInt64(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: i64) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromInt64(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromUInt64(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u64) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromUInt64(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromSingle(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: f32) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromSingle(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromPoint(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Point) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromPoint(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromRect(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Rect) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromRect(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromSize(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: Size) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromSize(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromTimeSpan(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: TimeSpan) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromTimeSpan(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromByte(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u8) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromByte(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromUri(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: *Uri) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromUri(dependencyObject, propertyToSet, value);
     }
     pub fn SetPropertyFromObject(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: *IInspectable) core.HResult!void {
-        const _f = @This().IXamlBindingHelperStaticsCache.get();
+        const _f = try @This()._IXamlBindingHelperStaticsCache.get();
         return try _f.SetPropertyFromObject(dependencyObject, propertyToSet, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.XamlBindingHelper";
@@ -861,7 +861,7 @@ pub const XamlMarkupHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn UnloadObject(element: *DependencyObject) core.HResult!void {
-        const _f = @This().IXamlMarkupHelperStaticsCache.get();
+        const _f = try @This()._IXamlMarkupHelperStaticsCache.get();
         return try _f.UnloadObject(element);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.XamlMarkupHelper";
@@ -877,11 +877,11 @@ pub const XamlReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Load(xaml: HSTRING) core.HResult!*IInspectable {
-        const _f = @This().IXamlReaderStaticsCache.get();
+        const _f = try @This()._IXamlReaderStaticsCache.get();
         return try _f.Load(xaml);
     }
     pub fn LoadWithInitialTemplateValidation(xaml: HSTRING) core.HResult!*IInspectable {
-        const _f = @This().IXamlReaderStaticsCache.get();
+        const _f = try @This()._IXamlReaderStaticsCache.get();
         return try _f.LoadWithInitialTemplateValidation(xaml);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.XamlReader";

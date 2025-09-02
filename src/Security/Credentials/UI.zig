@@ -14,15 +14,15 @@ pub const CredentialPicker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn PickAsync(options: *CredentialPickerOptions) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const _f = @This().ICredentialPickerStaticsCache.get();
+        const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsync(options);
     }
     pub fn PickAsyncWithTargetNameAndMessage(targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const _f = @This().ICredentialPickerStaticsCache.get();
+        const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsyncWithTargetNameAndMessage(targetName, message);
     }
     pub fn PickAsyncWithTargetNameAndMessageAndCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const _f = @This().ICredentialPickerStaticsCache.get();
+        const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsyncWithTargetNameAndMessageAndCaption(targetName, message, caption);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.UI.CredentialPicker";
@@ -449,11 +449,11 @@ pub const UserConsentVerifier = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CheckAvailabilityAsync() core.HResult!*IAsyncOperation(UserConsentVerifierAvailability) {
-        const _f = @This().IUserConsentVerifierStaticsCache.get();
+        const _f = try @This()._IUserConsentVerifierStaticsCache.get();
         return try _f.CheckAvailabilityAsync();
     }
     pub fn RequestVerificationAsync(message: HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
-        const _f = @This().IUserConsentVerifierStaticsCache.get();
+        const _f = try @This()._IUserConsentVerifierStaticsCache.get();
         return try _f.RequestVerificationAsync(message);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.UI.UserConsentVerifier";

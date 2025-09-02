@@ -925,7 +925,7 @@ pub const WebAuthenticationAddAccountResponse = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithAccount(webAccount: *WebAccount) core.HResult!*WebAuthenticationAddAccountResponse {
-        const _f = @This().IWebAuthenticationAddAccountResponseFactoryCache.get();
+        const _f = try @This()._IWebAuthenticationAddAccountResponseFactoryCache.get();
         return try _f.CreateWithAccount(webAccount);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebAuthenticationAddAccountResponse";
@@ -968,63 +968,63 @@ pub const WebAuthenticationCoreManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountMonitor(webAccounts: *IIterable(WebAccount)) core.HResult!*WebAccountMonitor {
-        const _f = @This().IWebAuthenticationCoreManagerStatics3Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics3Cache.get();
         return try _f.CreateWebAccountMonitor(webAccounts);
     }
     pub fn FindAllAccountsAsync(provider: *WebAccountProvider) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindAllAccountsAsync(provider);
     }
     pub fn FindAllAccountsAsyncWithClientId(provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindAllAccountsAsyncWithClientId(provider, clientId);
     }
     pub fn FindSystemAccountProviderAsync(webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsync(webAccountProviderId);
     }
     pub fn FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
     pub fn FindSystemAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId, authority, user);
     }
     pub fn FindAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics2Cache.get();
         return try _f.FindAccountProviderAsync(webAccountProviderId, authority, user);
     }
     pub fn GetTokenSilentlyAsync(request: *WebTokenRequest) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.GetTokenSilentlyAsync(request);
     }
     pub fn GetTokenSilentlyAsyncWithWebAccount(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.GetTokenSilentlyAsyncWithWebAccount(request, webAccount);
     }
     pub fn RequestTokenAsync(request: *WebTokenRequest) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.RequestTokenAsync(request);
     }
     pub fn RequestTokenAsyncWithWebAccount(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.RequestTokenAsyncWithWebAccount(request, webAccount);
     }
     pub fn FindAccountAsync(provider: *WebAccountProvider, webAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountAsync(provider, webAccountId);
     }
     pub fn FindAccountProviderAsync(webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountProviderAsync(webAccountProviderId);
     }
     pub fn FindAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
-        const _f = @This().IWebAuthenticationCoreManagerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
     pub fn AddAccountWithTransferTokenAsync(request: *WebAuthenticationTransferTokenRequest) core.HResult!*IAsyncOperation(WebAuthenticationAddAccountResult) {
-        const _f = @This().IWebAuthenticationCoreManagerStatics5Cache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerStatics5Cache.get();
         return try _f.AddAccountWithTransferTokenAsync(request);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebAuthenticationCoreManager";
@@ -1065,11 +1065,11 @@ pub const WebAuthenticationTransferTokenRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(provider: *WebAccountProvider, transferToken: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
-        const _f = @This().IWebAuthenticationTransferTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebAuthenticationTransferTokenRequestFactoryCache.get();
         return try _f.Create(provider, transferToken);
     }
     pub fn CreateWithCorrelationId(provider: *WebAccountProvider, transferToken: HSTRING, correlationId: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
-        const _f = @This().IWebAuthenticationTransferTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebAuthenticationTransferTokenRequestFactoryCache.get();
         return try _f.CreateWithCorrelationId(provider, transferToken, correlationId);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebAuthenticationTransferTokenRequest";
@@ -1097,7 +1097,7 @@ pub const WebProviderError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(errorCode: u32, errorMessage: HSTRING) core.HResult!*WebProviderError {
-        const _f = @This().IWebProviderErrorFactoryCache.get();
+        const _f = try @This()._IWebProviderErrorFactoryCache.get();
         return try _f.Create(errorCode, errorMessage);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebProviderError";
@@ -1151,19 +1151,19 @@ pub const WebTokenRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING) core.HResult!*WebTokenRequest {
-        const _f = @This().IWebTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.Create(provider, scope, clientId);
     }
     pub fn CreateWithPromptType(provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING, promptType: WebTokenRequestPromptType) core.HResult!*WebTokenRequest {
-        const _f = @This().IWebTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithPromptType(provider, scope, clientId, promptType);
     }
     pub fn CreateWithProvider(provider: *WebAccountProvider) core.HResult!*WebTokenRequest {
-        const _f = @This().IWebTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithProvider(provider);
     }
     pub fn CreateWithScope(provider: *WebAccountProvider, scope: HSTRING) core.HResult!*WebTokenRequest {
-        const _f = @This().IWebTokenRequestFactoryCache.get();
+        const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithScope(provider, scope);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebTokenRequest";
@@ -1235,15 +1235,15 @@ pub const WebTokenResponse = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWebTokenResponse.IID)));
     }
     pub fn CreateWithToken(token: HSTRING) core.HResult!*WebTokenResponse {
-        const _f = @This().IWebTokenResponseFactoryCache.get();
+        const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithToken(token);
     }
     pub fn CreateWithTokenAndAccount(token: HSTRING, webAccount: *WebAccount) core.HResult!*WebTokenResponse {
-        const _f = @This().IWebTokenResponseFactoryCache.get();
+        const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithTokenAndAccount(token, webAccount);
     }
     pub fn CreateWithTokenAccountAndError(token: HSTRING, webAccount: *WebAccount, err: *WebProviderError) core.HResult!*WebTokenResponse {
-        const _f = @This().IWebTokenResponseFactoryCache.get();
+        const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithTokenAccountAndError(token, webAccount, err);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.Core.WebTokenResponse";

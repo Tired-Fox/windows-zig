@@ -7,10 +7,19 @@ const Example = struct {
     path: []const u8,
 };
 
-const examples = [_]Example {
-    .{ .name = "uisettings", .path = "examples/uisettings.zig",  },
-    .{ .name = "reactive_theme", .path = "examples/reactive_theme.zig",  },
-    // .{ .name = "notification", .path = "examples/notification.zig",  },
+const examples = [_]Example{
+    .{
+        .name = "uisettings",
+        .path = "examples/uisettings.zig",
+    },
+    .{
+        .name = "reactive_theme",
+        .path = "examples/reactive_theme.zig",
+    },
+    .{
+        .name = "notification",
+        .path = "examples/notification.zig",
+    },
 };
 
 pub const MODULE_NAME = "windows";
@@ -44,14 +53,11 @@ pub fn addExample(
     comptime example: Example,
     modules: []const ModuleMap,
 ) void {
-    const exe = b.addExecutable(.{
-        .name = example.name,
-        .root_module = b.createModule(.{
-            .root_source_file = b.path(example.path),
-            .target = target,
-            .optimize = optimize,
-        })
-    });
+    const exe = b.addExecutable(.{ .name = example.name, .root_module = b.createModule(.{
+        .root_source_file = b.path(example.path),
+        .target = target,
+        .optimize = optimize,
+    }) });
 
     for (modules) |module| {
         exe.root_module.addImport(module[0], module[1]);

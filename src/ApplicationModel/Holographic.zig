@@ -17,7 +17,7 @@ pub const HolographicKeyboard = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*HolographicKeyboard {
-        const _f = @This().IHolographicKeyboardStaticsCache.get();
+        const _f = try @This()._IHolographicKeyboardStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Holographic.HolographicKeyboard";

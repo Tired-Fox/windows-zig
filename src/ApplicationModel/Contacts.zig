@@ -973,15 +973,15 @@ pub const ContactField = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateField(value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
-        const _f = @This().IContactFieldFactoryCache.get();
+        const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateField(value, ty);
     }
     pub fn CreateFieldWithCategory(value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
-        const _f = @This().IContactFieldFactoryCache.get();
+        const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateFieldWithCategory(value, ty, category);
     }
     pub fn CreateFieldWithValueAndTyAndCategory(name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
-        const _f = @This().IContactFieldFactoryCache.get();
+        const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateFieldWithValueAndTyAndCategory(name, value, ty, category);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactField";
@@ -1170,15 +1170,15 @@ pub const ContactInstantMessageField = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstantMessage(userName: HSTRING) core.HResult!*ContactInstantMessageField {
-        const _f = @This().IContactInstantMessageFieldFactoryCache.get();
+        const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessage(userName);
     }
     pub fn CreateInstantMessageWithCategory(userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
-        const _f = @This().IContactInstantMessageFieldFactoryCache.get();
+        const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessageWithCategory(userName, category);
     }
     pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
-        const _f = @This().IContactInstantMessageFieldFactoryCache.get();
+        const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName, category, service, displayText, verb);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactInstantMessageField";
@@ -1274,23 +1274,23 @@ pub const ContactLaunchActionVerbs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCall() core.HResult!HSTRING {
-        const _f = @This().IContactLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getCall();
     }
     pub fn getMessage() core.HResult!HSTRING {
-        const _f = @This().IContactLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getMessage();
     }
     pub fn getMap() core.HResult!HSTRING {
-        const _f = @This().IContactLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getMap();
     }
     pub fn getPost() core.HResult!HSTRING {
-        const _f = @This().IContactLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getPost();
     }
     pub fn getVideoCall() core.HResult!HSTRING {
-        const _f = @This().IContactLaunchActionVerbsStaticsCache.get();
+        const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getVideoCall();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactLaunchActionVerbs";
@@ -1807,15 +1807,15 @@ pub const ContactLocationField = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLocation(unstructuredAddress: HSTRING) core.HResult!*ContactLocationField {
-        const _f = @This().IContactLocationFieldFactoryCache.get();
+        const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocation(unstructuredAddress);
     }
     pub fn CreateLocationWithCategory(unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
-        const _f = @This().IContactLocationFieldFactoryCache.get();
+        const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocationWithCategory(unstructuredAddress, category);
     }
     pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
-        const _f = @This().IContactLocationFieldFactoryCache.get();
+        const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactLocationField";
@@ -1831,91 +1831,91 @@ pub const ContactManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsShowFullContactCardSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IContactManagerStatics5Cache.get();
+        const _f = try @This()._IContactManagerStatics5Cache.get();
         return try _f.IsShowFullContactCardSupportedAsync();
     }
     pub fn getIncludeMiddleNameInSystemDisplayAndSort() core.HResult!bool {
-        const _f = @This().IContactManagerStatics5Cache.get();
+        const _f = try @This()._IContactManagerStatics5Cache.get();
         return try _f.getIncludeMiddleNameInSystemDisplayAndSort();
     }
     pub fn putIncludeMiddleNameInSystemDisplayAndSort(value: bool) core.HResult!void {
-        const _f = @This().IContactManagerStatics5Cache.get();
+        const _f = try @This()._IContactManagerStatics5Cache.get();
         return try _f.putIncludeMiddleNameInSystemDisplayAndSort(value);
     }
     pub fn GetForUser(user: *User) core.HResult!*ContactManagerForUser {
-        const _f = @This().IContactManagerStatics4Cache.get();
+        const _f = try @This()._IContactManagerStatics4Cache.get();
         return try _f.GetForUser(user);
     }
     pub fn ShowContactCard(contact: *Contact, selection: Rect) core.HResult!void {
-        const _f = @This().IContactManagerStaticsCache.get();
+        const _f = try @This()._IContactManagerStaticsCache.get();
         return try _f.ShowContactCard(contact, selection);
     }
     pub fn ShowContactCardWithPreferredPlacement(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
-        const _f = @This().IContactManagerStaticsCache.get();
+        const _f = try @This()._IContactManagerStaticsCache.get();
         return try _f.ShowContactCardWithPreferredPlacement(contact, selection, preferredPlacement);
     }
     pub fn ShowDelayLoadedContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!*ContactCardDelayedDataLoader {
-        const _f = @This().IContactManagerStaticsCache.get();
+        const _f = try @This()._IContactManagerStaticsCache.get();
         return try _f.ShowDelayLoadedContactCard(contact, selection, preferredPlacement);
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(ContactStore) {
-        const _f = @This().IContactManagerStatics2Cache.get();
+        const _f = try @This()._IContactManagerStatics2Cache.get();
         return try _f.RequestStoreAsync();
     }
     pub fn ConvertContactToVCardAsync(contact: *Contact) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ConvertContactToVCardAsync(contact);
     }
     pub fn ConvertContactToVCardAsyncWithMaxBytes(contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ConvertContactToVCardAsyncWithMaxBytes(contact, maxBytes);
     }
     pub fn ConvertVCardToContactAsync(vCard: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(Contact) {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ConvertVCardToContactAsync(vCard);
     }
     pub fn RequestStoreAsyncWithAccessType(accessType: ContactStoreAccessType) core.HResult!*IAsyncOperation(ContactStore) {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.RequestStoreAsync(accessType);
     }
     pub fn RequestAnnotationStoreAsync(accessType: ContactAnnotationStoreAccessType) core.HResult!*IAsyncOperation(ContactAnnotationStore) {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.RequestAnnotationStoreAsync(accessType);
     }
     pub fn IsShowContactCardSupported() core.HResult!bool {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.IsShowContactCardSupported();
     }
     pub fn ShowContactCardWithPreferredPlacementAndContactCardOptions(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!void {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ShowContactCard(contact, selection, preferredPlacement, contactCardOptions);
     }
     pub fn IsShowDelayLoadedContactCardSupported() core.HResult!bool {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.IsShowDelayLoadedContactCardSupported();
     }
     pub fn ShowDelayLoadedContactCardWithContactCardOptions(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!*ContactCardDelayedDataLoader {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ShowDelayLoadedContactCard(contact, selection, preferredPlacement, contactCardOptions);
     }
     pub fn ShowFullContactCard(contact: *Contact, fullContactCardOptions: *FullContactCardOptions) core.HResult!void {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.ShowFullContactCard(contact, fullContactCardOptions);
     }
     pub fn getSystemDisplayNameOrder() core.HResult!ContactNameOrder {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.getSystemDisplayNameOrder();
     }
     pub fn putSystemDisplayNameOrder(value: ContactNameOrder) core.HResult!void {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.putSystemDisplayNameOrder(value);
     }
     pub fn getSystemSortOrder() core.HResult!ContactNameOrder {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.getSystemSortOrder();
     }
     pub fn putSystemSortOrder(value: ContactNameOrder) core.HResult!void {
-        const _f = @This().IContactManagerStatics3Cache.get();
+        const _f = try @This()._IContactManagerStatics3Cache.get();
         return try _f.putSystemSortOrder(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactManager";
@@ -2190,11 +2190,11 @@ pub const ContactPicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactPicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*ContactPicker {
-        const _f = @This().IContactPickerStaticsCache.get();
+        const _f = try @This()._IContactPickerStaticsCache.get();
         return try _f.CreateForUser(user);
     }
     pub fn IsSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IContactPickerStaticsCache.get();
+        const _f = try @This()._IContactPickerStaticsCache.get();
         return try _f.IsSupportedAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactPicker";
@@ -2257,11 +2257,11 @@ pub const ContactQueryOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactQueryOptions.IID)));
     }
     pub fn CreateWithText(text: HSTRING) core.HResult!*ContactQueryOptions {
-        const _f = @This().IContactQueryOptionsFactoryCache.get();
+        const _f = try @This()._IContactQueryOptionsFactoryCache.get();
         return try _f.CreateWithText(text);
     }
     pub fn CreateWithTextAndFields(text: HSTRING, fields: ContactQuerySearchFields) core.HResult!*ContactQueryOptions {
-        const _f = @This().IContactQueryOptionsFactoryCache.get();
+        const _f = try @This()._IContactQueryOptionsFactoryCache.get();
         return try _f.CreateWithTextAndFields(text, fields);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactQueryOptions";
@@ -6492,27 +6492,27 @@ pub const KnownContactField = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getEmail() core.HResult!HSTRING {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getEmail();
     }
     pub fn getPhoneNumber() core.HResult!HSTRING {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getPhoneNumber();
     }
     pub fn getLocation() core.HResult!HSTRING {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getLocation();
     }
     pub fn getInstantMessage() core.HResult!HSTRING {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getInstantMessage();
     }
     pub fn ConvertNameToType(name: HSTRING) core.HResult!ContactFieldType {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.ConvertNameToType(name);
     }
     pub fn ConvertTypeToName(ty: ContactFieldType) core.HResult!HSTRING {
-        const _f = @This().IKnownContactFieldStaticsCache.get();
+        const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.ConvertTypeToName(ty);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.KnownContactField";
@@ -6569,15 +6569,15 @@ pub const PinnedContactManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PinnedContactManager {
-        const _f = @This().IPinnedContactManagerStaticsCache.get();
+        const _f = try @This()._IPinnedContactManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*PinnedContactManager {
-        const _f = @This().IPinnedContactManagerStaticsCache.get();
+        const _f = try @This()._IPinnedContactManagerStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IPinnedContactManagerStaticsCache.get();
+        const _f = try @This()._IPinnedContactManagerStaticsCache.get();
         return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.PinnedContactManager";

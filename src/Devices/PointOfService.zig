@@ -61,19 +61,19 @@ pub const BarcodeScanner = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(BarcodeScanner) {
-        const _f = @This().IBarcodeScannerStaticsCache.get();
+        const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
-        const _f = @This().IBarcodeScannerStaticsCache.get();
+        const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IBarcodeScannerStaticsCache.get();
+        const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().IBarcodeScannerStatics2Cache.get();
+        const _f = try @This()._IBarcodeScannerStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeScanner";
@@ -182,7 +182,7 @@ pub const BarcodeScannerReport = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(scanDataType: u32, scanData: *IBuffer, scanDataLabel: *IBuffer) core.HResult!*BarcodeScannerReport {
-        const _f = @This().IBarcodeScannerReportFactoryCache.get();
+        const _f = try @This()._IBarcodeScannerReportFactoryCache.get();
         return try _f.CreateInstance(scanDataType, scanData, scanDataLabel);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeScannerReport";
@@ -221,383 +221,383 @@ pub const BarcodeSymbologies = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getUnknown() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUnknown();
     }
     pub fn getEan8() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan8();
     }
     pub fn getEan8Add2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan8Add2();
     }
     pub fn getEan8Add5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan8Add5();
     }
     pub fn getEanv() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEanv();
     }
     pub fn getEanvAdd2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEanvAdd2();
     }
     pub fn getEanvAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEanvAdd5();
     }
     pub fn getEan13() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan13();
     }
     pub fn getEan13Add2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan13Add2();
     }
     pub fn getEan13Add5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan13Add5();
     }
     pub fn getIsbn() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsbn();
     }
     pub fn getIsbnAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsbnAdd5();
     }
     pub fn getIsmn() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsmn();
     }
     pub fn getIsmnAdd2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsmnAdd2();
     }
     pub fn getIsmnAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsmnAdd5();
     }
     pub fn getIssn() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIssn();
     }
     pub fn getIssnAdd2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIssnAdd2();
     }
     pub fn getIssnAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIssnAdd5();
     }
     pub fn getEan99() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan99();
     }
     pub fn getEan99Add2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan99Add2();
     }
     pub fn getEan99Add5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getEan99Add5();
     }
     pub fn getUpca() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpca();
     }
     pub fn getUpcaAdd2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpcaAdd2();
     }
     pub fn getUpcaAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpcaAdd5();
     }
     pub fn getUpce() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpce();
     }
     pub fn getUpceAdd2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpceAdd2();
     }
     pub fn getUpceAdd5() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpceAdd5();
     }
     pub fn getUpcCoupon() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUpcCoupon();
     }
     pub fn getTfStd() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfStd();
     }
     pub fn getTfDis() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfDis();
     }
     pub fn getTfInt() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfInt();
     }
     pub fn getTfInd() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfInd();
     }
     pub fn getTfMat() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfMat();
     }
     pub fn getTfIata() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTfIata();
     }
     pub fn getGs1DatabarType1() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getGs1DatabarType1();
     }
     pub fn getGs1DatabarType2() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getGs1DatabarType2();
     }
     pub fn getGs1DatabarType3() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getGs1DatabarType3();
     }
     pub fn getCode39() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode39();
     }
     pub fn getCode39Ex() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode39Ex();
     }
     pub fn getTrioptic39() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTrioptic39();
     }
     pub fn getCode32() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode32();
     }
     pub fn getPzn() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getPzn();
     }
     pub fn getCode93() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode93();
     }
     pub fn getCode93Ex() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode93Ex();
     }
     pub fn getCode128() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode128();
     }
     pub fn getGs1128() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getGs1128();
     }
     pub fn getGs1128Coupon() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getGs1128Coupon();
     }
     pub fn getUccEan128() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUccEan128();
     }
     pub fn getSisac() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getSisac();
     }
     pub fn getIsbt() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getIsbt();
     }
     pub fn getCodabar() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCodabar();
     }
     pub fn getCode11() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode11();
     }
     pub fn getMsi() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMsi();
     }
     pub fn getPlessey() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getPlessey();
     }
     pub fn getTelepen() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTelepen();
     }
     pub fn getCode16k() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode16k();
     }
     pub fn getCodablockA() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCodablockA();
     }
     pub fn getCodablockF() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCodablockF();
     }
     pub fn getCodablock128() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCodablock128();
     }
     pub fn getCode49() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCode49();
     }
     pub fn getAztec() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getAztec();
     }
     pub fn getDataCode() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getDataCode();
     }
     pub fn getDataMatrix() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getDataMatrix();
     }
     pub fn getHanXin() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getHanXin();
     }
     pub fn getMaxicode() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMaxicode();
     }
     pub fn getMicroPdf417() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMicroPdf417();
     }
     pub fn getMicroQr() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMicroQr();
     }
     pub fn getPdf417() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getPdf417();
     }
     pub fn getQr() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getQr();
     }
     pub fn getMsTag() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMsTag();
     }
     pub fn getCcab() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCcab();
     }
     pub fn getCcc() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCcc();
     }
     pub fn getTlc39() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getTlc39();
     }
     pub fn getAusPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getAusPost();
     }
     pub fn getCanPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getCanPost();
     }
     pub fn getChinaPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getChinaPost();
     }
     pub fn getDutchKix() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getDutchKix();
     }
     pub fn getInfoMail() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getInfoMail();
     }
     pub fn getItalianPost25() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getItalianPost25();
     }
     pub fn getItalianPost39() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getItalianPost39();
     }
     pub fn getJapanPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getJapanPost();
     }
     pub fn getKoreanPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getKoreanPost();
     }
     pub fn getSwedenPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getSwedenPost();
     }
     pub fn getUkPost() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUkPost();
     }
     pub fn getUsIntelligent() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUsIntelligent();
     }
     pub fn getUsIntelligentPkg() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUsIntelligentPkg();
     }
     pub fn getUsPlanet() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUsPlanet();
     }
     pub fn getUsPostNet() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUsPostNet();
     }
     pub fn getUs4StateFics() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getUs4StateFics();
     }
     pub fn getOcrA() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getOcrA();
     }
     pub fn getOcrB() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getOcrB();
     }
     pub fn getMicr() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getMicr();
     }
     pub fn getExtendedBase() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getExtendedBase();
     }
     pub fn GetName(scanDataType: u32) core.HResult!HSTRING {
-        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.GetName(scanDataType);
     }
     pub fn getGs1DWCode() core.HResult!u32 {
-        const _f = @This().IBarcodeSymbologiesStatics2Cache.get();
+        const _f = try @This()._IBarcodeSymbologiesStatics2Cache.get();
         return try _f.getGs1DWCode();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeSymbologies";
@@ -722,19 +722,19 @@ pub const CashDrawer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(CashDrawer) {
-        const _f = @This().ICashDrawerStaticsCache.get();
+        const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
-        const _f = @This().ICashDrawerStaticsCache.get();
+        const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ICashDrawerStaticsCache.get();
+        const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().ICashDrawerStatics2Cache.get();
+        const _f = try @This()._ICashDrawerStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.CashDrawer";
@@ -1472,15 +1472,15 @@ pub const ClaimedLineDisplay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
-        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedLineDisplay";
@@ -8487,23 +8487,23 @@ pub const LineDisplay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getStatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
-        const _f = @This().ILineDisplayStatics2Cache.get();
+        const _f = try @This()._ILineDisplayStatics2Cache.get();
         return try _f.getStatisticsCategorySelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
-        const _f = @This().ILineDisplayStaticsCache.get();
+        const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(LineDisplay) {
-        const _f = @This().ILineDisplayStaticsCache.get();
+        const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ILineDisplayStaticsCache.get();
+        const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().ILineDisplayStaticsCache.get();
+        const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.LineDisplay";
@@ -9058,19 +9058,19 @@ pub const MagneticStripeReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(MagneticStripeReader) {
-        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
-        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().IMagneticStripeReaderStatics2Cache.get();
+        const _f = try @This()._IMagneticStripeReaderStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReader";
@@ -9276,19 +9276,19 @@ pub const MagneticStripeReaderCardTypes = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getUnknown() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderCardTypesStaticsCache.get();
         return try _f.getUnknown();
     }
     pub fn getBank() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderCardTypesStaticsCache.get();
         return try _f.getBank();
     }
     pub fn getAamva() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderCardTypesStaticsCache.get();
         return try _f.getAamva();
     }
     pub fn getExtendedBase() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderCardTypesStaticsCache.get();
         return try _f.getExtendedBase();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReaderCardTypes";
@@ -9301,15 +9301,15 @@ pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getNone() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try _f.getNone();
     }
     pub fn getTripleDesDukpt() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try _f.getTripleDesDukpt();
     }
     pub fn getExtendedBase() core.HResult!u32 {
-        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        const _f = try @This()._IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try _f.getExtendedBase();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReaderEncryptionAlgorithms";
@@ -9534,19 +9534,19 @@ pub const PosPrinter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const _f = @This().IPosPrinterStatics2Cache.get();
+        const _f = try @This()._IPosPrinterStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(PosPrinter) {
-        const _f = @This().IPosPrinterStaticsCache.get();
+        const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
-        const _f = @This().IPosPrinterStaticsCache.get();
+        const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IPosPrinterStaticsCache.get();
+        const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.PosPrinter";
@@ -9628,15 +9628,15 @@ pub const PosPrinterCharacterSetIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getUtf16LE() core.HResult!u32 {
-        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        const _f = try @This()._IPosPrinterCharacterSetIdsStaticsCache.get();
         return try _f.getUtf16LE();
     }
     pub fn getAscii() core.HResult!u32 {
-        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        const _f = try @This()._IPosPrinterCharacterSetIdsStaticsCache.get();
         return try _f.getAscii();
     }
     pub fn getAnsi() core.HResult!u32 {
-        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        const _f = try @This()._IPosPrinterCharacterSetIdsStaticsCache.get();
         return try _f.getAnsi();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.PosPrinterCharacterSetIds";
@@ -10564,7 +10564,7 @@ pub const UnifiedPosErrorData = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(message: HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
-        const _f = @This().IUnifiedPosErrorDataFactoryCache.get();
+        const _f = try @This()._IUnifiedPosErrorDataFactoryCache.get();
         return try _f.CreateInstance(message, severity, reason, extendedReason);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.UnifiedPosErrorData";

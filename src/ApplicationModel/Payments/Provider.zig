@@ -241,7 +241,7 @@ pub const PaymentAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*PaymentAppManager {
-        const _f = @This().IPaymentAppManagerStaticsCache.get();
+        const _f = try @This()._IPaymentAppManagerStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.PaymentAppManager";
@@ -301,7 +301,7 @@ pub const PaymentTransaction = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
-        const _f = @This().IPaymentTransactionStaticsCache.get();
+        const _f = try @This()._IPaymentTransactionStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.PaymentTransaction";

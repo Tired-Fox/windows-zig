@@ -607,19 +607,19 @@ pub const WiFiAdapter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllAdaptersAsync() core.HResult!*IAsyncOperation(IVectorView(WiFiAdapter)) {
-        const _f = @This().IWiFiAdapterStaticsCache.get();
+        const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.FindAllAdaptersAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IWiFiAdapterStaticsCache.get();
+        const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
-        const _f = @This().IWiFiAdapterStaticsCache.get();
+        const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(WiFiAccessStatus) {
-        const _f = @This().IWiFiAdapterStaticsCache.get();
+        const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.WiFiAdapter";
@@ -815,7 +815,7 @@ pub const WiFiOnDemandHotspotNetwork = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetOrCreateById(networkId: *Guid) core.HResult!*WiFiOnDemandHotspotNetwork {
-        const _f = @This().IWiFiOnDemandHotspotNetworkStaticsCache.get();
+        const _f = try @This()._IWiFiOnDemandHotspotNetworkStaticsCache.get();
         return try _f.GetOrCreateById(networkId);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFi.WiFiOnDemandHotspotNetwork";

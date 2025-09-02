@@ -1090,7 +1090,7 @@ pub const SceneMesh = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMesh {
-        const _f = @This().ISceneMeshStaticsCache.get();
+        const _f = try @This()._ISceneMeshStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMesh";
@@ -1170,7 +1170,7 @@ pub const SceneMeshRendererComponent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMeshRendererComponent {
-        const _f = @This().ISceneMeshRendererComponentStaticsCache.get();
+        const _f = try @This()._ISceneMeshRendererComponentStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMeshRendererComponent";
@@ -1310,7 +1310,7 @@ pub const SceneMetallicRoughnessMaterial = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMetallicRoughnessMaterial {
-        const _f = @This().ISceneMetallicRoughnessMaterialStaticsCache.get();
+        const _f = try @This()._ISceneMetallicRoughnessMaterialStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMetallicRoughnessMaterial";
@@ -1402,7 +1402,7 @@ pub const SceneNode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneNode {
-        const _f = @This().ISceneNodeStaticsCache.get();
+        const _f = try @This()._ISceneNodeStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneNode";
@@ -1484,7 +1484,7 @@ pub const SceneSurfaceMaterialInput = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneSurfaceMaterialInput {
-        const _f = @This().ISceneSurfaceMaterialInputStaticsCache.get();
+        const _f = try @This()._ISceneSurfaceMaterialInputStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneSurfaceMaterialInput";
@@ -1508,7 +1508,7 @@ pub const SceneVisual = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneVisual {
-        const _f = @This().ISceneVisualStaticsCache.get();
+        const _f = try @This()._ISceneVisualStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneVisual";

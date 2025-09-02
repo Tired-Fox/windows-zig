@@ -1129,11 +1129,11 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(file: *StorageFile) core.HResult!*SpeechRecognitionGrammarFileConstraint {
-        const _f = @This().ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
         return try _f.Create(file);
     }
     pub fn CreateWithTag(file: *StorageFile, tag: HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
-        const _f = @This().ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
         return try _f.CreateWithTag(file, tag);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognitionGrammarFileConstraint";
@@ -1219,11 +1219,11 @@ pub const SpeechRecognitionListConstraint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(commands: *IIterable(HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
-        const _f = @This().ISpeechRecognitionListConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionListConstraintFactoryCache.get();
         return try _f.Create(commands);
     }
     pub fn CreateWithTag(commands: *IIterable(HSTRING), tag: HSTRING) core.HResult!*SpeechRecognitionListConstraint {
-        const _f = @This().ISpeechRecognitionListConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionListConstraintFactoryCache.get();
         return try _f.CreateWithTag(commands, tag);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognitionListConstraint";
@@ -1383,11 +1383,11 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(scenario: SpeechRecognitionScenario, topicHint: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
-        const _f = @This().ISpeechRecognitionTopicConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionTopicConstraintFactoryCache.get();
         return try _f.Create(scenario, topicHint);
     }
     pub fn CreateWithTag(scenario: SpeechRecognitionScenario, topicHint: HSTRING, tag: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
-        const _f = @This().ISpeechRecognitionTopicConstraintFactoryCache.get();
+        const _f = try @This()._ISpeechRecognitionTopicConstraintFactoryCache.get();
         return try _f.CreateWithTag(scenario, topicHint, tag);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognitionTopicConstraint";
@@ -1537,23 +1537,23 @@ pub const SpeechRecognizer = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpeechRecognizer.IID)));
     }
     pub fn Create(language: *Language) core.HResult!*SpeechRecognizer {
-        const _f = @This().ISpeechRecognizerFactoryCache.get();
+        const _f = try @This()._ISpeechRecognizerFactoryCache.get();
         return try _f.Create(language);
     }
     pub fn getSystemSpeechLanguage() core.HResult!*Language {
-        const _f = @This().ISpeechRecognizerStaticsCache.get();
+        const _f = try @This()._ISpeechRecognizerStaticsCache.get();
         return try _f.getSystemSpeechLanguage();
     }
     pub fn getSupportedTopicLanguages() core.HResult!*IVectorView(Language) {
-        const _f = @This().ISpeechRecognizerStaticsCache.get();
+        const _f = try @This()._ISpeechRecognizerStaticsCache.get();
         return try _f.getSupportedTopicLanguages();
     }
     pub fn getSupportedGrammarLanguages() core.HResult!*IVectorView(Language) {
-        const _f = @This().ISpeechRecognizerStaticsCache.get();
+        const _f = try @This()._ISpeechRecognizerStaticsCache.get();
         return try _f.getSupportedGrammarLanguages();
     }
     pub fn TrySetSystemSpeechLanguageAsync(speechLanguage: *Language) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ISpeechRecognizerStatics2Cache.get();
+        const _f = try @This()._ISpeechRecognizerStatics2Cache.get();
         return try _f.TrySetSystemSpeechLanguageAsync(speechLanguage);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechRecognition.SpeechRecognizer";

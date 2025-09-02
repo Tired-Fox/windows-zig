@@ -90,47 +90,47 @@ pub const FontWeights = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBlack() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getBlack();
     }
     pub fn getBold() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getBold();
     }
     pub fn getExtraBlack() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getExtraBlack();
     }
     pub fn getExtraBold() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getExtraBold();
     }
     pub fn getExtraLight() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getExtraLight();
     }
     pub fn getLight() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getLight();
     }
     pub fn getMedium() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getMedium();
     }
     pub fn getNormal() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getNormal();
     }
     pub fn getSemiBold() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getSemiBold();
     }
     pub fn getSemiLight() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getSemiLight();
     }
     pub fn getThin() core.HResult!FontWeight {
-        const _f = @This().IFontWeightsStaticsCache.get();
+        const _f = try @This()._IFontWeightsStaticsCache.get();
         return try _f.getThin();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.FontWeights";
@@ -2273,35 +2273,35 @@ pub const TextConstants = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAutoColor() core.HResult!Color {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getAutoColor();
     }
     pub fn getMinUnitCount() core.HResult!i32 {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getMinUnitCount();
     }
     pub fn getMaxUnitCount() core.HResult!i32 {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getMaxUnitCount();
     }
     pub fn getUndefinedColor() core.HResult!Color {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getUndefinedColor();
     }
     pub fn getUndefinedFloatValue() core.HResult!f32 {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getUndefinedFloatValue();
     }
     pub fn getUndefinedInt32Value() core.HResult!i32 {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getUndefinedInt32Value();
     }
     pub fn getUndefinedFontStretch() core.HResult!FontStretch {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getUndefinedFontStretch();
     }
     pub fn getUndefinedFontStyle() core.HResult!FontStyle {
-        const _f = @This().ITextConstantsStaticsCache.get();
+        const _f = try @This()._ITextConstantsStaticsCache.get();
         return try _f.getUndefinedFontStyle();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.TextConstants";

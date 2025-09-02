@@ -191,23 +191,23 @@ pub const OcrEngine = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxImageDimension() core.HResult!u32 {
-        const _f = @This().IOcrEngineStaticsCache.get();
+        const _f = try @This()._IOcrEngineStaticsCache.get();
         return try _f.getMaxImageDimension();
     }
     pub fn getAvailableRecognizerLanguages() core.HResult!*IVectorView(Language) {
-        const _f = @This().IOcrEngineStaticsCache.get();
+        const _f = try @This()._IOcrEngineStaticsCache.get();
         return try _f.getAvailableRecognizerLanguages();
     }
     pub fn IsLanguageSupported(language: *Language) core.HResult!bool {
-        const _f = @This().IOcrEngineStaticsCache.get();
+        const _f = try @This()._IOcrEngineStaticsCache.get();
         return try _f.IsLanguageSupported(language);
     }
     pub fn TryCreateFromLanguage(language: *Language) core.HResult!*OcrEngine {
-        const _f = @This().IOcrEngineStaticsCache.get();
+        const _f = try @This()._IOcrEngineStaticsCache.get();
         return try _f.TryCreateFromLanguage(language);
     }
     pub fn TryCreateFromUserProfileLanguages() core.HResult!*OcrEngine {
-        const _f = @This().IOcrEngineStaticsCache.get();
+        const _f = try @This()._IOcrEngineStaticsCache.get();
         return try _f.TryCreateFromUserProfileLanguages();
     }
     pub const NAME: []const u8 = "Windows.Media.Ocr.OcrEngine";

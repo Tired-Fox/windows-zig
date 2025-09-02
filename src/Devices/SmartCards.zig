@@ -1477,11 +1477,11 @@ pub const KnownSmartCardAppletIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPaymentSystemEnvironment() core.HResult!*IBuffer {
-        const _f = @This().IKnownSmartCardAppletIdsCache.get();
+        const _f = try @This()._IKnownSmartCardAppletIdsCache.get();
         return try _f.getPaymentSystemEnvironment();
     }
     pub fn getProximityPaymentSystemEnvironment() core.HResult!*IBuffer {
-        const _f = @This().IKnownSmartCardAppletIdsCache.get();
+        const _f = try @This()._IKnownSmartCardAppletIdsCache.get();
         return try _f.getProximityPaymentSystemEnvironment();
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.KnownSmartCardAppletIds";
@@ -1580,11 +1580,11 @@ pub const SmartCardAppletIdGroup = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardAppletIdGroup.IID)));
     }
     pub fn Create(displayName: HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
-        const _f = @This().ISmartCardAppletIdGroupFactoryCache.get();
+        const _f = try @This()._ISmartCardAppletIdGroupFactoryCache.get();
         return try _f.Create(displayName, appletIds, emulationCategory, emulationType);
     }
     pub fn getMaxAppletIds() core.HResult!u16 {
-        const _f = @This().ISmartCardAppletIdGroupStaticsCache.get();
+        const _f = try @This()._ISmartCardAppletIdGroupStaticsCache.get();
         return try _f.getMaxAppletIds();
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardAppletIdGroup";
@@ -1723,7 +1723,7 @@ pub const SmartCardAutomaticResponseApdu = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(commandApdu: *IBuffer, responseApdu: *IBuffer) core.HResult!*SmartCardAutomaticResponseApdu {
-        const _f = @This().ISmartCardAutomaticResponseApduFactoryCache.get();
+        const _f = try @This()._ISmartCardAutomaticResponseApduFactoryCache.get();
         return try _f.Create(commandApdu, responseApdu);
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardAutomaticResponseApdu";
@@ -1833,11 +1833,11 @@ pub const SmartCardCryptogramGenerator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().ISmartCardCryptogramGeneratorStatics2Cache.get();
+        const _f = try @This()._ISmartCardCryptogramGeneratorStatics2Cache.get();
         return try _f.IsSupported();
     }
     pub fn GetSmartCardCryptogramGeneratorAsync() core.HResult!*IAsyncOperation(SmartCardCryptogramGenerator) {
-        const _f = @This().ISmartCardCryptogramGeneratorStaticsCache.get();
+        const _f = try @This()._ISmartCardCryptogramGeneratorStaticsCache.get();
         return try _f.GetSmartCardCryptogramGeneratorAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardCryptogramGenerator";
@@ -2292,27 +2292,27 @@ pub const SmartCardEmulator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().ISmartCardEmulatorStatics3Cache.get();
+        const _f = try @This()._ISmartCardEmulatorStatics3Cache.get();
         return try _f.IsSupported();
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SmartCardEmulator) {
-        const _f = @This().ISmartCardEmulatorStaticsCache.get();
+        const _f = try @This()._ISmartCardEmulatorStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn GetAppletIdGroupRegistrationsAsync() core.HResult!*IAsyncOperation(IVectorView(SmartCardAppletIdGroupRegistration)) {
-        const _f = @This().ISmartCardEmulatorStatics2Cache.get();
+        const _f = try @This()._ISmartCardEmulatorStatics2Cache.get();
         return try _f.GetAppletIdGroupRegistrationsAsync();
     }
     pub fn RegisterAppletIdGroupAsync(appletIdGroup: *SmartCardAppletIdGroup) core.HResult!*IAsyncOperation(SmartCardAppletIdGroupRegistration) {
-        const _f = @This().ISmartCardEmulatorStatics2Cache.get();
+        const _f = try @This()._ISmartCardEmulatorStatics2Cache.get();
         return try _f.RegisterAppletIdGroupAsync(appletIdGroup);
     }
     pub fn UnregisterAppletIdGroupAsync(registration: *SmartCardAppletIdGroupRegistration) core.HResult!*IAsyncAction {
-        const _f = @This().ISmartCardEmulatorStatics2Cache.get();
+        const _f = try @This()._ISmartCardEmulatorStatics2Cache.get();
         return try _f.UnregisterAppletIdGroupAsync(registration);
     }
     pub fn getMaxAppletIdGroupRegistrations() core.HResult!u16 {
-        const _f = @This().ISmartCardEmulatorStatics2Cache.get();
+        const _f = try @This()._ISmartCardEmulatorStatics2Cache.get();
         return try _f.getMaxAppletIdGroupRegistrations();
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardEmulator";
@@ -3504,27 +3504,27 @@ pub const SmartCardProvisioning = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = @This().ISmartCardProvisioningStatics2Cache.get();
+        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
         return try _f.RequestAttestedVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
     pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = @This().ISmartCardProvisioningStatics2Cache.get();
+        const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
         return try _f.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
     pub fn FromSmartCardAsync(card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = @This().ISmartCardProvisioningStaticsCache.get();
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.FromSmartCardAsync(card);
     }
     pub fn RequestVirtualSmartCardCreationAsync(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = @This().ISmartCardProvisioningStaticsCache.get();
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.RequestVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
     pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
-        const _f = @This().ISmartCardProvisioningStaticsCache.get();
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
     pub fn RequestVirtualSmartCardDeletionAsync(card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ISmartCardProvisioningStaticsCache.get();
+        const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.RequestVirtualSmartCardDeletionAsync(card);
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardProvisioning";
@@ -3577,15 +3577,15 @@ pub const SmartCardReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ISmartCardReaderStaticsCache.get();
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!HSTRING {
-        const _f = @This().ISmartCardReaderStaticsCache.get();
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.GetDeviceSelectorWithKind(kind);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
-        const _f = @This().ISmartCardReaderStaticsCache.get();
+        const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.SmartCards.SmartCardReader";

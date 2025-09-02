@@ -480,19 +480,19 @@ pub const SerialDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ISerialDeviceStaticsCache.get();
+        const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithPortName(portName: HSTRING) core.HResult!HSTRING {
-        const _f = @This().ISerialDeviceStaticsCache.get();
+        const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithPortName(portName);
     }
     pub fn GetDeviceSelectorFromUsbVidPid(vendorId: u16, productId: u16) core.HResult!HSTRING {
-        const _f = @This().ISerialDeviceStaticsCache.get();
+        const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorFromUsbVidPid(vendorId, productId);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SerialDevice) {
-        const _f = @This().ISerialDeviceStaticsCache.get();
+        const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.SerialCommunication.SerialDevice";

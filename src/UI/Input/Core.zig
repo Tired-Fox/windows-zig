@@ -95,7 +95,7 @@ pub const RadialControllerIndependentInputSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForView(view: *CoreApplicationView) core.HResult!*RadialControllerIndependentInputSource {
-        const _f = @This().IRadialControllerIndependentInputSourceStaticsCache.get();
+        const _f = try @This()._IRadialControllerIndependentInputSourceStaticsCache.get();
         return try _f.CreateForView(view);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Core.RadialControllerIndependentInputSource";

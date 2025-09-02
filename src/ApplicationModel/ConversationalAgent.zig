@@ -367,7 +367,7 @@ pub const ConversationalAgentDetectorManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDefault() core.HResult!*ConversationalAgentDetectorManager {
-        const _f = @This().IConversationalAgentDetectorManagerStaticsCache.get();
+        const _f = try @This()._IConversationalAgentDetectorManagerStaticsCache.get();
         return try _f.getDefault();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ConversationalAgentDetectorManager";
@@ -561,11 +561,11 @@ pub const ConversationalAgentSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSessionAsync() core.HResult!*IAsyncOperation(ConversationalAgentSession) {
-        const _f = @This().IConversationalAgentSessionStaticsCache.get();
+        const _f = try @This()._IConversationalAgentSessionStaticsCache.get();
         return try _f.GetCurrentSessionAsync();
     }
     pub fn GetCurrentSessionSync() core.HResult!*ConversationalAgentSession {
-        const _f = @This().IConversationalAgentSessionStaticsCache.get();
+        const _f = try @This()._IConversationalAgentSessionStaticsCache.get();
         return try _f.GetCurrentSessionSync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ConversationalAgentSession";

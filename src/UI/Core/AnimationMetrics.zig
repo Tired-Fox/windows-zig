@@ -25,7 +25,7 @@ pub const AnimationDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effect: AnimationEffect, target: AnimationEffectTarget) core.HResult!*AnimationDescription {
-        const _f = @This().IAnimationDescriptionFactoryCache.get();
+        const _f = try @This()._IAnimationDescriptionFactoryCache.get();
         return try _f.CreateInstance(effect, target);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.AnimationDescription";

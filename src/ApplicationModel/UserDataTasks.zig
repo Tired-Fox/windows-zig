@@ -1142,11 +1142,11 @@ pub const UserDataTaskManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*UserDataTaskManager {
-        const _f = @This().IUserDataTaskManagerStaticsCache.get();
+        const _f = try @This()._IUserDataTaskManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*UserDataTaskManager {
-        const _f = @This().IUserDataTaskManagerStaticsCache.get();
+        const _f = try @This()._IUserDataTaskManagerStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataTasks.UserDataTaskManager";

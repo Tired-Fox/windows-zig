@@ -727,59 +727,59 @@ pub const AppointmentManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowAddAppointmentAsync(appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowAddAppointmentAsync(appointment, selection);
     }
     pub fn ShowAddAppointmentAsyncWithPreferredPlacement(appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowAddAppointmentAsyncWithPreferredPlacement(appointment, selection, preferredPlacement);
     }
     pub fn ShowReplaceAppointmentAsync(appointmentId: HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowReplaceAppointmentAsync(appointmentId, appointment, selection);
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacement(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowReplaceAppointmentAsyncWithPreferredPlacement(appointmentId, appointment, selection, preferredPlacement);
     }
     pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowReplaceAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(appointmentId, appointment, selection, preferredPlacement, instanceStartDate);
     }
     pub fn ShowRemoveAppointmentAsync(appointmentId: HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowRemoveAppointmentAsync(appointmentId, selection);
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacement(appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowRemoveAppointmentAsyncWithPreferredPlacement(appointmentId, selection, preferredPlacement);
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowRemoveAppointmentAsyncWithPreferredPlacementAndInstanceStartDate(appointmentId, selection, preferredPlacement, instanceStartDate);
     }
     pub fn ShowTimeFrameAsync(timeToShow: DateTime, duration: TimeSpan) core.HResult!*IAsyncAction {
-        const _f = @This().IAppointmentManagerStaticsCache.get();
+        const _f = try @This()._IAppointmentManagerStaticsCache.get();
         return try _f.ShowTimeFrameAsync(timeToShow, duration);
     }
     pub fn GetForUser(user: *User) core.HResult!*AppointmentManagerForUser {
-        const _f = @This().IAppointmentManagerStatics3Cache.get();
+        const _f = try @This()._IAppointmentManagerStatics3Cache.get();
         return try _f.GetForUser(user);
     }
     pub fn ShowAppointmentDetailsAsync(appointmentId: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().IAppointmentManagerStatics2Cache.get();
+        const _f = try @This()._IAppointmentManagerStatics2Cache.get();
         return try _f.ShowAppointmentDetailsAsync(appointmentId);
     }
     pub fn ShowAppointmentDetailsAsyncWithInstanceStartDate(appointmentId: HSTRING, instanceStartDate: DateTime) core.HResult!*IAsyncAction {
-        const _f = @This().IAppointmentManagerStatics2Cache.get();
+        const _f = try @This()._IAppointmentManagerStatics2Cache.get();
         return try _f.ShowAppointmentDetailsAsyncWithInstanceStartDate(appointmentId, instanceStartDate);
     }
     pub fn ShowEditNewAppointmentAsync(appointment: *Appointment) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IAppointmentManagerStatics2Cache.get();
+        const _f = try @This()._IAppointmentManagerStatics2Cache.get();
         return try _f.ShowEditNewAppointmentAsync(appointment);
     }
     pub fn RequestStoreAsync(options: AppointmentStoreAccessType) core.HResult!*IAsyncOperation(AppointmentStore) {
-        const _f = @This().IAppointmentManagerStatics2Cache.get();
+        const _f = try @This()._IAppointmentManagerStatics2Cache.get();
         return try _f.RequestStoreAsync(options);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentManager";
@@ -902,107 +902,107 @@ pub const AppointmentProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getChangeNumber() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStatics2Cache.get();
+        const _f = try @This()._IAppointmentPropertiesStatics2Cache.get();
         return try _f.getChangeNumber();
     }
     pub fn getRemoteChangeNumber() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStatics2Cache.get();
+        const _f = try @This()._IAppointmentPropertiesStatics2Cache.get();
         return try _f.getRemoteChangeNumber();
     }
     pub fn getDetailsKind() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStatics2Cache.get();
+        const _f = try @This()._IAppointmentPropertiesStatics2Cache.get();
         return try _f.getDetailsKind();
     }
     pub fn getSubject() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getSubject();
     }
     pub fn getLocation() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getLocation();
     }
     pub fn getStartTime() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getStartTime();
     }
     pub fn getDuration() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getDuration();
     }
     pub fn getReminder() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getReminder();
     }
     pub fn getBusyStatus() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getBusyStatus();
     }
     pub fn getSensitivity() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getSensitivity();
     }
     pub fn getOriginalStartTime() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getOriginalStartTime();
     }
     pub fn getIsResponseRequested() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getIsResponseRequested();
     }
     pub fn getAllowNewTimeProposal() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getAllowNewTimeProposal();
     }
     pub fn getAllDay() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getAllDay();
     }
     pub fn getDetails() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getDetails();
     }
     pub fn getOnlineMeetingLink() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getOnlineMeetingLink();
     }
     pub fn getReplyTime() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getReplyTime();
     }
     pub fn getOrganizer() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getOrganizer();
     }
     pub fn getUserResponse() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getUserResponse();
     }
     pub fn getHasInvitees() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getHasInvitees();
     }
     pub fn getIsCanceledMeeting() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getIsCanceledMeeting();
     }
     pub fn getIsOrganizedByUser() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getIsOrganizedByUser();
     }
     pub fn getRecurrence() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getRecurrence();
     }
     pub fn getUri() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getUri();
     }
     pub fn getInvitees() core.HResult!HSTRING {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getInvitees();
     }
     pub fn getDefaultProperties() core.HResult!*IVector(HSTRING) {
-        const _f = @This().IAppointmentPropertiesStaticsCache.get();
+        const _f = try @This()._IAppointmentPropertiesStaticsCache.get();
         return try _f.getDefaultProperties();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentProperties";

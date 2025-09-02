@@ -33,19 +33,19 @@ pub const ChatCapabilitiesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCachedCapabilitiesAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const _f = @This().IChatCapabilitiesManagerStaticsCache.get();
+        const _f = try @This()._IChatCapabilitiesManagerStaticsCache.get();
         return try _f.GetCachedCapabilitiesAsync(address);
     }
     pub fn GetCapabilitiesFromNetworkAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const _f = @This().IChatCapabilitiesManagerStaticsCache.get();
+        const _f = try @This()._IChatCapabilitiesManagerStaticsCache.get();
         return try _f.GetCapabilitiesFromNetworkAsync(address);
     }
     pub fn GetCachedCapabilitiesAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const _f = @This().IChatCapabilitiesManagerStatics2Cache.get();
+        const _f = try @This()._IChatCapabilitiesManagerStatics2Cache.get();
         return try _f.GetCachedCapabilitiesAsync(address, transportId);
     }
     pub fn GetCapabilitiesFromNetworkAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const _f = @This().IChatCapabilitiesManagerStatics2Cache.get();
+        const _f = try @This()._IChatCapabilitiesManagerStatics2Cache.get();
         return try _f.GetCapabilitiesFromNetworkAsync(address, transportId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatCapabilitiesManager";
@@ -579,7 +579,7 @@ pub const ChatMessageAttachment = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateChatMessageAttachment(mimeType: HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
-        const _f = @This().IChatMessageAttachmentFactoryCache.get();
+        const _f = try @This()._IChatMessageAttachmentFactoryCache.get();
         return try _f.CreateChatMessageAttachment(mimeType, dataStreamReference);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageAttachment";
@@ -595,7 +595,7 @@ pub const ChatMessageBlocking = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MarkMessageAsBlockedAsync(localChatMessageId: HSTRING, blocked: bool) core.HResult!*IAsyncAction {
-        const _f = @This().IChatMessageBlockingStaticCache.get();
+        const _f = try @This()._IChatMessageBlockingStaticCache.get();
         return try _f.MarkMessageAsBlockedAsync(localChatMessageId, blocked);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageBlocking";
@@ -703,31 +703,31 @@ pub const ChatMessageManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetTransportsAsync() core.HResult!*IAsyncOperation(IVectorView(ChatMessageTransport)) {
-        const _f = @This().IChatMessageManagerStaticCache.get();
+        const _f = try @This()._IChatMessageManagerStaticCache.get();
         return try _f.GetTransportsAsync();
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(ChatMessageStore) {
-        const _f = @This().IChatMessageManagerStaticCache.get();
+        const _f = try @This()._IChatMessageManagerStaticCache.get();
         return try _f.RequestStoreAsync();
     }
     pub fn ShowComposeSmsMessageAsync(message: *ChatMessage) core.HResult!*IAsyncAction {
-        const _f = @This().IChatMessageManagerStaticCache.get();
+        const _f = try @This()._IChatMessageManagerStaticCache.get();
         return try _f.ShowComposeSmsMessageAsync(message);
     }
     pub fn ShowSmsSettings() core.HResult!void {
-        const _f = @This().IChatMessageManagerStaticCache.get();
+        const _f = try @This()._IChatMessageManagerStaticCache.get();
         return try _f.ShowSmsSettings();
     }
     pub fn RegisterTransportAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IChatMessageManager2StaticsCache.get();
+        const _f = try @This()._IChatMessageManager2StaticsCache.get();
         return try _f.RegisterTransportAsync();
     }
     pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
-        const _f = @This().IChatMessageManager2StaticsCache.get();
+        const _f = try @This()._IChatMessageManager2StaticsCache.get();
         return try _f.GetTransportAsync(transportId);
     }
     pub fn RequestSyncManagerAsync() core.HResult!*IAsyncOperation(ChatSyncManager) {
-        const _f = @This().IChatMessageManagerStatics3Cache.get();
+        const _f = try @This()._IChatMessageManagerStatics3Cache.get();
         return try _f.RequestSyncManagerAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageManager";
@@ -3802,27 +3802,27 @@ pub const RcsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn addTransportListChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IRcsManagerStatics2Cache.get();
+        const _f = try @This()._IRcsManagerStatics2Cache.get();
         return try _f.addTransportListChanged(handler);
     }
     pub fn removeTransportListChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IRcsManagerStatics2Cache.get();
+        const _f = try @This()._IRcsManagerStatics2Cache.get();
         return try _f.removeTransportListChanged(token);
     }
     pub fn GetEndUserMessageManager() core.HResult!*RcsEndUserMessageManager {
-        const _f = @This().IRcsManagerStaticsCache.get();
+        const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.GetEndUserMessageManager();
     }
     pub fn GetTransportsAsync() core.HResult!*IAsyncOperation(IVectorView(RcsTransport)) {
-        const _f = @This().IRcsManagerStaticsCache.get();
+        const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.GetTransportsAsync();
     }
     pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
-        const _f = @This().IRcsManagerStaticsCache.get();
+        const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.GetTransportAsync(transportId);
     }
     pub fn LeaveConversationAsync(conversation: *ChatConversation) core.HResult!*IAsyncAction {
-        const _f = @This().IRcsManagerStaticsCache.get();
+        const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.LeaveConversationAsync(conversation);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.RcsManager";

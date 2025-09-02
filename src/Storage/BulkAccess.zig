@@ -311,19 +311,19 @@ pub const FileInformationFactory = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithMode(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode) core.HResult!*FileInformationFactory {
-        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        const _f = try @This()._IFileInformationFactoryFactoryCache.get();
         return try _f.CreateWithMode(queryResult, mode);
     }
     pub fn CreateWithModeAndSize(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32) core.HResult!*FileInformationFactory {
-        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        const _f = try @This()._IFileInformationFactoryFactoryCache.get();
         return try _f.CreateWithModeAndSize(queryResult, mode, requestedThumbnailSize);
     }
     pub fn CreateWithModeAndSizeAndOptions(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32, thumbnailOptions: ThumbnailOptions) core.HResult!*FileInformationFactory {
-        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        const _f = try @This()._IFileInformationFactoryFactoryCache.get();
         return try _f.CreateWithModeAndSizeAndOptions(queryResult, mode, requestedThumbnailSize, thumbnailOptions);
     }
     pub fn CreateWithModeAndSizeAndOptionsAndFlags(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32, thumbnailOptions: ThumbnailOptions, delayLoad: bool) core.HResult!*FileInformationFactory {
-        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        const _f = try @This()._IFileInformationFactoryFactoryCache.get();
         return try _f.CreateWithModeAndSizeAndOptionsAndFlags(queryResult, mode, requestedThumbnailSize, thumbnailOptions, delayLoad);
     }
     pub const NAME: []const u8 = "Windows.Storage.BulkAccess.FileInformationFactory";

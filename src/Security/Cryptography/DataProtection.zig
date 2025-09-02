@@ -25,7 +25,7 @@ pub const DataProtectionProvider = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDataProtectionProvider.IID)));
     }
     pub fn CreateOverloadExplicit(protectionDescriptor: HSTRING) core.HResult!*DataProtectionProvider {
-        const _f = @This().IDataProtectionProviderFactoryCache.get();
+        const _f = try @This()._IDataProtectionProviderFactoryCache.get();
         return try _f.CreateOverloadExplicit(protectionDescriptor);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.DataProtection.DataProtectionProvider";

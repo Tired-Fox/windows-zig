@@ -239,11 +239,11 @@ pub const UserDataProtectionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetDefault() core.HResult!*UserDataProtectionManager {
-        const _f = @This().IUserDataProtectionManagerStaticsCache.get();
+        const _f = try @This()._IUserDataProtectionManagerStaticsCache.get();
         return try _f.TryGetDefault();
     }
     pub fn TryGetForUser(user: *User) core.HResult!*UserDataProtectionManager {
-        const _f = @This().IUserDataProtectionManagerStaticsCache.get();
+        const _f = try @This()._IUserDataProtectionManagerStaticsCache.get();
         return try _f.TryGetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Security.DataProtection.UserDataProtectionManager";

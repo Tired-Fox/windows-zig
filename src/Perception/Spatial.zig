@@ -1140,15 +1140,15 @@ pub const SpatialAnchor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateRelativeTo(coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialAnchor {
-        const _f = @This().ISpatialAnchorStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorStaticsCache.get();
         return try _f.TryCreateRelativeTo(coordinateSystem);
     }
     pub fn TryCreateRelativeToWithPosition(coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
-        const _f = @This().ISpatialAnchorStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorStaticsCache.get();
         return try _f.TryCreateRelativeToWithPosition(coordinateSystem, position);
     }
     pub fn TryCreateRelativeToWithPositionAndOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
-        const _f = @This().ISpatialAnchorStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorStaticsCache.get();
         return try _f.TryCreateRelativeToWithPositionAndOrientation(coordinateSystem, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchor";
@@ -1196,11 +1196,11 @@ pub const SpatialAnchorExporter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialAnchorExporter {
-        const _f = @This().ISpatialAnchorExporterStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorExporterStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const _f = @This().ISpatialAnchorExporterStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorExporterStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorExporter";
@@ -1216,7 +1216,7 @@ pub const SpatialAnchorManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(SpatialAnchorStore) {
-        const _f = @This().ISpatialAnchorManagerStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorManagerStaticsCache.get();
         return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorManager";
@@ -1265,15 +1265,15 @@ pub const SpatialAnchorTransferManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryImportAnchorsAsync(stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(HSTRING,SpatialAnchor)) {
-        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorTransferManagerStaticsCache.get();
         return try _f.TryImportAnchorsAsync(stream);
     }
     pub fn TryExportAnchorsAsync(anchors: *IIterable(IKeyValuePair(HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorTransferManagerStaticsCache.get();
         return try _f.TryExportAnchorsAsync(anchors, stream);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        const _f = try @This()._ISpatialAnchorTransferManagerStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorTransferManager";
@@ -1307,19 +1307,19 @@ pub const SpatialBoundingVolume = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromBox(coordinateSystem: *SpatialCoordinateSystem, box: SpatialBoundingBox) core.HResult!*SpatialBoundingVolume {
-        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        const _f = try @This()._ISpatialBoundingVolumeStaticsCache.get();
         return try _f.FromBox(coordinateSystem, box);
     }
     pub fn FromOrientedBox(coordinateSystem: *SpatialCoordinateSystem, box: SpatialBoundingOrientedBox) core.HResult!*SpatialBoundingVolume {
-        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        const _f = try @This()._ISpatialBoundingVolumeStaticsCache.get();
         return try _f.FromOrientedBox(coordinateSystem, box);
     }
     pub fn FromSphere(coordinateSystem: *SpatialCoordinateSystem, sphere: SpatialBoundingSphere) core.HResult!*SpatialBoundingVolume {
-        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        const _f = try @This()._ISpatialBoundingVolumeStaticsCache.get();
         return try _f.FromSphere(coordinateSystem, sphere);
     }
     pub fn FromFrustum(coordinateSystem: *SpatialCoordinateSystem, frustum: SpatialBoundingFrustum) core.HResult!*SpatialBoundingVolume {
-        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        const _f = try @This()._ISpatialBoundingVolumeStaticsCache.get();
         return try _f.FromFrustum(coordinateSystem, frustum);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialBoundingVolume";
@@ -1359,11 +1359,11 @@ pub const SpatialEntity = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithSpatialAnchor(spatialAnchor: *SpatialAnchor) core.HResult!*SpatialEntity {
-        const _f = @This().ISpatialEntityFactoryCache.get();
+        const _f = try @This()._ISpatialEntityFactoryCache.get();
         return try _f.CreateWithSpatialAnchor(spatialAnchor);
     }
     pub fn CreateWithSpatialAnchorAndProperties(spatialAnchor: *SpatialAnchor, propertySet: *ValueSet) core.HResult!*SpatialEntity {
-        const _f = @This().ISpatialEntityFactoryCache.get();
+        const _f = try @This()._ISpatialEntityFactoryCache.get();
         return try _f.CreateWithSpatialAnchorAndProperties(spatialAnchor, propertySet);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialEntity";
@@ -1415,11 +1415,11 @@ pub const SpatialEntityStore = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsSupported() core.HResult!bool {
-        const _f = @This().ISpatialEntityStoreStaticsCache.get();
+        const _f = try @This()._ISpatialEntityStoreStaticsCache.get();
         return try _f.getIsSupported();
     }
     pub fn TryGet(session: *RemoteSystemSession) core.HResult!*SpatialEntityStore {
-        const _f = @This().ISpatialEntityStoreStaticsCache.get();
+        const _f = try @This()._ISpatialEntityStoreStaticsCache.get();
         return try _f.TryGet(session);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialEntityStore";
@@ -1614,7 +1614,7 @@ pub const SpatialLocator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialLocator {
-        const _f = @This().ISpatialLocatorStaticsCache.get();
+        const _f = try @This()._ISpatialLocatorStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialLocator";
@@ -1720,19 +1720,19 @@ pub const SpatialStageFrameOfReference = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*SpatialStageFrameOfReference {
-        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        const _f = try @This()._ISpatialStageFrameOfReferenceStaticsCache.get();
         return try _f.getCurrent();
     }
     pub fn addCurrentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        const _f = try @This()._ISpatialStageFrameOfReferenceStaticsCache.get();
         return try _f.addCurrentChanged(handler);
     }
     pub fn removeCurrentChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        const _f = try @This()._ISpatialStageFrameOfReferenceStaticsCache.get();
         return try _f.removeCurrentChanged(cookie);
     }
     pub fn RequestNewStageAsync() core.HResult!*IAsyncOperation(SpatialStageFrameOfReference) {
-        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        const _f = try @This()._ISpatialStageFrameOfReferenceStaticsCache.get();
         return try _f.RequestNewStageAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialStageFrameOfReference";

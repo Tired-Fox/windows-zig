@@ -601,15 +601,15 @@ pub const KnownPerceptionFrameKind = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getColor() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getColor();
     }
     pub fn getDepth() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getDepth();
     }
     pub fn getInfrared() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getInfrared();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.KnownPerceptionFrameKind";
@@ -626,7 +626,7 @@ pub const PerceptionControlGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ids: *IIterable(HSTRING)) core.HResult!*PerceptionControlGroup {
-        const _f = @This().IPerceptionControlGroupFactoryCache.get();
+        const _f = try @This()._IPerceptionControlGroupFactoryCache.get();
         return try _f.Create(ids);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionControlGroup";
@@ -654,7 +654,7 @@ pub const PerceptionCorrelation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(targetId: HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
-        const _f = @This().IPerceptionCorrelationFactoryCache.get();
+        const _f = try @This()._IPerceptionCorrelationFactoryCache.get();
         return try _f.Create(targetId, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionCorrelation";
@@ -674,7 +674,7 @@ pub const PerceptionCorrelationGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(relativeLocations: *IIterable(PerceptionCorrelation)) core.HResult!*PerceptionCorrelationGroup {
-        const _f = @This().IPerceptionCorrelationGroupFactoryCache.get();
+        const _f = try @This()._IPerceptionCorrelationGroupFactoryCache.get();
         return try _f.Create(relativeLocations);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionCorrelationGroup";
@@ -694,7 +694,7 @@ pub const PerceptionFaceAuthenticationGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ids: *IIterable(HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
-        const _f = @This().IPerceptionFaceAuthenticationGroupFactoryCache.get();
+        const _f = try @This()._IPerceptionFaceAuthenticationGroupFactoryCache.get();
         return try _f.Create(ids, startHandler, stopHandler);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionFaceAuthenticationGroup";
@@ -790,43 +790,43 @@ pub const PerceptionFrameProviderManagerService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterFrameProviderInfo(manager: *IPerceptionFrameProviderManager, frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.RegisterFrameProviderInfo(manager, frameProviderInfo);
     }
     pub fn UnregisterFrameProviderInfo(manager: *IPerceptionFrameProviderManager, frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.UnregisterFrameProviderInfo(manager, frameProviderInfo);
     }
     pub fn RegisterFaceAuthenticationGroup(manager: *IPerceptionFrameProviderManager, faceAuthenticationGroup: *PerceptionFaceAuthenticationGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.RegisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
     }
     pub fn UnregisterFaceAuthenticationGroup(manager: *IPerceptionFrameProviderManager, faceAuthenticationGroup: *PerceptionFaceAuthenticationGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.UnregisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
     }
     pub fn RegisterControlGroup(manager: *IPerceptionFrameProviderManager, controlGroup: *PerceptionControlGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.RegisterControlGroup(manager, controlGroup);
     }
     pub fn UnregisterControlGroup(manager: *IPerceptionFrameProviderManager, controlGroup: *PerceptionControlGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.UnregisterControlGroup(manager, controlGroup);
     }
     pub fn RegisterCorrelationGroup(manager: *IPerceptionFrameProviderManager, correlationGroup: *PerceptionCorrelationGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.RegisterCorrelationGroup(manager, correlationGroup);
     }
     pub fn UnregisterCorrelationGroup(manager: *IPerceptionFrameProviderManager, correlationGroup: *PerceptionCorrelationGroup) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.UnregisterCorrelationGroup(manager, correlationGroup);
     }
     pub fn UpdateAvailabilityForProvider(provider: *IPerceptionFrameProvider, available: bool) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.UpdateAvailabilityForProvider(provider, available);
     }
     pub fn PublishFrameForProvider(provider: *IPerceptionFrameProvider, frame: *PerceptionFrame) core.HResult!void {
-        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        const _f = try @This()._IPerceptionFrameProviderManagerServiceStaticsCache.get();
         return try _f.PublishFrameForProvider(provider, frame);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionFrameProviderManagerService";
@@ -1055,7 +1055,7 @@ pub const PerceptionVideoFrameAllocator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(maxOutstandingFrameCountForWrite: u32, format: BitmapPixelFormat, resolution: Size, alpha: BitmapAlphaMode) core.HResult!*PerceptionVideoFrameAllocator {
-        const _f = @This().IPerceptionVideoFrameAllocatorFactoryCache.get();
+        const _f = try @This()._IPerceptionVideoFrameAllocatorFactoryCache.get();
         return try _f.Create(maxOutstandingFrameCountForWrite, format, resolution, alpha);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionVideoFrameAllocator";

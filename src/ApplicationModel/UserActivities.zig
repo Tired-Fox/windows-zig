@@ -833,19 +833,19 @@ pub const UserActivity = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithActivityId(activityId: HSTRING) core.HResult!*UserActivity {
-        const _f = @This().IUserActivityFactoryCache.get();
+        const _f = try @This()._IUserActivityFactoryCache.get();
         return try _f.CreateWithActivityId(activityId);
     }
     pub fn TryParseFromJson(json: HSTRING) core.HResult!*UserActivity {
-        const _f = @This().IUserActivityStaticsCache.get();
+        const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.TryParseFromJson(json);
     }
     pub fn TryParseFromJsonArray(json: HSTRING) core.HResult!*IVector(UserActivity) {
-        const _f = @This().IUserActivityStaticsCache.get();
+        const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.TryParseFromJsonArray(json);
     }
     pub fn ToJsonArray(activities: *IIterable(UserActivity)) core.HResult!HSTRING {
-        const _f = @This().IUserActivityStaticsCache.get();
+        const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.ToJsonArray(activities);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivity";
@@ -890,7 +890,7 @@ pub const UserActivityAttribution = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUserActivityAttribution.IID)));
     }
     pub fn CreateWithUri(iconUri: *Uri) core.HResult!*UserActivityAttribution {
-        const _f = @This().IUserActivityAttributionFactoryCache.get();
+        const _f = try @This()._IUserActivityAttributionFactoryCache.get();
         return try _f.CreateWithUri(iconUri);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityAttribution";
@@ -931,19 +931,19 @@ pub const UserActivityChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUser(user: *User) core.HResult!*UserActivityChannel {
-        const _f = @This().IUserActivityChannelStatics3Cache.get();
+        const _f = try @This()._IUserActivityChannelStatics3Cache.get();
         return try _f.GetForUser(user);
     }
     pub fn GetDefault() core.HResult!*UserActivityChannel {
-        const _f = @This().IUserActivityChannelStaticsCache.get();
+        const _f = try @This()._IUserActivityChannelStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn DisableAutoSessionCreation() core.HResult!void {
-        const _f = @This().IUserActivityChannelStatics2Cache.get();
+        const _f = try @This()._IUserActivityChannelStatics2Cache.get();
         return try _f.DisableAutoSessionCreation();
     }
     pub fn TryGetForWebAccount(account: *WebAccount) core.HResult!*UserActivityChannel {
-        const _f = @This().IUserActivityChannelStatics2Cache.get();
+        const _f = try @This()._IUserActivityChannelStatics2Cache.get();
         return try _f.TryGetForWebAccount(account);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityChannel";
@@ -965,7 +965,7 @@ pub const UserActivityContentInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromJson(value: HSTRING) core.HResult!*UserActivityContentInfo {
-        const _f = @This().IUserActivityContentInfoStaticsCache.get();
+        const _f = try @This()._IUserActivityContentInfoStaticsCache.get();
         return try _f.FromJson(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityContentInfo";
@@ -1001,7 +1001,7 @@ pub const UserActivityRequestManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*UserActivityRequestManager {
-        const _f = @This().IUserActivityRequestManagerStaticsCache.get();
+        const _f = try @This()._IUserActivityRequestManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityRequestManager";

@@ -2117,7 +2117,7 @@ pub const InkDrawingAttributes = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInkDrawingAttributes.IID)));
     }
     pub fn CreateForPencil() core.HResult!*InkDrawingAttributes {
-        const _f = @This().IInkDrawingAttributesStaticsCache.get();
+        const _f = try @This()._IInkDrawingAttributesStaticsCache.get();
         return try _f.CreateForPencil();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkDrawingAttributes";
@@ -2445,11 +2445,11 @@ pub const InkPoint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInkPoint(position: Point, pressure: f32) core.HResult!*InkPoint {
-        const _f = @This().IInkPointFactoryCache.get();
+        const _f = try @This()._IInkPointFactoryCache.get();
         return try _f.CreateInkPoint(position, pressure);
     }
     pub fn CreateInkPointWithTiltAndTimestamp(position: Point, pressure: f32, tiltX: f32, tiltY: f32, timestamp: u64) core.HResult!*InkPoint {
-        const _f = @This().IInkPointFactory2Cache.get();
+        const _f = try @This()._IInkPointFactory2Cache.get();
         return try _f.CreateInkPointWithTiltAndTimestamp(position, pressure, tiltX, tiltY, timestamp);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPoint";
@@ -2674,7 +2674,7 @@ pub const InkPresenterProtractor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*InkPresenterProtractor {
-        const _f = @This().IInkPresenterProtractorFactoryCache.get();
+        const _f = try @This()._IInkPresenterProtractorFactoryCache.get();
         return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPresenterProtractor";
@@ -2784,7 +2784,7 @@ pub const InkPresenterRuler = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*InkPresenterRuler {
-        const _f = @This().IInkPresenterRulerFactoryCache.get();
+        const _f = try @This()._IInkPresenterRulerFactoryCache.get();
         return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPresenterRuler";
@@ -3326,7 +3326,7 @@ pub const PenAndInkSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenAndInkSettings {
-        const _f = @This().IPenAndInkSettingsStaticsCache.get();
+        const _f = try @This()._IPenAndInkSettingsStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.PenAndInkSettings";

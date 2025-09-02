@@ -471,7 +471,7 @@ pub const CoreTextServicesConstants = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getHiddenCharacter() core.HResult!u16 {
-        const _f = @This().ICoreTextServicesStaticsCache.get();
+        const _f = try @This()._ICoreTextServicesStaticsCache.get();
         return try _f.getHiddenCharacter();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.Core.CoreTextServicesConstants";
@@ -500,7 +500,7 @@ pub const CoreTextServicesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreTextServicesManager {
-        const _f = @This().ICoreTextServicesManagerStaticsCache.get();
+        const _f = try @This()._ICoreTextServicesManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.Core.CoreTextServicesManager";

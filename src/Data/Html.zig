@@ -5,7 +5,7 @@ pub const HtmlUtilities = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ConvertToText(html: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IHtmlUtilitiesCache.get();
+        const _f = try @This()._IHtmlUtilitiesCache.get();
         return try _f.ConvertToText(html);
     }
     pub const NAME: []const u8 = "Windows.Data.Html.HtmlUtilities";

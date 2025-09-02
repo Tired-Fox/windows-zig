@@ -863,11 +863,11 @@ pub const WalletBarcode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletBarcode(symbology: WalletBarcodeSymbology, value: HSTRING) core.HResult!*WalletBarcode {
-        const _f = @This().IWalletBarcodeFactoryCache.get();
+        const _f = try @This()._IWalletBarcodeFactoryCache.get();
         return try _f.CreateWalletBarcode(symbology, value);
     }
     pub fn CreateCustomWalletBarcode(streamToBarcodeImage: *IRandomAccessStreamReference) core.HResult!*WalletBarcode {
-        const _f = @This().IWalletBarcodeFactoryCache.get();
+        const _f = try @This()._IWalletBarcodeFactoryCache.get();
         return try _f.CreateCustomWalletBarcode(streamToBarcodeImage);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletBarcode";
@@ -1122,7 +1122,7 @@ pub const WalletItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletItem(kind: WalletItemKind, displayName: HSTRING) core.HResult!*WalletItem {
-        const _f = @This().IWalletItemFactoryCache.get();
+        const _f = try @This()._IWalletItemFactoryCache.get();
         return try _f.CreateWalletItem(kind, displayName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletItem";
@@ -1178,7 +1178,7 @@ pub const WalletItemCustomProperty = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletItemCustomProperty(name: HSTRING, value: HSTRING) core.HResult!*WalletItemCustomProperty {
-        const _f = @This().IWalletItemCustomPropertyFactoryCache.get();
+        const _f = try @This()._IWalletItemCustomPropertyFactoryCache.get();
         return try _f.CreateWalletItemCustomProperty(name, value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletItemCustomProperty";
@@ -1251,7 +1251,7 @@ pub const WalletManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(WalletItemStore) {
-        const _f = @This().IWalletManagerStaticsCache.get();
+        const _f = try @This()._IWalletManagerStaticsCache.get();
         return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletManager";
@@ -1373,7 +1373,7 @@ pub const WalletVerb = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletVerb(name: HSTRING) core.HResult!*WalletVerb {
-        const _f = @This().IWalletVerbFactoryCache.get();
+        const _f = try @This()._IWalletVerbFactoryCache.get();
         return try _f.CreateWalletVerb(name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletVerb";

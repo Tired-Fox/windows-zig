@@ -1575,15 +1575,15 @@ pub const PhotoImportManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        const _f = try @This()._IPhotoImportManagerStaticsCache.get();
         return try _f.IsSupportedAsync();
     }
     pub fn FindAllSourcesAsync() core.HResult!*IAsyncOperation(IVectorView(PhotoImportSource)) {
-        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        const _f = try @This()._IPhotoImportManagerStaticsCache.get();
         return try _f.FindAllSourcesAsync();
     }
     pub fn GetPendingOperations() core.HResult!*IVectorView(PhotoImportOperation) {
-        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        const _f = try @This()._IPhotoImportManagerStaticsCache.get();
         return try _f.GetPendingOperations();
     }
     pub const NAME: []const u8 = "Windows.Media.Import.PhotoImportManager";
@@ -1818,11 +1818,11 @@ pub const PhotoImportSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(sourceId: HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
-        const _f = @This().IPhotoImportSourceStaticsCache.get();
+        const _f = try @This()._IPhotoImportSourceStaticsCache.get();
         return try _f.FromIdAsync(sourceId);
     }
     pub fn FromFolderAsync(sourceRootFolder: *IStorageFolder) core.HResult!*IAsyncOperation(PhotoImportSource) {
-        const _f = @This().IPhotoImportSourceStaticsCache.get();
+        const _f = try @This()._IPhotoImportSourceStaticsCache.get();
         return try _f.FromFolderAsync(sourceRootFolder);
     }
     pub const NAME: []const u8 = "Windows.Media.Import.PhotoImportSource";

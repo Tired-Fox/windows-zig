@@ -21,7 +21,7 @@ pub const CompositionConditionalValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*CompositionConditionalValue {
-        const _f = @This().ICompositionConditionalValueStaticsCache.get();
+        const _f = try @This()._ICompositionConditionalValueStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.CompositionConditionalValue";
@@ -1827,19 +1827,19 @@ pub const InteractionTracker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBindingMode(boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker, axisMode: InteractionBindingAxisModes) core.HResult!void {
-        const _f = @This().IInteractionTrackerStatics2Cache.get();
+        const _f = try @This()._IInteractionTrackerStatics2Cache.get();
         return try _f.SetBindingMode(boundTracker1, boundTracker2, axisMode);
     }
     pub fn GetBindingMode(boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker) core.HResult!InteractionBindingAxisModes {
-        const _f = @This().IInteractionTrackerStatics2Cache.get();
+        const _f = try @This()._IInteractionTrackerStatics2Cache.get();
         return try _f.GetBindingMode(boundTracker1, boundTracker2);
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTracker {
-        const _f = @This().IInteractionTrackerStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub fn CreateWithOwner(compositor: *Compositor, owner: *IInteractionTrackerOwner) core.HResult!*InteractionTracker {
-        const _f = @This().IInteractionTrackerStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerStaticsCache.get();
         return try _f.CreateWithOwner(compositor, owner);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTracker";
@@ -1924,7 +1924,7 @@ pub const InteractionTrackerInertiaMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaMotion {
-        const _f = @This().IInteractionTrackerInertiaMotionStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerInertiaMotionStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaMotion";
@@ -1956,7 +1956,7 @@ pub const InteractionTrackerInertiaNaturalMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaNaturalMotion {
-        const _f = @This().IInteractionTrackerInertiaNaturalMotionStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerInertiaNaturalMotionStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaNaturalMotion";
@@ -1988,7 +1988,7 @@ pub const InteractionTrackerInertiaRestingValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaRestingValue {
-        const _f = @This().IInteractionTrackerInertiaRestingValueStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerInertiaRestingValueStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaRestingValue";
@@ -2134,7 +2134,7 @@ pub const InteractionTrackerVector2InertiaNaturalMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerVector2InertiaNaturalMotion {
-        const _f = @This().IInteractionTrackerVector2InertiaNaturalMotionStaticsCache.get();
+        const _f = try @This()._IInteractionTrackerVector2InertiaNaturalMotionStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerVector2InertiaNaturalMotion";
@@ -2302,11 +2302,11 @@ pub const VisualInteractionSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(source: *Visual) core.HResult!*VisualInteractionSource {
-        const _f = @This().IVisualInteractionSourceStaticsCache.get();
+        const _f = try @This()._IVisualInteractionSourceStaticsCache.get();
         return try _f.Create(source);
     }
     pub fn CreateFromIVisualElement(source: *IVisualElement) core.HResult!*VisualInteractionSource {
-        const _f = @This().IVisualInteractionSourceStatics2Cache.get();
+        const _f = try @This()._IVisualInteractionSourceStatics2Cache.get();
         return try _f.CreateFromIVisualElement(source);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.VisualInteractionSource";

@@ -183,51 +183,51 @@ pub const BitmapDecoder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBmpDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getBmpDecoderId();
     }
     pub fn getJpegDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getJpegDecoderId();
     }
     pub fn getPngDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getPngDecoderId();
     }
     pub fn getTiffDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getTiffDecoderId();
     }
     pub fn getGifDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getGifDecoderId();
     }
     pub fn getJpegXRDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getJpegXRDecoderId();
     }
     pub fn getIcoDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getIcoDecoderId();
     }
     pub fn GetDecoderInformationEnumerator() core.HResult!*IVectorView(BitmapCodecInformation) {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.GetDecoderInformationEnumerator();
     }
     pub fn CreateAsync(stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.CreateAsync(stream);
     }
     pub fn CreateAsyncWithDecoderIdAndStream(decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
-        const _f = @This().IBitmapDecoderStaticsCache.get();
+        const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.CreateAsyncWithDecoderIdAndStream(decoderId, stream);
     }
     pub fn getHeifDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStatics2Cache.get();
+        const _f = try @This()._IBitmapDecoderStatics2Cache.get();
         return try _f.getHeifDecoderId();
     }
     pub fn getWebpDecoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapDecoderStatics2Cache.get();
+        const _f = try @This()._IBitmapDecoderStatics2Cache.get();
         return try _f.getWebpDecoderId();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapDecoder";
@@ -306,51 +306,51 @@ pub const BitmapEncoder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getHeifEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStatics2Cache.get();
+        const _f = try @This()._IBitmapEncoderStatics2Cache.get();
         return try _f.getHeifEncoderId();
     }
     pub fn getBmpEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getBmpEncoderId();
     }
     pub fn getJpegEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getJpegEncoderId();
     }
     pub fn getPngEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getPngEncoderId();
     }
     pub fn getTiffEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getTiffEncoderId();
     }
     pub fn getGifEncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getGifEncoderId();
     }
     pub fn getJpegXREncoderId() core.HResult!*Guid {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.getJpegXREncoderId();
     }
     pub fn GetEncoderInformationEnumerator() core.HResult!*IVectorView(BitmapCodecInformation) {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.GetEncoderInformationEnumerator();
     }
     pub fn CreateAsync(encoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateAsync(encoderId, stream);
     }
     pub fn CreateAsyncWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateAsyncWithEncodingOptions(encoderId, stream, encodingOptions);
     }
     pub fn CreateForTranscodingAsync(stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateForTranscodingAsync(stream, bitmapDecoder);
     }
     pub fn CreateForInPlacePropertyEncodingAsync(bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const _f = @This().IBitmapEncoderStaticsCache.get();
+        const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateForInPlacePropertyEncodingAsync(bitmapDecoder);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapEncoder";
@@ -615,7 +615,7 @@ pub const BitmapTypedValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
-        const _f = @This().IBitmapTypedValueFactoryCache.get();
+        const _f = try @This()._IBitmapTypedValueFactoryCache.get();
         return try _f.Create(value, ty);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapTypedValue";
@@ -1850,39 +1850,39 @@ pub const SoftwareBitmap = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapFactoryCache.get();
+        const _f = try @This()._ISoftwareBitmapFactoryCache.get();
         return try _f.Create(format, width, height);
     }
     pub fn CreateWithAlpha(format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapFactoryCache.get();
+        const _f = try @This()._ISoftwareBitmapFactoryCache.get();
         return try _f.CreateWithAlpha(format, width, height, alpha);
     }
     pub fn Copy(source: *SoftwareBitmap) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.Copy(source);
     }
     pub fn Convert(source: *SoftwareBitmap, format: BitmapPixelFormat) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.Convert(source, format);
     }
     pub fn ConvertWithAlpha(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.ConvertWithAlpha(source, format, alpha);
     }
     pub fn CreateCopyFromBuffer(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.CreateCopyFromBuffer(source, format, width, height);
     }
     pub fn CreateCopyFromBufferWithAlpha(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.CreateCopyFromBufferWithAlpha(source, format, width, height, alpha);
     }
     pub fn CreateCopyFromSurfaceAsync(surface: *IDirect3DSurface) core.HResult!*IAsyncOperation(SoftwareBitmap) {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.CreateCopyFromSurfaceAsync(surface);
     }
     pub fn CreateCopyFromSurfaceAsyncWithAlpha(surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
-        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        const _f = try @This()._ISoftwareBitmapStaticsCache.get();
         return try _f.CreateCopyFromSurfaceAsyncWithAlpha(surface, alpha);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.SoftwareBitmap";

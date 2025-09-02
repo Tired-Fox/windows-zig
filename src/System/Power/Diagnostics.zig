@@ -5,15 +5,15 @@ pub const BackgroundEnergyDiagnostics = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
-        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IBackgroundEnergyDiagnosticsStaticsCache.get();
         return try _f.getDeviceSpecificConversionFactor();
     }
     pub fn ComputeTotalEnergyUsage() core.HResult!u64 {
-        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IBackgroundEnergyDiagnosticsStaticsCache.get();
         return try _f.ComputeTotalEnergyUsage();
     }
     pub fn ResetTotalEnergyUsage() core.HResult!void {
-        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IBackgroundEnergyDiagnosticsStaticsCache.get();
         return try _f.ResetTotalEnergyUsage();
     }
     pub const NAME: []const u8 = "Windows.System.Power.Diagnostics.BackgroundEnergyDiagnostics";
@@ -26,15 +26,15 @@ pub const ForegroundEnergyDiagnostics = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
-        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IForegroundEnergyDiagnosticsStaticsCache.get();
         return try _f.getDeviceSpecificConversionFactor();
     }
     pub fn ComputeTotalEnergyUsage() core.HResult!u64 {
-        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IForegroundEnergyDiagnosticsStaticsCache.get();
         return try _f.ComputeTotalEnergyUsage();
     }
     pub fn ResetTotalEnergyUsage() core.HResult!void {
-        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        const _f = try @This()._IForegroundEnergyDiagnosticsStaticsCache.get();
         return try _f.ResetTotalEnergyUsage();
     }
     pub const NAME: []const u8 = "Windows.System.Power.Diagnostics.ForegroundEnergyDiagnostics";

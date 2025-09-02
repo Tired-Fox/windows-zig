@@ -643,15 +643,15 @@ pub const SharedPackageContainerManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SharedPackageContainerManager {
-        const _f = @This().ISharedPackageContainerManagerStaticsCache.get();
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(userSid: HSTRING) core.HResult!*SharedPackageContainerManager {
-        const _f = @This().ISharedPackageContainerManagerStaticsCache.get();
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
         return try _f.GetForUser(userSid);
     }
     pub fn GetForProvisioning() core.HResult!*SharedPackageContainerManager {
-        const _f = @This().ISharedPackageContainerManagerStaticsCache.get();
+        const _f = try @This()._ISharedPackageContainerManagerStaticsCache.get();
         return try _f.GetForProvisioning();
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerManager";
@@ -671,7 +671,7 @@ pub const SharedPackageContainerMember = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(packageFamilyName: HSTRING) core.HResult!*SharedPackageContainerMember {
-        const _f = @This().ISharedPackageContainerMemberFactoryCache.get();
+        const _f = try @This()._ISharedPackageContainerMemberFactoryCache.get();
         return try _f.CreateInstance(packageFamilyName);
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.SharedPackageContainerMember";
@@ -916,11 +916,11 @@ pub const AppInstallerManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AppInstallerManager {
-        const _f = @This().IAppInstallerManagerStaticsCache.get();
+        const _f = try @This()._IAppInstallerManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForSystem() core.HResult!*AppInstallerManager {
-        const _f = @This().IAppInstallerManagerStaticsCache.get();
+        const _f = try @This()._IAppInstallerManagerStaticsCache.get();
         return try _f.GetForSystem();
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.AppInstallerManager";
@@ -1028,7 +1028,7 @@ pub const AutoUpdateSettingsOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutoUpdateSettingsOptions.IID)));
     }
     pub fn CreateFromAppInstallerInfo(appInstallerInfo: *AppInstallerInfo) core.HResult!*AutoUpdateSettingsOptions {
-        const _f = @This().IAutoUpdateSettingsOptionsStaticsCache.get();
+        const _f = try @This()._IAutoUpdateSettingsOptionsStaticsCache.get();
         return try _f.CreateFromAppInstallerInfo(appInstallerInfo);
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.AutoUpdateSettingsOptions";

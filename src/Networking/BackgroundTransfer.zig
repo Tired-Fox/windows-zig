@@ -160,23 +160,23 @@ pub const BackgroundDownloader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundDownloader.IID)));
     }
     pub fn CreateWithCompletionGroup(completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundDownloader {
-        const _f = @This().IBackgroundDownloaderFactoryCache.get();
+        const _f = try @This()._IBackgroundDownloaderFactoryCache.get();
         return try _f.CreateWithCompletionGroup(completionGroup);
     }
     pub fn RequestUnconstrainedDownloadsAsync(operations: *IIterable(DownloadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
-        const _f = @This().IBackgroundDownloaderUserConsentCache.get();
+        const _f = try @This()._IBackgroundDownloaderUserConsentCache.get();
         return try _f.RequestUnconstrainedDownloadsAsync(operations);
     }
     pub fn GetCurrentDownloadsAsync() core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const _f = @This().IBackgroundDownloaderStaticMethodsCache.get();
+        const _f = try @This()._IBackgroundDownloaderStaticMethodsCache.get();
         return try _f.GetCurrentDownloadsAsync();
     }
     pub fn GetCurrentDownloadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const _f = @This().IBackgroundDownloaderStaticMethodsCache.get();
+        const _f = try @This()._IBackgroundDownloaderStaticMethodsCache.get();
         return try _f.GetCurrentDownloadsAsyncWithGroup(group);
     }
     pub fn GetCurrentDownloadsForTransferGroupAsync(group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const _f = @This().IBackgroundDownloaderStaticMethods2Cache.get();
+        const _f = try @This()._IBackgroundDownloaderStaticMethods2Cache.get();
         return try _f.GetCurrentDownloadsForTransferGroupAsync(group);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundDownloader";
@@ -260,11 +260,11 @@ pub const BackgroundTransferContentPart = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTransferContentPart.IID)));
     }
     pub fn CreateWithName(name: HSTRING) core.HResult!*BackgroundTransferContentPart {
-        const _f = @This().IBackgroundTransferContentPartFactoryCache.get();
+        const _f = try @This()._IBackgroundTransferContentPartFactoryCache.get();
         return try _f.CreateWithName(name);
     }
     pub fn CreateWithNameAndFileName(name: HSTRING, fileName: HSTRING) core.HResult!*BackgroundTransferContentPart {
-        const _f = @This().IBackgroundTransferContentPartFactoryCache.get();
+        const _f = try @This()._IBackgroundTransferContentPartFactoryCache.get();
         return try _f.CreateWithNameAndFileName(name, fileName);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart";
@@ -286,7 +286,7 @@ pub const BackgroundTransferError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const _f = @This().IBackgroundTransferErrorStaticMethodsCache.get();
+        const _f = try @This()._IBackgroundTransferErrorStaticMethodsCache.get();
         return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferError";
@@ -315,7 +315,7 @@ pub const BackgroundTransferGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateGroup(name: HSTRING) core.HResult!*BackgroundTransferGroup {
-        const _f = @This().IBackgroundTransferGroupStaticsCache.get();
+        const _f = try @This()._IBackgroundTransferGroupStaticsCache.get();
         return try _f.CreateGroup(name);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferGroup";
@@ -533,23 +533,23 @@ pub const BackgroundUploader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundUploader.IID)));
     }
     pub fn CreateWithCompletionGroup(completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundUploader {
-        const _f = @This().IBackgroundUploaderFactoryCache.get();
+        const _f = try @This()._IBackgroundUploaderFactoryCache.get();
         return try _f.CreateWithCompletionGroup(completionGroup);
     }
     pub fn RequestUnconstrainedUploadsAsync(operations: *IIterable(UploadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
-        const _f = @This().IBackgroundUploaderUserConsentCache.get();
+        const _f = try @This()._IBackgroundUploaderUserConsentCache.get();
         return try _f.RequestUnconstrainedUploadsAsync(operations);
     }
     pub fn GetCurrentUploadsForTransferGroupAsync(group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const _f = @This().IBackgroundUploaderStaticMethods2Cache.get();
+        const _f = try @This()._IBackgroundUploaderStaticMethods2Cache.get();
         return try _f.GetCurrentUploadsForTransferGroupAsync(group);
     }
     pub fn GetCurrentUploadsAsync() core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const _f = @This().IBackgroundUploaderStaticMethodsCache.get();
+        const _f = try @This()._IBackgroundUploaderStaticMethodsCache.get();
         return try _f.GetCurrentUploadsAsync();
     }
     pub fn GetCurrentUploadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const _f = @This().IBackgroundUploaderStaticMethodsCache.get();
+        const _f = try @This()._IBackgroundUploaderStaticMethodsCache.get();
         return try _f.GetCurrentUploadsAsyncWithGroup(group);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundUploader";
@@ -569,19 +569,19 @@ pub const ContentPrefetcher = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getContentUris() core.HResult!*IVector(Uri) {
-        const _f = @This().IContentPrefetcherCache.get();
+        const _f = try @This()._IContentPrefetcherCache.get();
         return try _f.getContentUris();
     }
     pub fn putIndirectContentUri(value: *Uri) core.HResult!void {
-        const _f = @This().IContentPrefetcherCache.get();
+        const _f = try @This()._IContentPrefetcherCache.get();
         return try _f.putIndirectContentUri(value);
     }
     pub fn getIndirectContentUri() core.HResult!*Uri {
-        const _f = @This().IContentPrefetcherCache.get();
+        const _f = try @This()._IContentPrefetcherCache.get();
         return try _f.getIndirectContentUri();
     }
     pub fn getLastSuccessfulPrefetchTime() core.HResult!*IReference(DateTime) {
-        const _f = @This().IContentPrefetcherTimeCache.get();
+        const _f = try @This()._IContentPrefetcherTimeCache.get();
         return try _f.getLastSuccessfulPrefetchTime();
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.ContentPrefetcher";

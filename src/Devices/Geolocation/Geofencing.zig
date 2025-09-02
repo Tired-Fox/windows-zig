@@ -33,19 +33,19 @@ pub const Geofence = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
-        const _f = @This().IGeofenceFactoryCache.get();
+        const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.Create(id, geoshape);
     }
     pub fn CreateWithMonitorStates(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
-        const _f = @This().IGeofenceFactoryCache.get();
+        const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStates(id, geoshape, monitoredStates, singleUse);
     }
     pub fn CreateWithMonitorStatesAndDwellTime(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
-        const _f = @This().IGeofenceFactoryCache.get();
+        const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStatesAndDwellTime(id, geoshape, monitoredStates, singleUse, dwellTime);
     }
     pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
-        const _f = @This().IGeofenceFactoryCache.get();
+        const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.Geofence";
@@ -93,7 +93,7 @@ pub const GeofenceMonitor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*GeofenceMonitor {
-        const _f = @This().IGeofenceMonitorStaticsCache.get();
+        const _f = try @This()._IGeofenceMonitorStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.GeofenceMonitor";

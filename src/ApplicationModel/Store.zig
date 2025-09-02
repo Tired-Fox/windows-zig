@@ -5,75 +5,75 @@ pub const CurrentApp = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportConsumableFulfillmentAsync(productId: HSTRING, transactionId: *Guid) core.HResult!*IAsyncOperation(FulfillmentResult) {
-        const _f = @This().ICurrentAppWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppWithConsumablesCache.get();
         return try _f.ReportConsumableFulfillmentAsync(productId, transactionId);
     }
     pub fn RequestProductPurchaseAsync(productId: HSTRING) core.HResult!*IAsyncOperation(PurchaseResults) {
-        const _f = @This().ICurrentAppWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppWithConsumablesCache.get();
         return try _f.RequestProductPurchaseAsync(productId);
     }
     pub fn RequestProductPurchaseAsyncWithOfferIdAndDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
-        const _f = @This().ICurrentAppWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppWithConsumablesCache.get();
         return try _f.RequestProductPurchaseAsyncWithOfferIdAndDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
-        const _f = @This().ICurrentAppWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppWithConsumablesCache.get();
         return try _f.GetUnfulfilledConsumablesAsync();
     }
     pub fn getLicenseInformation() core.HResult!*LicenseInformation {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.getLicenseInformation();
     }
     pub fn getLinkUri() core.HResult!*Uri {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.getLinkUri();
     }
     pub fn getAppId() core.HResult!*Guid {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.getAppId();
     }
     pub fn RequestAppPurchaseAsync(includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.RequestAppPurchaseAsync(includeReceipt);
     }
     pub fn RequestProductPurchaseAsyncWithIncludeReceipt(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.RequestProductPurchaseAsync(productId, includeReceipt);
     }
     pub fn LoadListingInformationAsync() core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.LoadListingInformationAsync();
     }
     pub fn GetAppReceiptAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.GetAppReceiptAsync();
     }
     pub fn GetProductReceiptAsync(productId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppCache.get();
+        const _f = try @This()._ICurrentAppCache.get();
         return try _f.GetProductReceiptAsync(productId);
     }
     pub fn GetCustomerPurchaseIdAsync(serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentApp2StaticsCache.get();
+        const _f = try @This()._ICurrentApp2StaticsCache.get();
         return try _f.GetCustomerPurchaseIdAsync(serviceTicket, publisherUserId);
     }
     pub fn GetCustomerCollectionsIdAsync(serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentApp2StaticsCache.get();
+        const _f = try @This()._ICurrentApp2StaticsCache.get();
         return try _f.GetCustomerCollectionsIdAsync(serviceTicket, publisherUserId);
     }
     pub fn GetAppPurchaseCampaignIdAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppWithCampaignIdCache.get();
+        const _f = try @This()._ICurrentAppWithCampaignIdCache.get();
         return try _f.GetAppPurchaseCampaignIdAsync();
     }
     pub fn LoadListingInformationByProductIdsAsync(productIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppStaticsWithFilteringCache.get();
+        const _f = try @This()._ICurrentAppStaticsWithFilteringCache.get();
         return try _f.LoadListingInformationByProductIdsAsync(productIds);
     }
     pub fn LoadListingInformationByKeywordsAsync(keywords: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppStaticsWithFilteringCache.get();
+        const _f = try @This()._ICurrentAppStaticsWithFilteringCache.get();
         return try _f.LoadListingInformationByKeywordsAsync(keywords);
     }
     pub fn ReportProductFulfillment(productId: HSTRING) core.HResult!void {
-        const _f = @This().ICurrentAppStaticsWithFilteringCache.get();
+        const _f = try @This()._ICurrentAppStaticsWithFilteringCache.get();
         return try _f.ReportProductFulfillment(productId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.CurrentApp";
@@ -90,67 +90,67 @@ pub const CurrentAppSimulator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadListingInformationByProductIdsAsync(productIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppSimulatorStaticsWithFilteringCache.get();
+        const _f = try @This()._ICurrentAppSimulatorStaticsWithFilteringCache.get();
         return try _f.LoadListingInformationByProductIdsAsync(productIds);
     }
     pub fn LoadListingInformationByKeywordsAsync(keywords: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppSimulatorStaticsWithFilteringCache.get();
+        const _f = try @This()._ICurrentAppSimulatorStaticsWithFilteringCache.get();
         return try _f.LoadListingInformationByKeywordsAsync(keywords);
     }
     pub fn GetAppPurchaseCampaignIdAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppSimulatorWithCampaignIdCache.get();
+        const _f = try @This()._ICurrentAppSimulatorWithCampaignIdCache.get();
         return try _f.GetAppPurchaseCampaignIdAsync();
     }
     pub fn ReportConsumableFulfillmentAsync(productId: HSTRING, transactionId: *Guid) core.HResult!*IAsyncOperation(FulfillmentResult) {
-        const _f = @This().ICurrentAppSimulatorWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppSimulatorWithConsumablesCache.get();
         return try _f.ReportConsumableFulfillmentAsync(productId, transactionId);
     }
     pub fn RequestProductPurchaseAsync(productId: HSTRING) core.HResult!*IAsyncOperation(PurchaseResults) {
-        const _f = @This().ICurrentAppSimulatorWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppSimulatorWithConsumablesCache.get();
         return try _f.RequestProductPurchaseAsync(productId);
     }
     pub fn RequestProductPurchaseAsyncWithOfferIdAndDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
-        const _f = @This().ICurrentAppSimulatorWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppSimulatorWithConsumablesCache.get();
         return try _f.RequestProductPurchaseAsyncWithOfferIdAndDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
-        const _f = @This().ICurrentAppSimulatorWithConsumablesCache.get();
+        const _f = try @This()._ICurrentAppSimulatorWithConsumablesCache.get();
         return try _f.GetUnfulfilledConsumablesAsync();
     }
     pub fn getLicenseInformation() core.HResult!*LicenseInformation {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.getLicenseInformation();
     }
     pub fn getLinkUri() core.HResult!*Uri {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.getLinkUri();
     }
     pub fn getAppId() core.HResult!*Guid {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.getAppId();
     }
     pub fn RequestAppPurchaseAsync(includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.RequestAppPurchaseAsync(includeReceipt);
     }
     pub fn RequestProductPurchaseAsyncWithIncludeReceipt(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.RequestProductPurchaseAsync(productId, includeReceipt);
     }
     pub fn LoadListingInformationAsync() core.HResult!*IAsyncOperation(ListingInformation) {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.LoadListingInformationAsync();
     }
     pub fn GetAppReceiptAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.GetAppReceiptAsync();
     }
     pub fn GetProductReceiptAsync(productId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.GetProductReceiptAsync(productId);
     }
     pub fn ReloadSimulatorAsync(simulatorSettingsFile: *StorageFile) core.HResult!*IAsyncAction {
-        const _f = @This().ICurrentAppSimulatorCache.get();
+        const _f = try @This()._ICurrentAppSimulatorCache.get();
         return try _f.ReloadSimulatorAsync(simulatorSettingsFile);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.CurrentAppSimulator";
@@ -1385,7 +1385,7 @@ pub const ProductPurchaseDisplayProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IProductPurchaseDisplayProperties.IID)));
     }
     pub fn CreateProductPurchaseDisplayProperties(name: HSTRING) core.HResult!*ProductPurchaseDisplayProperties {
-        const _f = @This().IProductPurchaseDisplayPropertiesFactoryCache.get();
+        const _f = try @This()._IProductPurchaseDisplayPropertiesFactoryCache.get();
         return try _f.CreateProductPurchaseDisplayProperties(name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.ProductPurchaseDisplayProperties";

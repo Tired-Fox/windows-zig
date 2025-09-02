@@ -282,7 +282,7 @@ pub const RemoteDesktopConnectionInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForLaunchUri(launchUri: *Uri, windowId: WindowId) core.HResult!*RemoteDesktopConnectionInfo {
-        const _f = @This().IRemoteDesktopConnectionInfoStaticsCache.get();
+        const _f = try @This()._IRemoteDesktopConnectionInfoStaticsCache.get();
         return try _f.GetForLaunchUri(launchUri, windowId);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopConnectionInfo";
@@ -324,11 +324,11 @@ pub const RemoteDesktopConnectionRemoteInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSwitchSupported() core.HResult!bool {
-        const _f = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
+        const _f = try @This()._IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
         return try _f.IsSwitchSupported();
     }
     pub fn GetForLaunchUri(launchUri: *Uri) core.HResult!*RemoteDesktopConnectionRemoteInfo {
-        const _f = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
+        const _f = try @This()._IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
         return try _f.GetForLaunchUri(launchUri);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopConnectionRemoteInfo";
@@ -358,7 +358,7 @@ pub const RemoteDesktopInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: HSTRING, displayName: HSTRING) core.HResult!*RemoteDesktopInfo {
-        const _f = @This().IRemoteDesktopInfoFactoryCache.get();
+        const _f = try @This()._IRemoteDesktopInfoFactoryCache.get();
         return try _f.CreateInstance(id, displayName);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopInfo";
@@ -381,11 +381,11 @@ pub const RemoteDesktopRegistrar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDesktopInfos() core.HResult!*IVector(RemoteDesktopInfo) {
-        const _f = @This().IRemoteDesktopRegistrarStaticsCache.get();
+        const _f = try @This()._IRemoteDesktopRegistrarStaticsCache.get();
         return try _f.getDesktopInfos();
     }
     pub fn IsSwitchToLocalSessionEnabled() core.HResult!bool {
-        const _f = @This().IRemoteDesktopRegistrarStaticsCache.get();
+        const _f = try @This()._IRemoteDesktopRegistrarStaticsCache.get();
         return try _f.IsSwitchToLocalSessionEnabled();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopRegistrar";

@@ -31,59 +31,59 @@ pub const ClosedCaptionProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFontColor() core.HResult!ClosedCaptionColor {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getFontColor();
     }
     pub fn getComputedFontColor() core.HResult!Color {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getComputedFontColor();
     }
     pub fn getFontOpacity() core.HResult!ClosedCaptionOpacity {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getFontOpacity();
     }
     pub fn getFontSize() core.HResult!ClosedCaptionSize {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getFontSize();
     }
     pub fn getFontStyle() core.HResult!ClosedCaptionStyle {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getFontStyle();
     }
     pub fn getFontEffect() core.HResult!ClosedCaptionEdgeEffect {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getFontEffect();
     }
     pub fn getBackgroundColor() core.HResult!ClosedCaptionColor {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getBackgroundColor();
     }
     pub fn getComputedBackgroundColor() core.HResult!Color {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getComputedBackgroundColor();
     }
     pub fn getBackgroundOpacity() core.HResult!ClosedCaptionOpacity {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getBackgroundOpacity();
     }
     pub fn getRegionColor() core.HResult!ClosedCaptionColor {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getRegionColor();
     }
     pub fn getComputedRegionColor() core.HResult!Color {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getComputedRegionColor();
     }
     pub fn getRegionOpacity() core.HResult!ClosedCaptionOpacity {
-        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStaticsCache.get();
         return try _f.getRegionOpacity();
     }
     pub fn addPropertiesChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IClosedCaptionPropertiesStatics2Cache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStatics2Cache.get();
         return try _f.addPropertiesChanged(handler);
     }
     pub fn removePropertiesChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IClosedCaptionPropertiesStatics2Cache.get();
+        const _f = try @This()._IClosedCaptionPropertiesStatics2Cache.get();
         return try _f.removePropertiesChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Media.ClosedCaptioning.ClosedCaptionProperties";

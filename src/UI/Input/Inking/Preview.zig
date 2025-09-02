@@ -57,11 +57,11 @@ pub const PalmRejectionDelayZonePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForVisual(inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
-        const _f = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
+        const _f = try @This()._IPalmRejectionDelayZonePreviewStaticsCache.get();
         return try _f.CreateForVisual(inputPanelVisual, inputPanelRect);
     }
     pub fn CreateForVisualWithViewportVisualAndViewportRect(inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
-        const _f = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
+        const _f = try @This()._IPalmRejectionDelayZonePreviewStaticsCache.get();
         return try _f.CreateForVisualWithViewportVisualAndViewportRect(inputPanelVisual, inputPanelRect, viewportVisual, viewportRect);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Preview.PalmRejectionDelayZonePreview";

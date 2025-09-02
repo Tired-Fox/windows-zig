@@ -420,7 +420,7 @@ pub const NotifyCollectionChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithAllParameters(action: NotifyCollectionChangedAction, newItems: *IBindableVector, oldItems: *IBindableVector, newIndex: i32, oldIndex: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NotifyCollectionChangedEventArgs {
-        const _f = @This().INotifyCollectionChangedEventArgsFactoryCache.get();
+        const _f = try @This()._INotifyCollectionChangedEventArgsFactoryCache.get();
         return try _f.CreateInstanceWithAllParameters(action, newItems, oldItems, newIndex, oldIndex, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.NotifyCollectionChangedEventArgs";

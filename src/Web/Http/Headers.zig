@@ -113,19 +113,19 @@ pub const HttpChallengeHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromScheme(scheme: HSTRING) core.HResult!*HttpChallengeHeaderValue {
-        const _f = @This().IHttpChallengeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpChallengeHeaderValueFactoryCache.get();
         return try _f.CreateFromScheme(scheme);
     }
     pub fn CreateFromSchemeWithToken(scheme: HSTRING, token: HSTRING) core.HResult!*HttpChallengeHeaderValue {
-        const _f = @This().IHttpChallengeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpChallengeHeaderValueFactoryCache.get();
         return try _f.CreateFromSchemeWithToken(scheme, token);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpChallengeHeaderValue {
-        const _f = @This().IHttpChallengeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpChallengeHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, challengeHeaderValue: *HttpChallengeHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpChallengeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpChallengeHeaderValueStaticsCache.get();
         return try _f.TryParse(input, challengeHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpChallengeHeaderValue";
@@ -210,15 +210,15 @@ pub const HttpConnectionOptionHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(token: HSTRING) core.HResult!*HttpConnectionOptionHeaderValue {
-        const _f = @This().IHttpConnectionOptionHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpConnectionOptionHeaderValueFactoryCache.get();
         return try _f.Create(token);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpConnectionOptionHeaderValue {
-        const _f = @This().IHttpConnectionOptionHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpConnectionOptionHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, connectionOptionHeaderValue: *HttpConnectionOptionHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpConnectionOptionHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpConnectionOptionHeaderValueStaticsCache.get();
         return try _f.TryParse(input, connectionOptionHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpConnectionOptionHeaderValue";
@@ -303,15 +303,15 @@ pub const HttpContentCodingHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(contentCoding: HSTRING) core.HResult!*HttpContentCodingHeaderValue {
-        const _f = @This().IHttpContentCodingHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentCodingHeaderValueFactoryCache.get();
         return try _f.Create(contentCoding);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpContentCodingHeaderValue {
-        const _f = @This().IHttpContentCodingHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentCodingHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, contentCodingHeaderValue: *HttpContentCodingHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpContentCodingHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentCodingHeaderValueStaticsCache.get();
         return try _f.TryParse(input, contentCodingHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpContentCodingHeaderValue";
@@ -400,19 +400,19 @@ pub const HttpContentCodingWithQualityHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromValue(contentCoding: HSTRING) core.HResult!*HttpContentCodingWithQualityHeaderValue {
-        const _f = @This().IHttpContentCodingWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentCodingWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromValue(contentCoding);
     }
     pub fn CreateFromValueWithQuality(contentCoding: HSTRING, quality: f64) core.HResult!*HttpContentCodingWithQualityHeaderValue {
-        const _f = @This().IHttpContentCodingWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentCodingWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromValueWithQuality(contentCoding, quality);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpContentCodingWithQualityHeaderValue {
-        const _f = @This().IHttpContentCodingWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentCodingWithQualityHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, contentCodingWithQualityHeaderValue: *HttpContentCodingWithQualityHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpContentCodingWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentCodingWithQualityHeaderValueStaticsCache.get();
         return try _f.TryParse(input, contentCodingWithQualityHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpContentCodingWithQualityHeaderValue";
@@ -537,15 +537,15 @@ pub const HttpContentDispositionHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(dispositionType: HSTRING) core.HResult!*HttpContentDispositionHeaderValue {
-        const _f = @This().IHttpContentDispositionHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentDispositionHeaderValueFactoryCache.get();
         return try _f.Create(dispositionType);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpContentDispositionHeaderValue {
-        const _f = @This().IHttpContentDispositionHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentDispositionHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, contentDispositionHeaderValue: *HttpContentDispositionHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpContentDispositionHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentDispositionHeaderValueStaticsCache.get();
         return try _f.TryParse(input, contentDispositionHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpContentDispositionHeaderValue";
@@ -714,23 +714,23 @@ pub const HttpContentRangeHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLength(length: u64) core.HResult!*HttpContentRangeHeaderValue {
-        const _f = @This().IHttpContentRangeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentRangeHeaderValueFactoryCache.get();
         return try _f.CreateFromLength(length);
     }
     pub fn CreateFromRange(from: u64, to: u64) core.HResult!*HttpContentRangeHeaderValue {
-        const _f = @This().IHttpContentRangeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentRangeHeaderValueFactoryCache.get();
         return try _f.CreateFromRange(from, to);
     }
     pub fn CreateFromRangeWithLength(from: u64, to: u64, length: u64) core.HResult!*HttpContentRangeHeaderValue {
-        const _f = @This().IHttpContentRangeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpContentRangeHeaderValueFactoryCache.get();
         return try _f.CreateFromRangeWithLength(from, to, length);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpContentRangeHeaderValue {
-        const _f = @This().IHttpContentRangeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentRangeHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, contentRangeHeaderValue: *HttpContentRangeHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpContentRangeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpContentRangeHeaderValueStaticsCache.get();
         return try _f.TryParse(input, contentRangeHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpContentRangeHeaderValue";
@@ -765,19 +765,19 @@ pub const HttpCookiePairHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: HSTRING) core.HResult!*HttpCookiePairHeaderValue {
-        const _f = @This().IHttpCookiePairHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpCookiePairHeaderValueFactoryCache.get();
         return try _f.CreateFromName(name);
     }
     pub fn CreateFromNameWithValue(name: HSTRING, value: HSTRING) core.HResult!*HttpCookiePairHeaderValue {
-        const _f = @This().IHttpCookiePairHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpCookiePairHeaderValueFactoryCache.get();
         return try _f.CreateFromNameWithValue(name, value);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpCookiePairHeaderValue {
-        const _f = @This().IHttpCookiePairHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpCookiePairHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, cookiePairHeaderValue: *HttpCookiePairHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpCookiePairHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpCookiePairHeaderValueStaticsCache.get();
         return try _f.TryParse(input, cookiePairHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpCookiePairHeaderValue";
@@ -870,19 +870,19 @@ pub const HttpCredentialsHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromScheme(scheme: HSTRING) core.HResult!*HttpCredentialsHeaderValue {
-        const _f = @This().IHttpCredentialsHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpCredentialsHeaderValueFactoryCache.get();
         return try _f.CreateFromScheme(scheme);
     }
     pub fn CreateFromSchemeWithToken(scheme: HSTRING, token: HSTRING) core.HResult!*HttpCredentialsHeaderValue {
-        const _f = @This().IHttpCredentialsHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpCredentialsHeaderValueFactoryCache.get();
         return try _f.CreateFromSchemeWithToken(scheme, token);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpCredentialsHeaderValue {
-        const _f = @This().IHttpCredentialsHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpCredentialsHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, credentialsHeaderValue: *HttpCredentialsHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpCredentialsHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpCredentialsHeaderValueStaticsCache.get();
         return try _f.TryParse(input, credentialsHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpCredentialsHeaderValue";
@@ -913,11 +913,11 @@ pub const HttpDateOrDeltaHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpDateOrDeltaHeaderValue {
-        const _f = @This().IHttpDateOrDeltaHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpDateOrDeltaHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, dateOrDeltaHeaderValue: *HttpDateOrDeltaHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpDateOrDeltaHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpDateOrDeltaHeaderValueStaticsCache.get();
         return try _f.TryParse(input, dateOrDeltaHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpDateOrDeltaHeaderValue";
@@ -955,19 +955,19 @@ pub const HttpExpectationHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: HSTRING) core.HResult!*HttpExpectationHeaderValue {
-        const _f = @This().IHttpExpectationHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpExpectationHeaderValueFactoryCache.get();
         return try _f.CreateFromName(name);
     }
     pub fn CreateFromNameWithValue(name: HSTRING, value: HSTRING) core.HResult!*HttpExpectationHeaderValue {
-        const _f = @This().IHttpExpectationHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpExpectationHeaderValueFactoryCache.get();
         return try _f.CreateFromNameWithValue(name, value);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpExpectationHeaderValue {
-        const _f = @This().IHttpExpectationHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpExpectationHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, expectationHeaderValue: *HttpExpectationHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpExpectationHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpExpectationHeaderValueStaticsCache.get();
         return try _f.TryParse(input, expectationHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpExpectationHeaderValue";
@@ -1114,19 +1114,19 @@ pub const HttpLanguageRangeWithQualityHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLanguageRange(languageRange: HSTRING) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
-        const _f = @This().IHttpLanguageRangeWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpLanguageRangeWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromLanguageRange(languageRange);
     }
     pub fn CreateFromLanguageRangeWithQuality(languageRange: HSTRING, quality: f64) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
-        const _f = @This().IHttpLanguageRangeWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpLanguageRangeWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromLanguageRangeWithQuality(languageRange, quality);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
-        const _f = @This().IHttpLanguageRangeWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpLanguageRangeWithQualityHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, languageRangeWithQualityHeaderValue: *HttpLanguageRangeWithQualityHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpLanguageRangeWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpLanguageRangeWithQualityHeaderValueStaticsCache.get();
         return try _f.TryParse(input, languageRangeWithQualityHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpLanguageRangeWithQualityHeaderValue";
@@ -1227,15 +1227,15 @@ pub const HttpMediaTypeHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(mediaType: HSTRING) core.HResult!*HttpMediaTypeHeaderValue {
-        const _f = @This().IHttpMediaTypeHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpMediaTypeHeaderValueFactoryCache.get();
         return try _f.Create(mediaType);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpMediaTypeHeaderValue {
-        const _f = @This().IHttpMediaTypeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpMediaTypeHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, mediaTypeHeaderValue: *HttpMediaTypeHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpMediaTypeHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpMediaTypeHeaderValueStaticsCache.get();
         return try _f.TryParse(input, mediaTypeHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpMediaTypeHeaderValue";
@@ -1286,19 +1286,19 @@ pub const HttpMediaTypeWithQualityHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromMediaType(mediaType: HSTRING) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
-        const _f = @This().IHttpMediaTypeWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpMediaTypeWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromMediaType(mediaType);
     }
     pub fn CreateFromMediaTypeWithQuality(mediaType: HSTRING, quality: f64) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
-        const _f = @This().IHttpMediaTypeWithQualityHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpMediaTypeWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromMediaTypeWithQuality(mediaType, quality);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
-        const _f = @This().IHttpMediaTypeWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpMediaTypeWithQualityHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, mediaTypeWithQualityHeaderValue: *HttpMediaTypeWithQualityHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpMediaTypeWithQualityHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpMediaTypeWithQualityHeaderValueStaticsCache.get();
         return try _f.TryParse(input, mediaTypeWithQualityHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpMediaTypeWithQualityHeaderValue";
@@ -1449,19 +1449,19 @@ pub const HttpNameValueHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: HSTRING) core.HResult!*HttpNameValueHeaderValue {
-        const _f = @This().IHttpNameValueHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpNameValueHeaderValueFactoryCache.get();
         return try _f.CreateFromName(name);
     }
     pub fn CreateFromNameWithValue(name: HSTRING, value: HSTRING) core.HResult!*HttpNameValueHeaderValue {
-        const _f = @This().IHttpNameValueHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpNameValueHeaderValueFactoryCache.get();
         return try _f.CreateFromNameWithValue(name, value);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpNameValueHeaderValue {
-        const _f = @This().IHttpNameValueHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpNameValueHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, nameValueHeaderValue: *HttpNameValueHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpNameValueHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpNameValueHeaderValueStaticsCache.get();
         return try _f.TryParse(input, nameValueHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpNameValueHeaderValue";
@@ -1492,19 +1492,19 @@ pub const HttpProductHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(productName: HSTRING) core.HResult!*HttpProductHeaderValue {
-        const _f = @This().IHttpProductHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpProductHeaderValueFactoryCache.get();
         return try _f.CreateFromName(productName);
     }
     pub fn CreateFromNameWithVersion(productName: HSTRING, productVersion: HSTRING) core.HResult!*HttpProductHeaderValue {
-        const _f = @This().IHttpProductHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpProductHeaderValueFactoryCache.get();
         return try _f.CreateFromNameWithVersion(productName, productVersion);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpProductHeaderValue {
-        const _f = @This().IHttpProductHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpProductHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, productHeaderValue: *HttpProductHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpProductHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpProductHeaderValueStaticsCache.get();
         return try _f.TryParse(input, productHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpProductHeaderValue";
@@ -1535,19 +1535,19 @@ pub const HttpProductInfoHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromComment(productComment: HSTRING) core.HResult!*HttpProductInfoHeaderValue {
-        const _f = @This().IHttpProductInfoHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpProductInfoHeaderValueFactoryCache.get();
         return try _f.CreateFromComment(productComment);
     }
     pub fn CreateFromNameWithVersion(productName: HSTRING, productVersion: HSTRING) core.HResult!*HttpProductInfoHeaderValue {
-        const _f = @This().IHttpProductInfoHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpProductInfoHeaderValueFactoryCache.get();
         return try _f.CreateFromNameWithVersion(productName, productVersion);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpProductInfoHeaderValue {
-        const _f = @This().IHttpProductInfoHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpProductInfoHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, productInfoHeaderValue: *HttpProductInfoHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpProductInfoHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpProductInfoHeaderValueStaticsCache.get();
         return try _f.TryParse(input, productInfoHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpProductInfoHeaderValue";
@@ -1892,15 +1892,15 @@ pub const HttpTransferCodingHeaderValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(input: HSTRING) core.HResult!*HttpTransferCodingHeaderValue {
-        const _f = @This().IHttpTransferCodingHeaderValueFactoryCache.get();
+        const _f = try @This()._IHttpTransferCodingHeaderValueFactoryCache.get();
         return try _f.Create(input);
     }
     pub fn Parse(input: HSTRING) core.HResult!*HttpTransferCodingHeaderValue {
-        const _f = @This().IHttpTransferCodingHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpTransferCodingHeaderValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, transferCodingHeaderValue: *HttpTransferCodingHeaderValue) core.HResult!bool {
-        const _f = @This().IHttpTransferCodingHeaderValueStaticsCache.get();
+        const _f = try @This()._IHttpTransferCodingHeaderValueStaticsCache.get();
         return try _f.TryParse(input, transferCodingHeaderValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Headers.HttpTransferCodingHeaderValue";

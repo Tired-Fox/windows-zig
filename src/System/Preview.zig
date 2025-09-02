@@ -164,7 +164,7 @@ pub const TwoPanelHingedDevicePosturePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreview) {
-        const _f = @This().ITwoPanelHingedDevicePosturePreviewStaticsCache.get();
+        const _f = try @This()._ITwoPanelHingedDevicePosturePreviewStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.System.Preview.TwoPanelHingedDevicePosturePreview";

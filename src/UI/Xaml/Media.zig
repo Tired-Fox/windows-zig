@@ -41,19 +41,19 @@ pub const Brush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IBrushStaticsCache.get();
+        const _f = try @This()._IBrushStaticsCache.get();
         return try _f.getOpacityProperty();
     }
     pub fn getTransformProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IBrushStaticsCache.get();
+        const _f = try @This()._IBrushStaticsCache.get();
         return try _f.getTransformProperty();
     }
     pub fn getRelativeTransformProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IBrushStaticsCache.get();
+        const _f = try @This()._IBrushStaticsCache.get();
         return try _f.getRelativeTransformProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Brush {
-        const _f = @This().IBrushFactoryCache.get();
+        const _f = try @This()._IBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Brush";
@@ -94,19 +94,19 @@ pub const TileBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAlignmentXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITileBrushStaticsCache.get();
+        const _f = try @This()._ITileBrushStaticsCache.get();
         return try _f.getAlignmentXProperty();
     }
     pub fn getAlignmentYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITileBrushStaticsCache.get();
+        const _f = try @This()._ITileBrushStaticsCache.get();
         return try _f.getAlignmentYProperty();
     }
     pub fn getStretchProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITileBrushStaticsCache.get();
+        const _f = try @This()._ITileBrushStaticsCache.get();
         return try _f.getStretchProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TileBrush {
-        const _f = @This().ITileBrushFactoryCache.get();
+        const _f = try @This()._ITileBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.TileBrush";
@@ -159,11 +159,11 @@ pub const XamlCompositionBrushBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFallbackColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlCompositionBrushBaseStaticsCache.get();
+        const _f = try @This()._IXamlCompositionBrushBaseStaticsCache.get();
         return try _f.getFallbackColorProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlCompositionBrushBase {
-        const _f = @This().IXamlCompositionBrushBaseFactoryCache.get();
+        const _f = try @This()._IXamlCompositionBrushBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.XamlCompositionBrushBase";
@@ -232,31 +232,31 @@ pub const AcrylicBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBackgroundSourceProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStaticsCache.get();
+        const _f = try @This()._IAcrylicBrushStaticsCache.get();
         return try _f.getBackgroundSourceProperty();
     }
     pub fn getTintColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStaticsCache.get();
+        const _f = try @This()._IAcrylicBrushStaticsCache.get();
         return try _f.getTintColorProperty();
     }
     pub fn getTintOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStaticsCache.get();
+        const _f = try @This()._IAcrylicBrushStaticsCache.get();
         return try _f.getTintOpacityProperty();
     }
     pub fn getTintTransitionDurationProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStaticsCache.get();
+        const _f = try @This()._IAcrylicBrushStaticsCache.get();
         return try _f.getTintTransitionDurationProperty();
     }
     pub fn getAlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStaticsCache.get();
+        const _f = try @This()._IAcrylicBrushStaticsCache.get();
         return try _f.getAlwaysUseFallbackProperty();
     }
     pub fn getTintLuminosityOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAcrylicBrushStatics2Cache.get();
+        const _f = try @This()._IAcrylicBrushStatics2Cache.get();
         return try _f.getTintLuminosityOpacityProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AcrylicBrush {
-        const _f = @This().IAcrylicBrushFactoryCache.get();
+        const _f = try @This()._IAcrylicBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.AcrylicBrush";
@@ -340,23 +340,23 @@ pub const ArcSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IArcSegment.IID)));
     }
     pub fn getPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IArcSegmentStaticsCache.get();
+        const _f = try @This()._IArcSegmentStaticsCache.get();
         return try _f.getPointProperty();
     }
     pub fn getSizeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IArcSegmentStaticsCache.get();
+        const _f = try @This()._IArcSegmentStaticsCache.get();
         return try _f.getSizeProperty();
     }
     pub fn getRotationAngleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IArcSegmentStaticsCache.get();
+        const _f = try @This()._IArcSegmentStaticsCache.get();
         return try _f.getRotationAngleProperty();
     }
     pub fn getIsLargeArcProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IArcSegmentStaticsCache.get();
+        const _f = try @This()._IArcSegmentStaticsCache.get();
         return try _f.getIsLargeArcProperty();
     }
     pub fn getSweepDirectionProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IArcSegmentStaticsCache.get();
+        const _f = try @This()._IArcSegmentStaticsCache.get();
         return try _f.getSweepDirectionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.ArcSegment";
@@ -420,15 +420,15 @@ pub const BezierSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBezierSegment.IID)));
     }
     pub fn getPoint1Property() core.HResult!*DependencyProperty {
-        const _f = @This().IBezierSegmentStaticsCache.get();
+        const _f = try @This()._IBezierSegmentStaticsCache.get();
         return try _f.getPoint1Property();
     }
     pub fn getPoint2Property() core.HResult!*DependencyProperty {
-        const _f = @This().IBezierSegmentStaticsCache.get();
+        const _f = try @This()._IBezierSegmentStaticsCache.get();
         return try _f.getPoint2Property();
     }
     pub fn getPoint3Property() core.HResult!*DependencyProperty {
-        const _f = @This().IBezierSegmentStaticsCache.get();
+        const _f = try @This()._IBezierSegmentStaticsCache.get();
         return try _f.getPoint3Property();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.BezierSegment";
@@ -445,7 +445,7 @@ pub const CacheMode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CacheMode {
-        const _f = @This().ICacheModeFactoryCache.get();
+        const _f = try @This()._ICacheModeFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.CacheMode";
@@ -561,7 +561,7 @@ pub const GeneralTransform = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GeneralTransform {
-        const _f = @This().IGeneralTransformFactoryCache.get();
+        const _f = try @This()._IGeneralTransformFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.GeneralTransform";
@@ -665,39 +665,39 @@ pub const CompositeTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositeTransform.IID)));
     }
     pub fn getCenterXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getCenterXProperty();
     }
     pub fn getCenterYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getCenterYProperty();
     }
     pub fn getScaleXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getScaleXProperty();
     }
     pub fn getScaleYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getScaleYProperty();
     }
     pub fn getSkewXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getSkewXProperty();
     }
     pub fn getSkewYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getSkewYProperty();
     }
     pub fn getRotationProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getRotationProperty();
     }
     pub fn getTranslateXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getTranslateXProperty();
     }
     pub fn getTranslateYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICompositeTransformStaticsCache.get();
+        const _f = try @This()._ICompositeTransformStaticsCache.get();
         return try _f.getTranslateYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.CompositeTransform";
@@ -714,27 +714,27 @@ pub const CompositionTarget = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn addRendered(handler: *EventHandler(RenderedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().ICompositionTargetStatics3Cache.get();
+        const _f = try @This()._ICompositionTargetStatics3Cache.get();
         return try _f.addRendered(handler);
     }
     pub fn removeRendered(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ICompositionTargetStatics3Cache.get();
+        const _f = try @This()._ICompositionTargetStatics3Cache.get();
         return try _f.removeRendered(token);
     }
     pub fn addRendering(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ICompositionTargetStaticsCache.get();
+        const _f = try @This()._ICompositionTargetStaticsCache.get();
         return try _f.addRendering(handler);
     }
     pub fn removeRendering(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ICompositionTargetStaticsCache.get();
+        const _f = try @This()._ICompositionTargetStaticsCache.get();
         return try _f.removeRendering(token);
     }
     pub fn addSurfaceContentsLost(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ICompositionTargetStaticsCache.get();
+        const _f = try @This()._ICompositionTargetStaticsCache.get();
         return try _f.addSurfaceContentsLost(handler);
     }
     pub fn removeSurfaceContentsLost(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ICompositionTargetStaticsCache.get();
+        const _f = try @This()._ICompositionTargetStaticsCache.get();
         return try _f.removeSurfaceContentsLost(token);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.CompositionTarget";
@@ -810,15 +810,15 @@ pub const Geometry = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getEmpty() core.HResult!*Geometry {
-        const _f = @This().IGeometryStaticsCache.get();
+        const _f = try @This()._IGeometryStaticsCache.get();
         return try _f.getEmpty();
     }
     pub fn getStandardFlatteningTolerance() core.HResult!f64 {
-        const _f = @This().IGeometryStaticsCache.get();
+        const _f = try @This()._IGeometryStaticsCache.get();
         return try _f.getStandardFlatteningTolerance();
     }
     pub fn getTransformProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGeometryStaticsCache.get();
+        const _f = try @This()._IGeometryStaticsCache.get();
         return try _f.getTransformProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Geometry";
@@ -863,15 +863,15 @@ pub const EllipseGeometry = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEllipseGeometry.IID)));
     }
     pub fn getCenterProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IEllipseGeometryStaticsCache.get();
+        const _f = try @This()._IEllipseGeometryStaticsCache.get();
         return try _f.getCenterProperty();
     }
     pub fn getRadiusXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IEllipseGeometryStaticsCache.get();
+        const _f = try @This()._IEllipseGeometryStaticsCache.get();
         return try _f.getRadiusXProperty();
     }
     pub fn getRadiusYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IEllipseGeometryStaticsCache.get();
+        const _f = try @This()._IEllipseGeometryStaticsCache.get();
         return try _f.getRadiusYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.EllipseGeometry";
@@ -901,11 +901,11 @@ pub const FontFamily = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getXamlAutoFontFamily() core.HResult!*FontFamily {
-        const _f = @This().IFontFamilyStatics2Cache.get();
+        const _f = try @This()._IFontFamilyStatics2Cache.get();
         return try _f.getXamlAutoFontFamily();
     }
     pub fn CreateInstanceWithName(familyName: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontFamily {
-        const _f = @This().IFontFamilyFactoryCache.get();
+        const _f = try @This()._IFontFamilyFactoryCache.get();
         return try _f.CreateInstanceWithName(familyName, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.FontFamily";
@@ -984,11 +984,11 @@ pub const GeometryGroup = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeometryGroup.IID)));
     }
     pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGeometryGroupStaticsCache.get();
+        const _f = try @This()._IGeometryGroupStaticsCache.get();
         return try _f.getFillRuleProperty();
     }
     pub fn getChildrenProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGeometryGroupStaticsCache.get();
+        const _f = try @This()._IGeometryGroupStaticsCache.get();
         return try _f.getChildrenProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.GeometryGroup";
@@ -1037,23 +1037,23 @@ pub const GradientBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSpreadMethodProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientBrushStaticsCache.get();
+        const _f = try @This()._IGradientBrushStaticsCache.get();
         return try _f.getSpreadMethodProperty();
     }
     pub fn getMappingModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientBrushStaticsCache.get();
+        const _f = try @This()._IGradientBrushStaticsCache.get();
         return try _f.getMappingModeProperty();
     }
     pub fn getColorInterpolationModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientBrushStaticsCache.get();
+        const _f = try @This()._IGradientBrushStaticsCache.get();
         return try _f.getColorInterpolationModeProperty();
     }
     pub fn getGradientStopsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientBrushStaticsCache.get();
+        const _f = try @This()._IGradientBrushStaticsCache.get();
         return try _f.getGradientStopsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GradientBrush {
-        const _f = @This().IGradientBrushFactoryCache.get();
+        const _f = try @This()._IGradientBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.GradientBrush";
@@ -1095,11 +1095,11 @@ pub const GradientStop = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGradientStop.IID)));
     }
     pub fn getColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientStopStaticsCache.get();
+        const _f = try @This()._IGradientStopStaticsCache.get();
         return try _f.getColorProperty();
     }
     pub fn getOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGradientStopStaticsCache.get();
+        const _f = try @This()._IGradientStopStaticsCache.get();
         return try _f.getOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.GradientStop";
@@ -5682,7 +5682,7 @@ pub const ImageBrush = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IImageBrush.IID)));
     }
     pub fn getImageSourceProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IImageBrushStaticsCache.get();
+        const _f = try @This()._IImageBrushStaticsCache.get();
         return try _f.getImageSourceProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.ImageBrush";
@@ -5731,11 +5731,11 @@ pub const LineGeometry = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILineGeometry.IID)));
     }
     pub fn getStartPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILineGeometryStaticsCache.get();
+        const _f = try @This()._ILineGeometryStaticsCache.get();
         return try _f.getStartPointProperty();
     }
     pub fn getEndPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILineGeometryStaticsCache.get();
+        const _f = try @This()._ILineGeometryStaticsCache.get();
         return try _f.getEndPointProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.LineGeometry";
@@ -5764,7 +5764,7 @@ pub const LineSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILineSegment.IID)));
     }
     pub fn getPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILineSegmentStaticsCache.get();
+        const _f = try @This()._ILineSegmentStaticsCache.get();
         return try _f.getPointProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.LineSegment";
@@ -5801,15 +5801,15 @@ pub const LinearGradientBrush = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILinearGradientBrush.IID)));
     }
     pub fn CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection: *GradientStopCollection, angle: f64) core.HResult!*LinearGradientBrush {
-        const _f = @This().ILinearGradientBrushFactoryCache.get();
+        const _f = try @This()._ILinearGradientBrushFactoryCache.get();
         return try _f.CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection, angle);
     }
     pub fn getStartPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILinearGradientBrushStaticsCache.get();
+        const _f = try @This()._ILinearGradientBrushStaticsCache.get();
         return try _f.getStartPointProperty();
     }
     pub fn getEndPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILinearGradientBrushStaticsCache.get();
+        const _f = try @This()._ILinearGradientBrushStaticsCache.get();
         return try _f.getEndPointProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.LinearGradientBrush";
@@ -5871,19 +5871,19 @@ pub const LoadedImageSurface = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartLoadFromUriWithDesiredMaxSize(uri: *Uri, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
-        const _f = @This().ILoadedImageSurfaceStaticsCache.get();
+        const _f = try @This()._ILoadedImageSurfaceStaticsCache.get();
         return try _f.StartLoadFromUriWithDesiredMaxSize(uri, desiredMaxSize);
     }
     pub fn StartLoadFromUri(uri: *Uri) core.HResult!*LoadedImageSurface {
-        const _f = @This().ILoadedImageSurfaceStaticsCache.get();
+        const _f = try @This()._ILoadedImageSurfaceStaticsCache.get();
         return try _f.StartLoadFromUri(uri);
     }
     pub fn StartLoadFromStreamWithDesiredMaxSize(stream: *IRandomAccessStream, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
-        const _f = @This().ILoadedImageSurfaceStaticsCache.get();
+        const _f = try @This()._ILoadedImageSurfaceStaticsCache.get();
         return try _f.StartLoadFromStreamWithDesiredMaxSize(stream, desiredMaxSize);
     }
     pub fn StartLoadFromStream(stream: *IRandomAccessStream) core.HResult!*LoadedImageSurface {
-        const _f = @This().ILoadedImageSurfaceStaticsCache.get();
+        const _f = try @This()._ILoadedImageSurfaceStaticsCache.get();
         return try _f.StartLoadFromStream(stream);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.LoadedImageSurface";
@@ -5907,7 +5907,7 @@ pub const Projection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Projection {
-        const _f = @This().IProjectionFactoryCache.get();
+        const _f = try @This()._IProjectionFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Projection";
@@ -5935,7 +5935,7 @@ pub const Matrix3DProjection = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMatrix3DProjection.IID)));
     }
     pub fn getProjectionMatrixProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IMatrix3DProjectionStaticsCache.get();
+        const _f = try @This()._IMatrix3DProjectionStaticsCache.get();
         return try _f.getProjectionMatrixProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Matrix3DProjection";
@@ -5952,19 +5952,19 @@ pub const MatrixHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIdentity() core.HResult!Matrix {
-        const _f = @This().IMatrixHelperStaticsCache.get();
+        const _f = try @This()._IMatrixHelperStaticsCache.get();
         return try _f.getIdentity();
     }
     pub fn FromElements(m11: f64, m12: f64, m21: f64, m22: f64, offsetX: f64, offsetY: f64) core.HResult!Matrix {
-        const _f = @This().IMatrixHelperStaticsCache.get();
+        const _f = try @This()._IMatrixHelperStaticsCache.get();
         return try _f.FromElements(m11, m12, m21, m22, offsetX, offsetY);
     }
     pub fn GetIsIdentity(target: Matrix) core.HResult!bool {
-        const _f = @This().IMatrixHelperStaticsCache.get();
+        const _f = try @This()._IMatrixHelperStaticsCache.get();
         return try _f.GetIsIdentity(target);
     }
     pub fn Transform(target: Matrix, point: Point) core.HResult!Point {
-        const _f = @This().IMatrixHelperStaticsCache.get();
+        const _f = try @This()._IMatrixHelperStaticsCache.get();
         return try _f.Transform(target, point);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.MatrixHelper";
@@ -5992,7 +5992,7 @@ pub const MatrixTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMatrixTransform.IID)));
     }
     pub fn getMatrixProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IMatrixTransformStaticsCache.get();
+        const _f = try @This()._IMatrixTransformStaticsCache.get();
         return try _f.getMatrixProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.MatrixTransform";
@@ -6100,19 +6100,19 @@ pub const PathFigure = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPathFigure.IID)));
     }
     pub fn getSegmentsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathFigureStaticsCache.get();
+        const _f = try @This()._IPathFigureStaticsCache.get();
         return try _f.getSegmentsProperty();
     }
     pub fn getStartPointProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathFigureStaticsCache.get();
+        const _f = try @This()._IPathFigureStaticsCache.get();
         return try _f.getStartPointProperty();
     }
     pub fn getIsClosedProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathFigureStaticsCache.get();
+        const _f = try @This()._IPathFigureStaticsCache.get();
         return try _f.getIsClosedProperty();
     }
     pub fn getIsFilledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathFigureStaticsCache.get();
+        const _f = try @This()._IPathFigureStaticsCache.get();
         return try _f.getIsFilledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PathFigure";
@@ -6191,11 +6191,11 @@ pub const PathGeometry = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPathGeometry.IID)));
     }
     pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathGeometryStaticsCache.get();
+        const _f = try @This()._IPathGeometryStaticsCache.get();
         return try _f.getFillRuleProperty();
     }
     pub fn getFiguresProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathGeometryStaticsCache.get();
+        const _f = try @This()._IPathGeometryStaticsCache.get();
         return try _f.getFiguresProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PathGeometry";
@@ -6369,55 +6369,55 @@ pub const PlaneProjection = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlaneProjection.IID)));
     }
     pub fn getLocalOffsetXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getLocalOffsetXProperty();
     }
     pub fn getLocalOffsetYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getLocalOffsetYProperty();
     }
     pub fn getLocalOffsetZProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getLocalOffsetZProperty();
     }
     pub fn getRotationXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getRotationXProperty();
     }
     pub fn getRotationYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getRotationYProperty();
     }
     pub fn getRotationZProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getRotationZProperty();
     }
     pub fn getCenterOfRotationXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getCenterOfRotationXProperty();
     }
     pub fn getCenterOfRotationYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getCenterOfRotationYProperty();
     }
     pub fn getCenterOfRotationZProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getCenterOfRotationZProperty();
     }
     pub fn getGlobalOffsetXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getGlobalOffsetXProperty();
     }
     pub fn getGlobalOffsetYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getGlobalOffsetYProperty();
     }
     pub fn getGlobalOffsetZProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getGlobalOffsetZProperty();
     }
     pub fn getProjectionMatrixProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPlaneProjectionStaticsCache.get();
+        const _f = try @This()._IPlaneProjectionStaticsCache.get();
         return try _f.getProjectionMatrixProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PlaneProjection";
@@ -6488,7 +6488,7 @@ pub const PolyBezierSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyBezierSegment.IID)));
     }
     pub fn getPointsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolyBezierSegmentStaticsCache.get();
+        const _f = try @This()._IPolyBezierSegmentStaticsCache.get();
         return try _f.getPointsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PolyBezierSegment";
@@ -6517,7 +6517,7 @@ pub const PolyLineSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyLineSegment.IID)));
     }
     pub fn getPointsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolyLineSegmentStaticsCache.get();
+        const _f = try @This()._IPolyLineSegmentStaticsCache.get();
         return try _f.getPointsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PolyLineSegment";
@@ -6546,7 +6546,7 @@ pub const PolyQuadraticBezierSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyQuadraticBezierSegment.IID)));
     }
     pub fn getPointsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolyQuadraticBezierSegmentStaticsCache.get();
+        const _f = try @This()._IPolyQuadraticBezierSegmentStaticsCache.get();
         return try _f.getPointsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.PolyQuadraticBezierSegment";
@@ -6583,11 +6583,11 @@ pub const QuadraticBezierSegment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IQuadraticBezierSegment.IID)));
     }
     pub fn getPoint1Property() core.HResult!*DependencyProperty {
-        const _f = @This().IQuadraticBezierSegmentStaticsCache.get();
+        const _f = try @This()._IQuadraticBezierSegmentStaticsCache.get();
         return try _f.getPoint1Property();
     }
     pub fn getPoint2Property() core.HResult!*DependencyProperty {
-        const _f = @This().IQuadraticBezierSegmentStaticsCache.get();
+        const _f = try @This()._IQuadraticBezierSegmentStaticsCache.get();
         return try _f.getPoint2Property();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.QuadraticBezierSegment";
@@ -6719,7 +6719,7 @@ pub const RectangleGeometry = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRectangleGeometry.IID)));
     }
     pub fn getRectProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRectangleGeometryStaticsCache.get();
+        const _f = try @This()._IRectangleGeometryStaticsCache.get();
         return try _f.getRectProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.RectangleGeometry";
@@ -6784,31 +6784,31 @@ pub const RevealBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.getColorProperty();
     }
     pub fn getTargetThemeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.getTargetThemeProperty();
     }
     pub fn getAlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.getAlwaysUseFallbackProperty();
     }
     pub fn getStateProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.getStateProperty();
     }
     pub fn SetState(element: *UIElement, value: RevealBrushState) core.HResult!void {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.SetState(element, value);
     }
     pub fn GetState(element: *UIElement) core.HResult!RevealBrushState {
-        const _f = @This().IRevealBrushStaticsCache.get();
+        const _f = try @This()._IRevealBrushStaticsCache.get();
         return try _f.GetState(element);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RevealBrush {
-        const _f = @This().IRevealBrushFactoryCache.get();
+        const _f = try @This()._IRevealBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.RevealBrush";
@@ -6825,7 +6825,7 @@ pub const RevealBackgroundBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RevealBackgroundBrush {
-        const _f = @This().IRevealBackgroundBrushFactoryCache.get();
+        const _f = try @This()._IRevealBackgroundBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.RevealBackgroundBrush";
@@ -6841,7 +6841,7 @@ pub const RevealBorderBrush = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RevealBorderBrush {
-        const _f = @This().IRevealBorderBrushFactoryCache.get();
+        const _f = try @This()._IRevealBorderBrushFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.RevealBorderBrush";
@@ -6890,15 +6890,15 @@ pub const RotateTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRotateTransform.IID)));
     }
     pub fn getCenterXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRotateTransformStaticsCache.get();
+        const _f = try @This()._IRotateTransformStaticsCache.get();
         return try _f.getCenterXProperty();
     }
     pub fn getCenterYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRotateTransformStaticsCache.get();
+        const _f = try @This()._IRotateTransformStaticsCache.get();
         return try _f.getCenterYProperty();
     }
     pub fn getAngleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRotateTransformStaticsCache.get();
+        const _f = try @This()._IRotateTransformStaticsCache.get();
         return try _f.getAngleProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.RotateTransform";
@@ -6951,19 +6951,19 @@ pub const ScaleTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScaleTransform.IID)));
     }
     pub fn getCenterXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScaleTransformStaticsCache.get();
+        const _f = try @This()._IScaleTransformStaticsCache.get();
         return try _f.getCenterXProperty();
     }
     pub fn getCenterYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScaleTransformStaticsCache.get();
+        const _f = try @This()._IScaleTransformStaticsCache.get();
         return try _f.getCenterYProperty();
     }
     pub fn getScaleXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScaleTransformStaticsCache.get();
+        const _f = try @This()._IScaleTransformStaticsCache.get();
         return try _f.getScaleXProperty();
     }
     pub fn getScaleYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScaleTransformStaticsCache.get();
+        const _f = try @This()._IScaleTransformStaticsCache.get();
         return try _f.getScaleYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.ScaleTransform";
@@ -7028,19 +7028,19 @@ pub const SkewTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISkewTransform.IID)));
     }
     pub fn getCenterXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISkewTransformStaticsCache.get();
+        const _f = try @This()._ISkewTransformStaticsCache.get();
         return try _f.getCenterXProperty();
     }
     pub fn getCenterYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISkewTransformStaticsCache.get();
+        const _f = try @This()._ISkewTransformStaticsCache.get();
         return try _f.getCenterYProperty();
     }
     pub fn getAngleXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISkewTransformStaticsCache.get();
+        const _f = try @This()._ISkewTransformStaticsCache.get();
         return try _f.getAngleXProperty();
     }
     pub fn getAngleYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISkewTransformStaticsCache.get();
+        const _f = try @This()._ISkewTransformStaticsCache.get();
         return try _f.getAngleYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.SkewTransform";
@@ -7069,11 +7069,11 @@ pub const SolidColorBrush = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISolidColorBrush.IID)));
     }
     pub fn CreateInstanceWithColor(color: Color) core.HResult!*SolidColorBrush {
-        const _f = @This().ISolidColorBrushFactoryCache.get();
+        const _f = try @This()._ISolidColorBrushFactoryCache.get();
         return try _f.CreateInstanceWithColor(color);
     }
     pub fn getColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISolidColorBrushStaticsCache.get();
+        const _f = try @This()._ISolidColorBrushStaticsCache.get();
         return try _f.getColorProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.SolidColorBrush";
@@ -7120,7 +7120,7 @@ pub const ThemeShadow = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ThemeShadow {
-        const _f = @This().IThemeShadowFactoryCache.get();
+        const _f = try @This()._IThemeShadowFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.ThemeShadow";
@@ -7164,15 +7164,15 @@ pub const TimelineMarker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITimelineMarker.IID)));
     }
     pub fn getTimeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITimelineMarkerStaticsCache.get();
+        const _f = try @This()._ITimelineMarkerStaticsCache.get();
         return try _f.getTimeProperty();
     }
     pub fn getTypeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITimelineMarkerStaticsCache.get();
+        const _f = try @This()._ITimelineMarkerStaticsCache.get();
         return try _f.getTypeProperty();
     }
     pub fn getTextProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITimelineMarkerStaticsCache.get();
+        const _f = try @This()._ITimelineMarkerStaticsCache.get();
         return try _f.getTextProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.TimelineMarker";
@@ -7400,7 +7400,7 @@ pub const TransformGroup = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITransformGroup.IID)));
     }
     pub fn getChildrenProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITransformGroupStaticsCache.get();
+        const _f = try @This()._ITransformGroupStaticsCache.get();
         return try _f.getChildrenProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.TransformGroup";
@@ -7437,11 +7437,11 @@ pub const TranslateTransform = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITranslateTransform.IID)));
     }
     pub fn getXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITranslateTransformStaticsCache.get();
+        const _f = try @This()._ITranslateTransformStaticsCache.get();
         return try _f.getXProperty();
     }
     pub fn getYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITranslateTransformStaticsCache.get();
+        const _f = try @This()._ITranslateTransformStaticsCache.get();
         return try _f.getYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.TranslateTransform";
@@ -7458,43 +7458,43 @@ pub const VisualTreeHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetOpenPopups(window: *Window) core.HResult!*IVectorView(Popup) {
-        const _f = @This().IVisualTreeHelperStatics2Cache.get();
+        const _f = try @This()._IVisualTreeHelperStatics2Cache.get();
         return try _f.GetOpenPopups(window);
     }
     pub fn FindElementsInHostCoordinates(intersectingPoint: Point, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.FindElementsInHostCoordinates(intersectingPoint, subtree);
     }
     pub fn FindElementsInHostCoordinatesWithIntersectingRect(intersectingRect: Rect, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.FindElementsInHostCoordinatesWithIntersectingRect(intersectingRect, subtree);
     }
     pub fn FindElementsInHostCoordinatesWithIncludeAllElements(intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.FindElementsInHostCoordinatesWithIncludeAllElements(intersectingPoint, subtree, includeAllElements);
     }
     pub fn FindElementsInHostCoordinatesWithIntersectingRectAndIncludeAllElements(intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.FindElementsInHostCoordinatesWithIntersectingRectAndIncludeAllElements(intersectingRect, subtree, includeAllElements);
     }
     pub fn GetChild(reference: *DependencyObject, childIndex: i32) core.HResult!*DependencyObject {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.GetChild(reference, childIndex);
     }
     pub fn GetChildrenCount(reference: *DependencyObject) core.HResult!i32 {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.GetChildrenCount(reference);
     }
     pub fn GetParent(reference: *DependencyObject) core.HResult!*DependencyObject {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.GetParent(reference);
     }
     pub fn DisconnectChildrenRecursive(element: *UIElement) core.HResult!void {
-        const _f = @This().IVisualTreeHelperStaticsCache.get();
+        const _f = try @This()._IVisualTreeHelperStaticsCache.get();
         return try _f.DisconnectChildrenRecursive(element);
     }
     pub fn GetOpenPopupsForXamlRoot(xamlRoot: *XamlRoot) core.HResult!*IVectorView(Popup) {
-        const _f = @This().IVisualTreeHelperStatics3Cache.get();
+        const _f = try @This()._IVisualTreeHelperStatics3Cache.get();
         return try _f.GetOpenPopupsForXamlRoot(xamlRoot);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.VisualTreeHelper";
@@ -7542,23 +7542,23 @@ pub const XamlLight = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddTargetElement(lightId: HSTRING, element: *UIElement) core.HResult!void {
-        const _f = @This().IXamlLightStaticsCache.get();
+        const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.AddTargetElement(lightId, element);
     }
     pub fn RemoveTargetElement(lightId: HSTRING, element: *UIElement) core.HResult!void {
-        const _f = @This().IXamlLightStaticsCache.get();
+        const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.RemoveTargetElement(lightId, element);
     }
     pub fn AddTargetBrush(lightId: HSTRING, brush: *Brush) core.HResult!void {
-        const _f = @This().IXamlLightStaticsCache.get();
+        const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.AddTargetBrush(lightId, brush);
     }
     pub fn RemoveTargetBrush(lightId: HSTRING, brush: *Brush) core.HResult!void {
-        const _f = @This().IXamlLightStaticsCache.get();
+        const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.RemoveTargetBrush(lightId, brush);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlLight {
-        const _f = @This().IXamlLightFactoryCache.get();
+        const _f = try @This()._IXamlLightFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.XamlLight";

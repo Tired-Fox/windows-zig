@@ -634,7 +634,7 @@ pub const LearningModelBindingPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromModel(model: *LearningModelPreview) core.HResult!*LearningModelBindingPreview {
-        const _f = @This().ILearningModelBindingPreviewFactoryCache.get();
+        const _f = try @This()._ILearningModelBindingPreviewFactoryCache.get();
         return try _f.CreateFromModel(model);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.Preview.LearningModelBindingPreview";
@@ -741,11 +741,11 @@ pub const LearningModelPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadModelFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModelPreview) {
-        const _f = @This().ILearningModelPreviewStaticsCache.get();
+        const _f = try @This()._ILearningModelPreviewStaticsCache.get();
         return try _f.LoadModelFromStorageFileAsync(modelFile);
     }
     pub fn LoadModelFromStreamAsync(modelStream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(LearningModelPreview) {
-        const _f = @This().ILearningModelPreviewStaticsCache.get();
+        const _f = try @This()._ILearningModelPreviewStaticsCache.get();
         return try _f.LoadModelFromStreamAsync(modelStream);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.Preview.LearningModelPreview";

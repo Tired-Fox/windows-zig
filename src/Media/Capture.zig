@@ -5,7 +5,7 @@ pub const CameraOptionsUI = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Show(mediaCapture: *MediaCapture) core.HResult!void {
-        const _f = @This().ICameraOptionsUIStaticsCache.get();
+        const _f = try @This()._ICameraOptionsUIStaticsCache.get();
         return try _f.Show(mediaCapture);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.CameraOptionsUI";
@@ -227,11 +227,11 @@ pub const AppCaptureManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSettings() core.HResult!*AppCaptureSettings {
-        const _f = @This().IAppCaptureManagerStaticsCache.get();
+        const _f = try @This()._IAppCaptureManagerStaticsCache.get();
         return try _f.GetCurrentSettings();
     }
     pub fn ApplySettings(appCaptureSettings: *AppCaptureSettings) core.HResult!void {
-        const _f = @This().IAppCaptureManagerStaticsCache.get();
+        const _f = try @This()._IAppCaptureManagerStaticsCache.get();
         return try _f.ApplySettings(appCaptureSettings);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppCaptureManager";
@@ -1907,7 +1907,7 @@ pub const GameBarServicesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameBarServicesManager {
-        const _f = @This().IGameBarServicesManagerStaticsCache.get();
+        const _f = try @This()._IGameBarServicesManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.GameBarServicesManager";
@@ -2265,11 +2265,11 @@ pub const AppCapture = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*AppCapture {
-        const _f = @This().IAppCaptureStaticsCache.get();
+        const _f = try @This()._IAppCaptureStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn SetAllowedAsync(allowed: bool) core.HResult!*IAsyncAction {
-        const _f = @This().IAppCaptureStatics2Cache.get();
+        const _f = try @This()._IAppCaptureStatics2Cache.get();
         return try _f.SetAllowedAsync(allowed);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppCapture";
@@ -5468,19 +5468,19 @@ pub const MediaCapture = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaCapture.IID)));
     }
     pub fn IsVideoProfileSupported(videoDeviceId: HSTRING) core.HResult!bool {
-        const _f = @This().IMediaCaptureStaticsCache.get();
+        const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.IsVideoProfileSupported(videoDeviceId);
     }
     pub fn FindAllVideoProfiles(videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
-        const _f = @This().IMediaCaptureStaticsCache.get();
+        const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindAllVideoProfiles(videoDeviceId);
     }
     pub fn FindConcurrentProfiles(videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
-        const _f = @This().IMediaCaptureStaticsCache.get();
+        const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindConcurrentProfiles(videoDeviceId);
     }
     pub fn FindKnownVideoProfiles(videoDeviceId: HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
-        const _f = @This().IMediaCaptureStaticsCache.get();
+        const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindKnownVideoProfiles(videoDeviceId, name);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCapture";
@@ -6741,19 +6741,19 @@ pub const AppBroadcastManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetGlobalSettings() core.HResult!*AppBroadcastGlobalSettings {
-        const _f = @This().IAppBroadcastManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastManagerStaticsCache.get();
         return try _f.GetGlobalSettings();
     }
     pub fn ApplyGlobalSettings(value: *AppBroadcastGlobalSettings) core.HResult!void {
-        const _f = @This().IAppBroadcastManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastManagerStaticsCache.get();
         return try _f.ApplyGlobalSettings(value);
     }
     pub fn GetProviderSettings() core.HResult!*AppBroadcastProviderSettings {
-        const _f = @This().IAppBroadcastManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastManagerStaticsCache.get();
         return try _f.GetProviderSettings();
     }
     pub fn ApplyProviderSettings(value: *AppBroadcastProviderSettings) core.HResult!void {
-        const _f = @This().IAppBroadcastManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastManagerStaticsCache.get();
         return try _f.ApplyProviderSettings(value);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppBroadcastManager";
@@ -6827,11 +6827,11 @@ pub const AppBroadcastPlugInManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AppBroadcastPlugInManager {
-        const _f = @This().IAppBroadcastPlugInManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastPlugInManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*AppBroadcastPlugInManager {
-        const _f = @This().IAppBroadcastPlugInManagerStaticsCache.get();
+        const _f = try @This()._IAppBroadcastPlugInManagerStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.AppBroadcastPlugInManager";

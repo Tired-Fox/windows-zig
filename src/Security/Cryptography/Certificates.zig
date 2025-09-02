@@ -119,7 +119,7 @@ pub const Certificate = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCertificate(certBlob: *IBuffer) core.HResult!*Certificate {
-        const _f = @This().ICertificateFactoryCache.get();
+        const _f = try @This()._ICertificateFactoryCache.get();
         return try _f.CreateCertificate(certBlob);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.Certificate";
@@ -161,27 +161,27 @@ pub const CertificateEnrollmentManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateRequestAsync(request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.CreateRequestAsync(request);
     }
     pub fn InstallCertificateAsync(certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
-        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.InstallCertificateAsync(certificate, installOption);
     }
     pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
     pub fn ImportPfxDataAsync(pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
-        const _f = @This().ICertificateEnrollmentManagerStatics3Cache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStatics3Cache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, pfxImportParameters);
     }
     pub fn getUserCertificateEnrollmentManager() core.HResult!*UserCertificateEnrollmentManager {
-        const _f = @This().ICertificateEnrollmentManagerStatics2Cache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStatics2Cache.get();
         return try _f.getUserCertificateEnrollmentManager();
     }
     pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().ICertificateEnrollmentManagerStatics2Cache.get();
+        const _f = try @This()._ICertificateEnrollmentManagerStatics2Cache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CertificateEnrollmentManager";
@@ -632,27 +632,27 @@ pub const CertificateStores = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetUserStoreByName(storeName: HSTRING) core.HResult!*UserCertificateStore {
-        const _f = @This().ICertificateStoresStatics2Cache.get();
+        const _f = try @This()._ICertificateStoresStatics2Cache.get();
         return try _f.GetUserStoreByName(storeName);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
-        const _f = @This().ICertificateStoresStaticsCache.get();
+        const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithQuery(query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
-        const _f = @This().ICertificateStoresStaticsCache.get();
+        const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.FindAllAsyncWithQuery(query);
     }
     pub fn getTrustedRootCertificationAuthorities() core.HResult!*CertificateStore {
-        const _f = @This().ICertificateStoresStaticsCache.get();
+        const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.getTrustedRootCertificationAuthorities();
     }
     pub fn getIntermediateCertificationAuthorities() core.HResult!*CertificateStore {
-        const _f = @This().ICertificateStoresStaticsCache.get();
+        const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.getIntermediateCertificationAuthorities();
     }
     pub fn GetStoreByName(storeName: HSTRING) core.HResult!*CertificateStore {
-        const _f = @This().ICertificateStoresStaticsCache.get();
+        const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.GetStoreByName(storeName);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CertificateStores";
@@ -794,11 +794,11 @@ pub const CmsAttachedSignature = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsAttachedSignature(inputBlob: *IBuffer) core.HResult!*CmsAttachedSignature {
-        const _f = @This().ICmsAttachedSignatureFactoryCache.get();
+        const _f = try @This()._ICmsAttachedSignatureFactoryCache.get();
         return try _f.CreateCmsAttachedSignature(inputBlob);
     }
     pub fn GenerateSignatureAsync(data: *IBuffer, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
-        const _f = @This().ICmsAttachedSignatureStaticsCache.get();
+        const _f = try @This()._ICmsAttachedSignatureStaticsCache.get();
         return try _f.GenerateSignatureAsync(data, signers, certificates);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CmsAttachedSignature";
@@ -827,11 +827,11 @@ pub const CmsDetachedSignature = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsDetachedSignature(inputBlob: *IBuffer) core.HResult!*CmsDetachedSignature {
-        const _f = @This().ICmsDetachedSignatureFactoryCache.get();
+        const _f = try @This()._ICmsDetachedSignatureFactoryCache.get();
         return try _f.CreateCmsDetachedSignature(inputBlob);
     }
     pub fn GenerateSignatureAsync(data: *IInputStream, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
-        const _f = @This().ICmsDetachedSignatureStaticsCache.get();
+        const _f = try @This()._ICmsDetachedSignatureStaticsCache.get();
         return try _f.GenerateSignatureAsync(data, signers, certificates);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CmsDetachedSignature";
@@ -2953,43 +2953,43 @@ pub const KeyAlgorithmNames = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getRsa() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getRsa();
     }
     pub fn getDsa() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getDsa();
     }
     pub fn getEcdh256() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh256();
     }
     pub fn getEcdh384() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh384();
     }
     pub fn getEcdh521() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh521();
     }
     pub fn getEcdsa256() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa256();
     }
     pub fn getEcdsa384() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa384();
     }
     pub fn getEcdsa521() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa521();
     }
     pub fn getEcdsa() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStatics2Cache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdsa();
     }
     pub fn getEcdh() core.HResult!HSTRING {
-        const _f = @This().IKeyAlgorithmNamesStatics2Cache.get();
+        const _f = try @This()._IKeyAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdh();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyAlgorithmNames";
@@ -3003,15 +3003,15 @@ pub const KeyAttestationHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DecryptTpmAttestationCredentialAsyncWithContainerName(credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IKeyAttestationHelperStatics2Cache.get();
+        const _f = try @This()._IKeyAttestationHelperStatics2Cache.get();
         return try _f.DecryptTpmAttestationCredentialAsync(credential, containerName);
     }
     pub fn DecryptTpmAttestationCredentialAsync(credential: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const _f = @This().IKeyAttestationHelperStaticsCache.get();
+        const _f = try @This()._IKeyAttestationHelperStaticsCache.get();
         return try _f.DecryptTpmAttestationCredentialAsync(credential);
     }
     pub fn GetTpmAttestationCredentialId(credential: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IKeyAttestationHelperStaticsCache.get();
+        const _f = try @This()._IKeyAttestationHelperStaticsCache.get();
         return try _f.GetTpmAttestationCredentialId(credential);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyAttestationHelper";
@@ -3036,19 +3036,19 @@ pub const KeyStorageProviderNames = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPassportKeyStorageProvider() core.HResult!HSTRING {
-        const _f = @This().IKeyStorageProviderNamesStatics2Cache.get();
+        const _f = try @This()._IKeyStorageProviderNamesStatics2Cache.get();
         return try _f.getPassportKeyStorageProvider();
     }
     pub fn getSoftwareKeyStorageProvider() core.HResult!HSTRING {
-        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getSoftwareKeyStorageProvider();
     }
     pub fn getSmartcardKeyStorageProvider() core.HResult!HSTRING {
-        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getSmartcardKeyStorageProvider();
     }
     pub fn getPlatformKeyStorageProvider() core.HResult!HSTRING {
-        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getPlatformKeyStorageProvider();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyStorageProviderNames";
@@ -3141,15 +3141,15 @@ pub const StandardCertificateStoreNames = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPersonal() core.HResult!HSTRING {
-        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getPersonal();
     }
     pub fn getTrustedRootCertificationAuthorities() core.HResult!HSTRING {
-        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getTrustedRootCertificationAuthorities();
     }
     pub fn getIntermediateCertificationAuthorities() core.HResult!HSTRING {
-        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getIntermediateCertificationAuthorities();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.StandardCertificateStoreNames";

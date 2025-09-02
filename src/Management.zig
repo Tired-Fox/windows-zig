@@ -333,19 +333,19 @@ pub const MdmSessionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSessionIds() core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.getSessionIds();
     }
     pub fn TryCreateSession() core.HResult!*MdmSession {
-        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.TryCreateSession();
     }
     pub fn DeleteSessionById(sessionId: HSTRING) core.HResult!void {
-        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.DeleteSessionById(sessionId);
     }
     pub fn GetSessionById(sessionId: HSTRING) core.HResult!*MdmSession {
-        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.GetSessionById(sessionId);
     }
     pub const NAME: []const u8 = "Windows.Management.MdmSessionManager";

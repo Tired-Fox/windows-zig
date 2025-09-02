@@ -1485,15 +1485,15 @@ pub const MediaFrameSourceGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(MediaFrameSourceGroup)) {
-        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
-        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.MediaFrameSourceGroup";

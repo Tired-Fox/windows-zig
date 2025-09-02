@@ -1,24 +1,49 @@
 const std = @import("std");
-const win32 = @import("win32");
-const winrt = @import("winrt");
+const windows = @import("windows");
+const win32 = windows.win32;
 
-const XmlDocument = winrt.data.xml.dom.XmlDocument;
-const XmlElement = winrt.data.xml.dom.XmlElement;
-const IXmlNode = winrt.data.xml.dom.IXmlNode;
-const IInspectable = winrt.IInspectable;
+const XmlDocument = windows.Data.Xml.Dom.XmlDocument;
+const XmlElement = windows.Data.Xml.Dom.XmlElement;
+const IXmlNode = windows.Data.Xml.Dom.IXmlNode;
+const IInspectable = windows.Foundation.IInspectable;
+const HSTRING = windows.HSTRING;
+const IUnknown = windows.IUnknown;
 
-const ToastNotificationManager = winrt.ui.notifications.ToastNotificationManager;
-const ToastNotification = winrt.ui.notifications.ToastNotification;
-const NotificationData = winrt.ui.notifications.NotificationData;
-const ToastDismissedEventArgs = winrt.ui.notifications.ToastDismissedEventArgs;
-const ToastActivatedEventArgs = winrt.ui.notifications.ToastActivatedEventArgs;
-const ToastFailedEventArgs = winrt.ui.notifications.ToastFailedEventArgs;
+const ToastNotificationManager = windows.UI.Notifications.ToastNotificationManager;
+const ToastNotification = windows.UI.Notifications.ToastNotification;
+const NotificationData = windows.UI.Notifications.NotificationData;
+
+const TypedEventHandler = windows.Foundation.TypedEventHandler;
+const ToastDismissedEventArgs = windows.UI.Notifications.ToastDismissedEventArgs;
+const ToastActivatedEventArgs = windows.UI.Notifications.ToastActivatedEventArgs;
+const ToastFailedEventArgs = windows.UI.Notifications.ToastFailedEventArgs;
 
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
+pub fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
+    var result: ?HSTRING = undefined;
+    if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != 0) {
+        return error.E_OUTOFMEMORY;
+    }
+    return result;
+}
+
+pub fn WindowsDeleteString(string: ?HSTRING) void {
+    _ = win32.system.win_rt.WindowsDeleteString(string);
+}
+
+pub fn WindowsGetString(string: ?HSTRING) ?[]const u16 {
+    var len: u32 = 0;
+    const buffer = win32.system.win_rt.WindowsGetStringRawBuffer(string, &len);
+    if (buffer) |buf| {
+        return buf[0..@as(usize, @intCast(len))];
+    }
+    return null;
+}
+
 fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.c) void {
     _ = sender;
-    std.debug.print("{any}\n", .{ args.reason() });
+    std.debug.print("{any}\n", .{args.getReason() catch return});
     wait.store(false, .release);
 }
 
@@ -27,16 +52,18 @@ fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IIns
 
     const event_args: *ToastActivatedEventArgs = @ptrCast(@alignCast(args));
 
-    const arguments = std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, event_args.arguments()) catch return;
+    const ea = event_args.getArguments() catch return;
+    const arguments = std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, WindowsGetString(ea).?) catch return;
     defer std.heap.smp_allocator.free(arguments);
 
-    std.debug.print("Activated: {s}\n", .{ arguments });
+    std.debug.print("Activated: {s}\n", .{arguments});
     wait.store(false, .release);
 }
 
 fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.c) void {
     _ = sender;
-    std.debug.print("[0x{X}] Toast Failure", .{ args.error_code() });
+    const result = args.getErrorCode() catch return;
+    std.debug.print("[0x{X}] Toast Failure", .{result.Value});
     wait.store(false, .release);
 }
 
@@ -44,7 +71,7 @@ fn relative_file_uri(allocator: std.mem.Allocator, path: []const u8) ![:0]const 
     const file_path = try std.fs.cwd().realpathAlloc(allocator, path);
     defer allocator.free(file_path);
 
-    const uriUtf8 = try std.fmt.allocPrint(allocator, "file:///{s}", .{ file_path });
+    const uriUtf8 = try std.fmt.allocPrint(allocator, "file:///{s}", .{file_path});
     defer allocator.free(uriUtf8);
 
     return try std.unicode.utf8ToUtf16LeAllocZ(allocator, uriUtf8);
@@ -54,170 +81,138 @@ var wait = std.atomic.Value(bool).init(true);
 
 pub fn main() !void {
     @setEvalBranchQuota(10_000);
-    const POWERSHELL: [:0]const u16 = L("{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe");
+    const powershell_app_id: [:0]const u16 = L("{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe");
+
+    const POWERSHELL = try WindowsCreateString(powershell_app_id);
+    defer WindowsDeleteString(POWERSHELL);
 
     const xml_document = try XmlDocument.init();
     defer xml_document.deinit();
 
     {
-        const toastElement = try xml_document.createElement(L("toast"));
-        defer toastElement.deinit();
-        _ = try xml_document.appendChild(@ptrCast(toastElement));
+        const toast_tag = try WindowsCreateString(L("toast"));
+        defer WindowsDeleteString(toast_tag);
+
+        const toastElement = try xml_document.CreateElement(toast_tag.?);
+        defer _ = IUnknown.Release(@ptrCast(toastElement));
+        _ = try xml_document.AppendChild(@ptrCast(toastElement));
 
         {
-            const visualElement = try xml_document.createElement(L("visual"));
-            defer visualElement.deinit();
-            _ = try toastElement.appendChild(@ptrCast(visualElement));
+            const visual_tag = try WindowsCreateString(L("visual"));
+            defer WindowsDeleteString(visual_tag);
+
+            const visualElement = try xml_document.CreateElement(visual_tag.?);
+            defer _ = IUnknown.Release(@ptrCast(visualElement));
+            _ = try toastElement.AppendChild(@ptrCast(visualElement));
 
             {
-                const bindingElement = try xml_document.createElement(L("binding"));
-                defer bindingElement.deinit();
-                _ = try visualElement.appendChild(@ptrCast(bindingElement));
+                const binding_tag = try WindowsCreateString(L("binding"));
+                defer WindowsDeleteString(binding_tag);
+
+                const bindingElement = try xml_document.CreateElement(binding_tag.?);
+                defer _ = IUnknown.Release(@ptrCast(bindingElement));
+                _ = try visualElement.AppendChild(@ptrCast(bindingElement));
 
                 {
-                    try bindingElement.setAttribute(L("template"), L("ToastGeneric"));
+                    {
+                        const aname = try WindowsCreateString(L("template"));
+                        defer WindowsDeleteString(aname);
+                        const avalue = try WindowsCreateString(L("ToastGeneric"));
+                        defer WindowsDeleteString(avalue);
 
-                    const logoElement = try xml_document.createElement(L("image"));
-                    defer logoElement.deinit();
-                    _ = try bindingElement.appendChild(@ptrCast(logoElement));
+                        try bindingElement.SetAttribute(aname.?, avalue.?);
+                    }
 
-                    const hero_uri = try relative_file_uri(std.heap.smp_allocator, "examples\\images\\hero.png");
-                    defer std.heap.smp_allocator.free(hero_uri);
+                    const text_tag = try WindowsCreateString(L("text"));
+                    defer WindowsDeleteString(text_tag);
 
-                    try logoElement.setAttribute(L("id"), L("0"));
-                    try logoElement.setAttribute(L("src"), hero_uri);
-                    try logoElement.setAttribute(L("alt"), L("Banner"));
-                    try logoElement.setAttribute(L("placement"), L("hero"));
+                    const titleElement = try xml_document.CreateElement(text_tag.?);
+                    defer _ = IUnknown.Release(@ptrCast(titleElement));
+                    _ = try bindingElement.AppendChild(@ptrCast(titleElement));
 
-                    const titleElement = try xml_document.createElement(L("text"));
-                    defer titleElement.deinit();
-                    _ = try bindingElement.appendChild(@ptrCast(titleElement));
+                    {
+                        const aname = try WindowsCreateString(L("id"));
+                        defer WindowsDeleteString(aname);
+                        const avalue = try WindowsCreateString(L("1"));
+                        defer WindowsDeleteString(avalue);
 
-                    try titleElement.setAttribute(L("id"), L("1"));
-                    try titleElement.setAttribute(L("hint-style"), L("title"));
+                        try titleElement.SetAttribute(aname.?, avalue.?);
+                    }
+                    {
+                        const aname = try WindowsCreateString(L("hint-style"));
+                        defer WindowsDeleteString(aname);
+                        const avalue = try WindowsCreateString(L("title"));
+                        defer WindowsDeleteString(avalue);
 
-                    const titleText = try xml_document.createTextNode(L("{NotificationTitle}"));
-                    defer titleText.deinit();
-                    _ = try titleElement.appendChild(@ptrCast(titleText));
+                        try titleElement.SetAttribute(aname.?, avalue.?);
+                    }
 
-                    const bodyElement = try xml_document.createElement(L("text"));
-                    defer bodyElement.deinit();
-                    _ = try bindingElement.appendChild(@ptrCast(bodyElement));
+                    const title_text = try WindowsCreateString(L("{NotificationTitle}"));
+                    defer WindowsDeleteString(title_text);
 
-                    try bodyElement.setAttribute(L("id"), L("2"));
-
-                    const bodyText = try xml_document.createTextNode(L("No Powershell needed!"));
-                    defer bodyText.deinit();
-                    _ = try bodyElement.appendChild(@ptrCast(bodyText));
-
-                    const heroElement = try xml_document.createElement(L("image"));
-                    defer heroElement.deinit();
-                    _ = try bindingElement.appendChild(@ptrCast(heroElement));
-
-                    const logo_uri = try relative_file_uri(std.heap.smp_allocator, "examples\\images\\logo.png");
-                    defer std.heap.smp_allocator.free(logo_uri);
-
-                    try heroElement.setAttribute(L("id"), L("3"));
-                    try heroElement.setAttribute(L("src"), logo_uri);
-                    try heroElement.setAttribute(L("alt"), L("Logo"));
-                    try heroElement.setAttribute(L("placement"), L("appLogoOverride"));
-                    try heroElement.setAttribute(L("hint-crop"), L("circle"));
+                    const titleText = try xml_document.CreateTextNode(title_text.?);
+                    defer _ = IUnknown.Release(@ptrCast(titleText));
+                    _ = try titleElement.AppendChild(@ptrCast(titleText));
                 }
-            }
-
-            const actionsElement = try xml_document.createElement(L("actions"));
-            defer actionsElement.deinit();
-            _ = try toastElement.appendChild(@ptrCast(actionsElement));
-
-            {
-                const buttonElement = try xml_document.createElement(L("action"));
-                defer buttonElement.deinit();
-                _ = try actionsElement.appendChild(@ptrCast(buttonElement));
-
-                try buttonElement.setAttribute(L("content"), L("Click Me"));
-                try buttonElement.setAttribute(L("arguments"), L("click:click-me"));
-                try buttonElement.setAttribute(L("activationType"), L("background"));
             }
         }
     }
 
     // Above is the same as just parsing the xml
     //
-    // const xml: [:0]const u16 = L(
-    //     \\<toast>
-    //     \\    <visual>
-    //     \\        <binding template="ToastGeneric">
-    //     \\          <image
-    //     \\            id="0"
-    //     \\            src="..."
-    //     \\            alt="Banner"
-    //     \\            placement="hero"
-    //     \\          />
-    //     \\          <text id="1" hint-style="title">Zig Windows Runtime</text>
-    //     \\          <text id="2">No Powershell needed!</text>
-    //     \\          <image
-    //     \\            id="3"
-    //     \\            src="..."
-    //     \\            alt="Logo"
-    //     \\            placement="appLogoOverride"
-    //     \\            hint-crop="circle"
-    //     \\          />
-    //     \\        </binding>
-    //     \\    </visual>
-    //     \\    <actions>
-    //     \\       <action
-    //     \\         content="Click Me"
-    //     \\         arguments="click:click-me"
-    //     \\         activationType="background"
-    //     \\       />
-    //     \\    </actions>
-    //     \\</toast>
-    // );
-    // try xml_document.loadXml(xml);
+    // <toast>
+    //     <visual>
+    //         <binding template="ToastGeneric">
+    //           <text id="1" hint-style="title">Zig Windows Runtime</text>
+    //         </binding>
+    //     </visual>
+    // </toast>
 
     {
-        const built_xml = try std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, try xml_document.getXml());
+        const xml = try xml_document.GetXml();
+        const built_xml = try std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, WindowsGetString(xml).?);
         defer std.heap.smp_allocator.free(built_xml);
         std.debug.print("[XML]\n{s}\n", .{built_xml});
     }
 
-    const notification = try ToastNotification.createToastNotification(xml_document);
+    const notification = try ToastNotification.CreateToastNotification(xml_document);
     defer notification.deinit();
 
     var data = try NotificationData.init();
     defer data.deinit();
-    notification.setData(data);
+    try notification.putData(data);
 
     {
-        const h_key = try winrt.WindowsCreateString(L("NotificationTitle"));
-        defer _ = winrt.WindowsDeleteString(h_key);
+        const h_key = try WindowsCreateString(L("NotificationTitle"));
+        defer _ = WindowsDeleteString(h_key);
 
-        const h_title = try winrt.WindowsCreateString(L("Zig Windows Runtime"));
-        defer _ = winrt.WindowsDeleteString(h_title);
+        const h_title = try WindowsCreateString(L("Zig Windows Runtime"));
+        defer _ = WindowsDeleteString(h_title);
 
-        _ = data.values().insert(h_key.?, h_title.?);
+        const values = try data.getValues();
+        _ = try values.Insert(h_key.?, h_title.?);
     }
 
-    var dhandler = ToastNotification.DismissedTypedEventHandler.init(dismissNotification);
-    const dhandle = try notification.onDismissed(&dhandler);
+    const dhandler = try TypedEventHandler(ToastNotification, ToastDismissedEventArgs).init(dismissNotification);
+    const dhandle = try notification.addDismissed(dhandler);
 
-    var ahandler = ToastNotification.ActivatedTypedEventHandler.init(activatedNotification);
-    const ahandle = try notification.onActivated(&ahandler);
+    const ahandler = try TypedEventHandler(ToastNotification, IInspectable).init(activatedNotification);
+    const ahandle = try notification.addActivated(ahandler);
 
-    var fhandler = ToastNotification.FailedTypedEventHandler.init(failedNotification);
-    const fhandle = try notification.onFailed(&fhandler);
+    const fhandler = try TypedEventHandler(ToastNotification, ToastFailedEventArgs).init(failedNotification);
+    const fhandle = try notification.addFailed(fhandler);
 
-    var notifier = try ToastNotificationManager.createToastNotifierWithId(POWERSHELL);
-    defer notifier.deinit();
+    var notifier = try ToastNotificationManager.CreateToastNotifierWithApplicationId(POWERSHELL.?);
+    defer _ = IUnknown.Release(@ptrCast(notifier));
 
-    try notifier.show(notification);
+    try notifier.Show(notification);
 
     while (wait.load(.acquire)) {
         std.Thread.sleep(std.time.ns_per_ms * 500);
     }
 
     std.debug.print("END\n", .{});
-    _ = notification.removeOnDismissed(dhandle);
-    _ = notification.removeOnActivated(ahandle);
-    _ = notification.removeOnFailed(fhandle);
+    try notification.removeDismissed(dhandle);
+    try notification.removeActivated(ahandle);
+    try notification.removeFailed(fhandle);
 }

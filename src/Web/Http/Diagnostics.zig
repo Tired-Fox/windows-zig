@@ -37,7 +37,7 @@ pub const HttpDiagnosticProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromProcessDiagnosticInfo(processDiagnosticInfo: *ProcessDiagnosticInfo) core.HResult!*HttpDiagnosticProvider {
-        const _f = @This().IHttpDiagnosticProviderStaticsCache.get();
+        const _f = try @This()._IHttpDiagnosticProviderStaticsCache.get();
         return try _f.CreateFromProcessDiagnosticInfo(processDiagnosticInfo);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Diagnostics.HttpDiagnosticProvider";

@@ -117,11 +117,11 @@ pub const FileOpenPicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileOpenPicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FileOpenPicker {
-        const _f = @This().IFileOpenPickerStatics2Cache.get();
+        const _f = try @This()._IFileOpenPickerStatics2Cache.get();
         return try _f.CreateForUser(user);
     }
     pub fn ResumePickSingleFileAsync() core.HResult!*IAsyncOperation(StorageFile) {
-        const _f = @This().IFileOpenPickerStaticsCache.get();
+        const _f = try @This()._IFileOpenPickerStaticsCache.get();
         return try _f.ResumePickSingleFileAsync();
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FileOpenPicker";
@@ -273,7 +273,7 @@ pub const FileSavePicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileSavePicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FileSavePicker {
-        const _f = @This().IFileSavePickerStaticsCache.get();
+        const _f = try @This()._IFileSavePickerStaticsCache.get();
         return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FileSavePicker";
@@ -352,7 +352,7 @@ pub const FolderPicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFolderPicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FolderPicker {
-        const _f = @This().IFolderPickerStaticsCache.get();
+        const _f = try @This()._IFolderPickerStaticsCache.get();
         return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FolderPicker";

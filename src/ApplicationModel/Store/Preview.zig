@@ -25,7 +25,7 @@ pub const DeliveryOptimizationSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSettings() core.HResult!*DeliveryOptimizationSettings {
-        const _f = @This().IDeliveryOptimizationSettingsStaticsCache.get();
+        const _f = try @This()._IDeliveryOptimizationSettingsStaticsCache.get();
         return try _f.GetCurrentSettings();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.DeliveryOptimizationSettings";
@@ -607,115 +607,115 @@ pub const StoreConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsPinToDesktopSupported() core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.IsPinToDesktopSupported();
     }
     pub fn IsPinToTaskbarSupported() core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.IsPinToTaskbarSupported();
     }
     pub fn IsPinToStartSupported() core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.IsPinToStartSupported();
     }
     pub fn PinToDesktop(appPackageFamilyName: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.PinToDesktop(appPackageFamilyName);
     }
     pub fn PinToDesktopForUser(user: *User, appPackageFamilyName: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.PinToDesktopForUser(user, appPackageFamilyName);
     }
     pub fn GetStoreWebAccountId() core.HResult!HSTRING {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetStoreWebAccountId();
     }
     pub fn GetStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetStoreWebAccountIdForUser(user);
     }
     pub fn SetEnterpriseStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.SetEnterpriseStoreWebAccountId(webAccountId);
     }
     pub fn SetEnterpriseStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.SetEnterpriseStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn GetEnterpriseStoreWebAccountId() core.HResult!HSTRING {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetEnterpriseStoreWebAccountId();
     }
     pub fn GetEnterpriseStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetEnterpriseStoreWebAccountIdForUser(user);
     }
     pub fn ShouldRestrictToEnterpriseStoreOnly() core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.ShouldRestrictToEnterpriseStoreOnly();
     }
     pub fn ShouldRestrictToEnterpriseStoreOnlyForUser(user: *User) core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.ShouldRestrictToEnterpriseStoreOnlyForUser(user);
     }
     pub fn HasStoreWebAccount() core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.HasStoreWebAccount();
     }
     pub fn HasStoreWebAccountForUser(user: *User) core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.HasStoreWebAccountForUser(user);
     }
     pub fn GetStoreLogDataAsync(options: StoreLogOptions) core.HResult!*IAsyncOperation(IRandomAccessStreamReference) {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.GetStoreLogDataAsync(options);
     }
     pub fn SetStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.SetStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn IsStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!bool {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.IsStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn GetPurchasePromptingPolicyForUser(user: *User) core.HResult!*IReference(u32) {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.GetPurchasePromptingPolicyForUser(user);
     }
     pub fn SetPurchasePromptingPolicyForUser(user: *User, value: *IReference(u32)) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.SetPurchasePromptingPolicyForUser(user, value);
     }
     pub fn getPurchasePromptingPolicy() core.HResult!*IReference(u32) {
-        const _f = @This().IStoreConfigurationStatics2Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics2Cache.get();
         return try _f.getPurchasePromptingPolicy();
     }
     pub fn putPurchasePromptingPolicy(value: *IReference(u32)) core.HResult!void {
-        const _f = @This().IStoreConfigurationStatics2Cache.get();
+        const _f = try @This()._IStoreConfigurationStatics2Cache.get();
         return try _f.putPurchasePromptingPolicy(value);
     }
     pub fn SetSystemConfiguration(catalogHardwareManufacturerId: HSTRING, catalogStoreContentModifierId: HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetSystemConfiguration(catalogHardwareManufacturerId, catalogStoreContentModifierId, systemConfigurationExpiration, catalogHardwareDescriptor);
     }
     pub fn SetMobileOperatorConfiguration(mobileOperatorId: HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetMobileOperatorConfiguration(mobileOperatorId, appDownloadLimitInMegabytes, updateDownloadLimitInMegabytes);
     }
     pub fn SetStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetStoreWebAccountId(webAccountId);
     }
     pub fn IsStoreWebAccountId(webAccountId: HSTRING) core.HResult!bool {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.IsStoreWebAccountId(webAccountId);
     }
     pub fn getHardwareManufacturerInfo() core.HResult!*StoreHardwareManufacturerInfo {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.getHardwareManufacturerInfo();
     }
     pub fn FilterUnsupportedSystemFeaturesAsync(systemFeatures: *IIterable(StoreSystemFeature)) core.HResult!*IAsyncOperation(IVectorView(StoreSystemFeature)) {
-        const _f = @This().IStoreConfigurationStaticsCache.get();
+        const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.FilterUnsupportedSystemFeaturesAsync(systemFeatures);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.StoreConfiguration";
@@ -760,11 +760,11 @@ pub const StorePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(productId: HSTRING, skuId: HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
-        const _f = @This().IStorePreviewCache.get();
+        const _f = try @This()._IStorePreviewCache.get();
         return try _f.RequestProductPurchaseByProductIdAndSkuIdAsync(productId, skuId);
     }
     pub fn LoadAddOnProductInfosAsync() core.HResult!*IAsyncOperation(IVectorView(StorePreviewProductInfo)) {
-        const _f = @This().IStorePreviewCache.get();
+        const _f = try @This()._IStorePreviewCache.get();
         return try _f.LoadAddOnProductInfosAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.StorePreview";
@@ -904,11 +904,11 @@ pub const WebAuthenticationCoreManagerHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestTokenWithUIElementHostingAsync(request: *WebTokenRequest, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerHelperCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerHelperCache.get();
         return try _f.RequestTokenWithUIElementHostingAsync(request, uiElement);
     }
     pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const _f = @This().IWebAuthenticationCoreManagerHelperCache.get();
+        const _f = try @This()._IWebAuthenticationCoreManagerHelperCache.get();
         return try _f.RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(request, webAccount, uiElement);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.WebAuthenticationCoreManagerHelper";

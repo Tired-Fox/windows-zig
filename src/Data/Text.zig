@@ -867,7 +867,7 @@ pub const SelectableWordsSegmenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithLanguage(language: HSTRING) core.HResult!*SelectableWordsSegmenter {
-        const _f = @This().ISelectableWordsSegmenterFactoryCache.get();
+        const _f = try @This()._ISelectableWordsSegmenterFactoryCache.get();
         return try _f.CreateWithLanguage(language);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.SelectableWordsSegmenter";
@@ -891,11 +891,11 @@ pub const SemanticTextQuery = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(aqsFilter: HSTRING) core.HResult!*SemanticTextQuery {
-        const _f = @This().ISemanticTextQueryFactoryCache.get();
+        const _f = try @This()._ISemanticTextQueryFactoryCache.get();
         return try _f.Create(aqsFilter);
     }
     pub fn CreateWithLanguage(aqsFilter: HSTRING, filterLanguage: HSTRING) core.HResult!*SemanticTextQuery {
-        const _f = @This().ISemanticTextQueryFactoryCache.get();
+        const _f = try @This()._ISemanticTextQueryFactoryCache.get();
         return try _f.CreateWithLanguage(aqsFilter, filterLanguage);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.SemanticTextQuery";
@@ -927,7 +927,7 @@ pub const TextConversionGenerator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(languageTag: HSTRING) core.HResult!*TextConversionGenerator {
-        const _f = @This().ITextConversionGeneratorFactoryCache.get();
+        const _f = try @This()._ITextConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.TextConversionGenerator";
@@ -999,7 +999,7 @@ pub const TextPredictionGenerator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(languageTag: HSTRING) core.HResult!*TextPredictionGenerator {
-        const _f = @This().ITextPredictionGeneratorFactoryCache.get();
+        const _f = try @This()._ITextPredictionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.TextPredictionGenerator";
@@ -1038,7 +1038,7 @@ pub const TextReverseConversionGenerator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(languageTag: HSTRING) core.HResult!*TextReverseConversionGenerator {
-        const _f = @This().ITextReverseConversionGeneratorFactoryCache.get();
+        const _f = try @This()._ITextReverseConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.TextReverseConversionGenerator";
@@ -1058,71 +1058,71 @@ pub const UnicodeCharacters = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCodepointFromSurrogatePair(highSurrogate: u32, lowSurrogate: u32) core.HResult!u32 {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.GetCodepointFromSurrogatePair(highSurrogate, lowSurrogate);
     }
     pub fn GetSurrogatePairFromCodepoint(codepoint: u32, highSurrogate: u16, lowSurrogate: u16) core.HResult!void {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.GetSurrogatePairFromCodepoint(codepoint, highSurrogate, lowSurrogate);
     }
     pub fn IsHighSurrogate(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsHighSurrogate(codepoint);
     }
     pub fn IsLowSurrogate(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsLowSurrogate(codepoint);
     }
     pub fn IsSupplementary(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsSupplementary(codepoint);
     }
     pub fn IsNoncharacter(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsNoncharacter(codepoint);
     }
     pub fn IsWhitespace(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsWhitespace(codepoint);
     }
     pub fn IsAlphabetic(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsAlphabetic(codepoint);
     }
     pub fn IsCased(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsCased(codepoint);
     }
     pub fn IsUppercase(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsUppercase(codepoint);
     }
     pub fn IsLowercase(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsLowercase(codepoint);
     }
     pub fn IsIdStart(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsIdStart(codepoint);
     }
     pub fn IsIdContinue(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsIdContinue(codepoint);
     }
     pub fn IsGraphemeBase(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsGraphemeBase(codepoint);
     }
     pub fn IsGraphemeExtend(codepoint: u32) core.HResult!bool {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.IsGraphemeExtend(codepoint);
     }
     pub fn GetNumericType(codepoint: u32) core.HResult!UnicodeNumericType {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.GetNumericType(codepoint);
     }
     pub fn GetGeneralCategory(codepoint: u32) core.HResult!UnicodeGeneralCategory {
-        const _f = @This().IUnicodeCharactersStaticsCache.get();
+        const _f = try @This()._IUnicodeCharactersStaticsCache.get();
         return try _f.GetGeneralCategory(codepoint);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.UnicodeCharacters";
@@ -1296,7 +1296,7 @@ pub const WordsSegmenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithLanguage(language: HSTRING) core.HResult!*WordsSegmenter {
-        const _f = @This().IWordsSegmenterFactoryCache.get();
+        const _f = try @This()._IWordsSegmenterFactoryCache.get();
         return try _f.CreateWithLanguage(language);
     }
     pub const NAME: []const u8 = "Windows.Data.Text.WordsSegmenter";

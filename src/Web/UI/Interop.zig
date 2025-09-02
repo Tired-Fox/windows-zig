@@ -781,7 +781,7 @@ pub const WebViewControlProcess = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWebViewControlProcess.IID)));
     }
     pub fn CreateWithOptions(processOptions: *WebViewControlProcessOptions) core.HResult!*WebViewControlProcess {
-        const _f = @This().IWebViewControlProcessFactoryCache.get();
+        const _f = try @This()._IWebViewControlProcessFactoryCache.get();
         return try _f.CreateWithOptions(processOptions);
     }
     pub const NAME: []const u8 = "Windows.Web.UI.Interop.WebViewControlProcess";

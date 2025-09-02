@@ -309,19 +309,19 @@ pub const PdfDocument = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(PdfDocument) {
-        const _f = @This().IPdfDocumentStaticsCache.get();
+        const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromFileAsync(file);
     }
     pub fn LoadFromFileAsyncWithPassword(file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
-        const _f = @This().IPdfDocumentStaticsCache.get();
+        const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromFileAsyncWithPassword(file, password);
     }
     pub fn LoadFromStreamAsync(inputStream: *IRandomAccessStream) core.HResult!*IAsyncOperation(PdfDocument) {
-        const _f = @This().IPdfDocumentStaticsCache.get();
+        const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromStreamAsync(inputStream);
     }
     pub fn LoadFromStreamAsyncWithPassword(inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
-        const _f = @This().IPdfDocumentStaticsCache.get();
+        const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromStreamAsyncWithPassword(inputStream, password);
     }
     pub const NAME: []const u8 = "Windows.Data.Pdf.PdfDocument";

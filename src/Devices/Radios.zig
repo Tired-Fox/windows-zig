@@ -129,19 +129,19 @@ pub const Radio = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRadiosAsync() core.HResult!*IAsyncOperation(IVectorView(Radio)) {
-        const _f = @This().IRadioStaticsCache.get();
+        const _f = try @This()._IRadioStaticsCache.get();
         return try _f.GetRadiosAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IRadioStaticsCache.get();
+        const _f = try @This()._IRadioStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Radio) {
-        const _f = @This().IRadioStaticsCache.get();
+        const _f = try @This()._IRadioStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(RadioAccessStatus) {
-        const _f = @This().IRadioStaticsCache.get();
+        const _f = try @This()._IRadioStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Radios.Radio";

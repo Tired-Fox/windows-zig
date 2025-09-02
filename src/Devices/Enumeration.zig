@@ -47,15 +47,15 @@ pub const DeviceAccessInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromId(deviceId: HSTRING) core.HResult!*DeviceAccessInformation {
-        const _f = @This().IDeviceAccessInformationStaticsCache.get();
+        const _f = try @This()._IDeviceAccessInformationStaticsCache.get();
         return try _f.CreateFromId(deviceId);
     }
     pub fn CreateFromDeviceClassId(deviceClassId: *Guid) core.HResult!*DeviceAccessInformation {
-        const _f = @This().IDeviceAccessInformationStaticsCache.get();
+        const _f = try @This()._IDeviceAccessInformationStaticsCache.get();
         return try _f.CreateFromDeviceClassId(deviceClassId);
     }
     pub fn CreateFromDeviceClass(deviceClass: DeviceClass) core.HResult!*DeviceAccessInformation {
-        const _f = @This().IDeviceAccessInformationStaticsCache.get();
+        const _f = try @This()._IDeviceAccessInformationStaticsCache.get();
         return try _f.CreateFromDeviceClass(deviceClass);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceAccessInformation";
@@ -158,71 +158,71 @@ pub const DeviceInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateFromIdAsync(deviceId);
     }
     pub fn CreateFromIdAsyncWithAdditionalProperties(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateFromIdAsyncWithAdditionalProperties(deviceId, additionalProperties);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithDeviceClass(deviceClass: DeviceClass) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithDeviceClass(deviceClass);
     }
     pub fn FindAllAsyncWithAqsFilter(aqsFilter: HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithAqsFilter(aqsFilter);
     }
     pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithAqsFilterAndAdditionalProperties(aqsFilter, additionalProperties);
     }
     pub fn CreateWatcher() core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub fn CreateWatcherWithDeviceClass(deviceClass: DeviceClass) core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithDeviceClass(deviceClass);
     }
     pub fn CreateWatcherWithAqsFilter(aqsFilter: HSTRING) core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithAqsFilter(aqsFilter);
     }
     pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStaticsCache.get();
+        const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithAqsFilterAndAdditionalProperties(aqsFilter, additionalProperties);
     }
     pub fn GetAqsFilterFromDeviceClass(deviceClass: DeviceClass) core.HResult!HSTRING {
-        const _f = @This().IDeviceInformationStatics2Cache.get();
+        const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.GetAqsFilterFromDeviceClass(deviceClass);
     }
     pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKind(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
-        const _f = @This().IDeviceInformationStatics2Cache.get();
+        const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.CreateFromIdAsync(deviceId, additionalProperties, kind);
     }
     pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStatics2Cache.get();
+        const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.FindAllAsync(aqsFilter, additionalProperties, kind);
     }
     pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStatics2Cache.get();
+        const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.CreateWatcher(aqsFilter, additionalProperties, kind);
     }
     pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKindAndSettings(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
-        const _f = @This().IDeviceInformationStatics3Cache.get();
+        const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.CreateFromIdAsync(deviceId, additionalProperties, kind, settings);
     }
     pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
-        const _f = @This().IDeviceInformationStatics3Cache.get();
+        const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.FindAllAsync(aqsFilter, additionalProperties, kind, settings);
     }
     pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
-        const _f = @This().IDeviceInformationStatics3Cache.get();
+        const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.CreateWatcher(aqsFilter, additionalProperties, kind, settings);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceInformation";
@@ -356,11 +356,11 @@ pub const DeviceInformationPairing = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryRegisterForAllInboundPairingRequests(pairingKindsSupported: DevicePairingKinds) core.HResult!bool {
-        const _f = @This().IDeviceInformationPairingStaticsCache.get();
+        const _f = try @This()._IDeviceInformationPairingStaticsCache.get();
         return try _f.TryRegisterForAllInboundPairingRequests(pairingKindsSupported);
     }
     pub fn TryRegisterForAllInboundPairingRequestsWithProtectionLevel(pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!bool {
-        const _f = @This().IDeviceInformationPairingStatics2Cache.get();
+        const _f = try @This()._IDeviceInformationPairingStatics2Cache.get();
         return try _f.TryRegisterForAllInboundPairingRequestsWithProtectionLevel(pairingKindsSupported, minProtectionLevel);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceInformationPairing";

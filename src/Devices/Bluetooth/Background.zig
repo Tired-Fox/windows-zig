@@ -104,7 +104,7 @@ pub const GattServiceProviderConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
-        const _f = @This().IGattServiceProviderConnectionStaticsCache.get();
+        const _f = try @This()._IGattServiceProviderConnectionStaticsCache.get();
         return try _f.getAllServices();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Background.GattServiceProviderConnection";

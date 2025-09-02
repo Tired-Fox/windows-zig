@@ -256,23 +256,23 @@ pub const PhoneCallOriginManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestSetAsActiveCallOriginAppAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IPhoneCallOriginManagerStatics2Cache.get();
+        const _f = try @This()._IPhoneCallOriginManagerStatics2Cache.get();
         return try _f.RequestSetAsActiveCallOriginAppAsync();
     }
     pub fn getIsCurrentAppActiveCallOriginApp() core.HResult!bool {
-        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallOriginManagerStaticsCache.get();
         return try _f.getIsCurrentAppActiveCallOriginApp();
     }
     pub fn ShowPhoneCallOriginSettingsUI() core.HResult!void {
-        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallOriginManagerStaticsCache.get();
         return try _f.ShowPhoneCallOriginSettingsUI();
     }
     pub fn SetCallOrigin(requestId: *Guid, callOrigin: *PhoneCallOrigin) core.HResult!void {
-        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        const _f = try @This()._IPhoneCallOriginManagerStaticsCache.get();
         return try _f.SetCallOrigin(requestId, callOrigin);
     }
     pub fn getIsSupported() core.HResult!bool {
-        const _f = @This().IPhoneCallOriginManagerStatics3Cache.get();
+        const _f = try @This()._IPhoneCallOriginManagerStatics3Cache.get();
         return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.Provider.PhoneCallOriginManager";

@@ -25,43 +25,43 @@ pub const ApiInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsTypePresent(typeName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsTypePresent(typeName);
     }
     pub fn IsMethodPresent(typeName: HSTRING, methodName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsMethodPresent(typeName, methodName);
     }
     pub fn IsMethodPresentWithInputParameterCount(typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsMethodPresentWithInputParameterCount(typeName, methodName, inputParameterCount);
     }
     pub fn IsEventPresent(typeName: HSTRING, eventName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsEventPresent(typeName, eventName);
     }
     pub fn IsPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsPropertyPresent(typeName, propertyName);
     }
     pub fn IsReadOnlyPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsReadOnlyPropertyPresent(typeName, propertyName);
     }
     pub fn IsWriteablePropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsWriteablePropertyPresent(typeName, propertyName);
     }
     pub fn IsEnumNamedValuePresent(enumTypeName: HSTRING, valueName: HSTRING) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsEnumNamedValuePresent(enumTypeName, valueName);
     }
     pub fn IsApiContractPresent(contractName: HSTRING, majorVersion: u16) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsApiContractPresent(contractName, majorVersion);
     }
     pub fn IsApiContractPresentWithMinorVersion(contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
-        const _f = @This().IApiInformationStaticsCache.get();
+        const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsApiContractPresentWithMinorVersion(contractName, majorVersion, minorVersion);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Metadata.ApiInformation";

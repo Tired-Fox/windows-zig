@@ -244,7 +244,7 @@ pub const LanguageFontGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLanguageFontGroup(languageTag: HSTRING) core.HResult!*LanguageFontGroup {
-        const _f = @This().ILanguageFontGroupFactoryCache.get();
+        const _f = try @This()._ILanguageFontGroupFactoryCache.get();
         return try _f.CreateLanguageFontGroup(languageTag);
     }
     pub const NAME: []const u8 = "Windows.Globalization.Fonts.LanguageFontGroup";

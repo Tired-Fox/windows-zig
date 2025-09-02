@@ -121,15 +121,15 @@ pub const AppWindow = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateAsync() core.HResult!*IAsyncOperation(AppWindow) {
-        const _f = @This().IAppWindowStaticsCache.get();
+        const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.TryCreateAsync();
     }
     pub fn ClearAllPersistedState() core.HResult!void {
-        const _f = @This().IAppWindowStaticsCache.get();
+        const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.ClearAllPersistedState();
     }
     pub fn ClearPersistedState(key: HSTRING) core.HResult!void {
-        const _f = @This().IAppWindowStaticsCache.get();
+        const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.ClearPersistedState(key);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.AppWindow";
@@ -1608,7 +1608,7 @@ pub const WindowServices = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllTopLevelWindowIds() core.HResult!*IVectorView(WindowId) {
-        const _f = @This().IWindowServicesStaticsCache.get();
+        const _f = try @This()._IWindowServicesStaticsCache.get();
         return try _f.FindAllTopLevelWindowIds();
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowServices";
@@ -1641,11 +1641,11 @@ pub const WindowingEnvironment = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAll() core.HResult!*IVectorView(WindowingEnvironment) {
-        const _f = @This().IWindowingEnvironmentStaticsCache.get();
+        const _f = try @This()._IWindowingEnvironmentStaticsCache.get();
         return try _f.FindAll();
     }
     pub fn FindAllWithKind(kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
-        const _f = @This().IWindowingEnvironmentStaticsCache.get();
+        const _f = try @This()._IWindowingEnvironmentStaticsCache.get();
         return try _f.FindAllWithKind(kind);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowingEnvironment";

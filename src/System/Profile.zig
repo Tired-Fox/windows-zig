@@ -205,91 +205,91 @@ pub const KnownRetailInfoProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getRetailAccessCode() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getRetailAccessCode();
     }
     pub fn getManufacturerName() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getManufacturerName();
     }
     pub fn getModelName() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getModelName();
     }
     pub fn getDisplayModelName() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getDisplayModelName();
     }
     pub fn getPrice() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getPrice();
     }
     pub fn getIsFeatured() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getIsFeatured();
     }
     pub fn getFormFactor() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getFormFactor();
     }
     pub fn getScreenSize() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getScreenSize();
     }
     pub fn getWeight() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getWeight();
     }
     pub fn getDisplayDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getDisplayDescription();
     }
     pub fn getBatteryLifeDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getBatteryLifeDescription();
     }
     pub fn getProcessorDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getProcessorDescription();
     }
     pub fn getMemory() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getMemory();
     }
     pub fn getStorageDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getStorageDescription();
     }
     pub fn getGraphicsDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getGraphicsDescription();
     }
     pub fn getFrontCameraDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getFrontCameraDescription();
     }
     pub fn getRearCameraDescription() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getRearCameraDescription();
     }
     pub fn getHasNfc() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasNfc();
     }
     pub fn getHasSdSlot() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasSdSlot();
     }
     pub fn getHasOpticalDrive() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasOpticalDrive();
     }
     pub fn getIsOfficeInstalled() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getIsOfficeInstalled();
     }
     pub fn getWindowsEdition() core.HResult!HSTRING {
-        const _f = @This().IKnownRetailInfoPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getWindowsEdition();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.KnownRetailInfoProperties";
@@ -302,11 +302,11 @@ pub const RetailInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsDemoModeEnabled() core.HResult!bool {
-        const _f = @This().IRetailInfoStaticsCache.get();
+        const _f = try @This()._IRetailInfoStaticsCache.get();
         return try _f.getIsDemoModeEnabled();
     }
     pub fn getProperties() core.HResult!*IMapView(HSTRING,IInspectable) {
-        const _f = @This().IRetailInfoStaticsCache.get();
+        const _f = try @This()._IRetailInfoStaticsCache.get();
         return try _f.getProperties();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.RetailInfo";
@@ -319,7 +319,7 @@ pub const HardwareIdentification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPackageSpecificToken(nonce: *IBuffer) core.HResult!*HardwareToken {
-        const _f = @This().IHardwareIdentificationStaticsCache.get();
+        const _f = try @This()._IHardwareIdentificationStaticsCache.get();
         return try _f.GetPackageSpecificToken(nonce);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.HardwareIdentification";
@@ -458,11 +458,11 @@ pub const SharedModeSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getShouldAvoidLocalStorage() core.HResult!bool {
-        const _f = @This().ISharedModeSettingsStatics2Cache.get();
+        const _f = try @This()._ISharedModeSettingsStatics2Cache.get();
         return try _f.getShouldAvoidLocalStorage();
     }
     pub fn getIsEnabled() core.HResult!bool {
-        const _f = @This().ISharedModeSettingsStaticsCache.get();
+        const _f = try @This()._ISharedModeSettingsStaticsCache.get();
         return try _f.getIsEnabled();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SharedModeSettings";
@@ -499,7 +499,7 @@ pub const PlatformAutomaticAppSignInManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPolicy() core.HResult!PlatformAutomaticAppSignInPolicy {
-        const _f = @This().IPlatformAutomaticAppSignInManagerStaticsCache.get();
+        const _f = try @This()._IPlatformAutomaticAppSignInManagerStaticsCache.get();
         return try _f.getPolicy();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.PlatformAutomaticAppSignInManager";
@@ -517,15 +517,15 @@ pub const AnalyticsInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetSystemPropertiesAsync(attributeNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,HSTRING)) {
-        const _f = @This().IAnalyticsInfoStatics2Cache.get();
+        const _f = try @This()._IAnalyticsInfoStatics2Cache.get();
         return try _f.GetSystemPropertiesAsync(attributeNames);
     }
     pub fn getVersionInfo() core.HResult!*AnalyticsVersionInfo {
-        const _f = @This().IAnalyticsInfoStaticsCache.get();
+        const _f = try @This()._IAnalyticsInfoStaticsCache.get();
         return try _f.getVersionInfo();
     }
     pub fn getDeviceForm() core.HResult!HSTRING {
-        const _f = @This().IAnalyticsInfoStaticsCache.get();
+        const _f = try @This()._IAnalyticsInfoStaticsCache.get();
         return try _f.getDeviceForm();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.AnalyticsInfo";
@@ -561,7 +561,7 @@ pub const AppApplicability = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetUnsupportedAppRequirements(capabilities: *IIterable(HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
-        const _f = @This().IAppApplicabilityStaticsCache.get();
+        const _f = try @This()._IAppApplicabilityStaticsCache.get();
         return try _f.GetUnsupportedAppRequirements(capabilities);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.AppApplicability";
@@ -574,7 +574,7 @@ pub const EducationSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsEducationEnvironment() core.HResult!bool {
-        const _f = @This().IEducationSettingsStaticsCache.get();
+        const _f = try @This()._IEducationSettingsStaticsCache.get();
         return try _f.getIsEducationEnvironment();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.EducationSettings";
@@ -1003,19 +1003,19 @@ pub const PlatformDiagnosticsAndUsageDataSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCollectionLevel() core.HResult!PlatformDataCollectionLevel {
-        const _f = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try _f.getCollectionLevel();
     }
     pub fn addCollectionLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try _f.addCollectionLevelChanged(handler);
     }
     pub fn removeCollectionLevelChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try _f.removeCollectionLevelChanged(token);
     }
     pub fn CanCollectDiagnostics(level: PlatformDataCollectionLevel) core.HResult!bool {
-        const _f = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try _f.CanCollectDiagnostics(level);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.PlatformDiagnosticsAndUsageDataSettings";
@@ -1028,15 +1028,15 @@ pub const SmartAppControlPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsEnabled() core.HResult!bool {
-        const _f = @This().ISmartAppControlPolicyStaticsCache.get();
+        const _f = try @This()._ISmartAppControlPolicyStaticsCache.get();
         return try _f.getIsEnabled();
     }
     pub fn addChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ISmartAppControlPolicyStaticsCache.get();
+        const _f = try @This()._ISmartAppControlPolicyStaticsCache.get();
         return try _f.addChanged(handler);
     }
     pub fn removeChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ISmartAppControlPolicyStaticsCache.get();
+        const _f = try @This()._ISmartAppControlPolicyStaticsCache.get();
         return try _f.removeChanged(token);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SmartAppControlPolicy";
@@ -1049,11 +1049,11 @@ pub const SystemIdentification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetSystemIdForPublisher() core.HResult!*SystemIdentificationInfo {
-        const _f = @This().ISystemIdentificationStaticsCache.get();
+        const _f = try @This()._ISystemIdentificationStaticsCache.get();
         return try _f.GetSystemIdForPublisher();
     }
     pub fn GetSystemIdForUser(user: *User) core.HResult!*SystemIdentificationInfo {
-        const _f = @This().ISystemIdentificationStaticsCache.get();
+        const _f = try @This()._ISystemIdentificationStaticsCache.get();
         return try _f.GetSystemIdForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemIdentification";
@@ -1093,15 +1093,15 @@ pub const SystemSetupInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getOutOfBoxExperienceState() core.HResult!SystemOutOfBoxExperienceState {
-        const _f = @This().ISystemSetupInfoStaticsCache.get();
+        const _f = try @This()._ISystemSetupInfoStaticsCache.get();
         return try _f.getOutOfBoxExperienceState();
     }
     pub fn addOutOfBoxExperienceStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ISystemSetupInfoStaticsCache.get();
+        const _f = try @This()._ISystemSetupInfoStaticsCache.get();
         return try _f.addOutOfBoxExperienceStateChanged(handler);
     }
     pub fn removeOutOfBoxExperienceStateChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ISystemSetupInfoStaticsCache.get();
+        const _f = try @This()._ISystemSetupInfoStaticsCache.get();
         return try _f.removeOutOfBoxExperienceStateChanged(token);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemSetupInfo";
@@ -1134,27 +1134,27 @@ pub const WindowsIntegrityPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsEnabled() core.HResult!bool {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.getIsEnabled();
     }
     pub fn getIsEnabledForTrial() core.HResult!bool {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.getIsEnabledForTrial();
     }
     pub fn getCanDisable() core.HResult!bool {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.getCanDisable();
     }
     pub fn getIsDisableSupported() core.HResult!bool {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.getIsDisableSupported();
     }
     pub fn addPolicyChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.addPolicyChanged(handler);
     }
     pub fn removePolicyChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWindowsIntegrityPolicyStaticsCache.get();
+        const _f = try @This()._IWindowsIntegrityPolicyStaticsCache.get();
         return try _f.removePolicyChanged(token);
     }
     pub const NAME: []const u8 = "Windows.System.Profile.WindowsIntegrityPolicy";

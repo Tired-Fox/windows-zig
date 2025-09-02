@@ -1621,7 +1621,7 @@ pub const TextInputService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentThread() core.HResult!*TextInputService {
-        const _f = @This().ITextInputServiceStaticsCache.get();
+        const _f = try @This()._ITextInputServiceStaticsCache.get();
         return try _f.GetForCurrentThread();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Preview.Text.TextInputService";

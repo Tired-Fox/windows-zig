@@ -867,19 +867,19 @@ pub const SmsDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromNetworkAccountIdAsync(networkAccountId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = @This().ISmsDeviceStatics2Cache.get();
+        const _f = try @This()._ISmsDeviceStatics2Cache.get();
         return try _f.FromNetworkAccountIdAsync(networkAccountId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ISmsDeviceStaticsCache.get();
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = @This().ISmsDeviceStaticsCache.get();
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SmsDevice) {
-        const _f = @This().ISmsDeviceStaticsCache.get();
+        const _f = try @This()._ISmsDeviceStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice";
@@ -1217,11 +1217,11 @@ pub const SmsTextMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage.IID)));
     }
     pub fn FromBinaryMessage(binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
-        const _f = @This().ISmsTextMessageStaticsCache.get();
+        const _f = try @This()._ISmsTextMessageStaticsCache.get();
         return try _f.FromBinaryMessage(binaryMessage);
     }
     pub fn FromBinaryData(format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
-        const _f = @This().ISmsTextMessageStaticsCache.get();
+        const _f = try @This()._ISmsTextMessageStaticsCache.get();
         return try _f.FromBinaryData(format, value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsTextMessage";
@@ -2631,19 +2631,19 @@ pub const SmsDevice2 = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().ISmsDevice2StaticsCache.get();
+        const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*SmsDevice2 {
-        const _f = @This().ISmsDevice2StaticsCache.get();
+        const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.FromId(deviceId);
     }
     pub fn GetDefault() core.HResult!*SmsDevice2 {
-        const _f = @This().ISmsDevice2StaticsCache.get();
+        const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn FromParentId(parentDeviceId: HSTRING) core.HResult!*SmsDevice2 {
-        const _f = @This().ISmsDevice2StaticsCache.get();
+        const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.FromParentId(parentDeviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice2";
@@ -2751,7 +2751,7 @@ pub const SmsFilterRule = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFilterRule(messageType: SmsMessageType) core.HResult!*SmsFilterRule {
-        const _f = @This().ISmsFilterRuleFactoryCache.get();
+        const _f = try @This()._ISmsFilterRuleFactoryCache.get();
         return try _f.CreateFilterRule(messageType);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsFilterRule";
@@ -2775,7 +2775,7 @@ pub const SmsFilterRules = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFilterRules(actionType: SmsFilterActionType) core.HResult!*SmsFilterRules {
-        const _f = @This().ISmsFilterRulesFactoryCache.get();
+        const _f = try @This()._ISmsFilterRulesFactoryCache.get();
         return try _f.CreateFilterRules(actionType);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsFilterRules";
@@ -2865,11 +2865,11 @@ pub const SmsMessageRegistration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
-        const _f = @This().ISmsMessageRegistrationStaticsCache.get();
+        const _f = try @This()._ISmsMessageRegistrationStaticsCache.get();
         return try _f.getAllRegistrations();
     }
     pub fn Register(id: HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
-        const _f = @This().ISmsMessageRegistrationStaticsCache.get();
+        const _f = try @This()._ISmsMessageRegistrationStaticsCache.get();
         return try _f.Register(id, filterRules);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageRegistration";

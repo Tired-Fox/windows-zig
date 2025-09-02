@@ -125,7 +125,7 @@ pub const AtomPubClient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAtomPubClient.IID)));
     }
     pub fn CreateAtomPubClientWithCredentials(serverCredential: *PasswordCredential) core.HResult!*AtomPubClient {
-        const _f = @This().IAtomPubClientFactoryCache.get();
+        const _f = try @This()._IAtomPubClientFactoryCache.get();
         return try _f.CreateAtomPubClientWithCredentials(serverCredential);
     }
     pub const NAME: []const u8 = "Windows.Web.AtomPub.AtomPubClient";

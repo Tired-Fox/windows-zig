@@ -329,35 +329,35 @@ pub const LocalCategories = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBankAndCreditUnions() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getBankAndCreditUnions();
     }
     pub fn getEatDrink() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getEatDrink();
     }
     pub fn getHospitals() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getHospitals();
     }
     pub fn getHotelsAndMotels() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getHotelsAndMotels();
     }
     pub fn getAll() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getAll();
     }
     pub fn getParking() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getParking();
     }
     pub fn getSeeDo() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getSeeDo();
     }
     pub fn getShop() core.HResult!HSTRING {
-        const _f = @This().ILocalCategoriesStaticsCache.get();
+        const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getShop();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.LocalSearch.LocalCategories";
@@ -424,7 +424,7 @@ pub const LocalLocationFinder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindLocalLocationsAsync(searchTerm: HSTRING, searchArea: *Geocircle, localCategory: HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
-        const _f = @This().ILocalLocationFinderStaticsCache.get();
+        const _f = try @This()._ILocalLocationFinderStaticsCache.get();
         return try _f.FindLocalLocationsAsync(searchTerm, searchArea, localCategory, maxResults);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.LocalSearch.LocalLocationFinder";
@@ -503,7 +503,7 @@ pub const PlaceInfoHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLocalLocation(location: *LocalLocation) core.HResult!*PlaceInfo {
-        const _f = @This().IPlaceInfoHelperStaticsCache.get();
+        const _f = try @This()._IPlaceInfoHelperStaticsCache.get();
         return try _f.CreateFromLocalLocation(location);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.LocalSearch.PlaceInfoHelper";

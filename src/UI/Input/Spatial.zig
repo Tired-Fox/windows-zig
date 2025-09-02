@@ -1805,7 +1805,7 @@ pub const SpatialGestureRecognizer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(settings: SpatialGestureSettings) core.HResult!*SpatialGestureRecognizer {
-        const _f = @This().ISpatialGestureRecognizerFactoryCache.get();
+        const _f = try @This()._ISpatialGestureRecognizerFactoryCache.get();
         return try _f.Create(settings);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialGestureRecognizer";
@@ -2044,11 +2044,11 @@ pub const SpatialInteractionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSourceKindSupported(kind: SpatialInteractionSourceKind) core.HResult!bool {
-        const _f = @This().ISpatialInteractionManagerStatics2Cache.get();
+        const _f = try @This()._ISpatialInteractionManagerStatics2Cache.get();
         return try _f.IsSourceKindSupported(kind);
     }
     pub fn GetForCurrentView() core.HResult!*SpatialInteractionManager {
-        const _f = @This().ISpatialInteractionManagerStaticsCache.get();
+        const _f = try @This()._ISpatialInteractionManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialInteractionManager";
@@ -2496,7 +2496,7 @@ pub const SpatialPointerPose = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetAtTimestamp(coordinateSystem: *SpatialCoordinateSystem, timestamp: *PerceptionTimestamp) core.HResult!*SpatialPointerPose {
-        const _f = @This().ISpatialPointerPoseStaticsCache.get();
+        const _f = try @This()._ISpatialPointerPoseStaticsCache.get();
         return try _f.TryGetAtTimestamp(coordinateSystem, timestamp);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialPointerPose";

@@ -5,7 +5,7 @@ pub const CorePerceptionAutomation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetActivationFactoryProvider(provider: *IGetActivationFactory) core.HResult!void {
-        const _f = @This().ICorePerceptionAutomationStaticsCache.get();
+        const _f = try @This()._ICorePerceptionAutomationStaticsCache.get();
         return try _f.SetActivationFactoryProvider(provider);
     }
     pub const NAME: []const u8 = "Windows.Perception.Automation.Core.CorePerceptionAutomation";

@@ -242,11 +242,11 @@ pub const AudioEffectsPackConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForDeviceId(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!*AudioEffectsPackConfiguration {
-        const _f = @This().IAudioEffectsPackConfigurationStaticsCache.get();
+        const _f = try @This()._IAudioEffectsPackConfigurationStaticsCache.get();
         return try _f.GetForDeviceId(effectsPackId, deviceId);
     }
     pub fn IsDeviceIdSupported(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!bool {
-        const _f = @This().IAudioEffectsPackConfigurationStaticsCache.get();
+        const _f = try @This()._IAudioEffectsPackConfigurationStaticsCache.get();
         return try _f.IsDeviceIdSupported(effectsPackId, deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioEffectsPackConfiguration";
@@ -934,7 +934,7 @@ pub const AudioGraph = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(settings: *AudioGraphSettings) core.HResult!*IAsyncOperation(CreateAudioGraphResult) {
-        const _f = @This().IAudioGraphStaticsCache.get();
+        const _f = try @This()._IAudioGraphStaticsCache.get();
         return try _f.CreateAsync(settings);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioGraph";
@@ -1048,7 +1048,7 @@ pub const AudioGraphSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioRenderCategory: AudioRenderCategory) core.HResult!*AudioGraphSettings {
-        const _f = @This().IAudioGraphSettingsFactoryCache.get();
+        const _f = try @This()._IAudioGraphSettingsFactoryCache.get();
         return try _f.Create(audioRenderCategory);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioGraphSettings";
@@ -1158,7 +1158,7 @@ pub const AudioNodeEmitter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAudioNodeEmitter.IID)));
     }
     pub fn CreateAudioNodeEmitter(shape: *AudioNodeEmitterShape, decayModel: *AudioNodeEmitterDecayModel, settings: AudioNodeEmitterSettings) core.HResult!*AudioNodeEmitter {
-        const _f = @This().IAudioNodeEmitterFactoryCache.get();
+        const _f = try @This()._IAudioNodeEmitterFactoryCache.get();
         return try _f.CreateAudioNodeEmitter(shape, decayModel, settings);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitter";
@@ -1215,11 +1215,11 @@ pub const AudioNodeEmitterDecayModel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateNatural(minGain: f64, maxGain: f64, unityGainDistance: f64, cutoffDistance: f64) core.HResult!*AudioNodeEmitterDecayModel {
-        const _f = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
+        const _f = try @This()._IAudioNodeEmitterDecayModelStaticsCache.get();
         return try _f.CreateNatural(minGain, maxGain, unityGainDistance, cutoffDistance);
     }
     pub fn CreateCustom(minGain: f64, maxGain: f64) core.HResult!*AudioNodeEmitterDecayModel {
-        const _f = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
+        const _f = try @This()._IAudioNodeEmitterDecayModelStaticsCache.get();
         return try _f.CreateCustom(minGain, maxGain);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitterDecayModel";
@@ -1263,11 +1263,11 @@ pub const AudioNodeEmitterShape = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCone(innerAngle: f64, outerAngle: f64, outerAngleGain: f64) core.HResult!*AudioNodeEmitterShape {
-        const _f = @This().IAudioNodeEmitterShapeStaticsCache.get();
+        const _f = try @This()._IAudioNodeEmitterShapeStaticsCache.get();
         return try _f.CreateCone(innerAngle, outerAngle, outerAngleGain);
     }
     pub fn CreateOmnidirectional() core.HResult!*AudioNodeEmitterShape {
-        const _f = @This().IAudioNodeEmitterShapeStaticsCache.get();
+        const _f = try @This()._IAudioNodeEmitterShapeStaticsCache.get();
         return try _f.CreateOmnidirectional();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitterShape";
@@ -1373,11 +1373,11 @@ pub const AudioPlaybackConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IAudioPlaybackConnectionStaticsCache.get();
+        const _f = try @This()._IAudioPlaybackConnectionStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn TryCreateFromId(id: HSTRING) core.HResult!*AudioPlaybackConnection {
-        const _f = @This().IAudioPlaybackConnectionStaticsCache.get();
+        const _f = try @This()._IAudioPlaybackConnectionStaticsCache.get();
         return try _f.TryCreateFromId(id);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioPlaybackConnection";
@@ -1431,35 +1431,35 @@ pub const AudioStateMonitor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForRenderMonitoring() core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoring();
     }
     pub fn CreateForRenderMonitoringWithCategory(category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoringWithCategory(category);
     }
     pub fn CreateForRenderMonitoringWithCategoryAndRole(category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoringWithCategoryAndRole(category, role);
     }
     pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(category: AudioRenderCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
     pub fn CreateForCaptureMonitoring() core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoring();
     }
     pub fn CreateForCaptureMonitoringWithCategory(category: MediaCategory) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoringWithCategory(category);
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndRole(category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoringWithCategoryAndRole(category, role);
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(category: MediaCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
-        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioStateMonitor";
@@ -1745,7 +1745,7 @@ pub const EchoEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EchoEffectDefinition {
-        const _f = @This().IEchoEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IEchoEffectDefinitionFactoryCache.get();
         return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.EchoEffectDefinition";
@@ -1809,7 +1809,7 @@ pub const EqualizerEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EqualizerEffectDefinition {
-        const _f = @This().IEqualizerEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IEqualizerEffectDefinitionFactoryCache.get();
         return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.EqualizerEffectDefinition";
@@ -4829,7 +4829,7 @@ pub const LimiterEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*LimiterEffectDefinition {
-        const _f = @This().ILimiterEffectDefinitionFactoryCache.get();
+        const _f = try @This()._ILimiterEffectDefinitionFactoryCache.get();
         return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.LimiterEffectDefinition";
@@ -5222,7 +5222,7 @@ pub const ReverbEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*ReverbEffectDefinition {
-        const _f = @This().IReverbEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IReverbEffectDefinitionFactoryCache.get();
         return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ReverbEffectDefinition";
@@ -5290,7 +5290,7 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForDeviceId(deviceId: HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
-        const _f = @This().ISpatialAudioDeviceConfigurationStaticsCache.get();
+        const _f = try @This()._ISpatialAudioDeviceConfigurationStaticsCache.get();
         return try _f.GetForDeviceId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioDeviceConfiguration";
@@ -5322,7 +5322,7 @@ pub const SpatialAudioFormatConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialAudioFormatConfiguration {
-        const _f = @This().ISpatialAudioFormatConfigurationStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatConfigurationStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioFormatConfiguration";
@@ -5338,31 +5338,31 @@ pub const SpatialAudioFormatSubtype = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDTSXForHomeTheater() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStatics2Cache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStatics2Cache.get();
         return try _f.getDTSXForHomeTheater();
     }
     pub fn getWindowsSonic() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getWindowsSonic();
     }
     pub fn getDolbyAtmosForHeadphones() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForHeadphones();
     }
     pub fn getDolbyAtmosForHomeTheater() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForHomeTheater();
     }
     pub fn getDolbyAtmosForSpeakers() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForSpeakers();
     }
     pub fn getDTSHeadphoneX() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDTSHeadphoneX();
     }
     pub fn getDTSXUltra() core.HResult!HSTRING {
-        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDTSXUltra();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioFormatSubtype";

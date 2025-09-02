@@ -51,7 +51,7 @@ pub const DevicePortalConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForAppServiceConnection(appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
-        const _f = @This().IDevicePortalConnectionStaticsCache.get();
+        const _f = try @This()._IDevicePortalConnectionStaticsCache.get();
         return try _f.GetForAppServiceConnection(appServiceConnection);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.DevicePortalConnection";

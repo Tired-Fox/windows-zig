@@ -73,11 +73,11 @@ pub const Direct3D11CaptureFramePool = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
-        const _f = @This().IDirect3D11CaptureFramePoolStaticsCache.get();
+        const _f = try @This()._IDirect3D11CaptureFramePoolStaticsCache.get();
         return try _f.Create(device, pixelFormat, numberOfBuffers, size);
     }
     pub fn CreateFreeThreaded(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
-        const _f = @This().IDirect3D11CaptureFramePoolStatics2Cache.get();
+        const _f = try @This()._IDirect3D11CaptureFramePoolStatics2Cache.get();
         return try _f.CreateFreeThreaded(device, pixelFormat, numberOfBuffers, size);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.Direct3D11CaptureFramePool";
@@ -94,7 +94,7 @@ pub const GraphicsCaptureAccess = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync(request: GraphicsCaptureAccessKind) core.HResult!*IAsyncOperation(AppCapabilityAccessStatus) {
-        const _f = @This().IGraphicsCaptureAccessStaticsCache.get();
+        const _f = try @This()._IGraphicsCaptureAccessStaticsCache.get();
         return try _f.RequestAccessAsync(request);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureAccess";
@@ -131,15 +131,15 @@ pub const GraphicsCaptureItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateFromWindowId(windowId: WindowId) core.HResult!*GraphicsCaptureItem {
-        const _f = @This().IGraphicsCaptureItemStatics2Cache.get();
+        const _f = try @This()._IGraphicsCaptureItemStatics2Cache.get();
         return try _f.TryCreateFromWindowId(windowId);
     }
     pub fn TryCreateFromDisplayId(displayId: DisplayId) core.HResult!*GraphicsCaptureItem {
-        const _f = @This().IGraphicsCaptureItemStatics2Cache.get();
+        const _f = try @This()._IGraphicsCaptureItemStatics2Cache.get();
         return try _f.TryCreateFromDisplayId(displayId);
     }
     pub fn CreateFromVisual(visual: *Visual) core.HResult!*GraphicsCaptureItem {
-        const _f = @This().IGraphicsCaptureItemStaticsCache.get();
+        const _f = try @This()._IGraphicsCaptureItemStaticsCache.get();
         return try _f.CreateFromVisual(visual);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureItem";
@@ -246,7 +246,7 @@ pub const GraphicsCaptureSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IGraphicsCaptureSessionStaticsCache.get();
+        const _f = try @This()._IGraphicsCaptureSessionStaticsCache.get();
         return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureSession";

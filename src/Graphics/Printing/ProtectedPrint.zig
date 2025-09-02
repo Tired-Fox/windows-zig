@@ -28,7 +28,7 @@ pub const WindowsProtectedPrintInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsProtectedPrintEnabled() core.HResult!bool {
-        const _f = @This().IWindowsProtectedPrintInfoStaticsCache.get();
+        const _f = try @This()._IWindowsProtectedPrintInfoStaticsCache.get();
         return try _f.getIsProtectedPrintEnabled();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.ProtectedPrint.WindowsProtectedPrintInfo";

@@ -562,15 +562,15 @@ pub const AutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GenerateRawElementProviderRuntimeId() core.HResult!RawElementProviderRuntimeId {
-        const _f = @This().IAutomationPeerStatics3Cache.get();
+        const _f = try @This()._IAutomationPeerStatics3Cache.get();
         return try _f.GenerateRawElementProviderRuntimeId();
     }
     pub fn ListenerExists(eventId: AutomationEvents) core.HResult!bool {
-        const _f = @This().IAutomationPeerStaticsCache.get();
+        const _f = try @This()._IAutomationPeerStaticsCache.get();
         return try _f.ListenerExists(eventId);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AutomationPeer {
-        const _f = @This().IAutomationPeerFactoryCache.get();
+        const _f = try @This()._IAutomationPeerFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AutomationPeer";
@@ -592,15 +592,15 @@ pub const FrameworkElementAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromElement(element: *UIElement) core.HResult!*AutomationPeer {
-        const _f = @This().IFrameworkElementAutomationPeerStaticsCache.get();
+        const _f = try @This()._IFrameworkElementAutomationPeerStaticsCache.get();
         return try _f.FromElement(element);
     }
     pub fn CreatePeerForElement(element: *UIElement) core.HResult!*AutomationPeer {
-        const _f = @This().IFrameworkElementAutomationPeerStaticsCache.get();
+        const _f = try @This()._IFrameworkElementAutomationPeerStaticsCache.get();
         return try _f.CreatePeerForElement(element);
     }
     pub fn CreateInstanceWithOwner(owner: *FrameworkElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameworkElementAutomationPeer {
-        const _f = @This().IFrameworkElementAutomationPeerFactoryCache.get();
+        const _f = try @This()._IFrameworkElementAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer";
@@ -701,7 +701,7 @@ pub const AppBarAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarAutomationPeer {
-        const _f = @This().IAppBarAutomationPeerFactoryCache.get();
+        const _f = try @This()._IAppBarAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AppBarAutomationPeer";
@@ -717,7 +717,7 @@ pub const ButtonBaseAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ButtonBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBaseAutomationPeer {
-        const _f = @This().IButtonBaseAutomationPeerFactoryCache.get();
+        const _f = try @This()._IButtonBaseAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ButtonBaseAutomationPeer";
@@ -739,7 +739,7 @@ pub const ButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonAutomationPeer {
-        const _f = @This().IButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ButtonAutomationPeer";
@@ -773,7 +773,7 @@ pub const AppBarButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButtonAutomationPeer {
-        const _f = @This().IAppBarButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IAppBarButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AppBarButtonAutomationPeer";
@@ -801,7 +801,7 @@ pub const ToggleButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButtonAutomationPeer {
-        const _f = @This().IToggleButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IToggleButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ToggleButtonAutomationPeer";
@@ -817,7 +817,7 @@ pub const AppBarToggleButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *AppBarToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarToggleButtonAutomationPeer {
-        const _f = @This().IAppBarToggleButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IAppBarToggleButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AppBarToggleButtonAutomationPeer";
@@ -839,7 +839,7 @@ pub const AutoSuggestBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *AutoSuggestBox) core.HResult!*AutoSuggestBoxAutomationPeer {
-        const _f = @This().IAutoSuggestBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._IAutoSuggestBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AutoSuggestBoxAutomationPeer";
@@ -1001,19 +1001,19 @@ pub const AutomationPeerAnnotation = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutomationPeerAnnotation.IID)));
     }
     pub fn CreateInstance(ty: AnnotationType) core.HResult!*AutomationPeerAnnotation {
-        const _f = @This().IAutomationPeerAnnotationFactoryCache.get();
+        const _f = try @This()._IAutomationPeerAnnotationFactoryCache.get();
         return try _f.CreateInstance(ty);
     }
     pub fn CreateWithPeerParameter(ty: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
-        const _f = @This().IAutomationPeerAnnotationFactoryCache.get();
+        const _f = try @This()._IAutomationPeerAnnotationFactoryCache.get();
         return try _f.CreateWithPeerParameter(ty, peer);
     }
     pub fn getTypeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAutomationPeerAnnotationStaticsCache.get();
+        const _f = try @This()._IAutomationPeerAnnotationStaticsCache.get();
         return try _f.getTypeProperty();
     }
     pub fn getPeerProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IAutomationPeerAnnotationStaticsCache.get();
+        const _f = try @This()._IAutomationPeerAnnotationStaticsCache.get();
         return try _f.getPeerProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.AutomationPeerAnnotation";
@@ -1063,7 +1063,7 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePickerAutomationPeer {
-        const _f = @This().ICalendarDatePickerAutomationPeerFactoryCache.get();
+        const _f = try @This()._ICalendarDatePickerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.CalendarDatePickerAutomationPeer";
@@ -1079,7 +1079,7 @@ pub const CaptureElementAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *CaptureElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CaptureElementAutomationPeer {
-        const _f = @This().ICaptureElementAutomationPeerFactoryCache.get();
+        const _f = try @This()._ICaptureElementAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.CaptureElementAutomationPeer";
@@ -1095,7 +1095,7 @@ pub const CheckBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *CheckBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CheckBoxAutomationPeer {
-        const _f = @This().ICheckBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._ICheckBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.CheckBoxAutomationPeer";
@@ -1153,7 +1153,7 @@ pub const RangeBaseAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBaseAutomationPeer {
-        const _f = @This().IRangeBaseAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRangeBaseAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RangeBaseAutomationPeer";
@@ -1169,7 +1169,7 @@ pub const SliderAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Slider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SliderAutomationPeer {
-        const _f = @This().ISliderAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISliderAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SliderAutomationPeer";
@@ -1185,7 +1185,7 @@ pub const ColorPickerSliderAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ColorPickerSlider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSliderAutomationPeer {
-        const _f = @This().IColorPickerSliderAutomationPeerFactoryCache.get();
+        const _f = try @This()._IColorPickerSliderAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ColorPickerSliderAutomationPeer";
@@ -1201,7 +1201,7 @@ pub const ColorSpectrumAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ColorSpectrum, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrumAutomationPeer {
-        const _f = @This().IColorSpectrumAutomationPeerFactoryCache.get();
+        const _f = try @This()._IColorSpectrumAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ColorSpectrumAutomationPeer";
@@ -1235,7 +1235,7 @@ pub const ItemsControlAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControlAutomationPeer {
-        const _f = @This().IItemsControlAutomationPeerFactoryCache.get();
+        const _f = try @This()._IItemsControlAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ItemsControlAutomationPeer";
@@ -1269,7 +1269,7 @@ pub const SelectorAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorAutomationPeer {
-        const _f = @This().ISelectorAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISelectorAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SelectorAutomationPeer";
@@ -1375,7 +1375,7 @@ pub const ComboBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxAutomationPeer {
-        const _f = @This().IComboBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._IComboBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ComboBoxAutomationPeer";
@@ -1391,7 +1391,7 @@ pub const ComboBoxItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ComboBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemAutomationPeer {
-        const _f = @This().IComboBoxItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IComboBoxItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ComboBoxItemAutomationPeer";
@@ -1421,7 +1421,7 @@ pub const ItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemAutomationPeer {
-        const _f = @This().IItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ItemAutomationPeer";
@@ -1467,7 +1467,7 @@ pub const SelectorItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItemAutomationPeer {
-        const _f = @This().ISelectorItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISelectorItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SelectorItemAutomationPeer";
@@ -1489,7 +1489,7 @@ pub const ComboBoxItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemDataAutomationPeer {
-        const _f = @This().IComboBoxItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IComboBoxItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ComboBoxItemDataAutomationPeer";
@@ -1505,7 +1505,7 @@ pub const DatePickerAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *DatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DatePickerAutomationPeer {
-        const _f = @This().IDatePickerAutomationPeerFactoryCache.get();
+        const _f = try @This()._IDatePickerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.DatePickerAutomationPeer";
@@ -1529,7 +1529,7 @@ pub const FlipViewAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *FlipView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewAutomationPeer {
-        const _f = @This().IFlipViewAutomationPeerFactoryCache.get();
+        const _f = try @This()._IFlipViewAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.FlipViewAutomationPeer";
@@ -1545,7 +1545,7 @@ pub const FlipViewItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *FlipViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemAutomationPeer {
-        const _f = @This().IFlipViewItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IFlipViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.FlipViewItemAutomationPeer";
@@ -1567,7 +1567,7 @@ pub const FlipViewItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemDataAutomationPeer {
-        const _f = @This().IFlipViewItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IFlipViewItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.FlipViewItemDataAutomationPeer";
@@ -1583,7 +1583,7 @@ pub const FlyoutPresenterAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *FlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutPresenterAutomationPeer {
-        const _f = @This().IFlyoutPresenterAutomationPeerFactoryCache.get();
+        const _f = try @This()._IFlyoutPresenterAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.FlyoutPresenterAutomationPeer";
@@ -1611,7 +1611,7 @@ pub const ListViewBaseAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseAutomationPeer {
-        const _f = @This().IListViewBaseAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewBaseAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewBaseAutomationPeer";
@@ -1627,7 +1627,7 @@ pub const GridViewAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *GridView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewAutomationPeer {
-        const _f = @This().IGridViewAutomationPeerFactoryCache.get();
+        const _f = try @This()._IGridViewAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.GridViewAutomationPeer";
@@ -1643,7 +1643,7 @@ pub const ListViewBaseHeaderItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListViewBaseHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseHeaderItemAutomationPeer {
-        const _f = @This().IListViewBaseHeaderItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewBaseHeaderItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewBaseHeaderItemAutomationPeer";
@@ -1659,7 +1659,7 @@ pub const GridViewHeaderItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *GridViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewHeaderItemAutomationPeer {
-        const _f = @This().IGridViewHeaderItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IGridViewHeaderItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.GridViewHeaderItemAutomationPeer";
@@ -1675,7 +1675,7 @@ pub const GridViewItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *GridViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemAutomationPeer {
-        const _f = @This().IGridViewItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IGridViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.GridViewItemAutomationPeer";
@@ -1697,7 +1697,7 @@ pub const GridViewItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemDataAutomationPeer {
-        const _f = @This().IGridViewItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IGridViewItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.GridViewItemDataAutomationPeer";
@@ -1713,7 +1713,7 @@ pub const GroupItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *GroupItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupItemAutomationPeer {
-        const _f = @This().IGroupItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IGroupItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.GroupItemAutomationPeer";
@@ -1729,7 +1729,7 @@ pub const HubAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Hub, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubAutomationPeer {
-        const _f = @This().IHubAutomationPeerFactoryCache.get();
+        const _f = try @This()._IHubAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.HubAutomationPeer";
@@ -1751,7 +1751,7 @@ pub const HubSectionAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSectionAutomationPeer {
-        const _f = @This().IHubSectionAutomationPeerFactoryCache.get();
+        const _f = try @This()._IHubSectionAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.HubSectionAutomationPeer";
@@ -1773,7 +1773,7 @@ pub const HyperlinkButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButtonAutomationPeer {
-        const _f = @This().IHyperlinkButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IHyperlinkButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.HyperlinkButtonAutomationPeer";
@@ -6265,7 +6265,7 @@ pub const ImageAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Image, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ImageAutomationPeer {
-        const _f = @This().IImageAutomationPeerFactoryCache.get();
+        const _f = try @This()._IImageAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ImageAutomationPeer";
@@ -6289,7 +6289,7 @@ pub const ListBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxAutomationPeer {
-        const _f = @This().IListBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListBoxAutomationPeer";
@@ -6305,7 +6305,7 @@ pub const ListBoxItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemAutomationPeer {
-        const _f = @This().IListBoxItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListBoxItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListBoxItemAutomationPeer";
@@ -6327,7 +6327,7 @@ pub const ListBoxItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemDataAutomationPeer {
-        const _f = @This().IListBoxItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListBoxItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListBoxItemDataAutomationPeer";
@@ -6351,7 +6351,7 @@ pub const ListViewAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewAutomationPeer {
-        const _f = @This().IListViewAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewAutomationPeer";
@@ -6367,7 +6367,7 @@ pub const ListViewHeaderItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewHeaderItemAutomationPeer {
-        const _f = @This().IListViewHeaderItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewHeaderItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewHeaderItemAutomationPeer";
@@ -6383,7 +6383,7 @@ pub const ListViewItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ListViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemAutomationPeer {
-        const _f = @This().IListViewItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewItemAutomationPeer";
@@ -6405,7 +6405,7 @@ pub const ListViewItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemDataAutomationPeer {
-        const _f = @This().IListViewItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IListViewItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListViewItemDataAutomationPeer";
@@ -6705,7 +6705,7 @@ pub const MediaElementAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MediaElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaElementAutomationPeer {
-        const _f = @This().IMediaElementAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMediaElementAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MediaElementAutomationPeer";
@@ -6721,7 +6721,7 @@ pub const MediaPlayerElementAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MediaPlayerElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaPlayerElementAutomationPeer {
-        const _f = @This().IMediaPlayerElementAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMediaPlayerElementAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MediaPlayerElementAutomationPeer";
@@ -6737,7 +6737,7 @@ pub const MediaTransportControlsAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MediaTransportControls, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaTransportControlsAutomationPeer {
-        const _f = @This().IMediaTransportControlsAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMediaTransportControlsAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MediaTransportControlsAutomationPeer";
@@ -6753,7 +6753,7 @@ pub const MenuBarAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(owner: *MenuBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarAutomationPeer {
-        const _f = @This().IMenuBarAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMenuBarAutomationPeerFactoryCache.get();
         return try _f.CreateInstance(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MenuBarAutomationPeer";
@@ -6793,7 +6793,7 @@ pub const MenuBarItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemAutomationPeer {
-        const _f = @This().IMenuBarItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMenuBarItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstance(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MenuBarItemAutomationPeer";
@@ -6815,7 +6815,7 @@ pub const MenuFlyoutItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItemAutomationPeer {
-        const _f = @This().IMenuFlyoutItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMenuFlyoutItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MenuFlyoutItemAutomationPeer";
@@ -6831,7 +6831,7 @@ pub const MenuFlyoutPresenterAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MenuFlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutPresenterAutomationPeer {
-        const _f = @This().IMenuFlyoutPresenterAutomationPeerFactoryCache.get();
+        const _f = try @This()._IMenuFlyoutPresenterAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.MenuFlyoutPresenterAutomationPeer";
@@ -6847,7 +6847,7 @@ pub const NavigationViewItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *NavigationViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemAutomationPeer {
-        const _f = @This().INavigationViewItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._INavigationViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.NavigationViewItemAutomationPeer";
@@ -6863,7 +6863,7 @@ pub const PasswordBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *PasswordBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PasswordBoxAutomationPeer {
-        const _f = @This().IPasswordBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._IPasswordBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PasswordBoxAutomationPeer";
@@ -6915,7 +6915,7 @@ pub const PersonPictureAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *PersonPicture, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PersonPictureAutomationPeer {
-        const _f = @This().IPersonPictureAutomationPeerFactoryCache.get();
+        const _f = try @This()._IPersonPictureAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PersonPictureAutomationPeer";
@@ -7005,7 +7005,7 @@ pub const PivotAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Pivot) core.HResult!*PivotAutomationPeer {
-        const _f = @This().IPivotAutomationPeerFactoryCache.get();
+        const _f = try @This()._IPivotAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PivotAutomationPeer";
@@ -7021,7 +7021,7 @@ pub const PivotItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *PivotItem) core.HResult!*PivotItemAutomationPeer {
-        const _f = @This().IPivotItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IPivotItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PivotItemAutomationPeer";
@@ -7079,7 +7079,7 @@ pub const PivotItemDataAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *PivotAutomationPeer) core.HResult!*PivotItemDataAutomationPeer {
-        const _f = @This().IPivotItemDataAutomationPeerFactoryCache.get();
+        const _f = try @This()._IPivotItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PivotItemDataAutomationPeer";
@@ -7095,7 +7095,7 @@ pub const ProgressBarAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ProgressBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressBarAutomationPeer {
-        const _f = @This().IProgressBarAutomationPeerFactoryCache.get();
+        const _f = try @This()._IProgressBarAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ProgressBarAutomationPeer";
@@ -7111,7 +7111,7 @@ pub const ProgressRingAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ProgressRing, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressRingAutomationPeer {
-        const _f = @This().IProgressRingAutomationPeerFactoryCache.get();
+        const _f = try @This()._IProgressRingAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ProgressRingAutomationPeer";
@@ -7157,7 +7157,7 @@ pub const RadioButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButtonAutomationPeer {
-        const _f = @This().IRadioButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRadioButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RadioButtonAutomationPeer";
@@ -7173,7 +7173,7 @@ pub const RatingControlAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RatingControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingControlAutomationPeer {
-        const _f = @This().IRatingControlAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRatingControlAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RatingControlAutomationPeer";
@@ -7199,7 +7199,7 @@ pub const RepeatButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RepeatButtonAutomationPeer {
-        const _f = @This().IRepeatButtonAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRepeatButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RepeatButtonAutomationPeer";
@@ -7215,7 +7215,7 @@ pub const RichEditBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RichEditBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichEditBoxAutomationPeer {
-        const _f = @This().IRichEditBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRichEditBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RichEditBoxAutomationPeer";
@@ -7231,7 +7231,7 @@ pub const RichTextBlockAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RichTextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockAutomationPeer {
-        const _f = @This().IRichTextBlockAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRichTextBlockAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RichTextBlockAutomationPeer";
@@ -7247,7 +7247,7 @@ pub const RichTextBlockOverflowAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RichTextBlockOverflow, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockOverflowAutomationPeer {
-        const _f = @This().IRichTextBlockOverflowAutomationPeerFactoryCache.get();
+        const _f = try @This()._IRichTextBlockOverflowAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.RichTextBlockOverflowAutomationPeer";
@@ -7263,7 +7263,7 @@ pub const ScrollBarAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ScrollBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollBarAutomationPeer {
-        const _f = @This().IScrollBarAutomationPeerFactoryCache.get();
+        const _f = try @This()._IScrollBarAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ScrollBarAutomationPeer";
@@ -7327,7 +7327,7 @@ pub const ScrollViewerAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollViewerAutomationPeer {
-        const _f = @This().IScrollViewerAutomationPeerFactoryCache.get();
+        const _f = try @This()._IScrollViewerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ScrollViewerAutomationPeer";
@@ -7343,7 +7343,7 @@ pub const SearchBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *SearchBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SearchBoxAutomationPeer {
-        const _f = @This().ISearchBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISearchBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SearchBoxAutomationPeer";
@@ -7371,7 +7371,7 @@ pub const SemanticZoomAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SemanticZoomAutomationPeer {
-        const _f = @This().ISemanticZoomAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISemanticZoomAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SemanticZoomAutomationPeer";
@@ -7387,7 +7387,7 @@ pub const SettingsFlyoutAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *SettingsFlyout, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SettingsFlyoutAutomationPeer {
-        const _f = @This().ISettingsFlyoutAutomationPeerFactoryCache.get();
+        const _f = try @This()._ISettingsFlyoutAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.SettingsFlyoutAutomationPeer";
@@ -7403,7 +7403,7 @@ pub const TextBlockAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *TextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBlockAutomationPeer {
-        const _f = @This().ITextBlockAutomationPeerFactoryCache.get();
+        const _f = try @This()._ITextBlockAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TextBlockAutomationPeer";
@@ -7419,7 +7419,7 @@ pub const TextBoxAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *TextBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBoxAutomationPeer {
-        const _f = @This().ITextBoxAutomationPeerFactoryCache.get();
+        const _f = try @This()._ITextBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TextBoxAutomationPeer";
@@ -7435,7 +7435,7 @@ pub const ThumbAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Thumb, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ThumbAutomationPeer {
-        const _f = @This().IThumbAutomationPeerFactoryCache.get();
+        const _f = try @This()._IThumbAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ThumbAutomationPeer";
@@ -7451,7 +7451,7 @@ pub const TimePickerAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *TimePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TimePickerAutomationPeer {
-        const _f = @This().ITimePickerAutomationPeerFactoryCache.get();
+        const _f = try @This()._ITimePickerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TimePickerAutomationPeer";
@@ -7487,7 +7487,7 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItemAutomationPeer {
-        const _f = @This().IToggleMenuFlyoutItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._IToggleMenuFlyoutItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ToggleMenuFlyoutItemAutomationPeer";
@@ -7515,7 +7515,7 @@ pub const ToggleSwitchAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSwitchAutomationPeer {
-        const _f = @This().IToggleSwitchAutomationPeerFactoryCache.get();
+        const _f = try @This()._IToggleSwitchAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ToggleSwitchAutomationPeer";
@@ -7549,7 +7549,7 @@ pub const TreeViewItemAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemAutomationPeer {
-        const _f = @This().ITreeViewItemAutomationPeerFactoryCache.get();
+        const _f = try @This()._ITreeViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TreeViewItemAutomationPeer";
@@ -7565,7 +7565,7 @@ pub const TreeViewListAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *TreeViewList, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewListAutomationPeer {
-        const _f = @This().ITreeViewListAutomationPeerFactoryCache.get();
+        const _f = try @This()._ITreeViewListAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TreeViewListAutomationPeer";

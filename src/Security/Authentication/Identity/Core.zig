@@ -330,7 +330,7 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
-        const _f = @This().IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
+        const _f = try @This()._IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.MicrosoftAccountMultiFactorAuthenticationManager";

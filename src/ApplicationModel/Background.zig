@@ -98,7 +98,7 @@ pub const PhoneTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
-        const _f = @This().IPhoneTriggerFactoryCache.get();
+        const _f = try @This()._IPhoneTriggerFactoryCache.get();
         return try _f.Create(ty, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.PhoneTrigger";
@@ -164,7 +164,7 @@ pub const SmartCardTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
-        const _f = @This().ISmartCardTriggerFactoryCache.get();
+        const _f = try @This()._ISmartCardTriggerFactoryCache.get();
         return try _f.Create(triggerType);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SmartCardTrigger";
@@ -186,11 +186,11 @@ pub const AlarmApplicationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(AlarmAccessStatus) {
-        const _f = @This().IAlarmApplicationManagerStaticsCache.get();
+        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub fn GetAccessStatus() core.HResult!AlarmAccessStatus {
-        const _f = @This().IAlarmApplicationManagerStaticsCache.get();
+        const _f = try @This()._IAlarmApplicationManagerStaticsCache.get();
         return try _f.GetAccessStatus();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.AlarmApplicationManager";
@@ -249,7 +249,7 @@ pub const ActivitySensorTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(reportIntervalInMilliseconds: u32) core.HResult!*ActivitySensorTrigger {
-        const _f = @This().IActivitySensorTriggerFactoryCache.get();
+        const _f = try @This()._IActivitySensorTriggerFactoryCache.get();
         return try _f.Create(reportIntervalInMilliseconds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ActivitySensorTrigger";
@@ -337,43 +337,43 @@ pub const BackgroundExecutionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub fn RequestAccessAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RequestAccessAsyncWithApplicationId(applicationId);
     }
     pub fn RemoveAccess() core.HResult!void {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RemoveAccess();
     }
     pub fn RemoveAccessWithApplicationId(applicationId: HSTRING) core.HResult!void {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RemoveAccessWithApplicationId(applicationId);
     }
     pub fn GetAccessStatus() core.HResult!BackgroundAccessStatus {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.GetAccessStatus();
     }
     pub fn GetAccessStatusWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
-        const _f = @This().IBackgroundExecutionManagerStaticsCache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.GetAccessStatusWithApplicationId(applicationId);
     }
     pub fn RequestAccessKindAsync(requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IBackgroundExecutionManagerStatics2Cache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStatics2Cache.get();
         return try _f.RequestAccessKindAsync(requestedAccess, reason);
     }
     pub fn RequestAccessKindForModernStandbyAsync(requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IBackgroundExecutionManagerStatics3Cache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.RequestAccessKindForModernStandbyAsync(requestedAccess, reason);
     }
     pub fn GetAccessStatusForModernStandby() core.HResult!BackgroundAccessStatus {
-        const _f = @This().IBackgroundExecutionManagerStatics3Cache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.GetAccessStatusForModernStandby();
     }
     pub fn GetAccessStatusForModernStandbyWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
-        const _f = @This().IBackgroundExecutionManagerStatics3Cache.get();
+        const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.GetAccessStatusForModernStandbyWithApplicationId(applicationId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundExecutionManager";
@@ -486,7 +486,7 @@ pub const BackgroundTaskBuilder = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTaskBuilder.IID)));
     }
     pub fn getIsRunningTaskInStandbySupported() core.HResult!bool {
-        const _f = @This().IBackgroundTaskBuilderStaticsCache.get();
+        const _f = try @This()._IBackgroundTaskBuilderStaticsCache.get();
         return try _f.getIsRunningTaskInStandbySupported();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundTaskBuilder";
@@ -874,15 +874,15 @@ pub const BackgroundTaskRegistration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAllTasks() core.HResult!*IMapView(Guid,IBackgroundTaskRegistration) {
-        const _f = @This().IBackgroundTaskRegistrationStaticsCache.get();
+        const _f = try @This()._IBackgroundTaskRegistrationStaticsCache.get();
         return try _f.getAllTasks();
     }
     pub fn getAllTaskGroups() core.HResult!*IMapView(HSTRING,BackgroundTaskRegistrationGroup) {
-        const _f = @This().IBackgroundTaskRegistrationStatics2Cache.get();
+        const _f = try @This()._IBackgroundTaskRegistrationStatics2Cache.get();
         return try _f.getAllTaskGroups();
     }
     pub fn GetTaskGroup(groupId: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
-        const _f = @This().IBackgroundTaskRegistrationStatics2Cache.get();
+        const _f = try @This()._IBackgroundTaskRegistrationStatics2Cache.get();
         return try _f.GetTaskGroup(groupId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundTaskRegistration";
@@ -919,11 +919,11 @@ pub const BackgroundTaskRegistrationGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
-        const _f = @This().IBackgroundTaskRegistrationGroupFactoryCache.get();
+        const _f = try @This()._IBackgroundTaskRegistrationGroupFactoryCache.get();
         return try _f.Create(id);
     }
     pub fn CreateWithName(id: HSTRING, name: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
-        const _f = @This().IBackgroundTaskRegistrationGroupFactoryCache.get();
+        const _f = try @This()._IBackgroundTaskRegistrationGroupFactoryCache.get();
         return try _f.CreateWithName(id, name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundTaskRegistrationGroup";
@@ -944,19 +944,19 @@ pub const BackgroundWorkCost = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAppEnergyUseLevel() core.HResult!EnergyUseLevel {
-        const _f = @This().IBackgroundWorkCostStatics2Cache.get();
+        const _f = try @This()._IBackgroundWorkCostStatics2Cache.get();
         return try _f.getAppEnergyUseLevel();
     }
     pub fn getAppEnergyUsePrediction() core.HResult!EnergyUseLevel {
-        const _f = @This().IBackgroundWorkCostStatics2Cache.get();
+        const _f = try @This()._IBackgroundWorkCostStatics2Cache.get();
         return try _f.getAppEnergyUsePrediction();
     }
     pub fn getAppLastThrottledInStandbyTimestamp() core.HResult!DateTime {
-        const _f = @This().IBackgroundWorkCostStatics2Cache.get();
+        const _f = try @This()._IBackgroundWorkCostStatics2Cache.get();
         return try _f.getAppLastThrottledInStandbyTimestamp();
     }
     pub fn getCurrentBackgroundWorkCost() core.HResult!BackgroundWorkCostValue {
-        const _f = @This().IBackgroundWorkCostStaticsCache.get();
+        const _f = try @This()._IBackgroundWorkCostStaticsCache.get();
         return try _f.getCurrentBackgroundWorkCost();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundWorkCost";
@@ -1255,7 +1255,7 @@ pub const ContentPrefetchTrigger = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentPrefetchTrigger.IID)));
     }
     pub fn Create(waitInterval: TimeSpan) core.HResult!*ContentPrefetchTrigger {
-        const _f = @This().IContentPrefetchTriggerFactoryCache.get();
+        const _f = try @This()._IContentPrefetchTriggerFactoryCache.get();
         return try _f.Create(waitInterval);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ContentPrefetchTrigger";
@@ -1296,7 +1296,7 @@ pub const CustomSystemEventTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerId: HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
-        const _f = @This().ICustomSystemEventTriggerFactoryCache.get();
+        const _f = try @This()._ICustomSystemEventTriggerFactoryCache.get();
         return try _f.Create(triggerId, recurrence);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.CustomSystemEventTrigger";
@@ -1332,7 +1332,7 @@ pub const DeviceConnectionChangeTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
-        const _f = @This().IDeviceConnectionChangeTriggerStaticsCache.get();
+        const _f = try @This()._IDeviceConnectionChangeTriggerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.DeviceConnectionChangeTrigger";
@@ -1356,7 +1356,7 @@ pub const DeviceManufacturerNotificationTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerQualifier: HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
-        const _f = @This().IDeviceManufacturerNotificationTriggerFactoryCache.get();
+        const _f = try @This()._IDeviceManufacturerNotificationTriggerFactoryCache.get();
         return try _f.Create(triggerQualifier, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.DeviceManufacturerNotificationTrigger";
@@ -1466,11 +1466,11 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(characteristic: *GattCharacteristic) core.HResult!*GattCharacteristicNotificationTrigger {
-        const _f = @This().IGattCharacteristicNotificationTriggerFactoryCache.get();
+        const _f = try @This()._IGattCharacteristicNotificationTriggerFactoryCache.get();
         return try _f.Create(characteristic);
     }
     pub fn CreateWithEventTriggeringMode(characteristic: *GattCharacteristic, eventTriggeringMode: BluetoothEventTriggeringMode) core.HResult!*GattCharacteristicNotificationTrigger {
-        const _f = @This().IGattCharacteristicNotificationTriggerFactory2Cache.get();
+        const _f = try @This()._IGattCharacteristicNotificationTriggerFactory2Cache.get();
         return try _f.Create(characteristic, eventTriggeringMode);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.GattCharacteristicNotificationTrigger";
@@ -1503,7 +1503,7 @@ pub const GattServiceProviderTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(triggerId: HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
-        const _f = @This().IGattServiceProviderTriggerStaticsCache.get();
+        const _f = try @This()._IGattServiceProviderTriggerStaticsCache.get();
         return try _f.CreateAsync(triggerId, serviceUuid);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.GattServiceProviderTrigger";
@@ -4207,7 +4207,7 @@ pub const LocationTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerType: LocationTriggerType) core.HResult!*LocationTrigger {
-        const _f = @This().ILocationTriggerFactoryCache.get();
+        const _f = try @This()._ILocationTriggerFactoryCache.get();
         return try _f.Create(triggerType);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.LocationTrigger";
@@ -4234,7 +4234,7 @@ pub const MaintenanceTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(freshnessTime: u32, oneShot: bool) core.HResult!*MaintenanceTrigger {
-        const _f = @This().IMaintenanceTriggerFactoryCache.get();
+        const _f = try @This()._IMaintenanceTriggerFactoryCache.get();
         return try _f.Create(freshnessTime, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.MaintenanceTrigger";
@@ -4396,7 +4396,7 @@ pub const NetworkOperatorNotificationTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(networkAccountId: HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
-        const _f = @This().INetworkOperatorNotificationTriggerFactoryCache.get();
+        const _f = try @This()._INetworkOperatorNotificationTriggerFactoryCache.get();
         return try _f.Create(networkAccountId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.NetworkOperatorNotificationTrigger";
@@ -4432,7 +4432,7 @@ pub const PushNotificationTrigger = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
     pub fn Create(applicationId: HSTRING) core.HResult!*PushNotificationTrigger {
-        const _f = @This().IPushNotificationTriggerFactoryCache.get();
+        const _f = try @This()._IPushNotificationTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.PushNotificationTrigger";
@@ -4529,7 +4529,7 @@ pub const SensorDataThresholdTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(threshold: *ISensorDataThreshold) core.HResult!*SensorDataThresholdTrigger {
-        const _f = @This().ISensorDataThresholdTriggerFactoryCache.get();
+        const _f = try @This()._ISensorDataThresholdTriggerFactoryCache.get();
         return try _f.Create(threshold);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SensorDataThresholdTrigger";
@@ -4545,7 +4545,7 @@ pub const SmsMessageReceivedTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(filterRules: *SmsFilterRules) core.HResult!*SmsMessageReceivedTrigger {
-        const _f = @This().ISmsMessageReceivedTriggerFactoryCache.get();
+        const _f = try @This()._ISmsMessageReceivedTriggerFactoryCache.get();
         return try _f.Create(filterRules);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SmsMessageReceivedTrigger";
@@ -4583,7 +4583,7 @@ pub const StorageLibraryChangeTrackerTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(tracker: *StorageLibraryChangeTracker) core.HResult!*StorageLibraryChangeTrackerTrigger {
-        const _f = @This().IStorageLibraryChangeTrackerTriggerFactoryCache.get();
+        const _f = try @This()._IStorageLibraryChangeTrackerTriggerFactoryCache.get();
         return try _f.Create(tracker);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.StorageLibraryChangeTrackerTrigger";
@@ -4599,11 +4599,11 @@ pub const StorageLibraryContentChangedTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(storageLibrary: *StorageLibrary) core.HResult!*StorageLibraryContentChangedTrigger {
-        const _f = @This().IStorageLibraryContentChangedTriggerStaticsCache.get();
+        const _f = try @This()._IStorageLibraryContentChangedTriggerStaticsCache.get();
         return try _f.Create(storageLibrary);
     }
     pub fn CreateFromLibraries(storageLibraries: *IIterable(StorageLibrary)) core.HResult!*StorageLibraryContentChangedTrigger {
-        const _f = @This().IStorageLibraryContentChangedTriggerStaticsCache.get();
+        const _f = try @This()._IStorageLibraryContentChangedTriggerStaticsCache.get();
         return try _f.CreateFromLibraries(storageLibraries);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.StorageLibraryContentChangedTrigger";
@@ -4623,7 +4623,7 @@ pub const SystemCondition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(conditionType: SystemConditionType) core.HResult!*SystemCondition {
-        const _f = @This().ISystemConditionFactoryCache.get();
+        const _f = try @This()._ISystemConditionFactoryCache.get();
         return try _f.Create(conditionType);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SystemCondition";
@@ -4658,7 +4658,7 @@ pub const SystemTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerType: SystemTriggerType, oneShot: bool) core.HResult!*SystemTrigger {
-        const _f = @This().ISystemTriggerFactoryCache.get();
+        const _f = try @This()._ISystemTriggerFactoryCache.get();
         return try _f.Create(triggerType, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.SystemTrigger";
@@ -4716,7 +4716,7 @@ pub const TimeTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(freshnessTime: u32, oneShot: bool) core.HResult!*TimeTrigger {
-        const _f = @This().ITimeTriggerFactoryCache.get();
+        const _f = try @This()._ITimeTriggerFactoryCache.get();
         return try _f.Create(freshnessTime, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.TimeTrigger";
@@ -4736,7 +4736,7 @@ pub const ToastNotificationActionTrigger = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
     pub fn Create(applicationId: HSTRING) core.HResult!*ToastNotificationActionTrigger {
-        const _f = @This().IToastNotificationActionTriggerFactoryCache.get();
+        const _f = try @This()._IToastNotificationActionTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ToastNotificationActionTrigger";
@@ -4757,7 +4757,7 @@ pub const ToastNotificationHistoryChangedTrigger = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
     pub fn Create(applicationId: HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
-        const _f = @This().IToastNotificationHistoryChangedTriggerFactoryCache.get();
+        const _f = try @This()._IToastNotificationHistoryChangedTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ToastNotificationHistoryChangedTrigger";
@@ -4774,7 +4774,7 @@ pub const UserNotificationChangedTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(notificationKinds: NotificationKinds) core.HResult!*UserNotificationChangedTrigger {
-        const _f = @This().IUserNotificationChangedTriggerFactoryCache.get();
+        const _f = try @This()._IUserNotificationChangedTriggerFactoryCache.get();
         return try _f.Create(notificationKinds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.UserNotificationChangedTrigger";
@@ -4830,7 +4830,7 @@ pub const AppBroadcastTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAppBroadcastTrigger(providerKey: HSTRING) core.HResult!*AppBroadcastTrigger {
-        const _f = @This().IAppBroadcastTriggerFactoryCache.get();
+        const _f = try @This()._IAppBroadcastTriggerFactoryCache.get();
         return try _f.CreateAppBroadcastTrigger(providerKey);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.AppBroadcastTrigger";

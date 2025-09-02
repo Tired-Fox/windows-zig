@@ -265,7 +265,7 @@ pub const LockApplicationHost = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*LockApplicationHost {
-        const _f = @This().ILockApplicationHostStaticsCache.get();
+        const _f = try @This()._ILockApplicationHostStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.LockScreen.LockApplicationHost";

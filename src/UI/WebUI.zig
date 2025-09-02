@@ -1690,79 +1690,79 @@ pub const WebUIApplication = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn addNewWebUIViewCreated(handler: *EventHandler(NewWebUIViewCreatedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStatics4Cache.get();
+        const _f = try @This()._IWebUIActivationStatics4Cache.get();
         return try _f.addNewWebUIViewCreated(handler);
     }
     pub fn removeNewWebUIViewCreated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStatics4Cache.get();
+        const _f = try @This()._IWebUIActivationStatics4Cache.get();
         return try _f.removeNewWebUIViewCreated(token);
     }
     pub fn addBackgroundActivated(handler: *BackgroundActivatedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStatics4Cache.get();
+        const _f = try @This()._IWebUIActivationStatics4Cache.get();
         return try _f.addBackgroundActivated(handler);
     }
     pub fn removeBackgroundActivated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStatics4Cache.get();
+        const _f = try @This()._IWebUIActivationStatics4Cache.get();
         return try _f.removeBackgroundActivated(token);
     }
     pub fn addLeavingBackground(handler: *LeavingBackgroundEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStatics2Cache.get();
+        const _f = try @This()._IWebUIActivationStatics2Cache.get();
         return try _f.addLeavingBackground(handler);
     }
     pub fn removeLeavingBackground(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStatics2Cache.get();
+        const _f = try @This()._IWebUIActivationStatics2Cache.get();
         return try _f.removeLeavingBackground(token);
     }
     pub fn addEnteredBackground(handler: *EnteredBackgroundEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStatics2Cache.get();
+        const _f = try @This()._IWebUIActivationStatics2Cache.get();
         return try _f.addEnteredBackground(handler);
     }
     pub fn removeEnteredBackground(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStatics2Cache.get();
+        const _f = try @This()._IWebUIActivationStatics2Cache.get();
         return try _f.removeEnteredBackground(token);
     }
     pub fn EnablePrelaunch(value: bool) core.HResult!void {
-        const _f = @This().IWebUIActivationStatics2Cache.get();
+        const _f = try @This()._IWebUIActivationStatics2Cache.get();
         return try _f.EnablePrelaunch(value);
     }
     pub fn addActivated(handler: *ActivatedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.addActivated(handler);
     }
     pub fn removeActivated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.removeActivated(token);
     }
     pub fn addSuspending(handler: *SuspendingEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.addSuspending(handler);
     }
     pub fn removeSuspending(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.removeSuspending(token);
     }
     pub fn addResuming(handler: *ResumingEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.addResuming(handler);
     }
     pub fn removeResuming(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.removeResuming(token);
     }
     pub fn addNavigated(handler: *NavigatedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.addNavigated(handler);
     }
     pub fn removeNavigated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IWebUIActivationStaticsCache.get();
+        const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.removeNavigated(token);
     }
     pub fn RequestRestartAsync(launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
-        const _f = @This().IWebUIActivationStatics3Cache.get();
+        const _f = try @This()._IWebUIActivationStatics3Cache.get();
         return try _f.RequestRestartAsync(launchArguments);
     }
     pub fn RequestRestartForUserAsync(user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
-        const _f = @This().IWebUIActivationStatics3Cache.get();
+        const _f = try @This()._IWebUIActivationStatics3Cache.get();
         return try _f.RequestRestartForUserAsync(user, launchArguments);
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIApplication";
@@ -2030,7 +2030,7 @@ pub const WebUIBackgroundTaskInstance = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*IWebUIBackgroundTaskInstance {
-        const _f = @This().IWebUIBackgroundTaskInstanceStaticsCache.get();
+        const _f = try @This()._IWebUIBackgroundTaskInstanceStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIBackgroundTaskInstance";
@@ -3695,11 +3695,11 @@ pub const WebUIView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(WebUIView) {
-        const _f = @This().IWebUIViewStaticsCache.get();
+        const _f = try @This()._IWebUIViewStaticsCache.get();
         return try _f.CreateAsync();
     }
     pub fn CreateAsyncWithUri(uri: *Uri) core.HResult!*IAsyncOperation(WebUIView) {
-        const _f = @This().IWebUIViewStaticsCache.get();
+        const _f = try @This()._IWebUIViewStaticsCache.get();
         return try _f.CreateAsyncWithUri(uri);
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIView";

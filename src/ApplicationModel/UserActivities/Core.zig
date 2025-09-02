@@ -5,11 +5,11 @@ pub const CoreUserActivityManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateUserActivitySessionInBackground(activity: *UserActivity) core.HResult!*UserActivitySession {
-        const _f = @This().ICoreUserActivityManagerStaticsCache.get();
+        const _f = try @This()._ICoreUserActivityManagerStaticsCache.get();
         return try _f.CreateUserActivitySessionInBackground(activity);
     }
     pub fn DeleteUserActivitySessionsInTimeRangeAsync(channel: *UserActivityChannel, startTime: DateTime, endTime: DateTime) core.HResult!*IAsyncAction {
-        const _f = @This().ICoreUserActivityManagerStaticsCache.get();
+        const _f = try @This()._ICoreUserActivityManagerStaticsCache.get();
         return try _f.DeleteUserActivitySessionsInTimeRangeAsync(channel, startTime, endTime);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.Core.CoreUserActivityManager";

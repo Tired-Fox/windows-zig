@@ -92,7 +92,7 @@ pub const Playlist = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlaylist.IID)));
     }
     pub fn LoadAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(Playlist) {
-        const _f = @This().IPlaylistStaticsCache.get();
+        const _f = try @This()._IPlaylistStaticsCache.get();
         return try _f.LoadAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Playlists.Playlist";

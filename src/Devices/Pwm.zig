@@ -234,23 +234,23 @@ pub const PwmController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IPwmControllerStatics3Cache.get();
+        const _f = try @This()._IPwmControllerStatics3Cache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IPwmControllerStatics3Cache.get();
+        const _f = try @This()._IPwmControllerStatics3Cache.get();
         return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PwmController) {
-        const _f = @This().IPwmControllerStatics3Cache.get();
+        const _f = try @This()._IPwmControllerStatics3Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(PwmController) {
-        const _f = @This().IPwmControllerStatics2Cache.get();
+        const _f = try @This()._IPwmControllerStatics2Cache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn GetControllersAsync(provider: *IPwmProvider) core.HResult!*IAsyncOperation(IVectorView(PwmController)) {
-        const _f = @This().IPwmControllerStaticsCache.get();
+        const _f = try @This()._IPwmControllerStaticsCache.get();
         return try _f.GetControllersAsync(provider);
     }
     pub const NAME: []const u8 = "Windows.Devices.Pwm.PwmController";

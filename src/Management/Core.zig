@@ -5,7 +5,7 @@ pub const ApplicationDataManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForPackageFamily(packageFamilyName: HSTRING) core.HResult!*ApplicationData {
-        const _f = @This().IApplicationDataManagerStaticsCache.get();
+        const _f = try @This()._IApplicationDataManagerStaticsCache.get();
         return try _f.CreateForPackageFamily(packageFamilyName);
     }
     pub const NAME: []const u8 = "Windows.Management.Core.ApplicationDataManager";

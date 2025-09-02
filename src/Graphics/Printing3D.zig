@@ -1623,11 +1623,11 @@ pub const Print3DManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*Print3DManager {
-        const _f = @This().IPrint3DManagerStaticsCache.get();
+        const _f = try @This()._IPrint3DManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn ShowPrintUIAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IPrint3DManagerStaticsCache.get();
+        const _f = try @This()._IPrint3DManagerStaticsCache.get();
         return try _f.ShowPrintUIAsync();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Print3DManager";
@@ -1902,7 +1902,7 @@ pub const Printing3D3MFPackage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3D3MFPackage.IID)));
     }
     pub fn LoadAsync(value: *IRandomAccessStream) core.HResult!*IAsyncOperation(Printing3D3MFPackage) {
-        const _f = @This().IPrinting3D3MFPackageStaticsCache.get();
+        const _f = try @This()._IPrinting3D3MFPackageStaticsCache.get();
         return try _f.LoadAsync(value);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3D3MFPackage";
@@ -1939,11 +1939,11 @@ pub const Printing3DBaseMaterial = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DBaseMaterial.IID)));
     }
     pub fn getAbs() core.HResult!HSTRING {
-        const _f = @This().IPrinting3DBaseMaterialStaticsCache.get();
+        const _f = try @This()._IPrinting3DBaseMaterialStaticsCache.get();
         return try _f.getAbs();
     }
     pub fn getPla() core.HResult!HSTRING {
-        const _f = @This().IPrinting3DBaseMaterialStaticsCache.get();
+        const _f = try @This()._IPrinting3DBaseMaterialStaticsCache.get();
         return try _f.getPla();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DBaseMaterial";
@@ -1968,7 +1968,7 @@ pub const Printing3DBaseMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DBaseMaterialGroup {
-        const _f = @This().IPrinting3DBaseMaterialGroupFactoryCache.get();
+        const _f = try @This()._IPrinting3DBaseMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DBaseMaterialGroup";
@@ -2041,7 +2041,7 @@ pub const Printing3DColorMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DColorMaterialGroup {
-        const _f = @This().IPrinting3DColorMaterialGroupFactoryCache.get();
+        const _f = try @This()._IPrinting3DColorMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DColorMaterialGroup";
@@ -2193,7 +2193,7 @@ pub const Printing3DCompositeMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DCompositeMaterialGroup {
-        const _f = @This().IPrinting3DCompositeMaterialGroupFactoryCache.get();
+        const _f = try @This()._IPrinting3DCompositeMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DCompositeMaterialGroup";
@@ -2609,7 +2609,7 @@ pub const Printing3DMultiplePropertyMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DMultiplePropertyMaterialGroup {
-        const _f = @This().IPrinting3DMultiplePropertyMaterialGroupFactoryCache.get();
+        const _f = try @This()._IPrinting3DMultiplePropertyMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DMultiplePropertyMaterialGroup";
@@ -2695,7 +2695,7 @@ pub const Printing3DTexture2CoordMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DTexture2CoordMaterialGroup {
-        const _f = @This().IPrinting3DTexture2CoordMaterialGroupFactoryCache.get();
+        const _f = try @This()._IPrinting3DTexture2CoordMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DTexture2CoordMaterialGroup";

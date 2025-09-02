@@ -17,7 +17,7 @@ pub const AgentContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetContextForCaller() core.HResult!*AgentContext {
-        const _f = @This().IAgentContextStaticsCache.get();
+        const _f = try @This()._IAgentContextStaticsCache.get();
         return try _f.GetContextForCaller();
     }
     pub const NAME: []const u8 = "Windows.AI.Agents.AgentContext";
@@ -57,35 +57,35 @@ pub const AgentResources = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFileSystemRead() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemRead();
     }
     pub fn getFileSystemWrite() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemWrite();
     }
     pub fn getFileSystemDelete() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemDelete();
     }
     pub fn getFileSystemCreate() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemCreate();
     }
     pub fn getHttpGet() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpGet();
     }
     pub fn getHttpPost() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpPost();
     }
     pub fn getHttpPut() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpPut();
     }
     pub fn getHttpDelete() core.HResult!HSTRING {
-        const _f = @This().IAgentResourcesStaticsCache.get();
+        const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpDelete();
     }
     pub const NAME: []const u8 = "Windows.AI.Agents.AgentResources";

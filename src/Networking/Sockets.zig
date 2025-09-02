@@ -61,11 +61,11 @@ pub const ControlChannelTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateControlChannelTrigger(channelId: HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
-        const _f = @This().IControlChannelTriggerFactoryCache.get();
+        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
         return try _f.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
     }
     pub fn CreateControlChannelTriggerEx(channelId: HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
-        const _f = @This().IControlChannelTriggerFactoryCache.get();
+        const _f = try @This()._IControlChannelTriggerFactoryCache.get();
         return try _f.CreateControlChannelTriggerEx(channelId, serverKeepAliveIntervalInMinutes, resourceRequestType);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.ControlChannelTrigger";
@@ -406,11 +406,11 @@ pub const DatagramSocket = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDatagramSocket.IID)));
     }
     pub fn GetEndpointPairsAsync(remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const _f = @This().IDatagramSocketStaticsCache.get();
+        const _f = try @This()._IDatagramSocketStaticsCache.get();
         return try _f.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
     pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const _f = @This().IDatagramSocketStaticsCache.get();
+        const _f = try @This()._IDatagramSocketStaticsCache.get();
         return try _f.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.DatagramSocket";
@@ -3255,7 +3255,7 @@ pub const SocketActivityContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(data: *IBuffer) core.HResult!*SocketActivityContext {
-        const _f = @This().ISocketActivityContextFactoryCache.get();
+        const _f = try @This()._ISocketActivityContextFactoryCache.get();
         return try _f.Create(data);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketActivityContext";
@@ -3299,7 +3299,7 @@ pub const SocketActivityInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAllSockets() core.HResult!*IMapView(HSTRING,SocketActivityInformation) {
-        const _f = @This().ISocketActivityInformationStaticsCache.get();
+        const _f = try @This()._ISocketActivityInformationStaticsCache.get();
         return try _f.getAllSockets();
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketActivityInformation";
@@ -3344,7 +3344,7 @@ pub const SocketError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!SocketErrorStatus {
-        const _f = @This().ISocketErrorStaticsCache.get();
+        const _f = try @This()._ISocketErrorStaticsCache.get();
         return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketError";
@@ -3504,11 +3504,11 @@ pub const StreamSocket = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStreamSocket.IID)));
     }
     pub fn GetEndpointPairsAsync(remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const _f = @This().IStreamSocketStaticsCache.get();
+        const _f = try @This()._IStreamSocketStaticsCache.get();
         return try _f.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
     pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const _f = @This().IStreamSocketStaticsCache.get();
+        const _f = try @This()._IStreamSocketStaticsCache.get();
         return try _f.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.StreamSocket";
@@ -4099,7 +4099,7 @@ pub const WebSocketError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const _f = @This().IWebSocketErrorStaticsCache.get();
+        const _f = try @This()._IWebSocketErrorStaticsCache.get();
         return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.WebSocketError";

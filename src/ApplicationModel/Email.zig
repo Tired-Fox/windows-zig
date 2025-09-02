@@ -109,11 +109,11 @@ pub const EmailAttachment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailAttachment.IID)));
     }
     pub fn Create(fileName: HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
-        const _f = @This().IEmailAttachmentFactoryCache.get();
+        const _f = try @This()._IEmailAttachmentFactoryCache.get();
         return try _f.Create(fileName, data);
     }
     pub fn CreateWithMimeType(fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
-        const _f = @This().IEmailAttachmentFactory2Cache.get();
+        const _f = try @This()._IEmailAttachmentFactory2Cache.get();
         return try _f.Create(fileName, data, mimeType);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailAttachment";
@@ -470,7 +470,7 @@ pub const EmailIrmInfo = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmInfo.IID)));
     }
     pub fn Create(expiration: DateTime, irmTemplate: *EmailIrmTemplate) core.HResult!*EmailIrmInfo {
-        const _f = @This().IEmailIrmInfoFactoryCache.get();
+        const _f = try @This()._IEmailIrmInfoFactoryCache.get();
         return try _f.Create(expiration, irmTemplate);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailIrmInfo";
@@ -515,7 +515,7 @@ pub const EmailIrmTemplate = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmTemplate.IID)));
     }
     pub fn Create(id: HSTRING, name: HSTRING, description: HSTRING) core.HResult!*EmailIrmTemplate {
-        const _f = @This().IEmailIrmTemplateFactoryCache.get();
+        const _f = try @This()._IEmailIrmTemplateFactoryCache.get();
         return try _f.Create(id, name, description);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailIrmTemplate";
@@ -1401,15 +1401,15 @@ pub const EmailManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowComposeNewEmailAsync(message: *EmailMessage) core.HResult!*IAsyncAction {
-        const _f = @This().IEmailManagerStaticsCache.get();
+        const _f = try @This()._IEmailManagerStaticsCache.get();
         return try _f.ShowComposeNewEmailAsync(message);
     }
     pub fn RequestStoreAsync(accessType: EmailStoreAccessType) core.HResult!*IAsyncOperation(EmailStore) {
-        const _f = @This().IEmailManagerStatics2Cache.get();
+        const _f = try @This()._IEmailManagerStatics2Cache.get();
         return try _f.RequestStoreAsync(accessType);
     }
     pub fn GetForUser(user: *User) core.HResult!*EmailManagerForUser {
-        const _f = @This().IEmailManagerStatics3Cache.get();
+        const _f = try @This()._IEmailManagerStatics3Cache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailManager";
@@ -2029,11 +2029,11 @@ pub const EmailQueryOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailQueryOptions.IID)));
     }
     pub fn CreateWithText(text: HSTRING) core.HResult!*EmailQueryOptions {
-        const _f = @This().IEmailQueryOptionsFactoryCache.get();
+        const _f = try @This()._IEmailQueryOptionsFactoryCache.get();
         return try _f.CreateWithText(text);
     }
     pub fn CreateWithTextAndFields(text: HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
-        const _f = @This().IEmailQueryOptionsFactoryCache.get();
+        const _f = try @This()._IEmailQueryOptionsFactoryCache.get();
         return try _f.CreateWithTextAndFields(text, fields);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailQueryOptions";
@@ -2121,11 +2121,11 @@ pub const EmailRecipient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailRecipient.IID)));
     }
     pub fn Create(address: HSTRING) core.HResult!*EmailRecipient {
-        const _f = @This().IEmailRecipientFactoryCache.get();
+        const _f = try @This()._IEmailRecipientFactoryCache.get();
         return try _f.Create(address);
     }
     pub fn CreateWithName(address: HSTRING, name: HSTRING) core.HResult!*EmailRecipient {
-        const _f = @This().IEmailRecipientFactoryCache.get();
+        const _f = try @This()._IEmailRecipientFactoryCache.get();
         return try _f.CreateWithName(address, name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailRecipient";

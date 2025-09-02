@@ -453,11 +453,11 @@ pub const OnlineIdServiceTicketRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateOnlineIdServiceTicketRequest(service: HSTRING, policy: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
-        const _f = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
+        const _f = try @This()._IOnlineIdServiceTicketRequestFactoryCache.get();
         return try _f.CreateOnlineIdServiceTicketRequest(service, policy);
     }
     pub fn CreateOnlineIdServiceTicketRequestAdvanced(service: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
-        const _f = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
+        const _f = try @This()._IOnlineIdServiceTicketRequestFactoryCache.get();
         return try _f.CreateOnlineIdServiceTicketRequestAdvanced(service);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest";
@@ -473,11 +473,11 @@ pub const OnlineIdSystemAuthenticator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDefault() core.HResult!*OnlineIdSystemAuthenticatorForUser {
-        const _f = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
+        const _f = try @This()._IOnlineIdSystemAuthenticatorStaticsCache.get();
         return try _f.getDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*OnlineIdSystemAuthenticatorForUser {
-        const _f = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
+        const _f = try @This()._IOnlineIdSystemAuthenticatorStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.OnlineId.OnlineIdSystemAuthenticator";

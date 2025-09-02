@@ -5,7 +5,7 @@ pub const ComponentRenewal = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RenewSystemComponentsAsync(information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
-        const _f = @This().IComponentRenewalStaticsCache.get();
+        const _f = try @This()._IComponentRenewalStaticsCache.get();
         return try _f.RenewSystemComponentsAsync(information);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.ComponentRenewal";
@@ -645,7 +645,7 @@ pub const MediaProtectionPMPServer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePMPServer(pProperties: *IPropertySet) core.HResult!*MediaProtectionPMPServer {
-        const _f = @This().IMediaProtectionPMPServerFactoryCache.get();
+        const _f = try @This()._IMediaProtectionPMPServerFactoryCache.get();
         return try _f.CreatePMPServer(pProperties);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.MediaProtectionPMPServer";

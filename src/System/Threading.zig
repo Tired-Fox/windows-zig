@@ -121,15 +121,15 @@ pub const ThreadPool = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RunAsync(handler: *WorkItemHandler) core.HResult!*IAsyncAction {
-        const _f = @This().IThreadPoolStaticsCache.get();
+        const _f = try @This()._IThreadPoolStaticsCache.get();
         return try _f.RunAsync(handler);
     }
     pub fn RunAsyncWithPriority(handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
-        const _f = @This().IThreadPoolStaticsCache.get();
+        const _f = try @This()._IThreadPoolStaticsCache.get();
         return try _f.RunAsyncWithPriority(handler, priority);
     }
     pub fn RunAsyncWithPriorityAndOptions(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
-        const _f = @This().IThreadPoolStaticsCache.get();
+        const _f = try @This()._IThreadPoolStaticsCache.get();
         return try _f.RunAsyncWithPriorityAndOptions(handler, priority, options);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPool";
@@ -154,19 +154,19 @@ pub const ThreadPoolTimer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePeriodicTimer(handler: *TimerElapsedHandler, period: TimeSpan) core.HResult!*ThreadPoolTimer {
-        const _f = @This().IThreadPoolTimerStaticsCache.get();
+        const _f = try @This()._IThreadPoolTimerStaticsCache.get();
         return try _f.CreatePeriodicTimer(handler, period);
     }
     pub fn CreateTimer(handler: *TimerElapsedHandler, delay: TimeSpan) core.HResult!*ThreadPoolTimer {
-        const _f = @This().IThreadPoolTimerStaticsCache.get();
+        const _f = try @This()._IThreadPoolTimerStaticsCache.get();
         return try _f.CreateTimer(handler, delay);
     }
     pub fn CreatePeriodicTimerWithDestroyed(handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
-        const _f = @This().IThreadPoolTimerStaticsCache.get();
+        const _f = try @This()._IThreadPoolTimerStaticsCache.get();
         return try _f.CreatePeriodicTimerWithDestroyed(handler, period, destroyed);
     }
     pub fn CreateTimerWithDestroyed(handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
-        const _f = @This().IThreadPoolTimerStaticsCache.get();
+        const _f = try @This()._IThreadPoolTimerStaticsCache.get();
         return try _f.CreateTimerWithDestroyed(handler, delay, destroyed);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPoolTimer";

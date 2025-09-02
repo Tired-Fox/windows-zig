@@ -230,11 +230,11 @@ pub const GameSaveProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
-        const _f = @This().IGameSaveProviderStaticsCache.get();
+        const _f = try @This()._IGameSaveProviderStaticsCache.get();
         return try _f.GetForUserAsync(user, serviceConfigId);
     }
     pub fn GetSyncOnDemandForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
-        const _f = @This().IGameSaveProviderStaticsCache.get();
+        const _f = try @This()._IGameSaveProviderStaticsCache.get();
         return try _f.GetSyncOnDemandForUserAsync(user, serviceConfigId);
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.GameSaveProvider";

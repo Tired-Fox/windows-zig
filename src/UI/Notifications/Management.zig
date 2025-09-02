@@ -126,7 +126,7 @@ pub const UserNotificationListener = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*UserNotificationListener {
-        const _f = @This().IUserNotificationListenerStaticsCache.get();
+        const _f = try @This()._IUserNotificationListenerStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.Management.UserNotificationListener";

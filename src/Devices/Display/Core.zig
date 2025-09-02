@@ -49,7 +49,7 @@ pub const DisplayAdapter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(id: DisplayAdapterId) core.HResult!*DisplayAdapter {
-        const _f = @This().IDisplayAdapterStaticsCache.get();
+        const _f = try @This()._IDisplayAdapterStaticsCache.get();
         return try _f.FromId(id);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayAdapter";
@@ -227,7 +227,7 @@ pub const DisplayManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(options: DisplayManagerOptions) core.HResult!*DisplayManager {
-        const _f = @This().IDisplayManagerStaticsCache.get();
+        const _f = try @This()._IDisplayManagerStaticsCache.get();
         return try _f.Create(options);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayManager";
@@ -455,11 +455,11 @@ pub const DisplayMuxDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IDisplayMuxDeviceStaticsCache.get();
+        const _f = try @This()._IDisplayMuxDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMuxDevice) {
-        const _f = @This().IDisplayMuxDeviceStaticsCache.get();
+        const _f = try @This()._IDisplayMuxDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayMuxDevice";
@@ -647,11 +647,11 @@ pub const DisplayPrimaryDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
-        const _f = @This().IDisplayPrimaryDescriptionFactoryCache.get();
+        const _f = try @This()._IDisplayPrimaryDescriptionFactoryCache.get();
         return try _f.CreateInstance(width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
     }
     pub fn CreateWithProperties(extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
-        const _f = @This().IDisplayPrimaryDescriptionStaticsCache.get();
+        const _f = try @This()._IDisplayPrimaryDescriptionStaticsCache.get();
         return try _f.CreateWithProperties(extraProperties, width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayPrimaryDescription";
@@ -1030,11 +1030,11 @@ pub const DisplayWireFormat = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
-        const _f = @This().IDisplayWireFormatFactoryCache.get();
+        const _f = try @This()._IDisplayWireFormatFactoryCache.get();
         return try _f.CreateInstance(pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
     }
     pub fn CreateWithProperties(extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
-        const _f = @This().IDisplayWireFormatStaticsCache.get();
+        const _f = try @This()._IDisplayWireFormatStaticsCache.get();
         return try _f.CreateWithProperties(extraProperties, pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayWireFormat";

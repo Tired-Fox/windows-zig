@@ -44,7 +44,7 @@ pub const CompositionDebugSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetSettings(compositor: *Compositor) core.HResult!*CompositionDebugSettings {
-        const _f = @This().ICompositionDebugSettingsStaticsCache.get();
+        const _f = try @This()._ICompositionDebugSettingsStaticsCache.get();
         return try _f.TryGetSettings(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Diagnostics.CompositionDebugSettings";

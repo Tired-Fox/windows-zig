@@ -2124,19 +2124,19 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFocalLength() core.HResult!HSTRING {
-        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getFocalLength();
     }
     pub fn getPrincipalPoint() core.HResult!HSTRING {
-        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getPrincipalPoint();
     }
     pub fn getRadialDistortion() core.HResult!HSTRING {
-        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getRadialDistortion();
     }
     pub fn getTangentialDistortion() core.HResult!HSTRING {
-        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getTangentialDistortion();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownCameraIntrinsicsProperties";
@@ -2149,15 +2149,15 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getExposure() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposure();
     }
     pub fn getAutoExposureEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getAutoExposureEnabled();
     }
     pub fn getExposureCompensation() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposureCompensation();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionColorFrameSourceProperties";
@@ -2170,11 +2170,11 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMinDepth() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try _f.getMinDepth();
     }
     pub fn getMaxDepth() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try _f.getMaxDepth();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionDepthFrameSourceProperties";
@@ -2187,27 +2187,27 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDeviceId() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
         return try _f.getDeviceId();
     }
     pub fn getId() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getId();
     }
     pub fn getPhysicalDeviceIds() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getPhysicalDeviceIds();
     }
     pub fn getFrameKind() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getFrameKind();
     }
     pub fn getDeviceModelVersion() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getDeviceModelVersion();
     }
     pub fn getEnclosureLocation() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getEnclosureLocation();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionFrameSourceProperties";
@@ -2221,31 +2221,31 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getExposure() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposure();
     }
     pub fn getAutoExposureEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getAutoExposureEnabled();
     }
     pub fn getExposureCompensation() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposureCompensation();
     }
     pub fn getActiveIlluminationEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getActiveIlluminationEnabled();
     }
     pub fn getAmbientSubtractionEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getAmbientSubtractionEnabled();
     }
     pub fn getStructureLightPatternEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getStructureLightPatternEnabled();
     }
     pub fn getInterleavedIlluminationEnabled() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getInterleavedIlluminationEnabled();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionInfraredFrameSourceProperties";
@@ -2258,23 +2258,23 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getVideoProfile() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getVideoProfile();
     }
     pub fn getSupportedVideoProfiles() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getSupportedVideoProfiles();
     }
     pub fn getAvailableVideoProfiles() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getAvailableVideoProfiles();
     }
     pub fn getIsMirrored() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getIsMirrored();
     }
     pub fn getCameraIntrinsics() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getCameraIntrinsics();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionVideoFrameSourceProperties";
@@ -2287,23 +2287,23 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBitmapPixelFormat() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getBitmapPixelFormat();
     }
     pub fn getBitmapAlphaMode() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getBitmapAlphaMode();
     }
     pub fn getWidth() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getWidth();
     }
     pub fn getHeight() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getHeight();
     }
     pub fn getFrameDuration() core.HResult!HSTRING {
-        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getFrameDuration();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionVideoProfileProperties";
@@ -2510,19 +2510,19 @@ pub const PerceptionColorFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionColorFrameSourceWatcher {
-        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionColorFrameSource)) {
-        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
-        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionColorFrameSource";
@@ -2882,19 +2882,19 @@ pub const PerceptionDepthFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionDepthFrameSourceWatcher {
-        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionDepthFrameSource)) {
-        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
-        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionDepthFrameSource";
@@ -3226,19 +3226,19 @@ pub const PerceptionInfraredFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionInfraredFrameSourceWatcher {
-        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionInfraredFrameSource)) {
-        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
-        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionInfraredFrameSource";

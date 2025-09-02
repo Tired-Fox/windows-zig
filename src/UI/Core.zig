@@ -73,7 +73,7 @@ pub const CoreWindowDialog = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreWindowDialog.IID)));
     }
     pub fn CreateWithTitle(title: HSTRING) core.HResult!*CoreWindowDialog {
-        const _f = @This().ICoreWindowDialogFactoryCache.get();
+        const _f = try @This()._ICoreWindowDialogFactoryCache.get();
         return try _f.CreateWithTitle(title);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowDialog";
@@ -146,11 +146,11 @@ pub const CoreWindowFlyout = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(position: Point) core.HResult!*CoreWindowFlyout {
-        const _f = @This().ICoreWindowFlyoutFactoryCache.get();
+        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
         return try _f.Create(position);
     }
     pub fn CreateWithTitle(position: Point, title: HSTRING) core.HResult!*CoreWindowFlyout {
-        const _f = @This().ICoreWindowFlyoutFactoryCache.get();
+        const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
         return try _f.CreateWithTitle(position, title);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowFlyout";
@@ -902,7 +902,7 @@ pub const CoreCursor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCursor(ty: CoreCursorType, id: u32) core.HResult!*CoreCursor {
-        const _f = @This().ICoreCursorFactoryCache.get();
+        const _f = try @This()._ICoreCursorFactoryCache.get();
         return try _f.CreateCursor(ty, id);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreCursor";
@@ -1252,11 +1252,11 @@ pub const CoreIndependentInputSourceController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForVisual(visual: *Visual) core.HResult!*CoreIndependentInputSourceController {
-        const _f = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
+        const _f = try @This()._ICoreIndependentInputSourceControllerStaticsCache.get();
         return try _f.CreateForVisual(visual);
     }
     pub fn CreateForIVisualElement(visualElement: *IVisualElement) core.HResult!*CoreIndependentInputSourceController {
-        const _f = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
+        const _f = try @This()._ICoreIndependentInputSourceControllerStaticsCache.get();
         return try _f.CreateForIVisualElement(visualElement);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreIndependentInputSourceController";
@@ -1615,7 +1615,7 @@ pub const CoreWindow = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentThread() core.HResult!*CoreWindow {
-        const _f = @This().ICoreWindowStaticCache.get();
+        const _f = try @This()._ICoreWindowStaticCache.get();
         return try _f.GetForCurrentThread();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindow";
@@ -1678,7 +1678,7 @@ pub const CoreWindowResizeManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreWindowResizeManager {
-        const _f = @This().ICoreWindowResizeManagerStaticsCache.get();
+        const _f = try @This()._ICoreWindowResizeManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowResizeManager";
@@ -3873,7 +3873,7 @@ pub const SystemNavigationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SystemNavigationManager {
-        const _f = @This().ISystemNavigationManagerStaticsCache.get();
+        const _f = try @This()._ISystemNavigationManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.SystemNavigationManager";

@@ -37,11 +37,11 @@ pub const CortanaActionableInsights = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CortanaActionableInsights {
-        const _f = @This().ICortanaActionableInsightsStaticsCache.get();
+        const _f = try @This()._ICortanaActionableInsightsStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*CortanaActionableInsights {
-        const _f = @This().ICortanaActionableInsightsStaticsCache.get();
+        const _f = try @This()._ICortanaActionableInsightsStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaActionableInsights";
@@ -123,7 +123,7 @@ pub const CortanaPermissionsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CortanaPermissionsManager {
-        const _f = @This().ICortanaPermissionsManagerStaticsCache.get();
+        const _f = try @This()._ICortanaPermissionsManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaPermissionsManager";
@@ -360,11 +360,11 @@ pub const CortanaSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().ICortanaSettingsStaticsCache.get();
+        const _f = try @This()._ICortanaSettingsStaticsCache.get();
         return try _f.IsSupported();
     }
     pub fn GetDefault() core.HResult!*CortanaSettings {
-        const _f = @This().ICortanaSettingsStaticsCache.get();
+        const _f = try @This()._ICortanaSettingsStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaSettings";

@@ -740,7 +740,7 @@ pub const WiFiDirectConnectionParameters = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWiFiDirectConnectionParameters.IID)));
     }
     pub fn GetDevicePairingKinds(configurationMethod: WiFiDirectConfigurationMethod) core.HResult!DevicePairingKinds {
-        const _f = @This().IWiFiDirectConnectionParametersStaticsCache.get();
+        const _f = try @This()._IWiFiDirectConnectionParametersStaticsCache.get();
         return try _f.GetDevicePairingKinds(configurationMethod);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFiDirect.WiFiDirectConnectionParameters";
@@ -817,19 +817,19 @@ pub const WiFiDirectDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IWiFiDirectDeviceStaticsCache.get();
+        const _f = try @This()._IWiFiDirectDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
-        const _f = @This().IWiFiDirectDeviceStaticsCache.get();
+        const _f = try @This()._IWiFiDirectDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelectorWithTy(ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
-        const _f = @This().IWiFiDirectDeviceStatics2Cache.get();
+        const _f = try @This()._IWiFiDirectDeviceStatics2Cache.get();
         return try _f.GetDeviceSelector(ty);
     }
     pub fn FromIdAsyncWithConnectionParameters(deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
-        const _f = @This().IWiFiDirectDeviceStatics2Cache.get();
+        const _f = try @This()._IWiFiDirectDeviceStatics2Cache.get();
         return try _f.FromIdAsync(deviceId, connectionParameters);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFiDirect.WiFiDirectDevice";
@@ -883,11 +883,11 @@ pub const WiFiDirectInformationElement = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWiFiDirectInformationElement.IID)));
     }
     pub fn CreateFromBuffer(buffer: *IBuffer) core.HResult!*IVector(WiFiDirectInformationElement) {
-        const _f = @This().IWiFiDirectInformationElementStaticsCache.get();
+        const _f = try @This()._IWiFiDirectInformationElementStaticsCache.get();
         return try _f.CreateFromBuffer(buffer);
     }
     pub fn CreateFromDeviceInformation(deviceInformation: *DeviceInformation) core.HResult!*IVector(WiFiDirectInformationElement) {
-        const _f = @This().IWiFiDirectInformationElementStaticsCache.get();
+        const _f = try @This()._IWiFiDirectInformationElementStaticsCache.get();
         return try _f.CreateFromDeviceInformation(deviceInformation);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFiDirect.WiFiDirectInformationElement";

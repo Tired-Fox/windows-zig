@@ -63,7 +63,7 @@ pub const HdmiDisplayInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*HdmiDisplayInformation {
-        const _f = @This().IHdmiDisplayInformationStaticsCache.get();
+        const _f = try @This()._IHdmiDisplayInformationStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.Core.HdmiDisplayInformation";

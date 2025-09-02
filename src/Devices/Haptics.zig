@@ -336,63 +336,63 @@ pub const KnownSimpleHapticsControllerWaveforms = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getClick() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try _f.getClick();
     }
     pub fn getBuzzContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try _f.getBuzzContinuous();
     }
     pub fn getRumbleContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try _f.getRumbleContinuous();
     }
     pub fn getPress() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try _f.getPress();
     }
     pub fn getRelease() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try _f.getRelease();
     }
     pub fn getBrushContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getBrushContinuous();
     }
     pub fn getChiselMarkerContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getChiselMarkerContinuous();
     }
     pub fn getEraserContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getEraserContinuous();
     }
     pub fn getError() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getError();
     }
     pub fn getGalaxyPenContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getGalaxyPenContinuous();
     }
     pub fn getHover() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getHover();
     }
     pub fn getInkContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getInkContinuous();
     }
     pub fn getMarkerContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getMarkerContinuous();
     }
     pub fn getPencilContinuous() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getPencilContinuous();
     }
     pub fn getSuccess() core.HResult!u16 {
-        const _f = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
+        const _f = try @This()._IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try _f.getSuccess();
     }
     pub const NAME: []const u8 = "Windows.Devices.Haptics.KnownSimpleHapticsControllerWaveforms";
@@ -488,23 +488,23 @@ pub const VibrationDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(VibrationAccessStatus) {
-        const _f = @This().IVibrationDeviceStaticsCache.get();
+        const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IVibrationDeviceStaticsCache.get();
+        const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(VibrationDevice) {
-        const _f = @This().IVibrationDeviceStaticsCache.get();
+        const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(VibrationDevice) {
-        const _f = @This().IVibrationDeviceStaticsCache.get();
+        const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(VibrationDevice)) {
-        const _f = @This().IVibrationDeviceStaticsCache.get();
+        const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Haptics.VibrationDevice";

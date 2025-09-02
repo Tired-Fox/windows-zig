@@ -471,15 +471,15 @@ pub const SpeechSynthesizer = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpeechSynthesizer.IID)));
     }
     pub fn getAllVoices() core.HResult!*IVectorView(VoiceInformation) {
-        const _f = @This().IInstalledVoicesStaticCache.get();
+        const _f = try @This()._IInstalledVoicesStaticCache.get();
         return try _f.getAllVoices();
     }
     pub fn getDefaultVoice() core.HResult!*VoiceInformation {
-        const _f = @This().IInstalledVoicesStaticCache.get();
+        const _f = try @This()._IInstalledVoicesStaticCache.get();
         return try _f.getDefaultVoice();
     }
     pub fn TrySetDefaultVoiceAsync(voice: *VoiceInformation) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IInstalledVoicesStatic2Cache.get();
+        const _f = try @This()._IInstalledVoicesStatic2Cache.get();
         return try _f.TrySetDefaultVoiceAsync(voice);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechSynthesis.SpeechSynthesizer";

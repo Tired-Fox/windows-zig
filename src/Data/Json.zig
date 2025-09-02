@@ -507,11 +507,11 @@ pub const JsonArray = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonArray.IID)));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonArray {
-        const _f = @This().IJsonArrayStaticsCache.get();
+        const _f = try @This()._IJsonArrayStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonArray) core.HResult!bool {
-        const _f = @This().IJsonArrayStaticsCache.get();
+        const _f = try @This()._IJsonArrayStaticsCache.get();
         return try _f.TryParse(input, result);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonArray";
@@ -528,7 +528,7 @@ pub const JsonError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetJsonStatus(hresult: i32) core.HResult!JsonErrorStatus {
-        const _f = @This().IJsonErrorStatics2Cache.get();
+        const _f = try @This()._IJsonErrorStatics2Cache.get();
         return try _f.GetJsonStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonError";
@@ -688,11 +688,11 @@ pub const JsonObject = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonObject.IID)));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonObject {
-        const _f = @This().IJsonObjectStaticsCache.get();
+        const _f = try @This()._IJsonObjectStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonObject) core.HResult!bool {
-        const _f = @This().IJsonObjectStaticsCache.get();
+        const _f = try @This()._IJsonObjectStaticsCache.get();
         return try _f.TryParse(input, result);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonObject";
@@ -743,27 +743,27 @@ pub const JsonValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonValue {
-        const _f = @This().IJsonValueStaticsCache.get();
+        const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonValue) core.HResult!bool {
-        const _f = @This().IJsonValueStaticsCache.get();
+        const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.TryParse(input, result);
     }
     pub fn CreateBooleanValue(input: bool) core.HResult!*JsonValue {
-        const _f = @This().IJsonValueStaticsCache.get();
+        const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.CreateBooleanValue(input);
     }
     pub fn CreateNumberValue(input: f64) core.HResult!*JsonValue {
-        const _f = @This().IJsonValueStaticsCache.get();
+        const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.CreateNumberValue(input);
     }
     pub fn CreateStringValue(input: HSTRING) core.HResult!*JsonValue {
-        const _f = @This().IJsonValueStaticsCache.get();
+        const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.CreateStringValue(input);
     }
     pub fn CreateNullValue() core.HResult!*JsonValue {
-        const _f = @This().IJsonValueStatics2Cache.get();
+        const _f = try @This()._IJsonValueStatics2Cache.get();
         return try _f.CreateNullValue();
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonValue";

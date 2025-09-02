@@ -2498,19 +2498,19 @@ pub const XmlDocument = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IXmlDocument.IID)));
     }
     pub fn LoadFromUriAsync(uri: *Uri) core.HResult!*IAsyncOperation(XmlDocument) {
-        const _f = @This().IXmlDocumentStaticsCache.get();
+        const _f = try @This()._IXmlDocumentStaticsCache.get();
         return try _f.LoadFromUriAsync(uri);
     }
     pub fn LoadFromUriAsyncWithLoadSettings(uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
-        const _f = @This().IXmlDocumentStaticsCache.get();
+        const _f = try @This()._IXmlDocumentStaticsCache.get();
         return try _f.LoadFromUriAsyncWithLoadSettings(uri, loadSettings);
     }
     pub fn LoadFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(XmlDocument) {
-        const _f = @This().IXmlDocumentStaticsCache.get();
+        const _f = try @This()._IXmlDocumentStaticsCache.get();
         return try _f.LoadFromFileAsync(file);
     }
     pub fn LoadFromFileAsyncWithLoadSettings(file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
-        const _f = @This().IXmlDocumentStaticsCache.get();
+        const _f = try @This()._IXmlDocumentStaticsCache.get();
         return try _f.LoadFromFileAsyncWithLoadSettings(file, loadSettings);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocument";

@@ -25,7 +25,7 @@ pub const CoreIncrementalInkStroke = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(drawingAttributes: *InkDrawingAttributes, pointTransform: Matrix3x2) core.HResult!*CoreIncrementalInkStroke {
-        const _f = @This().ICoreIncrementalInkStrokeFactoryCache.get();
+        const _f = try @This()._ICoreIncrementalInkStrokeFactoryCache.get();
         return try _f.Create(drawingAttributes, pointTransform);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreIncrementalInkStroke";
@@ -113,7 +113,7 @@ pub const CoreInkIndependentInputSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreInkIndependentInputSource {
-        const _f = @This().ICoreInkIndependentInputSourceStaticsCache.get();
+        const _f = try @This()._ICoreInkIndependentInputSourceStaticsCache.get();
         return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreInkIndependentInputSource";
@@ -230,7 +230,7 @@ pub const CoreWetStrokeUpdateSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreWetStrokeUpdateSource {
-        const _f = @This().ICoreWetStrokeUpdateSourceStaticsCache.get();
+        const _f = try @This()._ICoreWetStrokeUpdateSourceStaticsCache.get();
         return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreWetStrokeUpdateSource";

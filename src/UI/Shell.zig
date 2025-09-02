@@ -683,15 +683,15 @@ pub const WindowTabIcon = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromFontGlyph(glyph: HSTRING, fontFamily: HSTRING) core.HResult!*WindowTabIcon {
-        const _f = @This().IWindowTabIconStaticsCache.get();
+        const _f = try @This()._IWindowTabIconStaticsCache.get();
         return try _f.CreateFromFontGlyph(glyph, fontFamily);
     }
     pub fn CreateFromFontGlyphWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
-        const _f = @This().IWindowTabIconStaticsCache.get();
+        const _f = try @This()._IWindowTabIconStaticsCache.get();
         return try _f.CreateFromFontGlyphWithFontUri(glyph, fontFamily, fontUri);
     }
     pub fn CreateFromImage(image: *IRandomAccessStreamReference) core.HResult!*WindowTabIcon {
-        const _f = @This().IWindowTabIconStaticsCache.get();
+        const _f = try @This()._IWindowTabIconStaticsCache.get();
         return try _f.CreateFromImage(image);
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.WindowTabIcon";
@@ -747,15 +747,15 @@ pub const WindowTabManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForWindow(id: WindowId) core.HResult!*WindowTabManager {
-        const _f = @This().IWindowTabManagerStaticsCache.get();
+        const _f = try @This()._IWindowTabManagerStaticsCache.get();
         return try _f.GetForWindow(id);
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IWindowTabManagerStaticsCache.get();
+        const _f = try @This()._IWindowTabManagerStaticsCache.get();
         return try _f.IsSupported();
     }
     pub fn IsTabTearOutSupported() core.HResult!bool {
-        const _f = @This().IWindowTabManagerStaticsCache.get();
+        const _f = try @This()._IWindowTabManagerStaticsCache.get();
         return try _f.IsTabTearOutSupported();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.WindowTabManager";
@@ -839,7 +839,7 @@ pub const AdaptiveCardBuilder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAdaptiveCardFromJson(value: HSTRING) core.HResult!*IAdaptiveCard {
-        const _f = @This().IAdaptiveCardBuilderStaticsCache.get();
+        const _f = try @This()._IAdaptiveCardBuilderStaticsCache.get();
         return try _f.CreateAdaptiveCardFromJson(value);
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.AdaptiveCardBuilder";
@@ -896,11 +896,11 @@ pub const FocusSessionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*FocusSessionManager {
-        const _f = @This().IFocusSessionManagerStaticsCache.get();
+        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn getIsSupported() core.HResult!bool {
-        const _f = @This().IFocusSessionManagerStaticsCache.get();
+        const _f = try @This()._IFocusSessionManagerStaticsCache.get();
         return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.FocusSessionManager";
@@ -1381,7 +1381,7 @@ pub const ShareWindowCommandSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*ShareWindowCommandSource {
-        const _f = @This().IShareWindowCommandSourceStaticsCache.get();
+        const _f = try @This()._IShareWindowCommandSourceStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandSource";
@@ -1439,7 +1439,7 @@ pub const TaskbarManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*TaskbarManager {
-        const _f = @This().ITaskbarManagerStaticsCache.get();
+        const _f = try @This()._ITaskbarManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.TaskbarManager";

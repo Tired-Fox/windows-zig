@@ -650,23 +650,23 @@ pub const KeyCredentialManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.IsSupportedAsync();
     }
     pub fn RenewAttestationAsync() core.HResult!*IAsyncAction {
-        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.RenewAttestationAsync();
     }
     pub fn RequestCreateAsync(name: HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
-        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.RequestCreateAsync(name, option);
     }
     pub fn OpenAsync(name: HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
-        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.OpenAsync(name);
     }
     pub fn DeleteAsync(name: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.DeleteAsync(name);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.KeyCredentialManager";
@@ -756,7 +756,7 @@ pub const PasswordCredential = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordCredential.IID)));
     }
     pub fn CreatePasswordCredential(resource: HSTRING, userName: HSTRING, password: HSTRING) core.HResult!*PasswordCredential {
-        const _f = @This().ICredentialFactoryCache.get();
+        const _f = try @This()._ICredentialFactoryCache.get();
         return try _f.CreatePasswordCredential(resource, userName, password);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.PasswordCredential";
@@ -907,7 +907,7 @@ pub const WebAccount = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccount(webAccountProvider: *WebAccountProvider, userName: HSTRING, state: WebAccountState) core.HResult!*WebAccount {
-        const _f = @This().IWebAccountFactoryCache.get();
+        const _f = try @This()._IWebAccountFactoryCache.get();
         return try _f.CreateWebAccount(webAccountProvider, userName, state);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.WebAccount";
@@ -965,7 +965,7 @@ pub const WebAccountProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProvider(id: HSTRING, displayName: HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
-        const _f = @This().IWebAccountProviderFactoryCache.get();
+        const _f = try @This()._IWebAccountProviderFactoryCache.get();
         return try _f.CreateWebAccountProvider(id, displayName, iconUri);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.WebAccountProvider";

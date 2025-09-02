@@ -21,7 +21,7 @@ pub const CoreDragDropManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreDragDropManager {
-        const _f = @This().ICoreDragDropManagerStaticsCache.get();
+        const _f = try @This()._ICoreDragDropManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.CoreDragDropManager";

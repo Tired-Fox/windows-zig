@@ -75,7 +75,7 @@ pub const CameraIntrinsics = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(focalLength: Vector2, principalPoint: Vector2, radialDistortion: Vector3, tangentialDistortion: Vector2, imageWidth: u32, imageHeight: u32) core.HResult!*CameraIntrinsics {
-        const _f = @This().ICameraIntrinsicsFactoryCache.get();
+        const _f = try @This()._ICameraIntrinsicsFactoryCache.get();
         return try _f.Create(focalLength, principalPoint, radialDistortion, tangentialDistortion, imageWidth, imageHeight);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.Core.CameraIntrinsics";

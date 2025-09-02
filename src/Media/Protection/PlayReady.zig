@@ -2084,7 +2084,7 @@ pub const NDClient = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(downloadEngine: *INDDownloadEngine, streamParser: *INDStreamParser, pMessenger: *INDMessenger) core.HResult!*NDClient {
-        const _f = @This().INDClientFactoryCache.get();
+        const _f = try @This()._INDClientFactoryCache.get();
         return try _f.CreateInstance(downloadEngine, streamParser, pMessenger);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDClient";
@@ -2118,7 +2118,7 @@ pub const NDCustomData = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(customDataTypeIDBytes: [*]u8, customDataBytes: [*]u8) core.HResult!*NDCustomData {
-        const _f = @This().INDCustomDataFactoryCache.get();
+        const _f = try @This()._INDCustomDataFactoryCache.get();
         return try _f.CreateInstance(customDataTypeIDBytes, customDataBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDCustomData";
@@ -2190,7 +2190,7 @@ pub const NDLicenseFetchDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(contentIDType: NDContentIDType, contentIDBytes: [*]u8, licenseFetchChallengeCustomData: *INDCustomData) core.HResult!*NDLicenseFetchDescriptor {
-        const _f = @This().INDLicenseFetchDescriptorFactoryCache.get();
+        const _f = try @This()._INDLicenseFetchDescriptorFactoryCache.get();
         return try _f.CreateInstance(contentIDType, contentIDBytes, licenseFetchChallengeCustomData);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDLicenseFetchDescriptor";
@@ -2287,7 +2287,7 @@ pub const NDTCPMessenger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(remoteHostName: HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
-        const _f = @This().INDTCPMessengerFactoryCache.get();
+        const _f = try @This()._INDTCPMessengerFactoryCache.get();
         return try _f.CreateInstance(remoteHostName, remoteHostPort);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDTCPMessenger";
@@ -2355,19 +2355,19 @@ pub const PlayReadyContentHeader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromWindowsMediaDrmHeader(headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub fn CreateInstanceFromComponents(contentKeyId: *Guid, contentKeyIdString: HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromComponents(contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub fn CreateInstanceFromPlayReadyHeader(headerBytes: [*]u8) core.HResult!*PlayReadyContentHeader {
-        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromPlayReadyHeader(headerBytes);
     }
     pub fn CreateInstanceFromComponents2(dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: [*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const _f = @This().IPlayReadyContentHeaderFactory2Cache.get();
+        const _f = try @This()._IPlayReadyContentHeaderFactory2Cache.get();
         return try _f.CreateInstanceFromComponents2(dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyContentHeader";
@@ -2384,7 +2384,7 @@ pub const PlayReadyContentResolver = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ServiceRequest(contentHeader: *PlayReadyContentHeader) core.HResult!*IPlayReadyServiceRequest {
-        const _f = @This().IPlayReadyContentResolverCache.get();
+        const _f = try @This()._IPlayReadyContentResolverCache.get();
         return try _f.ServiceRequest(contentHeader);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyContentResolver";
@@ -2433,7 +2433,7 @@ pub const PlayReadyDomainIterable = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(domainAccountId: *Guid) core.HResult!*PlayReadyDomainIterable {
-        const _f = @This().IPlayReadyDomainIterableFactoryCache.get();
+        const _f = try @This()._IPlayReadyDomainIterableFactoryCache.get();
         return try _f.CreateInstance(domainAccountId);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyDomainIterable";
@@ -2966,7 +2966,7 @@ pub const PlayReadyLicenseIterable = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IIterable.IID)));
     }
     pub fn CreateInstance(contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
-        const _f = @This().IPlayReadyLicenseIterableFactoryCache.get();
+        const _f = try @This()._IPlayReadyLicenseIterableFactoryCache.get();
         return try _f.CreateInstance(contentHeader, fullyEvaluated);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseIterable";
@@ -2999,7 +2999,7 @@ pub const PlayReadyLicenseManagement = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DeleteLicenses(contentHeader: *PlayReadyContentHeader) core.HResult!*IAsyncAction {
-        const _f = @This().IPlayReadyLicenseManagementCache.get();
+        const _f = try @This()._IPlayReadyLicenseManagementCache.get();
         return try _f.DeleteLicenses(contentHeader);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseManagement";
@@ -3026,7 +3026,7 @@ pub const PlayReadyLicenseSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
-        const _f = @This().IPlayReadyLicenseSessionFactoryCache.get();
+        const _f = try @This()._IPlayReadyLicenseSessionFactoryCache.get();
         return try _f.CreateInstance(configuration);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseSession";
@@ -3218,7 +3218,7 @@ pub const PlayReadySecureStopIterable = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopIterable {
-        const _f = @This().IPlayReadySecureStopIterableFactoryCache.get();
+        const _f = try @This()._IPlayReadySecureStopIterableFactoryCache.get();
         return try _f.CreateInstance(publisherCertBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadySecureStopIterable";
@@ -3336,11 +3336,11 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
-        const _f = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
+        const _f = try @This()._IPlayReadySecureStopServiceRequestFactoryCache.get();
         return try _f.CreateInstance(publisherCertBytes);
     }
     pub fn CreateInstanceFromSessionID(sessionID: *Guid, publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
-        const _f = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
+        const _f = try @This()._IPlayReadySecureStopServiceRequestFactoryCache.get();
         return try _f.CreateInstanceFromSessionID(sessionID, publisherCertBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadySecureStopServiceRequest";
@@ -3376,67 +3376,67 @@ pub const PlayReadyStatics = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSecureStopServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStatics3Cache.get();
+        const _f = try @This()._IPlayReadyStatics3Cache.get();
         return try _f.getSecureStopServiceRequestType();
     }
     pub fn CheckSupportedHardware(hwdrmFeature: PlayReadyHardwareDRMFeatures) core.HResult!bool {
-        const _f = @This().IPlayReadyStatics3Cache.get();
+        const _f = try @This()._IPlayReadyStatics3Cache.get();
         return try _f.CheckSupportedHardware(hwdrmFeature);
     }
     pub fn getPlayReadyCertificateSecurityLevel() core.HResult!u32 {
-        const _f = @This().IPlayReadyStatics2Cache.get();
+        const _f = try @This()._IPlayReadyStatics2Cache.get();
         return try _f.getPlayReadyCertificateSecurityLevel();
     }
     pub fn getInputTrustAuthorityToCreate() core.HResult!HSTRING {
-        const _f = @This().IPlayReadyStatics4Cache.get();
+        const _f = try @This()._IPlayReadyStatics4Cache.get();
         return try _f.getInputTrustAuthorityToCreate();
     }
     pub fn getProtectionSystemId() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStatics4Cache.get();
+        const _f = try @This()._IPlayReadyStatics4Cache.get();
         return try _f.getProtectionSystemId();
     }
     pub fn getDomainJoinServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getDomainJoinServiceRequestType();
     }
     pub fn getDomainLeaveServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getDomainLeaveServiceRequestType();
     }
     pub fn getIndividualizationServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getIndividualizationServiceRequestType();
     }
     pub fn getLicenseAcquirerServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getLicenseAcquirerServiceRequestType();
     }
     pub fn getMeteringReportServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getMeteringReportServiceRequestType();
     }
     pub fn getRevocationServiceRequestType() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getRevocationServiceRequestType();
     }
     pub fn getMediaProtectionSystemId() core.HResult!*Guid {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getMediaProtectionSystemId();
     }
     pub fn getPlayReadySecurityVersion() core.HResult!u32 {
-        const _f = @This().IPlayReadyStaticsCache.get();
+        const _f = try @This()._IPlayReadyStaticsCache.get();
         return try _f.getPlayReadySecurityVersion();
     }
     pub fn getHardwareDRMDisabledAtTime() core.HResult!*IReference(DateTime) {
-        const _f = @This().IPlayReadyStatics5Cache.get();
+        const _f = try @This()._IPlayReadyStatics5Cache.get();
         return try _f.getHardwareDRMDisabledAtTime();
     }
     pub fn getHardwareDRMDisabledUntilTime() core.HResult!*IReference(DateTime) {
-        const _f = @This().IPlayReadyStatics5Cache.get();
+        const _f = try @This()._IPlayReadyStatics5Cache.get();
         return try _f.getHardwareDRMDisabledUntilTime();
     }
     pub fn ResetHardwareDRMDisabled() core.HResult!void {
-        const _f = @This().IPlayReadyStatics5Cache.get();
+        const _f = try @This()._IPlayReadyStatics5Cache.get();
         return try _f.ResetHardwareDRMDisabled();
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyStatics";

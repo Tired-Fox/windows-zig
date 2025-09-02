@@ -307,7 +307,7 @@ pub const DeploymentWorkload = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: HSTRING) core.HResult!*DeploymentWorkload {
-        const _f = @This().IDeploymentWorkloadFactoryCache.get();
+        const _f = try @This()._IDeploymentWorkloadFactoryCache.get();
         return try _f.CreateInstance(id);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.DeploymentWorkload";
@@ -339,7 +339,7 @@ pub const DeploymentWorkloadBatch = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: u32) core.HResult!*DeploymentWorkloadBatch {
-        const _f = @This().IDeploymentWorkloadBatchFactoryCache.get();
+        const _f = try @This()._IDeploymentWorkloadBatchFactoryCache.get();
         return try _f.CreateInstance(id);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.DeploymentWorkloadBatch";
@@ -934,7 +934,7 @@ pub const MachineProvisioningProgressReporter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForLaunchUri(launchUri: *Uri, heartbeatHandler: *DeploymentSessionHeartbeatRequested) core.HResult!*MachineProvisioningProgressReporter {
-        const _f = @This().IMachineProvisioningProgressReporterStaticsCache.get();
+        const _f = try @This()._IMachineProvisioningProgressReporterStaticsCache.get();
         return try _f.GetForLaunchUri(launchUri, heartbeatHandler);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.MachineProvisioningProgressReporter";

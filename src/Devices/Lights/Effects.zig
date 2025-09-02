@@ -738,7 +738,7 @@ pub const LampArrayBitmapEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBitmapEffect {
-        const _f = @This().ILampArrayBitmapEffectFactoryCache.get();
+        const _f = try @This()._ILampArrayBitmapEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayBitmapEffect";
@@ -846,7 +846,7 @@ pub const LampArrayBlinkEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBlinkEffect {
-        const _f = @This().ILampArrayBlinkEffectFactoryCache.get();
+        const _f = try @This()._ILampArrayBlinkEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayBlinkEffect";
@@ -906,7 +906,7 @@ pub const LampArrayColorRampEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayColorRampEffect {
-        const _f = @This().ILampArrayColorRampEffectFactoryCache.get();
+        const _f = try @This()._ILampArrayColorRampEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayColorRampEffect";
@@ -958,7 +958,7 @@ pub const LampArrayCustomEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayCustomEffect {
-        const _f = @This().ILampArrayCustomEffectFactoryCache.get();
+        const _f = try @This()._ILampArrayCustomEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayCustomEffect";
@@ -1038,15 +1038,15 @@ pub const LampArrayEffectPlaylist = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILampArrayEffectPlaylist.IID)));
     }
     pub fn StartAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        const _f = try @This()._ILampArrayEffectPlaylistStaticsCache.get();
         return try _f.StartAll(value);
     }
     pub fn StopAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        const _f = try @This()._ILampArrayEffectPlaylistStaticsCache.get();
         return try _f.StopAll(value);
     }
     pub fn PauseAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        const _f = try @This()._ILampArrayEffectPlaylistStaticsCache.get();
         return try _f.PauseAll(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayEffectPlaylist";
@@ -1115,7 +1115,7 @@ pub const LampArraySolidEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArraySolidEffect {
-        const _f = @This().ILampArraySolidEffectFactoryCache.get();
+        const _f = try @This()._ILampArraySolidEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArraySolidEffect";

@@ -41,19 +41,19 @@ pub const AppCapability = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessForCapabilitiesAsync(capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
-        const _f = @This().IAppCapabilityStaticsCache.get();
+        const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.RequestAccessForCapabilitiesAsync(capabilityNames);
     }
     pub fn RequestAccessForCapabilitiesForUserAsync(user: *User, capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
-        const _f = @This().IAppCapabilityStaticsCache.get();
+        const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.RequestAccessForCapabilitiesForUserAsync(user, capabilityNames);
     }
     pub fn Create(capabilityName: HSTRING) core.HResult!*AppCapability {
-        const _f = @This().IAppCapabilityStaticsCache.get();
+        const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.Create(capabilityName);
     }
     pub fn CreateWithProcessIdForUser(user: *User, capabilityName: HSTRING, pid: u32) core.HResult!*AppCapability {
-        const _f = @This().IAppCapabilityStaticsCache.get();
+        const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.CreateWithProcessIdForUser(user, capabilityName, pid);
     }
     pub const NAME: []const u8 = "Windows.Security.Authorization.AppCapabilityAccess.AppCapability";

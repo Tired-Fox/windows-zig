@@ -119,7 +119,7 @@ pub const EdgeGesture = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*EdgeGesture {
-        const _f = @This().IEdgeGestureStaticsCache.get();
+        const _f = try @This()._IEdgeGestureStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.EdgeGesture";
@@ -3954,7 +3954,7 @@ pub const KeyboardDeliveryInterceptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*KeyboardDeliveryInterceptor {
-        const _f = @This().IKeyboardDeliveryInterceptorStaticsCache.get();
+        const _f = try @This()._IKeyboardDeliveryInterceptorStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.KeyboardDeliveryInterceptor";
@@ -4349,19 +4349,19 @@ pub const PointerPoint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentPoint(pointerId: u32) core.HResult!*PointerPoint {
-        const _f = @This().IPointerPointStaticsCache.get();
+        const _f = try @This()._IPointerPointStaticsCache.get();
         return try _f.GetCurrentPoint(pointerId);
     }
     pub fn GetIntermediatePoints(pointerId: u32) core.HResult!*IVector(PointerPoint) {
-        const _f = @This().IPointerPointStaticsCache.get();
+        const _f = try @This()._IPointerPointStaticsCache.get();
         return try _f.GetIntermediatePoints(pointerId);
     }
     pub fn GetCurrentPointWithTransform(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*PointerPoint {
-        const _f = @This().IPointerPointStaticsCache.get();
+        const _f = try @This()._IPointerPointStaticsCache.get();
         return try _f.GetCurrentPointWithTransform(pointerId, transform);
     }
     pub fn GetIntermediatePointsWithTransform(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*IVector(PointerPoint) {
-        const _f = @This().IPointerPointStaticsCache.get();
+        const _f = try @This()._IPointerPointStaticsCache.get();
         return try _f.GetIntermediatePointsWithTransform(pointerId, transform);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.PointerPoint";
@@ -4516,7 +4516,7 @@ pub const PointerVisualizationSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*PointerVisualizationSettings {
-        const _f = @This().IPointerVisualizationSettingsStaticsCache.get();
+        const _f = try @This()._IPointerVisualizationSettingsStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.PointerVisualizationSettings";
@@ -4644,11 +4644,11 @@ pub const RadialController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IRadialControllerStaticsCache.get();
+        const _f = try @This()._IRadialControllerStaticsCache.get();
         return try _f.IsSupported();
     }
     pub fn CreateForCurrentView() core.HResult!*RadialController {
-        const _f = @This().IRadialControllerStaticsCache.get();
+        const _f = try @This()._IRadialControllerStaticsCache.get();
         return try _f.CreateForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.RadialController";
@@ -4766,23 +4766,23 @@ pub const RadialControllerConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*RadialControllerConfiguration {
-        const _f = @This().IRadialControllerConfigurationStaticsCache.get();
+        const _f = try @This()._IRadialControllerConfigurationStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn putAppController(value: *RadialController) core.HResult!void {
-        const _f = @This().IRadialControllerConfigurationStatics2Cache.get();
+        const _f = try @This()._IRadialControllerConfigurationStatics2Cache.get();
         return try _f.putAppController(value);
     }
     pub fn getAppController() core.HResult!*RadialController {
-        const _f = @This().IRadialControllerConfigurationStatics2Cache.get();
+        const _f = try @This()._IRadialControllerConfigurationStatics2Cache.get();
         return try _f.getAppController();
     }
     pub fn putIsAppControllerEnabled(value: bool) core.HResult!void {
-        const _f = @This().IRadialControllerConfigurationStatics2Cache.get();
+        const _f = try @This()._IRadialControllerConfigurationStatics2Cache.get();
         return try _f.putIsAppControllerEnabled(value);
     }
     pub fn getIsAppControllerEnabled() core.HResult!bool {
-        const _f = @This().IRadialControllerConfigurationStatics2Cache.get();
+        const _f = try @This()._IRadialControllerConfigurationStatics2Cache.get();
         return try _f.getIsAppControllerEnabled();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.RadialControllerConfiguration";
@@ -4875,19 +4875,19 @@ pub const RadialControllerMenuItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIcon(displayText: HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
-        const _f = @This().IRadialControllerMenuItemStaticsCache.get();
+        const _f = try @This()._IRadialControllerMenuItemStaticsCache.get();
         return try _f.CreateFromIcon(displayText, icon);
     }
     pub fn CreateFromKnownIcon(displayText: HSTRING, value: RadialControllerMenuKnownIcon) core.HResult!*RadialControllerMenuItem {
-        const _f = @This().IRadialControllerMenuItemStaticsCache.get();
+        const _f = try @This()._IRadialControllerMenuItemStaticsCache.get();
         return try _f.CreateFromKnownIcon(displayText, value);
     }
     pub fn CreateFromFontGlyph(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING) core.HResult!*RadialControllerMenuItem {
-        const _f = @This().IRadialControllerMenuItemStatics2Cache.get();
+        const _f = try @This()._IRadialControllerMenuItemStatics2Cache.get();
         return try _f.CreateFromFontGlyph(displayText, glyph, fontFamily);
     }
     pub fn CreateFromFontGlyphWithFontUri(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
-        const _f = @This().IRadialControllerMenuItemStatics2Cache.get();
+        const _f = try @This()._IRadialControllerMenuItemStatics2Cache.get();
         return try _f.CreateFromFontGlyphWithFontUri(displayText, glyph, fontFamily, fontUri);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.RadialControllerMenuItem";
@@ -5084,7 +5084,7 @@ pub const SystemButtonEventController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForDispatcherQueue(queue: *DispatcherQueue) core.HResult!*SystemButtonEventController {
-        const _f = @This().ISystemButtonEventControllerStaticsCache.get();
+        const _f = try @This()._ISystemButtonEventControllerStaticsCache.get();
         return try _f.CreateForDispatcherQueue(queue);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.SystemButtonEventController";
@@ -5242,11 +5242,11 @@ pub const TouchpadGesturesController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().ITouchpadGesturesControllerStaticsCache.get();
+        const _f = try @This()._ITouchpadGesturesControllerStaticsCache.get();
         return try _f.IsSupported();
     }
     pub fn CreateForProcess() core.HResult!*TouchpadGesturesController {
-        const _f = @This().ITouchpadGesturesControllerStaticsCache.get();
+        const _f = try @This()._ITouchpadGesturesControllerStaticsCache.get();
         return try _f.CreateForProcess();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.TouchpadGesturesController";

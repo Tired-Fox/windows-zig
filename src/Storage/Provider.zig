@@ -15,7 +15,7 @@ pub const CachedFileUpdater = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetUpdateInformation(file: *IStorageFile, contentId: HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
-        const _f = @This().ICachedFileUpdaterStaticsCache.get();
+        const _f = try @This()._ICachedFileUpdaterStaticsCache.get();
         return try _f.SetUpdateInformation(file, contentId, readMode, writeMode, options);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdater";
@@ -2048,7 +2048,7 @@ pub const StorageProviderFileTypeInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(fileExtension: HSTRING, iconResource: HSTRING) core.HResult!*StorageProviderFileTypeInfo {
-        const _f = @This().IStorageProviderFileTypeInfoFactoryCache.get();
+        const _f = try @This()._IStorageProviderFileTypeInfoFactoryCache.get();
         return try _f.CreateInstance(fileExtension, iconResource);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderFileTypeInfo";
@@ -2167,7 +2167,7 @@ pub const StorageProviderItemProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetAsync(item: *IStorageItem, itemProperties: *IIterable(StorageProviderItemProperty)) core.HResult!*IAsyncAction {
-        const _f = @This().IStorageProviderItemPropertiesStaticsCache.get();
+        const _f = try @This()._IStorageProviderItemPropertiesStaticsCache.get();
         return try _f.SetAsync(item, itemProperties);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderItemProperties";
@@ -2488,7 +2488,7 @@ pub const StorageProviderQueryResultSet = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(results: [*]IStorageProviderQueryResult) core.HResult!*StorageProviderQueryResultSet {
-        const _f = @This().IStorageProviderQueryResultSetFactoryCache.get();
+        const _f = try @This()._IStorageProviderQueryResultSetFactoryCache.get();
         return try _f.CreateInstance(results);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderQueryResultSet";
@@ -3044,27 +3044,27 @@ pub const StorageProviderSyncRootManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Register(syncRootInformation: *StorageProviderSyncRootInfo) core.HResult!void {
-        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.Register(syncRootInformation);
     }
     pub fn Unregister(id: HSTRING) core.HResult!void {
-        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.Unregister(id);
     }
     pub fn GetSyncRootInformationForFolder(folder: *IStorageFolder) core.HResult!*StorageProviderSyncRootInfo {
-        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.GetSyncRootInformationForFolder(folder);
     }
     pub fn GetSyncRootInformationForId(id: HSTRING) core.HResult!*StorageProviderSyncRootInfo {
-        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.GetSyncRootInformationForId(id);
     }
     pub fn GetCurrentSyncRoots() core.HResult!*IVectorView(StorageProviderSyncRootInfo) {
-        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.GetCurrentSyncRoots();
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IStorageProviderSyncRootManagerStatics2Cache.get();
+        const _f = try @This()._IStorageProviderSyncRootManagerStatics2Cache.get();
         return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderSyncRootManager";

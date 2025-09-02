@@ -329,7 +329,7 @@ pub const SearchQueryLinguisticDetails = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(queryTextAlternatives: *IIterable(HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
-        const _f = @This().ISearchQueryLinguisticDetailsFactoryCache.get();
+        const _f = try @This()._ISearchQueryLinguisticDetailsFactoryCache.get();
         return try _f.CreateInstance(queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.SearchQueryLinguisticDetails";
@@ -933,11 +933,11 @@ pub const SearchPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn HideThisApplication() core.HResult!void {
-        const _f = @This().ISearchPaneStaticsWithHideThisApplicationCache.get();
+        const _f = try @This()._ISearchPaneStaticsWithHideThisApplicationCache.get();
         return try _f.HideThisApplication();
     }
     pub fn GetForCurrentView() core.HResult!*SearchPane {
-        const _f = @This().ISearchPaneStaticsCache.get();
+        const _f = try @This()._ISearchPaneStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.SearchPane";

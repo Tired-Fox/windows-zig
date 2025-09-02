@@ -287,7 +287,7 @@ pub const RatedContentDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING, title: HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
-        const _f = @This().IRatedContentDescriptionFactoryCache.get();
+        const _f = try @This()._IRatedContentDescriptionFactoryCache.get();
         return try _f.Create(id, title, category);
     }
     pub const NAME: []const u8 = "Windows.Media.ContentRestrictions.RatedContentDescription";
@@ -327,7 +327,7 @@ pub const RatedContentRestrictions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRatedContentRestrictions.IID)));
     }
     pub fn CreateWithMaxAgeRating(maxAgeRating: u32) core.HResult!*RatedContentRestrictions {
-        const _f = @This().IRatedContentRestrictionsFactoryCache.get();
+        const _f = try @This()._IRatedContentRestrictionsFactoryCache.get();
         return try _f.CreateWithMaxAgeRating(maxAgeRating);
     }
     pub const NAME: []const u8 = "Windows.Media.ContentRestrictions.RatedContentRestrictions";

@@ -191,15 +191,15 @@ pub const HidDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(usagePage: u16, usageId: u16) core.HResult!HSTRING {
-        const _f = @This().IHidDeviceStaticsCache.get();
+        const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(usagePage, usageId);
     }
     pub fn GetDeviceSelectorWithVendorIdAndProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
-        const _f = @This().IHidDeviceStaticsCache.get();
+        const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithVendorIdAndProductId(usagePage, usageId, vendorId, productId);
     }
     pub fn FromIdAsync(deviceId: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
-        const _f = @This().IHidDeviceStaticsCache.get();
+        const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, accessMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.HumanInterfaceDevice.HidDevice";

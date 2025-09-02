@@ -464,7 +464,7 @@ pub const PackageExtensionCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Open(packageExtensionName: HSTRING) core.HResult!*PackageExtensionCatalog {
-        const _f = @This().IPackageExtensionCatalogStaticsCache.get();
+        const _f = try @This()._IPackageExtensionCatalogStaticsCache.get();
         return try _f.Open(packageExtensionName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.PackageExtensions.PackageExtensionCatalog";

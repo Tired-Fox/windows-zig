@@ -13,27 +13,27 @@ pub const AccountsSettingsPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*AccountsSettingsPane {
-        const _f = @This().IAccountsSettingsPaneStaticsCache.get();
+        const _f = try @This()._IAccountsSettingsPaneStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn Show() core.HResult!void {
-        const _f = @This().IAccountsSettingsPaneStaticsCache.get();
+        const _f = try @This()._IAccountsSettingsPaneStaticsCache.get();
         return try _f.Show();
     }
     pub fn ShowManageAccountsForUserAsync(user: *User) core.HResult!*IAsyncAction {
-        const _f = @This().IAccountsSettingsPaneStatics3Cache.get();
+        const _f = try @This()._IAccountsSettingsPaneStatics3Cache.get();
         return try _f.ShowManageAccountsForUserAsync(user);
     }
     pub fn ShowAddAccountForUserAsync(user: *User) core.HResult!*IAsyncAction {
-        const _f = @This().IAccountsSettingsPaneStatics3Cache.get();
+        const _f = try @This()._IAccountsSettingsPaneStatics3Cache.get();
         return try _f.ShowAddAccountForUserAsync(user);
     }
     pub fn ShowManageAccountsAsync() core.HResult!*IAsyncAction {
-        const _f = @This().IAccountsSettingsPaneStatics2Cache.get();
+        const _f = try @This()._IAccountsSettingsPaneStatics2Cache.get();
         return try _f.ShowManageAccountsAsync();
     }
     pub fn ShowAddAccountAsync() core.HResult!*IAsyncAction {
-        const _f = @This().IAccountsSettingsPaneStatics2Cache.get();
+        const _f = try @This()._IAccountsSettingsPaneStatics2Cache.get();
         return try _f.ShowAddAccountAsync();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.AccountsSettingsPane";
@@ -113,11 +113,11 @@ pub const CredentialCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCredentialCommand(passwordCredential: *PasswordCredential) core.HResult!*CredentialCommand {
-        const _f = @This().ICredentialCommandFactoryCache.get();
+        const _f = try @This()._ICredentialCommandFactoryCache.get();
         return try _f.CreateCredentialCommand(passwordCredential);
     }
     pub fn CreateCredentialCommandWithHandler(passwordCredential: *PasswordCredential, deleted: *CredentialCommandCredentialDeletedHandler) core.HResult!*CredentialCommand {
-        const _f = @This().ICredentialCommandFactoryCache.get();
+        const _f = try @This()._ICredentialCommandFactoryCache.get();
         return try _f.CreateCredentialCommandWithHandler(passwordCredential, deleted);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.CredentialCommand";
@@ -709,11 +709,11 @@ pub const SettingsCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateSettingsCommand(settingsCommandId: *IInspectable, label: HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
-        const _f = @This().ISettingsCommandFactoryCache.get();
+        const _f = try @This()._ISettingsCommandFactoryCache.get();
         return try _f.CreateSettingsCommand(settingsCommandId, label, handler);
     }
     pub fn getAccountsCommand() core.HResult!*SettingsCommand {
-        const _f = @This().ISettingsCommandStaticsCache.get();
+        const _f = try @This()._ISettingsCommandStaticsCache.get();
         return try _f.getAccountsCommand();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.SettingsCommand";
@@ -757,7 +757,7 @@ pub const WebAccountCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountCommand(webAccount: *WebAccount, invoked: *WebAccountCommandInvokedHandler, actions: SupportedWebAccountActions) core.HResult!*WebAccountCommand {
-        const _f = @This().IWebAccountCommandFactoryCache.get();
+        const _f = try @This()._IWebAccountCommandFactoryCache.get();
         return try _f.CreateWebAccountCommand(webAccount, invoked, actions);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.WebAccountCommand";
@@ -880,7 +880,7 @@ pub const WebAccountProviderCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProviderCommand(webAccountProvider: *WebAccountProvider, invoked: *WebAccountProviderCommandInvokedHandler) core.HResult!*WebAccountProviderCommand {
-        const _f = @This().IWebAccountProviderCommandFactoryCache.get();
+        const _f = try @This()._IWebAccountProviderCommandFactoryCache.get();
         return try _f.CreateWebAccountProviderCommand(webAccountProvider, invoked);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.WebAccountProviderCommand";
@@ -1104,15 +1104,15 @@ pub const SettingsPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SettingsPane {
-        const _f = @This().ISettingsPaneStaticsCache.get();
+        const _f = try @This()._ISettingsPaneStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn Show() core.HResult!void {
-        const _f = @This().ISettingsPaneStaticsCache.get();
+        const _f = try @This()._ISettingsPaneStaticsCache.get();
         return try _f.Show();
     }
     pub fn getEdge() core.HResult!SettingsEdgeLocation {
-        const _f = @This().ISettingsPaneStaticsCache.get();
+        const _f = try @This()._ISettingsPaneStaticsCache.get();
         return try _f.getEdge();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.SettingsPane";

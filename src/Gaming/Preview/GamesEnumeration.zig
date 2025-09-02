@@ -5,43 +5,43 @@ pub const GameList = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MergeEntriesAsync(left: *GameListEntry, right: *GameListEntry) core.HResult!*IAsyncOperation(GameListEntry) {
-        const _f = @This().IGameListStatics2Cache.get();
+        const _f = try @This()._IGameListStatics2Cache.get();
         return try _f.MergeEntriesAsync(left, right);
     }
     pub fn UnmergeEntryAsync(mergedEntry: *GameListEntry) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const _f = @This().IGameListStatics2Cache.get();
+        const _f = try @This()._IGameListStatics2Cache.get();
         return try _f.UnmergeEntryAsync(mergedEntry);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithPackageFamilyName(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.FindAllAsyncWithPackageFamilyName(packageFamilyName);
     }
     pub fn addGameAdded(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.addGameAdded(handler);
     }
     pub fn removeGameAdded(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.removeGameAdded(token);
     }
     pub fn addGameRemoved(handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.addGameRemoved(handler);
     }
     pub fn removeGameRemoved(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.removeGameRemoved(token);
     }
     pub fn addGameUpdated(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.addGameUpdated(handler);
     }
     pub fn removeGameUpdated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IGameListStaticsCache.get();
+        const _f = try @This()._IGameListStaticsCache.get();
         return try _f.removeGameUpdated(token);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameList";
@@ -404,7 +404,7 @@ pub const GameModeUserConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameModeUserConfiguration {
-        const _f = @This().IGameModeUserConfigurationStaticsCache.get();
+        const _f = try @This()._IGameModeUserConfigurationStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameModeUserConfiguration";

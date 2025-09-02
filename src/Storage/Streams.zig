@@ -17,15 +17,15 @@ pub const Buffer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(capacity: u32) core.HResult!*Buffer {
-        const _f = @This().IBufferFactoryCache.get();
+        const _f = try @This()._IBufferFactoryCache.get();
         return try _f.Create(capacity);
     }
     pub fn CreateCopyFromMemoryBuffer(input: *IMemoryBuffer) core.HResult!*Buffer {
-        const _f = @This().IBufferStaticsCache.get();
+        const _f = try @This()._IBufferStaticsCache.get();
         return try _f.CreateCopyFromMemoryBuffer(input);
     }
     pub fn CreateMemoryBufferOverIBuffer(input: *IBuffer) core.HResult!*MemoryBuffer {
-        const _f = @This().IBufferStaticsCache.get();
+        const _f = try @This()._IBufferStaticsCache.get();
         return try _f.CreateMemoryBufferOverIBuffer(input);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.Buffer";
@@ -156,11 +156,11 @@ pub const DataReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateDataReader(inputStream: *IInputStream) core.HResult!*DataReader {
-        const _f = @This().IDataReaderFactoryCache.get();
+        const _f = try @This()._IDataReaderFactoryCache.get();
         return try _f.CreateDataReader(inputStream);
     }
     pub fn FromBuffer(buffer: *IBuffer) core.HResult!*DataReader {
-        const _f = @This().IDataReaderStaticsCache.get();
+        const _f = try @This()._IDataReaderStaticsCache.get();
         return try _f.FromBuffer(buffer);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.DataReader";
@@ -341,7 +341,7 @@ pub const DataWriter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDataWriter.IID)));
     }
     pub fn CreateDataWriter(outputStream: *IOutputStream) core.HResult!*DataWriter {
-        const _f = @This().IDataWriterFactoryCache.get();
+        const _f = try @This()._IDataWriterFactoryCache.get();
         return try _f.CreateDataWriter(outputStream);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.DataWriter";
@@ -511,35 +511,35 @@ pub const FileRandomAccessStream = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAsync(filePath: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenAsync(filePath, accessMode);
     }
     pub fn OpenAsyncWithSharingOptionsAndOpenDisposition(filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenAsyncWithSharingOptionsAndOpenDisposition(filePath, accessMode, sharingOptions, openDisposition);
     }
     pub fn OpenTransactedWriteAsync(filePath: HSTRING) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenTransactedWriteAsync(filePath);
     }
     pub fn OpenTransactedWriteAsyncWithOpenOptionsAndOpenDisposition(filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenTransactedWriteAsyncWithOpenOptionsAndOpenDisposition(filePath, openOptions, openDisposition);
     }
     pub fn OpenForUserAsync(user: *User, filePath: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenForUserAsync(user, filePath, accessMode);
     }
     pub fn OpenForUserAsyncWithSharingOptionsAndOpenDisposition(user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenForUserAsyncWithSharingOptionsAndOpenDisposition(user, filePath, accessMode, sharingOptions, openDisposition);
     }
     pub fn OpenTransactedWriteForUserAsync(user: *User, filePath: HSTRING) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenTransactedWriteForUserAsync(user, filePath);
     }
     pub fn OpenTransactedWriteForUserAsyncWithOpenOptionsAndOpenDisposition(user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
-        const _f = @This().IFileRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenTransactedWriteForUserAsyncWithOpenOptionsAndOpenDisposition(user, filePath, openOptions, openDisposition);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.FileRandomAccessStream";
@@ -1579,15 +1579,15 @@ pub const RandomAccessStream = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CopyAsync(source: *IInputStream, destination: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
-        const _f = @This().IRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamStaticsCache.get();
         return try _f.CopyAsync(source, destination);
     }
     pub fn CopyAsyncWithBytesToCopy(source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
-        const _f = @This().IRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamStaticsCache.get();
         return try _f.CopyAsyncWithBytesToCopy(source, destination, bytesToCopy);
     }
     pub fn CopyAndCloseAsync(source: *IInputStream, destination: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
-        const _f = @This().IRandomAccessStreamStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamStaticsCache.get();
         return try _f.CopyAndCloseAsync(source, destination);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.RandomAccessStream";
@@ -1672,15 +1672,15 @@ pub const RandomAccessStreamReference = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromFile(file: *IStorageFile) core.HResult!*RandomAccessStreamReference {
-        const _f = @This().IRandomAccessStreamReferenceStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamReferenceStaticsCache.get();
         return try _f.CreateFromFile(file);
     }
     pub fn CreateFromUri(uri: *Uri) core.HResult!*RandomAccessStreamReference {
-        const _f = @This().IRandomAccessStreamReferenceStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamReferenceStaticsCache.get();
         return try _f.CreateFromUri(uri);
     }
     pub fn CreateFromStream(stream: *IRandomAccessStream) core.HResult!*RandomAccessStreamReference {
-        const _f = @This().IRandomAccessStreamReferenceStaticsCache.get();
+        const _f = try @This()._IRandomAccessStreamReferenceStaticsCache.get();
         return try _f.CreateFromStream(stream);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.RandomAccessStreamReference";

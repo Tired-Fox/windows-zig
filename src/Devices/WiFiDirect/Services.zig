@@ -673,15 +673,15 @@ pub const WiFiDirectService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetSelector(serviceName: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IWiFiDirectServiceStaticsCache.get();
+        const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.GetSelector(serviceName);
     }
     pub fn GetSelectorWithServiceInfoFilter(serviceName: HSTRING, serviceInfoFilter: *IBuffer) core.HResult!HSTRING {
-        const _f = @This().IWiFiDirectServiceStaticsCache.get();
+        const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.GetSelectorWithServiceInfoFilter(serviceName, serviceInfoFilter);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectService) {
-        const _f = @This().IWiFiDirectServiceStaticsCache.get();
+        const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFiDirect.Services.WiFiDirectService";
@@ -811,7 +811,7 @@ pub const WiFiDirectServiceAdvertiser = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWiFiDirectServiceAdvertiser(serviceName: HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
-        const _f = @This().IWiFiDirectServiceAdvertiserFactoryCache.get();
+        const _f = try @This()._IWiFiDirectServiceAdvertiserFactoryCache.get();
         return try _f.CreateWiFiDirectServiceAdvertiser(serviceName);
     }
     pub const NAME: []const u8 = "Windows.Devices.WiFiDirect.Services.WiFiDirectServiceAdvertiser";

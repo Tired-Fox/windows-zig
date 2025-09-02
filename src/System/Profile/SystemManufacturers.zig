@@ -203,7 +203,7 @@ pub const SmbiosInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSerialNumber() core.HResult!HSTRING {
-        const _f = @This().ISmbiosInformationStaticsCache.get();
+        const _f = try @This()._ISmbiosInformationStaticsCache.get();
         return try _f.getSerialNumber();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemManufacturers.SmbiosInformation";
@@ -252,15 +252,15 @@ pub const SystemSupportInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getLocalSystemEdition() core.HResult!HSTRING {
-        const _f = @This().ISystemSupportInfoStaticsCache.get();
+        const _f = try @This()._ISystemSupportInfoStaticsCache.get();
         return try _f.getLocalSystemEdition();
     }
     pub fn getOemSupportInfo() core.HResult!*OemSupportInfo {
-        const _f = @This().ISystemSupportInfoStaticsCache.get();
+        const _f = try @This()._ISystemSupportInfoStaticsCache.get();
         return try _f.getOemSupportInfo();
     }
     pub fn getLocalDeviceInfo() core.HResult!*SystemSupportDeviceInfo {
-        const _f = @This().ISystemSupportInfoStatics2Cache.get();
+        const _f = try @This()._ISystemSupportInfoStatics2Cache.get();
         return try _f.getLocalDeviceInfo();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemManufacturers.SystemSupportInfo";

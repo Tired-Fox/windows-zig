@@ -5,31 +5,31 @@ pub const AsyncCausalityTracer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TraceOperationCreation(traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, operationName: HSTRING, relatedContext: u64) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.TraceOperationCreation(traceLevel, source, platformId, operationId, operationName, relatedContext);
     }
     pub fn TraceOperationCompletion(traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, status: AsyncStatus) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.TraceOperationCompletion(traceLevel, source, platformId, operationId, status);
     }
     pub fn TraceOperationRelation(traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, relation: CausalityRelation) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.TraceOperationRelation(traceLevel, source, platformId, operationId, relation);
     }
     pub fn TraceSynchronousWorkStart(traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, work: CausalitySynchronousWork) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.TraceSynchronousWorkStart(traceLevel, source, platformId, operationId, work);
     }
     pub fn TraceSynchronousWorkCompletion(traceLevel: CausalityTraceLevel, source: CausalitySource, work: CausalitySynchronousWork) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.TraceSynchronousWorkCompletion(traceLevel, source, work);
     }
     pub fn addTracingStatusChanged(handler: *EventHandler(TracingStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.addTracingStatusChanged(handler);
     }
     pub fn removeTracingStatusChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IAsyncCausalityTracerStaticsCache.get();
+        const _f = try @This()._IAsyncCausalityTracerStaticsCache.get();
         return try _f.removeTracingStatusChanged(cookie);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.AsyncCausalityTracer";
@@ -76,7 +76,7 @@ pub const ErrorDetails = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromHResultAsync(errorCode: i32) core.HResult!*IAsyncOperation(ErrorDetails) {
-        const _f = @This().IErrorDetailsStaticsCache.get();
+        const _f = try @This()._IErrorDetailsStaticsCache.get();
         return try _f.CreateFromHResultAsync(errorCode);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.ErrorDetails";
@@ -133,7 +133,7 @@ pub const FileLoggingSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(name: HSTRING) core.HResult!*FileLoggingSession {
-        const _f = @This().IFileLoggingSessionFactoryCache.get();
+        const _f = try @This()._IFileLoggingSessionFactoryCache.get();
         return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.FileLoggingSession";
@@ -1688,11 +1688,11 @@ pub const LoggingActivity = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLoggingActivity(activityName: HSTRING, loggingChannel: *ILoggingChannel) core.HResult!*LoggingActivity {
-        const _f = @This().ILoggingActivityFactoryCache.get();
+        const _f = try @This()._ILoggingActivityFactoryCache.get();
         return try _f.CreateLoggingActivity(activityName, loggingChannel);
     }
     pub fn CreateLoggingActivityWithLevel(activityName: HSTRING, loggingChannel: *ILoggingChannel, level: LoggingLevel) core.HResult!*LoggingActivity {
-        const _f = @This().ILoggingActivityFactoryCache.get();
+        const _f = try @This()._ILoggingActivityFactoryCache.get();
         return try _f.CreateLoggingActivityWithLevel(activityName, loggingChannel, level);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.LoggingActivity";
@@ -1822,15 +1822,15 @@ pub const LoggingChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithOptions(name: HSTRING, options: *LoggingChannelOptions) core.HResult!*LoggingChannel {
-        const _f = @This().ILoggingChannelFactory2Cache.get();
+        const _f = try @This()._ILoggingChannelFactory2Cache.get();
         return try _f.CreateWithOptions(name, options);
     }
     pub fn CreateWithOptionsAndId(name: HSTRING, options: *LoggingChannelOptions, id: *Guid) core.HResult!*LoggingChannel {
-        const _f = @This().ILoggingChannelFactory2Cache.get();
+        const _f = try @This()._ILoggingChannelFactory2Cache.get();
         return try _f.CreateWithOptionsAndId(name, options, id);
     }
     pub fn Create(name: HSTRING) core.HResult!*LoggingChannel {
-        const _f = @This().ILoggingChannelFactoryCache.get();
+        const _f = try @This()._ILoggingChannelFactoryCache.get();
         return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.LoggingChannel";
@@ -1859,7 +1859,7 @@ pub const LoggingChannelOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILoggingChannelOptions.IID)));
     }
     pub fn Create(group: *Guid) core.HResult!*LoggingChannelOptions {
-        const _f = @This().ILoggingChannelOptionsFactoryCache.get();
+        const _f = try @This()._ILoggingChannelOptionsFactoryCache.get();
         return try _f.Create(group);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.LoggingChannelOptions";
@@ -2441,7 +2441,7 @@ pub const LoggingOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILoggingOptions.IID)));
     }
     pub fn CreateWithKeywords(keywords: i64) core.HResult!*LoggingOptions {
-        const _f = @This().ILoggingOptionsFactoryCache.get();
+        const _f = try @This()._ILoggingOptionsFactoryCache.get();
         return try _f.CreateWithKeywords(keywords);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.LoggingOptions";
@@ -2484,7 +2484,7 @@ pub const LoggingSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(name: HSTRING) core.HResult!*LoggingSession {
-        const _f = @This().ILoggingSessionFactoryCache.get();
+        const _f = try @This()._ILoggingSessionFactoryCache.get();
         return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Diagnostics.LoggingSession";

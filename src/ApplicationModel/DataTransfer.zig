@@ -5,79 +5,79 @@ pub const Clipboard = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetHistoryItemsAsync() core.HResult!*IAsyncOperation(ClipboardHistoryItemsResult) {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.GetHistoryItemsAsync();
     }
     pub fn ClearHistory() core.HResult!bool {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.ClearHistory();
     }
     pub fn DeleteItemFromHistory(item: *ClipboardHistoryItem) core.HResult!bool {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.DeleteItemFromHistory(item);
     }
     pub fn SetHistoryItemAsContent(item: *ClipboardHistoryItem) core.HResult!SetHistoryItemAsContentStatus {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.SetHistoryItemAsContent(item);
     }
     pub fn IsHistoryEnabled() core.HResult!bool {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.IsHistoryEnabled();
     }
     pub fn IsRoamingEnabled() core.HResult!bool {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.IsRoamingEnabled();
     }
     pub fn SetContentWithOptions(content: *DataPackage, options: *ClipboardContentOptions) core.HResult!bool {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.SetContentWithOptions(content, options);
     }
     pub fn addHistoryChanged(handler: *EventHandler(ClipboardHistoryChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.addHistoryChanged(handler);
     }
     pub fn removeHistoryChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.removeHistoryChanged(token);
     }
     pub fn addRoamingEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.addRoamingEnabledChanged(handler);
     }
     pub fn removeRoamingEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.removeRoamingEnabledChanged(token);
     }
     pub fn addHistoryEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.addHistoryEnabledChanged(handler);
     }
     pub fn removeHistoryEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IClipboardStatics2Cache.get();
+        const _f = try @This()._IClipboardStatics2Cache.get();
         return try _f.removeHistoryEnabledChanged(token);
     }
     pub fn GetContent() core.HResult!*DataPackageView {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.GetContent();
     }
     pub fn SetContent(content: *DataPackage) core.HResult!void {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.SetContent(content);
     }
     pub fn Flush() core.HResult!void {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.Flush();
     }
     pub fn Clear() core.HResult!void {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.Clear();
     }
     pub fn addContentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.addContentChanged(handler);
     }
     pub fn removeContentChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IClipboardStaticsCache.get();
+        const _f = try @This()._IClipboardStaticsCache.get();
         return try _f.removeContentChanged(token);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.Clipboard";
@@ -871,19 +871,19 @@ pub const DataTransferManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowShareUIWithOptions(options: *ShareUIOptions) core.HResult!void {
-        const _f = @This().IDataTransferManagerStatics3Cache.get();
+        const _f = try @This()._IDataTransferManagerStatics3Cache.get();
         return try _f.ShowShareUI(options);
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IDataTransferManagerStatics2Cache.get();
+        const _f = try @This()._IDataTransferManagerStatics2Cache.get();
         return try _f.IsSupported();
     }
     pub fn ShowShareUI() core.HResult!void {
-        const _f = @This().IDataTransferManagerStaticsCache.get();
+        const _f = try @This()._IDataTransferManagerStaticsCache.get();
         return try _f.ShowShareUI();
     }
     pub fn GetForCurrentView() core.HResult!*DataTransferManager {
-        const _f = @This().IDataTransferManagerStaticsCache.get();
+        const _f = try @This()._IDataTransferManagerStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DataTransferManager";
@@ -901,11 +901,11 @@ pub const HtmlFormatHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStaticFragment(htmlFormat: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IHtmlFormatHelperStaticsCache.get();
+        const _f = try @This()._IHtmlFormatHelperStaticsCache.get();
         return try _f.GetStaticFragment(htmlFormat);
     }
     pub fn CreateHtmlFormat(htmlFragment: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IHtmlFormatHelperStaticsCache.get();
+        const _f = try @This()._IHtmlFormatHelperStaticsCache.get();
         return try _f.CreateHtmlFormat(htmlFragment);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.HtmlFormatHelper";
@@ -2830,7 +2830,7 @@ pub const ShareProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(title: HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
-        const _f = @This().IShareProviderFactoryCache.get();
+        const _f = try @This()._IShareProviderFactoryCache.get();
         return try _f.Create(title, displayIcon, backgroundColor, handler);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.ShareProvider";
@@ -3026,15 +3026,15 @@ pub const SharedStorageAccessManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddFile(file: *IStorageFile) core.HResult!HSTRING {
-        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.AddFile(file);
     }
     pub fn RedeemTokenForFileAsync(token: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
-        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.RedeemTokenForFileAsync(token);
     }
     pub fn RemoveFile(token: HSTRING) core.HResult!void {
-        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.RemoveFile(token);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.SharedStorageAccessManager";
@@ -3047,39 +3047,39 @@ pub const StandardDataFormats = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getUserActivityJsonArray() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStatics3Cache.get();
+        const _f = try @This()._IStandardDataFormatsStatics3Cache.get();
         return try _f.getUserActivityJsonArray();
     }
     pub fn getWebLink() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStatics2Cache.get();
+        const _f = try @This()._IStandardDataFormatsStatics2Cache.get();
         return try _f.getWebLink();
     }
     pub fn getApplicationLink() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStatics2Cache.get();
+        const _f = try @This()._IStandardDataFormatsStatics2Cache.get();
         return try _f.getApplicationLink();
     }
     pub fn getText() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getText();
     }
     pub fn getUri() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getUri();
     }
     pub fn getHtml() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getHtml();
     }
     pub fn getRtf() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getRtf();
     }
     pub fn getBitmap() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getBitmap();
     }
     pub fn getStorageItems() core.HResult!HSTRING {
-        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getStorageItems();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.StandardDataFormats";

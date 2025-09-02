@@ -2076,19 +2076,19 @@ pub const KnownRemoteSystemCapabilities = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAppService() core.HResult!HSTRING {
-        const _f = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
+        const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getAppService();
     }
     pub fn getLaunchUri() core.HResult!HSTRING {
-        const _f = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
+        const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getLaunchUri();
     }
     pub fn getRemoteSession() core.HResult!HSTRING {
-        const _f = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
+        const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getRemoteSession();
     }
     pub fn getSpatialEntity() core.HResult!HSTRING {
-        const _f = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
+        const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getSpatialEntity();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.KnownRemoteSystemCapabilities";
@@ -2163,31 +2163,31 @@ pub const RemoteSystem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindByHostNameAsync(hostName: *HostName) core.HResult!*IAsyncOperation(RemoteSystem) {
-        const _f = @This().IRemoteSystemStaticsCache.get();
+        const _f = try @This()._IRemoteSystemStaticsCache.get();
         return try _f.FindByHostNameAsync(hostName);
     }
     pub fn CreateWatcher() core.HResult!*RemoteSystemWatcher {
-        const _f = @This().IRemoteSystemStaticsCache.get();
+        const _f = try @This()._IRemoteSystemStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub fn CreateWatcherWithFilters(filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
-        const _f = @This().IRemoteSystemStaticsCache.get();
+        const _f = try @This()._IRemoteSystemStaticsCache.get();
         return try _f.CreateWatcherWithFilters(filters);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(RemoteSystemAccessStatus) {
-        const _f = @This().IRemoteSystemStaticsCache.get();
+        const _f = try @This()._IRemoteSystemStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub fn IsAuthorizationKindEnabled(kind: RemoteSystemAuthorizationKind) core.HResult!bool {
-        const _f = @This().IRemoteSystemStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemStatics2Cache.get();
         return try _f.IsAuthorizationKindEnabled(kind);
     }
     pub fn CreateWatcherForUser(user: *User) core.HResult!*RemoteSystemWatcher {
-        const _f = @This().IRemoteSystemStatics3Cache.get();
+        const _f = try @This()._IRemoteSystemStatics3Cache.get();
         return try _f.CreateWatcherForUser(user);
     }
     pub fn CreateWatcherForUserWithFilters(user: *User, filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
-        const _f = @This().IRemoteSystemStatics3Cache.get();
+        const _f = try @This()._IRemoteSystemStatics3Cache.get();
         return try _f.CreateWatcherForUserWithFilters(user, filters);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystem";
@@ -2275,11 +2275,11 @@ pub const RemoteSystemAppRegistration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*RemoteSystemAppRegistration {
-        const _f = @This().IRemoteSystemAppRegistrationStaticsCache.get();
+        const _f = try @This()._IRemoteSystemAppRegistrationStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*RemoteSystemAppRegistration {
-        const _f = @This().IRemoteSystemAppRegistrationStaticsCache.get();
+        const _f = try @This()._IRemoteSystemAppRegistrationStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemAppRegistration";
@@ -2303,7 +2303,7 @@ pub const RemoteSystemAuthorizationKindFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(remoteSystemAuthorizationKind: RemoteSystemAuthorizationKind) core.HResult!*RemoteSystemAuthorizationKindFilter {
-        const _f = @This().IRemoteSystemAuthorizationKindFilterFactoryCache.get();
+        const _f = try @This()._IRemoteSystemAuthorizationKindFilterFactoryCache.get();
         return try _f.Create(remoteSystemAuthorizationKind);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemAuthorizationKindFilter";
@@ -2323,7 +2323,7 @@ pub const RemoteSystemConnectionInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateFromAppServiceConnection(connection: *AppServiceConnection) core.HResult!*RemoteSystemConnectionInfo {
-        const _f = @This().IRemoteSystemConnectionInfoStaticsCache.get();
+        const _f = try @This()._IRemoteSystemConnectionInfoStaticsCache.get();
         return try _f.TryCreateFromAppServiceConnection(connection);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemConnectionInfo";
@@ -2355,19 +2355,19 @@ pub const RemoteSystemConnectionRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(remoteSystem: *RemoteSystem) core.HResult!*RemoteSystemConnectionRequest {
-        const _f = @This().IRemoteSystemConnectionRequestFactoryCache.get();
+        const _f = try @This()._IRemoteSystemConnectionRequestFactoryCache.get();
         return try _f.Create(remoteSystem);
     }
     pub fn CreateForApp(remoteSystemApp: *RemoteSystemApp) core.HResult!*RemoteSystemConnectionRequest {
-        const _f = @This().IRemoteSystemConnectionRequestStaticsCache.get();
+        const _f = try @This()._IRemoteSystemConnectionRequestStaticsCache.get();
         return try _f.CreateForApp(remoteSystemApp);
     }
     pub fn CreateFromConnectionToken(connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
-        const _f = @This().IRemoteSystemConnectionRequestStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemConnectionRequestStatics2Cache.get();
         return try _f.CreateFromConnectionToken(connectionToken);
     }
     pub fn CreateFromConnectionTokenForUser(user: *User, connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
-        const _f = @This().IRemoteSystemConnectionRequestStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemConnectionRequestStatics2Cache.get();
         return try _f.CreateFromConnectionTokenForUser(user, connectionToken);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemConnectionRequest";
@@ -2395,7 +2395,7 @@ pub const RemoteSystemDiscoveryTypeFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(discoveryType: RemoteSystemDiscoveryType) core.HResult!*RemoteSystemDiscoveryTypeFilter {
-        const _f = @This().IRemoteSystemDiscoveryTypeFilterFactoryCache.get();
+        const _f = try @This()._IRemoteSystemDiscoveryTypeFilterFactoryCache.get();
         return try _f.Create(discoveryType);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemDiscoveryTypeFilter";
@@ -2423,7 +2423,7 @@ pub const RemoteSystemKindFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(remoteSystemKinds: *IIterable(HSTRING)) core.HResult!*RemoteSystemKindFilter {
-        const _f = @This().IRemoteSystemKindFilterFactoryCache.get();
+        const _f = try @This()._IRemoteSystemKindFilterFactoryCache.get();
         return try _f.Create(remoteSystemKinds);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemKindFilter";
@@ -2439,35 +2439,35 @@ pub const RemoteSystemKinds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPhone() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStaticsCache.get();
+        const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getPhone();
     }
     pub fn getHub() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStaticsCache.get();
+        const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getHub();
     }
     pub fn getHolographic() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStaticsCache.get();
+        const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getHolographic();
     }
     pub fn getDesktop() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStaticsCache.get();
+        const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getDesktop();
     }
     pub fn getXbox() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStaticsCache.get();
+        const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getXbox();
     }
     pub fn getIot() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getIot();
     }
     pub fn getTablet() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getTablet();
     }
     pub fn getLaptop() core.HResult!HSTRING {
-        const _f = @This().IRemoteSystemKindStatics2Cache.get();
+        const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getLaptop();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemKinds";
@@ -2534,7 +2534,7 @@ pub const RemoteSystemSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*RemoteSystemSessionWatcher {
-        const _f = @This().IRemoteSystemSessionStaticsCache.get();
+        const _f = try @This()._IRemoteSystemSessionStaticsCache.get();
         return try _f.CreateWatcher();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSession";
@@ -2578,11 +2578,11 @@ pub const RemoteSystemSessionController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateController(displayName: HSTRING) core.HResult!*RemoteSystemSessionController {
-        const _f = @This().IRemoteSystemSessionControllerFactoryCache.get();
+        const _f = try @This()._IRemoteSystemSessionControllerFactoryCache.get();
         return try _f.CreateController(displayName);
     }
     pub fn CreateControllerWithOptions(displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
-        const _f = @This().IRemoteSystemSessionControllerFactoryCache.get();
+        const _f = try @This()._IRemoteSystemSessionControllerFactoryCache.get();
         return try _f.CreateControllerWithOptions(displayName, options);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSessionController";
@@ -2787,11 +2787,11 @@ pub const RemoteSystemSessionMessageChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(session: *RemoteSystemSession, channelName: HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
-        const _f = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
+        const _f = try @This()._IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try _f.Create(session, channelName);
     }
     pub fn CreateWithReliability(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
-        const _f = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
+        const _f = try @This()._IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try _f.CreateWithReliability(session, channelName, reliability);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSessionMessageChannel";
@@ -3033,7 +3033,7 @@ pub const RemoteSystemStatusTypeFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(remoteSystemStatusType: RemoteSystemStatusType) core.HResult!*RemoteSystemStatusTypeFilter {
-        const _f = @This().IRemoteSystemStatusTypeFilterFactoryCache.get();
+        const _f = try @This()._IRemoteSystemStatusTypeFilterFactoryCache.get();
         return try _f.Create(remoteSystemStatusType);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemStatusTypeFilter";
@@ -3152,7 +3152,7 @@ pub const RemoteSystemWebAccountFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(account: *WebAccount) core.HResult!*RemoteSystemWebAccountFilter {
-        const _f = @This().IRemoteSystemWebAccountFilterFactoryCache.get();
+        const _f = try @This()._IRemoteSystemWebAccountFilterFactoryCache.get();
         return try _f.Create(account);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemWebAccountFilter";

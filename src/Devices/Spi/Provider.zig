@@ -240,7 +240,7 @@ pub const ProviderSpiConnectionSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(chipSelectLine: i32) core.HResult!*ProviderSpiConnectionSettings {
-        const _f = @This().IProviderSpiConnectionSettingsFactoryCache.get();
+        const _f = try @This()._IProviderSpiConnectionSettingsFactoryCache.get();
         return try _f.Create(chipSelectLine);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.ProviderSpiConnectionSettings";

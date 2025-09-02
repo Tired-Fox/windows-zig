@@ -611,7 +611,7 @@ pub const Deferral = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(handler: *DeferralCompletedHandler) core.HResult!*Deferral {
-        const _f = @This().IDeferralFactoryCache.get();
+        const _f = try @This()._IDeferralFactoryCache.get();
         return try _f.Create(handler);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Deferral";
@@ -1747,159 +1747,159 @@ pub const PropertyValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateEmpty() core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateEmpty();
     }
     pub fn CreateUInt8(value: u8) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt8(value);
     }
     pub fn CreateInt16(value: i16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt16(value);
     }
     pub fn CreateUInt16(value: u16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt16(value);
     }
     pub fn CreateInt32(value: i32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt32(value);
     }
     pub fn CreateUInt32(value: u32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt32(value);
     }
     pub fn CreateInt64(value: i64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt64(value);
     }
     pub fn CreateUInt64(value: u64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt64(value);
     }
     pub fn CreateSingle(value: f32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateSingle(value);
     }
     pub fn CreateDouble(value: f64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateDouble(value);
     }
     pub fn CreateChar16(value: u16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateChar16(value);
     }
     pub fn CreateBoolean(value: bool) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateBoolean(value);
     }
     pub fn CreateString(value: HSTRING) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateString(value);
     }
     pub fn CreateInspectable(value: *IInspectable) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInspectable(value);
     }
     pub fn CreateGuid(value: *Guid) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateGuid(value);
     }
     pub fn CreateDateTime(value: DateTime) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateDateTime(value);
     }
     pub fn CreateTimeSpan(value: TimeSpan) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateTimeSpan(value);
     }
     pub fn CreatePoint(value: Point) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreatePoint(value);
     }
     pub fn CreateSize(value: Size) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateSize(value);
     }
     pub fn CreateRect(value: Rect) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateRect(value);
     }
     pub fn CreateUInt8Array(value: [*]u8) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt8Array(value);
     }
     pub fn CreateInt16Array(value: [*]i16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt16Array(value);
     }
     pub fn CreateUInt16Array(value: [*]u16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt16Array(value);
     }
     pub fn CreateInt32Array(value: [*]i32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt32Array(value);
     }
     pub fn CreateUInt32Array(value: [*]u32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt32Array(value);
     }
     pub fn CreateInt64Array(value: [*]i64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInt64Array(value);
     }
     pub fn CreateUInt64Array(value: [*]u64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateUInt64Array(value);
     }
     pub fn CreateSingleArray(value: [*]f32) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateSingleArray(value);
     }
     pub fn CreateDoubleArray(value: [*]f64) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateDoubleArray(value);
     }
     pub fn CreateChar16Array(value: [*]u16) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateChar16Array(value);
     }
     pub fn CreateBooleanArray(value: [*]bool) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateBooleanArray(value);
     }
     pub fn CreateStringArray(value: [*]HSTRING) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateStringArray(value);
     }
     pub fn CreateInspectableArray(value: [*]IInspectable) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateInspectableArray(value);
     }
     pub fn CreateGuidArray(value: [*]Guid) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateGuidArray(value);
     }
     pub fn CreateDateTimeArray(value: [*]DateTime) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateDateTimeArray(value);
     }
     pub fn CreateTimeSpanArray(value: [*]TimeSpan) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateTimeSpanArray(value);
     }
     pub fn CreatePointArray(value: [*]Point) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreatePointArray(value);
     }
     pub fn CreateSizeArray(value: [*]Size) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateSizeArray(value);
     }
     pub fn CreateRectArray(value: [*]Rect) core.HResult!*IInspectable {
-        const _f = @This().IPropertyValueStaticsCache.get();
+        const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateRectArray(value);
     }
     pub const NAME: []const u8 = "Windows.Foundation.PropertyValue";
@@ -2014,15 +2014,15 @@ pub const GuidHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateNewGuid() core.HResult!*Guid {
-        const _f = @This().IGuidHelperStaticsCache.get();
+        const _f = try @This()._IGuidHelperStaticsCache.get();
         return try _f.CreateNewGuid();
     }
     pub fn getEmpty() core.HResult!*Guid {
-        const _f = @This().IGuidHelperStaticsCache.get();
+        const _f = try @This()._IGuidHelperStaticsCache.get();
         return try _f.getEmpty();
     }
     pub fn Equals(target: *Guid, value: *Guid) core.HResult!bool {
-        const _f = @This().IGuidHelperStaticsCache.get();
+        const _f = try @This()._IGuidHelperStaticsCache.get();
         return try _f.Equals(target, value);
     }
     pub const NAME: []const u8 = "Windows.Foundation.GuidHelper";
@@ -2487,7 +2487,7 @@ pub const MemoryBuffer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(capacity: u32) core.HResult!*MemoryBuffer {
-        const _f = @This().IMemoryBufferFactoryCache.get();
+        const _f = try @This()._IMemoryBufferFactoryCache.get();
         return try _f.Create(capacity);
     }
     pub const NAME: []const u8 = "Windows.Foundation.MemoryBuffer";
@@ -2589,19 +2589,19 @@ pub const Uri = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateUri(uri: HSTRING) core.HResult!*Uri {
-        const _f = @This().IUriRuntimeClassFactoryCache.get();
+        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
         return try _f.CreateUri(uri);
     }
     pub fn CreateWithRelativeUri(baseUri: HSTRING, relativeUri: HSTRING) core.HResult!*Uri {
-        const _f = @This().IUriRuntimeClassFactoryCache.get();
+        const _f = try @This()._IUriRuntimeClassFactoryCache.get();
         return try _f.CreateWithRelativeUri(baseUri, relativeUri);
     }
     pub fn UnescapeComponent(toUnescape: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IUriEscapeStaticsCache.get();
+        const _f = try @This()._IUriEscapeStaticsCache.get();
         return try _f.UnescapeComponent(toUnescape);
     }
     pub fn EscapeComponent(toEscape: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IUriEscapeStaticsCache.get();
+        const _f = try @This()._IUriEscapeStaticsCache.get();
         return try _f.EscapeComponent(toEscape);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Uri";
@@ -2634,7 +2634,7 @@ pub const WwwFormUrlDecoder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWwwFormUrlDecoder(query: HSTRING) core.HResult!*WwwFormUrlDecoder {
-        const _f = @This().IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
+        const _f = try @This()._IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
         return try _f.CreateWwwFormUrlDecoder(query);
     }
     pub const NAME: []const u8 = "Windows.Foundation.WwwFormUrlDecoder";

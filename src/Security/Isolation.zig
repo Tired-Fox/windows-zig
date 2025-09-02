@@ -1263,19 +1263,19 @@ pub const IsolatedWindowsEnvironment = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(options: *IsolatedWindowsEnvironmentOptions) core.HResult!*IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) {
-        const _f = @This().IIsolatedWindowsEnvironmentFactoryCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.CreateAsync(options);
     }
     pub fn CreateAsyncWithTelemetryParameters(options: *IsolatedWindowsEnvironmentOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress) {
-        const _f = @This().IIsolatedWindowsEnvironmentFactoryCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.CreateAsyncWithTelemetryParameters(options, telemetryParameters);
     }
     pub fn GetById(environmentId: HSTRING) core.HResult!*IsolatedWindowsEnvironment {
-        const _f = @This().IIsolatedWindowsEnvironmentFactoryCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.GetById(environmentId);
     }
     pub fn FindByOwnerId(environmentOwnerId: HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
-        const _f = @This().IIsolatedWindowsEnvironmentFactoryCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.FindByOwnerId(environmentOwnerId);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironment";
@@ -1384,11 +1384,11 @@ pub const IsolatedWindowsEnvironmentHost = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsReady() core.HResult!bool {
-        const _f = @This().IIsolatedWindowsEnvironmentHostStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentHostStaticsCache.get();
         return try _f.getIsReady();
     }
     pub fn getHostErrors() core.HResult!*IVectorView(IsolatedWindowsEnvironmentHostError) {
-        const _f = @This().IIsolatedWindowsEnvironmentHostStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentHostStaticsCache.get();
         return try _f.getHostErrors();
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironmentHost";
@@ -1568,11 +1568,11 @@ pub const IsolatedWindowsEnvironmentOwnerRegistration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Register(ownerName: HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
-        const _f = @This().IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
         return try _f.Register(ownerName, ownerRegistrationData);
     }
     pub fn Unregister(ownerName: HSTRING) core.HResult!void {
-        const _f = @This().IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
         return try _f.Unregister(ownerName);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsEnvironmentOwnerRegistration";
@@ -1887,19 +1887,19 @@ pub const IsolatedWindowsHostMessenger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterHostMessageReceiver(receiverId: *Guid, hostMessageReceivedCallback: *HostMessageReceivedCallback) core.HResult!void {
-        const _f = @This().IIsolatedWindowsHostMessengerStatics2Cache.get();
+        const _f = try @This()._IIsolatedWindowsHostMessengerStatics2Cache.get();
         return try _f.RegisterHostMessageReceiver(receiverId, hostMessageReceivedCallback);
     }
     pub fn UnregisterHostMessageReceiver(receiverId: *Guid) core.HResult!void {
-        const _f = @This().IIsolatedWindowsHostMessengerStatics2Cache.get();
+        const _f = try @This()._IIsolatedWindowsHostMessengerStatics2Cache.get();
         return try _f.UnregisterHostMessageReceiver(receiverId);
     }
     pub fn PostMessageToReceiver(receiverId: *Guid, message: *IVectorView(IInspectable)) core.HResult!void {
-        const _f = @This().IIsolatedWindowsHostMessengerStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsHostMessengerStaticsCache.get();
         return try _f.PostMessageToReceiver(receiverId, message);
     }
     pub fn GetFileId(filePath: HSTRING) core.HResult!*Guid {
-        const _f = @This().IIsolatedWindowsHostMessengerStaticsCache.get();
+        const _f = try @This()._IIsolatedWindowsHostMessengerStaticsCache.get();
         return try _f.GetFileId(filePath);
     }
     pub const NAME: []const u8 = "Windows.Security.Isolation.IsolatedWindowsHostMessenger";

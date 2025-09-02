@@ -135,15 +135,15 @@ pub const PowerGridForecast = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForecast() core.HResult!*PowerGridForecast {
-        const _f = @This().IPowerGridForecastStaticsCache.get();
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
         return try _f.GetForecast();
     }
     pub fn addForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IPowerGridForecastStaticsCache.get();
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
         return try _f.addForecastUpdated(handler);
     }
     pub fn removeForecastUpdated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IPowerGridForecastStaticsCache.get();
+        const _f = try @This()._IPowerGridForecastStaticsCache.get();
         return try _f.removeForecastUpdated(token);
     }
     pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridForecast";
@@ -175,15 +175,15 @@ pub const Battery = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAggregateBattery() core.HResult!*Battery {
-        const _f = @This().IBatteryStaticsCache.get();
+        const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.getAggregateBattery();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Battery) {
-        const _f = @This().IBatteryStaticsCache.get();
+        const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IBatteryStaticsCache.get();
+        const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Power.Battery";

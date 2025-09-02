@@ -205,11 +205,11 @@ pub const CurrencyFormatter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCurrencyFormatterCode(currencyCode: HSTRING) core.HResult!*CurrencyFormatter {
-        const _f = @This().ICurrencyFormatterFactoryCache.get();
+        const _f = try @This()._ICurrencyFormatterFactoryCache.get();
         return try _f.CreateCurrencyFormatterCode(currencyCode);
     }
     pub fn CreateCurrencyFormatterCodeContext(currencyCode: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*CurrencyFormatter {
-        const _f = @This().ICurrencyFormatterFactoryCache.get();
+        const _f = try @This()._ICurrencyFormatterFactoryCache.get();
         return try _f.CreateCurrencyFormatterCodeContext(currencyCode, languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.CurrencyFormatter";
@@ -401,7 +401,7 @@ pub const DecimalFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreateDecimalFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*DecimalFormatter {
-        const _f = @This().IDecimalFormatterFactoryCache.get();
+        const _f = try @This()._IDecimalFormatterFactoryCache.get();
         return try _f.CreateDecimalFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.DecimalFormatter";
@@ -1175,7 +1175,7 @@ pub const NumeralSystemTranslator = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumeralSystemTranslator.IID)));
     }
     pub fn Create(languages: *IIterable(HSTRING)) core.HResult!*NumeralSystemTranslator {
-        const _f = @This().INumeralSystemTranslatorFactoryCache.get();
+        const _f = try @This()._INumeralSystemTranslatorFactoryCache.get();
         return try _f.Create(languages);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.NumeralSystemTranslator";
@@ -1364,7 +1364,7 @@ pub const PercentFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreatePercentFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PercentFormatter {
-        const _f = @This().IPercentFormatterFactoryCache.get();
+        const _f = try @This()._IPercentFormatterFactoryCache.get();
         return try _f.CreatePercentFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.PercentFormatter";
@@ -1553,7 +1553,7 @@ pub const PermilleFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreatePermilleFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PermilleFormatter {
-        const _f = @This().IPermilleFormatterFactoryCache.get();
+        const _f = try @This()._IPermilleFormatterFactoryCache.get();
         return try _f.CreatePermilleFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.PermilleFormatter";

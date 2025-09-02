@@ -710,11 +710,11 @@ pub const VoiceCommandDefinitionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn InstallCommandDefinitionsFromStorageFileAsync(file: *StorageFile) core.HResult!*IAsyncAction {
-        const _f = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
+        const _f = try @This()._IVoiceCommandDefinitionManagerStaticsCache.get();
         return try _f.InstallCommandDefinitionsFromStorageFileAsync(file);
     }
     pub fn getInstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
-        const _f = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
+        const _f = try @This()._IVoiceCommandDefinitionManagerStaticsCache.get();
         return try _f.getInstalledCommandDefinitions();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager";
@@ -767,23 +767,23 @@ pub const VoiceCommandResponse = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
-        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
         return try _f.getMaxSupportedVoiceCommandContentTiles();
     }
     pub fn CreateResponse(userMessage: *VoiceCommandUserMessage) core.HResult!*VoiceCommandResponse {
-        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
         return try _f.CreateResponse(userMessage);
     }
     pub fn CreateResponseWithContentTiles(message: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
-        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
         return try _f.CreateResponseWithContentTiles(message, contentTiles);
     }
     pub fn CreateResponseForPrompt(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage) core.HResult!*VoiceCommandResponse {
-        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
         return try _f.CreateResponseForPrompt(message, repeatMessage);
     }
     pub fn CreateResponseForPromptWithContentTiles(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
-        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
         return try _f.CreateResponseForPromptWithContentTiles(message, repeatMessage, contentTiles);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandResponse";
@@ -839,7 +839,7 @@ pub const VoiceCommandServiceConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromAppServiceTriggerDetails(triggerDetails: *AppServiceTriggerDetails) core.HResult!*VoiceCommandServiceConnection {
-        const _f = @This().IVoiceCommandServiceConnectionStaticsCache.get();
+        const _f = try @This()._IVoiceCommandServiceConnectionStaticsCache.get();
         return try _f.FromAppServiceTriggerDetails(triggerDetails);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandServiceConnection";

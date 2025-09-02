@@ -136,7 +136,7 @@ pub const SysStorageProviderEventReceivedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(json: HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
-        const _f = @This().ISysStorageProviderEventReceivedEventArgsFactoryCache.get();
+        const _f = try @This()._ISysStorageProviderEventReceivedEventArgsFactoryCache.get();
         return try _f.CreateInstance(json);
     }
     pub const NAME: []const u8 = "Windows.System.Implementation.FileExplorer.SysStorageProviderEventReceivedEventArgs";

@@ -73,11 +73,11 @@ pub const CallControl = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CallControl {
-        const _f = @This().ICallControlStaticsCache.get();
+        const _f = try @This()._ICallControlStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*CallControl {
-        const _f = @This().ICallControlStaticsCache.get();
+        const _f = try @This()._ICallControlStaticsCache.get();
         return try _f.FromId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.CallControl";
@@ -886,7 +886,7 @@ pub const AudioDeviceModulesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(deviceId: HSTRING) core.HResult!*AudioDeviceModulesManager {
-        const _f = @This().IAudioDeviceModulesManagerFactoryCache.get();
+        const _f = try @This()._IAudioDeviceModulesManagerFactoryCache.get();
         return try _f.Create(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.AudioDeviceModulesManager";
@@ -4803,39 +4803,39 @@ pub const MediaDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAudioCaptureSelector() core.HResult!HSTRING {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetAudioCaptureSelector();
     }
     pub fn GetAudioRenderSelector() core.HResult!HSTRING {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetAudioRenderSelector();
     }
     pub fn GetVideoCaptureSelector() core.HResult!HSTRING {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetVideoCaptureSelector();
     }
     pub fn GetDefaultAudioCaptureId(role: AudioDeviceRole) core.HResult!HSTRING {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetDefaultAudioCaptureId(role);
     }
     pub fn GetDefaultAudioRenderId(role: AudioDeviceRole) core.HResult!HSTRING {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetDefaultAudioRenderId(role);
     }
     pub fn addDefaultAudioCaptureDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.addDefaultAudioCaptureDeviceChanged(handler);
     }
     pub fn removeDefaultAudioCaptureDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.removeDefaultAudioCaptureDeviceChanged(cookie);
     }
     pub fn addDefaultAudioRenderDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.addDefaultAudioRenderDeviceChanged(handler);
     }
     pub fn removeDefaultAudioRenderDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IMediaDeviceStaticsCache.get();
+        const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.removeDefaultAudioRenderDeviceChanged(cookie);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.MediaDevice";

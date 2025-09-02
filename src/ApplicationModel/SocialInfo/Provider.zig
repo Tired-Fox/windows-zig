@@ -244,27 +244,27 @@ pub const SocialInfoProviderManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateSocialFeedUpdaterAsync(kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.CreateSocialFeedUpdaterAsync(kind, mode, ownerRemoteId);
     }
     pub fn CreateDashboardItemUpdaterAsync(ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.CreateDashboardItemUpdaterAsync(ownerRemoteId);
     }
     pub fn UpdateBadgeCountValue(itemRemoteId: HSTRING, newCount: i32) core.HResult!void {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.UpdateBadgeCountValue(itemRemoteId, newCount);
     }
     pub fn ReportNewContentAvailable(contactRemoteId: HSTRING, kind: SocialFeedKind) core.HResult!void {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.ReportNewContentAvailable(contactRemoteId, kind);
     }
     pub fn ProvisionAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.ProvisionAsync();
     }
     pub fn DeprovisionAsync() core.HResult!*IAsyncAction {
-        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.DeprovisionAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.SocialInfo.Provider.SocialInfoProviderManager";

@@ -41,7 +41,7 @@ pub const EndpointPair = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateEndpointPair(localHostName: *HostName, localServiceName: HSTRING, remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*EndpointPair {
-        const _f = @This().IEndpointPairFactoryCache.get();
+        const _f = try @This()._IEndpointPairFactoryCache.get();
         return try _f.CreateEndpointPair(localHostName, localServiceName, remoteHostName, remoteServiceName);
     }
     pub const NAME: []const u8 = "Windows.Networking.EndpointPair";
@@ -87,11 +87,11 @@ pub const HostName = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateHostName(hostName: HSTRING) core.HResult!*HostName {
-        const _f = @This().IHostNameFactoryCache.get();
+        const _f = try @This()._IHostNameFactoryCache.get();
         return try _f.CreateHostName(hostName);
     }
     pub fn Compare(value1: HSTRING, value2: HSTRING) core.HResult!i32 {
-        const _f = @This().IHostNameStaticsCache.get();
+        const _f = try @This()._IHostNameStaticsCache.get();
         return try _f.Compare(value1, value2);
     }
     pub const NAME: []const u8 = "Windows.Networking.HostName";
@@ -318,6 +318,7 @@ pub const Connectivity = @import("./Networking/Connectivity.zig");
 pub const NetworkOperators = @import("./Networking/NetworkOperators.zig");
 pub const Proximity = @import("./Networking/Proximity.zig");
 pub const PushNotifications = @import("./Networking/PushNotifications.zig");
+pub const ServiceDiscovery = @import("./Networking/ServiceDiscovery.zig");
 pub const Sockets = @import("./Networking/Sockets.zig");
 pub const Vpn = @import("./Networking/Vpn.zig");
 pub const XboxLive = @import("./Networking/XboxLive.zig");

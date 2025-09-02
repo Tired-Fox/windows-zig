@@ -1938,7 +1938,7 @@ pub const PrintWorkflowObjectModelSourceFileContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(xpsStream: *IInputStream) core.HResult!*PrintWorkflowObjectModelSourceFileContent {
-        const _f = @This().IPrintWorkflowObjectModelSourceFileContentFactoryCache.get();
+        const _f = try @This()._IPrintWorkflowObjectModelSourceFileContentFactoryCache.get();
         return try _f.CreateInstance(xpsStream);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.PrintWorkflowObjectModelSourceFileContent";

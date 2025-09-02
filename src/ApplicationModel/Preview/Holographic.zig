@@ -5,11 +5,11 @@ pub const HolographicApplicationPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsCurrentViewPresentedOnHolographicDisplay() core.HResult!bool {
-        const _f = @This().IHolographicApplicationPreviewStaticsCache.get();
+        const _f = try @This()._IHolographicApplicationPreviewStaticsCache.get();
         return try _f.IsCurrentViewPresentedOnHolographicDisplay();
     }
     pub fn IsHolographicActivation(activatedEventArgs: *IActivatedEventArgs) core.HResult!bool {
-        const _f = @This().IHolographicApplicationPreviewStaticsCache.get();
+        const _f = try @This()._IHolographicApplicationPreviewStaticsCache.get();
         return try _f.IsHolographicActivation(activatedEventArgs);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Holographic.HolographicApplicationPreview";
@@ -34,7 +34,7 @@ pub const HolographicKeyboardPlacementOverridePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*HolographicKeyboardPlacementOverridePreview {
-        const _f = @This().IHolographicKeyboardPlacementOverridePreviewStaticsCache.get();
+        const _f = try @This()._IHolographicKeyboardPlacementOverridePreviewStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Holographic.HolographicKeyboardPlacementOverridePreview";

@@ -145,7 +145,7 @@ pub const HttpBaseProtocolFilter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpBaseProtocolFilter.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*HttpBaseProtocolFilter {
-        const _f = @This().IHttpBaseProtocolFilterStaticsCache.get();
+        const _f = try @This()._IHttpBaseProtocolFilterStaticsCache.get();
         return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.HttpBaseProtocolFilter";

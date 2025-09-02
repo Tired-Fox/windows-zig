@@ -420,31 +420,31 @@ pub const PushNotificationChannelManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PushNotificationChannelManagerForUser {
-        const _f = @This().IPushNotificationChannelManagerStatics3Cache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStatics3Cache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*PushNotificationChannelManagerForUser {
-        const _f = @This().IPushNotificationChannelManagerStatics2Cache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStatics2Cache.get();
         return try _f.GetForUser(user);
     }
     pub fn addChannelsRevoked(handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IPushNotificationChannelManagerStatics4Cache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStatics4Cache.get();
         return try _f.addChannelsRevoked(handler);
     }
     pub fn removeChannelsRevoked(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IPushNotificationChannelManagerStatics4Cache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStatics4Cache.get();
         return try _f.removeChannelsRevoked(token);
     }
     pub fn CreatePushNotificationChannelForApplicationAsync() core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStaticsCache.get();
         return try _f.CreatePushNotificationChannelForApplicationAsync();
     }
     pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStaticsCache.get();
         return try _f.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId);
     }
     pub fn CreatePushNotificationChannelForSecondaryTileAsync(tileId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        const _f = try @This()._IPushNotificationChannelManagerStaticsCache.get();
         return try _f.CreatePushNotificationChannelForSecondaryTileAsync(tileId);
     }
     pub const NAME: []const u8 = "Windows.Networking.PushNotifications.PushNotificationChannelManager";

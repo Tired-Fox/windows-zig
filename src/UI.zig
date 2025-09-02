@@ -11,11 +11,11 @@ pub const ColorHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ToDisplayName(color: Color) core.HResult!HSTRING {
-        const _f = @This().IColorHelperStatics2Cache.get();
+        const _f = try @This()._IColorHelperStatics2Cache.get();
         return try _f.ToDisplayName(color);
     }
     pub fn FromArgb(a: u8, r: u8, g: u8, b: u8) core.HResult!Color {
-        const _f = @This().IColorHelperStaticsCache.get();
+        const _f = try @This()._IColorHelperStaticsCache.get();
         return try _f.FromArgb(a, r, g, b);
     }
     pub const NAME: []const u8 = "Windows.UI.ColorHelper";
@@ -32,567 +32,567 @@ pub const Colors = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAliceBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getAliceBlue();
     }
     pub fn getAntiqueWhite() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getAntiqueWhite();
     }
     pub fn getAqua() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getAqua();
     }
     pub fn getAquamarine() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getAquamarine();
     }
     pub fn getAzure() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getAzure();
     }
     pub fn getBeige() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBeige();
     }
     pub fn getBisque() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBisque();
     }
     pub fn getBlack() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBlack();
     }
     pub fn getBlanchedAlmond() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBlanchedAlmond();
     }
     pub fn getBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBlue();
     }
     pub fn getBlueViolet() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBlueViolet();
     }
     pub fn getBrown() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBrown();
     }
     pub fn getBurlyWood() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getBurlyWood();
     }
     pub fn getCadetBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCadetBlue();
     }
     pub fn getChartreuse() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getChartreuse();
     }
     pub fn getChocolate() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getChocolate();
     }
     pub fn getCoral() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCoral();
     }
     pub fn getCornflowerBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCornflowerBlue();
     }
     pub fn getCornsilk() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCornsilk();
     }
     pub fn getCrimson() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCrimson();
     }
     pub fn getCyan() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getCyan();
     }
     pub fn getDarkBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkBlue();
     }
     pub fn getDarkCyan() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkCyan();
     }
     pub fn getDarkGoldenrod() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkGoldenrod();
     }
     pub fn getDarkGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkGray();
     }
     pub fn getDarkGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkGreen();
     }
     pub fn getDarkKhaki() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkKhaki();
     }
     pub fn getDarkMagenta() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkMagenta();
     }
     pub fn getDarkOliveGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkOliveGreen();
     }
     pub fn getDarkOrange() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkOrange();
     }
     pub fn getDarkOrchid() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkOrchid();
     }
     pub fn getDarkRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkRed();
     }
     pub fn getDarkSalmon() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkSalmon();
     }
     pub fn getDarkSeaGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkSeaGreen();
     }
     pub fn getDarkSlateBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkSlateBlue();
     }
     pub fn getDarkSlateGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkSlateGray();
     }
     pub fn getDarkTurquoise() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkTurquoise();
     }
     pub fn getDarkViolet() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDarkViolet();
     }
     pub fn getDeepPink() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDeepPink();
     }
     pub fn getDeepSkyBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDeepSkyBlue();
     }
     pub fn getDimGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDimGray();
     }
     pub fn getDodgerBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getDodgerBlue();
     }
     pub fn getFirebrick() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getFirebrick();
     }
     pub fn getFloralWhite() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getFloralWhite();
     }
     pub fn getForestGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getForestGreen();
     }
     pub fn getFuchsia() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getFuchsia();
     }
     pub fn getGainsboro() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGainsboro();
     }
     pub fn getGhostWhite() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGhostWhite();
     }
     pub fn getGold() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGold();
     }
     pub fn getGoldenrod() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGoldenrod();
     }
     pub fn getGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGray();
     }
     pub fn getGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGreen();
     }
     pub fn getGreenYellow() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getGreenYellow();
     }
     pub fn getHoneydew() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getHoneydew();
     }
     pub fn getHotPink() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getHotPink();
     }
     pub fn getIndianRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getIndianRed();
     }
     pub fn getIndigo() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getIndigo();
     }
     pub fn getIvory() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getIvory();
     }
     pub fn getKhaki() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getKhaki();
     }
     pub fn getLavender() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLavender();
     }
     pub fn getLavenderBlush() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLavenderBlush();
     }
     pub fn getLawnGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLawnGreen();
     }
     pub fn getLemonChiffon() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLemonChiffon();
     }
     pub fn getLightBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightBlue();
     }
     pub fn getLightCoral() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightCoral();
     }
     pub fn getLightCyan() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightCyan();
     }
     pub fn getLightGoldenrodYellow() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightGoldenrodYellow();
     }
     pub fn getLightGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightGreen();
     }
     pub fn getLightGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightGray();
     }
     pub fn getLightPink() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightPink();
     }
     pub fn getLightSalmon() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightSalmon();
     }
     pub fn getLightSeaGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightSeaGreen();
     }
     pub fn getLightSkyBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightSkyBlue();
     }
     pub fn getLightSlateGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightSlateGray();
     }
     pub fn getLightSteelBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightSteelBlue();
     }
     pub fn getLightYellow() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLightYellow();
     }
     pub fn getLime() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLime();
     }
     pub fn getLimeGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLimeGreen();
     }
     pub fn getLinen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getLinen();
     }
     pub fn getMagenta() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMagenta();
     }
     pub fn getMaroon() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMaroon();
     }
     pub fn getMediumAquamarine() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumAquamarine();
     }
     pub fn getMediumBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumBlue();
     }
     pub fn getMediumOrchid() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumOrchid();
     }
     pub fn getMediumPurple() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumPurple();
     }
     pub fn getMediumSeaGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumSeaGreen();
     }
     pub fn getMediumSlateBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumSlateBlue();
     }
     pub fn getMediumSpringGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumSpringGreen();
     }
     pub fn getMediumTurquoise() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumTurquoise();
     }
     pub fn getMediumVioletRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMediumVioletRed();
     }
     pub fn getMidnightBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMidnightBlue();
     }
     pub fn getMintCream() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMintCream();
     }
     pub fn getMistyRose() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMistyRose();
     }
     pub fn getMoccasin() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getMoccasin();
     }
     pub fn getNavajoWhite() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getNavajoWhite();
     }
     pub fn getNavy() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getNavy();
     }
     pub fn getOldLace() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOldLace();
     }
     pub fn getOlive() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOlive();
     }
     pub fn getOliveDrab() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOliveDrab();
     }
     pub fn getOrange() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOrange();
     }
     pub fn getOrangeRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOrangeRed();
     }
     pub fn getOrchid() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getOrchid();
     }
     pub fn getPaleGoldenrod() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPaleGoldenrod();
     }
     pub fn getPaleGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPaleGreen();
     }
     pub fn getPaleTurquoise() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPaleTurquoise();
     }
     pub fn getPaleVioletRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPaleVioletRed();
     }
     pub fn getPapayaWhip() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPapayaWhip();
     }
     pub fn getPeachPuff() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPeachPuff();
     }
     pub fn getPeru() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPeru();
     }
     pub fn getPink() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPink();
     }
     pub fn getPlum() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPlum();
     }
     pub fn getPowderBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPowderBlue();
     }
     pub fn getPurple() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getPurple();
     }
     pub fn getRed() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getRed();
     }
     pub fn getRosyBrown() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getRosyBrown();
     }
     pub fn getRoyalBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getRoyalBlue();
     }
     pub fn getSaddleBrown() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSaddleBrown();
     }
     pub fn getSalmon() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSalmon();
     }
     pub fn getSandyBrown() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSandyBrown();
     }
     pub fn getSeaGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSeaGreen();
     }
     pub fn getSeaShell() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSeaShell();
     }
     pub fn getSienna() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSienna();
     }
     pub fn getSilver() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSilver();
     }
     pub fn getSkyBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSkyBlue();
     }
     pub fn getSlateBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSlateBlue();
     }
     pub fn getSlateGray() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSlateGray();
     }
     pub fn getSnow() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSnow();
     }
     pub fn getSpringGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSpringGreen();
     }
     pub fn getSteelBlue() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getSteelBlue();
     }
     pub fn getTan() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getTan();
     }
     pub fn getTeal() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getTeal();
     }
     pub fn getThistle() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getThistle();
     }
     pub fn getTomato() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getTomato();
     }
     pub fn getTransparent() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getTransparent();
     }
     pub fn getTurquoise() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getTurquoise();
     }
     pub fn getViolet() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getViolet();
     }
     pub fn getWheat() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getWheat();
     }
     pub fn getWhite() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getWhite();
     }
     pub fn getWhiteSmoke() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getWhiteSmoke();
     }
     pub fn getYellow() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getYellow();
     }
     pub fn getYellowGreen() core.HResult!Color {
-        const _f = @This().IColorsStaticsCache.get();
+        const _f = try @This()._IColorsStaticsCache.get();
         return try _f.getYellowGreen();
     }
     pub const NAME: []const u8 = "Windows.UI.Colors";

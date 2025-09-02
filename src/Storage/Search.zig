@@ -74,11 +74,11 @@ pub const ContentIndexer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetIndexerWithIndexName(indexName: HSTRING) core.HResult!*ContentIndexer {
-        const _f = @This().IContentIndexerStaticsCache.get();
+        const _f = try @This()._IContentIndexerStaticsCache.get();
         return try _f.GetIndexerWithIndexName(indexName);
     }
     pub fn GetIndexer() core.HResult!*ContentIndexer {
-        const _f = @This().IContentIndexerStaticsCache.get();
+        const _f = try @This()._IContentIndexerStaticsCache.get();
         return try _f.GetIndexer();
     }
     pub const NAME: []const u8 = "Windows.Storage.Search.ContentIndexer";
@@ -1122,11 +1122,11 @@ pub const QueryOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IQueryOptions.IID)));
     }
     pub fn CreateCommonFileQuery(query: CommonFileQuery, fileTypeFilter: *IIterable(HSTRING)) core.HResult!*QueryOptions {
-        const _f = @This().IQueryOptionsFactoryCache.get();
+        const _f = try @This()._IQueryOptionsFactoryCache.get();
         return try _f.CreateCommonFileQuery(query, fileTypeFilter);
     }
     pub fn CreateCommonFolderQuery(query: CommonFolderQuery) core.HResult!*QueryOptions {
-        const _f = @This().IQueryOptionsFactoryCache.get();
+        const _f = try @This()._IQueryOptionsFactoryCache.get();
         return try _f.CreateCommonFolderQuery(query);
     }
     pub const NAME: []const u8 = "Windows.Storage.Search.QueryOptions";

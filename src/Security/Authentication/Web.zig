@@ -129,35 +129,35 @@ pub const WebAuthenticationBroker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AuthenticateAndContinue(requestUri: *Uri) core.HResult!void {
-        const _f = @This().IWebAuthenticationBrokerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStatics2Cache.get();
         return try _f.AuthenticateAndContinue(requestUri);
     }
     pub fn AuthenticateAndContinueWithCallbackUri(requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
-        const _f = @This().IWebAuthenticationBrokerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStatics2Cache.get();
         return try _f.AuthenticateAndContinueWithCallbackUri(requestUri, callbackUri);
     }
     pub fn AuthenticateAndContinueWithCallbackUriAndContinuationDataAndOptions(requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
-        const _f = @This().IWebAuthenticationBrokerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStatics2Cache.get();
         return try _f.AuthenticateAndContinueWithCallbackUriAndContinuationDataAndOptions(requestUri, callbackUri, continuationData, options);
     }
     pub fn AuthenticateSilentlyAsync(requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
-        const _f = @This().IWebAuthenticationBrokerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStatics2Cache.get();
         return try _f.AuthenticateSilentlyAsync(requestUri);
     }
     pub fn AuthenticateSilentlyAsyncWithOptions(requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
-        const _f = @This().IWebAuthenticationBrokerStatics2Cache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStatics2Cache.get();
         return try _f.AuthenticateSilentlyAsyncWithOptions(requestUri, options);
     }
     pub fn AuthenticateAsyncWithCallbackUri(options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
-        const _f = @This().IWebAuthenticationBrokerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStaticsCache.get();
         return try _f.AuthenticateAsyncWithCallbackUri(options, requestUri, callbackUri);
     }
     pub fn AuthenticateAsync(options: WebAuthenticationOptions, requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
-        const _f = @This().IWebAuthenticationBrokerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStaticsCache.get();
         return try _f.AuthenticateAsync(options, requestUri);
     }
     pub fn GetCurrentApplicationCallbackUri() core.HResult!*Uri {
-        const _f = @This().IWebAuthenticationBrokerStaticsCache.get();
+        const _f = try @This()._IWebAuthenticationBrokerStaticsCache.get();
         return try _f.GetCurrentApplicationCallbackUri();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Web.WebAuthenticationBroker";

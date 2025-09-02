@@ -119,7 +119,7 @@ pub const AppExtensionCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Open(appExtensionName: HSTRING) core.HResult!*AppExtensionCatalog {
-        const _f = @This().IAppExtensionCatalogStaticsCache.get();
+        const _f = try @This()._IAppExtensionCatalogStaticsCache.get();
         return try _f.Open(appExtensionName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppExtensions.AppExtensionCatalog";

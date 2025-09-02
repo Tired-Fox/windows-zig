@@ -45,11 +45,11 @@ pub const HttpBufferContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromBuffer(content: *IBuffer) core.HResult!*HttpBufferContent {
-        const _f = @This().IHttpBufferContentFactoryCache.get();
+        const _f = try @This()._IHttpBufferContentFactoryCache.get();
         return try _f.CreateFromBuffer(content);
     }
     pub fn CreateFromBufferWithOffset(content: *IBuffer, offset: u32, count: u32) core.HResult!*HttpBufferContent {
-        const _f = @This().IHttpBufferContentFactoryCache.get();
+        const _f = try @This()._IHttpBufferContentFactoryCache.get();
         return try _f.CreateFromBufferWithOffset(content, offset, count);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpBufferContent";
@@ -197,7 +197,7 @@ pub const HttpClient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpClient.IID)));
     }
     pub fn Create(filter: *IHttpFilter) core.HResult!*HttpClient {
-        const _f = @This().IHttpClientFactoryCache.get();
+        const _f = try @This()._IHttpClientFactoryCache.get();
         return try _f.Create(filter);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpClient";
@@ -268,7 +268,7 @@ pub const HttpCookie = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(name: HSTRING, domain: HSTRING, path: HSTRING) core.HResult!*HttpCookie {
-        const _f = @This().IHttpCookieFactoryCache.get();
+        const _f = try @This()._IHttpCookieFactoryCache.get();
         return try _f.Create(name, domain, path);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpCookie";
@@ -366,7 +366,7 @@ pub const HttpFormUrlEncodedContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(content: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
-        const _f = @This().IHttpFormUrlEncodedContentFactoryCache.get();
+        const _f = try @This()._IHttpFormUrlEncodedContentFactoryCache.get();
         return try _f.Create(content);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpFormUrlEncodedContent";
@@ -512,35 +512,35 @@ pub const HttpMethod = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(method: HSTRING) core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodFactoryCache.get();
+        const _f = try @This()._IHttpMethodFactoryCache.get();
         return try _f.Create(method);
     }
     pub fn getDelete() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getDelete();
     }
     pub fn getGet() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getGet();
     }
     pub fn getHead() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getHead();
     }
     pub fn getOptions() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getOptions();
     }
     pub fn getPatch() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getPatch();
     }
     pub fn getPost() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getPost();
     }
     pub fn getPut() core.HResult!*HttpMethod {
-        const _f = @This().IHttpMethodStaticsCache.get();
+        const _f = try @This()._IHttpMethodStaticsCache.get();
         return try _f.getPut();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMethod";
@@ -613,11 +613,11 @@ pub const HttpMultipartContent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
     pub fn CreateWithSubtype(subtype: HSTRING) core.HResult!*HttpMultipartContent {
-        const _f = @This().IHttpMultipartContentFactoryCache.get();
+        const _f = try @This()._IHttpMultipartContentFactoryCache.get();
         return try _f.CreateWithSubtype(subtype);
     }
     pub fn CreateWithSubtypeAndBoundary(subtype: HSTRING, boundary: HSTRING) core.HResult!*HttpMultipartContent {
-        const _f = @This().IHttpMultipartContentFactoryCache.get();
+        const _f = try @This()._IHttpMultipartContentFactoryCache.get();
         return try _f.CreateWithSubtypeAndBoundary(subtype, boundary);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMultipartContent";
@@ -702,7 +702,7 @@ pub const HttpMultipartFormDataContent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
     pub fn CreateWithBoundary(boundary: HSTRING) core.HResult!*HttpMultipartFormDataContent {
-        const _f = @This().IHttpMultipartFormDataContentFactoryCache.get();
+        const _f = try @This()._IHttpMultipartFormDataContentFactoryCache.get();
         return try _f.CreateWithBoundary(boundary);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMultipartFormDataContent";
@@ -803,7 +803,7 @@ pub const HttpRequestMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpRequestMessage.IID)));
     }
     pub fn Create(method: *HttpMethod, uri: *Uri) core.HResult!*HttpRequestMessage {
-        const _f = @This().IHttpRequestMessageFactoryCache.get();
+        const _f = try @This()._IHttpRequestMessageFactoryCache.get();
         return try _f.Create(method, uri);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpRequestMessage";
@@ -932,7 +932,7 @@ pub const HttpResponseMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpResponseMessage.IID)));
     }
     pub fn Create(statusCode: HttpStatusCode) core.HResult!*HttpResponseMessage {
-        const _f = @This().IHttpResponseMessageFactoryCache.get();
+        const _f = try @This()._IHttpResponseMessageFactoryCache.get();
         return try _f.Create(statusCode);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpResponseMessage";
@@ -1054,7 +1054,7 @@ pub const HttpStreamContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromInputStream(content: *IInputStream) core.HResult!*HttpStreamContent {
-        const _f = @This().IHttpStreamContentFactoryCache.get();
+        const _f = try @This()._IHttpStreamContentFactoryCache.get();
         return try _f.CreateFromInputStream(content);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpStreamContent";
@@ -1110,15 +1110,15 @@ pub const HttpStringContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromString(content: HSTRING) core.HResult!*HttpStringContent {
-        const _f = @This().IHttpStringContentFactoryCache.get();
+        const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromString(content);
     }
     pub fn CreateFromStringWithEncoding(content: HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
-        const _f = @This().IHttpStringContentFactoryCache.get();
+        const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromStringWithEncoding(content, encoding);
     }
     pub fn CreateFromStringWithEncodingAndMediaType(content: HSTRING, encoding: UnicodeEncoding, mediaType: HSTRING) core.HResult!*HttpStringContent {
-        const _f = @This().IHttpStringContentFactoryCache.get();
+        const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromStringWithEncodingAndMediaType(content, encoding, mediaType);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpStringContent";

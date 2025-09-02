@@ -103,51 +103,51 @@ pub const Shape = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFillProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getFillProperty();
     }
     pub fn getStrokeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeProperty();
     }
     pub fn getStrokeMiterLimitProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeMiterLimitProperty();
     }
     pub fn getStrokeThicknessProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeThicknessProperty();
     }
     pub fn getStrokeStartLineCapProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeStartLineCapProperty();
     }
     pub fn getStrokeEndLineCapProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeEndLineCapProperty();
     }
     pub fn getStrokeLineJoinProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeLineJoinProperty();
     }
     pub fn getStrokeDashOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeDashOffsetProperty();
     }
     pub fn getStrokeDashCapProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeDashCapProperty();
     }
     pub fn getStrokeDashArrayProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStrokeDashArrayProperty();
     }
     pub fn getStretchProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IShapeStaticsCache.get();
+        const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getStretchProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Shape {
-        const _f = @This().IShapeFactoryCache.get();
+        const _f = try @This()._IShapeFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Shape";
@@ -918,19 +918,19 @@ pub const Line = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILine.IID)));
     }
     pub fn getX1Property() core.HResult!*DependencyProperty {
-        const _f = @This().ILineStaticsCache.get();
+        const _f = try @This()._ILineStaticsCache.get();
         return try _f.getX1Property();
     }
     pub fn getY1Property() core.HResult!*DependencyProperty {
-        const _f = @This().ILineStaticsCache.get();
+        const _f = try @This()._ILineStaticsCache.get();
         return try _f.getY1Property();
     }
     pub fn getX2Property() core.HResult!*DependencyProperty {
-        const _f = @This().ILineStaticsCache.get();
+        const _f = try @This()._ILineStaticsCache.get();
         return try _f.getX2Property();
     }
     pub fn getY2Property() core.HResult!*DependencyProperty {
-        const _f = @This().ILineStaticsCache.get();
+        const _f = try @This()._ILineStaticsCache.get();
         return try _f.getY2Property();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Line";
@@ -955,11 +955,11 @@ pub const Path = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDataProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPathStaticsCache.get();
+        const _f = try @This()._IPathStaticsCache.get();
         return try _f.getDataProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Path {
-        const _f = @This().IPathFactoryCache.get();
+        const _f = try @This()._IPathFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Path";
@@ -996,11 +996,11 @@ pub const Polygon = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolygon.IID)));
     }
     pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolygonStaticsCache.get();
+        const _f = try @This()._IPolygonStaticsCache.get();
         return try _f.getFillRuleProperty();
     }
     pub fn getPointsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolygonStaticsCache.get();
+        const _f = try @This()._IPolygonStaticsCache.get();
         return try _f.getPointsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Polygon";
@@ -1037,11 +1037,11 @@ pub const Polyline = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyline.IID)));
     }
     pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolylineStaticsCache.get();
+        const _f = try @This()._IPolylineStaticsCache.get();
         return try _f.getFillRuleProperty();
     }
     pub fn getPointsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPolylineStaticsCache.get();
+        const _f = try @This()._IPolylineStaticsCache.get();
         return try _f.getPointsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Polyline";
@@ -1078,11 +1078,11 @@ pub const Rectangle = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRectangle.IID)));
     }
     pub fn getRadiusXProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRectangleStaticsCache.get();
+        const _f = try @This()._IRectangleStaticsCache.get();
         return try _f.getRadiusXProperty();
     }
     pub fn getRadiusYProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRectangleStaticsCache.get();
+        const _f = try @This()._IRectangleStaticsCache.get();
         return try _f.getRadiusYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.Rectangle";

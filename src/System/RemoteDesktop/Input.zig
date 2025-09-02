@@ -154,11 +154,11 @@ pub const RemoteTextConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {
-        const _f = @This().IRemoteTextConnectionFactoryCache.get();
+        const _f = try @This()._IRemoteTextConnectionFactoryCache.get();
         return try _f.CreateInstance(connectionId, pduForwarder);
     }
     pub fn CreateInstanceWithOptions(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
-        const _f = @This().IRemoteTextConnectionFactory2Cache.get();
+        const _f = try @This()._IRemoteTextConnectionFactory2Cache.get();
         return try _f.CreateInstance(connectionId, pduForwarder, options);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.RemoteTextConnection";

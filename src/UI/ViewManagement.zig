@@ -5,11 +5,11 @@ pub const ApplicationViewScaling = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDisableLayoutScaling() core.HResult!bool {
-        const _f = @This().IApplicationViewScalingStaticsCache.get();
+        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
         return try _f.getDisableLayoutScaling();
     }
     pub fn TrySetDisableLayoutScaling(disableLayoutScaling: bool) core.HResult!bool {
-        const _f = @This().IApplicationViewScalingStaticsCache.get();
+        const _f = try @This()._IApplicationViewScalingStaticsCache.get();
         return try _f.TrySetDisableLayoutScaling(disableLayoutScaling);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewScaling";
@@ -327,55 +327,55 @@ pub const ApplicationView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryUnsnapToFullscreen() core.HResult!bool {
-        const _f = @This().IApplicationViewFullscreenStaticsCache.get();
+        const _f = try @This()._IApplicationViewFullscreenStaticsCache.get();
         return try _f.TryUnsnapToFullscreen();
     }
     pub fn GetForCurrentView() core.HResult!*ApplicationView {
-        const _f = @This().IApplicationViewStatics2Cache.get();
+        const _f = try @This()._IApplicationViewStatics2Cache.get();
         return try _f.GetForCurrentView();
     }
     pub fn getTerminateAppOnFinalViewClose() core.HResult!bool {
-        const _f = @This().IApplicationViewStatics2Cache.get();
+        const _f = try @This()._IApplicationViewStatics2Cache.get();
         return try _f.getTerminateAppOnFinalViewClose();
     }
     pub fn putTerminateAppOnFinalViewClose(value: bool) core.HResult!void {
-        const _f = @This().IApplicationViewStatics2Cache.get();
+        const _f = try @This()._IApplicationViewStatics2Cache.get();
         return try _f.putTerminateAppOnFinalViewClose(value);
     }
     pub fn getPreferredLaunchWindowingMode() core.HResult!ApplicationViewWindowingMode {
-        const _f = @This().IApplicationViewStatics3Cache.get();
+        const _f = try @This()._IApplicationViewStatics3Cache.get();
         return try _f.getPreferredLaunchWindowingMode();
     }
     pub fn putPreferredLaunchWindowingMode(value: ApplicationViewWindowingMode) core.HResult!void {
-        const _f = @This().IApplicationViewStatics3Cache.get();
+        const _f = try @This()._IApplicationViewStatics3Cache.get();
         return try _f.putPreferredLaunchWindowingMode(value);
     }
     pub fn getPreferredLaunchViewSize() core.HResult!Size {
-        const _f = @This().IApplicationViewStatics3Cache.get();
+        const _f = try @This()._IApplicationViewStatics3Cache.get();
         return try _f.getPreferredLaunchViewSize();
     }
     pub fn putPreferredLaunchViewSize(value: Size) core.HResult!void {
-        const _f = @This().IApplicationViewStatics3Cache.get();
+        const _f = try @This()._IApplicationViewStatics3Cache.get();
         return try _f.putPreferredLaunchViewSize(value);
     }
     pub fn getValue() core.HResult!ApplicationViewState {
-        const _f = @This().IApplicationViewStaticsCache.get();
+        const _f = try @This()._IApplicationViewStaticsCache.get();
         return try _f.getValue();
     }
     pub fn TryUnsnap() core.HResult!bool {
-        const _f = @This().IApplicationViewStaticsCache.get();
+        const _f = try @This()._IApplicationViewStaticsCache.get();
         return try _f.TryUnsnap();
     }
     pub fn GetApplicationViewIdForWindow(window: *ICoreWindow) core.HResult!i32 {
-        const _f = @This().IApplicationViewInteropStaticsCache.get();
+        const _f = try @This()._IApplicationViewInteropStaticsCache.get();
         return try _f.GetApplicationViewIdForWindow(window);
     }
     pub fn ClearAllPersistedState() core.HResult!void {
-        const _f = @This().IApplicationViewStatics4Cache.get();
+        const _f = try @This()._IApplicationViewStatics4Cache.get();
         return try _f.ClearAllPersistedState();
     }
     pub fn ClearPersistedState(key: HSTRING) core.HResult!void {
-        const _f = @This().IApplicationViewStatics4Cache.get();
+        const _f = try @This()._IApplicationViewStatics4Cache.get();
         return try _f.ClearPersistedState(key);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationView";
@@ -432,47 +432,47 @@ pub const ApplicationViewSwitcher = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DisableShowingMainViewOnActivation() core.HResult!void {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.DisableShowingMainViewOnActivation();
     }
     pub fn TryShowAsStandaloneAsync(viewId: i32) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.TryShowAsStandaloneAsync(viewId);
     }
     pub fn TryShowAsStandaloneAsyncWithSizePreference(viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.TryShowAsStandaloneAsyncWithSizePreference(viewId, sizePreference);
     }
     pub fn TryShowAsStandaloneAsyncWithSizePreferenceAndAnchorViewIdAndAnchorSizePreference(viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.TryShowAsStandaloneAsyncWithSizePreferenceAndAnchorViewIdAndAnchorSizePreference(viewId, sizePreference, anchorViewId, anchorSizePreference);
     }
     pub fn SwitchAsync(viewId: i32) core.HResult!*IAsyncAction {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.SwitchAsync(viewId);
     }
     pub fn SwitchAsyncWithFromViewId(toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.SwitchAsyncWithFromViewId(toViewId, fromViewId);
     }
     pub fn SwitchAsyncWithFromViewIdAndOptions(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.SwitchAsyncWithFromViewIdAndOptions(toViewId, fromViewId, options);
     }
     pub fn PrepareForCustomAnimatedSwitchAsync(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStaticsCache.get();
+        const _f = try @This()._IApplicationViewSwitcherStaticsCache.get();
         return try _f.PrepareForCustomAnimatedSwitchAsync(toViewId, fromViewId, options);
     }
     pub fn TryShowAsViewModeAsync(viewId: i32, viewMode: ApplicationViewMode) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStatics3Cache.get();
+        const _f = try @This()._IApplicationViewSwitcherStatics3Cache.get();
         return try _f.TryShowAsViewModeAsync(viewId, viewMode);
     }
     pub fn TryShowAsViewModeAsyncWithViewModePreferences(viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IApplicationViewSwitcherStatics3Cache.get();
+        const _f = try @This()._IApplicationViewSwitcherStatics3Cache.get();
         return try _f.TryShowAsViewModeAsyncWithViewModePreferences(viewId, viewMode, viewModePreferences);
     }
     pub fn DisableSystemViewActivationPolicy() core.HResult!void {
-        const _f = @This().IApplicationViewSwitcherStatics2Cache.get();
+        const _f = try @This()._IApplicationViewSwitcherStatics2Cache.get();
         return try _f.DisableSystemViewActivationPolicy();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewSwitcher";
@@ -608,7 +608,7 @@ pub const ApplicationViewTransferContext = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IApplicationViewTransferContext.IID)));
     }
     pub fn getDataPackageFormatId() core.HResult!HSTRING {
-        const _f = @This().IApplicationViewTransferContextStaticsCache.get();
+        const _f = try @This()._IApplicationViewTransferContextStaticsCache.get();
         return try _f.getDataPackageFormatId();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ApplicationViewTransferContext";
@@ -2441,11 +2441,11 @@ pub const InputPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*InputPane {
-        const _f = @This().IInputPaneStatics2Cache.get();
+        const _f = try @This()._IInputPaneStatics2Cache.get();
         return try _f.GetForUIContext(context);
     }
     pub fn GetForCurrentView() core.HResult!*InputPane {
-        const _f = @This().IInputPaneStaticsCache.get();
+        const _f = try @This()._IInputPaneStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.InputPane";
@@ -2482,43 +2482,43 @@ pub const ProjectionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartProjectingAsync(projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.StartProjectingAsync(projectionViewId, anchorViewId);
     }
     pub fn SwapDisplaysForViewsAsync(projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.SwapDisplaysForViewsAsync(projectionViewId, anchorViewId);
     }
     pub fn StopProjectingAsync(projectionViewId: i32, anchorViewId: i32) core.HResult!*IAsyncAction {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.StopProjectingAsync(projectionViewId, anchorViewId);
     }
     pub fn getProjectionDisplayAvailable() core.HResult!bool {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.getProjectionDisplayAvailable();
     }
     pub fn addProjectionDisplayAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.addProjectionDisplayAvailableChanged(handler);
     }
     pub fn removeProjectionDisplayAvailableChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IProjectionManagerStaticsCache.get();
+        const _f = try @This()._IProjectionManagerStaticsCache.get();
         return try _f.removeProjectionDisplayAvailableChanged(token);
     }
     pub fn StartProjectingAsyncWithDisplayDeviceInfo(projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation) core.HResult!*IAsyncAction {
-        const _f = @This().IProjectionManagerStatics2Cache.get();
+        const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.StartProjectingAsync(projectionViewId, anchorViewId, displayDeviceInfo);
     }
     pub fn RequestStartProjectingAsync(projectionViewId: i32, anchorViewId: i32, selection: Rect) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IProjectionManagerStatics2Cache.get();
+        const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.RequestStartProjectingAsync(projectionViewId, anchorViewId, selection);
     }
     pub fn RequestStartProjectingAsyncWithPrefferedPlacement(projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IProjectionManagerStatics2Cache.get();
+        const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.RequestStartProjectingAsyncWithPrefferedPlacement(projectionViewId, anchorViewId, selection, prefferedPlacement);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IProjectionManagerStatics2Cache.get();
+        const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ProjectionManager";
@@ -2786,7 +2786,7 @@ pub const UIViewSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*UIViewSettings {
-        const _f = @This().IUIViewSettingsStaticsCache.get();
+        const _f = try @This()._IUIViewSettingsStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.UIViewSettings";
@@ -2822,7 +2822,7 @@ pub const ViewModePreferences = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateDefault(mode: ApplicationViewMode) core.HResult!*ViewModePreferences {
-        const _f = @This().IViewModePreferencesStaticsCache.get();
+        const _f = try @This()._IViewModePreferencesStaticsCache.get();
         return try _f.CreateDefault(mode);
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.ViewModePreferences";

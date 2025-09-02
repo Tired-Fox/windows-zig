@@ -2310,7 +2310,7 @@ pub const PrintTaskOptionDetails = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromPrintTaskOptions(printTaskOptions: *PrintTaskOptions) core.HResult!*PrintTaskOptionDetails {
-        const _f = @This().IPrintTaskOptionDetailsStaticCache.get();
+        const _f = try @This()._IPrintTaskOptionDetailsStaticCache.get();
         return try _f.GetFromPrintTaskOptions(printTaskOptions);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.OptionDetails.PrintTaskOptionDetails";

@@ -1141,11 +1141,11 @@ pub const PrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePeriodicRefresh(updatePeriod: TimeSpan) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
-        const _f = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
+        const _f = try @This()._IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
         return try _f.CreatePeriodicRefresh(updatePeriod);
     }
     pub fn CreatePrintJobRefresh(numberOfJobs: u32) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
-        const _f = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
+        const _f = try @This()._IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
         return try _f.CreatePrintJobRefresh(numberOfJobs);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.PrintSupportPrintDeviceCapabilitiesUpdatePolicy";

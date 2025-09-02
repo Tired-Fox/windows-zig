@@ -5,7 +5,7 @@ pub const AppServiceCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAppServiceProvidersAsync(appServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
-        const _f = @This().IAppServiceCatalogStaticsCache.get();
+        const _f = try @This()._IAppServiceCatalogStaticsCache.get();
         return try _f.FindAppServiceProvidersAsync(appServiceName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppService.AppServiceCatalog";
@@ -104,7 +104,7 @@ pub const AppServiceConnection = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppServiceConnection.IID)));
     }
     pub fn SendStatelessMessageAsync(connection: *AppServiceConnection, connectionRequest: *RemoteSystemConnectionRequest, message: *ValueSet) core.HResult!*IAsyncOperation(StatelessAppServiceResponse) {
-        const _f = @This().IAppServiceConnectionStaticsCache.get();
+        const _f = try @This()._IAppServiceConnectionStaticsCache.get();
         return try _f.SendStatelessMessageAsync(connection, connectionRequest, message);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppService.AppServiceConnection";

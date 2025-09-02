@@ -170,35 +170,35 @@ pub const PlatformDiagnosticActions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsScenarioEnabled(scenarioId: *Guid) core.HResult!bool {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.IsScenarioEnabled(scenarioId);
     }
     pub fn TryEscalateScenario(scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(HSTRING,HSTRING)) core.HResult!bool {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.TryEscalateScenario(scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers);
     }
     pub fn DownloadLatestSettingsForNamespace(partner: HSTRING, feature: HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.DownloadLatestSettingsForNamespace(partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery);
     }
     pub fn GetActiveScenarioList() core.HResult!*IVectorView(Guid) {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.GetActiveScenarioList();
     }
     pub fn ForceUpload(latency: PlatformDiagnosticEventBufferLatencies, uploadOverCostedNetwork: bool, uploadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.ForceUpload(latency, uploadOverCostedNetwork, uploadOverBattery);
     }
     pub fn IsTraceRunning(slotType: PlatformDiagnosticTraceSlotType, scenarioId: *Guid, traceProfileHash: u64) core.HResult!PlatformDiagnosticTraceSlotState {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.IsTraceRunning(slotType, scenarioId, traceProfileHash);
     }
     pub fn GetActiveTraceRuntime(slotType: PlatformDiagnosticTraceSlotType) core.HResult!*PlatformDiagnosticTraceRuntimeInfo {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.GetActiveTraceRuntime(slotType);
     }
     pub fn GetKnownTraceList(slotType: PlatformDiagnosticTraceSlotType) core.HResult!*IVectorView(PlatformDiagnosticTraceInfo) {
-        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.GetKnownTraceList(slotType);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.TraceReporting.PlatformDiagnosticActions";

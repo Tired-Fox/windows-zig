@@ -182,7 +182,7 @@ pub const PrintExtensionContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromDeviceId(deviceId: HSTRING) core.HResult!*IInspectable {
-        const _f = @This().IPrintExtensionContextStaticCache.get();
+        const _f = try @This()._IPrintExtensionContextStaticCache.get();
         return try _f.FromDeviceId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.Extensions.PrintExtensionContext";

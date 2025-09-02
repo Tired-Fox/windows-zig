@@ -91,15 +91,15 @@ pub const DisplayMonitor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IDisplayMonitorStaticsCache.get();
+        const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
-        const _f = @This().IDisplayMonitorStaticsCache.get();
+        const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn FromInterfaceIdAsync(deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
-        const _f = @This().IDisplayMonitorStaticsCache.get();
+        const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.FromInterfaceIdAsync(deviceInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.DisplayMonitor";

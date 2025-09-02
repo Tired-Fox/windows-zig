@@ -21,11 +21,11 @@ pub const CustomDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(classGuid: *Guid) core.HResult!HSTRING {
-        const _f = @This().ICustomDeviceStaticsCache.get();
+        const _f = try @This()._ICustomDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(classGuid);
     }
     pub fn FromIdAsync(deviceId: HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
-        const _f = @This().ICustomDeviceStaticsCache.get();
+        const _f = try @This()._ICustomDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, desiredAccess, sharingMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.CustomDevice";
@@ -253,7 +253,7 @@ pub const IOControlCode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateIOControlCode(deviceType: u16, function: u16, accessMode: IOControlAccessMode, bufferingMethod: IOControlBufferingMethod) core.HResult!*IOControlCode {
-        const _f = @This().IIOControlCodeFactoryCache.get();
+        const _f = try @This()._IIOControlCodeFactoryCache.get();
         return try _f.CreateIOControlCode(deviceType, function, accessMode, bufferingMethod);
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.IOControlCode";
@@ -269,7 +269,7 @@ pub const KnownDeviceTypes = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getUnknown() core.HResult!u16 {
-        const _f = @This().IKnownDeviceTypesStaticsCache.get();
+        const _f = try @This()._IKnownDeviceTypesStaticsCache.get();
         return try _f.getUnknown();
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.KnownDeviceTypes";

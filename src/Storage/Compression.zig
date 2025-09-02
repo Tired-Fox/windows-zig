@@ -39,11 +39,11 @@ pub const Compressor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCompressor(underlyingStream: *IOutputStream) core.HResult!*Compressor {
-        const _f = @This().ICompressorFactoryCache.get();
+        const _f = try @This()._ICompressorFactoryCache.get();
         return try _f.CreateCompressor(underlyingStream);
     }
     pub fn CreateCompressorEx(underlyingStream: *IOutputStream, algorithm: CompressAlgorithm, blockSize: u32) core.HResult!*Compressor {
-        const _f = @This().ICompressorFactoryCache.get();
+        const _f = try @This()._ICompressorFactoryCache.get();
         return try _f.CreateCompressorEx(underlyingStream, algorithm, blockSize);
     }
     pub const NAME: []const u8 = "Windows.Storage.Compression.Compressor";
@@ -75,7 +75,7 @@ pub const Decompressor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateDecompressor(underlyingStream: *IInputStream) core.HResult!*Decompressor {
-        const _f = @This().IDecompressorFactoryCache.get();
+        const _f = try @This()._IDecompressorFactoryCache.get();
         return try _f.CreateDecompressor(underlyingStream);
     }
     pub const NAME: []const u8 = "Windows.Storage.Compression.Decompressor";

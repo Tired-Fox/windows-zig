@@ -41,7 +41,7 @@ pub const CharacterGroupings = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICharacterGroupings.IID)));
     }
     pub fn Create(language: HSTRING) core.HResult!*CharacterGroupings {
-        const _f = @This().ICharacterGroupingsFactoryCache.get();
+        const _f = try @This()._ICharacterGroupingsFactoryCache.get();
         return try _f.Create(language);
     }
     pub const NAME: []const u8 = "Windows.Globalization.Collation.CharacterGroupings";

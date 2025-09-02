@@ -186,15 +186,15 @@ pub const OfflineMapPackage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindPackagesAsync(queryPoint: *Geopoint) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        const _f = try @This()._IOfflineMapPackageStaticsCache.get();
         return try _f.FindPackagesAsync(queryPoint);
     }
     pub fn FindPackagesInBoundingBoxAsync(queryBoundingBox: *GeoboundingBox) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        const _f = try @This()._IOfflineMapPackageStaticsCache.get();
         return try _f.FindPackagesInBoundingBoxAsync(queryBoundingBox);
     }
     pub fn FindPackagesInGeocircleAsync(queryCircle: *Geocircle) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        const _f = try @This()._IOfflineMapPackageStaticsCache.get();
         return try _f.FindPackagesInGeocircleAsync(queryCircle);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.OfflineMapPackage";

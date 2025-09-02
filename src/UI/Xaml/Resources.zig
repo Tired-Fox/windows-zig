@@ -11,15 +11,15 @@ pub const CustomXamlResourceLoader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*CustomXamlResourceLoader {
-        const _f = @This().ICustomXamlResourceLoaderStaticsCache.get();
+        const _f = try @This()._ICustomXamlResourceLoaderStaticsCache.get();
         return try _f.getCurrent();
     }
     pub fn putCurrent(value: *CustomXamlResourceLoader) core.HResult!void {
-        const _f = @This().ICustomXamlResourceLoaderStaticsCache.get();
+        const _f = try @This()._ICustomXamlResourceLoaderStaticsCache.get();
         return try _f.putCurrent(value);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomXamlResourceLoader {
-        const _f = @This().ICustomXamlResourceLoaderFactoryCache.get();
+        const _f = try @This()._ICustomXamlResourceLoaderFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Resources.CustomXamlResourceLoader";

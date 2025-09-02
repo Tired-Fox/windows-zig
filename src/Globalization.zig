@@ -92,11 +92,11 @@ pub const JapanesePhoneticAnalyzer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetWords(input: HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
-        const _f = @This().IJapanesePhoneticAnalyzerStaticsCache.get();
+        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
         return try _f.GetWords(input);
     }
     pub fn GetWordsWithMonoRuby(input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
-        const _f = @This().IJapanesePhoneticAnalyzerStaticsCache.get();
+        const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
         return try _f.GetWordsWithMonoRuby(input, monoRuby);
     }
     pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneticAnalyzer";
@@ -109,23 +109,23 @@ pub const ApplicationLanguages = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetLanguagesForUser(user: *User) core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IApplicationLanguagesStatics2Cache.get();
+        const _f = try @This()._IApplicationLanguagesStatics2Cache.get();
         return try _f.GetLanguagesForUser(user);
     }
     pub fn getPrimaryLanguageOverride() core.HResult!HSTRING {
-        const _f = @This().IApplicationLanguagesStaticsCache.get();
+        const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getPrimaryLanguageOverride();
     }
     pub fn putPrimaryLanguageOverride(value: HSTRING) core.HResult!void {
-        const _f = @This().IApplicationLanguagesStaticsCache.get();
+        const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.putPrimaryLanguageOverride(value);
     }
     pub fn getLanguages() core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IApplicationLanguagesStaticsCache.get();
+        const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getLanguages();
     }
     pub fn getManifestLanguages() core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IApplicationLanguagesStaticsCache.get();
+        const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getManifestLanguages();
     }
     pub const NAME: []const u8 = "Windows.Globalization.ApplicationLanguages";
@@ -559,15 +559,15 @@ pub const Calendar = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICalendar.IID)));
     }
     pub fn CreateCalendarDefaultCalendarAndClock(languages: *IIterable(HSTRING)) core.HResult!*Calendar {
-        const _f = @This().ICalendarFactoryCache.get();
+        const _f = try @This()._ICalendarFactoryCache.get();
         return try _f.CreateCalendarDefaultCalendarAndClock(languages);
     }
     pub fn CreateCalendar(languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING) core.HResult!*Calendar {
-        const _f = @This().ICalendarFactoryCache.get();
+        const _f = try @This()._ICalendarFactoryCache.get();
         return try _f.CreateCalendar(languages, calendar, clock);
     }
     pub fn CreateCalendarWithTimeZone(languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING, timeZoneId: HSTRING) core.HResult!*Calendar {
-        const _f = @This().ICalendarFactory2Cache.get();
+        const _f = try @This()._ICalendarFactory2Cache.get();
         return try _f.CreateCalendarWithTimeZone(languages, calendar, clock, timeZoneId);
     }
     pub const NAME: []const u8 = "Windows.Globalization.Calendar";
@@ -585,63 +585,63 @@ pub const CalendarIdentifiers = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getChineseLunar() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getChineseLunar();
     }
     pub fn getJapaneseLunar() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getJapaneseLunar();
     }
     pub fn getKoreanLunar() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getKoreanLunar();
     }
     pub fn getTaiwanLunar() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getTaiwanLunar();
     }
     pub fn getVietnameseLunar() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getVietnameseLunar();
     }
     pub fn getPersian() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStatics2Cache.get();
+        const _f = try @This()._ICalendarIdentifiersStatics2Cache.get();
         return try _f.getPersian();
     }
     pub fn getGregorian() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getGregorian();
     }
     pub fn getHebrew() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getHebrew();
     }
     pub fn getHijri() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getHijri();
     }
     pub fn getJapanese() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getJapanese();
     }
     pub fn getJulian() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getJulian();
     }
     pub fn getKorean() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getKorean();
     }
     pub fn getTaiwan() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getTaiwan();
     }
     pub fn getThai() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getThai();
     }
     pub fn getUmAlQura() core.HResult!HSTRING {
-        const _f = @This().ICalendarIdentifiersStaticsCache.get();
+        const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getUmAlQura();
     }
     pub const NAME: []const u8 = "Windows.Globalization.CalendarIdentifiers";
@@ -656,11 +656,11 @@ pub const ClockIdentifiers = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getTwelveHour() core.HResult!HSTRING {
-        const _f = @This().IClockIdentifiersStaticsCache.get();
+        const _f = try @This()._IClockIdentifiersStaticsCache.get();
         return try _f.getTwelveHour();
     }
     pub fn getTwentyFourHour() core.HResult!HSTRING {
-        const _f = @This().IClockIdentifiersStaticsCache.get();
+        const _f = try @This()._IClockIdentifiersStaticsCache.get();
         return try _f.getTwentyFourHour();
     }
     pub const NAME: []const u8 = "Windows.Globalization.ClockIdentifiers";
@@ -681,7 +681,7 @@ pub const CurrencyAmount = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(amount: HSTRING, currency: HSTRING) core.HResult!*CurrencyAmount {
-        const _f = @This().ICurrencyAmountFactoryCache.get();
+        const _f = try @This()._ICurrencyAmountFactoryCache.get();
         return try _f.Create(amount, currency);
     }
     pub const NAME: []const u8 = "Windows.Globalization.CurrencyAmount";
@@ -697,651 +697,651 @@ pub const CurrencyIdentifiers = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBYN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStatics2Cache.get();
+        const _f = try @This()._ICurrencyIdentifiersStatics2Cache.get();
         return try _f.getBYN();
     }
     pub fn getMRU() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getMRU();
     }
     pub fn getSSP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getSSP();
     }
     pub fn getSTN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getSTN();
     }
     pub fn getVES() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStatics3Cache.get();
+        const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getVES();
     }
     pub fn getAED() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAED();
     }
     pub fn getAFN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAFN();
     }
     pub fn getALL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getALL();
     }
     pub fn getAMD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAMD();
     }
     pub fn getANG() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getANG();
     }
     pub fn getAOA() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAOA();
     }
     pub fn getARS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getARS();
     }
     pub fn getAUD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAUD();
     }
     pub fn getAWG() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAWG();
     }
     pub fn getAZN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAZN();
     }
     pub fn getBAM() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBAM();
     }
     pub fn getBBD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBBD();
     }
     pub fn getBDT() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBDT();
     }
     pub fn getBGN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBGN();
     }
     pub fn getBHD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBHD();
     }
     pub fn getBIF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBIF();
     }
     pub fn getBMD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBMD();
     }
     pub fn getBND() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBND();
     }
     pub fn getBOB() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBOB();
     }
     pub fn getBRL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBRL();
     }
     pub fn getBSD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBSD();
     }
     pub fn getBTN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBTN();
     }
     pub fn getBWP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBWP();
     }
     pub fn getBYR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBYR();
     }
     pub fn getBZD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBZD();
     }
     pub fn getCAD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCAD();
     }
     pub fn getCDF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCDF();
     }
     pub fn getCHF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCHF();
     }
     pub fn getCLP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCLP();
     }
     pub fn getCNY() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCNY();
     }
     pub fn getCOP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCOP();
     }
     pub fn getCRC() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCRC();
     }
     pub fn getCUP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCUP();
     }
     pub fn getCVE() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCVE();
     }
     pub fn getCZK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCZK();
     }
     pub fn getDJF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDJF();
     }
     pub fn getDKK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDKK();
     }
     pub fn getDOP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDOP();
     }
     pub fn getDZD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDZD();
     }
     pub fn getEGP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getEGP();
     }
     pub fn getERN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getERN();
     }
     pub fn getETB() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getETB();
     }
     pub fn getEUR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getEUR();
     }
     pub fn getFJD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getFJD();
     }
     pub fn getFKP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getFKP();
     }
     pub fn getGBP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGBP();
     }
     pub fn getGEL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGEL();
     }
     pub fn getGHS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGHS();
     }
     pub fn getGIP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGIP();
     }
     pub fn getGMD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGMD();
     }
     pub fn getGNF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGNF();
     }
     pub fn getGTQ() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGTQ();
     }
     pub fn getGYD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGYD();
     }
     pub fn getHKD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHKD();
     }
     pub fn getHNL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHNL();
     }
     pub fn getHRK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHRK();
     }
     pub fn getHTG() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHTG();
     }
     pub fn getHUF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHUF();
     }
     pub fn getIDR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIDR();
     }
     pub fn getILS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getILS();
     }
     pub fn getINR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getINR();
     }
     pub fn getIQD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIQD();
     }
     pub fn getIRR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIRR();
     }
     pub fn getISK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getISK();
     }
     pub fn getJMD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJMD();
     }
     pub fn getJOD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJOD();
     }
     pub fn getJPY() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJPY();
     }
     pub fn getKES() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKES();
     }
     pub fn getKGS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKGS();
     }
     pub fn getKHR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKHR();
     }
     pub fn getKMF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKMF();
     }
     pub fn getKPW() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKPW();
     }
     pub fn getKRW() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKRW();
     }
     pub fn getKWD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKWD();
     }
     pub fn getKYD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKYD();
     }
     pub fn getKZT() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKZT();
     }
     pub fn getLAK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLAK();
     }
     pub fn getLBP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLBP();
     }
     pub fn getLKR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLKR();
     }
     pub fn getLRD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLRD();
     }
     pub fn getLSL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLSL();
     }
     pub fn getLTL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLTL();
     }
     pub fn getLVL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLVL();
     }
     pub fn getLYD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLYD();
     }
     pub fn getMAD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMAD();
     }
     pub fn getMDL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMDL();
     }
     pub fn getMGA() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMGA();
     }
     pub fn getMKD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMKD();
     }
     pub fn getMMK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMMK();
     }
     pub fn getMNT() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMNT();
     }
     pub fn getMOP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMOP();
     }
     pub fn getMRO() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMRO();
     }
     pub fn getMUR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMUR();
     }
     pub fn getMVR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMVR();
     }
     pub fn getMWK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMWK();
     }
     pub fn getMXN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMXN();
     }
     pub fn getMYR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMYR();
     }
     pub fn getMZN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMZN();
     }
     pub fn getNAD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNAD();
     }
     pub fn getNGN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNGN();
     }
     pub fn getNIO() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNIO();
     }
     pub fn getNOK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNOK();
     }
     pub fn getNPR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNPR();
     }
     pub fn getNZD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNZD();
     }
     pub fn getOMR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getOMR();
     }
     pub fn getPAB() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPAB();
     }
     pub fn getPEN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPEN();
     }
     pub fn getPGK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPGK();
     }
     pub fn getPHP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPHP();
     }
     pub fn getPKR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPKR();
     }
     pub fn getPLN() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPLN();
     }
     pub fn getPYG() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPYG();
     }
     pub fn getQAR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getQAR();
     }
     pub fn getRON() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRON();
     }
     pub fn getRSD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRSD();
     }
     pub fn getRUB() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRUB();
     }
     pub fn getRWF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRWF();
     }
     pub fn getSAR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSAR();
     }
     pub fn getSBD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSBD();
     }
     pub fn getSCR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSCR();
     }
     pub fn getSDG() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSDG();
     }
     pub fn getSEK() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSEK();
     }
     pub fn getSGD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSGD();
     }
     pub fn getSHP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSHP();
     }
     pub fn getSLL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSLL();
     }
     pub fn getSOS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSOS();
     }
     pub fn getSRD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSRD();
     }
     pub fn getSTD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSTD();
     }
     pub fn getSYP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSYP();
     }
     pub fn getSZL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSZL();
     }
     pub fn getTHB() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTHB();
     }
     pub fn getTJS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTJS();
     }
     pub fn getTMT() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTMT();
     }
     pub fn getTND() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTND();
     }
     pub fn getTOP() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTOP();
     }
     pub fn getTRY() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTRY();
     }
     pub fn getTTD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTTD();
     }
     pub fn getTWD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTWD();
     }
     pub fn getTZS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTZS();
     }
     pub fn getUAH() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUAH();
     }
     pub fn getUGX() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUGX();
     }
     pub fn getUSD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUSD();
     }
     pub fn getUYU() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUYU();
     }
     pub fn getUZS() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUZS();
     }
     pub fn getVEF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVEF();
     }
     pub fn getVND() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVND();
     }
     pub fn getVUV() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVUV();
     }
     pub fn getWST() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getWST();
     }
     pub fn getXAF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXAF();
     }
     pub fn getXCD() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXCD();
     }
     pub fn getXOF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXOF();
     }
     pub fn getXPF() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXPF();
     }
     pub fn getXXX() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXXX();
     }
     pub fn getYER() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getYER();
     }
     pub fn getZAR() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZAR();
     }
     pub fn getZMW() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZMW();
     }
     pub fn getZWL() core.HResult!HSTRING {
-        const _f = @This().ICurrencyIdentifiersStaticsCache.get();
+        const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZWL();
     }
     pub const NAME: []const u8 = "Windows.Globalization.CurrencyIdentifiers";
@@ -1397,11 +1397,11 @@ pub const GeographicRegion = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeographicRegion.IID)));
     }
     pub fn CreateGeographicRegion(geographicRegionCode: HSTRING) core.HResult!*GeographicRegion {
-        const _f = @This().IGeographicRegionFactoryCache.get();
+        const _f = try @This()._IGeographicRegionFactoryCache.get();
         return try _f.CreateGeographicRegion(geographicRegionCode);
     }
     pub fn IsSupported(geographicRegionCode: HSTRING) core.HResult!bool {
-        const _f = @This().IGeographicRegionStaticsCache.get();
+        const _f = try @This()._IGeographicRegionStaticsCache.get();
         return try _f.IsSupported(geographicRegionCode);
     }
     pub const NAME: []const u8 = "Windows.Globalization.GeographicRegion";
@@ -4370,23 +4370,23 @@ pub const Language = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLanguage(languageTag: HSTRING) core.HResult!*Language {
-        const _f = @This().ILanguageFactoryCache.get();
+        const _f = try @This()._ILanguageFactoryCache.get();
         return try _f.CreateLanguage(languageTag);
     }
     pub fn IsWellFormed(languageTag: HSTRING) core.HResult!bool {
-        const _f = @This().ILanguageStaticsCache.get();
+        const _f = try @This()._ILanguageStaticsCache.get();
         return try _f.IsWellFormed(languageTag);
     }
     pub fn getCurrentInputMethodLanguageTag() core.HResult!HSTRING {
-        const _f = @This().ILanguageStaticsCache.get();
+        const _f = try @This()._ILanguageStaticsCache.get();
         return try _f.getCurrentInputMethodLanguageTag();
     }
     pub fn TrySetInputMethodLanguageTag(languageTag: HSTRING) core.HResult!bool {
-        const _f = @This().ILanguageStatics2Cache.get();
+        const _f = try @This()._ILanguageStatics2Cache.get();
         return try _f.TrySetInputMethodLanguageTag(languageTag);
     }
     pub fn GetMuiCompatibleLanguageListFromLanguageTags(languageTags: *IIterable(HSTRING)) core.HResult!*IVector(HSTRING) {
-        const _f = @This().ILanguageStatics3Cache.get();
+        const _f = try @This()._ILanguageStatics3Cache.get();
         return try _f.GetMuiCompatibleLanguageListFromLanguageTags(languageTags);
     }
     pub const NAME: []const u8 = "Windows.Globalization.Language";
@@ -4411,195 +4411,195 @@ pub const NumeralSystemIdentifiers = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBrah() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getBrah();
     }
     pub fn getOsma() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getOsma();
     }
     pub fn getMathBold() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathBold();
     }
     pub fn getMathDbl() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathDbl();
     }
     pub fn getMathSans() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathSans();
     }
     pub fn getMathSanb() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathSanb();
     }
     pub fn getMathMono() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathMono();
     }
     pub fn getZmthBold() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthBold();
     }
     pub fn getZmthDbl() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthDbl();
     }
     pub fn getZmthSans() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthSans();
     }
     pub fn getZmthSanb() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthSanb();
     }
     pub fn getZmthMono() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStatics2Cache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthMono();
     }
     pub fn getArab() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getArab();
     }
     pub fn getArabExt() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getArabExt();
     }
     pub fn getBali() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getBali();
     }
     pub fn getBeng() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getBeng();
     }
     pub fn getCham() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getCham();
     }
     pub fn getDeva() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getDeva();
     }
     pub fn getFullWide() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getFullWide();
     }
     pub fn getGujr() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getGujr();
     }
     pub fn getGuru() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getGuru();
     }
     pub fn getHaniDec() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getHaniDec();
     }
     pub fn getJava() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getJava();
     }
     pub fn getKali() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKali();
     }
     pub fn getKhmr() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKhmr();
     }
     pub fn getKnda() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKnda();
     }
     pub fn getLana() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLana();
     }
     pub fn getLanaTham() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLanaTham();
     }
     pub fn getLaoo() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLaoo();
     }
     pub fn getLatn() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLatn();
     }
     pub fn getLepc() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLepc();
     }
     pub fn getLimb() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLimb();
     }
     pub fn getMlym() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMlym();
     }
     pub fn getMong() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMong();
     }
     pub fn getMtei() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMtei();
     }
     pub fn getMymr() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMymr();
     }
     pub fn getMymrShan() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMymrShan();
     }
     pub fn getNkoo() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getNkoo();
     }
     pub fn getOlck() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getOlck();
     }
     pub fn getOrya() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getOrya();
     }
     pub fn getSaur() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getSaur();
     }
     pub fn getSund() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getSund();
     }
     pub fn getTalu() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTalu();
     }
     pub fn getTamlDec() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTamlDec();
     }
     pub fn getTelu() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTelu();
     }
     pub fn getThai() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getThai();
     }
     pub fn getTibt() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTibt();
     }
     pub fn getVaii() core.HResult!HSTRING {
-        const _f = @This().INumeralSystemIdentifiersStaticsCache.get();
+        const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getVaii();
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumeralSystemIdentifiers";

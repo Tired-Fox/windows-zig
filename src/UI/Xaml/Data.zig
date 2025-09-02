@@ -10,7 +10,7 @@ pub const BindingBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BindingBase {
-        const _f = @This().IBindingBaseFactoryCache.get();
+        const _f = try @This()._IBindingBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindingBase";
@@ -126,7 +126,7 @@ pub const Binding = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Binding {
-        const _f = @This().IBindingFactoryCache.get();
+        const _f = try @This()._IBindingFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.Binding";
@@ -183,7 +183,7 @@ pub const BindingOperations = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBinding(target: *DependencyObject, dp: *DependencyProperty, binding: *BindingBase) core.HResult!void {
-        const _f = @This().IBindingOperationsStaticsCache.get();
+        const _f = try @This()._IBindingOperationsStaticsCache.get();
         return try _f.SetBinding(target, dp, binding);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindingOperations";
@@ -231,19 +231,19 @@ pub const CollectionViewSource = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICollectionViewSource.IID)));
     }
     pub fn getSourceProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        const _f = try @This()._ICollectionViewSourceStaticsCache.get();
         return try _f.getSourceProperty();
     }
     pub fn getViewProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        const _f = try @This()._ICollectionViewSourceStaticsCache.get();
         return try _f.getViewProperty();
     }
     pub fn getIsSourceGroupedProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        const _f = try @This()._ICollectionViewSourceStaticsCache.get();
         return try _f.getIsSourceGroupedProperty();
     }
     pub fn getItemsPathProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        const _f = try @This()._ICollectionViewSourceStaticsCache.get();
         return try _f.getItemsPathProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.CollectionViewSource";
@@ -272,11 +272,11 @@ pub const CurrentChangingEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
-        const _f = @This().ICurrentChangingEventArgsFactoryCache.get();
+        const _f = try @This()._ICurrentChangingEventArgsFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateWithCancelableParameter(isCancelable: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
-        const _f = @This().ICurrentChangingEventArgsFactoryCache.get();
+        const _f = try @This()._ICurrentChangingEventArgsFactoryCache.get();
         return try _f.CreateWithCancelableParameter(isCancelable, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.CurrentChangingEventArgs";
@@ -1507,7 +1507,7 @@ pub const ItemIndexRange = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(firstIndex: i32, length: u32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemIndexRange {
-        const _f = @This().IItemIndexRangeFactoryCache.get();
+        const _f = try @This()._IItemIndexRangeFactoryCache.get();
         return try _f.CreateInstance(firstIndex, length, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.ItemIndexRange";
@@ -1530,7 +1530,7 @@ pub const PropertyChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(name: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
-        const _f = @This().IPropertyChangedEventArgsFactoryCache.get();
+        const _f = try @This()._IPropertyChangedEventArgsFactoryCache.get();
         return try _f.CreateInstance(name, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.PropertyChangedEventArgs";
@@ -1641,7 +1641,7 @@ pub const RelativeSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RelativeSource {
-        const _f = @This().IRelativeSourceFactoryCache.get();
+        const _f = try @This()._IRelativeSourceFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.RelativeSource";

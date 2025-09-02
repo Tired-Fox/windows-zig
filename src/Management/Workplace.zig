@@ -28,7 +28,7 @@ pub const WorkplaceSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsMicrosoftAccountOptional() core.HResult!bool {
-        const _f = @This().IWorkplaceSettingsStaticsCache.get();
+        const _f = try @This()._IWorkplaceSettingsStaticsCache.get();
         return try _f.getIsMicrosoftAccountOptional();
     }
     pub const NAME: []const u8 = "Windows.Management.Workplace.WorkplaceSettings";
@@ -108,23 +108,23 @@ pub const MdmPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsBrowserAllowed() core.HResult!bool {
-        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        const _f = try @This()._IMdmAllowPolicyStaticsCache.get();
         return try _f.IsBrowserAllowed();
     }
     pub fn IsCameraAllowed() core.HResult!bool {
-        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        const _f = try @This()._IMdmAllowPolicyStaticsCache.get();
         return try _f.IsCameraAllowed();
     }
     pub fn IsMicrosoftAccountAllowed() core.HResult!bool {
-        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        const _f = try @This()._IMdmAllowPolicyStaticsCache.get();
         return try _f.IsMicrosoftAccountAllowed();
     }
     pub fn IsStoreAllowed() core.HResult!bool {
-        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        const _f = try @This()._IMdmAllowPolicyStaticsCache.get();
         return try _f.IsStoreAllowed();
     }
     pub fn GetMessagingSyncPolicy() core.HResult!MessagingSyncPolicy {
-        const _f = @This().IMdmPolicyStatics2Cache.get();
+        const _f = try @This()._IMdmPolicyStatics2Cache.get();
         return try _f.GetMessagingSyncPolicy();
     }
     pub const NAME: []const u8 = "Windows.Management.Workplace.MdmPolicy";

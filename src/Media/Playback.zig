@@ -11,39 +11,39 @@ pub const BackgroundMediaPlayer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*MediaPlayer {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.getCurrent();
     }
     pub fn addMessageReceivedFromBackground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.addMessageReceivedFromBackground(value);
     }
     pub fn removeMessageReceivedFromBackground(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.removeMessageReceivedFromBackground(token);
     }
     pub fn addMessageReceivedFromForeground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.addMessageReceivedFromForeground(value);
     }
     pub fn removeMessageReceivedFromForeground(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.removeMessageReceivedFromForeground(token);
     }
     pub fn SendMessageToBackground(value: *ValueSet) core.HResult!void {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.SendMessageToBackground(value);
     }
     pub fn SendMessageToForeground(value: *ValueSet) core.HResult!void {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.SendMessageToForeground(value);
     }
     pub fn IsMediaPlaying() core.HResult!bool {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.IsMediaPlaying();
     }
     pub fn Shutdown() core.HResult!void {
-        const _f = @This().IBackgroundMediaPlayerStaticsCache.get();
+        const _f = try @This()._IBackgroundMediaPlayerStaticsCache.get();
         return try _f.Shutdown();
     }
     pub const NAME: []const u8 = "Windows.Media.Playback.BackgroundMediaPlayer";
@@ -3467,11 +3467,11 @@ pub const MediaBreak = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(insertionMethod: MediaBreakInsertionMethod) core.HResult!*MediaBreak {
-        const _f = @This().IMediaBreakFactoryCache.get();
+        const _f = try @This()._IMediaBreakFactoryCache.get();
         return try _f.Create(insertionMethod);
     }
     pub fn CreateWithPresentationPosition(insertionMethod: MediaBreakInsertionMethod, presentationPosition: TimeSpan) core.HResult!*MediaBreak {
-        const _f = @This().IMediaBreakFactoryCache.get();
+        const _f = try @This()._IMediaBreakFactoryCache.get();
         return try _f.CreateWithPresentationPosition(insertionMethod, presentationPosition);
     }
     pub const NAME: []const u8 = "Windows.Media.Playback.MediaBreak";
@@ -4234,19 +4234,19 @@ pub const MediaPlaybackItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(source: *MediaSource) core.HResult!*MediaPlaybackItem {
-        const _f = @This().IMediaPlaybackItemFactoryCache.get();
+        const _f = try @This()._IMediaPlaybackItemFactoryCache.get();
         return try _f.Create(source);
     }
     pub fn CreateWithStartTime(source: *MediaSource, startTime: TimeSpan) core.HResult!*MediaPlaybackItem {
-        const _f = @This().IMediaPlaybackItemFactory2Cache.get();
+        const _f = try @This()._IMediaPlaybackItemFactory2Cache.get();
         return try _f.CreateWithStartTime(source, startTime);
     }
     pub fn CreateWithStartTimeAndDurationLimit(source: *MediaSource, startTime: TimeSpan, durationLimit: TimeSpan) core.HResult!*MediaPlaybackItem {
-        const _f = @This().IMediaPlaybackItemFactory2Cache.get();
+        const _f = try @This()._IMediaPlaybackItemFactory2Cache.get();
         return try _f.CreateWithStartTimeAndDurationLimit(source, startTime, durationLimit);
     }
     pub fn FindFromMediaSource(source: *MediaSource) core.HResult!*MediaPlaybackItem {
-        const _f = @This().IMediaPlaybackItemStaticsCache.get();
+        const _f = try @This()._IMediaPlaybackItemStaticsCache.get();
         return try _f.FindFromMediaSource(source);
     }
     pub const NAME: []const u8 = "Windows.Media.Playback.MediaPlaybackItem";
@@ -5500,11 +5500,11 @@ pub const PlaybackMediaMarker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromTime(value: TimeSpan) core.HResult!*PlaybackMediaMarker {
-        const _f = @This().IPlaybackMediaMarkerFactoryCache.get();
+        const _f = try @This()._IPlaybackMediaMarkerFactoryCache.get();
         return try _f.CreateFromTime(value);
     }
     pub fn Create(value: TimeSpan, mediaMarketType: HSTRING, text: HSTRING) core.HResult!*PlaybackMediaMarker {
-        const _f = @This().IPlaybackMediaMarkerFactoryCache.get();
+        const _f = try @This()._IPlaybackMediaMarkerFactoryCache.get();
         return try _f.Create(value, mediaMarketType, text);
     }
     pub const NAME: []const u8 = "Windows.Media.Playback.PlaybackMediaMarker";

@@ -45,27 +45,27 @@ pub const ButtonBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getClickModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IButtonBaseStaticsCache.get();
+        const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getClickModeProperty();
     }
     pub fn getIsPointerOverProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IButtonBaseStaticsCache.get();
+        const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getIsPointerOverProperty();
     }
     pub fn getIsPressedProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IButtonBaseStaticsCache.get();
+        const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getIsPressedProperty();
     }
     pub fn getCommandProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IButtonBaseStaticsCache.get();
+        const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getCommandProperty();
     }
     pub fn getCommandParameterProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IButtonBaseStaticsCache.get();
+        const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getCommandParameterProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBase {
-        const _f = @This().IButtonBaseFactoryCache.get();
+        const _f = try @This()._IButtonBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ButtonBase";
@@ -128,15 +128,15 @@ pub const ToggleButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IToggleButtonStaticsCache.get();
+        const _f = try @This()._IToggleButtonStaticsCache.get();
         return try _f.getIsCheckedProperty();
     }
     pub fn getIsThreeStateProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IToggleButtonStaticsCache.get();
+        const _f = try @This()._IToggleButtonStaticsCache.get();
         return try _f.getIsThreeStateProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButton {
-        const _f = @This().IToggleButtonFactoryCache.get();
+        const _f = try @This()._IToggleButtonFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ToggleButton";
@@ -201,27 +201,27 @@ pub const Selector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getSelectedIndexProperty();
     }
     pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getSelectedItemProperty();
     }
     pub fn getSelectedValueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getSelectedValueProperty();
     }
     pub fn getSelectedValuePathProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getSelectedValuePathProperty();
     }
     pub fn getIsSynchronizedWithCurrentItemProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getIsSynchronizedWithCurrentItemProperty();
     }
     pub fn GetIsSelectionActive(element: *DependencyObject) core.HResult!bool {
-        const _f = @This().ISelectorStaticsCache.get();
+        const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.GetIsSelectionActive(element);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.Selector";
@@ -246,11 +246,11 @@ pub const SelectorItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsSelectedProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ISelectorItemStaticsCache.get();
+        const _f = try @This()._ISelectorItemStaticsCache.get();
         return try _f.getIsSelectedProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItem {
-        const _f = @This().ISelectorItemFactoryCache.get();
+        const _f = try @This()._ISelectorItemFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.SelectorItem";
@@ -475,71 +475,71 @@ pub const FlyoutBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getOverlayInputPassThroughElementProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics3Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics3Cache.get();
         return try _f.getOverlayInputPassThroughElementProperty();
     }
     pub fn getAllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics2Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics2Cache.get();
         return try _f.getAllowFocusOnInteractionProperty();
     }
     pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics2Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics2Cache.get();
         return try _f.getLightDismissOverlayModeProperty();
     }
     pub fn getAllowFocusWhenDisabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics2Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics2Cache.get();
         return try _f.getAllowFocusWhenDisabledProperty();
     }
     pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics2Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics2Cache.get();
         return try _f.getElementSoundModeProperty();
     }
     pub fn getPlacementProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IFlyoutBaseStaticsCache.get();
         return try _f.getPlacementProperty();
     }
     pub fn getAttachedFlyoutProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IFlyoutBaseStaticsCache.get();
         return try _f.getAttachedFlyoutProperty();
     }
     pub fn GetAttachedFlyout(element: *FrameworkElement) core.HResult!*FlyoutBase {
-        const _f = @This().IFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IFlyoutBaseStaticsCache.get();
         return try _f.GetAttachedFlyout(element);
     }
     pub fn SetAttachedFlyout(element: *FrameworkElement, value: *FlyoutBase) core.HResult!void {
-        const _f = @This().IFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IFlyoutBaseStaticsCache.get();
         return try _f.SetAttachedFlyout(element, value);
     }
     pub fn ShowAttachedFlyout(flyoutOwner: *FrameworkElement) core.HResult!void {
-        const _f = @This().IFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IFlyoutBaseStaticsCache.get();
         return try _f.ShowAttachedFlyout(flyoutOwner);
     }
     pub fn getShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics6Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics6Cache.get();
         return try _f.getShouldConstrainToRootBoundsProperty();
     }
     pub fn getTargetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics5Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics5Cache.get();
         return try _f.getTargetProperty();
     }
     pub fn getShowModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics5Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics5Cache.get();
         return try _f.getShowModeProperty();
     }
     pub fn getInputDevicePrefersPrimaryCommandsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics5Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics5Cache.get();
         return try _f.getInputDevicePrefersPrimaryCommandsProperty();
     }
     pub fn getAreOpenCloseAnimationsEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics5Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics5Cache.get();
         return try _f.getAreOpenCloseAnimationsEnabledProperty();
     }
     pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IFlyoutBaseStatics5Cache.get();
+        const _f = try @This()._IFlyoutBaseStatics5Cache.get();
         return try _f.getIsOpenProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutBase {
-        const _f = @This().IFlyoutBaseFactoryCache.get();
+        const _f = try @This()._IFlyoutBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.FlyoutBase";
@@ -572,19 +572,19 @@ pub const PickerFlyoutBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getTitleProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPickerFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.getTitleProperty();
     }
     pub fn GetTitle(element: *DependencyObject) core.HResult!HSTRING {
-        const _f = @This().IPickerFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.GetTitle(element);
     }
     pub fn SetTitle(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const _f = @This().IPickerFlyoutBaseStaticsCache.get();
+        const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.SetTitle(element, value);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PickerFlyoutBase {
-        const _f = @This().IPickerFlyoutBaseFactoryCache.get();
+        const _f = try @This()._IPickerFlyoutBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.PickerFlyoutBase";
@@ -925,7 +925,7 @@ pub const CarouselPanel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CarouselPanel {
-        const _f = @This().ICarouselPanelFactoryCache.get();
+        const _f = try @This()._ICarouselPanelFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.CarouselPanel";
@@ -1007,27 +1007,27 @@ pub const RangeBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMinimumProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRangeBaseStaticsCache.get();
+        const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getMinimumProperty();
     }
     pub fn getMaximumProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRangeBaseStaticsCache.get();
+        const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getMaximumProperty();
     }
     pub fn getSmallChangeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRangeBaseStaticsCache.get();
+        const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getSmallChangeProperty();
     }
     pub fn getLargeChangeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRangeBaseStaticsCache.get();
+        const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getLargeChangeProperty();
     }
     pub fn getValueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRangeBaseStaticsCache.get();
+        const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getValueProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBase {
-        const _f = @This().IRangeBaseFactoryCache.get();
+        const _f = try @This()._IRangeBaseFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.RangeBase";
@@ -1052,11 +1052,11 @@ pub const ColorPickerSlider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getColorChannelProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorPickerSliderStaticsCache.get();
+        const _f = try @This()._IColorPickerSliderStaticsCache.get();
         return try _f.getColorChannelProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSlider {
-        const _f = @This().IColorPickerSliderFactoryCache.get();
+        const _f = try @This()._IColorPickerSliderFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ColorPickerSlider";
@@ -1161,47 +1161,47 @@ pub const ColorSpectrum = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getColorProperty();
     }
     pub fn getHsvColorProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getHsvColorProperty();
     }
     pub fn getMinHueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMinHueProperty();
     }
     pub fn getMaxHueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMaxHueProperty();
     }
     pub fn getMinSaturationProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMinSaturationProperty();
     }
     pub fn getMaxSaturationProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMaxSaturationProperty();
     }
     pub fn getMinValueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMinValueProperty();
     }
     pub fn getMaxValueProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getMaxValueProperty();
     }
     pub fn getShapeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getShapeProperty();
     }
     pub fn getComponentsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IColorSpectrumStaticsCache.get();
+        const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getComponentsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrum {
-        const _f = @This().IColorSpectrumFactoryCache.get();
+        const _f = try @This()._IColorSpectrumFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ColorSpectrum";
@@ -1252,7 +1252,7 @@ pub const CommandBarFlyoutCommandBar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarFlyoutCommandBar {
-        const _f = @This().ICommandBarFlyoutCommandBarFactoryCache.get();
+        const _f = try @This()._ICommandBarFlyoutCommandBarFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.CommandBarFlyoutCommandBar";
@@ -1438,7 +1438,7 @@ pub const DragCompletedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(horizontalChange: f64, verticalChange: f64, canceled: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragCompletedEventArgs {
-        const _f = @This().IDragCompletedEventArgsFactoryCache.get();
+        const _f = try @This()._IDragCompletedEventArgsFactoryCache.get();
         return try _f.CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(horizontalChange, verticalChange, canceled, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.DragCompletedEventArgs";
@@ -1549,7 +1549,7 @@ pub const DragDeltaEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalChangeAndVerticalChange(horizontalChange: f64, verticalChange: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragDeltaEventArgs {
-        const _f = @This().IDragDeltaEventArgsFactoryCache.get();
+        const _f = try @This()._IDragDeltaEventArgsFactoryCache.get();
         return try _f.CreateInstanceWithHorizontalChangeAndVerticalChange(horizontalChange, verticalChange, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.DragDeltaEventArgs";
@@ -1660,7 +1660,7 @@ pub const DragStartedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalOffsetAndVerticalOffset(horizontalOffset: f64, verticalOffset: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragStartedEventArgs {
-        const _f = @This().IDragStartedEventArgsFactoryCache.get();
+        const _f = try @This()._IDragStartedEventArgsFactoryCache.get();
         return try _f.CreateInstanceWithHorizontalOffsetAndVerticalOffset(horizontalOffset, verticalOffset, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.DragStartedEventArgs";
@@ -1839,7 +1839,7 @@ pub const FlyoutShowOptions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutShowOptions {
-        const _f = @This().IFlyoutShowOptionsFactoryCache.get();
+        const _f = try @This()._IFlyoutShowOptionsFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.FlyoutShowOptions";
@@ -1863,7 +1863,7 @@ pub const GeneratorPositionHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIndexAndOffset(index: i32, offset: i32) core.HResult!GeneratorPosition {
-        const _f = @This().IGeneratorPositionHelperStaticsCache.get();
+        const _f = try @This()._IGeneratorPositionHelperStaticsCache.get();
         return try _f.FromIndexAndOffset(index, offset);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.GeneratorPositionHelper";
@@ -2055,95 +2055,95 @@ pub const GridViewItemPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectionCheckMarkVisualEnabledProperty();
     }
     pub fn getCheckHintBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getCheckHintBrushProperty();
     }
     pub fn getCheckSelectingBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getCheckSelectingBrushProperty();
     }
     pub fn getCheckBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getCheckBrushProperty();
     }
     pub fn getDragBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getDragBackgroundProperty();
     }
     pub fn getDragForegroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getDragForegroundProperty();
     }
     pub fn getFocusBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getFocusBorderBrushProperty();
     }
     pub fn getPlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getPlaceholderBackgroundProperty();
     }
     pub fn getPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getPointerOverBackgroundProperty();
     }
     pub fn getSelectedBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectedBackgroundProperty();
     }
     pub fn getSelectedForegroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectedForegroundProperty();
     }
     pub fn getSelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectedPointerOverBackgroundProperty();
     }
     pub fn getSelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectedPointerOverBorderBrushProperty();
     }
     pub fn getSelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectedBorderThicknessProperty();
     }
     pub fn getDisabledOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getDisabledOpacityProperty();
     }
     pub fn getDragOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getDragOpacityProperty();
     }
     pub fn getReorderHintOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getReorderHintOffsetProperty();
     }
     pub fn getGridViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getGridViewItemPresenterHorizontalContentAlignmentProperty();
     }
     pub fn getGridViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getGridViewItemPresenterVerticalContentAlignmentProperty();
     }
     pub fn getGridViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getGridViewItemPresenterPaddingProperty();
     }
     pub fn getPointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getPointerOverBackgroundMarginProperty();
     }
     pub fn getContentMarginProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IGridViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getContentMarginProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemPresenter {
-        const _f = @This().IGridViewItemPresenterFactoryCache.get();
+        const _f = try @This()._IGridViewItemPresenterFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.GridViewItemPresenter";
@@ -9033,11 +9033,11 @@ pub const JumpListItemBackgroundConverter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJumpListItemBackgroundConverter.IID)));
     }
     pub fn getEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IJumpListItemBackgroundConverterStaticsCache.get();
+        const _f = try @This()._IJumpListItemBackgroundConverterStaticsCache.get();
         return try _f.getEnabledProperty();
     }
     pub fn getDisabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IJumpListItemBackgroundConverterStaticsCache.get();
+        const _f = try @This()._IJumpListItemBackgroundConverterStaticsCache.get();
         return try _f.getDisabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.JumpListItemBackgroundConverter";
@@ -9086,11 +9086,11 @@ pub const JumpListItemForegroundConverter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJumpListItemForegroundConverter.IID)));
     }
     pub fn getEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IJumpListItemForegroundConverterStaticsCache.get();
+        const _f = try @This()._IJumpListItemForegroundConverterStaticsCache.get();
         return try _f.getEnabledProperty();
     }
     pub fn getDisabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IJumpListItemForegroundConverterStaticsCache.get();
+        const _f = try @This()._IJumpListItemForegroundConverterStaticsCache.get();
         return try _f.getDisabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.JumpListItemForegroundConverter";
@@ -9107,15 +9107,15 @@ pub const LayoutInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetLayoutExceptionElement(dispatcher: *IInspectable) core.HResult!*UIElement {
-        const _f = @This().ILayoutInformationStaticsCache.get();
+        const _f = try @This()._ILayoutInformationStaticsCache.get();
         return try _f.GetLayoutExceptionElement(dispatcher);
     }
     pub fn GetLayoutSlot(element: *FrameworkElement) core.HResult!Rect {
-        const _f = @This().ILayoutInformationStaticsCache.get();
+        const _f = try @This()._ILayoutInformationStaticsCache.get();
         return try _f.GetLayoutSlot(element);
     }
     pub fn GetAvailableSize(element: *UIElement) core.HResult!Size {
-        const _f = @This().ILayoutInformationStatics2Cache.get();
+        const _f = try @This()._ILayoutInformationStatics2Cache.get();
         return try _f.GetAvailableSize(element);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.LayoutInformation";
@@ -9752,243 +9752,243 @@ pub const ListViewItemPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectionCheckMarkVisualEnabledProperty();
     }
     pub fn getCheckHintBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getCheckHintBrushProperty();
     }
     pub fn getCheckSelectingBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getCheckSelectingBrushProperty();
     }
     pub fn getCheckBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getCheckBrushProperty();
     }
     pub fn getDragBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getDragBackgroundProperty();
     }
     pub fn getDragForegroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getDragForegroundProperty();
     }
     pub fn getFocusBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getFocusBorderBrushProperty();
     }
     pub fn getPlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getPlaceholderBackgroundProperty();
     }
     pub fn getPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getPointerOverBackgroundProperty();
     }
     pub fn getSelectedBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectedBackgroundProperty();
     }
     pub fn getSelectedForegroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectedForegroundProperty();
     }
     pub fn getSelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectedPointerOverBackgroundProperty();
     }
     pub fn getSelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectedPointerOverBorderBrushProperty();
     }
     pub fn getSelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectedBorderThicknessProperty();
     }
     pub fn getDisabledOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getDisabledOpacityProperty();
     }
     pub fn getDragOpacityProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getDragOpacityProperty();
     }
     pub fn getReorderHintOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getReorderHintOffsetProperty();
     }
     pub fn getListViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getListViewItemPresenterHorizontalContentAlignmentProperty();
     }
     pub fn getListViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getListViewItemPresenterVerticalContentAlignmentProperty();
     }
     pub fn getListViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getListViewItemPresenterPaddingProperty();
     }
     pub fn getPointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getPointerOverBackgroundMarginProperty();
     }
     pub fn getContentMarginProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStaticsCache.get();
+        const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getContentMarginProperty();
     }
     pub fn getSelectedPressedBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getSelectedPressedBackgroundProperty();
     }
     pub fn getPressedBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getPressedBackgroundProperty();
     }
     pub fn getCheckBoxBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getCheckBoxBrushProperty();
     }
     pub fn getFocusSecondaryBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getFocusSecondaryBorderBrushProperty();
     }
     pub fn getCheckModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getCheckModeProperty();
     }
     pub fn getPointerOverForegroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics2Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics2Cache.get();
         return try _f.getPointerOverForegroundProperty();
     }
     pub fn getSelectedDisabledBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectedDisabledBackgroundProperty();
     }
     pub fn getCheckPressedBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckPressedBrushProperty();
     }
     pub fn getCheckDisabledBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckDisabledBrushProperty();
     }
     pub fn getCheckBoxPointerOverBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxPointerOverBrushProperty();
     }
     pub fn getCheckBoxPressedBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxPressedBrushProperty();
     }
     pub fn getCheckBoxDisabledBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxDisabledBrushProperty();
     }
     pub fn getCheckBoxSelectedBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxSelectedBrushProperty();
     }
     pub fn getCheckBoxSelectedPointerOverBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxSelectedPointerOverBrushProperty();
     }
     pub fn getCheckBoxSelectedPressedBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxSelectedPressedBrushProperty();
     }
     pub fn getCheckBoxSelectedDisabledBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxSelectedDisabledBrushProperty();
     }
     pub fn getCheckBoxBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxBorderBrushProperty();
     }
     pub fn getCheckBoxPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxPointerOverBorderBrushProperty();
     }
     pub fn getCheckBoxPressedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxPressedBorderBrushProperty();
     }
     pub fn getCheckBoxDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxDisabledBorderBrushProperty();
     }
     pub fn getCheckBoxCornerRadiusProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getCheckBoxCornerRadiusProperty();
     }
     pub fn getSelectionIndicatorCornerRadiusProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorCornerRadiusProperty();
     }
     pub fn getSelectionIndicatorVisualEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorVisualEnabledProperty();
     }
     pub fn getSelectionIndicatorModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorModeProperty();
     }
     pub fn getSelectionIndicatorBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorBrushProperty();
     }
     pub fn getSelectionIndicatorPointerOverBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorPointerOverBrushProperty();
     }
     pub fn getSelectionIndicatorPressedBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorPressedBrushProperty();
     }
     pub fn getSelectionIndicatorDisabledBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectionIndicatorDisabledBrushProperty();
     }
     pub fn getSelectedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectedBorderBrushProperty();
     }
     pub fn getSelectedPressedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectedPressedBorderBrushProperty();
     }
     pub fn getSelectedDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectedDisabledBorderBrushProperty();
     }
     pub fn getSelectedInnerBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getSelectedInnerBorderBrushProperty();
     }
     pub fn getPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics4Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics4Cache.get();
         return try _f.getPointerOverBorderBrushProperty();
     }
     pub fn getRevealBackgroundProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics3Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics3Cache.get();
         return try _f.getRevealBackgroundProperty();
     }
     pub fn getRevealBorderBrushProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics3Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics3Cache.get();
         return try _f.getRevealBorderBrushProperty();
     }
     pub fn getRevealBorderThicknessProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics3Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics3Cache.get();
         return try _f.getRevealBorderThicknessProperty();
     }
     pub fn getRevealBackgroundShowsAboveContentProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IListViewItemPresenterStatics3Cache.get();
+        const _f = try @This()._IListViewItemPresenterStatics3Cache.get();
         return try _f.getRevealBackgroundShowsAboveContentProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemPresenter {
-        const _f = @This().IListViewItemPresenterFactoryCache.get();
+        const _f = try @This()._IListViewItemPresenterFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ListViewItemPresenter";
@@ -10092,31 +10092,31 @@ pub const LoopingSelector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getShouldLoopProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getShouldLoopProperty();
     }
     pub fn getItemsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getItemsProperty();
     }
     pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getSelectedIndexProperty();
     }
     pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getSelectedItemProperty();
     }
     pub fn getItemWidthProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getItemWidthProperty();
     }
     pub fn getItemHeightProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getItemHeightProperty();
     }
     pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ILoopingSelectorStaticsCache.get();
+        const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getItemTemplateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.LoopingSelector";
@@ -10228,11 +10228,11 @@ pub const NavigationViewItemPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIconProperty() core.HResult!*DependencyProperty {
-        const _f = @This().INavigationViewItemPresenterStaticsCache.get();
+        const _f = try @This()._INavigationViewItemPresenterStaticsCache.get();
         return try _f.getIconProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemPresenter {
-        const _f = @This().INavigationViewItemPresenterFactoryCache.get();
+        const _f = try @This()._INavigationViewItemPresenterFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.NavigationViewItemPresenter";
@@ -10423,7 +10423,7 @@ pub const PivotHeaderItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PivotHeaderItem {
-        const _f = @This().IPivotHeaderItemFactoryCache.get();
+        const _f = try @This()._IPivotHeaderItemFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.PivotHeaderItem";
@@ -10666,43 +10666,43 @@ pub const Popup = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopup.IID)));
     }
     pub fn getPlacementTargetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStatics4Cache.get();
+        const _f = try @This()._IPopupStatics4Cache.get();
         return try _f.getPlacementTargetProperty();
     }
     pub fn getDesiredPlacementProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStatics4Cache.get();
+        const _f = try @This()._IPopupStatics4Cache.get();
         return try _f.getDesiredPlacementProperty();
     }
     pub fn getShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStatics3Cache.get();
+        const _f = try @This()._IPopupStatics3Cache.get();
         return try _f.getShouldConstrainToRootBoundsProperty();
     }
     pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStatics2Cache.get();
+        const _f = try @This()._IPopupStatics2Cache.get();
         return try _f.getLightDismissOverlayModeProperty();
     }
     pub fn getChildProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getChildProperty();
     }
     pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getIsOpenProperty();
     }
     pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getHorizontalOffsetProperty();
     }
     pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getVerticalOffsetProperty();
     }
     pub fn getChildTransitionsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getChildTransitionsProperty();
     }
     pub fn getIsLightDismissEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPopupStaticsCache.get();
+        const _f = try @This()._IPopupStaticsCache.get();
         return try _f.getIsLightDismissEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.Popup";
@@ -10916,11 +10916,11 @@ pub const RepeatButton = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepeatButton.IID)));
     }
     pub fn getDelayProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRepeatButtonStaticsCache.get();
+        const _f = try @This()._IRepeatButtonStaticsCache.get();
         return try _f.getDelayProperty();
     }
     pub fn getIntervalProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IRepeatButtonStaticsCache.get();
+        const _f = try @This()._IRepeatButtonStaticsCache.get();
         return try _f.getIntervalProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.RepeatButton";
@@ -10973,15 +10973,15 @@ pub const ScrollBar = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScrollBar.IID)));
     }
     pub fn getOrientationProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScrollBarStaticsCache.get();
+        const _f = try @This()._IScrollBarStaticsCache.get();
         return try _f.getOrientationProperty();
     }
     pub fn getViewportSizeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScrollBarStaticsCache.get();
+        const _f = try @This()._IScrollBarStaticsCache.get();
         return try _f.getViewportSizeProperty();
     }
     pub fn getIndicatorModeProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IScrollBarStaticsCache.get();
+        const _f = try @This()._IScrollBarStaticsCache.get();
         return try _f.getIndicatorModeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ScrollBar";
@@ -11234,7 +11234,7 @@ pub const Thumb = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IThumb.IID)));
     }
     pub fn getIsDraggingProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IThumbStaticsCache.get();
+        const _f = try @This()._IThumbStaticsCache.get();
         return try _f.getIsDraggingProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.Thumb";
@@ -11263,7 +11263,7 @@ pub const TickBar = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITickBar.IID)));
     }
     pub fn getFillProperty() core.HResult!*DependencyProperty {
-        const _f = @This().ITickBarStaticsCache.get();
+        const _f = try @This()._ITickBarStaticsCache.get();
         return try _f.getFillProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.TickBar";

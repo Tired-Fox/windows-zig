@@ -98,11 +98,11 @@ pub const PlatformTelemetryClient = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Register(id: HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
-        const _f = @This().IPlatformTelemetryClientStaticsCache.get();
+        const _f = try @This()._IPlatformTelemetryClientStaticsCache.get();
         return try _f.Register(id);
     }
     pub fn RegisterWithSettings(id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
-        const _f = @This().IPlatformTelemetryClientStaticsCache.get();
+        const _f = try @This()._IPlatformTelemetryClientStaticsCache.get();
         return try _f.RegisterWithSettings(id, settings);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.Telemetry.PlatformTelemetryClient";

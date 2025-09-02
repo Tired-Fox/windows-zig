@@ -28,7 +28,7 @@ pub const InteractiveSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsRemote() core.HResult!bool {
-        const _f = @This().IInteractiveSessionStaticsCache.get();
+        const _f = try @This()._IInteractiveSessionStaticsCache.get();
         return try _f.getIsRemote();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.InteractiveSession";

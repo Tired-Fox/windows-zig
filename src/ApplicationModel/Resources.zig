@@ -201,35 +201,35 @@ pub const ResourceLoader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IResourceLoader.IID)));
     }
     pub fn CreateResourceLoaderByName(name: HSTRING) core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderFactoryCache.get();
+        const _f = try @This()._IResourceLoaderFactoryCache.get();
         return try _f.CreateResourceLoaderByName(name);
     }
     pub fn GetForCurrentView() core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderStatics2Cache.get();
+        const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForCurrentView();
     }
     pub fn GetForCurrentViewWithName(name: HSTRING) core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderStatics2Cache.get();
+        const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForCurrentViewWithName(name);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderStatics2Cache.get();
+        const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForViewIndependentUse();
     }
     pub fn GetForViewIndependentUseWithName(name: HSTRING) core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderStatics2Cache.get();
+        const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForViewIndependentUseWithName(name);
     }
     pub fn GetStringForReference(uri: *Uri) core.HResult!HSTRING {
-        const _f = @This().IResourceLoaderStaticsCache.get();
+        const _f = try @This()._IResourceLoaderStaticsCache.get();
         return try _f.GetStringForReference(uri);
     }
     pub fn GetDefaultPriPath(packageFullName: HSTRING) core.HResult!HSTRING {
-        const _f = @This().IResourceLoaderStatics4Cache.get();
+        const _f = try @This()._IResourceLoaderStatics4Cache.get();
         return try _f.GetDefaultPriPath(packageFullName);
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*ResourceLoader {
-        const _f = @This().IResourceLoaderStatics3Cache.get();
+        const _f = try @This()._IResourceLoaderStatics3Cache.get();
         return try _f.GetForUIContext(context);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.ResourceLoader";

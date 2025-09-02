@@ -588,11 +588,11 @@ pub const PrintDocument = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDocumentSourceProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IPrintDocumentStaticsCache.get();
+        const _f = try @This()._IPrintDocumentStaticsCache.get();
         return try _f.getDocumentSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PrintDocument {
-        const _f = @This().IPrintDocumentFactoryCache.get();
+        const _f = try @This()._IPrintDocumentFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Printing.PrintDocument";

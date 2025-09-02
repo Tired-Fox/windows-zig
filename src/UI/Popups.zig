@@ -306,11 +306,11 @@ pub const MessageDialog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(content: HSTRING) core.HResult!*MessageDialog {
-        const _f = @This().IMessageDialogFactoryCache.get();
+        const _f = try @This()._IMessageDialogFactoryCache.get();
         return try _f.Create(content);
     }
     pub fn CreateWithTitle(content: HSTRING, title: HSTRING) core.HResult!*MessageDialog {
-        const _f = @This().IMessageDialogFactoryCache.get();
+        const _f = try @This()._IMessageDialogFactoryCache.get();
         return try _f.CreateWithTitle(content, title);
     }
     pub const NAME: []const u8 = "Windows.UI.Popups.MessageDialog";
@@ -397,15 +397,15 @@ pub const UICommand = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUICommand.IID)));
     }
     pub fn Create(label: HSTRING) core.HResult!*UICommand {
-        const _f = @This().IUICommandFactoryCache.get();
+        const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.Create(label);
     }
     pub fn CreateWithHandler(label: HSTRING, action: *UICommandInvokedHandler) core.HResult!*UICommand {
-        const _f = @This().IUICommandFactoryCache.get();
+        const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.CreateWithHandler(label, action);
     }
     pub fn CreateWithHandlerAndId(label: HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable) core.HResult!*UICommand {
-        const _f = @This().IUICommandFactoryCache.get();
+        const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.CreateWithHandlerAndId(label, action, commandId);
     }
     pub const NAME: []const u8 = "Windows.UI.Popups.UICommand";

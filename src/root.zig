@@ -50,15 +50,20 @@ pub const core = @import("core.zig");
 pub const win32 = @import("win32");
 
 // ----- This code is automatically generated -----
+pub const AI = @import("./AI.zig");
 pub const ApplicationModel = @import("./ApplicationModel.zig");
+pub const Data = @import("./Data.zig");
 pub const Devices = @import("./Devices.zig");
 pub const Foundation = @import("./Foundation.zig");
+pub const Gaming = @import("./Gaming.zig");
 pub const Globalization = @import("./Globalization.zig");
 pub const Graphics = @import("./Graphics.zig");
 pub const Management = @import("./Management.zig");
 pub const Media = @import("./Media.zig");
 pub const Networking = @import("./Networking.zig");
 pub const Perception = @import("./Perception.zig");
+pub const Security = @import("./Security.zig");
+pub const Services = @import("./Services.zig");
 pub const Storage = @import("./Storage.zig");
 pub const System = @import("./System.zig");
 pub const UI = @import("./UI.zig");

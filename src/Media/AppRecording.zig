@@ -25,7 +25,7 @@ pub const AppRecordingManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AppRecordingManager {
-        const _f = @This().IAppRecordingManagerStaticsCache.get();
+        const _f = try @This()._IAppRecordingManagerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Media.AppRecording.AppRecordingManager";

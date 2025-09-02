@@ -97,11 +97,11 @@ pub const AppBroadcastingUI = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AppBroadcastingUI {
-        const _f = @This().IAppBroadcastingUIStaticsCache.get();
+        const _f = try @This()._IAppBroadcastingUIStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*AppBroadcastingUI {
-        const _f = @This().IAppBroadcastingUIStaticsCache.get();
+        const _f = try @This()._IAppBroadcastingUIStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Media.AppBroadcasting.AppBroadcastingUI";

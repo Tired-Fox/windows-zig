@@ -470,15 +470,15 @@ pub const SpatialSurfaceMeshOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpatialSurfaceMeshOptions.IID)));
     }
     pub fn getSupportedVertexPositionFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        const _f = try @This()._ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try _f.getSupportedVertexPositionFormats();
     }
     pub fn getSupportedTriangleIndexFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        const _f = try @This()._ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try _f.getSupportedTriangleIndexFormats();
     }
     pub fn getSupportedVertexNormalFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        const _f = try @This()._ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try _f.getSupportedVertexNormalFormats();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.SpatialSurfaceMeshOptions";
@@ -519,11 +519,11 @@ pub const SpatialSurfaceObserver = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpatialSurfaceObserver.IID)));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const _f = @This().ISpatialSurfaceObserverStaticsCache.get();
+        const _f = try @This()._ISpatialSurfaceObserverStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().ISpatialSurfaceObserverStatics2Cache.get();
+        const _f = try @This()._ISpatialSurfaceObserverStatics2Cache.get();
         return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.SpatialSurfaceObserver";

@@ -687,7 +687,7 @@ pub const MouseDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*MouseDevice {
-        const _f = @This().IMouseDeviceStaticsCache.get();
+        const _f = try @This()._IMouseDeviceStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.MouseDevice";
@@ -751,7 +751,7 @@ pub const PenButtonListener = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenButtonListener {
-        const _f = @This().IPenButtonListenerStaticsCache.get();
+        const _f = try @This()._IPenButtonListenerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenButtonListener";
@@ -777,7 +777,7 @@ pub const PenDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromPointerId(pointerId: u32) core.HResult!*PenDevice {
-        const _f = @This().IPenDeviceStaticsCache.get();
+        const _f = try @This()._IPenDeviceStaticsCache.get();
         return try _f.GetFromPointerId(pointerId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenDevice";
@@ -821,7 +821,7 @@ pub const PenDockListener = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenDockListener {
-        const _f = @This().IPenDockListenerStaticsCache.get();
+        const _f = try @This()._IPenDockListenerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenDockListener";
@@ -907,11 +907,11 @@ pub const PointerDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPointerDevice(pointerId: u32) core.HResult!*PointerDevice {
-        const _f = @This().IPointerDeviceStaticsCache.get();
+        const _f = try @This()._IPointerDeviceStaticsCache.get();
         return try _f.GetPointerDevice(pointerId);
     }
     pub fn GetPointerDevices() core.HResult!*IVectorView(PointerDevice) {
-        const _f = @This().IPointerDeviceStaticsCache.get();
+        const _f = try @This()._IPointerDeviceStaticsCache.get();
         return try _f.GetPointerDevices();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PointerDevice";

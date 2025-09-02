@@ -781,7 +781,7 @@ pub const TargetedContentContainer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAsync(contentId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
-        const _f = @This().ITargetedContentContainerStaticsCache.get();
+        const _f = try @This()._ITargetedContentContainerStaticsCache.get();
         return try _f.GetAsync(contentId);
     }
     pub const NAME: []const u8 = "Windows.Services.TargetedContent.TargetedContentContainer";
@@ -967,11 +967,11 @@ pub const TargetedContentSubscription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAsync(subscriptionId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
-        const _f = @This().ITargetedContentSubscriptionStaticsCache.get();
+        const _f = try @This()._ITargetedContentSubscriptionStaticsCache.get();
         return try _f.GetAsync(subscriptionId);
     }
     pub fn GetOptions(subscriptionId: HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
-        const _f = @This().ITargetedContentSubscriptionStaticsCache.get();
+        const _f = try @This()._ITargetedContentSubscriptionStaticsCache.get();
         return try _f.GetOptions(subscriptionId);
     }
     pub const NAME: []const u8 = "Windows.Services.TargetedContent.TargetedContentSubscription";

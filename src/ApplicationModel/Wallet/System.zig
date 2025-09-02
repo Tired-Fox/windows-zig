@@ -152,7 +152,7 @@ pub const WalletManagerSystem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(WalletItemSystemStore) {
-        const _f = @This().IWalletManagerSystemStaticsCache.get();
+        const _f = try @This()._IWalletManagerSystemStaticsCache.get();
         return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.WalletManagerSystem";

@@ -143,7 +143,7 @@ pub const LowLevelDevicesAggregateProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(adc: *IAdcControllerProvider, pwm: *IPwmControllerProvider, gpio: *IGpioControllerProvider, i2c: *II2cControllerProvider, spi: *ISpiControllerProvider) core.HResult!*LowLevelDevicesAggregateProvider {
-        const _f = @This().ILowLevelDevicesAggregateProviderFactoryCache.get();
+        const _f = try @This()._ILowLevelDevicesAggregateProviderFactoryCache.get();
         return try _f.Create(adc, pwm, gpio, i2c, spi);
     }
     pub const NAME: []const u8 = "Windows.Devices.LowLevelDevicesAggregateProvider";
@@ -159,11 +159,11 @@ pub const LowLevelDevicesController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDefaultProvider() core.HResult!*ILowLevelDevicesAggregateProvider {
-        const _f = @This().ILowLevelDevicesControllerStaticsCache.get();
+        const _f = try @This()._ILowLevelDevicesControllerStaticsCache.get();
         return try _f.getDefaultProvider();
     }
     pub fn putDefaultProvider(value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
-        const _f = @This().ILowLevelDevicesControllerStaticsCache.get();
+        const _f = try @This()._ILowLevelDevicesControllerStaticsCache.get();
         return try _f.putDefaultProvider(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.LowLevelDevicesController";

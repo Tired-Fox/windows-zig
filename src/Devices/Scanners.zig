@@ -575,11 +575,11 @@ pub const ImageScanner = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ImageScanner) {
-        const _f = @This().IImageScannerStaticsCache.get();
+        const _f = try @This()._IImageScannerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IImageScannerStaticsCache.get();
+        const _f = try @This()._IImageScannerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.ImageScanner";

@@ -40,15 +40,15 @@ pub const SoundLevelBroker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSoundLevel() core.HResult!SoundLevel {
-        const _f = @This().ISoundLevelBrokerStaticsCache.get();
+        const _f = try @This()._ISoundLevelBrokerStaticsCache.get();
         return try _f.getSoundLevel();
     }
     pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().ISoundLevelBrokerStaticsCache.get();
+        const _f = try @This()._ISoundLevelBrokerStaticsCache.get();
         return try _f.addSoundLevelChanged(handler);
     }
     pub fn removeSoundLevelChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ISoundLevelBrokerStaticsCache.get();
+        const _f = try @This()._ISoundLevelBrokerStaticsCache.get();
         return try _f.removeSoundLevelChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.Preview.SoundLevelBroker";

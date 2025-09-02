@@ -153,15 +153,15 @@ pub const LicenseManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RefreshLicensesAsync(refreshOption: LicenseRefreshOption) core.HResult!*IAsyncAction {
-        const _f = @This().ILicenseManagerStatics2Cache.get();
+        const _f = try @This()._ILicenseManagerStatics2Cache.get();
         return try _f.RefreshLicensesAsync(refreshOption);
     }
     pub fn AddLicenseAsync(license: *IBuffer) core.HResult!*IAsyncAction {
-        const _f = @This().ILicenseManagerStaticsCache.get();
+        const _f = try @This()._ILicenseManagerStaticsCache.get();
         return try _f.AddLicenseAsync(license);
     }
     pub fn GetSatisfactionInfosAsync(contentIds: *IIterable(HSTRING), keyIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
-        const _f = @This().ILicenseManagerStaticsCache.get();
+        const _f = try @This()._ILicenseManagerStaticsCache.get();
         return try _f.GetSatisfactionInfosAsync(contentIds, keyIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.LicenseManagement.LicenseManager";

@@ -140,11 +140,11 @@ pub const NamedPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPolicyFromPath(area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
-        const _f = @This().INamedPolicyStaticsCache.get();
+        const _f = try @This()._INamedPolicyStaticsCache.get();
         return try _f.GetPolicyFromPath(area, name);
     }
     pub fn GetPolicyFromPathForUser(user: *User, area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
-        const _f = @This().INamedPolicyStaticsCache.get();
+        const _f = try @This()._INamedPolicyStaticsCache.get();
         return try _f.GetPolicyFromPathForUser(user, area, name);
     }
     pub const NAME: []const u8 = "Windows.Management.Policies.NamedPolicy";

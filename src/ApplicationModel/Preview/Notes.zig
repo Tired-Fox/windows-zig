@@ -364,7 +364,7 @@ pub const NotesWindowManagerPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentApp() core.HResult!*NotesWindowManagerPreview {
-        const _f = @This().INotesWindowManagerPreviewStaticsCache.get();
+        const _f = try @This()._INotesWindowManagerPreviewStaticsCache.get();
         return try _f.GetForCurrentApp();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Notes.NotesWindowManagerPreview";

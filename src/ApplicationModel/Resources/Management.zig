@@ -230,11 +230,11 @@ pub const ResourceIndexer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateResourceIndexer(projectRoot: *Uri) core.HResult!*ResourceIndexer {
-        const _f = @This().IResourceIndexerFactoryCache.get();
+        const _f = try @This()._IResourceIndexerFactoryCache.get();
         return try _f.CreateResourceIndexer(projectRoot);
     }
     pub fn CreateResourceIndexerWithExtension(projectRoot: *Uri, extensionDllPath: *Uri) core.HResult!*ResourceIndexer {
-        const _f = @This().IResourceIndexerFactory2Cache.get();
+        const _f = try @This()._IResourceIndexerFactory2Cache.get();
         return try _f.CreateResourceIndexerWithExtension(projectRoot, extensionDllPath);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Management.ResourceIndexer";

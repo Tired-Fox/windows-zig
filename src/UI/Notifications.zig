@@ -64,7 +64,7 @@ pub const BadgeNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateBadgeNotification(content: *XmlDocument) core.HResult!*BadgeNotification {
-        const _f = @This().IBadgeNotificationFactoryCache.get();
+        const _f = try @This()._IBadgeNotificationFactoryCache.get();
         return try _f.CreateBadgeNotification(content);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.BadgeNotification";
@@ -84,23 +84,23 @@ pub const BadgeUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateBadgeUpdaterForApplication() core.HResult!*BadgeUpdater {
-        const _f = @This().IBadgeUpdateManagerStaticsCache.get();
+        const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForApplication();
     }
     pub fn CreateBadgeUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*BadgeUpdater {
-        const _f = @This().IBadgeUpdateManagerStaticsCache.get();
+        const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateBadgeUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*BadgeUpdater {
-        const _f = @This().IBadgeUpdateManagerStaticsCache.get();
+        const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForSecondaryTile(tileId);
     }
     pub fn GetTemplateContent(ty: BadgeTemplateType) core.HResult!*XmlDocument {
-        const _f = @This().IBadgeUpdateManagerStaticsCache.get();
+        const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.GetTemplateContent(ty);
     }
     pub fn GetForUser(user: *User) core.HResult!*BadgeUpdateManagerForUser {
-        const _f = @This().IBadgeUpdateManagerStatics2Cache.get();
+        const _f = try @This()._IBadgeUpdateManagerStatics2Cache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.BadgeUpdateManager";
@@ -2745,27 +2745,27 @@ pub const KnownAdaptiveNotificationHints = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getStyle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getStyle();
     }
     pub fn getWrap() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getWrap();
     }
     pub fn getMaxLines() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getMaxLines();
     }
     pub fn getMinLines() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getMinLines();
     }
     pub fn getTextStacking() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getTextStacking();
     }
     pub fn getAlign() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getAlign();
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.KnownAdaptiveNotificationHints";
@@ -2778,79 +2778,79 @@ pub const KnownAdaptiveNotificationTextStyles = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCaption() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getCaption();
     }
     pub fn getBody() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBody();
     }
     pub fn getBase() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBase();
     }
     pub fn getSubtitle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubtitle();
     }
     pub fn getTitle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitle();
     }
     pub fn getSubheader() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheader();
     }
     pub fn getHeader() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeader();
     }
     pub fn getTitleNumeral() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitleNumeral();
     }
     pub fn getSubheaderNumeral() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderNumeral();
     }
     pub fn getHeaderNumeral() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderNumeral();
     }
     pub fn getCaptionSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getCaptionSubtle();
     }
     pub fn getBodySubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBodySubtle();
     }
     pub fn getBaseSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBaseSubtle();
     }
     pub fn getSubtitleSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubtitleSubtle();
     }
     pub fn getTitleSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitleSubtle();
     }
     pub fn getSubheaderSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderSubtle();
     }
     pub fn getSubheaderNumeralSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderNumeralSubtle();
     }
     pub fn getHeaderSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderSubtle();
     }
     pub fn getHeaderNumeralSubtle() core.HResult!HSTRING {
-        const _f = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
+        const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderNumeralSubtle();
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.KnownAdaptiveNotificationTextStyles";
@@ -2863,7 +2863,7 @@ pub const KnownNotificationBindings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getToastGeneric() core.HResult!HSTRING {
-        const _f = @This().IKnownNotificationBindingsStaticsCache.get();
+        const _f = try @This()._IKnownNotificationBindingsStaticsCache.get();
         return try _f.getToastGeneric();
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.KnownNotificationBindings";
@@ -2956,11 +2956,11 @@ pub const NotificationData = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INotificationData.IID)));
     }
     pub fn CreateNotificationDataWithSequenceNumber(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
-        const _f = @This().INotificationDataFactoryCache.get();
+        const _f = try @This()._INotificationDataFactoryCache.get();
         return try _f.CreateNotificationDataWithSequenceNumber(initialValues, sequenceNumber);
     }
     pub fn CreateNotificationData(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*NotificationData {
-        const _f = @This().INotificationDataFactoryCache.get();
+        const _f = try @This()._INotificationDataFactoryCache.get();
         return try _f.CreateNotificationData(initialValues);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.NotificationData";
@@ -3060,7 +3060,7 @@ pub const ScheduledTileNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateScheduledTileNotification(content: *XmlDocument, deliveryTime: DateTime) core.HResult!*ScheduledTileNotification {
-        const _f = @This().IScheduledTileNotificationFactoryCache.get();
+        const _f = try @This()._IScheduledTileNotificationFactoryCache.get();
         return try _f.CreateScheduledTileNotification(content, deliveryTime);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ScheduledTileNotification";
@@ -3172,11 +3172,11 @@ pub const ScheduledToastNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateScheduledToastNotification(content: *XmlDocument, deliveryTime: DateTime) core.HResult!*ScheduledToastNotification {
-        const _f = @This().IScheduledToastNotificationFactoryCache.get();
+        const _f = try @This()._IScheduledToastNotificationFactoryCache.get();
         return try _f.CreateScheduledToastNotification(content, deliveryTime);
     }
     pub fn CreateScheduledToastNotificationRecurring(content: *XmlDocument, deliveryTime: DateTime, snoozeInterval: TimeSpan, maximumSnoozeCount: u32) core.HResult!*ScheduledToastNotification {
-        const _f = @This().IScheduledToastNotificationFactoryCache.get();
+        const _f = try @This()._IScheduledToastNotificationFactoryCache.get();
         return try _f.CreateScheduledToastNotificationRecurring(content, deliveryTime, snoozeInterval, maximumSnoozeCount);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ScheduledToastNotification";
@@ -3240,7 +3240,7 @@ pub const TileFlyoutNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateTileFlyoutNotification(content: *XmlDocument) core.HResult!*TileFlyoutNotification {
-        const _f = @This().ITileFlyoutNotificationFactoryCache.get();
+        const _f = try @This()._ITileFlyoutNotificationFactoryCache.get();
         return try _f.CreateTileFlyoutNotification(content);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.TileFlyoutNotification";
@@ -3259,19 +3259,19 @@ pub const TileFlyoutUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateTileFlyoutUpdaterForApplication() core.HResult!*TileFlyoutUpdater {
-        const _f = @This().ITileFlyoutUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForApplication();
     }
     pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileFlyoutUpdater {
-        const _f = @This().ITileFlyoutUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateTileFlyoutUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileFlyoutUpdater {
-        const _f = @This().ITileFlyoutUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForSecondaryTile(tileId);
     }
     pub fn GetTemplateContent(ty: TileFlyoutTemplateType) core.HResult!*XmlDocument {
-        const _f = @This().ITileFlyoutUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.GetTemplateContent(ty);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.TileFlyoutUpdateManager";
@@ -3336,7 +3336,7 @@ pub const TileNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateTileNotification(content: *XmlDocument) core.HResult!*TileNotification {
-        const _f = @This().ITileNotificationFactoryCache.get();
+        const _f = try @This()._ITileNotificationFactoryCache.get();
         return try _f.CreateTileNotification(content);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.TileNotification";
@@ -3480,23 +3480,23 @@ pub const TileUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateTileUpdaterForApplication() core.HResult!*TileUpdater {
-        const _f = @This().ITileUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForApplication();
     }
     pub fn CreateTileUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileUpdater {
-        const _f = @This().ITileUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateTileUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileUpdater {
-        const _f = @This().ITileUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForSecondaryTile(tileId);
     }
     pub fn GetTemplateContent(ty: TileTemplateType) core.HResult!*XmlDocument {
-        const _f = @This().ITileUpdateManagerStaticsCache.get();
+        const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.GetTemplateContent(ty);
     }
     pub fn GetForUser(user: *User) core.HResult!*TileUpdateManagerForUser {
-        const _f = @This().ITileUpdateManagerStatics2Cache.get();
+        const _f = try @This()._ITileUpdateManagerStatics2Cache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.TileUpdateManager";
@@ -3654,7 +3654,7 @@ pub const ToastCollection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(collectionId: HSTRING, displayName: HSTRING, launchArgs: HSTRING, iconUri: *Uri) core.HResult!*ToastCollection {
-        const _f = @This().IToastCollectionFactoryCache.get();
+        const _f = try @This()._IToastCollectionFactoryCache.get();
         return try _f.CreateInstance(collectionId, displayName, launchArgs, iconUri);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ToastCollection";
@@ -3873,7 +3873,7 @@ pub const ToastNotification = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateToastNotification(content: *XmlDocument) core.HResult!*ToastNotification {
-        const _f = @This().IToastNotificationFactoryCache.get();
+        const _f = try @This()._IToastNotificationFactoryCache.get();
         return try _f.CreateToastNotification(content);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ToastNotification";
@@ -3971,31 +3971,31 @@ pub const ToastNotificationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getHistory() core.HResult!*ToastNotificationHistory {
-        const _f = @This().IToastNotificationManagerStatics2Cache.get();
+        const _f = try @This()._IToastNotificationManagerStatics2Cache.get();
         return try _f.getHistory();
     }
     pub fn GetDefault() core.HResult!*ToastNotificationManagerForUser {
-        const _f = @This().IToastNotificationManagerStatics5Cache.get();
+        const _f = try @This()._IToastNotificationManagerStatics5Cache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*ToastNotificationManagerForUser {
-        const _f = @This().IToastNotificationManagerStatics4Cache.get();
+        const _f = try @This()._IToastNotificationManagerStatics4Cache.get();
         return try _f.GetForUser(user);
     }
     pub fn ConfigureNotificationMirroring(value: NotificationMirroring) core.HResult!void {
-        const _f = @This().IToastNotificationManagerStatics4Cache.get();
+        const _f = try @This()._IToastNotificationManagerStatics4Cache.get();
         return try _f.ConfigureNotificationMirroring(value);
     }
     pub fn CreateToastNotifier() core.HResult!*ToastNotifier {
-        const _f = @This().IToastNotificationManagerStaticsCache.get();
+        const _f = try @This()._IToastNotificationManagerStaticsCache.get();
         return try _f.CreateToastNotifier();
     }
     pub fn CreateToastNotifierWithApplicationId(applicationId: HSTRING) core.HResult!*ToastNotifier {
-        const _f = @This().IToastNotificationManagerStaticsCache.get();
+        const _f = try @This()._IToastNotificationManagerStaticsCache.get();
         return try _f.CreateToastNotifierWithApplicationId(applicationId);
     }
     pub fn GetTemplateContent(ty: ToastTemplateType) core.HResult!*XmlDocument {
-        const _f = @This().IToastNotificationManagerStaticsCache.get();
+        const _f = try @This()._IToastNotificationManagerStaticsCache.get();
         return try _f.GetTemplateContent(ty);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ToastNotificationManager";

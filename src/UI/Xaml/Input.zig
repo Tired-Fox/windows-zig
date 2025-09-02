@@ -65,27 +65,27 @@ pub const AccessKeyManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsDisplayModeEnabled() core.HResult!bool {
-        const _f = @This().IAccessKeyManagerStaticsCache.get();
+        const _f = try @This()._IAccessKeyManagerStaticsCache.get();
         return try _f.getIsDisplayModeEnabled();
     }
     pub fn addIsDisplayModeEnabledChanged(handler: *TypedEventHandler(IInspectable,IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IAccessKeyManagerStaticsCache.get();
+        const _f = try @This()._IAccessKeyManagerStaticsCache.get();
         return try _f.addIsDisplayModeEnabledChanged(handler);
     }
     pub fn removeIsDisplayModeEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IAccessKeyManagerStaticsCache.get();
+        const _f = try @This()._IAccessKeyManagerStaticsCache.get();
         return try _f.removeIsDisplayModeEnabledChanged(token);
     }
     pub fn ExitDisplayMode() core.HResult!void {
-        const _f = @This().IAccessKeyManagerStaticsCache.get();
+        const _f = try @This()._IAccessKeyManagerStaticsCache.get();
         return try _f.ExitDisplayMode();
     }
     pub fn getAreKeyTipsEnabled() core.HResult!bool {
-        const _f = @This().IAccessKeyManagerStatics2Cache.get();
+        const _f = try @This()._IAccessKeyManagerStatics2Cache.get();
         return try _f.getAreKeyTipsEnabled();
     }
     pub fn putAreKeyTipsEnabled(value: bool) core.HResult!void {
-        const _f = @This().IAccessKeyManagerStatics2Cache.get();
+        const _f = try @This()._IAccessKeyManagerStatics2Cache.get();
         return try _f.putAreKeyTipsEnabled(value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.AccessKeyManager";
@@ -361,87 +361,87 @@ pub const FocusManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFocusedElement() core.HResult!*IInspectable {
-        const _f = @This().IFocusManagerStaticsCache.get();
+        const _f = try @This()._IFocusManagerStaticsCache.get();
         return try _f.GetFocusedElement();
     }
     pub fn FindNextFocusableElement(focusNavigationDirection: FocusNavigationDirection) core.HResult!*UIElement {
-        const _f = @This().IFocusManagerStatics3Cache.get();
+        const _f = try @This()._IFocusManagerStatics3Cache.get();
         return try _f.FindNextFocusableElement(focusNavigationDirection);
     }
     pub fn FindNextFocusableElementWithHintRect(focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
-        const _f = @This().IFocusManagerStatics3Cache.get();
+        const _f = try @This()._IFocusManagerStatics3Cache.get();
         return try _f.FindNextFocusableElementWithHintRect(focusNavigationDirection, hintRect);
     }
     pub fn TryFocusAsync(element: *DependencyObject, value: FocusState) core.HResult!*IAsyncOperation(FocusMovementResult) {
-        const _f = @This().IFocusManagerStatics5Cache.get();
+        const _f = try @This()._IFocusManagerStatics5Cache.get();
         return try _f.TryFocusAsync(element, value);
     }
     pub fn TryMoveFocusAsync(focusNavigationDirection: FocusNavigationDirection) core.HResult!*IAsyncOperation(FocusMovementResult) {
-        const _f = @This().IFocusManagerStatics5Cache.get();
+        const _f = try @This()._IFocusManagerStatics5Cache.get();
         return try _f.TryMoveFocusAsync(focusNavigationDirection);
     }
     pub fn TryMoveFocusAsyncWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
-        const _f = @This().IFocusManagerStatics5Cache.get();
+        const _f = try @This()._IFocusManagerStatics5Cache.get();
         return try _f.TryMoveFocusAsyncWithFocusNavigationOptions(focusNavigationDirection, focusNavigationOptions);
     }
     pub fn addGotFocus(handler: *EventHandler(FocusManagerGotFocusEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.addGotFocus(handler);
     }
     pub fn removeGotFocus(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.removeGotFocus(token);
     }
     pub fn addLostFocus(handler: *EventHandler(FocusManagerLostFocusEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.addLostFocus(handler);
     }
     pub fn removeLostFocus(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.removeLostFocus(token);
     }
     pub fn addGettingFocus(handler: *EventHandler(GettingFocusEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.addGettingFocus(handler);
     }
     pub fn removeGettingFocus(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.removeGettingFocus(token);
     }
     pub fn addLosingFocus(handler: *EventHandler(LosingFocusEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.addLosingFocus(handler);
     }
     pub fn removeLosingFocus(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IFocusManagerStatics6Cache.get();
+        const _f = try @This()._IFocusManagerStatics6Cache.get();
         return try _f.removeLosingFocus(token);
     }
     pub fn GetFocusedElementWithXamlRoot(xamlRoot: *XamlRoot) core.HResult!*IInspectable {
-        const _f = @This().IFocusManagerStatics7Cache.get();
+        const _f = try @This()._IFocusManagerStatics7Cache.get();
         return try _f.GetFocusedElement(xamlRoot);
     }
     pub fn TryMoveFocusWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!bool {
-        const _f = @This().IFocusManagerStatics4Cache.get();
+        const _f = try @This()._IFocusManagerStatics4Cache.get();
         return try _f.TryMoveFocus(focusNavigationDirection, focusNavigationOptions);
     }
     pub fn FindNextElement(focusNavigationDirection: FocusNavigationDirection) core.HResult!*DependencyObject {
-        const _f = @This().IFocusManagerStatics4Cache.get();
+        const _f = try @This()._IFocusManagerStatics4Cache.get();
         return try _f.FindNextElement(focusNavigationDirection);
     }
     pub fn FindFirstFocusableElement(searchScope: *DependencyObject) core.HResult!*DependencyObject {
-        const _f = @This().IFocusManagerStatics4Cache.get();
+        const _f = try @This()._IFocusManagerStatics4Cache.get();
         return try _f.FindFirstFocusableElement(searchScope);
     }
     pub fn FindLastFocusableElement(searchScope: *DependencyObject) core.HResult!*DependencyObject {
-        const _f = @This().IFocusManagerStatics4Cache.get();
+        const _f = try @This()._IFocusManagerStatics4Cache.get();
         return try _f.FindLastFocusableElement(searchScope);
     }
     pub fn FindNextElementWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
-        const _f = @This().IFocusManagerStatics4Cache.get();
+        const _f = try @This()._IFocusManagerStatics4Cache.get();
         return try _f.FindNextElementWithFocusNavigationOptions(focusNavigationDirection, focusNavigationOptions);
     }
     pub fn TryMoveFocus(focusNavigationDirection: FocusNavigationDirection) core.HResult!bool {
-        const _f = @This().IFocusManagerStatics2Cache.get();
+        const _f = try @This()._IFocusManagerStatics2Cache.get();
         return try _f.TryMoveFocus(focusNavigationDirection);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.FocusManager";
@@ -3432,7 +3432,7 @@ pub const InputScopeName = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInputScopeName.IID)));
     }
     pub fn CreateInstance(nameValue: InputScopeNameValue) core.HResult!*InputScopeName {
-        const _f = @This().IInputScopeNameFactoryCache.get();
+        const _f = try @This()._IInputScopeNameFactoryCache.get();
         return try _f.CreateInstance(nameValue);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.InputScopeName";
@@ -3667,23 +3667,23 @@ pub const KeyboardAccelerator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getKeyProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IKeyboardAcceleratorStaticsCache.get();
+        const _f = try @This()._IKeyboardAcceleratorStaticsCache.get();
         return try _f.getKeyProperty();
     }
     pub fn getModifiersProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IKeyboardAcceleratorStaticsCache.get();
+        const _f = try @This()._IKeyboardAcceleratorStaticsCache.get();
         return try _f.getModifiersProperty();
     }
     pub fn getIsEnabledProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IKeyboardAcceleratorStaticsCache.get();
+        const _f = try @This()._IKeyboardAcceleratorStaticsCache.get();
         return try _f.getIsEnabledProperty();
     }
     pub fn getScopeOwnerProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IKeyboardAcceleratorStaticsCache.get();
+        const _f = try @This()._IKeyboardAcceleratorStaticsCache.get();
         return try _f.getScopeOwnerProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*KeyboardAccelerator {
-        const _f = @This().IKeyboardAcceleratorFactoryCache.get();
+        const _f = try @This()._IKeyboardAcceleratorFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.KeyboardAccelerator";
@@ -4268,7 +4268,7 @@ pub const ManipulationPivot = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IManipulationPivot.IID)));
     }
     pub fn CreateInstanceWithCenterAndRadius(center: Point, radius: f64) core.HResult!*ManipulationPivot {
-        const _f = @This().IManipulationPivotFactoryCache.get();
+        const _f = try @This()._IManipulationPivotFactoryCache.get();
         return try _f.CreateInstanceWithCenterAndRadius(center, radius);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ManipulationPivot";
@@ -4400,7 +4400,7 @@ pub const ManipulationStartedRoutedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ManipulationStartedRoutedEventArgs {
-        const _f = @This().IManipulationStartedRoutedEventArgsFactoryCache.get();
+        const _f = try @This()._IManipulationStartedRoutedEventArgsFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.ManipulationStartedRoutedEventArgs";
@@ -4955,31 +4955,31 @@ pub const XamlUICommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getLabelProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getLabelProperty();
     }
     pub fn getIconSourceProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getIconSourceProperty();
     }
     pub fn getKeyboardAcceleratorsProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getKeyboardAcceleratorsProperty();
     }
     pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getAccessKeyProperty();
     }
     pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getDescriptionProperty();
     }
     pub fn getCommandProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IXamlUICommandStaticsCache.get();
+        const _f = try @This()._IXamlUICommandStaticsCache.get();
         return try _f.getCommandProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlUICommand {
-        const _f = @This().IXamlUICommandFactoryCache.get();
+        const _f = try @This()._IXamlUICommandFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.XamlUICommand";
@@ -5006,15 +5006,15 @@ pub const StandardUICommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getKindProperty() core.HResult!*DependencyProperty {
-        const _f = @This().IStandardUICommandStaticsCache.get();
+        const _f = try @This()._IStandardUICommandStaticsCache.get();
         return try _f.getKindProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StandardUICommand {
-        const _f = @This().IStandardUICommandFactoryCache.get();
+        const _f = try @This()._IStandardUICommandFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithKind(kind: StandardUICommandKind, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StandardUICommand {
-        const _f = @This().IStandardUICommandFactoryCache.get();
+        const _f = try @This()._IStandardUICommandFactoryCache.get();
         return try _f.CreateInstanceWithKind(kind, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Input.StandardUICommand";

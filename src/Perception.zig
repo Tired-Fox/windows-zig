@@ -126,11 +126,11 @@ pub const PerceptionTimestampHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromHistoricalTargetTime(targetTime: DateTime) core.HResult!*PerceptionTimestamp {
-        const _f = @This().IPerceptionTimestampHelperStaticsCache.get();
+        const _f = try @This()._IPerceptionTimestampHelperStaticsCache.get();
         return try _f.FromHistoricalTargetTime(targetTime);
     }
     pub fn FromSystemRelativeTargetTime(targetTime: TimeSpan) core.HResult!*PerceptionTimestamp {
-        const _f = @This().IPerceptionTimestampHelperStatics2Cache.get();
+        const _f = try @This()._IPerceptionTimestampHelperStatics2Cache.get();
         return try _f.FromSystemRelativeTargetTime(targetTime);
     }
     pub const NAME: []const u8 = "Windows.Perception.PerceptionTimestampHelper";
@@ -148,5 +148,6 @@ const IInspectable = @import("./Foundation.zig").IInspectable;
 const TimeSpan = @import("./Foundation.zig").TimeSpan;
 const TrustLevel = @import("./root.zig").TrustLevel;
 const DateTime = @import("./Foundation.zig").DateTime;
+pub const Automation = @import("./Perception/Automation.zig");
 pub const People = @import("./Perception/People.zig");
 pub const Spatial = @import("./Perception/Spatial.zig");

@@ -578,7 +578,7 @@ pub const XamlDirect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*XamlDirect {
-        const _f = @This().IXamlDirectStaticsCache.get();
+        const _f = try @This()._IXamlDirectStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Core.Direct.XamlDirect";

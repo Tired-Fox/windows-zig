@@ -472,27 +472,27 @@ pub const RfcommDeviceService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
-        const _f = @This().IRfcommDeviceServiceStaticsCache.get();
+        const _f = try @This()._IRfcommDeviceServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector(serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        const _f = @This().IRfcommDeviceServiceStaticsCache.get();
+        const _f = try @This()._IRfcommDeviceServiceStaticsCache.get();
         return try _f.GetDeviceSelector(serviceId);
     }
     pub fn GetDeviceSelectorForBluetoothDevice(bluetoothDevice: *BluetoothDevice) core.HResult!HSTRING {
-        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDevice(bluetoothDevice);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice, cacheMode);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommDeviceService";
@@ -537,35 +537,35 @@ pub const RfcommServiceId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromUuid(uuid: *Guid) core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.FromUuid(uuid);
     }
     pub fn FromShortId(shortId: u32) core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.FromShortId(shortId);
     }
     pub fn getSerialPort() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getSerialPort();
     }
     pub fn getObexObjectPush() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getObexObjectPush();
     }
     pub fn getObexFileTransfer() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getObexFileTransfer();
     }
     pub fn getPhoneBookAccessPce() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getPhoneBookAccessPce();
     }
     pub fn getPhoneBookAccessPse() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getPhoneBookAccessPse();
     }
     pub fn getGenericFileTransfer() core.HResult!*RfcommServiceId {
-        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        const _f = try @This()._IRfcommServiceIdStaticsCache.get();
         return try _f.getGenericFileTransfer();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommServiceId";
@@ -603,7 +603,7 @@ pub const RfcommServiceProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommServiceProvider) {
-        const _f = @This().IRfcommServiceProviderStaticsCache.get();
+        const _f = try @This()._IRfcommServiceProviderStaticsCache.get();
         return try _f.CreateAsync(serviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommServiceProvider";

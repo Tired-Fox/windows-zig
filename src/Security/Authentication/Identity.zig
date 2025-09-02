@@ -37,7 +37,7 @@ pub const EnterpriseKeyCredentialRegistrationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*EnterpriseKeyCredentialRegistrationManager {
-        const _f = @This().IEnterpriseKeyCredentialRegistrationManagerStaticsCache.get();
+        const _f = try @This()._IEnterpriseKeyCredentialRegistrationManagerStaticsCache.get();
         return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.EnterpriseKeyCredentialRegistrationManager";

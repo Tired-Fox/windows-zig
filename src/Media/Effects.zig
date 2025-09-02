@@ -81,11 +81,11 @@ pub const AudioEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: HSTRING) core.HResult!*AudioEffectDefinition {
-        const _f = @This().IAudioEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IAudioEffectDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
     pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*AudioEffectDefinition {
-        const _f = @This().IAudioEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IAudioEffectDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.AudioEffectDefinition";
@@ -127,19 +127,19 @@ pub const AudioEffectsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAudioRenderEffectsManager(deviceId: HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
-        const _f = @This().IAudioEffectsManagerStaticsCache.get();
+        const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioRenderEffectsManager(deviceId, category);
     }
     pub fn CreateAudioRenderEffectsManagerWithMode(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
-        const _f = @This().IAudioEffectsManagerStaticsCache.get();
+        const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioRenderEffectsManagerWithMode(deviceId, category, mode);
     }
     pub fn CreateAudioCaptureEffectsManager(deviceId: HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
-        const _f = @This().IAudioEffectsManagerStaticsCache.get();
+        const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioCaptureEffectsManager(deviceId, category);
     }
     pub fn CreateAudioCaptureEffectsManagerWithMode(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
-        const _f = @This().IAudioEffectsManagerStaticsCache.get();
+        const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioCaptureEffectsManagerWithMode(deviceId, category, mode);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.AudioEffectsManager";
@@ -1128,11 +1128,11 @@ pub const VideoCompositorDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: HSTRING) core.HResult!*VideoCompositorDefinition {
-        const _f = @This().IVideoCompositorDefinitionFactoryCache.get();
+        const _f = try @This()._IVideoCompositorDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
     pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoCompositorDefinition {
-        const _f = @This().IVideoCompositorDefinitionFactoryCache.get();
+        const _f = try @This()._IVideoCompositorDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.VideoCompositorDefinition";
@@ -1156,11 +1156,11 @@ pub const VideoEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: HSTRING) core.HResult!*VideoEffectDefinition {
-        const _f = @This().IVideoEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IVideoEffectDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
     pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoEffectDefinition {
-        const _f = @This().IVideoEffectDefinitionFactoryCache.get();
+        const _f = try @This()._IVideoEffectDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.VideoEffectDefinition";

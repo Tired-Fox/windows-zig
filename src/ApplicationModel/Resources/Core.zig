@@ -680,35 +680,35 @@ pub const ResourceContext = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IResourceContext.IID)));
     }
     pub fn CreateMatchingContext(result: *IIterable(ResourceQualifier)) core.HResult!*ResourceContext {
-        const _f = @This().IResourceContextStaticsCache.get();
+        const _f = try @This()._IResourceContextStaticsCache.get();
         return try _f.CreateMatchingContext(result);
     }
     pub fn GetForCurrentView() core.HResult!*ResourceContext {
-        const _f = @This().IResourceContextStatics2Cache.get();
+        const _f = try @This()._IResourceContextStatics2Cache.get();
         return try _f.GetForCurrentView();
     }
     pub fn SetGlobalQualifierValue(key: HSTRING, value: HSTRING) core.HResult!void {
-        const _f = @This().IResourceContextStatics2Cache.get();
+        const _f = try @This()._IResourceContextStatics2Cache.get();
         return try _f.SetGlobalQualifierValue(key, value);
     }
     pub fn ResetGlobalQualifierValues() core.HResult!void {
-        const _f = @This().IResourceContextStatics2Cache.get();
+        const _f = try @This()._IResourceContextStatics2Cache.get();
         return try _f.ResetGlobalQualifierValues();
     }
     pub fn ResetGlobalQualifierValuesWithQualifierNames(qualifierNames: *IIterable(HSTRING)) core.HResult!void {
-        const _f = @This().IResourceContextStatics2Cache.get();
+        const _f = try @This()._IResourceContextStatics2Cache.get();
         return try _f.ResetGlobalQualifierValuesWithQualifierNames(qualifierNames);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceContext {
-        const _f = @This().IResourceContextStatics2Cache.get();
+        const _f = try @This()._IResourceContextStatics2Cache.get();
         return try _f.GetForViewIndependentUse();
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*ResourceContext {
-        const _f = @This().IResourceContextStatics4Cache.get();
+        const _f = try @This()._IResourceContextStatics4Cache.get();
         return try _f.GetForUIContext(context);
     }
     pub fn SetGlobalQualifierValueWithPersistence(key: HSTRING, value: HSTRING, persistence: ResourceQualifierPersistence) core.HResult!void {
-        const _f = @This().IResourceContextStatics3Cache.get();
+        const _f = try @This()._IResourceContextStatics3Cache.get();
         return try _f.SetGlobalQualifierValue(key, value, persistence);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceContext";
@@ -785,11 +785,11 @@ pub const ResourceManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*ResourceManager {
-        const _f = @This().IResourceManagerStaticsCache.get();
+        const _f = try @This()._IResourceManagerStaticsCache.get();
         return try _f.getCurrent();
     }
     pub fn IsResourceReference(resourceReference: HSTRING) core.HResult!bool {
-        const _f = @This().IResourceManagerStaticsCache.get();
+        const _f = try @This()._IResourceManagerStaticsCache.get();
         return try _f.IsResourceReference(resourceReference);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceManager";

@@ -2439,11 +2439,11 @@ pub const StoreContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*StoreContext {
-        const _f = @This().IStoreContextStaticsCache.get();
+        const _f = try @This()._IStoreContextStaticsCache.get();
         return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*StoreContext {
-        const _f = @This().IStoreContextStaticsCache.get();
+        const _f = try @This()._IStoreContextStaticsCache.get();
         return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StoreContext";
@@ -2864,7 +2864,7 @@ pub const StorePurchaseProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorePurchaseProperties.IID)));
     }
     pub fn Create(name: HSTRING) core.HResult!*StorePurchaseProperties {
-        const _f = @This().IStorePurchasePropertiesFactoryCache.get();
+        const _f = try @This()._IStorePurchasePropertiesFactoryCache.get();
         return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StorePurchaseProperties";
@@ -3057,7 +3057,7 @@ pub const StoreRequestHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SendRequestAsync(context: *StoreContext, requestKind: u32, parametersAsJson: HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
-        const _f = @This().IStoreRequestHelperStaticsCache.get();
+        const _f = try @This()._IStoreRequestHelperStaticsCache.get();
         return try _f.SendRequestAsync(context, requestKind, parametersAsJson);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StoreRequestHelper";

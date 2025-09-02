@@ -886,7 +886,7 @@ pub const MidiChannelPressureMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiChannelPressureMessage(channel: u8, pressure: u8) core.HResult!*MidiChannelPressureMessage {
-        const _f = @This().IMidiChannelPressureMessageFactoryCache.get();
+        const _f = try @This()._IMidiChannelPressureMessageFactoryCache.get();
         return try _f.CreateMidiChannelPressureMessage(channel, pressure);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiChannelPressureMessage";
@@ -960,7 +960,7 @@ pub const MidiControlChangeMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiControlChangeMessage(channel: u8, controller: u8, controlValue: u8) core.HResult!*MidiControlChangeMessage {
-        const _f = @This().IMidiControlChangeMessageFactoryCache.get();
+        const _f = try @This()._IMidiControlChangeMessageFactoryCache.get();
         return try _f.CreateMidiControlChangeMessage(channel, controller, controlValue);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiControlChangeMessage";
@@ -994,11 +994,11 @@ pub const MidiInPort = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(MidiInPort) {
-        const _f = @This().IMidiInPortStaticsCache.get();
+        const _f = try @This()._IMidiInPortStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IMidiInPortStaticsCache.get();
+        const _f = try @This()._IMidiInPortStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiInPort";
@@ -1078,7 +1078,7 @@ pub const MidiNoteOffMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiNoteOffMessage(channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOffMessage {
-        const _f = @This().IMidiNoteOffMessageFactoryCache.get();
+        const _f = try @This()._IMidiNoteOffMessageFactoryCache.get();
         return try _f.CreateMidiNoteOffMessage(channel, note, velocity);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiNoteOffMessage";
@@ -1124,7 +1124,7 @@ pub const MidiNoteOnMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiNoteOnMessage(channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOnMessage {
-        const _f = @This().IMidiNoteOnMessageFactoryCache.get();
+        const _f = try @This()._IMidiNoteOnMessageFactoryCache.get();
         return try _f.CreateMidiNoteOnMessage(channel, note, velocity);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiNoteOnMessage";
@@ -1158,11 +1158,11 @@ pub const MidiOutPort = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(IMidiOutPort) {
-        const _f = @This().IMidiOutPortStaticsCache.get();
+        const _f = try @This()._IMidiOutPortStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IMidiOutPortStaticsCache.get();
+        const _f = try @This()._IMidiOutPortStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiOutPort";
@@ -1204,7 +1204,7 @@ pub const MidiPitchBendChangeMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiPitchBendChangeMessage(channel: u8, bend: u16) core.HResult!*MidiPitchBendChangeMessage {
-        const _f = @This().IMidiPitchBendChangeMessageFactoryCache.get();
+        const _f = try @This()._IMidiPitchBendChangeMessageFactoryCache.get();
         return try _f.CreateMidiPitchBendChangeMessage(channel, bend);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiPitchBendChangeMessage";
@@ -1250,7 +1250,7 @@ pub const MidiPolyphonicKeyPressureMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiPolyphonicKeyPressureMessage(channel: u8, note: u8, pressure: u8) core.HResult!*MidiPolyphonicKeyPressureMessage {
-        const _f = @This().IMidiPolyphonicKeyPressureMessageFactoryCache.get();
+        const _f = try @This()._IMidiPolyphonicKeyPressureMessageFactoryCache.get();
         return try _f.CreateMidiPolyphonicKeyPressureMessage(channel, note, pressure);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiPolyphonicKeyPressureMessage";
@@ -1292,7 +1292,7 @@ pub const MidiProgramChangeMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiProgramChangeMessage(channel: u8, program: u8) core.HResult!*MidiProgramChangeMessage {
-        const _f = @This().IMidiProgramChangeMessageFactoryCache.get();
+        const _f = try @This()._IMidiProgramChangeMessageFactoryCache.get();
         return try _f.CreateMidiProgramChangeMessage(channel, program);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiProgramChangeMessage";
@@ -1330,7 +1330,7 @@ pub const MidiSongPositionPointerMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiSongPositionPointerMessage(beats: u16) core.HResult!*MidiSongPositionPointerMessage {
-        const _f = @This().IMidiSongPositionPointerMessageFactoryCache.get();
+        const _f = try @This()._IMidiSongPositionPointerMessageFactoryCache.get();
         return try _f.CreateMidiSongPositionPointerMessage(beats);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiSongPositionPointerMessage";
@@ -1368,7 +1368,7 @@ pub const MidiSongSelectMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiSongSelectMessage(song: u8) core.HResult!*MidiSongSelectMessage {
-        const _f = @This().IMidiSongSelectMessageFactoryCache.get();
+        const _f = try @This()._IMidiSongSelectMessageFactoryCache.get();
         return try _f.CreateMidiSongSelectMessage(song);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiSongSelectMessage";
@@ -1476,15 +1476,15 @@ pub const MidiSynthesizer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(MidiSynthesizer) {
-        const _f = @This().IMidiSynthesizerStaticsCache.get();
+        const _f = try @This()._IMidiSynthesizerStaticsCache.get();
         return try _f.CreateAsync();
     }
     pub fn CreateAsyncWithAudioDevice(audioDevice: *DeviceInformation) core.HResult!*IAsyncOperation(MidiSynthesizer) {
-        const _f = @This().IMidiSynthesizerStaticsCache.get();
+        const _f = try @This()._IMidiSynthesizerStaticsCache.get();
         return try _f.CreateAsyncWithAudioDevice(audioDevice);
     }
     pub fn IsSynthesizer(midiDevice: *DeviceInformation) core.HResult!bool {
-        const _f = @This().IMidiSynthesizerStaticsCache.get();
+        const _f = try @This()._IMidiSynthesizerStaticsCache.get();
         return try _f.IsSynthesizer(midiDevice);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiSynthesizer";
@@ -1512,7 +1512,7 @@ pub const MidiSystemExclusiveMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiSystemExclusiveMessage(rawData: *IBuffer) core.HResult!*MidiSystemExclusiveMessage {
-        const _f = @This().IMidiSystemExclusiveMessageFactoryCache.get();
+        const _f = try @This()._IMidiSystemExclusiveMessageFactoryCache.get();
         return try _f.CreateMidiSystemExclusiveMessage(rawData);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiSystemExclusiveMessage";
@@ -1582,7 +1582,7 @@ pub const MidiTimeCodeMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiTimeCodeMessage(frameType: u8, values: u8) core.HResult!*MidiTimeCodeMessage {
-        const _f = @This().IMidiTimeCodeMessageFactoryCache.get();
+        const _f = try @This()._IMidiTimeCodeMessageFactoryCache.get();
         return try _f.CreateMidiTimeCodeMessage(frameType, values);
     }
     pub const NAME: []const u8 = "Windows.Devices.Midi.MidiTimeCodeMessage";

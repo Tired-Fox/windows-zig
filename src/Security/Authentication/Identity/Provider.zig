@@ -455,23 +455,23 @@ pub const SecondaryAuthenticationFactorAuthentication = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowNotificationMessageAsync(deviceName: HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
-        const _f = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.ShowNotificationMessageAsync(deviceName, message);
     }
     pub fn StartAuthenticationAsync(deviceId: HSTRING, serviceAuthenticationNonce: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) {
-        const _f = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.StartAuthenticationAsync(deviceId, serviceAuthenticationNonce);
     }
     pub fn addAuthenticationStageChanged(handler: *EventHandler(SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const _f = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.addAuthenticationStageChanged(handler);
     }
     pub fn removeAuthenticationStageChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.removeAuthenticationStageChanged(token);
     }
     pub fn GetAuthenticationStageInfoAsync() core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationStageInfo) {
-        const _f = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.GetAuthenticationStageInfoAsync();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Provider.SecondaryAuthenticationFactorAuthentication";
@@ -671,35 +671,35 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterDevicePresenceMonitoringAsync(deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
-        const _f = @This().ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.RegisterDevicePresenceMonitoringAsync(deviceId, deviceInstancePath, monitoringMode);
     }
     pub fn RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
-        const _f = @This().ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(deviceId, deviceInstancePath, monitoringMode, deviceFriendlyName, deviceModelNumber, deviceConfigurationData);
     }
     pub fn UnregisterDevicePresenceMonitoringAsync(deviceId: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.UnregisterDevicePresenceMonitoringAsync(deviceId);
     }
     pub fn IsDevicePresenceMonitoringSupported() core.HResult!bool {
-        const _f = @This().ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.IsDevicePresenceMonitoringSupported();
     }
     pub fn RequestStartRegisteringDeviceAsync(deviceId: HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
-        const _f = @This().ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.RequestStartRegisteringDeviceAsync(deviceId, capabilities, deviceFriendlyName, deviceModelNumber, deviceKey, mutualAuthenticationKey);
     }
     pub fn FindAllRegisteredDeviceInfoAsync(queryType: SecondaryAuthenticationFactorDeviceFindScope) core.HResult!*IAsyncOperation(IVectorView(SecondaryAuthenticationFactorInfo)) {
-        const _f = @This().ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.FindAllRegisteredDeviceInfoAsync(queryType);
     }
     pub fn UnregisterDeviceAsync(deviceId: HSTRING) core.HResult!*IAsyncAction {
-        const _f = @This().ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.UnregisterDeviceAsync(deviceId);
     }
     pub fn UpdateDeviceConfigurationDataAsync(deviceId: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
-        const _f = @This().ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
+        const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.UpdateDeviceConfigurationDataAsync(deviceId, deviceConfigurationData);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Provider.SecondaryAuthenticationFactorRegistration";

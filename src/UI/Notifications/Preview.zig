@@ -26,7 +26,7 @@ pub const ToastOcclusionManagerPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetToastWindowMargin(appWindowId: WindowId, margin: f64) core.HResult!void {
-        const _f = @This().IToastOcclusionManagerPreviewStaticsCache.get();
+        const _f = try @This()._IToastOcclusionManagerPreviewStaticsCache.get();
         return try _f.SetToastWindowMargin(appWindowId, margin);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.Preview.ToastOcclusionManagerPreview";

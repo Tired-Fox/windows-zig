@@ -91,11 +91,11 @@ pub const CompositionObject = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn StartAnimationWithIAnimationObject(target: *IAnimationObject, propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
-        const _f = @This().ICompositionObjectStaticsCache.get();
+        const _f = try @This()._ICompositionObjectStaticsCache.get();
         return try _f.StartAnimationWithIAnimationObject(target, propertyName, animation);
     }
     pub fn StartAnimationGroupWithIAnimationObject(target: *IAnimationObject, animation: *ICompositionAnimationBase) core.HResult!void {
-        const _f = @This().ICompositionObjectStaticsCache.get();
+        const _f = try @This()._ICompositionObjectStaticsCache.get();
         return try _f.StartAnimationGroupWithIAnimationObject(target, animation);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionObject";
@@ -206,11 +206,11 @@ pub const AnimationController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxPlaybackRate() core.HResult!f32 {
-        const _f = @This().IAnimationControllerStaticsCache.get();
+        const _f = try @This()._IAnimationControllerStaticsCache.get();
         return try _f.getMaxPlaybackRate();
     }
     pub fn getMinPlaybackRate() core.HResult!f32 {
-        const _f = @This().IAnimationControllerStaticsCache.get();
+        const _f = try @This()._IAnimationControllerStaticsCache.get();
         return try _f.getMinPlaybackRate();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.AnimationController";
@@ -283,47 +283,47 @@ pub const CompositionEasingFunction = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCubicBezierEasingFunction(owner: *Compositor, controlPoint1: Vector2, controlPoint2: Vector2) core.HResult!*CubicBezierEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateCubicBezierEasingFunction(owner, controlPoint1, controlPoint2);
     }
     pub fn CreateLinearEasingFunction(owner: *Compositor) core.HResult!*LinearEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateLinearEasingFunction(owner);
     }
     pub fn CreateStepEasingFunction(owner: *Compositor) core.HResult!*StepEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateStepEasingFunction(owner);
     }
     pub fn CreateStepEasingFunctionWithStepCount(owner: *Compositor, stepCount: i32) core.HResult!*StepEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateStepEasingFunctionWithStepCount(owner, stepCount);
     }
     pub fn CreateBackEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, amplitude: f32) core.HResult!*BackEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateBackEasingFunction(owner, mode, amplitude);
     }
     pub fn CreateBounceEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, bounces: i32, bounciness: f32) core.HResult!*BounceEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateBounceEasingFunction(owner, mode, bounces, bounciness);
     }
     pub fn CreateCircleEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode) core.HResult!*CircleEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateCircleEasingFunction(owner, mode);
     }
     pub fn CreateElasticEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, oscillations: i32, springiness: f32) core.HResult!*ElasticEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateElasticEasingFunction(owner, mode, oscillations, springiness);
     }
     pub fn CreateExponentialEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, exponent: f32) core.HResult!*ExponentialEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateExponentialEasingFunction(owner, mode, exponent);
     }
     pub fn CreatePowerEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, power: f32) core.HResult!*PowerEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreatePowerEasingFunction(owner, mode, power);
     }
     pub fn CreateSineEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode) core.HResult!*SineEasingFunction {
-        const _f = @This().ICompositionEasingFunctionStaticsCache.get();
+        const _f = try @This()._ICompositionEasingFunctionStaticsCache.get();
         return try _f.CreateSineEasingFunction(owner, mode);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionEasingFunction";
@@ -917,7 +917,7 @@ pub const CompositionCapabilities = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CompositionCapabilities {
-        const _f = @This().ICompositionCapabilitiesStaticsCache.get();
+        const _f = try @This()._ICompositionCapabilitiesStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionCapabilities";
@@ -1337,7 +1337,7 @@ pub const CompositionEffectSourceParameter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(name: HSTRING) core.HResult!*CompositionEffectSourceParameter {
-        const _f = @This().ICompositionEffectSourceParameterFactoryCache.get();
+        const _f = try @This()._ICompositionEffectSourceParameterFactoryCache.get();
         return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionEffectSourceParameter";
@@ -1805,7 +1805,7 @@ pub const CompositionPath = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(source: *IGeometrySource2D) core.HResult!*CompositionPath {
-        const _f = @This().ICompositionPathFactoryCache.get();
+        const _f = try @This()._ICompositionPathFactoryCache.get();
         return try _f.Create(source);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionPath";
@@ -1943,7 +1943,7 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxRespectedCasters() core.HResult!i32 {
-        const _f = @This().ICompositionProjectedShadowCasterCollectionStaticsCache.get();
+        const _f = try @This()._ICompositionProjectedShadowCasterCollectionStaticsCache.get();
         return try _f.getMaxRespectedCasters();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionProjectedShadowCasterCollection";
@@ -3167,11 +3167,11 @@ pub const Compositor = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositor.IID)));
     }
     pub fn getMaxGlobalPlaybackRate() core.HResult!f32 {
-        const _f = @This().ICompositorStaticsCache.get();
+        const _f = try @This()._ICompositorStaticsCache.get();
         return try _f.getMaxGlobalPlaybackRate();
     }
     pub fn getMinGlobalPlaybackRate() core.HResult!f32 {
-        const _f = @This().ICompositorStaticsCache.get();
+        const _f = try @This()._ICompositorStaticsCache.get();
         return try _f.getMinGlobalPlaybackRate();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Compositor";
@@ -3440,11 +3440,11 @@ pub const DelegatedInkTrailVisual = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*DelegatedInkTrailVisual {
-        const _f = @This().IDelegatedInkTrailVisualStaticsCache.get();
+        const _f = try @This()._IDelegatedInkTrailVisualStaticsCache.get();
         return try _f.Create(compositor);
     }
     pub fn CreateForSwapChain(compositor: *Compositor, swapChain: *ICompositionSurface) core.HResult!*DelegatedInkTrailVisual {
-        const _f = @This().IDelegatedInkTrailVisualStaticsCache.get();
+        const _f = try @This()._IDelegatedInkTrailVisualStaticsCache.get();
         return try _f.CreateForSwapChain(compositor, swapChain);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.DelegatedInkTrailVisual";

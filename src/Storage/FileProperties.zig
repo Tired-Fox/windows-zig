@@ -93,15 +93,15 @@ pub const GeotagHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetGeotagAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(Geopoint) {
-        const _f = @This().IGeotagHelperStaticsCache.get();
+        const _f = try @This()._IGeotagHelperStaticsCache.get();
         return try _f.GetGeotagAsync(file);
     }
     pub fn SetGeotagFromGeolocatorAsync(file: *IStorageFile, geolocator: *Geolocator) core.HResult!*IAsyncAction {
-        const _f = @This().IGeotagHelperStaticsCache.get();
+        const _f = try @This()._IGeotagHelperStaticsCache.get();
         return try _f.SetGeotagFromGeolocatorAsync(file, geolocator);
     }
     pub fn SetGeotagAsync(file: *IStorageFile, geopoint: *Geopoint) core.HResult!*IAsyncAction {
-        const _f = @This().IGeotagHelperStaticsCache.get();
+        const _f = try @This()._IGeotagHelperStaticsCache.get();
         return try _f.SetGeotagAsync(file, geopoint);
     }
     pub const NAME: []const u8 = "Windows.Storage.FileProperties.GeotagHelper";

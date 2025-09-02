@@ -37,7 +37,7 @@ pub const ConditionForceEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effectKind: ConditionForceEffectKind) core.HResult!*ConditionForceEffect {
-        const _f = @This().IConditionForceEffectFactoryCache.get();
+        const _f = try @This()._IConditionForceEffectFactoryCache.get();
         return try _f.CreateInstance(effectKind);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.ConditionForceEffect";
@@ -525,7 +525,7 @@ pub const PeriodicForceEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effectKind: PeriodicForceEffectKind) core.HResult!*PeriodicForceEffect {
-        const _f = @This().IPeriodicForceEffectFactoryCache.get();
+        const _f = try @This()._IPeriodicForceEffectFactoryCache.get();
         return try _f.CreateInstance(effectKind);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.PeriodicForceEffect";

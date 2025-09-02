@@ -5,7 +5,7 @@ pub const ClassicAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindInstalledApp(appUninstallKey: HSTRING) core.HResult!*InstalledClassicAppInfo {
-        const _f = @This().IClassicAppManagerStaticsCache.get();
+        const _f = try @This()._IClassicAppManagerStaticsCache.get();
         return try _f.FindInstalledApp(appUninstallKey);
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.Preview.ClassicAppManager";

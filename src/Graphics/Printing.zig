@@ -1120,15 +1120,15 @@ pub const PrintManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IPrintManagerStatic2Cache.get();
+        const _f = try @This()._IPrintManagerStatic2Cache.get();
         return try _f.IsSupported();
     }
     pub fn GetForCurrentView() core.HResult!*PrintManager {
-        const _f = @This().IPrintManagerStaticCache.get();
+        const _f = try @This()._IPrintManagerStaticCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn ShowPrintUIAsync() core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IPrintManagerStaticCache.get();
+        const _f = try @This()._IPrintManagerStaticCache.get();
         return try _f.ShowPrintUIAsync();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintManager";
@@ -1433,11 +1433,11 @@ pub const PrintPageRange = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(firstPage: i32, lastPage: i32) core.HResult!*PrintPageRange {
-        const _f = @This().IPrintPageRangeFactoryCache.get();
+        const _f = try @This()._IPrintPageRangeFactoryCache.get();
         return try _f.Create(firstPage, lastPage);
     }
     pub fn CreateWithSinglePage(page: i32) core.HResult!*PrintPageRange {
-        const _f = @This().IPrintPageRangeFactoryCache.get();
+        const _f = try @This()._IPrintPageRangeFactoryCache.get();
         return try _f.CreateWithSinglePage(page);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintPageRange";
@@ -1985,63 +1985,63 @@ pub const StandardPrintTaskOptions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getBordering() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStatic2Cache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStatic2Cache.get();
         return try _f.getBordering();
     }
     pub fn getCustomPageRanges() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStatic3Cache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStatic3Cache.get();
         return try _f.getCustomPageRanges();
     }
     pub fn getMediaSize() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getMediaSize();
     }
     pub fn getMediaType() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getMediaType();
     }
     pub fn getOrientation() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getOrientation();
     }
     pub fn getPrintQuality() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getPrintQuality();
     }
     pub fn getColorMode() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getColorMode();
     }
     pub fn getDuplex() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getDuplex();
     }
     pub fn getCollation() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getCollation();
     }
     pub fn getStaple() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getStaple();
     }
     pub fn getHolePunch() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getHolePunch();
     }
     pub fn getBinding() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getBinding();
     }
     pub fn getCopies() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getCopies();
     }
     pub fn getNUp() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getNUp();
     }
     pub fn getInputBin() core.HResult!HSTRING {
-        const _f = @This().IStandardPrintTaskOptionsStaticCache.get();
+        const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getInputBin();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.StandardPrintTaskOptions";

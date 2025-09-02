@@ -118,15 +118,15 @@ pub const BrightnessOverride = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultForSystem() core.HResult!*BrightnessOverride {
-        const _f = @This().IBrightnessOverrideStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideStaticsCache.get();
         return try _f.GetDefaultForSystem();
     }
     pub fn GetForCurrentView() core.HResult!*BrightnessOverride {
-        const _f = @This().IBrightnessOverrideStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn SaveForSystemAsync(value: *BrightnessOverride) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IBrightnessOverrideStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideStaticsCache.get();
         return try _f.SaveForSystemAsync(value);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.BrightnessOverride";
@@ -150,15 +150,15 @@ pub const BrightnessOverrideSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLevel(level: f64) core.HResult!*BrightnessOverrideSettings {
-        const _f = @This().IBrightnessOverrideSettingsStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideSettingsStaticsCache.get();
         return try _f.CreateFromLevel(level);
     }
     pub fn CreateFromNits(nits: f32) core.HResult!*BrightnessOverrideSettings {
-        const _f = @This().IBrightnessOverrideSettingsStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideSettingsStaticsCache.get();
         return try _f.CreateFromNits(nits);
     }
     pub fn CreateFromDisplayBrightnessOverrideScenario(overrideScenario: DisplayBrightnessOverrideScenario) core.HResult!*BrightnessOverrideSettings {
-        const _f = @This().IBrightnessOverrideSettingsStaticsCache.get();
+        const _f = try @This()._IBrightnessOverrideSettingsStaticsCache.get();
         return try _f.CreateFromDisplayBrightnessOverrideScenario(overrideScenario);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.BrightnessOverrideSettings";
@@ -178,7 +178,7 @@ pub const ColorOverrideSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromDisplayColorOverrideScenario(overrideScenario: DisplayColorOverrideScenario) core.HResult!*ColorOverrideSettings {
-        const _f = @This().IColorOverrideSettingsStaticsCache.get();
+        const _f = try @This()._IColorOverrideSettingsStaticsCache.get();
         return try _f.CreateFromDisplayColorOverrideScenario(overrideScenario);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.ColorOverrideSettings";
@@ -272,7 +272,7 @@ pub const DisplayEnhancementOverride = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*DisplayEnhancementOverride {
-        const _f = @This().IDisplayEnhancementOverrideStaticsCache.get();
+        const _f = try @This()._IDisplayEnhancementOverrideStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.DisplayEnhancementOverride";
@@ -426,23 +426,23 @@ pub const DisplayInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*DisplayInformation {
-        const _f = @This().IDisplayInformationStaticsCache.get();
+        const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.GetForCurrentView();
     }
     pub fn getAutoRotationPreferences() core.HResult!DisplayOrientations {
-        const _f = @This().IDisplayInformationStaticsCache.get();
+        const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.getAutoRotationPreferences();
     }
     pub fn putAutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
-        const _f = @This().IDisplayInformationStaticsCache.get();
+        const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.putAutoRotationPreferences(value);
     }
     pub fn addDisplayContentsInvalidated(handler: *TypedEventHandler(DisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayInformationStaticsCache.get();
+        const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.addDisplayContentsInvalidated(handler);
     }
     pub fn removeDisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayInformationStaticsCache.get();
+        const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.removeDisplayContentsInvalidated(token);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.DisplayInformation";
@@ -465,75 +465,75 @@ pub const DisplayProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrentOrientation() core.HResult!DisplayOrientations {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getCurrentOrientation();
     }
     pub fn getNativeOrientation() core.HResult!DisplayOrientations {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getNativeOrientation();
     }
     pub fn getAutoRotationPreferences() core.HResult!DisplayOrientations {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getAutoRotationPreferences();
     }
     pub fn putAutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.putAutoRotationPreferences(value);
     }
     pub fn addOrientationChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.addOrientationChanged(handler);
     }
     pub fn removeOrientationChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.removeOrientationChanged(token);
     }
     pub fn getResolutionScale() core.HResult!ResolutionScale {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getResolutionScale();
     }
     pub fn getLogicalDpi() core.HResult!f32 {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getLogicalDpi();
     }
     pub fn addLogicalDpiChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.addLogicalDpiChanged(handler);
     }
     pub fn removeLogicalDpiChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.removeLogicalDpiChanged(token);
     }
     pub fn getStereoEnabled() core.HResult!bool {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.getStereoEnabled();
     }
     pub fn addStereoEnabledChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.addStereoEnabledChanged(handler);
     }
     pub fn removeStereoEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.removeStereoEnabledChanged(token);
     }
     pub fn GetColorProfileAsync() core.HResult!*IAsyncOperation(IRandomAccessStream) {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.GetColorProfileAsync();
     }
     pub fn addColorProfileChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.addColorProfileChanged(handler);
     }
     pub fn removeColorProfileChanged(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.removeColorProfileChanged(token);
     }
     pub fn addDisplayContentsInvalidated(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.addDisplayContentsInvalidated(handler);
     }
     pub fn removeDisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
-        const _f = @This().IDisplayPropertiesStaticsCache.get();
+        const _f = try @This()._IDisplayPropertiesStaticsCache.get();
         return try _f.removeDisplayContentsInvalidated(token);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.DisplayProperties";
@@ -633,7 +633,7 @@ pub const DisplayServices = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAll() core.HResult![*]DisplayId {
-        const _f = @This().IDisplayServicesStaticsCache.get();
+        const _f = try @This()._IDisplayServicesStaticsCache.get();
         return try _f.FindAll();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.DisplayServices";

@@ -33,7 +33,7 @@ pub const I2cConnectionSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(slaveAddress: i32) core.HResult!*I2cConnectionSettings {
-        const _f = @This().II2cConnectionSettingsFactoryCache.get();
+        const _f = try @This()._II2cConnectionSettingsFactoryCache.get();
         return try _f.Create(slaveAddress);
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cConnectionSettings";
@@ -53,11 +53,11 @@ pub const I2cController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetControllersAsync(provider: *II2cProvider) core.HResult!*IAsyncOperation(IVectorView(I2cController)) {
-        const _f = @This().II2cControllerStaticsCache.get();
+        const _f = try @This()._II2cControllerStaticsCache.get();
         return try _f.GetControllersAsync(provider);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(I2cController) {
-        const _f = @This().II2cControllerStaticsCache.get();
+        const _f = try @This()._II2cControllerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cController";
@@ -111,15 +111,15 @@ pub const I2cDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().II2cDeviceStaticsCache.get();
+        const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
-        const _f = @This().II2cDeviceStaticsCache.get();
+        const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
-        const _f = @This().II2cDeviceStaticsCache.get();
+        const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, settings);
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cDevice";

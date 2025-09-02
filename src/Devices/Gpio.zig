@@ -43,7 +43,7 @@ pub const GpioChangeCounter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeCounter {
-        const _f = @This().IGpioChangeCounterFactoryCache.get();
+        const _f = try @This()._IGpioChangeCounterFactoryCache.get();
         return try _f.Create(pin);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioChangeCounter";
@@ -126,11 +126,11 @@ pub const GpioChangeReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeReader {
-        const _f = @This().IGpioChangeReaderFactoryCache.get();
+        const _f = try @This()._IGpioChangeReaderFactoryCache.get();
         return try _f.Create(pin);
     }
     pub fn CreateWithCapacity(pin: *GpioPin, minCapacity: i32) core.HResult!*GpioChangeReader {
-        const _f = @This().IGpioChangeReaderFactoryCache.get();
+        const _f = try @This()._IGpioChangeReaderFactoryCache.get();
         return try _f.CreateWithCapacity(pin, minCapacity);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioChangeReader";
@@ -166,15 +166,15 @@ pub const GpioController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetControllersAsync(provider: *IGpioProvider) core.HResult!*IAsyncOperation(IVectorView(GpioController)) {
-        const _f = @This().IGpioControllerStatics2Cache.get();
+        const _f = try @This()._IGpioControllerStatics2Cache.get();
         return try _f.GetControllersAsync(provider);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(GpioController) {
-        const _f = @This().IGpioControllerStatics2Cache.get();
+        const _f = try @This()._IGpioControllerStatics2Cache.get();
         return try _f.GetDefaultAsync();
     }
     pub fn GetDefault() core.HResult!*GpioController {
-        const _f = @This().IGpioControllerStaticsCache.get();
+        const _f = try @This()._IGpioControllerStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioController";

@@ -309,19 +309,19 @@ pub const StorageApplicationPermissions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getFutureAccessList() core.HResult!*StorageItemAccessList {
-        const _f = @This().IStorageApplicationPermissionsStaticsCache.get();
+        const _f = try @This()._IStorageApplicationPermissionsStaticsCache.get();
         return try _f.getFutureAccessList();
     }
     pub fn getMostRecentlyUsedList() core.HResult!*StorageItemMostRecentlyUsedList {
-        const _f = @This().IStorageApplicationPermissionsStaticsCache.get();
+        const _f = try @This()._IStorageApplicationPermissionsStaticsCache.get();
         return try _f.getMostRecentlyUsedList();
     }
     pub fn GetFutureAccessListForUser(user: *User) core.HResult!*StorageItemAccessList {
-        const _f = @This().IStorageApplicationPermissionsStatics2Cache.get();
+        const _f = try @This()._IStorageApplicationPermissionsStatics2Cache.get();
         return try _f.GetFutureAccessListForUser(user);
     }
     pub fn GetMostRecentlyUsedListForUser(user: *User) core.HResult!*StorageItemMostRecentlyUsedList {
-        const _f = @This().IStorageApplicationPermissionsStatics2Cache.get();
+        const _f = try @This()._IStorageApplicationPermissionsStatics2Cache.get();
         return try _f.GetMostRecentlyUsedListForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.StorageApplicationPermissions";

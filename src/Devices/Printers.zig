@@ -99,11 +99,11 @@ pub const Print3DDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
-        const _f = @This().IPrint3DDeviceStaticsCache.get();
+        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IPrint3DDeviceStaticsCache.get();
+        const _f = try @This()._IPrint3DDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.Print3DDevice";
@@ -1575,159 +1575,159 @@ pub const IppAttributeValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateUnsupported() core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUnsupported();
     }
     pub fn CreateUnknown() core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUnknown();
     }
     pub fn CreateNoValue() core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNoValue();
     }
     pub fn CreateInteger(value: i32) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateInteger(value);
     }
     pub fn CreateIntegerArray(values: *IIterable(i32)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateIntegerArray(values);
     }
     pub fn CreateBoolean(value: bool) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateBoolean(value);
     }
     pub fn CreateBooleanArray(values: *IIterable(bool)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateBooleanArray(values);
     }
     pub fn CreateEnum(value: i32) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateEnum(value);
     }
     pub fn CreateEnumArray(values: *IIterable(i32)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateEnumArray(values);
     }
     pub fn CreateOctetString(value: *IBuffer) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateOctetString(value);
     }
     pub fn CreateOctetStringArray(values: *IIterable(IBuffer)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateOctetStringArray(values);
     }
     pub fn CreateDateTime(value: DateTime) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateDateTime(value);
     }
     pub fn CreateDateTimeArray(values: *IIterable(DateTime)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateDateTimeArray(values);
     }
     pub fn CreateResolution(value: *IppResolution) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateResolution(value);
     }
     pub fn CreateResolutionArray(values: *IIterable(IppResolution)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateResolutionArray(values);
     }
     pub fn CreateRangeOfInteger(value: *IppIntegerRange) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateRangeOfInteger(value);
     }
     pub fn CreateRangeOfIntegerArray(values: *IIterable(IppIntegerRange)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateRangeOfIntegerArray(values);
     }
     pub fn CreateCollection(memberAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCollection(memberAttributes);
     }
     pub fn CreateCollectionArray(memberAttributesArray: *IIterable(IIterable(IKeyValuePair(HSTRING,IppAttributeValue)))) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCollectionArray(memberAttributesArray);
     }
     pub fn CreateTextWithLanguage(value: *IppTextWithLanguage) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithLanguage(value);
     }
     pub fn CreateTextWithLanguageArray(values: *IIterable(IppTextWithLanguage)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithLanguageArray(values);
     }
     pub fn CreateNameWithLanguage(value: *IppTextWithLanguage) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithLanguage(value);
     }
     pub fn CreateNameWithLanguageArray(values: *IIterable(IppTextWithLanguage)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithLanguageArray(values);
     }
     pub fn CreateTextWithoutLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithoutLanguage(value);
     }
     pub fn CreateTextWithoutLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithoutLanguageArray(values);
     }
     pub fn CreateNameWithoutLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithoutLanguage(value);
     }
     pub fn CreateNameWithoutLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithoutLanguageArray(values);
     }
     pub fn CreateKeyword(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateKeyword(value);
     }
     pub fn CreateKeywordArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateKeywordArray(values);
     }
     pub fn CreateUri(value: *Uri) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUri(value);
     }
     pub fn CreateUriArray(values: *IIterable(Uri)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriArray(values);
     }
     pub fn CreateUriSchema(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriSchema(value);
     }
     pub fn CreateUriSchemaArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriSchemaArray(values);
     }
     pub fn CreateCharset(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCharset(value);
     }
     pub fn CreateCharsetArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCharsetArray(values);
     }
     pub fn CreateNaturalLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNaturalLanguage(value);
     }
     pub fn CreateNaturalLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNaturalLanguageArray(values);
     }
     pub fn CreateMimeMedia(value: HSTRING) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateMimeMedia(value);
     }
     pub fn CreateMimeMediaArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
-        const _f = @This().IIppAttributeValueStaticsCache.get();
+        const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateMimeMediaArray(values);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.IppAttributeValue";
@@ -1774,7 +1774,7 @@ pub const IppIntegerRange = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(start: i32, end: i32) core.HResult!*IppIntegerRange {
-        const _f = @This().IIppIntegerRangeFactoryCache.get();
+        const _f = try @This()._IIppIntegerRangeFactoryCache.get();
         return try _f.CreateInstance(start, end);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.IppIntegerRange";
@@ -1892,19 +1892,19 @@ pub const IppPrintDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const _f = @This().IIppPrintDeviceStaticsCache.get();
+        const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*IppPrintDevice {
-        const _f = @This().IIppPrintDeviceStaticsCache.get();
+        const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.FromId(deviceId);
     }
     pub fn FromPrinterName(printerName: HSTRING) core.HResult!*IppPrintDevice {
-        const _f = @This().IIppPrintDeviceStaticsCache.get();
+        const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.FromPrinterName(printerName);
     }
     pub fn IsIppPrinter(printerName: HSTRING) core.HResult!bool {
-        const _f = @This().IIppPrintDeviceStaticsCache.get();
+        const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.IsIppPrinter(printerName);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.IppPrintDevice";
@@ -1937,7 +1937,7 @@ pub const IppResolution = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(width: i32, height: i32, unit: IppResolutionUnit) core.HResult!*IppResolution {
-        const _f = @This().IIppResolutionFactoryCache.get();
+        const _f = try @This()._IIppResolutionFactoryCache.get();
         return try _f.CreateInstance(width, height, unit);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.IppResolution";
@@ -1981,7 +1981,7 @@ pub const IppTextWithLanguage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(language: HSTRING, text: HSTRING) core.HResult!*IppTextWithLanguage {
-        const _f = @This().IIppTextWithLanguageFactoryCache.get();
+        const _f = try @This()._IIppTextWithLanguageFactoryCache.get();
         return try _f.CreateInstance(language, text);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.IppTextWithLanguage";
@@ -2194,35 +2194,35 @@ pub const VirtualPrinterManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn InstallVirtualPrinterAsync(parameters: *VirtualPrinterInstallationParameters) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterAsync(parameters);
     }
     pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
     pub fn InstallVirtualPrinterForAllUsersAsync(parameters: *VirtualPrinterInstallationParameters) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterForAllUsersAsync(parameters);
     }
     pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
     pub fn FindAllVirtualPrinters() core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.FindAllVirtualPrinters();
     }
     pub fn FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName: HSTRING) core.HResult!*IVectorView(HSTRING) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName);
     }
     pub fn RemoveVirtualPrinterAsync(printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.RemoveVirtualPrinterAsync(printerName);
     }
     pub fn RemoveVirtualPrinterForAllUsersAsync(printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const _f = @This().IVirtualPrinterManagerStaticsCache.get();
+        const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.RemoveVirtualPrinterForAllUsersAsync(printerName);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.VirtualPrinterManager";
@@ -2255,7 +2255,7 @@ pub const VirtualPrinterSupportedFormat = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(contentType: HSTRING, maxSupportedVersion: HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
-        const _f = @This().IVirtualPrinterSupportedFormatFactoryCache.get();
+        const _f = try @This()._IVirtualPrinterSupportedFormatFactoryCache.get();
         return try _f.CreateInstance(contentType, maxSupportedVersion);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.VirtualPrinterSupportedFormat";

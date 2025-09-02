@@ -228,7 +228,7 @@ pub const McpServerRegistry = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*McpServerRegistry {
-        const _f = @This().IMcpServerRegistryStaticsCache.get();
+        const _f = try @This()._IMcpServerRegistryStaticsCache.get();
         return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.AI.Agents.Mcp.McpServerRegistry";

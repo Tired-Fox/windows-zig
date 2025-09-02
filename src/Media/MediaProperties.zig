@@ -89,31 +89,31 @@ pub const AudioEncodingProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAudioEncodingProperties.IID)));
     }
     pub fn CreateAlac(sampleRate: u32, channelCount: u32, bitsPerSample: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStatics2Cache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStatics2Cache.get();
         return try _f.CreateAlac(sampleRate, channelCount, bitsPerSample);
     }
     pub fn CreateFlac(sampleRate: u32, channelCount: u32, bitsPerSample: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStatics2Cache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStatics2Cache.get();
         return try _f.CreateFlac(sampleRate, channelCount, bitsPerSample);
     }
     pub fn CreateAac(sampleRate: u32, channelCount: u32, bitrate: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStaticsCache.get();
         return try _f.CreateAac(sampleRate, channelCount, bitrate);
     }
     pub fn CreateAacAdts(sampleRate: u32, channelCount: u32, bitrate: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStaticsCache.get();
         return try _f.CreateAacAdts(sampleRate, channelCount, bitrate);
     }
     pub fn CreateMp3(sampleRate: u32, channelCount: u32, bitrate: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStaticsCache.get();
         return try _f.CreateMp3(sampleRate, channelCount, bitrate);
     }
     pub fn CreatePcm(sampleRate: u32, channelCount: u32, bitsPerSample: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStaticsCache.get();
         return try _f.CreatePcm(sampleRate, channelCount, bitsPerSample);
     }
     pub fn CreateWma(sampleRate: u32, channelCount: u32, bitrate: u32) core.HResult!*AudioEncodingProperties {
-        const _f = @This().IAudioEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IAudioEncodingPropertiesStaticsCache.get();
         return try _f.CreateWma(sampleRate, channelCount, bitrate);
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.AudioEncodingProperties";
@@ -137,51 +137,51 @@ pub const Av1ProfileIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMainChromaSubsampling420BitDepth8() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling420BitDepth8();
     }
     pub fn getMainChromaSubsampling420BitDepth10() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling420BitDepth10();
     }
     pub fn getMainChromaSubsampling400BitDepth8() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling400BitDepth8();
     }
     pub fn getMainChromaSubsampling400BitDepth10() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling400BitDepth10();
     }
     pub fn getHighChromaSubsampling444BitDepth8() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getHighChromaSubsampling444BitDepth8();
     }
     pub fn getHighChromaSubsampling444BitDepth10() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getHighChromaSubsampling444BitDepth10();
     }
     pub fn getProfessionalChromaSubsampling420BitDepth12() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling420BitDepth12();
     }
     pub fn getProfessionalChromaSubsampling400BitDepth12() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling400BitDepth12();
     }
     pub fn getProfessionalChromaSubsampling444BitDepth12() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling444BitDepth12();
     }
     pub fn getProfessionalChromaSubsampling422BitDepth8() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling422BitDepth8();
     }
     pub fn getProfessionalChromaSubsampling422BitDepth10() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling422BitDepth10();
     }
     pub fn getProfessionalChromaSubsampling422BitDepth12() core.HResult!i32 {
-        const _f = @This().IAv1ProfileIdsStaticsCache.get();
+        const _f = try @This()._IAv1ProfileIdsStaticsCache.get();
         return try _f.getProfessionalChromaSubsampling422BitDepth12();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.Av1ProfileIds";
@@ -240,43 +240,43 @@ pub const H264ProfileIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getConstrainedBaseline() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getConstrainedBaseline();
     }
     pub fn getBaseline() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getBaseline();
     }
     pub fn getExtended() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getExtended();
     }
     pub fn getMain() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getMain();
     }
     pub fn getHigh() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getHigh();
     }
     pub fn getHigh10() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getHigh10();
     }
     pub fn getHigh422() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getHigh422();
     }
     pub fn getHigh444() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getHigh444();
     }
     pub fn getStereoHigh() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getStereoHigh();
     }
     pub fn getMultiviewHigh() core.HResult!i32 {
-        const _f = @This().IH264ProfileIdsStaticsCache.get();
+        const _f = try @This()._IH264ProfileIdsStaticsCache.get();
         return try _f.getMultiviewHigh();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.H264ProfileIds";
@@ -289,91 +289,91 @@ pub const HevcProfileIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMainChromaSubsampling420BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling420BitDepth8();
     }
     pub fn getMainChromaSubsampling420BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling420BitDepth10();
     }
     pub fn getMainChromaSubsampling420BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling420BitDepth12();
     }
     pub fn getMainChromaSubsampling422BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling422BitDepth10();
     }
     pub fn getMainChromaSubsampling422BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling422BitDepth12();
     }
     pub fn getMainChromaSubsampling444BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling444BitDepth8();
     }
     pub fn getMainChromaSubsampling444BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling444BitDepth10();
     }
     pub fn getMainChromaSubsampling444BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainChromaSubsampling444BitDepth12();
     }
     pub fn getMonochromeBitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMonochromeBitDepth12();
     }
     pub fn getMonochromeBitDepth16() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMonochromeBitDepth16();
     }
     pub fn getMainIntraChromaSubsampling420BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling420BitDepth8();
     }
     pub fn getMainIntraChromaSubsampling420BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling420BitDepth10();
     }
     pub fn getMainIntraChromaSubsampling420BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling420BitDepth12();
     }
     pub fn getMainIntraChromaSubsampling422BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling422BitDepth10();
     }
     pub fn getMainIntraChromaSubsampling422BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling422BitDepth12();
     }
     pub fn getMainIntraChromaSubsampling444BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling444BitDepth8();
     }
     pub fn getMainIntraChromaSubsampling444BitDepth10() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling444BitDepth10();
     }
     pub fn getMainIntraChromaSubsampling444BitDepth12() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling444BitDepth12();
     }
     pub fn getMainIntraChromaSubsampling444BitDepth16() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainIntraChromaSubsampling444BitDepth16();
     }
     pub fn getMainStillChromaSubsampling420BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainStillChromaSubsampling420BitDepth8();
     }
     pub fn getMainStillChromaSubsampling444BitDepth8() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainStillChromaSubsampling444BitDepth8();
     }
     pub fn getMainStillChromaSubsampling444BitDepth16() core.HResult!i32 {
-        const _f = @This().IHevcProfileIdsStaticsCache.get();
+        const _f = try @This()._IHevcProfileIdsStaticsCache.get();
         return try _f.getMainStillChromaSubsampling444BitDepth16();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.HevcProfileIds";
@@ -2476,27 +2476,27 @@ pub const ImageEncodingProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IImageEncodingProperties.IID)));
     }
     pub fn CreateHeif() core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStatics3Cache.get();
+        const _f = try @This()._IImageEncodingPropertiesStatics3Cache.get();
         return try _f.CreateHeif();
     }
     pub fn CreateJpeg() core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IImageEncodingPropertiesStaticsCache.get();
         return try _f.CreateJpeg();
     }
     pub fn CreatePng() core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IImageEncodingPropertiesStaticsCache.get();
         return try _f.CreatePng();
     }
     pub fn CreateJpegXR() core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IImageEncodingPropertiesStaticsCache.get();
         return try _f.CreateJpegXR();
     }
     pub fn CreateUncompressed(format: MediaPixelFormat) core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStatics2Cache.get();
+        const _f = try @This()._IImageEncodingPropertiesStatics2Cache.get();
         return try _f.CreateUncompressed(format);
     }
     pub fn CreateBmp() core.HResult!*ImageEncodingProperties {
-        const _f = @This().IImageEncodingPropertiesStatics2Cache.get();
+        const _f = try @This()._IImageEncodingPropertiesStatics2Cache.get();
         return try _f.CreateBmp();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.ImageEncodingProperties";
@@ -2579,59 +2579,59 @@ pub const MediaEncodingProfile = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaEncodingProfile.IID)));
     }
     pub fn CreateAlac(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics3Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics3Cache.get();
         return try _f.CreateAlac(quality);
     }
     pub fn CreateFlac(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics3Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics3Cache.get();
         return try _f.CreateFlac(quality);
     }
     pub fn CreateHevc(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics3Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics3Cache.get();
         return try _f.CreateHevc(quality);
     }
     pub fn CreateVp9(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics4Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics4Cache.get();
         return try _f.CreateVp9(quality);
     }
     pub fn CreateAv1(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics4Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics4Cache.get();
         return try _f.CreateAv1(quality);
     }
     pub fn CreateM4a(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateM4a(quality);
     }
     pub fn CreateMp3(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateMp3(quality);
     }
     pub fn CreateWma(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateWma(quality);
     }
     pub fn CreateMp4(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateMp4(quality);
     }
     pub fn CreateWmv(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateWmv(quality);
     }
     pub fn CreateFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(MediaEncodingProfile) {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateFromFileAsync(file);
     }
     pub fn CreateFromStreamAsync(stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(MediaEncodingProfile) {
-        const _f = @This().IMediaEncodingProfileStaticsCache.get();
+        const _f = try @This()._IMediaEncodingProfileStaticsCache.get();
         return try _f.CreateFromStreamAsync(stream);
     }
     pub fn CreateWav(quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics2Cache.get();
         return try _f.CreateWav(quality);
     }
     pub fn CreateAvi(quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
-        const _f = @This().IMediaEncodingProfileStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingProfileStatics2Cache.get();
         return try _f.CreateAvi(quality);
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.MediaEncodingProfile";
@@ -2651,215 +2651,215 @@ pub const MediaEncodingSubtypes = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getHeif() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics5Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics5Cache.get();
         return try _f.getHeif();
     }
     pub fn getAac() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAac();
     }
     pub fn getAacAdts() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAacAdts();
     }
     pub fn getAc3() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAc3();
     }
     pub fn getAmrNb() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAmrNb();
     }
     pub fn getAmrWb() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAmrWb();
     }
     pub fn getArgb32() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getArgb32();
     }
     pub fn getAsf() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAsf();
     }
     pub fn getAvi() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAvi();
     }
     pub fn getBgra8() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getBgra8();
     }
     pub fn getBmp() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getBmp();
     }
     pub fn getEac3() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getEac3();
     }
     pub fn getFloat() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getFloat();
     }
     pub fn getGif() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getGif();
     }
     pub fn getH263() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH263();
     }
     pub fn getH264() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH264();
     }
     pub fn getH264Es() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH264Es();
     }
     pub fn getHevc() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getHevc();
     }
     pub fn getHevcEs() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getHevcEs();
     }
     pub fn getIyuv() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getIyuv();
     }
     pub fn getJpeg() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getJpeg();
     }
     pub fn getJpegXr() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getJpegXr();
     }
     pub fn getMjpg() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMjpg();
     }
     pub fn getMpeg() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg();
     }
     pub fn getMpeg1() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg1();
     }
     pub fn getMpeg2() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg2();
     }
     pub fn getMp3() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMp3();
     }
     pub fn getMpeg4() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg4();
     }
     pub fn getNv12() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getNv12();
     }
     pub fn getPcm() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getPcm();
     }
     pub fn getPng() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getPng();
     }
     pub fn getRgb24() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getRgb24();
     }
     pub fn getRgb32() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getRgb32();
     }
     pub fn getTiff() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getTiff();
     }
     pub fn getWave() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWave();
     }
     pub fn getWma8() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWma8();
     }
     pub fn getWma9() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWma9();
     }
     pub fn getWmv3() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWmv3();
     }
     pub fn getWvc1() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWvc1();
     }
     pub fn getYuy2() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getYuy2();
     }
     pub fn getYv12() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStaticsCache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getYv12();
     }
     pub fn getAlac() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics3Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics3Cache.get();
         return try _f.getAlac();
     }
     pub fn getFlac() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics3Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics3Cache.get();
         return try _f.getFlac();
     }
     pub fn getAv1() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics7Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics7Cache.get();
         return try _f.getAv1();
     }
     pub fn getPgs() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics6Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getPgs();
     }
     pub fn getSrt() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics6Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getSrt();
     }
     pub fn getSsa() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics6Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getSsa();
     }
     pub fn getVobSub() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics6Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getVobSub();
     }
     pub fn getP010() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics4Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics4Cache.get();
         return try _f.getP010();
     }
     pub fn getVp9() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getVp9();
     }
     pub fn getL8() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getL8();
     }
     pub fn getL16() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getL16();
     }
     pub fn getD16() core.HResult!HSTRING {
-        const _f = @This().IMediaEncodingSubtypesStatics2Cache.get();
+        const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getD16();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.MediaEncodingSubtypes";
@@ -2956,23 +2956,23 @@ pub const Mpeg2ProfileIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getSimple() core.HResult!i32 {
-        const _f = @This().IMpeg2ProfileIdsStaticsCache.get();
+        const _f = try @This()._IMpeg2ProfileIdsStaticsCache.get();
         return try _f.getSimple();
     }
     pub fn getMain() core.HResult!i32 {
-        const _f = @This().IMpeg2ProfileIdsStaticsCache.get();
+        const _f = try @This()._IMpeg2ProfileIdsStaticsCache.get();
         return try _f.getMain();
     }
     pub fn getSignalNoiseRatioScalable() core.HResult!i32 {
-        const _f = @This().IMpeg2ProfileIdsStaticsCache.get();
+        const _f = try @This()._IMpeg2ProfileIdsStaticsCache.get();
         return try _f.getSignalNoiseRatioScalable();
     }
     pub fn getSpatiallyScalable() core.HResult!i32 {
-        const _f = @This().IMpeg2ProfileIdsStaticsCache.get();
+        const _f = try @This()._IMpeg2ProfileIdsStaticsCache.get();
         return try _f.getSpatiallyScalable();
     }
     pub fn getHigh() core.HResult!i32 {
-        const _f = @This().IMpeg2ProfileIdsStaticsCache.get();
+        const _f = try @This()._IMpeg2ProfileIdsStaticsCache.get();
         return try _f.getHigh();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.Mpeg2ProfileIds";
@@ -3033,19 +3033,19 @@ pub const TimedMetadataEncodingProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaEncodingProperties.IID)));
     }
     pub fn CreatePgs() core.HResult!*TimedMetadataEncodingProperties {
-        const _f = @This().ITimedMetadataEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._ITimedMetadataEncodingPropertiesStaticsCache.get();
         return try _f.CreatePgs();
     }
     pub fn CreateSrt() core.HResult!*TimedMetadataEncodingProperties {
-        const _f = @This().ITimedMetadataEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._ITimedMetadataEncodingPropertiesStaticsCache.get();
         return try _f.CreateSrt();
     }
     pub fn CreateSsa(formatUserData: [*]u8) core.HResult!*TimedMetadataEncodingProperties {
-        const _f = @This().ITimedMetadataEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._ITimedMetadataEncodingPropertiesStaticsCache.get();
         return try _f.CreateSsa(formatUserData);
     }
     pub fn CreateVobSub(formatUserData: [*]u8) core.HResult!*TimedMetadataEncodingProperties {
-        const _f = @This().ITimedMetadataEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._ITimedMetadataEncodingPropertiesStaticsCache.get();
         return try _f.CreateVobSub(formatUserData);
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.TimedMetadataEncodingProperties";
@@ -3164,27 +3164,27 @@ pub const VideoEncodingProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVideoEncodingProperties.IID)));
     }
     pub fn CreateVp9() core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStatics3Cache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStatics3Cache.get();
         return try _f.CreateVp9();
     }
     pub fn CreateAv1() core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStatics3Cache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStatics3Cache.get();
         return try _f.CreateAv1();
     }
     pub fn CreateH264() core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStaticsCache.get();
         return try _f.CreateH264();
     }
     pub fn CreateMpeg2() core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStaticsCache.get();
         return try _f.CreateMpeg2();
     }
     pub fn CreateUncompressed(subtype: HSTRING, width: u32, height: u32) core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStaticsCache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStaticsCache.get();
         return try _f.CreateUncompressed(subtype, width, height);
     }
     pub fn CreateHevc() core.HResult!*VideoEncodingProperties {
-        const _f = @This().IVideoEncodingPropertiesStatics2Cache.get();
+        const _f = try @This()._IVideoEncodingPropertiesStatics2Cache.get();
         return try _f.CreateHevc();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.VideoEncodingProperties";
@@ -3215,15 +3215,15 @@ pub const Vp9ProfileIds = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getProfile0ChromaSubsampling420BitDepth8() core.HResult!i32 {
-        const _f = @This().IVp9ProfileIdsStaticsCache.get();
+        const _f = try @This()._IVp9ProfileIdsStaticsCache.get();
         return try _f.getProfile0ChromaSubsampling420BitDepth8();
     }
     pub fn getProfile2ChromaSubsampling420BitDepth10() core.HResult!i32 {
-        const _f = @This().IVp9ProfileIdsStaticsCache.get();
+        const _f = try @This()._IVp9ProfileIdsStaticsCache.get();
         return try _f.getProfile2ChromaSubsampling420BitDepth10();
     }
     pub fn getProfile2ChromaSubsampling420BitDepth12() core.HResult!i32 {
-        const _f = @This().IVp9ProfileIdsStaticsCache.get();
+        const _f = try @This()._IVp9ProfileIdsStaticsCache.get();
         return try _f.getProfile2ChromaSubsampling420BitDepth12();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.Vp9ProfileIds";

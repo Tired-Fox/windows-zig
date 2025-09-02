@@ -17,11 +17,11 @@ pub const EyesPose = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const _f = @This().IEyesPoseStaticsCache.get();
+        const _f = try @This()._IEyesPoseStaticsCache.get();
         return try _f.IsSupported();
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(GazeInputAccessStatus) {
-        const _f = @This().IEyesPoseStaticsCache.get();
+        const _f = try @This()._IEyesPoseStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.People.EyesPose";
