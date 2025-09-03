@@ -1840,17 +1840,17 @@ pub const PaymentRequestChangedArgs = extern struct {
 pub const PaymentRequestChangedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -1858,13 +1858,13 @@ pub const PaymentRequestChangedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -1903,7 +1903,8 @@ pub const PaymentRequestChangedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, paymentRequest, args);
+        const _callback: *const fn(?*anyopaque, paymentRequest: *PaymentRequest, args: *PaymentRequestChangedArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, paymentRequest, args);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentRequestChangedHandler";

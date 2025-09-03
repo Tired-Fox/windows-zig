@@ -22,17 +22,17 @@ pub const AddPagesEventArgs = extern struct {
 pub const AddPagesEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -40,13 +40,13 @@ pub const AddPagesEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -85,7 +85,8 @@ pub const AddPagesEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *AddPagesEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Printing.AddPagesEventHandler";
@@ -129,17 +130,17 @@ pub const GetPreviewPageEventArgs = extern struct {
 pub const GetPreviewPageEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -147,13 +148,13 @@ pub const GetPreviewPageEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -192,7 +193,8 @@ pub const GetPreviewPageEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *GetPreviewPageEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Printing.GetPreviewPageEventHandler";
@@ -446,17 +448,17 @@ pub const PaginateEventArgs = extern struct {
 pub const PaginateEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *PaginateEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *PaginateEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -464,13 +466,13 @@ pub const PaginateEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *PaginateEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *PaginateEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -509,7 +511,8 @@ pub const PaginateEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *PaginateEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *PaginateEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Printing.PaginateEventHandler";

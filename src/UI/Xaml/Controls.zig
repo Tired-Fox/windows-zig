@@ -1932,17 +1932,17 @@ pub const BackClickEventArgs = extern struct {
 pub const BackClickEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *BackClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *BackClickEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -1950,13 +1950,13 @@ pub const BackClickEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *BackClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *BackClickEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -1995,7 +1995,8 @@ pub const BackClickEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *BackClickEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *BackClickEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.BackClickEventHandler";
@@ -3684,17 +3685,17 @@ pub const CalendarViewDayItemChangingEventArgs = extern struct {
 pub const CalendarViewDayItemChangingEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -3702,13 +3703,13 @@ pub const CalendarViewDayItemChangingEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -3747,7 +3748,8 @@ pub const CalendarViewDayItemChangingEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *CalendarView, e: *CalendarViewDayItemChangingEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarViewDayItemChangingEventHandler";
@@ -4089,17 +4091,17 @@ pub const CleanUpVirtualizedItemEventArgs = extern struct {
 pub const CleanUpVirtualizedItemEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -4107,13 +4109,13 @@ pub const CleanUpVirtualizedItemEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -4152,7 +4154,8 @@ pub const CleanUpVirtualizedItemEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *CleanUpVirtualizedItemEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CleanUpVirtualizedItemEventHandler";
@@ -5999,17 +6002,17 @@ pub const ContextMenuEventArgs = extern struct {
 pub const ContextMenuOpeningEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -6017,13 +6020,13 @@ pub const ContextMenuOpeningEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -6062,7 +6065,8 @@ pub const ContextMenuOpeningEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *ContextMenuEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ContextMenuOpeningEventHandler";
@@ -6748,17 +6752,17 @@ pub const DragItemsStartingEventArgs = extern struct {
 pub const DragItemsStartingEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -6766,13 +6770,13 @@ pub const DragItemsStartingEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -6811,7 +6815,8 @@ pub const DragItemsStartingEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *DragItemsStartingEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DragItemsStartingEventHandler";
@@ -8839,17 +8844,17 @@ pub const HubSectionHeaderClickEventArgs = extern struct {
 pub const HubSectionHeaderClickEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -8857,13 +8862,13 @@ pub const HubSectionHeaderClickEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -8902,7 +8907,8 @@ pub const HubSectionHeaderClickEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *HubSectionHeaderClickEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.HubSectionHeaderClickEventHandler";
@@ -49631,17 +49637,17 @@ pub const ItemClickEventArgs = extern struct {
 pub const ItemClickEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -49649,13 +49655,13 @@ pub const ItemClickEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -49694,7 +49700,8 @@ pub const ItemClickEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *ItemClickEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ItemClickEventHandler";
@@ -50569,17 +50576,17 @@ pub const ListViewItem = extern struct {
 pub const ListViewItemToKeyHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, item: *IInspectable) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, item: *IInspectable) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -50587,13 +50594,13 @@ pub const ListViewItemToKeyHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, item: *IInspectable) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, item: *IInspectable) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -50632,7 +50639,8 @@ pub const ListViewItemToKeyHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, item: *IInspectable) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, item);
+        const _callback: *const fn(?*anyopaque, item: *IInspectable) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, item);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewItemToKeyHandler";
@@ -50656,17 +50664,17 @@ pub const ListViewItemToKeyHandler = extern struct {
 pub const ListViewKeyToItemHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, key: ?HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, key: ?HSTRING) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -50674,13 +50682,13 @@ pub const ListViewKeyToItemHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, key: ?HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, key: ?HSTRING) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -50719,7 +50727,8 @@ pub const ListViewKeyToItemHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, key: ?HSTRING) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, key);
+        const _callback: *const fn(?*anyopaque, key: ?HSTRING) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, key);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewKeyToItemHandler";
@@ -53194,17 +53203,17 @@ pub const NotifyEventArgs = extern struct {
 pub const NotifyEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *NotifyEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *NotifyEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -53212,13 +53221,13 @@ pub const NotifyEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *NotifyEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *NotifyEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -53257,7 +53266,8 @@ pub const NotifyEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *NotifyEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *NotifyEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NotifyEventHandler";
@@ -58079,17 +58089,17 @@ pub const SectionsInViewChangedEventArgs = extern struct {
 pub const SectionsInViewChangedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -58097,13 +58107,13 @@ pub const SectionsInViewChangedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -58142,7 +58152,8 @@ pub const SectionsInViewChangedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *SectionsInViewChangedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SectionsInViewChangedEventHandler";
@@ -58190,17 +58201,17 @@ pub const SelectionChangedEventArgs = extern struct {
 pub const SelectionChangedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -58208,13 +58219,13 @@ pub const SelectionChangedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -58253,7 +58264,8 @@ pub const SelectionChangedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *SelectionChangedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SelectionChangedEventHandler";
@@ -58451,17 +58463,17 @@ pub const SemanticZoomViewChangedEventArgs = extern struct {
 pub const SemanticZoomViewChangedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -58469,13 +58481,13 @@ pub const SemanticZoomViewChangedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -58514,7 +58526,8 @@ pub const SemanticZoomViewChangedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *SemanticZoomViewChangedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SemanticZoomViewChangedEventHandler";
@@ -60942,17 +60955,17 @@ pub const TextChangedEventArgs = extern struct {
 pub const TextChangedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -60960,13 +60973,13 @@ pub const TextChangedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -61005,7 +61018,8 @@ pub const TextChangedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *TextChangedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TextChangedEventHandler";
@@ -61141,17 +61155,17 @@ pub const TextControlPasteEventArgs = extern struct {
 pub const TextControlPasteEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -61159,13 +61173,13 @@ pub const TextControlPasteEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -61204,7 +61218,8 @@ pub const TextControlPasteEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *TextControlPasteEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TextControlPasteEventHandler";
@@ -63658,17 +63673,17 @@ pub const WebViewNavigationFailedEventArgs = extern struct {
 pub const WebViewNavigationFailedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -63676,13 +63691,13 @@ pub const WebViewNavigationFailedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -63721,7 +63736,8 @@ pub const WebViewNavigationFailedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *IInspectable, e: *WebViewNavigationFailedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.WebViewNavigationFailedEventHandler";

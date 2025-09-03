@@ -57,17 +57,17 @@ pub const IActivationFactory = extern struct {
 pub const AsyncActionCompletedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -75,13 +75,13 @@ pub const AsyncActionCompletedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -120,7 +120,8 @@ pub const AsyncActionCompletedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, asyncInfo, asyncStatus);
+        const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncAction, asyncStatus: AsyncStatus) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, asyncInfo, asyncStatus);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Foundation.AsyncActionCompletedHandler";
@@ -145,17 +146,17 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tprogress: core.generic(TProgress)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -163,13 +164,13 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -208,7 +209,8 @@ pub fn AsyncActionProgressHandler(TProgress: type) type {
         }
         pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, asyncInfo, progressInfo);
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), progressInfo: core.generic(TProgress)) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, asyncInfo, progressInfo);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.AsyncActionProgressHandler";
@@ -234,17 +236,17 @@ pub fn AsyncActionWithProgressCompletedHandler(TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tprogress: core.generic(TProgress)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -252,13 +254,13 @@ pub fn AsyncActionWithProgressCompletedHandler(TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -297,7 +299,8 @@ pub fn AsyncActionWithProgressCompletedHandler(TProgress: type) type {
         }
         pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, asyncInfo, asyncStatus);
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncActionWithProgress(TProgress), asyncStatus: AsyncStatus) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, asyncInfo, asyncStatus);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.AsyncActionWithProgressCompletedHandler";
@@ -323,17 +326,17 @@ pub fn AsyncOperationCompletedHandler(TResult: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tresult: core.generic(TResult)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -341,13 +344,13 @@ pub fn AsyncOperationCompletedHandler(TResult: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -386,7 +389,8 @@ pub fn AsyncOperationCompletedHandler(TResult: type) type {
         }
         pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, asyncInfo, asyncStatus);
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncOperation(TResult), asyncStatus: AsyncStatus) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, asyncInfo, asyncStatus);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.AsyncOperationCompletedHandler";
@@ -412,17 +416,17 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tresult: core.generic(TResult), tprogress: core.generic(TProgress)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -430,13 +434,13 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -475,7 +479,8 @@ pub fn AsyncOperationProgressHandler(TResult: type, TProgress: type) type {
         }
         pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, asyncInfo, progressInfo);
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), progressInfo: core.generic(TProgress)) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, asyncInfo, progressInfo);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.AsyncOperationProgressHandler";
@@ -501,17 +506,17 @@ pub fn AsyncOperationWithProgressCompletedHandler(TResult: type, TProgress: type
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tresult: core.generic(TResult), tprogress: core.generic(TProgress)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -519,13 +524,13 @@ pub fn AsyncOperationWithProgressCompletedHandler(TResult: type, TProgress: type
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -564,7 +569,8 @@ pub fn AsyncOperationWithProgressCompletedHandler(TResult: type, TProgress: type
         }
         pub fn Invoke(self: *anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, asyncInfo, asyncStatus);
+            const _callback: *const fn(?*anyopaque, asyncInfo: *IAsyncOperationWithProgress(TResult,TProgress), asyncStatus: AsyncStatus) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, asyncInfo, asyncStatus);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.AsyncOperationWithProgressCompletedHandler";
@@ -624,17 +630,17 @@ pub const Deferral = extern struct {
 pub const DeferralCompletedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -642,13 +648,13 @@ pub const DeferralCompletedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -687,7 +693,8 @@ pub const DeferralCompletedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context);
+        const _callback: *const fn(?*anyopaque) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Foundation.DeferralCompletedHandler";
@@ -712,17 +719,17 @@ pub fn EventHandler(T: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, t: core.generic(T)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -730,13 +737,13 @@ pub fn EventHandler(T: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -775,7 +782,8 @@ pub fn EventHandler(T: type) type {
         }
         pub fn Invoke(self: *anyopaque, sender: *IInspectable, args: core.generic(T)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, sender, args);
+            const _callback: *const fn(?*anyopaque, sender: *IInspectable, args: core.generic(T)) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, sender, args);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.EventHandler";
@@ -1923,17 +1931,17 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, tsender: core.generic(TSender), tresult: core.generic(TResult)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -1941,13 +1949,13 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -1986,7 +1994,8 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
         }
         pub fn Invoke(self: *anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, sender, args);
+            const _callback: *const fn(?*anyopaque, sender: core.generic(TSender), args: core.generic(TResult)) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, sender, args);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.TypedEventHandler";

@@ -57,17 +57,17 @@ pub const GameListCategory = enum(i32) {
 pub const GameListChangedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, game: *GameListEntry) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, game: *GameListEntry) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -75,13 +75,13 @@ pub const GameListChangedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, game: *GameListEntry) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, game: *GameListEntry) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -120,7 +120,8 @@ pub const GameListChangedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, game: *GameListEntry) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, game);
+        const _callback: *const fn(?*anyopaque, game: *GameListEntry) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, game);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameListChangedEventHandler";
@@ -226,17 +227,17 @@ pub const GameListEntryLaunchableState = enum(i32) {
 pub const GameListRemovedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, identifier: ?HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, identifier: ?HSTRING) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -244,13 +245,13 @@ pub const GameListRemovedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, identifier: ?HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, identifier: ?HSTRING) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -289,7 +290,8 @@ pub const GameListRemovedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, identifier: ?HSTRING) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, identifier);
+        const _callback: *const fn(?*anyopaque, identifier: ?HSTRING) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, identifier);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameListRemovedEventHandler";

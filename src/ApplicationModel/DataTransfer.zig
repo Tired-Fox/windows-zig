@@ -677,17 +677,17 @@ pub const DataProviderDeferral = extern struct {
 pub const DataProviderHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, request: *DataProviderRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, request: *DataProviderRequest) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -695,13 +695,13 @@ pub const DataProviderHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, request: *DataProviderRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, request: *DataProviderRequest) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -740,7 +740,8 @@ pub const DataProviderHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, request: *DataProviderRequest) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, request);
+        const _callback: *const fn(?*anyopaque, request: *DataProviderRequest) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, request);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DataProviderHandler";
@@ -2843,17 +2844,17 @@ pub const ShareProvider = extern struct {
 pub const ShareProviderHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, operation: *ShareProviderOperation) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, operation: *ShareProviderOperation) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -2861,13 +2862,13 @@ pub const ShareProviderHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, operation: *ShareProviderOperation) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, operation: *ShareProviderOperation) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -2906,7 +2907,8 @@ pub const ShareProviderHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, operation: *ShareProviderOperation) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, operation);
+        const _callback: *const fn(?*anyopaque, operation: *ShareProviderOperation) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, operation);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.ShareProviderHandler";

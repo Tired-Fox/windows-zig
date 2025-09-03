@@ -761,17 +761,17 @@ pub const SelectableWordSegment = extern struct {
 pub const SelectableWordSegmentsTokenizingHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -779,13 +779,13 @@ pub const SelectableWordSegmentsTokenizingHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -824,7 +824,8 @@ pub const SelectableWordSegmentsTokenizingHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, precedingWords, words);
+        const _callback: *const fn(?*anyopaque, precedingWords: *IIterable(SelectableWordSegment), words: *IIterable(SelectableWordSegment)) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, precedingWords, words);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.SelectableWordSegmentsTokenizingHandler";
@@ -1190,17 +1191,17 @@ pub const WordSegment = extern struct {
 pub const WordSegmentsTokenizingHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -1208,13 +1209,13 @@ pub const WordSegmentsTokenizingHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -1253,7 +1254,8 @@ pub const WordSegmentsTokenizingHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, precedingWords, words);
+        const _callback: *const fn(?*anyopaque, precedingWords: *IIterable(WordSegment), words: *IIterable(WordSegment)) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, precedingWords, words);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Data.Text.WordSegmentsTokenizingHandler";

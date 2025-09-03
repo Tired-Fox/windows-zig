@@ -41,13 +41,13 @@ pub fn WindowsGetString(string: ?HSTRING) ?[]const u16 {
     return null;
 }
 
-fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.c) void {
+fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) void {
     _ = sender;
     std.debug.print("{any}\n", .{args.getReason() catch return});
     wait.store(false, .release);
 }
 
-fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) callconv(.c) void {
+fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) void {
     _ = sender;
 
     const event_args: *ToastActivatedEventArgs = @ptrCast(@alignCast(args));
@@ -60,7 +60,7 @@ fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IIns
     wait.store(false, .release);
 }
 
-fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.c) void {
+fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) void {
     _ = sender;
     const result = args.getErrorCode() catch return;
     std.debug.print("[0x{X}] Toast Failure", .{result.Value});

@@ -491,17 +491,17 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, k: core.generic(K), v: core.generic(V)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -509,13 +509,13 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -554,7 +554,8 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         }
         pub fn Invoke(self: *anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, sender, event);
+            const _callback: *const fn(?*anyopaque, sender: *IObservableMap(K,V), event: *IMapChangedEventArgs(K)) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, sender, event);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.MapChangedEventHandler";
@@ -730,17 +731,17 @@ pub fn VectorChangedEventHandler(T: type) type {
     return extern struct {
         vtable: *const VTable,
         _refs: @import("std").atomic.Value(u32),
-        _cb: *const fn (context: ?*anyopaque, t: core.generic(T)) callconv(.winapi) void,
+        _cb: *anyopaque,
         _context: ?*anyopaque = null,
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn init(
-            cb: *const fn(?*anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) void,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
             };
             return _r;
@@ -748,13 +749,13 @@ pub fn VectorChangedEventHandler(T: type) type {
         /// This creates a heap allocated instance that only frees/destroys when all
         /// references are released including any references Windows makes.
         pub fn initWithState(
-            cb: *const fn(?*anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) callconv(.winapi) void,
+            cb: *const fn(?*anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) void,
             context: anytype,
         ) !*@This() {
             const _r = try @import("std").heap.c_allocator.create(@This());
             _r.* = .{
                 .vtable = &VTABLE,
-                ._cb = cb,
+                ._cb = @ptrCast(@constCast(cb)),
                 ._refs = .init(1),
                 ._context = @ptrCast(context),
             };
@@ -793,7 +794,8 @@ pub fn VectorChangedEventHandler(T: type) type {
         }
         pub fn Invoke(self: *anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) callconv(.winapi) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
-            this._cb(this._context, sender, event);
+            const _callback: *const fn(?*anyopaque, sender: *IObservableVector(T), event: *IVectorChangedEventArgs) void = @ptrCast(@alignCast(this._cb));
+            _callback(this._context, sender, event);
             return 0;
         }
         pub const NAME: []const u8 = "Windows.Foundation.Collections.VectorChangedEventHandler";

@@ -172,17 +172,17 @@ pub const RemoteTextConnection = extern struct {
 pub const RemoteTextConnectionDataHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, pduData: [*]u8) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, pduData: [*]u8) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -190,13 +190,13 @@ pub const RemoteTextConnectionDataHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, pduData: [*]u8) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, pduData: [*]u8) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -235,7 +235,8 @@ pub const RemoteTextConnectionDataHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, pduData: [*]u8) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, pduData);
+        const _callback: *const fn(?*anyopaque, pduData: [*]u8) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, pduData);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.RemoteTextConnectionDataHandler";

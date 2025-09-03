@@ -179,17 +179,17 @@ pub const ThreadPoolTimer = extern struct {
 pub const TimerDestroyedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -197,13 +197,13 @@ pub const TimerDestroyedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -242,7 +242,8 @@ pub const TimerDestroyedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, timer);
+        const _callback: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, timer);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.TimerDestroyedHandler";
@@ -266,17 +267,17 @@ pub const TimerDestroyedHandler = extern struct {
 pub const TimerElapsedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -284,13 +285,13 @@ pub const TimerElapsedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -329,7 +330,8 @@ pub const TimerElapsedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, timer: *ThreadPoolTimer) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, timer);
+        const _callback: *const fn(?*anyopaque, timer: *ThreadPoolTimer) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, timer);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.TimerElapsedHandler";
@@ -353,17 +355,17 @@ pub const TimerElapsedHandler = extern struct {
 pub const WorkItemHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, operation: *IAsyncAction) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, operation: *IAsyncAction) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -371,13 +373,13 @@ pub const WorkItemHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, operation: *IAsyncAction) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, operation: *IAsyncAction) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -416,7 +418,8 @@ pub const WorkItemHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, operation: *IAsyncAction) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, operation);
+        const _callback: *const fn(?*anyopaque, operation: *IAsyncAction) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, operation);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.System.Threading.WorkItemHandler";

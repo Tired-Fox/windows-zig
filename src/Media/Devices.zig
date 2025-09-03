@@ -90,17 +90,17 @@ pub const CallControl = extern struct {
 pub const CallControlEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -108,13 +108,13 @@ pub const CallControlEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -153,7 +153,8 @@ pub const CallControlEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *CallControl) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender);
+        const _callback: *const fn(?*anyopaque, sender: *CallControl) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.CallControlEventHandler";
@@ -193,17 +194,17 @@ pub const DialRequestedEventArgs = extern struct {
 pub const DialRequestedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -211,13 +212,13 @@ pub const DialRequestedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -256,7 +257,8 @@ pub const DialRequestedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *DialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.DialRequestedEventHandler";
@@ -513,17 +515,17 @@ pub const KeypadPressedEventArgs = extern struct {
 pub const KeypadPressedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -531,13 +533,13 @@ pub const KeypadPressedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -576,7 +578,8 @@ pub const KeypadPressedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *KeypadPressedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.KeypadPressedEventHandler";
@@ -612,17 +615,17 @@ pub const RedialRequestedEventArgs = extern struct {
 pub const RedialRequestedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -630,13 +633,13 @@ pub const RedialRequestedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -675,7 +678,8 @@ pub const RedialRequestedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *CallControl, e: *RedialRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.RedialRequestedEventHandler";

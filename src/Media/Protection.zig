@@ -61,17 +61,17 @@ pub const ComponentLoadFailedEventArgs = extern struct {
 pub const ComponentLoadFailedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -79,13 +79,13 @@ pub const ComponentLoadFailedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -124,7 +124,8 @@ pub const ComponentLoadFailedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ComponentLoadFailedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.ComponentLoadFailedEventHandler";
@@ -695,17 +696,17 @@ pub const ProtectionCapabilityResult = enum(i32) {
 pub const RebootNeededEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -713,13 +714,13 @@ pub const RebootNeededEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -758,7 +759,8 @@ pub const RebootNeededEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *MediaProtectionManager) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender);
+        const _callback: *const fn(?*anyopaque, sender: *MediaProtectionManager) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.RebootNeededEventHandler";
@@ -861,17 +863,17 @@ pub const ServiceRequestedEventArgs = extern struct {
 pub const ServiceRequestedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -879,13 +881,13 @@ pub const ServiceRequestedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -924,7 +926,8 @@ pub const ServiceRequestedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, e);
+        const _callback: *const fn(?*anyopaque, sender: *MediaProtectionManager, e: *ServiceRequestedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, e);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.ServiceRequestedEventHandler";

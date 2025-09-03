@@ -14,17 +14,17 @@ pub const ConnectionRequestedEventArgs = extern struct {
 pub const DeviceArrivedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -32,13 +32,13 @@ pub const DeviceArrivedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -77,7 +77,8 @@ pub const DeviceArrivedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *ProximityDevice) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender);
+        const _callback: *const fn(?*anyopaque, sender: *ProximityDevice) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Networking.Proximity.DeviceArrivedEventHandler";
@@ -101,17 +102,17 @@ pub const DeviceArrivedEventHandler = extern struct {
 pub const DeviceDepartedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -119,13 +120,13 @@ pub const DeviceDepartedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -164,7 +165,8 @@ pub const DeviceDepartedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *ProximityDevice) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender);
+        const _callback: *const fn(?*anyopaque, sender: *ProximityDevice) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Networking.Proximity.DeviceDepartedEventHandler";
@@ -803,17 +805,17 @@ pub const ITriggeredConnectionStateChangedEventArgs = extern struct {
 pub const MessageReceivedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice, message: *ProximityMessage) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice, message: *ProximityMessage) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -821,13 +823,13 @@ pub const MessageReceivedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice, message: *ProximityMessage) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice, message: *ProximityMessage) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -866,7 +868,8 @@ pub const MessageReceivedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *ProximityDevice, message: *ProximityMessage) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, message);
+        const _callback: *const fn(?*anyopaque, sender: *ProximityDevice, message: *ProximityMessage) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, message);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Networking.Proximity.MessageReceivedHandler";
@@ -890,17 +893,17 @@ pub const MessageReceivedHandler = extern struct {
 pub const MessageTransmittedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice, messageId: i64) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice, messageId: i64) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -908,13 +911,13 @@ pub const MessageTransmittedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *ProximityDevice, messageId: i64) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *ProximityDevice, messageId: i64) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -953,7 +956,8 @@ pub const MessageTransmittedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *ProximityDevice, messageId: i64) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, messageId);
+        const _callback: *const fn(?*anyopaque, sender: *ProximityDevice, messageId: i64) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, messageId);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Networking.Proximity.MessageTransmittedHandler";

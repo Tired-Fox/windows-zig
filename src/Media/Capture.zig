@@ -5534,17 +5534,17 @@ pub const MediaCaptureFailedEventArgs = extern struct {
 pub const MediaCaptureFailedEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -5552,13 +5552,13 @@ pub const MediaCaptureFailedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -5597,7 +5597,8 @@ pub const MediaCaptureFailedEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender, errorEventArgs);
+        const _callback: *const fn(?*anyopaque, sender: *MediaCapture, errorEventArgs: *MediaCaptureFailedEventArgs) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender, errorEventArgs);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.MediaCaptureFailedEventHandler";
@@ -6185,17 +6186,17 @@ pub const PowerlineFrequency = enum(i32) {
 pub const RecordLimitationExceededEventHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, sender: *MediaCapture) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaCapture) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -6203,13 +6204,13 @@ pub const RecordLimitationExceededEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, sender: *MediaCapture) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, sender: *MediaCapture) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -6248,7 +6249,8 @@ pub const RecordLimitationExceededEventHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, sender: *MediaCapture) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, sender);
+        const _callback: *const fn(?*anyopaque, sender: *MediaCapture) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, sender);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.RecordLimitationExceededEventHandler";

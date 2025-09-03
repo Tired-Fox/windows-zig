@@ -306,17 +306,17 @@ pub const ApplicationDataLocality = enum(i32) {
 pub const ApplicationDataSetVersionHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, setVersionRequest: *SetVersionRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, setVersionRequest: *SetVersionRequest) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -324,13 +324,13 @@ pub const ApplicationDataSetVersionHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, setVersionRequest: *SetVersionRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, setVersionRequest: *SetVersionRequest) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -369,7 +369,8 @@ pub const ApplicationDataSetVersionHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, setVersionRequest: *SetVersionRequest) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, setVersionRequest);
+        const _callback: *const fn(?*anyopaque, setVersionRequest: *SetVersionRequest) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, setVersionRequest);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Storage.ApplicationDataSetVersionHandler";
@@ -4516,17 +4517,17 @@ pub const StreamedFileDataRequest = extern struct {
 pub const StreamedFileDataRequestedHandler = extern struct {
     vtable: *const VTable,
     _refs: @import("std").atomic.Value(u32),
-    _cb: *const fn (context: ?*anyopaque) callconv(.winapi) void,
+    _cb: *anyopaque,
     _context: ?*anyopaque = null,
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, stream: *StreamedFileDataRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, stream: *StreamedFileDataRequest) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
         };
         return _r;
@@ -4534,13 +4535,13 @@ pub const StreamedFileDataRequestedHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, stream: *StreamedFileDataRequest) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, stream: *StreamedFileDataRequest) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
             .vtable = &VTABLE,
-            ._cb = cb,
+            ._cb = @ptrCast(@constCast(cb)),
             ._refs = .init(1),
             ._context = @ptrCast(context),
         };
@@ -4579,7 +4580,8 @@ pub const StreamedFileDataRequestedHandler = extern struct {
     }
     pub fn Invoke(self: *anyopaque, stream: *StreamedFileDataRequest) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
-        this._cb(this._context, stream);
+        const _callback: *const fn(?*anyopaque, stream: *StreamedFileDataRequest) void = @ptrCast(@alignCast(this._cb));
+        _callback(this._context, stream);
         return 0;
     }
     pub const NAME: []const u8 = "Windows.Storage.StreamedFileDataRequestedHandler";
