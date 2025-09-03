@@ -26,11 +26,11 @@ pub const AutomationPeer = extern struct {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.RaisePropertyChangedEvent(automationProperty, oldValue, newValue);
     }
-    pub fn GetAcceleratorKey(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAcceleratorKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetAcceleratorKey();
     }
-    pub fn GetAccessKey(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAccessKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetAccessKey();
     }
@@ -38,7 +38,7 @@ pub const AutomationPeer = extern struct {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetAutomationControlType();
     }
-    pub fn GetAutomationId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAutomationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetAutomationId();
     }
@@ -50,7 +50,7 @@ pub const AutomationPeer = extern struct {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetChildren();
     }
-    pub fn GetClassName(self: *@This()) core.HResult!HSTRING {
+    pub fn GetClassName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetClassName();
     }
@@ -58,15 +58,15 @@ pub const AutomationPeer = extern struct {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetClickablePoint();
     }
-    pub fn GetHelpText(self: *@This()) core.HResult!HSTRING {
+    pub fn GetHelpText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetHelpText();
     }
-    pub fn GetItemStatus(self: *@This()) core.HResult!HSTRING {
+    pub fn GetItemStatus(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetItemStatus();
     }
-    pub fn GetItemType(self: *@This()) core.HResult!HSTRING {
+    pub fn GetItemType(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetItemType();
     }
@@ -74,11 +74,11 @@ pub const AutomationPeer = extern struct {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetLabeledBy();
     }
-    pub fn GetLocalizedControlType(self: *@This()) core.HResult!HSTRING {
+    pub fn GetLocalizedControlType(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetLocalizedControlType();
     }
-    pub fn GetName(self: *@This()) core.HResult!HSTRING {
+    pub fn GetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.GetName();
     }
@@ -180,7 +180,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParent(peer);
     }
-    pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -216,7 +216,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLandmarkType();
     }
-    pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!HSTRING {
+    pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -234,7 +234,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDataValidForForm();
     }
-    pub fn GetFullDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn GetFullDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -246,7 +246,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCulture();
     }
-    pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: HSTRING, activityId: HSTRING) core.HResult!void {
+    pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         var this: ?*IAutomationPeer7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -282,13 +282,13 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPatternCore(patternInterface);
     }
-    pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAcceleratorKeyCore();
     }
-    pub fn GetAccessKeyCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAccessKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -300,7 +300,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAutomationControlTypeCore();
     }
-    pub fn GetAutomationIdCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAutomationIdCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -318,7 +318,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetChildrenCore();
     }
-    pub fn GetClassNameCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetClassNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -330,19 +330,19 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetClickablePointCore();
     }
-    pub fn GetHelpTextCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetHelpTextCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHelpTextCore();
     }
-    pub fn GetItemStatusCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetItemStatusCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemStatusCore();
     }
-    pub fn GetItemTypeCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetItemTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -354,13 +354,13 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLabeledByCore();
     }
-    pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLocalizedControlTypeCore();
     }
-    pub fn GetNameCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -498,7 +498,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLandmarkTypeCore();
     }
-    pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -516,7 +516,7 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDataValidForFormCore();
     }
-    pub fn GetFullDescriptionCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetFullDescriptionCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1047,13 +1047,13 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
-    pub fn SetValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1287,13 +1287,13 @@ pub const ComboBoxAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
-    pub fn SetValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1595,13 +1595,13 @@ pub const FlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ListViewBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDropEffect(self: *@This()) core.HResult!HSTRING {
+    pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDropTargetProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDropEffect();
     }
-    pub fn getDropEffects(self: *@This()) core.HResult![*]HSTRING {
+    pub fn getDropEffects(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IDropTargetProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1965,14 +1965,14 @@ pub const IAutomationPeer = extern struct {
         const _c = self.vtable.RaisePropertyChangedEvent(@ptrCast(self), automationProperty, oldValue, newValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetAcceleratorKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAcceleratorKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKey(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccessKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAccessKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKey(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1983,8 +1983,8 @@ pub const IAutomationPeer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAutomationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAutomationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2001,8 +2001,8 @@ pub const IAutomationPeer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetClassName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetClassName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetClassName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2013,20 +2013,20 @@ pub const IAutomationPeer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHelpText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetHelpText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemStatus(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemStatus(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatus(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2037,14 +2037,14 @@ pub const IAutomationPeer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedControlType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedControlType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2146,20 +2146,20 @@ pub const IAutomationPeer = extern struct {
         GetPattern: *const fn(self: *anyopaque, patternInterface: PatternInterface, _r: **IInspectable) callconv(.winapi) HRESULT,
         RaiseAutomationEvent: *const fn(self: *anyopaque, eventId: AutomationEvents) callconv(.winapi) HRESULT,
         RaisePropertyChangedEvent: *const fn(self: *anyopaque, automationProperty: *AutomationProperty, oldValue: *IInspectable, newValue: *IInspectable) callconv(.winapi) HRESULT,
-        GetAcceleratorKey: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetAccessKey: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAcceleratorKey: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetAccessKey: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetAutomationControlType: *const fn(self: *anyopaque, _r: *AutomationControlType) callconv(.winapi) HRESULT,
-        GetAutomationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAutomationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetBoundingRectangle: *const fn(self: *anyopaque, _r: *Rect) callconv(.winapi) HRESULT,
         GetChildren: *const fn(self: *anyopaque, _r: **IVector(AutomationPeer)) callconv(.winapi) HRESULT,
-        GetClassName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetClassName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetClickablePoint: *const fn(self: *anyopaque, _r: *Point) callconv(.winapi) HRESULT,
-        GetHelpText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetItemStatus: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetItemType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetHelpText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetItemStatus: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetItemType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLabeledBy: *const fn(self: *anyopaque, _r: **AutomationPeer) callconv(.winapi) HRESULT,
-        GetLocalizedControlType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedControlType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetOrientation: *const fn(self: *anyopaque, _r: *AutomationOrientation) callconv(.winapi) HRESULT,
         HasKeyboardFocus: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsContentElement: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2232,7 +2232,7 @@ pub const IAutomationPeer3 = extern struct {
         const _c = self.vtable.SetParent(@ptrCast(self), peer);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) core.HResult!void {
         const _c = self.vtable.RaiseTextEditTextChangedEvent(@ptrCast(self), automationTextEditChangeType, changedData);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2277,7 +2277,7 @@ pub const IAutomationPeer3 = extern struct {
         GetControlledPeers: *const fn(self: *anyopaque, _r: **IVectorView(AutomationPeer)) callconv(.winapi) HRESULT,
         GetAnnotations: *const fn(self: *anyopaque, _r: **IVector(AutomationPeerAnnotation)) callconv(.winapi) HRESULT,
         SetParent: *const fn(self: *anyopaque, peer: *AutomationPeer) callconv(.winapi) HRESULT,
-        RaiseTextEditTextChangedEvent: *const fn(self: *anyopaque, automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        RaiseTextEditTextChangedEvent: *const fn(self: *anyopaque, automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         GetPositionInSet: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         GetSizeOfSet: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         GetLevel: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -2292,8 +2292,8 @@ pub const IAutomationPeer4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2311,7 +2311,7 @@ pub const IAutomationPeer4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetLandmarkType: *const fn(self: *anyopaque, _r: *AutomationLandmarkType) callconv(.winapi) HRESULT,
-        GetLocalizedLandmarkType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedLandmarkType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPeer5 = extern struct {
@@ -2328,8 +2328,8 @@ pub const IAutomationPeer5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFullDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetFullDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2348,7 +2348,7 @@ pub const IAutomationPeer5 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsPeripheral: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsDataValidForForm: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetFullDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetFullDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPeer6 = extern struct {
@@ -2376,7 +2376,7 @@ pub const IAutomationPeer6 = extern struct {
 };
 pub const IAutomationPeer7 = extern struct {
     vtable: *const VTable,
-    pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: HSTRING, activityId: HSTRING) core.HResult!void {
+    pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RaiseNotificationEvent(@ptrCast(self), notificationKind, notificationProcessing, displayString, activityId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2392,7 +2392,7 @@ pub const IAutomationPeer7 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RaiseNotificationEvent: *const fn(self: *anyopaque, notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: HSTRING, activityId: HSTRING) callconv(.winapi) HRESULT,
+        RaiseNotificationEvent: *const fn(self: *anyopaque, notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPeer8 = extern struct {
@@ -2572,14 +2572,14 @@ pub const IAutomationPeerOverrides = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKeyCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccessKeyCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAccessKeyCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKeyCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2590,8 +2590,8 @@ pub const IAutomationPeerOverrides = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAutomationIdCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAutomationIdCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationIdCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2608,8 +2608,8 @@ pub const IAutomationPeerOverrides = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetClassNameCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetClassNameCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetClassNameCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2620,20 +2620,20 @@ pub const IAutomationPeerOverrides = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHelpTextCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetHelpTextCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpTextCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemStatusCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemStatusCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatusCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemTypeCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemTypeCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemTypeCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2644,14 +2644,14 @@ pub const IAutomationPeerOverrides = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlTypeCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNameCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNameCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNameCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2739,20 +2739,20 @@ pub const IAutomationPeerOverrides = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetPatternCore: *const fn(self: *anyopaque, patternInterface: PatternInterface, _r: **IInspectable) callconv(.winapi) HRESULT,
-        GetAcceleratorKeyCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetAccessKeyCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAcceleratorKeyCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetAccessKeyCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetAutomationControlTypeCore: *const fn(self: *anyopaque, _r: *AutomationControlType) callconv(.winapi) HRESULT,
-        GetAutomationIdCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAutomationIdCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetBoundingRectangleCore: *const fn(self: *anyopaque, _r: *Rect) callconv(.winapi) HRESULT,
         GetChildrenCore: *const fn(self: *anyopaque, _r: **IVector(AutomationPeer)) callconv(.winapi) HRESULT,
-        GetClassNameCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetClassNameCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetClickablePointCore: *const fn(self: *anyopaque, _r: *Point) callconv(.winapi) HRESULT,
-        GetHelpTextCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetItemStatusCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetItemTypeCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetHelpTextCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetItemStatusCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetItemTypeCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLabeledByCore: *const fn(self: *anyopaque, _r: **AutomationPeer) callconv(.winapi) HRESULT,
-        GetLocalizedControlTypeCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetNameCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedControlTypeCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetNameCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetOrientationCore: *const fn(self: *anyopaque, _r: *AutomationOrientation) callconv(.winapi) HRESULT,
         HasKeyboardFocusCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsContentElementCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2868,8 +2868,8 @@ pub const IAutomationPeerOverrides4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkTypeCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2887,7 +2887,7 @@ pub const IAutomationPeerOverrides4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetLandmarkTypeCore: *const fn(self: *anyopaque, _r: *AutomationLandmarkType) callconv(.winapi) HRESULT,
-        GetLocalizedLandmarkTypeCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedLandmarkTypeCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPeerOverrides5 = extern struct {
@@ -2904,8 +2904,8 @@ pub const IAutomationPeerOverrides5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFullDescriptionCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetFullDescriptionCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescriptionCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2942,7 +2942,7 @@ pub const IAutomationPeerOverrides5 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsPeripheralCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsDataValidForFormCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetFullDescriptionCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetFullDescriptionCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetDescribedByCore: *const fn(self: *anyopaque, _r: **IIterable(AutomationPeer)) callconv(.winapi) HRESULT,
         GetFlowsToCore: *const fn(self: *anyopaque, _r: **IIterable(AutomationPeer)) callconv(.winapi) HRESULT,
         GetFlowsFromCore: *const fn(self: *anyopaque, _r: **IIterable(AutomationPeer)) callconv(.winapi) HRESULT,

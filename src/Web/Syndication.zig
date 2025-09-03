@@ -1,33 +1,33 @@
 // ----- This code is automatically generated -----
 pub const ISyndicationAttribute = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Namespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Namespace(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -43,17 +43,17 @@ pub const ISyndicationAttribute = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Namespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Namespace: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Namespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Namespace: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationAttributeFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationAttribute(self: *@This(), attributeName: HSTRING, attributeNamespace: HSTRING, attributeValue: HSTRING) core.HResult!*SyndicationAttribute {
+    pub fn CreateSyndicationAttribute(self: *@This(), attributeName: ?HSTRING, attributeNamespace: ?HSTRING, attributeValue: ?HSTRING) core.HResult!*SyndicationAttribute {
         var _r: *SyndicationAttribute = undefined;
         const _c = self.vtable.CreateSyndicationAttribute(@ptrCast(self), attributeName, attributeNamespace, attributeValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -71,38 +71,38 @@ pub const ISyndicationAttributeFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationAttribute: *const fn(self: *anyopaque, attributeName: HSTRING, attributeNamespace: HSTRING, attributeValue: HSTRING, _r: **SyndicationAttribute) callconv(.winapi) HRESULT,
+        CreateSyndicationAttribute: *const fn(self: *anyopaque, attributeName: ?HSTRING, attributeNamespace: ?HSTRING, attributeValue: ?HSTRING, _r: **SyndicationAttribute) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationCategory = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getScheme(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getScheme(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Scheme(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putScheme(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putScheme(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Scheme(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTerm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTerm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Term(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTerm(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTerm(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Term(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -118,23 +118,23 @@ pub const ISyndicationCategory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Scheme: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Scheme: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Term: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Term: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Scheme: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Scheme: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Term: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Term: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationCategoryFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationCategory(self: *@This(), term: HSTRING) core.HResult!*SyndicationCategory {
+    pub fn CreateSyndicationCategory(self: *@This(), term: ?HSTRING) core.HResult!*SyndicationCategory {
         var _r: *SyndicationCategory = undefined;
         const _c = self.vtable.CreateSyndicationCategory(@ptrCast(self), term, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSyndicationCategoryEx(self: *@This(), term: HSTRING, scheme: HSTRING, label: HSTRING) core.HResult!*SyndicationCategory {
+    pub fn CreateSyndicationCategoryEx(self: *@This(), term: ?HSTRING, scheme: ?HSTRING, label: ?HSTRING) core.HResult!*SyndicationCategory {
         var _r: *SyndicationCategory = undefined;
         const _c = self.vtable.CreateSyndicationCategoryEx(@ptrCast(self), term, scheme, label, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -152,8 +152,8 @@ pub const ISyndicationCategoryFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationCategory: *const fn(self: *anyopaque, term: HSTRING, _r: **SyndicationCategory) callconv(.winapi) HRESULT,
-        CreateSyndicationCategoryEx: *const fn(self: *anyopaque, term: HSTRING, scheme: HSTRING, label: HSTRING, _r: **SyndicationCategory) callconv(.winapi) HRESULT,
+        CreateSyndicationCategory: *const fn(self: *anyopaque, term: ?HSTRING, _r: **SyndicationCategory) callconv(.winapi) HRESULT,
+        CreateSyndicationCategoryEx: *const fn(self: *anyopaque, term: ?HSTRING, scheme: ?HSTRING, label: ?HSTRING, _r: **SyndicationCategory) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationClient = extern struct {
@@ -208,7 +208,7 @@ pub const ISyndicationClient = extern struct {
         const _c = self.vtable.put_BypassCacheOnRetrieve(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetRequestHeader(self: *@This(), name: HSTRING, value: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -240,7 +240,7 @@ pub const ISyndicationClient = extern struct {
         put_Timeout: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_BypassCacheOnRetrieve: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_BypassCacheOnRetrieve: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        SetRequestHeader: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING) callconv(.winapi) HRESULT,
+        SetRequestHeader: *const fn(self: *anyopaque, name: ?HSTRING, value: ?HSTRING) callconv(.winapi) HRESULT,
         RetrieveFeedAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(SyndicationFeed,RetrievalProgress)) callconv(.winapi) HRESULT,
     };
 };
@@ -297,7 +297,7 @@ pub const ISyndicationContent = extern struct {
 };
 pub const ISyndicationContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationContent(self: *@This(), text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
+    pub fn CreateSyndicationContent(self: *@This(), text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
         const _c = self.vtable.CreateSyndicationContent(@ptrCast(self), text, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -321,7 +321,7 @@ pub const ISyndicationContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationContent: *const fn(self: *anyopaque, text: HSTRING, ty: SyndicationTextType, _r: **SyndicationContent) callconv(.winapi) HRESULT,
+        CreateSyndicationContent: *const fn(self: *anyopaque, text: ?HSTRING, ty: SyndicationTextType, _r: **SyndicationContent) callconv(.winapi) HRESULT,
         CreateSyndicationContentWithSourceUri: *const fn(self: *anyopaque, sourceUri: *Uri, _r: **SyndicationContent) callconv(.winapi) HRESULT,
     };
 };
@@ -388,13 +388,13 @@ pub const ISyndicationFeed = extern struct {
         const _c = self.vtable.put_IconUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -490,7 +490,7 @@ pub const ISyndicationFeed = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Load(self: *@This(), feed: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), feed: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Load(@ptrCast(self), feed);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -517,8 +517,8 @@ pub const ISyndicationFeed = extern struct {
         put_Generator: *const fn(self: *anyopaque, value: *SyndicationGenerator) callconv(.winapi) HRESULT,
         get_IconUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_IconUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Items: *const fn(self: *anyopaque, _r: **IVector(SyndicationItem)) callconv(.winapi) HRESULT,
         get_LastUpdatedTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_LastUpdatedTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
@@ -536,13 +536,13 @@ pub const ISyndicationFeed = extern struct {
         get_NextUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_PreviousUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_SourceFormat: *const fn(self: *anyopaque, _r: *SyndicationFormat) callconv(.winapi) HRESULT,
-        Load: *const fn(self: *anyopaque, feed: HSTRING) callconv(.winapi) HRESULT,
+        Load: *const fn(self: *anyopaque, feed: ?HSTRING) callconv(.winapi) HRESULT,
         LoadFromXml: *const fn(self: *anyopaque, feedDocument: *XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationFeedFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationFeed(self: *@This(), title: HSTRING, subtitle: HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
+    pub fn CreateSyndicationFeed(self: *@This(), title: ?HSTRING, subtitle: ?HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
         var _r: *SyndicationFeed = undefined;
         const _c = self.vtable.CreateSyndicationFeed(@ptrCast(self), title, subtitle, uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -560,18 +560,18 @@ pub const ISyndicationFeedFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationFeed: *const fn(self: *anyopaque, title: HSTRING, subtitle: HSTRING, uri: *Uri, _r: **SyndicationFeed) callconv(.winapi) HRESULT,
+        CreateSyndicationFeed: *const fn(self: *anyopaque, title: ?HSTRING, subtitle: ?HSTRING, uri: *Uri, _r: **SyndicationFeed) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationGenerator = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -585,13 +585,13 @@ pub const ISyndicationGenerator = extern struct {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -607,17 +607,17 @@ pub const ISyndicationGenerator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_Version: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Version: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Version: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Version: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationGenerator(self: *@This(), text: HSTRING) core.HResult!*SyndicationGenerator {
+    pub fn CreateSyndicationGenerator(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationGenerator {
         var _r: *SyndicationGenerator = undefined;
         const _c = self.vtable.CreateSyndicationGenerator(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -635,7 +635,7 @@ pub const ISyndicationGeneratorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationGenerator: *const fn(self: *anyopaque, text: HSTRING, _r: **SyndicationGenerator) callconv(.winapi) HRESULT,
+        CreateSyndicationGenerator: *const fn(self: *anyopaque, text: ?HSTRING, _r: **SyndicationGenerator) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationItem = extern struct {
@@ -668,13 +668,13 @@ pub const ISyndicationItem = extern struct {
         const _c = self.vtable.put_Content(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -766,8 +766,8 @@ pub const ISyndicationItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getETag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getETag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ETag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -778,7 +778,7 @@ pub const ISyndicationItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Load(self: *@This(), item: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), item: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Load(@ptrCast(self), item);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -803,8 +803,8 @@ pub const ISyndicationItem = extern struct {
         get_Contributors: *const fn(self: *anyopaque, _r: **IVector(SyndicationPerson)) callconv(.winapi) HRESULT,
         get_Content: *const fn(self: *anyopaque, _r: **SyndicationContent) callconv(.winapi) HRESULT,
         put_Content: *const fn(self: *anyopaque, value: *SyndicationContent) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LastUpdatedTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_LastUpdatedTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_Links: *const fn(self: *anyopaque, _r: **IVector(SyndicationLink)) callconv(.winapi) HRESULT,
@@ -822,15 +822,15 @@ pub const ISyndicationItem = extern struct {
         put_CommentsUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_EditUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_EditMediaUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_ETag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ETag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ItemUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        Load: *const fn(self: *anyopaque, item: HSTRING) callconv(.winapi) HRESULT,
+        Load: *const fn(self: *anyopaque, item: ?HSTRING) callconv(.winapi) HRESULT,
         LoadFromXml: *const fn(self: *anyopaque, itemDocument: *XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationItem(self: *@This(), title: HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
+    pub fn CreateSyndicationItem(self: *@This(), title: ?HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
         var _r: *SyndicationItem = undefined;
         const _c = self.vtable.CreateSyndicationItem(@ptrCast(self), title, content, uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -848,7 +848,7 @@ pub const ISyndicationItemFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationItem: *const fn(self: *anyopaque, title: HSTRING, content: *SyndicationContent, uri: *Uri, _r: **SyndicationItem) callconv(.winapi) HRESULT,
+        CreateSyndicationItem: *const fn(self: *anyopaque, title: ?HSTRING, content: *SyndicationContent, uri: *Uri, _r: **SyndicationItem) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationLink = extern struct {
@@ -863,33 +863,33 @@ pub const ISyndicationLink = extern struct {
         const _c = self.vtable.put_Length(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMediaType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMediaType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MediaType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRelationship(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRelationship(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Relationship(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRelationship(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRelationship(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Relationship(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -903,13 +903,13 @@ pub const ISyndicationLink = extern struct {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResourceLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putResourceLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResourceLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ResourceLanguage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -927,16 +927,16 @@ pub const ISyndicationLink = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Length: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Length: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_MediaType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MediaType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Relationship: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Relationship: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MediaType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MediaType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Relationship: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Relationship: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_ResourceLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ResourceLanguage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ResourceLanguage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationLinkFactory = extern struct {
@@ -947,7 +947,7 @@ pub const ISyndicationLinkFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSyndicationLinkEx(self: *@This(), uri: *Uri, relationship: HSTRING, title: HSTRING, mediaType: HSTRING, length: u32) core.HResult!*SyndicationLink {
+    pub fn CreateSyndicationLinkEx(self: *@This(), uri: *Uri, relationship: ?HSTRING, title: ?HSTRING, mediaType: ?HSTRING, length: u32) core.HResult!*SyndicationLink {
         var _r: *SyndicationLink = undefined;
         const _c = self.vtable.CreateSyndicationLinkEx(@ptrCast(self), uri, relationship, title, mediaType, length, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -966,48 +966,48 @@ pub const ISyndicationLinkFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateSyndicationLink: *const fn(self: *anyopaque, uri: *Uri, _r: **SyndicationLink) callconv(.winapi) HRESULT,
-        CreateSyndicationLinkEx: *const fn(self: *anyopaque, uri: *Uri, relationship: HSTRING, title: HSTRING, mediaType: HSTRING, length: u32, _r: **SyndicationLink) callconv(.winapi) HRESULT,
+        CreateSyndicationLinkEx: *const fn(self: *anyopaque, uri: *Uri, relationship: ?HSTRING, title: ?HSTRING, mediaType: ?HSTRING, length: u32, _r: **SyndicationLink) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationNode = extern struct {
     vtable: *const VTable,
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeNamespace(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeValue(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NodeValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1051,14 +1051,14 @@ pub const ISyndicationNode = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NodeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NodeName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_NodeNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NodeNamespace: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_NodeValue: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NodeValue: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_NodeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NodeName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_NodeNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NodeNamespace: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_NodeValue: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NodeValue: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BaseUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_BaseUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_AttributeExtensions: *const fn(self: *anyopaque, _r: **IVector(SyndicationAttribute)) callconv(.winapi) HRESULT,
@@ -1068,7 +1068,7 @@ pub const ISyndicationNode = extern struct {
 };
 pub const ISyndicationNodeFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationNode(self: *@This(), nodeName: HSTRING, nodeNamespace: HSTRING, nodeValue: HSTRING) core.HResult!*SyndicationNode {
+    pub fn CreateSyndicationNode(self: *@This(), nodeName: ?HSTRING, nodeNamespace: ?HSTRING, nodeValue: ?HSTRING) core.HResult!*SyndicationNode {
         var _r: *SyndicationNode = undefined;
         const _c = self.vtable.CreateSyndicationNode(@ptrCast(self), nodeName, nodeNamespace, nodeValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1086,28 +1086,28 @@ pub const ISyndicationNodeFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationNode: *const fn(self: *anyopaque, nodeName: HSTRING, nodeNamespace: HSTRING, nodeValue: HSTRING, _r: **SyndicationNode) callconv(.winapi) HRESULT,
+        CreateSyndicationNode: *const fn(self: *anyopaque, nodeName: ?HSTRING, nodeNamespace: ?HSTRING, nodeValue: ?HSTRING, _r: **SyndicationNode) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationPerson = extern struct {
     vtable: *const VTable,
-    pub fn getEmail(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Email(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEmail(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Email(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1133,23 +1133,23 @@ pub const ISyndicationPerson = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Email: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Email: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Email: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Email: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationPersonFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationPerson(self: *@This(), name: HSTRING) core.HResult!*SyndicationPerson {
+    pub fn CreateSyndicationPerson(self: *@This(), name: ?HSTRING) core.HResult!*SyndicationPerson {
         var _r: *SyndicationPerson = undefined;
         const _c = self.vtable.CreateSyndicationPerson(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSyndicationPersonEx(self: *@This(), name: HSTRING, email: HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
+    pub fn CreateSyndicationPersonEx(self: *@This(), name: ?HSTRING, email: ?HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
         var _r: *SyndicationPerson = undefined;
         const _c = self.vtable.CreateSyndicationPersonEx(@ptrCast(self), name, email, uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1167,29 +1167,29 @@ pub const ISyndicationPersonFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationPerson: *const fn(self: *anyopaque, name: HSTRING, _r: **SyndicationPerson) callconv(.winapi) HRESULT,
-        CreateSyndicationPersonEx: *const fn(self: *anyopaque, name: HSTRING, email: HSTRING, uri: *Uri, _r: **SyndicationPerson) callconv(.winapi) HRESULT,
+        CreateSyndicationPerson: *const fn(self: *anyopaque, name: ?HSTRING, _r: **SyndicationPerson) callconv(.winapi) HRESULT,
+        CreateSyndicationPersonEx: *const fn(self: *anyopaque, name: ?HSTRING, email: ?HSTRING, uri: *Uri, _r: **SyndicationPerson) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationText = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1215,23 +1215,23 @@ pub const ISyndicationText = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Type: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Type: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Type: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Type: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Xml: *const fn(self: *anyopaque, _r: **XmlDocument) callconv(.winapi) HRESULT,
         put_Xml: *const fn(self: *anyopaque, value: *XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const ISyndicationTextFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationText(self: *@This(), text: HSTRING) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationText(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
         const _c = self.vtable.CreateSyndicationText(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSyndicationTextEx(self: *@This(), text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationTextEx(self: *@This(), text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
         const _c = self.vtable.CreateSyndicationTextEx(@ptrCast(self), text, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1249,8 +1249,8 @@ pub const ISyndicationTextFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationText: *const fn(self: *anyopaque, text: HSTRING, _r: **SyndicationText) callconv(.winapi) HRESULT,
-        CreateSyndicationTextEx: *const fn(self: *anyopaque, text: HSTRING, ty: SyndicationTextType, _r: **SyndicationText) callconv(.winapi) HRESULT,
+        CreateSyndicationText: *const fn(self: *anyopaque, text: ?HSTRING, _r: **SyndicationText) callconv(.winapi) HRESULT,
+        CreateSyndicationTextEx: *const fn(self: *anyopaque, text: ?HSTRING, ty: SyndicationTextType, _r: **SyndicationText) callconv(.winapi) HRESULT,
     };
 };
 pub const RetrievalProgress = extern struct {
@@ -1259,27 +1259,27 @@ pub const RetrievalProgress = extern struct {
 };
 pub const SyndicationAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.getNamespace();
     }
-    pub fn putNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.putNamespace(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.putValue(value);
     }
@@ -1290,7 +1290,7 @@ pub const SyndicationAttribute = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationAttribute.IID)));
     }
-    pub fn CreateSyndicationAttribute(attributeName: HSTRING, attributeNamespace: HSTRING, attributeValue: HSTRING) core.HResult!*SyndicationAttribute {
+    pub fn CreateSyndicationAttribute(attributeName: ?HSTRING, attributeNamespace: ?HSTRING, attributeValue: ?HSTRING) core.HResult!*SyndicationAttribute {
         const _f = try @This()._ISyndicationAttributeFactoryCache.get();
         return try _f.CreateSyndicationAttribute(attributeName, attributeNamespace, attributeValue);
     }
@@ -1304,73 +1304,73 @@ pub const SyndicationAttribute = extern struct {
 };
 pub const SyndicationCategory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.putLabel(value);
     }
-    pub fn getScheme(self: *@This()) core.HResult!HSTRING {
+    pub fn getScheme(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.getScheme();
     }
-    pub fn putScheme(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putScheme(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.putScheme(value);
     }
-    pub fn getTerm(self: *@This()) core.HResult!HSTRING {
+    pub fn getTerm(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.getTerm();
     }
-    pub fn putTerm(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTerm(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.putTerm(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1413,11 +1413,11 @@ pub const SyndicationCategory = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationCategory.IID)));
     }
-    pub fn CreateSyndicationCategory(term: HSTRING) core.HResult!*SyndicationCategory {
+    pub fn CreateSyndicationCategory(term: ?HSTRING) core.HResult!*SyndicationCategory {
         const _f = try @This()._ISyndicationCategoryFactoryCache.get();
         return try _f.CreateSyndicationCategory(term);
     }
-    pub fn CreateSyndicationCategoryEx(term: HSTRING, scheme: HSTRING, label: HSTRING) core.HResult!*SyndicationCategory {
+    pub fn CreateSyndicationCategoryEx(term: ?HSTRING, scheme: ?HSTRING, label: ?HSTRING) core.HResult!*SyndicationCategory {
         const _f = try @This()._ISyndicationCategoryFactoryCache.get();
         return try _f.CreateSyndicationCategoryEx(term, scheme, label);
     }
@@ -1471,7 +1471,7 @@ pub const SyndicationClient = extern struct {
         const this: *ISyndicationClient = @ptrCast(self);
         return try this.putBypassCacheOnRetrieve(value);
     }
-    pub fn SetRequestHeader(self: *@This(), name: HSTRING, value: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationClient = @ptrCast(self);
         return try this.SetRequestHeader(name, value);
     }
@@ -1500,25 +1500,25 @@ pub const SyndicationClient = extern struct {
 };
 pub const SyndicationContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationText = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationText = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putText(value);
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationText = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationText = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationText.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1536,49 +1536,49 @@ pub const SyndicationContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXml(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1629,7 +1629,7 @@ pub const SyndicationContent = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationContent.IID)));
     }
-    pub fn CreateSyndicationContent(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
+    pub fn CreateSyndicationContent(text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         const _f = try @This()._ISyndicationContentFactoryCache.get();
         return try _f.CreateSyndicationContent(text, ty);
     }
@@ -1696,11 +1696,11 @@ pub const SyndicationFeed = extern struct {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.putIconUri(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.putId(value);
     }
@@ -1772,7 +1772,7 @@ pub const SyndicationFeed = extern struct {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.getSourceFormat();
     }
-    pub fn Load(self: *@This(), feed: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), feed: ?HSTRING) core.HResult!void {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.Load(feed);
     }
@@ -1780,49 +1780,49 @@ pub const SyndicationFeed = extern struct {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.LoadFromXml(feedDocument);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1865,7 +1865,7 @@ pub const SyndicationFeed = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationFeed.IID)));
     }
-    pub fn CreateSyndicationFeed(title: HSTRING, subtitle: HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
+    pub fn CreateSyndicationFeed(title: ?HSTRING, subtitle: ?HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
         const _f = try @This()._ISyndicationFeedFactoryCache.get();
         return try _f.CreateSyndicationFeed(title, subtitle, uri);
     }
@@ -1887,11 +1887,11 @@ pub const SyndicationFormat = enum(i32) {
 };
 pub const SyndicationGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.putText(value);
     }
@@ -1903,57 +1903,57 @@ pub const SyndicationGenerator = extern struct {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.putUri(value);
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.putVersion(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1996,7 +1996,7 @@ pub const SyndicationGenerator = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationGenerator.IID)));
     }
-    pub fn CreateSyndicationGenerator(text: HSTRING) core.HResult!*SyndicationGenerator {
+    pub fn CreateSyndicationGenerator(text: ?HSTRING) core.HResult!*SyndicationGenerator {
         const _f = try @This()._ISyndicationGeneratorFactoryCache.get();
         return try _f.CreateSyndicationGenerator(text);
     }
@@ -2030,11 +2030,11 @@ pub const SyndicationItem = extern struct {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.putContent(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.putId(value);
     }
@@ -2106,7 +2106,7 @@ pub const SyndicationItem = extern struct {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.getEditMediaUri();
     }
-    pub fn getETag(self: *@This()) core.HResult!HSTRING {
+    pub fn getETag(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.getETag();
     }
@@ -2114,7 +2114,7 @@ pub const SyndicationItem = extern struct {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.getItemUri();
     }
-    pub fn Load(self: *@This(), item: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), item: ?HSTRING) core.HResult!void {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.Load(item);
     }
@@ -2122,49 +2122,49 @@ pub const SyndicationItem = extern struct {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.LoadFromXml(itemDocument);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2207,7 +2207,7 @@ pub const SyndicationItem = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationItem.IID)));
     }
-    pub fn CreateSyndicationItem(title: HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
+    pub fn CreateSyndicationItem(title: ?HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
         const _f = try @This()._ISyndicationItemFactoryCache.get();
         return try _f.CreateSyndicationItem(title, content, uri);
     }
@@ -2229,27 +2229,27 @@ pub const SyndicationLink = extern struct {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putLength(value);
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.getMediaType();
     }
-    pub fn putMediaType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMediaType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putMediaType(value);
     }
-    pub fn getRelationship(self: *@This()) core.HResult!HSTRING {
+    pub fn getRelationship(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.getRelationship();
     }
-    pub fn putRelationship(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRelationship(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putRelationship(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -2261,57 +2261,57 @@ pub const SyndicationLink = extern struct {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putUri(value);
     }
-    pub fn getResourceLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.getResourceLanguage();
     }
-    pub fn putResourceLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResourceLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.putResourceLanguage(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2358,7 +2358,7 @@ pub const SyndicationLink = extern struct {
         const _f = try @This()._ISyndicationLinkFactoryCache.get();
         return try _f.CreateSyndicationLink(uri);
     }
-    pub fn CreateSyndicationLinkEx(uri: *Uri, relationship: HSTRING, title: HSTRING, mediaType: HSTRING, length: u32) core.HResult!*SyndicationLink {
+    pub fn CreateSyndicationLinkEx(uri: *Uri, relationship: ?HSTRING, title: ?HSTRING, mediaType: ?HSTRING, length: u32) core.HResult!*SyndicationLink {
         const _f = try @This()._ISyndicationLinkFactoryCache.get();
         return try _f.CreateSyndicationLinkEx(uri, relationship, title, mediaType, length);
     }
@@ -2372,35 +2372,35 @@ pub const SyndicationLink = extern struct {
 };
 pub const SyndicationNode = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.putLanguage(value);
     }
@@ -2431,7 +2431,7 @@ pub const SyndicationNode = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationNode.IID)));
     }
-    pub fn CreateSyndicationNode(nodeName: HSTRING, nodeNamespace: HSTRING, nodeValue: HSTRING) core.HResult!*SyndicationNode {
+    pub fn CreateSyndicationNode(nodeName: ?HSTRING, nodeNamespace: ?HSTRING, nodeValue: ?HSTRING) core.HResult!*SyndicationNode {
         const _f = try @This()._ISyndicationNodeFactoryCache.get();
         return try _f.CreateSyndicationNode(nodeName, nodeNamespace, nodeValue);
     }
@@ -2445,19 +2445,19 @@ pub const SyndicationNode = extern struct {
 };
 pub const SyndicationPerson = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEmail(self: *@This()) core.HResult!HSTRING {
+    pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.getEmail();
     }
-    pub fn putEmail(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.putEmail(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.putName(value);
     }
@@ -2469,49 +2469,49 @@ pub const SyndicationPerson = extern struct {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.putUri(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2554,11 +2554,11 @@ pub const SyndicationPerson = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationPerson.IID)));
     }
-    pub fn CreateSyndicationPerson(name: HSTRING) core.HResult!*SyndicationPerson {
+    pub fn CreateSyndicationPerson(name: ?HSTRING) core.HResult!*SyndicationPerson {
         const _f = try @This()._ISyndicationPersonFactoryCache.get();
         return try _f.CreateSyndicationPerson(name);
     }
-    pub fn CreateSyndicationPersonEx(name: HSTRING, email: HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
+    pub fn CreateSyndicationPersonEx(name: ?HSTRING, email: ?HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
         const _f = try @This()._ISyndicationPersonFactoryCache.get();
         return try _f.CreateSyndicationPersonEx(name, email, uri);
     }
@@ -2572,19 +2572,19 @@ pub const SyndicationPerson = extern struct {
 };
 pub const SyndicationText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.putText(value);
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.getType();
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.putType(value);
     }
@@ -2596,49 +2596,49 @@ pub const SyndicationText = extern struct {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.putXml(value);
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
-    pub fn putNodeName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
-    pub fn getNodeNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
-    pub fn putNodeNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
-    pub fn getNodeValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
-    pub fn putNodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2681,11 +2681,11 @@ pub const SyndicationText = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationText.IID)));
     }
-    pub fn CreateSyndicationText(text: HSTRING) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationText(text: ?HSTRING) core.HResult!*SyndicationText {
         const _f = try @This()._ISyndicationTextFactoryCache.get();
         return try _f.CreateSyndicationText(text);
     }
-    pub fn CreateSyndicationTextEx(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationTextEx(text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
         const _f = try @This()._ISyndicationTextFactoryCache.get();
         return try _f.CreateSyndicationTextEx(text, ty);
     }

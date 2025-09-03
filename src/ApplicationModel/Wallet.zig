@@ -14,8 +14,8 @@ pub const IWalletBarcode = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -39,13 +39,13 @@ pub const IWalletBarcode = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Symbology: *const fn(self: *anyopaque, _r: *WalletBarcodeSymbology) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetImageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IRandomAccessStreamReference)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletBarcodeFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWalletBarcode(self: *@This(), symbology: WalletBarcodeSymbology, value: HSTRING) core.HResult!*WalletBarcode {
+    pub fn CreateWalletBarcode(self: *@This(), symbology: WalletBarcodeSymbology, value: ?HSTRING) core.HResult!*WalletBarcode {
         var _r: *WalletBarcode = undefined;
         const _c = self.vtable.CreateWalletBarcode(@ptrCast(self), symbology, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -69,24 +69,24 @@ pub const IWalletBarcodeFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWalletBarcode: *const fn(self: *anyopaque, symbology: WalletBarcodeSymbology, value: HSTRING, _r: **WalletBarcode) callconv(.winapi) HRESULT,
+        CreateWalletBarcode: *const fn(self: *anyopaque, symbology: WalletBarcodeSymbology, value: ?HSTRING, _r: **WalletBarcode) callconv(.winapi) HRESULT,
         CreateCustomWalletBarcode: *const fn(self: *anyopaque, streamToBarcodeImage: *IRandomAccessStreamReference, _r: **WalletBarcode) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletItem = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -101,13 +101,13 @@ pub const IWalletItem = extern struct {
         const _c = self.vtable.put_IsAcknowledged(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIssuerDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIssuerDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IssuerDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIssuerDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIssuerDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IssuerDisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -177,13 +177,13 @@ pub const IWalletItem = extern struct {
         const _c = self.vtable.put_Logo99x99(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -197,13 +197,13 @@ pub const IWalletItem = extern struct {
         const _c = self.vtable.put_IsDisplayMessageLaunchable(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLogoText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLogoText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LogoText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLogoText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLogoText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LogoText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -297,24 +297,24 @@ pub const IWalletItem = extern struct {
         const _c = self.vtable.put_RelevantDate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRelevantDateDisplayMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRelevantDateDisplayMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RelevantDateDisplayMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRelevantDateDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRelevantDateDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RelevantDateDisplayMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTransactionHistory(self: *@This()) core.HResult!*IMap(HSTRING,WalletTransaction) {
-        var _r: *IMap(HSTRING,WalletTransaction) = undefined;
+    pub fn getTransactionHistory(self: *@This()) core.HResult!*IMap(?HSTRING,WalletTransaction) {
+        var _r: *IMap(?HSTRING,WalletTransaction) = undefined;
         const _c = self.vtable.get_TransactionHistory(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRelevantLocations(self: *@This()) core.HResult!*IMap(HSTRING,WalletRelevantLocation) {
-        var _r: *IMap(HSTRING,WalletRelevantLocation) = undefined;
+    pub fn getRelevantLocations(self: *@This()) core.HResult!*IMap(?HSTRING,WalletRelevantLocation) {
+        var _r: *IMap(?HSTRING,WalletRelevantLocation) = undefined;
         const _c = self.vtable.get_RelevantLocations(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -329,14 +329,14 @@ pub const IWalletItem = extern struct {
         const _c = self.vtable.put_IsMoreTransactionHistoryLaunchable(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayProperties(self: *@This()) core.HResult!*IMap(HSTRING,WalletItemCustomProperty) {
-        var _r: *IMap(HSTRING,WalletItemCustomProperty) = undefined;
+    pub fn getDisplayProperties(self: *@This()) core.HResult!*IMap(?HSTRING,WalletItemCustomProperty) {
+        var _r: *IMap(?HSTRING,WalletItemCustomProperty) = undefined;
         const _c = self.vtable.get_DisplayProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVerbs(self: *@This()) core.HResult!*IMap(HSTRING,WalletVerb) {
-        var _r: *IMap(HSTRING,WalletVerb) = undefined;
+    pub fn getVerbs(self: *@This()) core.HResult!*IMap(?HSTRING,WalletVerb) {
+        var _r: *IMap(?HSTRING,WalletVerb) = undefined;
         const _c = self.vtable.get_Verbs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -353,13 +353,13 @@ pub const IWalletItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsAcknowledged: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsAcknowledged: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IssuerDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IssuerDisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_IssuerDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IssuerDisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LastUpdated: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_LastUpdated: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *WalletItemKind) callconv(.winapi) HRESULT,
@@ -373,12 +373,12 @@ pub const IWalletItem = extern struct {
         put_Logo336x336: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_Logo99x99: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Logo99x99: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_DisplayMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsDisplayMessageLaunchable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDisplayMessageLaunchable: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_LogoText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LogoText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LogoText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LogoText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HeaderColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         put_HeaderColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
         get_BodyColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
@@ -397,35 +397,35 @@ pub const IWalletItem = extern struct {
         put_PromotionalImage: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_RelevantDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_RelevantDate: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
-        get_RelevantDateDisplayMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RelevantDateDisplayMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TransactionHistory: *const fn(self: *anyopaque, _r: **IMap(HSTRING,WalletTransaction)) callconv(.winapi) HRESULT,
-        get_RelevantLocations: *const fn(self: *anyopaque, _r: **IMap(HSTRING,WalletRelevantLocation)) callconv(.winapi) HRESULT,
+        get_RelevantDateDisplayMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RelevantDateDisplayMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TransactionHistory: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,WalletTransaction)) callconv(.winapi) HRESULT,
+        get_RelevantLocations: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,WalletRelevantLocation)) callconv(.winapi) HRESULT,
         get_IsMoreTransactionHistoryLaunchable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsMoreTransactionHistoryLaunchable: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_DisplayProperties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,WalletItemCustomProperty)) callconv(.winapi) HRESULT,
-        get_Verbs: *const fn(self: *anyopaque, _r: **IMap(HSTRING,WalletVerb)) callconv(.winapi) HRESULT,
+        get_DisplayProperties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,WalletItemCustomProperty)) callconv(.winapi) HRESULT,
+        get_Verbs: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,WalletVerb)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletItemCustomProperty = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -471,10 +471,10 @@ pub const IWalletItemCustomProperty = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AutoDetectLinks: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AutoDetectLinks: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_DetailViewPosition: *const fn(self: *anyopaque, _r: *WalletDetailViewPosition) callconv(.winapi) HRESULT,
@@ -485,7 +485,7 @@ pub const IWalletItemCustomProperty = extern struct {
 };
 pub const IWalletItemCustomPropertyFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWalletItemCustomProperty(self: *@This(), name: HSTRING, value: HSTRING) core.HResult!*WalletItemCustomProperty {
+    pub fn CreateWalletItemCustomProperty(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!*WalletItemCustomProperty {
         var _r: *WalletItemCustomProperty = undefined;
         const _c = self.vtable.CreateWalletItemCustomProperty(@ptrCast(self), name, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -503,12 +503,12 @@ pub const IWalletItemCustomPropertyFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWalletItemCustomProperty: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, _r: **WalletItemCustomProperty) callconv(.winapi) HRESULT,
+        CreateWalletItemCustomProperty: *const fn(self: *anyopaque, name: ?HSTRING, value: ?HSTRING, _r: **WalletItemCustomProperty) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWalletItem(self: *@This(), kind: WalletItemKind, displayName: HSTRING) core.HResult!*WalletItem {
+    pub fn CreateWalletItem(self: *@This(), kind: WalletItemKind, displayName: ?HSTRING) core.HResult!*WalletItem {
         var _r: *WalletItem = undefined;
         const _c = self.vtable.CreateWalletItem(@ptrCast(self), kind, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -526,12 +526,12 @@ pub const IWalletItemFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWalletItem: *const fn(self: *anyopaque, kind: WalletItemKind, displayName: HSTRING, _r: **WalletItem) callconv(.winapi) HRESULT,
+        CreateWalletItem: *const fn(self: *anyopaque, kind: WalletItemKind, displayName: ?HSTRING, _r: **WalletItem) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletItemStore = extern struct {
     vtable: *const VTable,
-    pub fn AddAsync(self: *@This(), id: HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
+    pub fn AddAsync(self: *@This(), id: ?HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AddAsync(@ptrCast(self), id, item, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -543,7 +543,7 @@ pub const IWalletItemStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetWalletItemAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(WalletItem) {
+    pub fn GetWalletItemAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(WalletItem) {
         var _r: *IAsyncOperation(WalletItem) = undefined;
         const _c = self.vtable.GetWalletItemAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -567,7 +567,7 @@ pub const IWalletItemStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -579,7 +579,7 @@ pub const IWalletItemStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAsyncWithId(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAsyncWithId(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAsyncWithId(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -603,15 +603,15 @@ pub const IWalletItemStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddAsync: *const fn(self: *anyopaque, id: HSTRING, item: *WalletItem, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AddAsync: *const fn(self: *anyopaque, id: ?HSTRING, item: *WalletItem, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ClearAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetWalletItemAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(WalletItem)) callconv(.winapi) HRESULT,
+        GetWalletItemAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(WalletItem)) callconv(.winapi) HRESULT,
         GetItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(WalletItem))) callconv(.winapi) HRESULT,
         GetItemsAsyncWithKind: *const fn(self: *anyopaque, kind: WalletItemKind, _r: **IAsyncOperation(IVectorView(WalletItem))) callconv(.winapi) HRESULT,
         ImportItemAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, _r: **IAsyncOperation(WalletItem)) callconv(.winapi) HRESULT,
-        DeleteAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowAsyncWithId: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowAsyncWithId: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UpdateAsync: *const fn(self: *anyopaque, item: *WalletItem, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -678,13 +678,13 @@ pub const IWalletRelevantLocation = extern struct {
         const _c = self.vtable.put_Position(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -702,29 +702,29 @@ pub const IWalletRelevantLocation = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Position: *const fn(self: *anyopaque, _r: *BasicGeoposition) callconv(.winapi) HRESULT,
         put_Position: *const fn(self: *anyopaque, value: BasicGeoposition) callconv(.winapi) HRESULT,
-        get_DisplayMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletTransaction = extern struct {
     vtable: *const VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayAmount(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayAmount(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayAmount(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayAmount(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayAmount(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayAmount(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -738,13 +738,13 @@ pub const IWalletTransaction = extern struct {
         const _c = self.vtable.put_IgnoreTimeOfDay(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayLocation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayLocation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -780,14 +780,14 @@ pub const IWalletTransaction = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayAmount: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayAmount: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayAmount: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayAmount: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IgnoreTimeOfDay: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IgnoreTimeOfDay: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_DisplayLocation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayLocation: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayLocation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayLocation: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TransactionDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_TransactionDate: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_IsLaunchable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -796,13 +796,13 @@ pub const IWalletTransaction = extern struct {
 };
 pub const IWalletVerb = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -818,13 +818,13 @@ pub const IWalletVerb = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWalletVerbFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWalletVerb(self: *@This(), name: HSTRING) core.HResult!*WalletVerb {
+    pub fn CreateWalletVerb(self: *@This(), name: ?HSTRING) core.HResult!*WalletVerb {
         var _r: *WalletVerb = undefined;
         const _c = self.vtable.CreateWalletVerb(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -842,7 +842,7 @@ pub const IWalletVerbFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWalletVerb: *const fn(self: *anyopaque, name: HSTRING, _r: **WalletVerb) callconv(.winapi) HRESULT,
+        CreateWalletVerb: *const fn(self: *anyopaque, name: ?HSTRING, _r: **WalletVerb) callconv(.winapi) HRESULT,
     };
 };
 pub const WalletBarcode = extern struct {
@@ -851,7 +851,7 @@ pub const WalletBarcode = extern struct {
         const this: *IWalletBarcode = @ptrCast(self);
         return try this.getSymbology();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletBarcode = @ptrCast(self);
         return try this.getValue();
     }
@@ -862,7 +862,7 @@ pub const WalletBarcode = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWalletBarcode(symbology: WalletBarcodeSymbology, value: HSTRING) core.HResult!*WalletBarcode {
+    pub fn CreateWalletBarcode(symbology: WalletBarcodeSymbology, value: ?HSTRING) core.HResult!*WalletBarcode {
         const _f = try @This()._IWalletBarcodeFactoryCache.get();
         return try _f.CreateWalletBarcode(symbology, value);
     }
@@ -910,15 +910,15 @@ pub const WalletDetailViewPosition = enum(i32) {
 };
 pub const WalletItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getId();
     }
@@ -930,11 +930,11 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putIsAcknowledged(value);
     }
-    pub fn getIssuerDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getIssuerDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getIssuerDisplayName();
     }
-    pub fn putIssuerDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIssuerDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putIssuerDisplayName(value);
     }
@@ -990,11 +990,11 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putLogo99x99(value);
     }
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getDisplayMessage();
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putDisplayMessage(value);
     }
@@ -1006,11 +1006,11 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putIsDisplayMessageLaunchable(value);
     }
-    pub fn getLogoText(self: *@This()) core.HResult!HSTRING {
+    pub fn getLogoText(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getLogoText();
     }
-    pub fn putLogoText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLogoText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putLogoText(value);
     }
@@ -1086,19 +1086,19 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putRelevantDate(value);
     }
-    pub fn getRelevantDateDisplayMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getRelevantDateDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getRelevantDateDisplayMessage();
     }
-    pub fn putRelevantDateDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRelevantDateDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putRelevantDateDisplayMessage(value);
     }
-    pub fn getTransactionHistory(self: *@This()) core.HResult!*IMap(HSTRING,WalletTransaction) {
+    pub fn getTransactionHistory(self: *@This()) core.HResult!*IMap(?HSTRING,WalletTransaction) {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getTransactionHistory();
     }
-    pub fn getRelevantLocations(self: *@This()) core.HResult!*IMap(HSTRING,WalletRelevantLocation) {
+    pub fn getRelevantLocations(self: *@This()) core.HResult!*IMap(?HSTRING,WalletRelevantLocation) {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getRelevantLocations();
     }
@@ -1110,18 +1110,18 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.putIsMoreTransactionHistoryLaunchable(value);
     }
-    pub fn getDisplayProperties(self: *@This()) core.HResult!*IMap(HSTRING,WalletItemCustomProperty) {
+    pub fn getDisplayProperties(self: *@This()) core.HResult!*IMap(?HSTRING,WalletItemCustomProperty) {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getDisplayProperties();
     }
-    pub fn getVerbs(self: *@This()) core.HResult!*IMap(HSTRING,WalletVerb) {
+    pub fn getVerbs(self: *@This()) core.HResult!*IMap(?HSTRING,WalletVerb) {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getVerbs();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWalletItem(kind: WalletItemKind, displayName: HSTRING) core.HResult!*WalletItem {
+    pub fn CreateWalletItem(kind: WalletItemKind, displayName: ?HSTRING) core.HResult!*WalletItem {
         const _f = try @This()._IWalletItemFactoryCache.get();
         return try _f.CreateWalletItem(kind, displayName);
     }
@@ -1134,19 +1134,19 @@ pub const WalletItem = extern struct {
 };
 pub const WalletItemCustomProperty = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.putValue(value);
     }
@@ -1177,7 +1177,7 @@ pub const WalletItemCustomProperty = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWalletItemCustomProperty(name: HSTRING, value: HSTRING) core.HResult!*WalletItemCustomProperty {
+    pub fn CreateWalletItemCustomProperty(name: ?HSTRING, value: ?HSTRING) core.HResult!*WalletItemCustomProperty {
         const _f = try @This()._IWalletItemCustomPropertyFactoryCache.get();
         return try _f.CreateWalletItemCustomProperty(name, value);
     }
@@ -1199,7 +1199,7 @@ pub const WalletItemKind = enum(i32) {
 };
 pub const WalletItemStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddAsync(self: *@This(), id: HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
+    pub fn AddAsync(self: *@This(), id: ?HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.AddAsync(id, item);
     }
@@ -1207,7 +1207,7 @@ pub const WalletItemStore = extern struct {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.ClearAsync();
     }
-    pub fn GetWalletItemAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(WalletItem) {
+    pub fn GetWalletItemAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(WalletItem) {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.GetWalletItemAsync(id);
     }
@@ -1223,7 +1223,7 @@ pub const WalletItemStore = extern struct {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.ImportItemAsync(stream);
     }
-    pub fn DeleteAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.DeleteAsync(id);
     }
@@ -1231,7 +1231,7 @@ pub const WalletItemStore = extern struct {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.ShowAsync();
     }
-    pub fn ShowAsyncWithId(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAsyncWithId(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.ShowAsyncWithId(id);
     }
@@ -1268,11 +1268,11 @@ pub const WalletRelevantLocation = extern struct {
         const this: *IWalletRelevantLocation = @ptrCast(self);
         return try this.putPosition(value);
     }
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletRelevantLocation = @ptrCast(self);
         return try this.getDisplayMessage();
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletRelevantLocation = @ptrCast(self);
         return try this.putDisplayMessage(value);
     }
@@ -1297,19 +1297,19 @@ pub const WalletSummaryViewPosition = enum(i32) {
 };
 pub const WalletTransaction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn getDisplayAmount(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayAmount(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.getDisplayAmount();
     }
-    pub fn putDisplayAmount(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayAmount(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.putDisplayAmount(value);
     }
@@ -1321,11 +1321,11 @@ pub const WalletTransaction = extern struct {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.putIgnoreTimeOfDay(value);
     }
-    pub fn getDisplayLocation(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayLocation(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.getDisplayLocation();
     }
-    pub fn putDisplayLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.putDisplayLocation(value);
     }
@@ -1361,18 +1361,18 @@ pub const WalletTransaction = extern struct {
 };
 pub const WalletVerb = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletVerb = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletVerb = @ptrCast(self);
         return try this.putName(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWalletVerb(name: HSTRING) core.HResult!*WalletVerb {
+    pub fn CreateWalletVerb(name: ?HSTRING) core.HResult!*WalletVerb {
         const _f = try @This()._IWalletVerbFactoryCache.get();
         return try _f.CreateWalletVerb(name);
     }

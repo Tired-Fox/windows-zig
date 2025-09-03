@@ -9,11 +9,11 @@ pub const BluetoothLEAdvertisement = extern struct {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.putFlags(value);
     }
-    pub fn getLocalName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.getLocalName();
     }
-    pub fn putLocalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.putLocalName(value);
     }
@@ -759,13 +759,13 @@ pub const IBluetoothLEAdvertisement = extern struct {
         const _c = self.vtable.put_Flags(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocalName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LocalName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -813,8 +813,8 @@ pub const IBluetoothLEAdvertisement = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Flags: *const fn(self: *anyopaque, _r: **IReference(BluetoothLEAdvertisementFlags)) callconv(.winapi) HRESULT,
         put_Flags: *const fn(self: *anyopaque, value: *IReference(BluetoothLEAdvertisementFlags)) callconv(.winapi) HRESULT,
-        get_LocalName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LocalName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LocalName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LocalName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ServiceUuids: *const fn(self: *anyopaque, _r: **IVector(Guid)) callconv(.winapi) HRESULT,
         get_ManufacturerData: *const fn(self: *anyopaque, _r: **IVector(BluetoothLEManufacturerData)) callconv(.winapi) HRESULT,
         get_DataSections: *const fn(self: *anyopaque, _r: **IVector(BluetoothLEAdvertisementDataSection)) callconv(.winapi) HRESULT,

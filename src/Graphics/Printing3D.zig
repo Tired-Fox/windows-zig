@@ -148,7 +148,7 @@ pub const IPrint3DTaskCompletedEventArgs = extern struct {
 };
 pub const IPrint3DTaskRequest = extern struct {
     vtable: *const VTable,
-    pub fn CreateTask(self: *@This(), title: HSTRING, printerId: HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
+    pub fn CreateTask(self: *@This(), title: ?HSTRING, printerId: ?HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
         var _r: *Print3DTask = undefined;
         const _c = self.vtable.CreateTask(@ptrCast(self), title, printerId, handler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -166,7 +166,7 @@ pub const IPrint3DTaskRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateTask: *const fn(self: *anyopaque, title: HSTRING, printerId: HSTRING, handler: *Print3DTaskSourceRequestedHandler, _r: **Print3DTask) callconv(.winapi) HRESULT,
+        CreateTask: *const fn(self: *anyopaque, title: ?HSTRING, printerId: ?HSTRING, handler: *Print3DTaskSourceRequestedHandler, _r: **Print3DTask) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrint3DTaskRequestedEventArgs = extern struct {
@@ -369,13 +369,13 @@ pub const IPrinting3D3MFPackageStatics = extern struct {
 };
 pub const IPrinting3DBaseMaterial = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -401,8 +401,8 @@ pub const IPrinting3DBaseMaterial = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Color: *const fn(self: *anyopaque, _r: **Printing3DColorMaterial) callconv(.winapi) HRESULT,
         put_Color: *const fn(self: *anyopaque, value: *Printing3DColorMaterial) callconv(.winapi) HRESULT,
     };
@@ -462,14 +462,14 @@ pub const IPrinting3DBaseMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DBaseMaterialStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAbs(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAbs(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Abs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPla(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPla(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pla(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -486,8 +486,8 @@ pub const IPrinting3DBaseMaterialStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Abs: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pla: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Abs: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pla: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrinting3DColorMaterial = extern struct {
@@ -637,23 +637,23 @@ pub const IPrinting3DComponent = extern struct {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPartNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPartNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PartNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPartNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPartNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PartNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -676,10 +676,10 @@ pub const IPrinting3DComponent = extern struct {
         put_Thumbnail: *const fn(self: *anyopaque, value: *Printing3DTextureResource) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *Printing3DObjectType) callconv(.winapi) HRESULT,
         put_Type: *const fn(self: *anyopaque, value: Printing3DObjectType) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PartNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PartNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PartNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PartNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrinting3DComponentWithMatrix = extern struct {
@@ -1180,24 +1180,24 @@ pub const IPrinting3DModel = extern struct {
         const _c = self.vtable.put_Build(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRequiredExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRequiredExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RequiredExtensions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getMetadata(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Metadata(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1235,10 +1235,10 @@ pub const IPrinting3DModel = extern struct {
         put_Material: *const fn(self: *anyopaque, value: *Printing3DMaterial) callconv(.winapi) HRESULT,
         get_Build: *const fn(self: *anyopaque, _r: **Printing3DComponent) callconv(.winapi) HRESULT,
         put_Build: *const fn(self: *anyopaque, value: *Printing3DComponent) callconv(.winapi) HRESULT,
-        get_Version: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Version: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RequiredExtensions: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Metadata: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Version: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Version: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RequiredExtensions: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Metadata: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         RepairAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         Clone: *const fn(self: *anyopaque, _r: **Printing3DModel) callconv(.winapi) HRESULT,
     };
@@ -1581,13 +1581,13 @@ pub const IPrinting3DTextureResource = extern struct {
         const _c = self.vtable.put_TextureData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1605,8 +1605,8 @@ pub const IPrinting3DTextureResource = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TextureData: *const fn(self: *anyopaque, _r: **IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
         put_TextureData: *const fn(self: *anyopaque, value: *IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const Print3DManager = extern struct {
@@ -1707,7 +1707,7 @@ pub const Print3DTaskDetail = enum(i32) {
 };
 pub const Print3DTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateTask(self: *@This(), title: HSTRING, printerId: HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
+    pub fn CreateTask(self: *@This(), title: ?HSTRING, printerId: ?HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
         const this: *IPrint3DTaskRequest = @ptrCast(self);
         return try this.CreateTask(title, printerId, handler);
     }
@@ -1915,11 +1915,11 @@ pub const Printing3D3MFPackage = extern struct {
 };
 pub const Printing3DBaseMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DBaseMaterial = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DBaseMaterial = @ptrCast(self);
         return try this.putName(value);
     }
@@ -1938,11 +1938,11 @@ pub const Printing3DBaseMaterial = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DBaseMaterial.IID)));
     }
-    pub fn getAbs() core.HResult!HSTRING {
+    pub fn getAbs() core.HResult!?HSTRING {
         const _f = try @This()._IPrinting3DBaseMaterialStaticsCache.get();
         return try _f.getAbs();
     }
-    pub fn getPla() core.HResult!HSTRING {
+    pub fn getPla() core.HResult!?HSTRING {
         const _f = try @This()._IPrinting3DBaseMaterialStaticsCache.get();
         return try _f.getPla();
     }
@@ -2081,19 +2081,19 @@ pub const Printing3DComponent = extern struct {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.putType(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getPartNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPartNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.getPartNumber();
     }
-    pub fn putPartNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPartNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.putPartNumber(value);
     }
@@ -2449,19 +2449,19 @@ pub const Printing3DModel = extern struct {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.putBuild(value);
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.putVersion(value);
     }
-    pub fn getRequiredExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRequiredExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.getRequiredExtensions();
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getMetadata(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.getMetadata();
     }
@@ -2721,11 +2721,11 @@ pub const Printing3DTextureResource = extern struct {
         const this: *IPrinting3DTextureResource = @ptrCast(self);
         return try this.putTextureData(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DTextureResource = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DTextureResource = @ptrCast(self);
         return try this.putName(value);
     }

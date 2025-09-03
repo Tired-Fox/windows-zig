@@ -31,8 +31,8 @@ pub const IStoreAcquireLicenseResult = extern struct {
 };
 pub const IStoreAppLicense = extern struct {
     vtable: *const VTable,
-    pub fn getSkuStoreId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuStoreId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -55,14 +55,14 @@ pub const IStoreAppLicense = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAddOnLicenses(self: *@This()) core.HResult!*IMapView(HSTRING,StoreLicense) {
-        var _r: *IMapView(HSTRING,StoreLicense) = undefined;
+    pub fn getAddOnLicenses(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreLicense) {
+        var _r: *IMapView(?HSTRING,StoreLicense) = undefined;
         const _c = self.vtable.get_AddOnLicenses(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -79,8 +79,8 @@ pub const IStoreAppLicense = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTrialUniqueId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTrialUniqueId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TrialUniqueId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -97,15 +97,15 @@ pub const IStoreAppLicense = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SkuStoreId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SkuStoreId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsTrial: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExpirationDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AddOnLicenses: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,StoreLicense)) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AddOnLicenses: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,StoreLicense)) callconv(.winapi) HRESULT,
         get_TrialTimeRemaining: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_IsTrialOwnedByThisUser: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_TrialUniqueId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TrialUniqueId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreAppLicense2 = extern struct {
@@ -133,8 +133,8 @@ pub const IStoreAppLicense2 = extern struct {
 };
 pub const IStoreAvailability = extern struct {
     vtable: *const VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -151,8 +151,8 @@ pub const IStoreAvailability = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -181,10 +181,10 @@ pub const IStoreAvailability = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StoreId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StoreId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_EndDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Price: *const fn(self: *anyopaque, _r: **StorePrice) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
     };
@@ -197,8 +197,8 @@ pub const IStoreCanAcquireLicenseResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLicensableSku(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLicensableSku(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LicensableSku(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -222,7 +222,7 @@ pub const IStoreCanAcquireLicenseResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_LicensableSku: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LicensableSku: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *StoreCanLicenseStatus) callconv(.winapi) HRESULT,
     };
 };
@@ -234,14 +234,14 @@ pub const IStoreCollectionData = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCampaignId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCampaignId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CampaignId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeveloperOfferId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeveloperOfferId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeveloperOfferId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -270,8 +270,8 @@ pub const IStoreCollectionData = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -289,13 +289,13 @@ pub const IStoreCollectionData = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsTrial: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_CampaignId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeveloperOfferId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CampaignId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeveloperOfferId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AcquiredDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_StartDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_EndDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_TrialTimeRemaining: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreConsumableResult = extern struct {
@@ -360,14 +360,14 @@ pub const IStoreContext = extern struct {
         const _c = self.vtable.remove_OfflineLicensesChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetCustomerPurchaseIdAsync(self: *@This(), serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetCustomerPurchaseIdAsync(self: *@This(), serviceTicket: ?HSTRING, publisherUserId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetCustomerPurchaseIdAsync(@ptrCast(self), serviceTicket, publisherUserId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCustomerCollectionsIdAsync(self: *@This(), serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetCustomerCollectionsIdAsync(self: *@This(), serviceTicket: ?HSTRING, publisherUserId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetCustomerCollectionsIdAsync(@ptrCast(self), serviceTicket, publisherUserId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -384,43 +384,43 @@ pub const IStoreContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetStoreProductsAsync(@ptrCast(self), productKinds, storeIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAssociatedStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetAssociatedStoreProductsAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetAssociatedStoreProductsAsync(@ptrCast(self), productKinds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAssociatedStoreProductsWithPagingAsync(self: *@This(), productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
+    pub fn GetAssociatedStoreProductsWithPagingAsync(self: *@This(), productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
         var _r: *IAsyncOperation(StoreProductPagedQueryResult) = undefined;
         const _c = self.vtable.GetAssociatedStoreProductsWithPagingAsync(@ptrCast(self), productKinds, maxItemsToRetrievePerPage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetUserCollectionAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetUserCollectionAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetUserCollectionAsync(@ptrCast(self), productKinds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetUserCollectionWithPagingAsync(self: *@This(), productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
+    pub fn GetUserCollectionWithPagingAsync(self: *@This(), productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
         var _r: *IAsyncOperation(StoreProductPagedQueryResult) = undefined;
         const _c = self.vtable.GetUserCollectionWithPagingAsync(@ptrCast(self), productKinds, maxItemsToRetrievePerPage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportConsumableFulfillmentAsync(self: *@This(), productStoreId: HSTRING, quantity: u32, trackingId: *Guid) core.HResult!*IAsyncOperation(StoreConsumableResult) {
+    pub fn ReportConsumableFulfillmentAsync(self: *@This(), productStoreId: ?HSTRING, quantity: u32, trackingId: *Guid) core.HResult!*IAsyncOperation(StoreConsumableResult) {
         var _r: *IAsyncOperation(StoreConsumableResult) = undefined;
         const _c = self.vtable.ReportConsumableFulfillmentAsync(@ptrCast(self), productStoreId, quantity, trackingId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConsumableBalanceRemainingAsync(self: *@This(), productStoreId: HSTRING) core.HResult!*IAsyncOperation(StoreConsumableResult) {
+    pub fn GetConsumableBalanceRemainingAsync(self: *@This(), productStoreId: ?HSTRING) core.HResult!*IAsyncOperation(StoreConsumableResult) {
         var _r: *IAsyncOperation(StoreConsumableResult) = undefined;
         const _c = self.vtable.GetConsumableBalanceRemainingAsync(@ptrCast(self), productStoreId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -432,13 +432,13 @@ pub const IStoreContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
         const _c = self.vtable.RequestPurchaseAsync(@ptrCast(self), storeId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: ?HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
         const _c = self.vtable.RequestPurchaseAsyncWithStorePurchaseProperties(@ptrCast(self), storeId, storePurchaseProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -462,7 +462,7 @@ pub const IStoreContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var _r: *IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) = undefined;
         const _c = self.vtable.RequestDownloadAndInstallStorePackagesAsync(@ptrCast(self), storeIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -483,29 +483,29 @@ pub const IStoreContext = extern struct {
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
         add_OfflineLicensesChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(StoreContext,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_OfflineLicensesChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        GetCustomerPurchaseIdAsync: *const fn(self: *anyopaque, serviceTicket: HSTRING, publisherUserId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetCustomerCollectionsIdAsync: *const fn(self: *anyopaque, serviceTicket: HSTRING, publisherUserId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetCustomerPurchaseIdAsync: *const fn(self: *anyopaque, serviceTicket: ?HSTRING, publisherUserId: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetCustomerCollectionsIdAsync: *const fn(self: *anyopaque, serviceTicket: ?HSTRING, publisherUserId: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetAppLicenseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StoreAppLicense)) callconv(.winapi) HRESULT,
         GetStoreProductForCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StoreProductResult)) callconv(.winapi) HRESULT,
-        GetStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
-        GetAssociatedStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
-        GetAssociatedStoreProductsWithPagingAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32, _r: **IAsyncOperation(StoreProductPagedQueryResult)) callconv(.winapi) HRESULT,
-        GetUserCollectionAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
-        GetUserCollectionWithPagingAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32, _r: **IAsyncOperation(StoreProductPagedQueryResult)) callconv(.winapi) HRESULT,
-        ReportConsumableFulfillmentAsync: *const fn(self: *anyopaque, productStoreId: HSTRING, quantity: u32, trackingId: *Guid, _r: **IAsyncOperation(StoreConsumableResult)) callconv(.winapi) HRESULT,
-        GetConsumableBalanceRemainingAsync: *const fn(self: *anyopaque, productStoreId: HSTRING, _r: **IAsyncOperation(StoreConsumableResult)) callconv(.winapi) HRESULT,
+        GetStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        GetAssociatedStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        GetAssociatedStoreProductsWithPagingAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32, _r: **IAsyncOperation(StoreProductPagedQueryResult)) callconv(.winapi) HRESULT,
+        GetUserCollectionAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        GetUserCollectionWithPagingAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32, _r: **IAsyncOperation(StoreProductPagedQueryResult)) callconv(.winapi) HRESULT,
+        ReportConsumableFulfillmentAsync: *const fn(self: *anyopaque, productStoreId: ?HSTRING, quantity: u32, trackingId: *Guid, _r: **IAsyncOperation(StoreConsumableResult)) callconv(.winapi) HRESULT,
+        GetConsumableBalanceRemainingAsync: *const fn(self: *anyopaque, productStoreId: ?HSTRING, _r: **IAsyncOperation(StoreConsumableResult)) callconv(.winapi) HRESULT,
         AcquireStoreLicenseForOptionalPackageAsync: *const fn(self: *anyopaque, optionalPackage: *Package, _r: **IAsyncOperation(StoreAcquireLicenseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsync: *const fn(self: *anyopaque, storeId: HSTRING, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsync: *const fn(self: *anyopaque, storeId: ?HSTRING, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storeId: ?HSTRING, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         GetAppAndOptionalStorePackageUpdatesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StorePackageUpdate))) callconv(.winapi) HRESULT,
         RequestDownloadStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
         RequestDownloadAndInstallStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
-        RequestDownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(HSTRING), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
+        RequestDownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(?HSTRING), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreContext2 = extern struct {
     vtable: *const VTable,
-    pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
+    pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(?HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
         var _r: *IAsyncOperation(StoreProductResult) = undefined;
         const _c = self.vtable.FindStoreProductForPackageAsync(@ptrCast(self), productKinds, package, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -523,7 +523,7 @@ pub const IStoreContext2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindStoreProductForPackageAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), package: *Package, _r: **IAsyncOperation(StoreProductResult)) callconv(.winapi) HRESULT,
+        FindStoreProductForPackageAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), package: *Package, _r: **IAsyncOperation(StoreProductResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreContext3 = extern struct {
@@ -552,13 +552,13 @@ pub const IStoreContext3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CanAcquireStoreLicenseAsync(self: *@This(), productStoreId: HSTRING) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
+    pub fn CanAcquireStoreLicenseAsync(self: *@This(), productStoreId: ?HSTRING) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
         var _r: *IAsyncOperation(StoreCanAcquireLicenseResult) = undefined;
         const _c = self.vtable.CanAcquireStoreLicenseAsync(@ptrCast(self), productStoreId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetStoreProductsAsync(@ptrCast(self), productKinds, storeIds, storeProductOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -570,19 +570,19 @@ pub const IStoreContext3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStoreQueueItemsAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
+    pub fn GetStoreQueueItemsAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var _r: *IAsyncOperation(IVectorView(StoreQueueItem)) = undefined;
         const _c = self.vtable.GetStoreQueueItemsAsync(@ptrCast(self), storeIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var _r: *IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) = undefined;
         const _c = self.vtable.RequestDownloadAndInstallStorePackagesAsync(@ptrCast(self), storeIds, storePackageInstallOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var _r: *IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) = undefined;
         const _c = self.vtable.DownloadAndInstallStorePackagesAsync(@ptrCast(self), storeIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -594,7 +594,7 @@ pub const IStoreContext3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestUninstallStorePackageByStoreIdAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
+    pub fn RequestUninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var _r: *IAsyncOperation(StoreUninstallStorePackageResult) = undefined;
         const _c = self.vtable.RequestUninstallStorePackageByStoreIdAsync(@ptrCast(self), storeId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -606,7 +606,7 @@ pub const IStoreContext3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UninstallStorePackageByStoreIdAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
+    pub fn UninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var _r: *IAsyncOperation(StoreUninstallStorePackageResult) = undefined;
         const _c = self.vtable.UninstallStorePackageByStoreIdAsync(@ptrCast(self), storeId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -628,16 +628,16 @@ pub const IStoreContext3 = extern struct {
         TrySilentDownloadStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
         TrySilentDownloadAndInstallStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
         CanAcquireStoreLicenseForOptionalPackageAsync: *const fn(self: *anyopaque, optionalPackage: *Package, _r: **IAsyncOperation(StoreCanAcquireLicenseResult)) callconv(.winapi) HRESULT,
-        CanAcquireStoreLicenseAsync: *const fn(self: *anyopaque, productStoreId: HSTRING, _r: **IAsyncOperation(StoreCanAcquireLicenseResult)) callconv(.winapi) HRESULT,
-        GetStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions, _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        CanAcquireStoreLicenseAsync: *const fn(self: *anyopaque, productStoreId: ?HSTRING, _r: **IAsyncOperation(StoreCanAcquireLicenseResult)) callconv(.winapi) HRESULT,
+        GetStoreProductsAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING), storeProductOptions: *StoreProductOptions, _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
         GetAssociatedStoreQueueItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StoreQueueItem))) callconv(.winapi) HRESULT,
-        GetStoreQueueItemsAsync: *const fn(self: *anyopaque, storeIds: *IIterable(HSTRING), _r: **IAsyncOperation(IVectorView(StoreQueueItem))) callconv(.winapi) HRESULT,
-        RequestDownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(HSTRING), storePackageInstallOptions: *StorePackageInstallOptions, _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
-        DownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(HSTRING), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
+        GetStoreQueueItemsAsync: *const fn(self: *anyopaque, storeIds: *IIterable(?HSTRING), _r: **IAsyncOperation(IVectorView(StoreQueueItem))) callconv(.winapi) HRESULT,
+        RequestDownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(?HSTRING), storePackageInstallOptions: *StorePackageInstallOptions, _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
+        DownloadAndInstallStorePackagesAsync: *const fn(self: *anyopaque, storeIds: *IIterable(?HSTRING), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
         RequestUninstallStorePackageAsync: *const fn(self: *anyopaque, package: *Package, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
-        RequestUninstallStorePackageByStoreIdAsync: *const fn(self: *anyopaque, storeId: HSTRING, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
+        RequestUninstallStorePackageByStoreIdAsync: *const fn(self: *anyopaque, storeId: ?HSTRING, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
         UninstallStorePackageAsync: *const fn(self: *anyopaque, package: *Package, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
-        UninstallStorePackageByStoreIdAsync: *const fn(self: *anyopaque, storeId: HSTRING, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
+        UninstallStorePackageByStoreIdAsync: *const fn(self: *anyopaque, storeId: ?HSTRING, _r: **IAsyncOperation(StoreUninstallStorePackageResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreContext4 = extern struct {
@@ -672,19 +672,19 @@ pub const IStoreContext4 = extern struct {
 };
 pub const IStoreContext5 = extern struct {
     vtable: *const VTable,
-    pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetUserPurchaseHistoryAsync(@ptrCast(self), productKinds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAssociatedStoreProductsByInAppOfferTokenAsync(self: *@This(), inAppOfferTokens: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetAssociatedStoreProductsByInAppOfferTokenAsync(self: *@This(), inAppOfferTokens: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetAssociatedStoreProductsByInAppOfferTokenAsync(@ptrCast(self), inAppOfferTokens, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseByInAppOfferTokenAsync(self: *@This(), inAppOfferToken: HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseByInAppOfferTokenAsync(self: *@This(), inAppOfferToken: ?HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
         const _c = self.vtable.RequestPurchaseByInAppOfferTokenAsync(@ptrCast(self), inAppOfferToken, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -702,9 +702,9 @@ pub const IStoreContext5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetUserPurchaseHistoryAsync: *const fn(self: *anyopaque, productKinds: *IIterable(HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
-        GetAssociatedStoreProductsByInAppOfferTokenAsync: *const fn(self: *anyopaque, inAppOfferTokens: *IIterable(HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseByInAppOfferTokenAsync: *const fn(self: *anyopaque, inAppOfferToken: HSTRING, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        GetUserPurchaseHistoryAsync: *const fn(self: *anyopaque, productKinds: *IIterable(?HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        GetAssociatedStoreProductsByInAppOfferTokenAsync: *const fn(self: *anyopaque, inAppOfferTokens: *IIterable(?HSTRING), _r: **IAsyncOperation(StoreProductQueryResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseByInAppOfferTokenAsync: *const fn(self: *anyopaque, inAppOfferToken: ?HSTRING, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreContextStatics = extern struct {
@@ -745,8 +745,8 @@ pub const IStoreImage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getImagePurposeTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getImagePurposeTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ImagePurposeTag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -763,8 +763,8 @@ pub const IStoreImage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -782,16 +782,16 @@ pub const IStoreImage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_ImagePurposeTag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ImagePurposeTag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Width: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Height: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreLicense = extern struct {
     vtable: *const VTable,
-    pub fn getSkuStoreId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuStoreId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -808,14 +808,14 @@ pub const IStoreLicense = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInAppOfferToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInAppOfferToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InAppOfferToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -832,11 +832,11 @@ pub const IStoreLicense = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SkuStoreId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SkuStoreId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExpirationDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InAppOfferToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InAppOfferToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePackageInstallOptions = extern struct {
@@ -999,14 +999,14 @@ pub const IStorePackageUpdateResult2 = extern struct {
 };
 pub const IStorePrice = extern struct {
     vtable: *const VTable,
-    pub fn getFormattedBasePrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedBasePrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFormattedPrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormattedPrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedPrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1023,14 +1023,14 @@ pub const IStorePrice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrencyCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrencyCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFormattedRecurrencePrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormattedRecurrencePrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedRecurrencePrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1047,30 +1047,30 @@ pub const IStorePrice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FormattedBasePrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FormattedPrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FormattedBasePrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FormattedPrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsOnSale: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_SaleEndDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_CurrencyCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FormattedRecurrencePrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CurrencyCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FormattedRecurrencePrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePrice2 = extern struct {
     vtable: *const VTable,
-    pub fn getUnformattedBasePrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnformattedBasePrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnformattedBasePrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnformattedPrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnformattedPrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnformattedPrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnformattedRecurrencePrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnformattedRecurrencePrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnformattedRecurrencePrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1087,39 +1087,39 @@ pub const IStorePrice2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UnformattedBasePrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UnformattedPrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UnformattedRecurrencePrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UnformattedBasePrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UnformattedPrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UnformattedRecurrencePrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreProduct = extern struct {
     vtable: *const VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProductKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1130,8 +1130,8 @@ pub const IStoreProduct = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getKeywords(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1166,8 +1166,8 @@ pub const IStoreProduct = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1196,8 +1196,8 @@ pub const IStoreProduct = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInAppOfferToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInAppOfferToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InAppOfferToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1214,30 +1214,30 @@ pub const IStoreProduct = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StoreId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ProductKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StoreId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProductKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_HasDigitalDownload: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Keywords: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Keywords: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Images: *const fn(self: *anyopaque, _r: **IVectorView(StoreImage)) callconv(.winapi) HRESULT,
         get_Videos: *const fn(self: *anyopaque, _r: **IVectorView(StoreVideo)) callconv(.winapi) HRESULT,
         get_Skus: *const fn(self: *anyopaque, _r: **IVectorView(StoreSku)) callconv(.winapi) HRESULT,
         get_IsInUserCollection: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Price: *const fn(self: *anyopaque, _r: **StorePrice) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinkUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         GetIsAnySkuInstalledAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        get_InAppOfferToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InAppOfferToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreProductOptions = extern struct {
     vtable: *const VTable,
-    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ActionFilters(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1254,13 +1254,13 @@ pub const IStoreProductOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ActionFilters: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ActionFilters: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreProductPagedQueryResult = extern struct {
     vtable: *const VTable,
-    pub fn getProducts(self: *@This()) core.HResult!*IMapView(HSTRING,StoreProduct) {
-        var _r: *IMapView(HSTRING,StoreProduct) = undefined;
+    pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
+        var _r: *IMapView(?HSTRING,StoreProduct) = undefined;
         const _c = self.vtable.get_Products(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1295,7 +1295,7 @@ pub const IStoreProductPagedQueryResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Products: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,StoreProduct)) callconv(.winapi) HRESULT,
+        get_Products: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,StoreProduct)) callconv(.winapi) HRESULT,
         get_HasMoreResults: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
         GetNextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StoreProductPagedQueryResult)) callconv(.winapi) HRESULT,
@@ -1303,8 +1303,8 @@ pub const IStoreProductPagedQueryResult = extern struct {
 };
 pub const IStoreProductQueryResult = extern struct {
     vtable: *const VTable,
-    pub fn getProducts(self: *@This()) core.HResult!*IMapView(HSTRING,StoreProduct) {
-        var _r: *IMapView(HSTRING,StoreProduct) = undefined;
+    pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
+        var _r: *IMapView(?HSTRING,StoreProduct) = undefined;
         const _c = self.vtable.get_Products(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1327,7 +1327,7 @@ pub const IStoreProductQueryResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Products: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,StoreProduct)) callconv(.winapi) HRESULT,
+        get_Products: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,StoreProduct)) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
     };
 };
@@ -1363,23 +1363,23 @@ pub const IStoreProductResult = extern struct {
 };
 pub const IStorePurchaseProperties = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExtendedJsonData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExtendedJsonData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExtendedJsonData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1395,15 +1395,15 @@ pub const IStorePurchaseProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ExtendedJsonData: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ExtendedJsonData: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePurchasePropertiesFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), name: HSTRING) core.HResult!*StorePurchaseProperties {
+    pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*StorePurchaseProperties {
         var _r: *StorePurchaseProperties = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1421,7 +1421,7 @@ pub const IStorePurchasePropertiesFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, name: HSTRING, _r: **StorePurchaseProperties) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, name: ?HSTRING, _r: **StorePurchaseProperties) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePurchaseResult = extern struct {
@@ -1456,14 +1456,14 @@ pub const IStorePurchaseResult = extern struct {
 };
 pub const IStoreQueueItem = extern struct {
     vtable: *const VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1512,8 +1512,8 @@ pub const IStoreQueueItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProductId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProductId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_InstallKind: *const fn(self: *anyopaque, _r: *StoreQueueItemKind) callconv(.winapi) HRESULT,
         GetCurrentStatus: *const fn(self: *anyopaque, _r: **StoreQueueItemStatus) callconv(.winapi) HRESULT,
         add_Completed: *const fn(self: *anyopaque, handler: *TypedEventHandler(StoreQueueItem,StoreQueueItemCompletedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1634,8 +1634,8 @@ pub const IStoreRateAndReviewResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1665,14 +1665,14 @@ pub const IStoreRateAndReviewResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_WasUpdated: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *StoreRateAndReviewStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreRequestHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn SendRequestAsync(self: *@This(), context: *StoreContext, requestKind: u32, parametersAsJson: HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
+    pub fn SendRequestAsync(self: *@This(), context: *StoreContext, requestKind: u32, parametersAsJson: ?HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
         var _r: *IAsyncOperation(StoreSendRequestResult) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), context, requestKind, parametersAsJson, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1690,13 +1690,13 @@ pub const IStoreRequestHelperStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SendRequestAsync: *const fn(self: *anyopaque, context: *StoreContext, requestKind: u32, parametersAsJson: HSTRING, _r: **IAsyncOperation(StoreSendRequestResult)) callconv(.winapi) HRESULT,
+        SendRequestAsync: *const fn(self: *anyopaque, context: *StoreContext, requestKind: u32, parametersAsJson: ?HSTRING, _r: **IAsyncOperation(StoreSendRequestResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreSendRequestResult = extern struct {
     vtable: *const VTable,
-    pub fn getResponse(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1719,7 +1719,7 @@ pub const IStoreSendRequestResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Response: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Response: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
     };
 };
@@ -1748,26 +1748,26 @@ pub const IStoreSendRequestResult2 = extern struct {
 };
 pub const IStoreSku = extern struct {
     vtable: *const VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1778,8 +1778,8 @@ pub const IStoreSku = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCustomDeveloperData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomDeveloperData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomDeveloperData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1808,8 +1808,8 @@ pub const IStoreSku = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedJsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1820,8 +1820,8 @@ pub const IStoreSku = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBundledSkus(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getBundledSkus(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_BundledSkus(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1874,19 +1874,19 @@ pub const IStoreSku = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StoreId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StoreId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsTrial: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_CustomDeveloperData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CustomDeveloperData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Images: *const fn(self: *anyopaque, _r: **IVectorView(StoreImage)) callconv(.winapi) HRESULT,
         get_Videos: *const fn(self: *anyopaque, _r: **IVectorView(StoreVideo)) callconv(.winapi) HRESULT,
         get_Availabilities: *const fn(self: *anyopaque, _r: **IVectorView(StoreAvailability)) callconv(.winapi) HRESULT,
         get_Price: *const fn(self: *anyopaque, _r: **StorePrice) callconv(.winapi) HRESULT,
-        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsInUserCollection: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_BundledSkus: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_BundledSkus: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_CollectionData: *const fn(self: *anyopaque, _r: **StoreCollectionData) callconv(.winapi) HRESULT,
         GetIsInstalledAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
@@ -1984,8 +1984,8 @@ pub const IStoreVideo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoPurposeTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoPurposeTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoPurposeTag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2002,8 +2002,8 @@ pub const IStoreVideo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2027,10 +2027,10 @@ pub const IStoreVideo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_VideoPurposeTag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_VideoPurposeTag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Width: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Height: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PreviewImage: *const fn(self: *anyopaque, _r: **StoreImage) callconv(.winapi) HRESULT,
     };
 };
@@ -2052,7 +2052,7 @@ pub const StoreAcquireLicenseResult = extern struct {
 };
 pub const StoreAppLicense = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSkuStoreId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getSkuStoreId();
     }
@@ -2068,11 +2068,11 @@ pub const StoreAppLicense = extern struct {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getExpirationDate();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
-    pub fn getAddOnLicenses(self: *@This()) core.HResult!*IMapView(HSTRING,StoreLicense) {
+    pub fn getAddOnLicenses(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreLicense) {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getAddOnLicenses();
     }
@@ -2084,7 +2084,7 @@ pub const StoreAppLicense = extern struct {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getIsTrialOwnedByThisUser();
     }
-    pub fn getTrialUniqueId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTrialUniqueId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getTrialUniqueId();
     }
@@ -2102,7 +2102,7 @@ pub const StoreAppLicense = extern struct {
 };
 pub const StoreAvailability = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAvailability = @ptrCast(self);
         return try this.getStoreId();
     }
@@ -2114,7 +2114,7 @@ pub const StoreAvailability = extern struct {
         const this: *IStoreAvailability = @ptrCast(self);
         return try this.getPrice();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAvailability = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
@@ -2138,7 +2138,7 @@ pub const StoreCanAcquireLicenseResult = extern struct {
         const this: *IStoreCanAcquireLicenseResult = @ptrCast(self);
         return try this.getExtendedError();
     }
-    pub fn getLicensableSku(self: *@This()) core.HResult!HSTRING {
+    pub fn getLicensableSku(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreCanAcquireLicenseResult = @ptrCast(self);
         return try this.getLicensableSku();
     }
@@ -2165,11 +2165,11 @@ pub const StoreCollectionData = extern struct {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getIsTrial();
     }
-    pub fn getCampaignId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCampaignId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getCampaignId();
     }
-    pub fn getDeveloperOfferId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeveloperOfferId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getDeveloperOfferId();
     }
@@ -2189,7 +2189,7 @@ pub const StoreCollectionData = extern struct {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getTrialTimeRemaining();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
@@ -2243,11 +2243,11 @@ pub const StoreContext = extern struct {
         const this: *IStoreContext = @ptrCast(self);
         return try this.removeOfflineLicensesChanged(token);
     }
-    pub fn GetCustomerPurchaseIdAsync(self: *@This(), serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetCustomerPurchaseIdAsync(self: *@This(), serviceTicket: ?HSTRING, publisherUserId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetCustomerPurchaseIdAsync(serviceTicket, publisherUserId);
     }
-    pub fn GetCustomerCollectionsIdAsync(self: *@This(), serviceTicket: HSTRING, publisherUserId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetCustomerCollectionsIdAsync(self: *@This(), serviceTicket: ?HSTRING, publisherUserId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetCustomerCollectionsIdAsync(serviceTicket, publisherUserId);
     }
@@ -2259,31 +2259,31 @@ pub const StoreContext = extern struct {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetStoreProductForCurrentAppAsync();
     }
-    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetStoreProductsAsync(productKinds, storeIds);
     }
-    pub fn GetAssociatedStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetAssociatedStoreProductsAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetAssociatedStoreProductsAsync(productKinds);
     }
-    pub fn GetAssociatedStoreProductsWithPagingAsync(self: *@This(), productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
+    pub fn GetAssociatedStoreProductsWithPagingAsync(self: *@This(), productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetAssociatedStoreProductsWithPagingAsync(productKinds, maxItemsToRetrievePerPage);
     }
-    pub fn GetUserCollectionAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetUserCollectionAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetUserCollectionAsync(productKinds);
     }
-    pub fn GetUserCollectionWithPagingAsync(self: *@This(), productKinds: *IIterable(HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
+    pub fn GetUserCollectionWithPagingAsync(self: *@This(), productKinds: *IIterable(?HSTRING), maxItemsToRetrievePerPage: u32) core.HResult!*IAsyncOperation(StoreProductPagedQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetUserCollectionWithPagingAsync(productKinds, maxItemsToRetrievePerPage);
     }
-    pub fn ReportConsumableFulfillmentAsync(self: *@This(), productStoreId: HSTRING, quantity: u32, trackingId: *Guid) core.HResult!*IAsyncOperation(StoreConsumableResult) {
+    pub fn ReportConsumableFulfillmentAsync(self: *@This(), productStoreId: ?HSTRING, quantity: u32, trackingId: *Guid) core.HResult!*IAsyncOperation(StoreConsumableResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.ReportConsumableFulfillmentAsync(productStoreId, quantity, trackingId);
     }
-    pub fn GetConsumableBalanceRemainingAsync(self: *@This(), productStoreId: HSTRING) core.HResult!*IAsyncOperation(StoreConsumableResult) {
+    pub fn GetConsumableBalanceRemainingAsync(self: *@This(), productStoreId: ?HSTRING) core.HResult!*IAsyncOperation(StoreConsumableResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.GetConsumableBalanceRemainingAsync(productStoreId);
     }
@@ -2291,11 +2291,11 @@ pub const StoreContext = extern struct {
         const this: *IStoreContext = @ptrCast(self);
         return try this.AcquireStoreLicenseForOptionalPackageAsync(optionalPackage);
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.RequestPurchaseAsync(storeId);
     }
-    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: ?HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storeId, storePurchaseProperties);
     }
@@ -2311,11 +2311,11 @@ pub const StoreContext = extern struct {
         const this: *IStoreContext = @ptrCast(self);
         return try this.RequestDownloadAndInstallStorePackageUpdatesAsync(storePackageUpdates);
     }
-    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         const this: *IStoreContext = @ptrCast(self);
         return try this.RequestDownloadAndInstallStorePackagesAsync(storeIds);
     }
-    pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
+    pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(?HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
         var this: ?*IStoreContext2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2345,13 +2345,13 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseForOptionalPackageAsync(optionalPackage);
     }
-    pub fn CanAcquireStoreLicenseAsync(self: *@This(), productStoreId: HSTRING) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
+    pub fn CanAcquireStoreLicenseAsync(self: *@This(), productStoreId: ?HSTRING) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseAsync(productStoreId);
     }
-    pub fn GetStoreProductsAsyncWithStoreProductOptions(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsyncWithStoreProductOptions(self: *@This(), productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2363,19 +2363,19 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAssociatedStoreQueueItemsAsync();
     }
-    pub fn GetStoreQueueItemsAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
+    pub fn GetStoreQueueItemsAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStoreQueueItemsAsync(storeIds);
     }
-    pub fn RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(self: *@This(), storeIds: *IIterable(HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(self: *@This(), storeIds: *IIterable(?HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(storeIds, storePackageInstallOptions);
     }
-    pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2387,7 +2387,7 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestUninstallStorePackageAsync(package);
     }
-    pub fn RequestUninstallStorePackageByStoreIdAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
+    pub fn RequestUninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2399,7 +2399,7 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UninstallStorePackageAsync(package);
     }
-    pub fn UninstallStorePackageByStoreIdAsync(self: *@This(), storeId: HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
+    pub fn UninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2417,19 +2417,19 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetInstallOrderForAssociatedStoreQueueItemsAsync(items);
     }
-    pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUserPurchaseHistoryAsync(productKinds);
     }
-    pub fn GetAssociatedStoreProductsByInAppOfferTokenAsync(self: *@This(), inAppOfferTokens: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetAssociatedStoreProductsByInAppOfferTokenAsync(self: *@This(), inAppOfferTokens: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAssociatedStoreProductsByInAppOfferTokenAsync(inAppOfferTokens);
     }
-    pub fn RequestPurchaseByInAppOfferTokenAsync(self: *@This(), inAppOfferToken: HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseByInAppOfferTokenAsync(self: *@This(), inAppOfferToken: ?HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var this: ?*IStoreContext5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2467,7 +2467,7 @@ pub const StoreImage = extern struct {
         const this: *IStoreImage = @ptrCast(self);
         return try this.getUri();
     }
-    pub fn getImagePurposeTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getImagePurposeTag(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreImage = @ptrCast(self);
         return try this.getImagePurposeTag();
     }
@@ -2479,7 +2479,7 @@ pub const StoreImage = extern struct {
         const this: *IStoreImage = @ptrCast(self);
         return try this.getHeight();
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreImage = @ptrCast(self);
         return try this.getCaption();
     }
@@ -2491,7 +2491,7 @@ pub const StoreImage = extern struct {
 };
 pub const StoreLicense = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSkuStoreId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreLicense = @ptrCast(self);
         return try this.getSkuStoreId();
     }
@@ -2503,11 +2503,11 @@ pub const StoreLicense = extern struct {
         const this: *IStoreLicense = @ptrCast(self);
         return try this.getExpirationDate();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreLicense = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
-    pub fn getInAppOfferToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getInAppOfferToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreLicense = @ptrCast(self);
         return try this.getInAppOfferToken();
     }
@@ -2625,7 +2625,7 @@ pub const StorePackageUpdateState = enum(i32) {
     ErrorWiFiRequired = 8,
 };
 pub const StorePackageUpdateStatus = extern struct {
-    PackageFamilyName: HSTRING,
+    PackageFamilyName: ?HSTRING,
     PackageDownloadSizeInBytes: u64,
     PackageBytesDownloaded: u64,
     PackageDownloadProgress: f64,
@@ -2634,11 +2634,11 @@ pub const StorePackageUpdateStatus = extern struct {
 };
 pub const StorePrice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFormattedBasePrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getFormattedBasePrice();
     }
-    pub fn getFormattedPrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getFormattedPrice(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getFormattedPrice();
     }
@@ -2650,27 +2650,27 @@ pub const StorePrice = extern struct {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getSaleEndDate();
     }
-    pub fn getCurrencyCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getCurrencyCode();
     }
-    pub fn getFormattedRecurrencePrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getFormattedRecurrencePrice(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getFormattedRecurrencePrice();
     }
-    pub fn getUnformattedBasePrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnformattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUnformattedBasePrice();
     }
-    pub fn getUnformattedPrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnformattedPrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUnformattedPrice();
     }
-    pub fn getUnformattedRecurrencePrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnformattedRecurrencePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2684,23 +2684,23 @@ pub const StorePrice = extern struct {
 };
 pub const StoreProduct = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getStoreId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getProductKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getProductKind();
     }
@@ -2708,7 +2708,7 @@ pub const StoreProduct = extern struct {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getHasDigitalDownload();
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getKeywords(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getKeywords();
     }
@@ -2732,7 +2732,7 @@ pub const StoreProduct = extern struct {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getPrice();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
@@ -2752,7 +2752,7 @@ pub const StoreProduct = extern struct {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storePurchaseProperties);
     }
-    pub fn getInAppOfferToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getInAppOfferToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getInAppOfferToken();
     }
@@ -2764,7 +2764,7 @@ pub const StoreProduct = extern struct {
 };
 pub const StoreProductOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IStoreProductOptions = @ptrCast(self);
         return try this.getActionFilters();
     }
@@ -2784,7 +2784,7 @@ pub const StoreProductOptions = extern struct {
 };
 pub const StoreProductPagedQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProducts(self: *@This()) core.HResult!*IMapView(HSTRING,StoreProduct) {
+    pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         const this: *IStoreProductPagedQueryResult = @ptrCast(self);
         return try this.getProducts();
     }
@@ -2808,7 +2808,7 @@ pub const StoreProductPagedQueryResult = extern struct {
 };
 pub const StoreProductQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProducts(self: *@This()) core.HResult!*IMapView(HSTRING,StoreProduct) {
+    pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         const this: *IStoreProductQueryResult = @ptrCast(self);
         return try this.getProducts();
     }
@@ -2840,19 +2840,19 @@ pub const StoreProductResult = extern struct {
 };
 pub const StorePurchaseProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
-    pub fn putExtendedJsonData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExtendedJsonData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.putExtendedJsonData(value);
     }
@@ -2863,7 +2863,7 @@ pub const StorePurchaseProperties = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorePurchaseProperties.IID)));
     }
-    pub fn Create(name: HSTRING) core.HResult!*StorePurchaseProperties {
+    pub fn Create(name: ?HSTRING) core.HResult!*StorePurchaseProperties {
         const _f = try @This()._IStorePurchasePropertiesFactoryCache.get();
         return try _f.Create(name);
     }
@@ -2900,11 +2900,11 @@ pub const StorePurchaseStatus = enum(i32) {
 };
 pub const StoreQueueItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreQueueItem = @ptrCast(self);
         return try this.getProductId();
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreQueueItem = @ptrCast(self);
         return try this.getPackageFamilyName();
     }
@@ -3027,7 +3027,7 @@ pub const StoreRateAndReviewResult = extern struct {
         const this: *IStoreRateAndReviewResult = @ptrCast(self);
         return try this.getExtendedError();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreRateAndReviewResult = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
@@ -3056,7 +3056,7 @@ pub const StoreRequestHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn SendRequestAsync(context: *StoreContext, requestKind: u32, parametersAsJson: HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
+    pub fn SendRequestAsync(context: *StoreContext, requestKind: u32, parametersAsJson: ?HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
         const _f = try @This()._IStoreRequestHelperStaticsCache.get();
         return try _f.SendRequestAsync(context, requestKind, parametersAsJson);
     }
@@ -3066,7 +3066,7 @@ pub const StoreRequestHelper = extern struct {
 };
 pub const StoreSendRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResponse(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSendRequestResult = @ptrCast(self);
         return try this.getResponse();
     }
@@ -3088,19 +3088,19 @@ pub const StoreSendRequestResult = extern struct {
 };
 pub const StoreSku = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getStoreId(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getStoreId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getDescription();
     }
@@ -3108,7 +3108,7 @@ pub const StoreSku = extern struct {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getIsTrial();
     }
-    pub fn getCustomDeveloperData(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomDeveloperData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getCustomDeveloperData();
     }
@@ -3128,7 +3128,7 @@ pub const StoreSku = extern struct {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getPrice();
     }
-    pub fn getExtendedJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getExtendedJsonData();
     }
@@ -3136,7 +3136,7 @@ pub const StoreSku = extern struct {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getIsInUserCollection();
     }
-    pub fn getBundledSkus(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getBundledSkus(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getBundledSkus();
     }
@@ -3227,7 +3227,7 @@ pub const StoreVideo = extern struct {
         const this: *IStoreVideo = @ptrCast(self);
         return try this.getUri();
     }
-    pub fn getVideoPurposeTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoPurposeTag(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreVideo = @ptrCast(self);
         return try this.getVideoPurposeTag();
     }
@@ -3239,7 +3239,7 @@ pub const StoreVideo = extern struct {
         const this: *IStoreVideo = @ptrCast(self);
         return try this.getHeight();
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreVideo = @ptrCast(self);
         return try this.getCaption();
     }

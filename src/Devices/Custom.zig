@@ -20,11 +20,11 @@ pub const CustomDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(classGuid: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(classGuid: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._ICustomDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(classGuid);
     }
-    pub fn FromIdAsync(deviceId: HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
         const _f = try @This()._ICustomDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, desiredAccess, sharingMode);
     }
@@ -90,13 +90,13 @@ pub const ICustomDevice = extern struct {
 };
 pub const ICustomDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), classGuid: *Guid) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), classGuid: *Guid) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), classGuid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
         var _r: *IAsyncOperation(CustomDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, desiredAccess, sharingMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -114,8 +114,8 @@ pub const ICustomDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, classGuid: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode, _r: **IAsyncOperation(CustomDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, classGuid: *Guid, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode, _r: **IAsyncOperation(CustomDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIOControlCode = extern struct {

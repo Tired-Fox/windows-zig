@@ -383,7 +383,7 @@ pub const Control = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultStyleKey(value);
     }
-    pub fn GetTemplateChild(self: *@This(), childName: HSTRING) core.HResult!*DependencyObject {
+    pub fn GetTemplateChild(self: *@This(), childName: ?HSTRING) core.HResult!*DependencyObject {
         var this: ?*IControlProtected = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1002,11 +1002,11 @@ pub const Button = extern struct {
 };
 pub const AppBarButton = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBarButton = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBarButton = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -1030,13 +1030,13 @@ pub const AppBarButton = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabelPosition(value);
     }
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBarButton4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBarButton4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1249,11 +1249,11 @@ pub const AppBarSeparator = extern struct {
 };
 pub const AppBarToggleButton = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBarToggleButton = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBarToggleButton = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -1277,13 +1277,13 @@ pub const AppBarToggleButton = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabelPosition(value);
     }
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBarToggleButton4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBarToggleButton4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1408,11 +1408,11 @@ pub const ItemsControl = extern struct {
         const this: *IItemsControl = @ptrCast(self);
         return try this.putItemsPanel(value);
     }
-    pub fn getDisplayMemberPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMemberPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IItemsControl = @ptrCast(self);
         return try this.getDisplayMemberPath();
     }
-    pub fn putDisplayMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IItemsControl = @ptrCast(self);
         return try this.putDisplayMemberPath(value);
     }
@@ -1637,19 +1637,19 @@ pub const AutoSuggestBox = extern struct {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.putIsSuggestionListOpen(value);
     }
-    pub fn getTextMemberPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextMemberPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.getTextMemberPath();
     }
-    pub fn putTextMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.putTextMemberPath(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.putText(value);
     }
@@ -1661,11 +1661,11 @@ pub const AutoSuggestBox = extern struct {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.putUpdateTextOnSelect(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAutoSuggestBox = @ptrCast(self);
         return try this.putPlaceholderText(value);
     }
@@ -1825,7 +1825,7 @@ pub const AutoSuggestBox = extern struct {
 };
 pub const AutoSuggestBoxQuerySubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAutoSuggestBoxQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
@@ -2301,19 +2301,19 @@ pub const CalendarDatePicker = extern struct {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putIsCalendarOpen(value);
     }
-    pub fn getDateFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDateFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.getDateFormat();
     }
-    pub fn putDateFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDateFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putDateFormat(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putPlaceholderText(value);
     }
@@ -2381,19 +2381,19 @@ pub const CalendarDatePicker = extern struct {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putFirstDayOfWeek(value);
     }
-    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.getDayOfWeekFormat();
     }
-    pub fn putDayOfWeekFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayOfWeekFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putDayOfWeekFormat(value);
     }
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.getCalendarIdentifier();
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarDatePicker = @ptrCast(self);
         return try this.putCalendarIdentifier(value);
     }
@@ -2584,19 +2584,19 @@ pub const CalendarDatePickerDateChangedEventArgs = extern struct {
 };
 pub const CalendarView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarView = @ptrCast(self);
         return try this.getCalendarIdentifier();
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarView = @ptrCast(self);
         return try this.putCalendarIdentifier(value);
     }
-    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarView = @ptrCast(self);
         return try this.getDayOfWeekFormat();
     }
-    pub fn putDayOfWeekFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayOfWeekFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendarView = @ptrCast(self);
         return try this.putDayOfWeekFormat(value);
     }
@@ -4634,13 +4634,13 @@ pub const ComboBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IComboBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IComboBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4700,13 +4700,13 @@ pub const ComboBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEditable(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IComboBox6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4854,7 +4854,7 @@ pub const ComboBoxSelectionChangedTrigger = enum(i32) {
 };
 pub const ComboBoxTextSubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IComboBoxTextSubmittedEventArgs = @ptrCast(self);
         return try this.getText();
     }
@@ -5125,19 +5125,19 @@ pub const ContentDialog = extern struct {
         const this: *IContentDialog = @ptrCast(self);
         return try this.putFullSizeDesired(value);
     }
-    pub fn getPrimaryButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrimaryButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentDialog = @ptrCast(self);
         return try this.getPrimaryButtonText();
     }
-    pub fn putPrimaryButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrimaryButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContentDialog = @ptrCast(self);
         return try this.putPrimaryButtonText(value);
     }
-    pub fn getSecondaryButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSecondaryButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentDialog = @ptrCast(self);
         return try this.getSecondaryButtonText();
     }
-    pub fn putSecondaryButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContentDialog = @ptrCast(self);
         return try this.putSecondaryButtonText(value);
     }
@@ -5237,13 +5237,13 @@ pub const ContentDialog = extern struct {
         const this: *IContentDialog = @ptrCast(self);
         return try this.ShowAsync();
     }
-    pub fn getCloseButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getCloseButtonText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentDialog2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCloseButtonText();
     }
-    pub fn putCloseButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCloseButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6199,11 +6199,11 @@ pub const DatePicker = extern struct {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putHeaderTemplate(value);
     }
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePicker = @ptrCast(self);
         return try this.getCalendarIdentifier();
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putCalendarIdentifier(value);
     }
@@ -6239,27 +6239,27 @@ pub const DatePicker = extern struct {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putYearVisible(value);
     }
-    pub fn getDayFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDayFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePicker = @ptrCast(self);
         return try this.getDayFormat();
     }
-    pub fn putDayFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putDayFormat(value);
     }
-    pub fn getMonthFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getMonthFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePicker = @ptrCast(self);
         return try this.getMonthFormat();
     }
-    pub fn putMonthFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMonthFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putMonthFormat(value);
     }
-    pub fn getYearFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getYearFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePicker = @ptrCast(self);
         return try this.getYearFormat();
     }
-    pub fn putYearFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYearFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePicker = @ptrCast(self);
         return try this.putYearFormat(value);
     }
@@ -6410,11 +6410,11 @@ pub const DatePicker = extern struct {
 };
 pub const DatePickerFlyout = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePickerFlyout = @ptrCast(self);
         return try this.getCalendarIdentifier();
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePickerFlyout = @ptrCast(self);
         return try this.putCalendarIdentifier(value);
     }
@@ -6478,37 +6478,37 @@ pub const DatePickerFlyout = extern struct {
         const this: *IDatePickerFlyout = @ptrCast(self);
         return try this.ShowAtAsync(target);
     }
-    pub fn getDayFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDayFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDayFormat();
     }
-    pub fn putDayFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDayFormat(value);
     }
-    pub fn getMonthFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getMonthFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMonthFormat();
     }
-    pub fn putMonthFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMonthFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMonthFormat(value);
     }
-    pub fn getYearFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getYearFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYearFormat();
     }
-    pub fn putYearFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYearFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6572,35 +6572,35 @@ pub const DatePickerFlyout = extern struct {
 };
 pub const DatePickerFlyoutItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrimaryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrimaryText(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePickerFlyoutItem = @ptrCast(self);
         return try this.getPrimaryText();
     }
-    pub fn putPrimaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrimaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePickerFlyoutItem = @ptrCast(self);
         return try this.putPrimaryText(value);
     }
-    pub fn getSecondaryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSecondaryText(self: *@This()) core.HResult!?HSTRING {
         const this: *IDatePickerFlyoutItem = @ptrCast(self);
         return try this.getSecondaryText();
     }
-    pub fn putSecondaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDatePickerFlyoutItem = @ptrCast(self);
         return try this.putSecondaryText(value);
     }
-    pub fn GetCustomProperty(self: *@This(), name: HSTRING) core.HResult!*ICustomProperty {
+    pub fn GetCustomProperty(self: *@This(), name: ?HSTRING) core.HResult!*ICustomProperty {
         var this: ?*ICustomPropertyProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCustomProperty(name);
     }
-    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
+    pub fn GetIndexedProperty(self: *@This(), name: ?HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
         var this: ?*ICustomPropertyProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIndexedProperty(name, ty);
     }
-    pub fn GetStringRepresentation(self: *@This()) core.HResult!HSTRING {
+    pub fn GetStringRepresentation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICustomPropertyProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7055,11 +7055,11 @@ pub const FocusEngagedEventArgs = extern struct {
 };
 pub const FontIcon = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IFontIcon = @ptrCast(self);
         return try this.getGlyph();
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFontIcon = @ptrCast(self);
         return try this.putGlyph(value);
     }
@@ -7166,11 +7166,11 @@ pub const FontIcon = extern struct {
 };
 pub const FontIconSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IFontIconSource = @ptrCast(self);
         return try this.getGlyph();
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFontIconSource = @ptrCast(self);
         return try this.putGlyph(value);
     }
@@ -7343,11 +7343,11 @@ pub const Frame = extern struct {
         const this: *IFrame = @ptrCast(self);
         return try this.NavigateWithParameter(sourcePageType, parameter);
     }
-    pub fn GetNavigationState(self: *@This()) core.HResult!HSTRING {
+    pub fn GetNavigationState(self: *@This()) core.HResult!?HSTRING {
         const this: *IFrame = @ptrCast(self);
         return try this.GetNavigationState();
     }
-    pub fn SetNavigationState(self: *@This(), navigationState: HSTRING) core.HResult!void {
+    pub fn SetNavigationState(self: *@This(), navigationState: ?HSTRING) core.HResult!void {
         const this: *IFrame = @ptrCast(self);
         return try this.SetNavigationState(navigationState);
     }
@@ -7375,7 +7375,7 @@ pub const Frame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GoBackWithTransitionInfoOverride(transitionInfoOverride);
     }
-    pub fn SetNavigationStateWithSuppressNavigate(self: *@This(), navigationState: HSTRING, suppressNavigate: bool) core.HResult!void {
+    pub fn SetNavigationStateWithSuppressNavigate(self: *@This(), navigationState: ?HSTRING, suppressNavigate: bool) core.HResult!void {
         var this: ?*IFrame4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7934,13 +7934,13 @@ pub const ListViewBase = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDragSource();
     }
-    pub fn TryStartConnectedAnimationAsync(self: *@This(), animation: *ConnectedAnimation, item: *IInspectable, elementName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryStartConnectedAnimationAsync(self: *@This(), animation: *ConnectedAnimation, item: *IInspectable, elementName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IListViewBase6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStartConnectedAnimationAsync(animation, item, elementName);
     }
-    pub fn PrepareConnectedAnimation(self: *@This(), key: HSTRING, item: *IInspectable, elementName: HSTRING) core.HResult!*ConnectedAnimation {
+    pub fn PrepareConnectedAnimation(self: *@This(), key: ?HSTRING, item: *IInspectable, elementName: ?HSTRING) core.HResult!*ConnectedAnimation {
         var this: ?*IListViewBase6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8458,7 +8458,7 @@ pub const HandwritingView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextSubmitted(token);
     }
-    pub fn GetCandidates(self: *@This(), candidatesSessionId: u32) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetCandidates(self: *@This(), candidatesSessionId: u32) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IHandwritingView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -9156,13 +9156,13 @@ pub const IAppBar4 = extern struct {
 };
 pub const IAppBarButton = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -9188,8 +9188,8 @@ pub const IAppBarButton = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **IconElement) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *IconElement) callconv(.winapi) HRESULT,
     };
@@ -9224,13 +9224,13 @@ pub const IAppBarButton3 = extern struct {
 };
 pub const IAppBarButton4 = extern struct {
     vtable: *const VTable,
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyboardAcceleratorTextOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -9246,8 +9246,8 @@ pub const IAppBarButton4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppBarButton5 = extern struct {
@@ -9714,13 +9714,13 @@ pub const IAppBarStatics4 = extern struct {
 };
 pub const IAppBarToggleButton = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -9746,8 +9746,8 @@ pub const IAppBarToggleButton = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **IconElement) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *IconElement) callconv(.winapi) HRESULT,
     };
@@ -9782,13 +9782,13 @@ pub const IAppBarToggleButton3 = extern struct {
 };
 pub const IAppBarToggleButton4 = extern struct {
     vtable: *const VTable,
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyboardAcceleratorTextOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -9804,8 +9804,8 @@ pub const IAppBarToggleButton4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppBarToggleButton5 = extern struct {
@@ -9973,23 +9973,23 @@ pub const IAutoSuggestBox = extern struct {
         const _c = self.vtable.put_IsSuggestionListOpen(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextMemberPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextMemberPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextMemberPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTextMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TextMemberPath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -10003,13 +10003,13 @@ pub const IAutoSuggestBox = extern struct {
         const _c = self.vtable.put_UpdateTextOnSelect(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -10079,14 +10079,14 @@ pub const IAutoSuggestBox = extern struct {
         put_MaxSuggestionListHeight: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_IsSuggestionListOpen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSuggestionListOpen: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_TextMemberPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TextMemberPath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TextMemberPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TextMemberPath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_UpdateTextOnSelect: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_UpdateTextOnSelect: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Header: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_AutoMaximizeSuggestionArea: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -10197,8 +10197,8 @@ pub const IAutoSuggestBox4 = extern struct {
 };
 pub const IAutoSuggestBoxQuerySubmittedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -10221,7 +10221,7 @@ pub const IAutoSuggestBoxQuerySubmittedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ChosenSuggestion: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
@@ -11033,23 +11033,23 @@ pub const ICalendarDatePicker = extern struct {
         const _c = self.vtable.put_IsCalendarOpen(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDateFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDateFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DateFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDateFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDateFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DateFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -11133,23 +11133,23 @@ pub const ICalendarDatePicker = extern struct {
         const _c = self.vtable.put_FirstDayOfWeek(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DayOfWeekFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDayOfWeekFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayOfWeekFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DayOfWeekFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CalendarIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -11237,10 +11237,10 @@ pub const ICalendarDatePicker = extern struct {
         put_Date: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_IsCalendarOpen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsCalendarOpen: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_DateFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DateFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DateFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DateFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Header: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
@@ -11257,10 +11257,10 @@ pub const ICalendarDatePicker = extern struct {
         put_DisplayMode: *const fn(self: *anyopaque, value: CalendarViewDisplayMode) callconv(.winapi) HRESULT,
         get_FirstDayOfWeek: *const fn(self: *anyopaque, _r: *DayOfWeek) callconv(.winapi) HRESULT,
         put_FirstDayOfWeek: *const fn(self: *anyopaque, value: DayOfWeek) callconv(.winapi) HRESULT,
-        get_DayOfWeekFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DayOfWeekFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CalendarIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DayOfWeekFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DayOfWeekFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CalendarIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsOutOfScopeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsOutOfScopeEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsGroupLabelVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -11562,23 +11562,23 @@ pub const ICalendarDatePickerStatics3 = extern struct {
 };
 pub const ICalendarView = extern struct {
     vtable: *const VTable,
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CalendarIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDayOfWeekFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DayOfWeekFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDayOfWeekFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayOfWeekFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DayOfWeekFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -12104,10 +12104,10 @@ pub const ICalendarView = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CalendarIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DayOfWeekFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DayOfWeekFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CalendarIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DayOfWeekFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DayOfWeekFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsGroupLabelVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsGroupLabelVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_DisplayMode: *const fn(self: *anyopaque, _r: *CalendarViewDisplayMode) callconv(.winapi) HRESULT,
@@ -14323,13 +14323,13 @@ pub const IComboBox2 = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -14349,8 +14349,8 @@ pub const IComboBox2 = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IComboBox3 = extern struct {
@@ -14455,13 +14455,13 @@ pub const IComboBox6 = extern struct {
         const _c = self.vtable.put_IsEditable(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -14508,8 +14508,8 @@ pub const IComboBox6 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         put_IsEditable: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TextBoxStyle: *const fn(self: *anyopaque, _r: **Style) callconv(.winapi) HRESULT,
         put_TextBoxStyle: *const fn(self: *anyopaque, value: *Style) callconv(.winapi) HRESULT,
         get_Description: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -14795,8 +14795,8 @@ pub const IComboBoxStatics6 = extern struct {
 };
 pub const IComboBoxTextSubmittedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -14823,7 +14823,7 @@ pub const IComboBoxTextSubmittedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Handled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Handled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
@@ -15515,23 +15515,23 @@ pub const IContentDialog = extern struct {
         const _c = self.vtable.put_FullSizeDesired(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPrimaryButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrimaryButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrimaryButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrimaryButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrimaryButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrimaryButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSecondaryButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecondaryButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecondaryButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSecondaryButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SecondaryButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -15673,10 +15673,10 @@ pub const IContentDialog = extern struct {
         put_TitleTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
         get_FullSizeDesired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_FullSizeDesired: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_PrimaryButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrimaryButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SecondaryButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SecondaryButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PrimaryButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrimaryButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SecondaryButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SecondaryButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_PrimaryButtonCommand: *const fn(self: *anyopaque, _r: **ICommand) callconv(.winapi) HRESULT,
         put_PrimaryButtonCommand: *const fn(self: *anyopaque, value: *ICommand) callconv(.winapi) HRESULT,
         get_SecondaryButtonCommand: *const fn(self: *anyopaque, _r: **ICommand) callconv(.winapi) HRESULT,
@@ -15705,13 +15705,13 @@ pub const IContentDialog = extern struct {
 };
 pub const IContentDialog2 = extern struct {
     vtable: *const VTable,
-    pub fn getCloseButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCloseButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CloseButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCloseButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCloseButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CloseButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -15797,8 +15797,8 @@ pub const IContentDialog2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CloseButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CloseButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CloseButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CloseButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CloseButtonCommand: *const fn(self: *anyopaque, _r: **ICommand) callconv(.winapi) HRESULT,
         put_CloseButtonCommand: *const fn(self: *anyopaque, value: *ICommand) callconv(.winapi) HRESULT,
         get_CloseButtonCommandParameter: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -17708,7 +17708,7 @@ pub const IControlProtected = extern struct {
         const _c = self.vtable.put_DefaultStyleKey(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetTemplateChild(self: *@This(), childName: HSTRING) core.HResult!*DependencyObject {
+    pub fn GetTemplateChild(self: *@This(), childName: ?HSTRING) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.GetTemplateChild(@ptrCast(self), childName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -17728,7 +17728,7 @@ pub const IControlProtected = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_DefaultStyleKey: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_DefaultStyleKey: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        GetTemplateChild: *const fn(self: *anyopaque, childName: HSTRING, _r: **DependencyObject) callconv(.winapi) HRESULT,
+        GetTemplateChild: *const fn(self: *anyopaque, childName: ?HSTRING, _r: **DependencyObject) callconv(.winapi) HRESULT,
     };
 };
 pub const IControlStatics = extern struct {
@@ -18291,13 +18291,13 @@ pub const IDatePicker = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CalendarIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -18341,33 +18341,33 @@ pub const IDatePicker = extern struct {
         const _c = self.vtable.put_YearVisible(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDayFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDayFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DayFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDayFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DayFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMonthFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMonthFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MonthFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMonthFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMonthFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MonthFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getYearFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYearFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YearFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putYearFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYearFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_YearFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -18427,8 +18427,8 @@ pub const IDatePicker = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CalendarIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CalendarIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Date: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_Date: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_DayVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -18437,12 +18437,12 @@ pub const IDatePicker = extern struct {
         put_MonthVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_YearVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_YearVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_DayFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DayFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MonthFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MonthFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_YearFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_YearFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DayFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DayFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MonthFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MonthFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_YearFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_YearFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_MinYear: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_MinYear: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_MaxYear: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
@@ -18546,13 +18546,13 @@ pub const IDatePickerFactory = extern struct {
 };
 pub const IDatePickerFlyout = extern struct {
     vtable: *const VTable,
-    pub fn getCalendarIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCalendarIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCalendarIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CalendarIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -18644,8 +18644,8 @@ pub const IDatePickerFlyout = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CalendarIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CalendarIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CalendarIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Date: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_Date: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_DayVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -18665,33 +18665,33 @@ pub const IDatePickerFlyout = extern struct {
 };
 pub const IDatePickerFlyout2 = extern struct {
     vtable: *const VTable,
-    pub fn getDayFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDayFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DayFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDayFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDayFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DayFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMonthFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMonthFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MonthFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMonthFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMonthFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MonthFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getYearFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYearFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YearFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putYearFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYearFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_YearFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -18707,33 +18707,33 @@ pub const IDatePickerFlyout2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DayFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DayFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MonthFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MonthFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_YearFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_YearFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DayFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DayFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MonthFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MonthFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_YearFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_YearFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDatePickerFlyoutItem = extern struct {
     vtable: *const VTable,
-    pub fn getPrimaryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrimaryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrimaryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrimaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrimaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrimaryText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSecondaryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecondaryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecondaryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSecondaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SecondaryText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -18749,10 +18749,10 @@ pub const IDatePickerFlyoutItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrimaryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrimaryText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SecondaryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SecondaryText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PrimaryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrimaryText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SecondaryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SecondaryText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDatePickerFlyoutItemStatics = extern struct {
@@ -19714,13 +19714,13 @@ pub const IFocusEngagedEventArgs2 = extern struct {
 };
 pub const IFontIcon = extern struct {
     vtable: *const VTable,
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Glyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Glyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -19776,8 +19776,8 @@ pub const IFontIcon = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Glyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Glyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Glyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Glyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FontSize: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_FontSize: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_FontFamily: *const fn(self: *anyopaque, _r: **FontFamily) callconv(.winapi) HRESULT,
@@ -19869,13 +19869,13 @@ pub const IFontIconFactory = extern struct {
 };
 pub const IFontIconSource = extern struct {
     vtable: *const VTable,
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Glyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Glyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -19951,8 +19951,8 @@ pub const IFontIconSource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Glyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Glyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Glyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Glyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FontSize: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_FontSize: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_FontFamily: *const fn(self: *anyopaque, _r: **FontFamily) callconv(.winapi) HRESULT,
@@ -20252,13 +20252,13 @@ pub const IFrame = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNavigationState(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNavigationState(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNavigationState(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetNavigationState(self: *@This(), navigationState: HSTRING) core.HResult!void {
+    pub fn SetNavigationState(self: *@This(), navigationState: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetNavigationState(@ptrCast(self), navigationState);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -20293,8 +20293,8 @@ pub const IFrame = extern struct {
         GoBack: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         GoForward: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Navigate: *const fn(self: *anyopaque, sourcePageType: TypeName, parameter: *IInspectable, _r: *bool) callconv(.winapi) HRESULT,
-        GetNavigationState: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetNavigationState: *const fn(self: *anyopaque, navigationState: HSTRING) callconv(.winapi) HRESULT,
+        GetNavigationState: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetNavigationState: *const fn(self: *anyopaque, navigationState: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFrame2 = extern struct {
@@ -20357,7 +20357,7 @@ pub const IFrame3 = extern struct {
 };
 pub const IFrame4 = extern struct {
     vtable: *const VTable,
-    pub fn SetNavigationState(self: *@This(), navigationState: HSTRING, suppressNavigate: bool) core.HResult!void {
+    pub fn SetNavigationState(self: *@This(), navigationState: ?HSTRING, suppressNavigate: bool) core.HResult!void {
         const _c = self.vtable.SetNavigationState(@ptrCast(self), navigationState, suppressNavigate);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -20373,7 +20373,7 @@ pub const IFrame4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetNavigationState: *const fn(self: *anyopaque, navigationState: HSTRING, suppressNavigate: bool) callconv(.winapi) HRESULT,
+        SetNavigationState: *const fn(self: *anyopaque, navigationState: ?HSTRING, suppressNavigate: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IFrame5 = extern struct {
@@ -21471,8 +21471,8 @@ pub const IHandwritingView2 = extern struct {
         const _c = self.vtable.remove_TextSubmitted(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetCandidates(self: *@This(), candidatesSessionId: u32) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetCandidates(self: *@This(), candidatesSessionId: u32) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetCandidates(@ptrCast(self), candidatesSessionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -21503,7 +21503,7 @@ pub const IHandwritingView2 = extern struct {
         remove_CandidatesChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_TextSubmitted: *const fn(self: *anyopaque, handler: *TypedEventHandler(HandwritingView,HandwritingViewTextSubmittedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_TextSubmitted: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        GetCandidates: *const fn(self: *anyopaque, candidatesSessionId: u32, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetCandidates: *const fn(self: *anyopaque, candidatesSessionId: u32, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         SelectCandidate: *const fn(self: *anyopaque, candidatesSessionId: u32, selectedCandidateIndex: u32) callconv(.winapi) HRESULT,
     };
 };
@@ -24397,13 +24397,13 @@ pub const IItemsControl = extern struct {
         const _c = self.vtable.put_ItemsPanel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayMemberPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMemberPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMemberPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMemberPath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -24486,8 +24486,8 @@ pub const IItemsControl = extern struct {
         put_ItemTemplateSelector: *const fn(self: *anyopaque, value: *DataTemplateSelector) callconv(.winapi) HRESULT,
         get_ItemsPanel: *const fn(self: *anyopaque, _r: **ItemsPanelTemplate) callconv(.winapi) HRESULT,
         put_ItemsPanel: *const fn(self: *anyopaque, value: *ItemsPanelTemplate) callconv(.winapi) HRESULT,
-        get_DisplayMemberPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMemberPath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMemberPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMemberPath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ItemContainerStyle: *const fn(self: *anyopaque, _r: **Style) callconv(.winapi) HRESULT,
         put_ItemContainerStyle: *const fn(self: *anyopaque, value: *Style) callconv(.winapi) HRESULT,
         get_ItemContainerStyleSelector: *const fn(self: *anyopaque, _r: **StyleSelector) callconv(.winapi) HRESULT,
@@ -25643,13 +25643,13 @@ pub const IListPickerFlyout = extern struct {
         const _c = self.vtable.put_ItemTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayMemberPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMemberPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMemberPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMemberPath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -25693,13 +25693,13 @@ pub const IListPickerFlyout = extern struct {
         const _c = self.vtable.put_SelectedValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSelectedValuePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedValuePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedValuePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSelectedValuePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedValuePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedValuePath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -25741,8 +25741,8 @@ pub const IListPickerFlyout = extern struct {
         put_ItemsSource: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_ItemTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_ItemTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_DisplayMemberPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMemberPath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMemberPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMemberPath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionMode: *const fn(self: *anyopaque, _r: *ListPickerFlyoutSelectionMode) callconv(.winapi) HRESULT,
         put_SelectionMode: *const fn(self: *anyopaque, value: ListPickerFlyoutSelectionMode) callconv(.winapi) HRESULT,
         get_SelectedIndex: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -25751,8 +25751,8 @@ pub const IListPickerFlyout = extern struct {
         put_SelectedItem: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_SelectedValue: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_SelectedValue: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_SelectedValuePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SelectedValuePath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedValuePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SelectedValuePath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectedItems: *const fn(self: *anyopaque, _r: **IVector(IInspectable)) callconv(.winapi) HRESULT,
         add_ItemsPicked: *const fn(self: *anyopaque, handler: *TypedEventHandler(ListPickerFlyout,ItemsPickedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ItemsPicked: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -26291,13 +26291,13 @@ pub const IListViewBase5 = extern struct {
 };
 pub const IListViewBase6 = extern struct {
     vtable: *const VTable,
-    pub fn TryStartConnectedAnimationAsync(self: *@This(), animation: *ConnectedAnimation, item: *IInspectable, elementName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryStartConnectedAnimationAsync(self: *@This(), animation: *ConnectedAnimation, item: *IInspectable, elementName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryStartConnectedAnimationAsync(@ptrCast(self), animation, item, elementName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PrepareConnectedAnimation(self: *@This(), key: HSTRING, item: *IInspectable, elementName: HSTRING) core.HResult!*ConnectedAnimation {
+    pub fn PrepareConnectedAnimation(self: *@This(), key: ?HSTRING, item: *IInspectable, elementName: ?HSTRING) core.HResult!*ConnectedAnimation {
         var _r: *ConnectedAnimation = undefined;
         const _c = self.vtable.PrepareConnectedAnimation(@ptrCast(self), key, item, elementName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -26315,8 +26315,8 @@ pub const IListViewBase6 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryStartConnectedAnimationAsync: *const fn(self: *anyopaque, animation: *ConnectedAnimation, item: *IInspectable, elementName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        PrepareConnectedAnimation: *const fn(self: *anyopaque, key: HSTRING, item: *IInspectable, elementName: HSTRING, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
+        TryStartConnectedAnimationAsync: *const fn(self: *anyopaque, animation: *ConnectedAnimation, item: *IInspectable, elementName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        PrepareConnectedAnimation: *const fn(self: *anyopaque, key: ?HSTRING, item: *IInspectable, elementName: ?HSTRING, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
     };
 };
 pub const IListViewBaseFactory = extern struct {
@@ -26727,13 +26727,13 @@ pub const IListViewPersistenceHelper = extern struct {
 };
 pub const IListViewPersistenceHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetRelativeScrollPosition(self: *@This(), listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetRelativeScrollPosition(self: *@This(), listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetRelativeScrollPosition(@ptrCast(self), listViewBase, itemToKeyHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetRelativeScrollPositionAsync(self: *@This(), listViewBase: *ListViewBase, relativeScrollPosition: HSTRING, keyToItemHandler: *ListViewKeyToItemHandler) core.HResult!*IAsyncAction {
+    pub fn SetRelativeScrollPositionAsync(self: *@This(), listViewBase: *ListViewBase, relativeScrollPosition: ?HSTRING, keyToItemHandler: *ListViewKeyToItemHandler) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetRelativeScrollPositionAsync(@ptrCast(self), listViewBase, relativeScrollPosition, keyToItemHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -26751,8 +26751,8 @@ pub const IListViewPersistenceHelperStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetRelativeScrollPosition: *const fn(self: *anyopaque, listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetRelativeScrollPositionAsync: *const fn(self: *anyopaque, listViewBase: *ListViewBase, relativeScrollPosition: HSTRING, keyToItemHandler: *ListViewKeyToItemHandler, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetRelativeScrollPosition: *const fn(self: *anyopaque, listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetRelativeScrollPositionAsync: *const fn(self: *anyopaque, listViewBase: *ListViewBase, relativeScrollPosition: ?HSTRING, keyToItemHandler: *ListViewKeyToItemHandler, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaElement = extern struct {
@@ -27135,27 +27135,27 @@ pub const IMediaElement = extern struct {
         const _c = self.vtable.Pause(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CanPlayType(self: *@This(), ty: HSTRING) core.HResult!MediaCanPlayResponse {
+    pub fn CanPlayType(self: *@This(), ty: ?HSTRING) core.HResult!MediaCanPlayResponse {
         var _r: MediaCanPlayResponse = undefined;
         const _c = self.vtable.CanPlayType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetSource(self: *@This(), stream: *IRandomAccessStream, mimeType: HSTRING) core.HResult!void {
+    pub fn SetSource(self: *@This(), stream: *IRandomAccessStream, mimeType: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetSource(@ptrCast(self), stream, mimeType);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetAudioStreamLanguage(self: *@This(), index: *IReference(i32)) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAudioStreamLanguage(self: *@This(), index: *IReference(i32)) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioStreamLanguage(@ptrCast(self), index, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddAudioEffect(self: *@This(), effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddAudioEffect(@ptrCast(self), effectID, effectOptional, effectConfiguration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddVideoEffect(self: *@This(), effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddVideoEffect(@ptrCast(self), effectID, effectOptional, effectConfiguration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -27254,11 +27254,11 @@ pub const IMediaElement = extern struct {
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Play: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Pause: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        CanPlayType: *const fn(self: *anyopaque, ty: HSTRING, _r: *MediaCanPlayResponse) callconv(.winapi) HRESULT,
-        SetSource: *const fn(self: *anyopaque, stream: *IRandomAccessStream, mimeType: HSTRING) callconv(.winapi) HRESULT,
-        GetAudioStreamLanguage: *const fn(self: *anyopaque, index: *IReference(i32), _r: *HSTRING) callconv(.winapi) HRESULT,
-        AddAudioEffect: *const fn(self: *anyopaque, effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
-        AddVideoEffect: *const fn(self: *anyopaque, effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
+        CanPlayType: *const fn(self: *anyopaque, ty: ?HSTRING, _r: *MediaCanPlayResponse) callconv(.winapi) HRESULT,
+        SetSource: *const fn(self: *anyopaque, stream: *IRandomAccessStream, mimeType: ?HSTRING) callconv(.winapi) HRESULT,
+        GetAudioStreamLanguage: *const fn(self: *anyopaque, index: *IReference(i32), _r: *?HSTRING) callconv(.winapi) HRESULT,
+        AddAudioEffect: *const fn(self: *anyopaque, effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
+        AddVideoEffect: *const fn(self: *anyopaque, effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
         RemoveAllEffects: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_ActualStereo3DVideoPackingMode: *const fn(self: *anyopaque, _r: *Stereo3DVideoPackingMode) callconv(.winapi) HRESULT,
     };
@@ -28810,13 +28810,13 @@ pub const IMenuBarFactory = extern struct {
 };
 pub const IMenuBarItem = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -28838,8 +28838,8 @@ pub const IMenuBarItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Items: *const fn(self: *anyopaque, _r: **IVector(MenuFlyoutItemBase)) callconv(.winapi) HRESULT,
     };
 };
@@ -29039,13 +29039,13 @@ pub const IMenuFlyoutFactory = extern struct {
 };
 pub const IMenuFlyoutItem = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -29091,8 +29091,8 @@ pub const IMenuFlyoutItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Command: *const fn(self: *anyopaque, _r: **ICommand) callconv(.winapi) HRESULT,
         put_Command: *const fn(self: *anyopaque, value: *ICommand) callconv(.winapi) HRESULT,
         get_CommandParameter: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -29131,13 +29131,13 @@ pub const IMenuFlyoutItem2 = extern struct {
 };
 pub const IMenuFlyoutItem3 = extern struct {
     vtable: *const VTable,
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyboardAcceleratorTextOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -29159,8 +29159,8 @@ pub const IMenuFlyoutItem3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyboardAcceleratorTextOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TemplateSettings: *const fn(self: *anyopaque, _r: **MenuFlyoutItemTemplateSettings) callconv(.winapi) HRESULT,
     };
 };
@@ -29485,13 +29485,13 @@ pub const IMenuFlyoutSubItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -29508,8 +29508,8 @@ pub const IMenuFlyoutSubItem = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Items: *const fn(self: *anyopaque, _r: **IVector(MenuFlyoutItemBase)) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMenuFlyoutSubItem2 = extern struct {
@@ -29946,13 +29946,13 @@ pub const INavigationView2 = extern struct {
         const _c = self.vtable.put_IsBackEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPaneTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPaneTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PaneTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPaneTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPaneTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PaneTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -30022,8 +30022,8 @@ pub const INavigationView2 = extern struct {
         put_IsBackButtonVisible: *const fn(self: *anyopaque, value: NavigationViewBackButtonVisible) callconv(.winapi) HRESULT,
         get_IsBackEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsBackEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_PaneTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PaneTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PaneTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PaneTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_BackRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(NavigationView,NavigationViewBackRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_BackRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_PaneClosed: *const fn(self: *anyopaque, handler: *TypedEventHandler(NavigationView,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -31094,8 +31094,8 @@ pub const INavigationViewTemplateSettingsStatics = extern struct {
 };
 pub const INotifyEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31112,7 +31112,7 @@ pub const INotifyEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INotifyEventArgs2 = extern struct {
@@ -31763,23 +31763,23 @@ pub const IParallaxViewStatics = extern struct {
 };
 pub const IPasswordBox = extern struct {
     vtable: *const VTable,
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPassword(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Password(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPasswordChar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPasswordChar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PasswordChar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPasswordChar(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPasswordChar(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PasswordChar(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -31839,10 +31839,10 @@ pub const IPasswordBox = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Password: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Password: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PasswordChar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PasswordChar: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Password: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PasswordChar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PasswordChar: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsPasswordRevealButtonEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsPasswordRevealButtonEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_MaxLength: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -31876,13 +31876,13 @@ pub const IPasswordBox2 = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -31932,8 +31932,8 @@ pub const IPasswordBox2 = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionHighlightColor: *const fn(self: *anyopaque, _r: **SolidColorBrush) callconv(.winapi) HRESULT,
         put_SelectionHighlightColor: *const fn(self: *anyopaque, value: *SolidColorBrush) callconv(.winapi) HRESULT,
         get_PreventKeyboardDisplayOnProgrammaticFocus: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -32426,13 +32426,13 @@ pub const IPersonPicture = extern struct {
         const _c = self.vtable.put_BadgeNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBadgeGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBadgeGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BadgeGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBadgeGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBadgeGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BadgeGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -32446,13 +32446,13 @@ pub const IPersonPicture = extern struct {
         const _c = self.vtable.put_BadgeImageSource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBadgeText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBadgeText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BadgeText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBadgeText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBadgeText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BadgeText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -32476,23 +32476,23 @@ pub const IPersonPicture = extern struct {
         const _c = self.vtable.put_Contact(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getInitials(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInitials(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Initials(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putInitials(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInitials(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Initials(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -32530,20 +32530,20 @@ pub const IPersonPicture = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_BadgeNumber: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_BadgeNumber: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_BadgeGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BadgeGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_BadgeGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BadgeGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BadgeImageSource: *const fn(self: *anyopaque, _r: **ImageSource) callconv(.winapi) HRESULT,
         put_BadgeImageSource: *const fn(self: *anyopaque, value: *ImageSource) callconv(.winapi) HRESULT,
-        get_BadgeText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BadgeText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_BadgeText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BadgeText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsGroup: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsGroup: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
         put_Contact: *const fn(self: *anyopaque, value: *Contact) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Initials: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Initials: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Initials: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Initials: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_PreferSmallImage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_PreferSmallImage: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ProfilePicture: *const fn(self: *anyopaque, _r: **ImageSource) callconv(.winapi) HRESULT,
@@ -33487,13 +33487,13 @@ pub const IProgressRingStatics = extern struct {
 };
 pub const IRadioButton = extern struct {
     vtable: *const VTable,
-    pub fn getGroupName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroupName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GroupName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGroupName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroupName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_GroupName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -33509,8 +33509,8 @@ pub const IRadioButton = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_GroupName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_GroupName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_GroupName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_GroupName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRadioButtonFactory = extern struct {
@@ -33561,13 +33561,13 @@ pub const IRadioButtonStatics = extern struct {
 };
 pub const IRatingControl = extern struct {
     vtable: *const VTable,
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -33663,8 +33663,8 @@ pub const IRatingControl = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Caption: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Caption: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_InitialSetValue: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_InitialSetValue: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_IsClearEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -33780,63 +33780,63 @@ pub const IRatingControlStatics = extern struct {
 };
 pub const IRatingItemFontInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisabledGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisabledGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisabledGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisabledGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisabledGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisabledGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Glyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Glyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPointerOverGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPointerOverGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PointerOverGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPointerOverGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPointerOverGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PointerOverGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPointerOverPlaceholderGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPointerOverPlaceholderGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PointerOverPlaceholderGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPointerOverPlaceholderGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPointerOverPlaceholderGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PointerOverPlaceholderGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUnsetGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnsetGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnsetGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUnsetGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUnsetGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UnsetGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -33852,18 +33852,18 @@ pub const IRatingItemFontInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisabledGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisabledGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Glyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Glyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PointerOverGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PointerOverGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PointerOverPlaceholderGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PointerOverPlaceholderGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PlaceholderGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UnsetGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UnsetGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisabledGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisabledGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Glyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Glyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PointerOverGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PointerOverGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PointerOverPlaceholderGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PointerOverPlaceholderGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UnsetGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UnsetGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRatingItemFontInfoFactory = extern struct {
@@ -35135,13 +35135,13 @@ pub const IRichEditBox2 = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -35201,8 +35201,8 @@ pub const IRichEditBox2 = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionHighlightColor: *const fn(self: *anyopaque, _r: **SolidColorBrush) callconv(.winapi) HRESULT,
         put_SelectionHighlightColor: *const fn(self: *anyopaque, value: *SolidColorBrush) callconv(.winapi) HRESULT,
         get_PreventKeyboardDisplayOnProgrammaticFocus: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -35315,8 +35315,8 @@ pub const IRichEditBox3 = extern struct {
 };
 pub const IRichEditBox4 = extern struct {
     vtable: *const VTable,
-    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetLinguisticAlternativesAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -35343,7 +35343,7 @@ pub const IRichEditBox4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetLinguisticAlternativesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetLinguisticAlternativesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
         get_ClipboardCopyFormat: *const fn(self: *anyopaque, _r: *RichEditClipboardFormat) callconv(.winapi) HRESULT,
         put_ClipboardCopyFormat: *const fn(self: *anyopaque, value: RichEditClipboardFormat) callconv(.winapi) HRESULT,
     };
@@ -36229,8 +36229,8 @@ pub const IRichTextBlock = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -36359,7 +36359,7 @@ pub const IRichTextBlock = extern struct {
         get_IsTextSelectionEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsTextSelectionEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_HasOverflowContent: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_SelectedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ContentStart: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
         get_ContentEnd: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
         get_SelectionStart: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
@@ -38707,33 +38707,33 @@ pub const ISearchBox = extern struct {
         const _c = self.vtable.put_SearchHistoryEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SearchHistoryContext(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SearchHistoryContext(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putQueryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQueryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_QueryText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -38825,12 +38825,12 @@ pub const ISearchBox = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SearchHistoryEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_SearchHistoryEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SearchHistoryContext: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_QueryText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SearchHistoryContext: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_QueryText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FocusOnKeyboardInput: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_FocusOnKeyboardInput: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ChooseSuggestionOnEnter: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -38873,14 +38873,14 @@ pub const ISearchBoxFactory = extern struct {
 };
 pub const ISearchBoxQueryChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -38903,21 +38903,21 @@ pub const ISearchBoxQueryChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinguisticDetails: *const fn(self: *anyopaque, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchBoxQuerySubmittedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -38946,16 +38946,16 @@ pub const ISearchBoxQuerySubmittedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinguisticDetails: *const fn(self: *anyopaque, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
         get_KeyModifiers: *const fn(self: *anyopaque, _r: *VirtualKeyModifiers) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchBoxResultSuggestionChosenEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -38978,7 +38978,7 @@ pub const ISearchBoxResultSuggestionChosenEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_KeyModifiers: *const fn(self: *anyopaque, _r: *VirtualKeyModifiers) callconv(.winapi) HRESULT,
     };
 };
@@ -39042,14 +39042,14 @@ pub const ISearchBoxStatics = extern struct {
 };
 pub const ISearchBoxSuggestionsRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -39078,8 +39078,8 @@ pub const ISearchBoxSuggestionsRequestedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinguisticDetails: *const fn(self: *anyopaque, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
         get_Request: *const fn(self: *anyopaque, _r: **SearchSuggestionsRequest) callconv(.winapi) HRESULT,
     };
@@ -39520,13 +39520,13 @@ pub const ISemanticZoomViewChangedEventArgs = extern struct {
 };
 pub const ISettingsFlyout = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -39600,8 +39600,8 @@ pub const ISettingsFlyout = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HeaderBackground: *const fn(self: *anyopaque, _r: **Brush) callconv(.winapi) HRESULT,
         put_HeaderBackground: *const fn(self: *anyopaque, value: *Brush) callconv(.winapi) HRESULT,
         get_HeaderForeground: *const fn(self: *anyopaque, _r: **Brush) callconv(.winapi) HRESULT,
@@ -41196,13 +41196,13 @@ pub const ISwipeControlStatics = extern struct {
 };
 pub const ISwipeItem = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -41288,8 +41288,8 @@ pub const ISwipeItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IconSource: *const fn(self: *anyopaque, _r: **IconSource) callconv(.winapi) HRESULT,
         put_IconSource: *const fn(self: *anyopaque, value: *IconSource) callconv(.winapi) HRESULT,
         get_Background: *const fn(self: *anyopaque, _r: **Brush) callconv(.winapi) HRESULT,
@@ -41741,13 +41741,13 @@ pub const ITextBlock = extern struct {
         const _c = self.vtable.put_TextAlignment(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -41797,8 +41797,8 @@ pub const ITextBlock = extern struct {
         const _c = self.vtable.put_IsTextSelectionEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -41899,8 +41899,8 @@ pub const ITextBlock = extern struct {
         put_TextTrimming: *const fn(self: *anyopaque, value: TextTrimming) callconv(.winapi) HRESULT,
         get_TextAlignment: *const fn(self: *anyopaque, _r: *TextAlignment) callconv(.winapi) HRESULT,
         put_TextAlignment: *const fn(self: *anyopaque, value: TextAlignment) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Inlines: *const fn(self: *anyopaque, _r: **InlineCollection) callconv(.winapi) HRESULT,
         get_Padding: *const fn(self: *anyopaque, _r: *Thickness) callconv(.winapi) HRESULT,
         put_Padding: *const fn(self: *anyopaque, value: Thickness) callconv(.winapi) HRESULT,
@@ -41910,7 +41910,7 @@ pub const ITextBlock = extern struct {
         put_LineStackingStrategy: *const fn(self: *anyopaque, value: LineStackingStrategy) callconv(.winapi) HRESULT,
         get_IsTextSelectionEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsTextSelectionEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_SelectedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ContentStart: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
         get_ContentEnd: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
         get_SelectionStart: *const fn(self: *anyopaque, _r: **TextPointer) callconv(.winapi) HRESULT,
@@ -42466,23 +42466,23 @@ pub const ITextBlockStatics7 = extern struct {
 };
 pub const ITextBox = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSelectedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -42642,10 +42642,10 @@ pub const ITextBox = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SelectedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SelectedText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SelectedText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionLength: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_SelectionLength: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_SelectionStart: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -42699,13 +42699,13 @@ pub const ITextBox2 = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -42765,8 +42765,8 @@ pub const ITextBox2 = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionHighlightColor: *const fn(self: *anyopaque, _r: **SolidColorBrush) callconv(.winapi) HRESULT,
         put_SelectionHighlightColor: *const fn(self: *anyopaque, value: *SolidColorBrush) callconv(.winapi) HRESULT,
         get_PreventKeyboardDisplayOnProgrammaticFocus: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -42879,8 +42879,8 @@ pub const ITextBox3 = extern struct {
 };
 pub const ITextBox4 = extern struct {
     vtable: *const VTable,
-    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetLinguisticAlternativesAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -42897,7 +42897,7 @@ pub const ITextBox4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetLinguisticAlternativesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetLinguisticAlternativesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextBox5 = extern struct {
@@ -43168,8 +43168,8 @@ pub const ITextBox8 = extern struct {
 };
 pub const ITextBoxBeforeTextChangingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getNewText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNewText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NewText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -43196,7 +43196,7 @@ pub const ITextBoxBeforeTextChangingEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NewText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NewText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Cancel: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Cancel: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
@@ -43901,13 +43901,13 @@ pub const ITimePicker = extern struct {
         const _c = self.vtable.put_HeaderTemplate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getClockIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClockIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClockIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putClockIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClockIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ClockIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -43957,8 +43957,8 @@ pub const ITimePicker = extern struct {
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
         put_HeaderTemplate: *const fn(self: *anyopaque, value: *DataTemplate) callconv(.winapi) HRESULT,
-        get_ClockIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ClockIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ClockIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ClockIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_MinuteIncrement: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_MinuteIncrement: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_Time: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
@@ -44060,13 +44060,13 @@ pub const ITimePickerFactory = extern struct {
 };
 pub const ITimePickerFlyout = extern struct {
     vtable: *const VTable,
-    pub fn getClockIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClockIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClockIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putClockIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClockIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ClockIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -44118,8 +44118,8 @@ pub const ITimePickerFlyout = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ClockIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ClockIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ClockIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ClockIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Time: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_Time: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_MinuteIncrement: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -45589,23 +45589,23 @@ pub const ITreeViewItem = extern struct {
         const _c = self.vtable.put_GlyphBrush(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getExpandedGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExpandedGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExpandedGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExpandedGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExpandedGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExpandedGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCollapsedGlyph(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCollapsedGlyph(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CollapsedGlyph(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCollapsedGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCollapsedGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CollapsedGlyph(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -45651,10 +45651,10 @@ pub const ITreeViewItem = extern struct {
         put_GlyphOpacity: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_GlyphBrush: *const fn(self: *anyopaque, _r: **Brush) callconv(.winapi) HRESULT,
         put_GlyphBrush: *const fn(self: *anyopaque, value: *Brush) callconv(.winapi) HRESULT,
-        get_ExpandedGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ExpandedGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CollapsedGlyph: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CollapsedGlyph: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ExpandedGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ExpandedGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CollapsedGlyph: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CollapsedGlyph: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_GlyphSize: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_GlyphSize: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_IsExpanded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -47155,8 +47155,8 @@ pub const IWebView = extern struct {
         const _c = self.vtable.remove_NavigationFailed(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InvokeScript(self: *@This(), scriptName: HSTRING, arguments: [*]HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn InvokeScript(self: *@This(), scriptName: ?HSTRING, arguments: ?[*]HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.InvokeScript(@ptrCast(self), scriptName, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -47165,7 +47165,7 @@ pub const IWebView = extern struct {
         const _c = self.vtable.Navigate(@ptrCast(self), source);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn NavigateToString(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn NavigateToString(self: *@This(), text: ?HSTRING) core.HResult!void {
         const _c = self.vtable.NavigateToString(@ptrCast(self), text);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -47192,9 +47192,9 @@ pub const IWebView = extern struct {
         remove_ScriptNotify: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_NavigationFailed: *const fn(self: *anyopaque, handler: *WebViewNavigationFailedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_NavigationFailed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        InvokeScript: *const fn(self: *anyopaque, scriptName: HSTRING, arguments: [*]HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        InvokeScript: *const fn(self: *anyopaque, scriptName: ?HSTRING, arguments: ?[*]HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Navigate: *const fn(self: *anyopaque, source: *Uri) callconv(.winapi) HRESULT,
-        NavigateToString: *const fn(self: *anyopaque, text: HSTRING) callconv(.winapi) HRESULT,
+        NavigateToString: *const fn(self: *anyopaque, text: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebView2 = extern struct {
@@ -47211,8 +47211,8 @@ pub const IWebView2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -47269,8 +47269,8 @@ pub const IWebView2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InvokeScriptAsync(self: *@This(), scriptName: HSTRING, arguments: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.InvokeScriptAsync(@ptrCast(self), scriptName, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -47285,7 +47285,7 @@ pub const IWebView2 = extern struct {
         const _c = self.vtable.NavigateToLocalStreamUri(@ptrCast(self), source, streamResolver);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: HSTRING, relativePath: HSTRING) core.HResult!*Uri {
+    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.BuildLocalStreamUri(@ptrCast(self), contentIdentifier, relativePath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -47405,7 +47405,7 @@ pub const IWebView2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CanGoBack: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_CanGoForward: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_DocumentTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DocumentTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_NavigationStarting: *const fn(self: *anyopaque, handler: *TypedEventHandler(WebView,WebViewNavigationStartingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_NavigationStarting: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_ContentLoading: *const fn(self: *anyopaque, handler: *TypedEventHandler(WebView,WebViewContentLoadingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -47417,10 +47417,10 @@ pub const IWebView2 = extern struct {
         Refresh: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         CapturePreviewToStreamAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        InvokeScriptAsync: *const fn(self: *anyopaque, scriptName: HSTRING, arguments: *IIterable(HSTRING), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        InvokeScriptAsync: *const fn(self: *anyopaque, scriptName: ?HSTRING, arguments: *IIterable(?HSTRING), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         CaptureSelectedContentToDataPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DataPackage)) callconv(.winapi) HRESULT,
         NavigateToLocalStreamUri: *const fn(self: *anyopaque, source: *Uri, streamResolver: *IUriToStreamResolver) callconv(.winapi) HRESULT,
-        BuildLocalStreamUri: *const fn(self: *anyopaque, contentIdentifier: HSTRING, relativePath: HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        BuildLocalStreamUri: *const fn(self: *anyopaque, contentIdentifier: ?HSTRING, relativePath: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
         get_DefaultBackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         put_DefaultBackgroundColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
         add_NavigationCompleted: *const fn(self: *anyopaque, handler: *TypedEventHandler(WebView,WebViewNavigationCompletedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -47528,7 +47528,7 @@ pub const IWebView4 = extern struct {
         const _c = self.vtable.remove_PermissionRequested(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddWebAllowedObject(self: *@This(), name: HSTRING, pObject: *IInspectable) core.HResult!void {
+    pub fn AddWebAllowedObject(self: *@This(), name: ?HSTRING, pObject: *IInspectable) core.HResult!void {
         const _c = self.vtable.AddWebAllowedObject(@ptrCast(self), name, pObject);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -47559,7 +47559,7 @@ pub const IWebView4 = extern struct {
         remove_NewWindowRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_PermissionRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(WebView,WebViewPermissionRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_PermissionRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        AddWebAllowedObject: *const fn(self: *anyopaque, name: HSTRING, pObject: *IInspectable) callconv(.winapi) HRESULT,
+        AddWebAllowedObject: *const fn(self: *anyopaque, name: ?HSTRING, pObject: *IInspectable) callconv(.winapi) HRESULT,
         DeferredPermissionRequestById: *const fn(self: *anyopaque, id: u32, _r: **WebViewDeferredPermissionRequest) callconv(.winapi) HRESULT,
     };
 };
@@ -47685,13 +47685,13 @@ pub const IWebView7 = extern struct {
 };
 pub const IWebViewBrush = extern struct {
     vtable: *const VTable,
-    pub fn getSourceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSourceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SourceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -47715,8 +47715,8 @@ pub const IWebViewBrush = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SourceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SourceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SourceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SourceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         Redraw: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetSource: *const fn(self: *anyopaque, source: *WebView) callconv(.winapi) HRESULT,
     };
@@ -48429,8 +48429,8 @@ pub const IWebViewUnviewableContentIdentifiedEventArgs = extern struct {
 };
 pub const IWebViewUnviewableContentIdentifiedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -48447,7 +48447,7 @@ pub const IWebViewUnviewableContentIdentifiedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MediaType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MediaType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebViewWebResourceRequestedEventArgs = extern struct {
@@ -48987,11 +48987,11 @@ pub const InkToolbar = extern struct {
 };
 pub const RadioButton = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getGroupName(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroupName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRadioButton = @ptrCast(self);
         return try this.getGroupName();
     }
-    pub fn putGroupName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroupName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRadioButton = @ptrCast(self);
         return try this.putGroupName(value);
     }
@@ -50391,11 +50391,11 @@ pub const ListPickerFlyout = extern struct {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.putItemTemplate(value);
     }
-    pub fn getDisplayMemberPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMemberPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.getDisplayMemberPath();
     }
-    pub fn putDisplayMemberPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMemberPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.putDisplayMemberPath(value);
     }
@@ -50431,11 +50431,11 @@ pub const ListPickerFlyout = extern struct {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.putSelectedValue(value);
     }
-    pub fn getSelectedValuePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedValuePath(self: *@This()) core.HResult!?HSTRING {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.getSelectedValuePath();
     }
-    pub fn putSelectedValuePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedValuePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IListPickerFlyout = @ptrCast(self);
         return try this.putSelectedValuePath(value);
     }
@@ -50644,7 +50644,7 @@ pub const ListViewItemToKeyHandler = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, item: *IInspectable, _r: *HSTRING) callconv(.winapi) HRESULT
+        Invoke: *const fn(self: *anyopaque, item: *IInspectable, _r: *?HSTRING) callconv(.winapi) HRESULT
     };
     pub const VTABLE = VTable {
         .QueryInterface = QueryInterface,
@@ -50661,7 +50661,7 @@ pub const ListViewKeyToItemHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, key: HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, key: ?HSTRING) callconv(.winapi) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
@@ -50674,7 +50674,7 @@ pub const ListViewKeyToItemHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, key: HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, key: ?HSTRING) callconv(.winapi) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
@@ -50717,7 +50717,7 @@ pub const ListViewKeyToItemHandler = extern struct {
         if (left == 0) @import("std").heap.c_allocator.destroy(this);
         return left;
     }
-    pub fn Invoke(self: *anyopaque, key: HSTRING) callconv(.winapi) HRESULT {
+    pub fn Invoke(self: *anyopaque, key: ?HSTRING) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
         this._cb(this._context, key);
         return 0;
@@ -50731,7 +50731,7 @@ pub const ListViewKeyToItemHandler = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, key: HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT
+        Invoke: *const fn(self: *anyopaque, key: ?HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT
     };
     pub const VTABLE = VTable {
         .QueryInterface = QueryInterface,
@@ -50745,11 +50745,11 @@ pub const ListViewPersistenceHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetRelativeScrollPosition(listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler) core.HResult!HSTRING {
+    pub fn GetRelativeScrollPosition(listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler) core.HResult!?HSTRING {
         const _f = try @This()._IListViewPersistenceHelperStaticsCache.get();
         return try _f.GetRelativeScrollPosition(listViewBase, itemToKeyHandler);
     }
-    pub fn SetRelativeScrollPositionAsync(listViewBase: *ListViewBase, relativeScrollPosition: HSTRING, keyToItemHandler: *ListViewKeyToItemHandler) core.HResult!*IAsyncAction {
+    pub fn SetRelativeScrollPositionAsync(listViewBase: *ListViewBase, relativeScrollPosition: ?HSTRING, keyToItemHandler: *ListViewKeyToItemHandler) core.HResult!*IAsyncAction {
         const _f = try @This()._IListViewPersistenceHelperStaticsCache.get();
         return try _f.SetRelativeScrollPositionAsync(listViewBase, relativeScrollPosition, keyToItemHandler);
     }
@@ -51064,23 +51064,23 @@ pub const MediaElement = extern struct {
         const this: *IMediaElement = @ptrCast(self);
         return try this.Pause();
     }
-    pub fn CanPlayType(self: *@This(), ty: HSTRING) core.HResult!MediaCanPlayResponse {
+    pub fn CanPlayType(self: *@This(), ty: ?HSTRING) core.HResult!MediaCanPlayResponse {
         const this: *IMediaElement = @ptrCast(self);
         return try this.CanPlayType(ty);
     }
-    pub fn SetSource(self: *@This(), stream: *IRandomAccessStream, mimeType: HSTRING) core.HResult!void {
+    pub fn SetSource(self: *@This(), stream: *IRandomAccessStream, mimeType: ?HSTRING) core.HResult!void {
         const this: *IMediaElement = @ptrCast(self);
         return try this.SetSource(stream, mimeType);
     }
-    pub fn GetAudioStreamLanguage(self: *@This(), index: *IReference(i32)) core.HResult!HSTRING {
+    pub fn GetAudioStreamLanguage(self: *@This(), index: *IReference(i32)) core.HResult!?HSTRING {
         const this: *IMediaElement = @ptrCast(self);
         return try this.GetAudioStreamLanguage(index);
     }
-    pub fn AddAudioEffect(self: *@This(), effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         const this: *IMediaElement = @ptrCast(self);
         return try this.AddAudioEffect(effectID, effectOptional, effectConfiguration);
     }
-    pub fn AddVideoEffect(self: *@This(), effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), effectID: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         const this: *IMediaElement = @ptrCast(self);
         return try this.AddVideoEffect(effectID, effectOptional, effectConfiguration);
     }
@@ -51999,11 +51999,11 @@ pub const MenuBar = extern struct {
 };
 pub const MenuBarItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMenuBarItem = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMenuBarItem = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -52103,11 +52103,11 @@ pub const MenuFlyoutItemBase = extern struct {
 };
 pub const MenuFlyoutItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IMenuFlyoutItem = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMenuFlyoutItem = @ptrCast(self);
         return try this.putText(value);
     }
@@ -52147,13 +52147,13 @@ pub const MenuFlyoutItem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIcon(value);
     }
-    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMenuFlyoutItem3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
-    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMenuFlyoutItem3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -52263,11 +52263,11 @@ pub const MenuFlyoutSubItem = extern struct {
         const this: *IMenuFlyoutSubItem = @ptrCast(self);
         return try this.getItems();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IMenuFlyoutSubItem = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMenuFlyoutSubItem = @ptrCast(self);
         return try this.putText(value);
     }
@@ -52529,13 +52529,13 @@ pub const NavigationView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsBackEnabled(value);
     }
-    pub fn getPaneTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getPaneTitle(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INavigationView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaneTitle();
     }
-    pub fn putPaneTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPaneTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -53175,7 +53175,7 @@ pub const NavigationViewTemplateSettings = extern struct {
 };
 pub const NotifyEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *INotifyEventArgs = @ptrCast(self);
         return try this.getValue();
     }
@@ -53590,19 +53590,19 @@ pub const ParallaxView = extern struct {
 };
 pub const PasswordBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordBox = @ptrCast(self);
         return try this.getPassword();
     }
-    pub fn putPassword(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPasswordBox = @ptrCast(self);
         return try this.putPassword(value);
     }
-    pub fn getPasswordChar(self: *@This()) core.HResult!HSTRING {
+    pub fn getPasswordChar(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordBox = @ptrCast(self);
         return try this.getPasswordChar();
     }
-    pub fn putPasswordChar(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPasswordChar(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPasswordBox = @ptrCast(self);
         return try this.putPasswordChar(value);
     }
@@ -53666,13 +53666,13 @@ pub const PasswordBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPasswordBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -53961,11 +53961,11 @@ pub const PersonPicture = extern struct {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putBadgeNumber(value);
     }
-    pub fn getBadgeGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getBadgeGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.getBadgeGlyph();
     }
-    pub fn putBadgeGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBadgeGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putBadgeGlyph(value);
     }
@@ -53977,11 +53977,11 @@ pub const PersonPicture = extern struct {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putBadgeImageSource(value);
     }
-    pub fn getBadgeText(self: *@This()) core.HResult!HSTRING {
+    pub fn getBadgeText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.getBadgeText();
     }
-    pub fn putBadgeText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBadgeText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putBadgeText(value);
     }
@@ -54001,19 +54001,19 @@ pub const PersonPicture = extern struct {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putContact(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getInitials(self: *@This()) core.HResult!HSTRING {
+    pub fn getInitials(self: *@This()) core.HResult!?HSTRING {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.getInitials();
     }
-    pub fn putInitials(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInitials(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPersonPicture = @ptrCast(self);
         return try this.putInitials(value);
     }
@@ -54769,11 +54769,11 @@ pub const ProgressRing = extern struct {
 };
 pub const RatingControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingControl = @ptrCast(self);
         return try this.getCaption();
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingControl = @ptrCast(self);
         return try this.putCaption(value);
     }
@@ -54906,51 +54906,51 @@ pub const RatingItemInfo = extern struct {
 };
 pub const RatingItemFontInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisabledGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisabledGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getDisabledGlyph();
     }
-    pub fn putDisabledGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisabledGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putDisabledGlyph(value);
     }
-    pub fn getGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getGlyph();
     }
-    pub fn putGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putGlyph(value);
     }
-    pub fn getPointerOverGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getPointerOverGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getPointerOverGlyph();
     }
-    pub fn putPointerOverGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPointerOverGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putPointerOverGlyph(value);
     }
-    pub fn getPointerOverPlaceholderGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getPointerOverPlaceholderGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getPointerOverPlaceholderGlyph();
     }
-    pub fn putPointerOverPlaceholderGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPointerOverPlaceholderGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putPointerOverPlaceholderGlyph(value);
     }
-    pub fn getPlaceholderGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getPlaceholderGlyph();
     }
-    pub fn putPlaceholderGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putPlaceholderGlyph(value);
     }
-    pub fn getUnsetGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnsetGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.getUnsetGlyph();
     }
-    pub fn putUnsetGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUnsetGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatingItemFontInfo = @ptrCast(self);
         return try this.putUnsetGlyph(value);
     }
@@ -55656,13 +55656,13 @@ pub const RichEditBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRichEditBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -55800,7 +55800,7 @@ pub const RichEditBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextChanging(token);
     }
-    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*IRichEditBox4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -56344,7 +56344,7 @@ pub const RichTextBlock = extern struct {
         const this: *IRichTextBlock = @ptrCast(self);
         return try this.getHasOverflowContent();
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IRichTextBlock = @ptrCast(self);
         return try this.getSelectedText();
     }
@@ -57841,27 +57841,27 @@ pub const SearchBox = extern struct {
         const this: *ISearchBox = @ptrCast(self);
         return try this.putSearchHistoryEnabled(value);
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBox = @ptrCast(self);
         return try this.getSearchHistoryContext();
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchBox = @ptrCast(self);
         return try this.putSearchHistoryContext(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBox = @ptrCast(self);
         return try this.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchBox = @ptrCast(self);
         return try this.putPlaceholderText(value);
     }
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBox = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn putQueryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQueryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchBox = @ptrCast(self);
         return try this.putQueryText(value);
     }
@@ -57966,11 +57966,11 @@ pub const SearchBox = extern struct {
 };
 pub const SearchBoxQueryChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxQueryChangedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxQueryChangedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -57986,11 +57986,11 @@ pub const SearchBoxQueryChangedEventArgs = extern struct {
 };
 pub const SearchBoxQuerySubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -58010,7 +58010,7 @@ pub const SearchBoxQuerySubmittedEventArgs = extern struct {
 };
 pub const SearchBoxResultSuggestionChosenEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxResultSuggestionChosenEventArgs = @ptrCast(self);
         return try this.getTag();
     }
@@ -58034,11 +58034,11 @@ pub const SearchBoxResultSuggestionChosenEventArgs = extern struct {
 };
 pub const SearchBoxSuggestionsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchBoxSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -58537,11 +58537,11 @@ pub const SemanticZoomViewChangedEventHandler = extern struct {
 };
 pub const SettingsFlyout = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISettingsFlyout = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISettingsFlyout = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -59312,11 +59312,11 @@ pub const SwipeControl = extern struct {
 };
 pub const SwipeItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISwipeItem = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISwipeItem = @ptrCast(self);
         return try this.putText(value);
     }
@@ -59844,11 +59844,11 @@ pub const TextBlock = extern struct {
         const this: *ITextBlock = @ptrCast(self);
         return try this.putTextAlignment(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBlock = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextBlock = @ptrCast(self);
         return try this.putText(value);
     }
@@ -59888,7 +59888,7 @@ pub const TextBlock = extern struct {
         const this: *ITextBlock = @ptrCast(self);
         return try this.putIsTextSelectionEnabled(value);
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBlock = @ptrCast(self);
         return try this.getSelectedText();
     }
@@ -60226,19 +60226,19 @@ pub const TextBlock = extern struct {
 };
 pub const TextBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBox = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextBox = @ptrCast(self);
         return try this.putText(value);
     }
-    pub fn getSelectedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBox = @ptrCast(self);
         return try this.getSelectedText();
     }
-    pub fn putSelectedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextBox = @ptrCast(self);
         return try this.putSelectedText(value);
     }
@@ -60382,13 +60382,13 @@ pub const TextBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITextBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -60526,7 +60526,7 @@ pub const TextBox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextChanging(token);
     }
-    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextBox4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -60875,7 +60875,7 @@ pub const TextBox = extern struct {
 };
 pub const TextBoxBeforeTextChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNewText(self: *@This()) core.HResult!HSTRING {
+    pub fn getNewText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBoxBeforeTextChangingEventArgs = @ptrCast(self);
         return try this.getNewText();
     }
@@ -61267,11 +61267,11 @@ pub const TimePicker = extern struct {
         const this: *ITimePicker = @ptrCast(self);
         return try this.putHeaderTemplate(value);
     }
-    pub fn getClockIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getClockIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimePicker = @ptrCast(self);
         return try this.getClockIdentifier();
     }
-    pub fn putClockIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClockIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimePicker = @ptrCast(self);
         return try this.putClockIdentifier(value);
     }
@@ -61382,11 +61382,11 @@ pub const TimePicker = extern struct {
 };
 pub const TimePickerFlyout = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getClockIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getClockIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimePickerFlyout = @ptrCast(self);
         return try this.getClockIdentifier();
     }
-    pub fn putClockIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClockIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimePickerFlyout = @ptrCast(self);
         return try this.putClockIdentifier(value);
     }
@@ -62263,19 +62263,19 @@ pub const TreeViewItem = extern struct {
         const this: *ITreeViewItem = @ptrCast(self);
         return try this.putGlyphBrush(value);
     }
-    pub fn getExpandedGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getExpandedGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *ITreeViewItem = @ptrCast(self);
         return try this.getExpandedGlyph();
     }
-    pub fn putExpandedGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExpandedGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITreeViewItem = @ptrCast(self);
         return try this.putExpandedGlyph(value);
     }
-    pub fn getCollapsedGlyph(self: *@This()) core.HResult!HSTRING {
+    pub fn getCollapsedGlyph(self: *@This()) core.HResult!?HSTRING {
         const this: *ITreeViewItem = @ptrCast(self);
         return try this.getCollapsedGlyph();
     }
-    pub fn putCollapsedGlyph(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCollapsedGlyph(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITreeViewItem = @ptrCast(self);
         return try this.putCollapsedGlyph(value);
     }
@@ -63025,7 +63025,7 @@ pub const WebView = extern struct {
         const this: *IWebView = @ptrCast(self);
         return try this.removeNavigationFailed(token);
     }
-    pub fn InvokeScript(self: *@This(), scriptName: HSTRING, arguments: [*]HSTRING) core.HResult!HSTRING {
+    pub fn InvokeScript(self: *@This(), scriptName: ?HSTRING, arguments: ?[*]HSTRING) core.HResult!?HSTRING {
         const this: *IWebView = @ptrCast(self);
         return try this.InvokeScript(scriptName, arguments);
     }
@@ -63033,7 +63033,7 @@ pub const WebView = extern struct {
         const this: *IWebView = @ptrCast(self);
         return try this.Navigate(source);
     }
-    pub fn NavigateToString(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn NavigateToString(self: *@This(), text: ?HSTRING) core.HResult!void {
         const this: *IWebView = @ptrCast(self);
         return try this.NavigateToString(text);
     }
@@ -63049,7 +63049,7 @@ pub const WebView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanGoForward();
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -63121,7 +63121,7 @@ pub const WebView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CapturePreviewToStreamAsync(stream);
     }
-    pub fn InvokeScriptAsync(self: *@This(), scriptName: HSTRING, arguments: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IWebView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -63139,7 +63139,7 @@ pub const WebView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateToLocalStreamUri(source, streamResolver);
     }
-    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: HSTRING, relativePath: HSTRING) core.HResult!*Uri {
+    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         var this: ?*IWebView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -63337,7 +63337,7 @@ pub const WebView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePermissionRequested(token);
     }
-    pub fn AddWebAllowedObject(self: *@This(), name: HSTRING, pObject: *IInspectable) core.HResult!void {
+    pub fn AddWebAllowedObject(self: *@This(), name: ?HSTRING, pObject: *IInspectable) core.HResult!void {
         var this: ?*IWebView4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -63507,11 +63507,11 @@ pub const WebView = extern struct {
 };
 pub const WebViewBrush = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSourceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewBrush = @ptrCast(self);
         return try this.getSourceName();
     }
-    pub fn putSourceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWebViewBrush = @ptrCast(self);
         return try this.putSourceName(value);
     }
@@ -63911,7 +63911,7 @@ pub const WebViewUnviewableContentIdentifiedEventArgs = extern struct {
         const this: *IWebViewUnviewableContentIdentifiedEventArgs = @ptrCast(self);
         return try this.getReferrer();
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebViewUnviewableContentIdentifiedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewUnviewableContentIdentifiedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

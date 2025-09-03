@@ -33,7 +33,7 @@ pub const Accelerometer = extern struct {
         const this: *IAccelerometer = @ptrCast(self);
         return try this.removeShaken(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAccelerometerDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -84,11 +84,11 @@ pub const Accelerometer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
         const _f = try @This()._IAccelerometerStatics3Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector(readingType: AccelerometerReadingType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(readingType: AccelerometerReadingType) core.HResult!?HSTRING {
         const _f = try @This()._IAccelerometerStatics3Cache.get();
         return try _f.GetDeviceSelector(readingType);
     }
@@ -165,7 +165,7 @@ pub const AccelerometerReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IAccelerometerReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -220,7 +220,7 @@ pub const ActivitySensor = extern struct {
         const this: *IActivitySensor = @ptrCast(self);
         return try this.getPowerInMilliwatts();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivitySensor = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -247,11 +247,11 @@ pub const ActivitySensor = extern struct {
         const _f = try @This()._IActivitySensorStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IActivitySensorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ActivitySensor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ActivitySensor) {
         const _f = try @This()._IActivitySensorStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -362,7 +362,7 @@ pub const Altimeter = extern struct {
         const this: *IAltimeter = @ptrCast(self);
         return try this.GetCurrentReading();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAltimeter = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -434,7 +434,7 @@ pub const AltimeterReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IAltimeterReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeterReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -464,7 +464,7 @@ pub const Barometer = extern struct {
         const this: *IBarometer = @ptrCast(self);
         return try this.GetCurrentReading();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarometer = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -515,11 +515,11 @@ pub const Barometer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Barometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Barometer) {
         const _f = try @This()._IBarometerStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBarometerStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
@@ -567,7 +567,7 @@ pub const BarometerReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IBarometerReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -617,7 +617,7 @@ pub const Compass = extern struct {
         const this: *ICompass = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompassDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -662,11 +662,11 @@ pub const Compass = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ICompassStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Compass) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Compass) {
         const _f = try @This()._ICompassStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -724,7 +724,7 @@ pub const CompassReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*ICompassReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -802,7 +802,7 @@ pub const Gyrometer = extern struct {
         const this: *IGyrometer = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGyrometerDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -851,11 +851,11 @@ pub const Gyrometer = extern struct {
         const _f = try @This()._IGyrometerStaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IGyrometerStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Gyrometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Gyrometer) {
         const _f = try @This()._IGyrometerStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -923,7 +923,7 @@ pub const GyrometerReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IGyrometerReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -993,7 +993,7 @@ pub const HingeAngleReading = extern struct {
         const this: *IHingeAngleReading = @ptrCast(self);
         return try this.getAngleInDegrees();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IHingeAngleReading = @ptrCast(self);
         return try this.getProperties();
     }
@@ -1009,7 +1009,7 @@ pub const HingeAngleSensor = extern struct {
         const this: *IHingeAngleSensor = @ptrCast(self);
         return try this.GetCurrentReadingAsync();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHingeAngleSensor = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1036,7 +1036,7 @@ pub const HingeAngleSensor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IHingeAngleSensorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -1044,11 +1044,11 @@ pub const HingeAngleSensor = extern struct {
         const _f = try @This()._IHingeAngleSensorStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn GetRelatedToAdjacentPanelsAsync(firstPanelId: HSTRING, secondPanelId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
+    pub fn GetRelatedToAdjacentPanelsAsync(firstPanelId: ?HSTRING, secondPanelId: ?HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
         const _f = try @This()._IHingeAngleSensorStaticsCache.get();
         return try _f.GetRelatedToAdjacentPanelsAsync(firstPanelId, secondPanelId);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
         const _f = try @This()._IHingeAngleSensorStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -1083,7 +1083,7 @@ pub const HumanPresence = enum(i32) {
 };
 pub const HumanPresenceFeatures = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSensorId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceFeatures = @ptrCast(self);
         return try this.getSensorId();
     }
@@ -1123,7 +1123,7 @@ pub const HumanPresenceFeatures = extern struct {
 };
 pub const HumanPresenceSensor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceSensor = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1192,7 +1192,7 @@ pub const HumanPresenceSensor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromId(sensorId: HSTRING) core.HResult!*HumanPresenceSensor {
+    pub fn FromId(sensorId: ?HSTRING) core.HResult!*HumanPresenceSensor {
         const _f = try @This()._IHumanPresenceSensorStatics2Cache.get();
         return try _f.FromId(sensorId);
     }
@@ -1200,11 +1200,11 @@ pub const HumanPresenceSensor = extern struct {
         const _f = try @This()._IHumanPresenceSensorStatics2Cache.get();
         return try _f.GetDefault();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IHumanPresenceSensorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceSensor) {
+    pub fn FromIdAsync(sensorId: ?HSTRING) core.HResult!*IAsyncOperation(HumanPresenceSensor) {
         const _f = try @This()._IHumanPresenceSensorStaticsCache.get();
         return try _f.FromIdAsync(sensorId);
     }
@@ -1238,7 +1238,7 @@ pub const HumanPresenceSensorReading = extern struct {
         const this: *IHumanPresenceSensorReading = @ptrCast(self);
         return try this.getDistanceInMillimeters();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IHumanPresenceSensorReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1336,11 +1336,11 @@ pub const HumanPresenceSensorReadingUpdate = extern struct {
 };
 pub const HumanPresenceSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSensorId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceSettings = @ptrCast(self);
         return try this.getSensorId();
     }
-    pub fn putSensorId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSensorId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IHumanPresenceSettings = @ptrCast(self);
         return try this.putSensorId(value);
     }
@@ -1459,11 +1459,11 @@ pub const HumanPresenceSettings = extern struct {
         const _f = try @This()._IHumanPresenceSettingsStaticsCache.get();
         return try _f.UpdateSettings(settings);
     }
-    pub fn GetSupportedFeaturesForSensorIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceFeatures) {
+    pub fn GetSupportedFeaturesForSensorIdAsync(sensorId: ?HSTRING) core.HResult!*IAsyncOperation(HumanPresenceFeatures) {
         const _f = try @This()._IHumanPresenceSettingsStaticsCache.get();
         return try _f.GetSupportedFeaturesForSensorIdAsync(sensorId);
     }
-    pub fn GetSupportedFeaturesForSensorId(sensorId: HSTRING) core.HResult!*HumanPresenceFeatures {
+    pub fn GetSupportedFeaturesForSensorId(sensorId: ?HSTRING) core.HResult!*HumanPresenceFeatures {
         const _f = try @This()._IHumanPresenceSettingsStaticsCache.get();
         return try _f.GetSupportedFeaturesForSensorId(sensorId);
     }
@@ -1715,8 +1715,8 @@ pub const IAccelerometerDataThreshold = extern struct {
 };
 pub const IAccelerometerDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1733,7 +1733,7 @@ pub const IAccelerometerDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAccelerometerReading = extern struct {
@@ -1788,8 +1788,8 @@ pub const IAccelerometerReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1807,7 +1807,7 @@ pub const IAccelerometerReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAccelerometerReadingChangedEventArgs = extern struct {
@@ -1904,14 +1904,14 @@ pub const IAccelerometerStatics2 = extern struct {
 };
 pub const IAccelerometerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
         var _r: *IAsyncOperation(Accelerometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), readingType: AccelerometerReadingType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), readingType: AccelerometerReadingType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1928,8 +1928,8 @@ pub const IAccelerometerStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Accelerometer)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, readingType: AccelerometerReadingType, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Accelerometer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, readingType: AccelerometerReadingType, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActivitySensor = extern struct {
@@ -1952,8 +1952,8 @@ pub const IActivitySensor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1995,7 +1995,7 @@ pub const IActivitySensor = extern struct {
         GetCurrentReadingAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ActivitySensorReading)) callconv(.winapi) HRESULT,
         get_SubscribedActivities: *const fn(self: *anyopaque, _r: **IVector(ActivityType)) callconv(.winapi) HRESULT,
         get_PowerInMilliwatts: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedActivities: *const fn(self: *anyopaque, _r: **IVectorView(ActivityType)) callconv(.winapi) HRESULT,
         get_MinimumReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         add_ReadingChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(ActivitySensor,ActivitySensorReadingChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -2093,13 +2093,13 @@ pub const IActivitySensorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(ActivitySensor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ActivitySensor) {
         var _r: *IAsyncOperation(ActivitySensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2130,8 +2130,8 @@ pub const IActivitySensorStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ActivitySensor)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(ActivitySensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(ActivitySensor)) callconv(.winapi) HRESULT,
         GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, _r: **IAsyncOperation(IVectorView(ActivitySensorReading))) callconv(.winapi) HRESULT,
         GetSystemHistoryAsyncWithDuration: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(ActivitySensorReading))) callconv(.winapi) HRESULT,
     };
@@ -2195,8 +2195,8 @@ pub const IAltimeter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2240,7 +2240,7 @@ pub const IAltimeter = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentReading: *const fn(self: *anyopaque, _r: **AltimeterReading) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MinimumReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ReportInterval: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_ReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -2321,8 +2321,8 @@ pub const IAltimeterReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2340,7 +2340,7 @@ pub const IAltimeterReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAltimeterReadingChangedEventArgs = extern struct {
@@ -2397,8 +2397,8 @@ pub const IBarometer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2442,7 +2442,7 @@ pub const IBarometer = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentReading: *const fn(self: *anyopaque, _r: **BarometerReading) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MinimumReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ReportInterval: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_ReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -2574,8 +2574,8 @@ pub const IBarometerReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2593,7 +2593,7 @@ pub const IBarometerReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarometerReadingChangedEventArgs = extern struct {
@@ -2644,14 +2644,14 @@ pub const IBarometerStatics = extern struct {
 };
 pub const IBarometerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Barometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Barometer) {
         var _r: *IAsyncOperation(Barometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2668,8 +2668,8 @@ pub const IBarometerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Barometer)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Barometer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompass = extern struct {
@@ -2842,8 +2842,8 @@ pub const ICompassDataThreshold = extern struct {
 };
 pub const ICompassDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2860,7 +2860,7 @@ pub const ICompassDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompassReading = extern struct {
@@ -2908,8 +2908,8 @@ pub const ICompassReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2927,7 +2927,7 @@ pub const ICompassReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompassReadingChangedEventArgs = extern struct {
@@ -3001,13 +3001,13 @@ pub const ICompassStatics = extern struct {
 };
 pub const ICompassStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Compass) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Compass) {
         var _r: *IAsyncOperation(Compass) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3025,8 +3025,8 @@ pub const ICompassStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Compass)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Compass)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDetectedPerson = extern struct {
@@ -3274,8 +3274,8 @@ pub const IGyrometerDataThreshold = extern struct {
 };
 pub const IGyrometerDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3292,7 +3292,7 @@ pub const IGyrometerDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGyrometerReading = extern struct {
@@ -3347,8 +3347,8 @@ pub const IGyrometerReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3366,7 +3366,7 @@ pub const IGyrometerReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGyrometerReadingChangedEventArgs = extern struct {
@@ -3417,13 +3417,13 @@ pub const IGyrometerStatics = extern struct {
 };
 pub const IGyrometerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Gyrometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Gyrometer) {
         var _r: *IAsyncOperation(Gyrometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3441,8 +3441,8 @@ pub const IGyrometerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Gyrometer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Gyrometer)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHeadOrientation = extern struct {
@@ -3526,8 +3526,8 @@ pub const IHingeAngleReading = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3546,7 +3546,7 @@ pub const IHingeAngleReading = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_AngleInDegrees: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHingeAngleSensor = extern struct {
@@ -3557,8 +3557,8 @@ pub const IHingeAngleSensor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3602,7 +3602,7 @@ pub const IHingeAngleSensor = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentReadingAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HingeAngleReading)) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MinReportThresholdInDegrees: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_ReportThresholdInDegrees: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_ReportThresholdInDegrees: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
@@ -3635,8 +3635,8 @@ pub const IHingeAngleSensorReadingChangedEventArgs = extern struct {
 };
 pub const IHingeAngleSensorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3647,13 +3647,13 @@ pub const IHingeAngleSensorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRelatedToAdjacentPanelsAsync(self: *@This(), firstPanelId: HSTRING, secondPanelId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
+    pub fn GetRelatedToAdjacentPanelsAsync(self: *@This(), firstPanelId: ?HSTRING, secondPanelId: ?HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
         var _r: *IAsyncOperation(HingeAngleSensor) = undefined;
         const _c = self.vtable.GetRelatedToAdjacentPanelsAsync(@ptrCast(self), firstPanelId, secondPanelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
         var _r: *IAsyncOperation(HingeAngleSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3671,16 +3671,16 @@ pub const IHingeAngleSensorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HingeAngleSensor)) callconv(.winapi) HRESULT,
-        GetRelatedToAdjacentPanelsAsync: *const fn(self: *anyopaque, firstPanelId: HSTRING, secondPanelId: HSTRING, _r: **IAsyncOperation(HingeAngleSensor)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(HingeAngleSensor)) callconv(.winapi) HRESULT,
+        GetRelatedToAdjacentPanelsAsync: *const fn(self: *anyopaque, firstPanelId: ?HSTRING, secondPanelId: ?HSTRING, _r: **IAsyncOperation(HingeAngleSensor)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(HingeAngleSensor)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHumanPresenceFeatures = extern struct {
     vtable: *const VTable,
-    pub fn getSensorId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SensorId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3721,7 +3721,7 @@ pub const IHumanPresenceFeatures = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SensorId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SensorId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedWakeOrLockDistancesInMillimeters: *const fn(self: *anyopaque, _r: **IVectorView(u32)) callconv(.winapi) HRESULT,
         get_IsWakeOnApproachSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsLockOnLeaveSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -3776,8 +3776,8 @@ pub const IHumanPresenceFeatures3 = extern struct {
 };
 pub const IHumanPresenceSensor = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3822,7 +3822,7 @@ pub const IHumanPresenceSensor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MaxDetectableDistanceInMillimeters: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         get_MinDetectableDistanceInMillimeters: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         GetCurrentReading: *const fn(self: *anyopaque, _r: **HumanPresenceSensorReading) callconv(.winapi) HRESULT,
@@ -3913,7 +3913,7 @@ pub const IHumanPresenceSensor3 = extern struct {
 };
 pub const IHumanPresenceSensorExtension = extern struct {
     vtable: *const VTable,
-    pub fn Initialize(self: *@This(), deviceInterface: HSTRING) core.HResult!void {
+    pub fn Initialize(self: *@This(), deviceInterface: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Initialize(@ptrCast(self), deviceInterface);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3955,7 +3955,7 @@ pub const IHumanPresenceSensorExtension = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Initialize: *const fn(self: *anyopaque, deviceInterface: HSTRING) callconv(.winapi) HRESULT,
+        Initialize: *const fn(self: *anyopaque, deviceInterface: ?HSTRING) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ProcessReading: *const fn(self: *anyopaque, reading: *HumanPresenceSensorReading, _r: **HumanPresenceSensorReadingUpdate) callconv(.winapi) HRESULT,
         ProcessReadingTimeoutExpired: *const fn(self: *anyopaque, reading: *HumanPresenceSensorReading) callconv(.winapi) HRESULT,
@@ -4010,8 +4010,8 @@ pub const IHumanPresenceSensorReading = extern struct {
 };
 pub const IHumanPresenceSensorReading2 = extern struct {
     vtable: *const VTable,
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4028,7 +4028,7 @@ pub const IHumanPresenceSensorReading2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHumanPresenceSensorReading3 = extern struct {
@@ -4178,13 +4178,13 @@ pub const IHumanPresenceSensorReadingUpdate2 = extern struct {
 };
 pub const IHumanPresenceSensorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceSensor) {
+    pub fn FromIdAsync(self: *@This(), sensorId: ?HSTRING) core.HResult!*IAsyncOperation(HumanPresenceSensor) {
         var _r: *IAsyncOperation(HumanPresenceSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4208,14 +4208,14 @@ pub const IHumanPresenceSensorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **IAsyncOperation(HumanPresenceSensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **IAsyncOperation(HumanPresenceSensor)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HumanPresenceSensor)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHumanPresenceSensorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn FromId(self: *@This(), sensorId: HSTRING) core.HResult!*HumanPresenceSensor {
+    pub fn FromId(self: *@This(), sensorId: ?HSTRING) core.HResult!*HumanPresenceSensor {
         var _r: *HumanPresenceSensor = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4239,19 +4239,19 @@ pub const IHumanPresenceSensorStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **HumanPresenceSensor) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **HumanPresenceSensor) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, _r: **HumanPresenceSensor) callconv(.winapi) HRESULT,
     };
 };
 pub const IHumanPresenceSettings = extern struct {
     vtable: *const VTable,
-    pub fn getSensorId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SensorId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSensorId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSensorId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SensorId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4327,8 +4327,8 @@ pub const IHumanPresenceSettings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SensorId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SensorId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SensorId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SensorId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsWakeOnApproachEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsWakeOnApproachEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_WakeOnApproachDistanceInMillimeters: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
@@ -4451,13 +4451,13 @@ pub const IHumanPresenceSettingsStatics = extern struct {
         const _c = self.vtable.UpdateSettings(@ptrCast(self), settings);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetSupportedFeaturesForSensorIdAsync(self: *@This(), sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceFeatures) {
+    pub fn GetSupportedFeaturesForSensorIdAsync(self: *@This(), sensorId: ?HSTRING) core.HResult!*IAsyncOperation(HumanPresenceFeatures) {
         var _r: *IAsyncOperation(HumanPresenceFeatures) = undefined;
         const _c = self.vtable.GetSupportedFeaturesForSensorIdAsync(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSupportedFeaturesForSensorId(self: *@This(), sensorId: HSTRING) core.HResult!*HumanPresenceFeatures {
+    pub fn GetSupportedFeaturesForSensorId(self: *@This(), sensorId: ?HSTRING) core.HResult!*HumanPresenceFeatures {
         var _r: *HumanPresenceFeatures = undefined;
         const _c = self.vtable.GetSupportedFeaturesForSensorId(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4495,8 +4495,8 @@ pub const IHumanPresenceSettingsStatics = extern struct {
         GetCurrentSettings: *const fn(self: *anyopaque, _r: **HumanPresenceSettings) callconv(.winapi) HRESULT,
         UpdateSettingsAsync: *const fn(self: *anyopaque, settings: *HumanPresenceSettings, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UpdateSettings: *const fn(self: *anyopaque, settings: *HumanPresenceSettings) callconv(.winapi) HRESULT,
-        GetSupportedFeaturesForSensorIdAsync: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **IAsyncOperation(HumanPresenceFeatures)) callconv(.winapi) HRESULT,
-        GetSupportedFeaturesForSensorId: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **HumanPresenceFeatures) callconv(.winapi) HRESULT,
+        GetSupportedFeaturesForSensorIdAsync: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **IAsyncOperation(HumanPresenceFeatures)) callconv(.winapi) HRESULT,
+        GetSupportedFeaturesForSensorId: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **HumanPresenceFeatures) callconv(.winapi) HRESULT,
         GetSupportedLockOnLeaveTimeouts: *const fn(self: *anyopaque, _r: **IVectorView(TimeSpan)) callconv(.winapi) HRESULT,
         add_SettingsChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SettingsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4703,8 +4703,8 @@ pub const IInclinometerDataThreshold = extern struct {
 };
 pub const IInclinometerDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4721,7 +4721,7 @@ pub const IInclinometerDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInclinometerReading = extern struct {
@@ -4776,8 +4776,8 @@ pub const IInclinometerReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4795,7 +4795,7 @@ pub const IInclinometerReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IInclinometerReadingChangedEventArgs = extern struct {
@@ -4915,13 +4915,13 @@ pub const IInclinometerStatics3 = extern struct {
 };
 pub const IInclinometerStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Inclinometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Inclinometer) {
         var _r: *IAsyncOperation(Inclinometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4939,8 +4939,8 @@ pub const IInclinometerStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Inclinometer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Inclinometer)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILightSensor = extern struct {
@@ -5148,8 +5148,8 @@ pub const ILightSensorDataThreshold2 = extern struct {
 };
 pub const ILightSensorDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5166,7 +5166,7 @@ pub const ILightSensorDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILightSensorReading = extern struct {
@@ -5207,8 +5207,8 @@ pub const ILightSensorReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5226,7 +5226,7 @@ pub const ILightSensorReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILightSensorReading3 = extern struct {
@@ -5300,13 +5300,13 @@ pub const ILightSensorStatics = extern struct {
 };
 pub const ILightSensorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(LightSensor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LightSensor) {
         var _r: *IAsyncOperation(LightSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5324,8 +5324,8 @@ pub const ILightSensorStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(LightSensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(LightSensor)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILockOnLeaveOptions = extern struct {
@@ -5550,8 +5550,8 @@ pub const IMagnetometerDataThreshold = extern struct {
 };
 pub const IMagnetometerDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5568,7 +5568,7 @@ pub const IMagnetometerDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagnetometerReading = extern struct {
@@ -5630,8 +5630,8 @@ pub const IMagnetometerReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5649,7 +5649,7 @@ pub const IMagnetometerReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagnetometerReadingChangedEventArgs = extern struct {
@@ -5700,13 +5700,13 @@ pub const IMagnetometerStatics = extern struct {
 };
 pub const IMagnetometerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Magnetometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Magnetometer) {
         var _r: *IAsyncOperation(Magnetometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5724,8 +5724,8 @@ pub const IMagnetometerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Magnetometer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Magnetometer)) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlookerDetectionOptions = extern struct {
@@ -5894,8 +5894,8 @@ pub const IOrientationSensor3 = extern struct {
 };
 pub const IOrientationSensorDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5912,7 +5912,7 @@ pub const IOrientationSensorDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IOrientationSensorReading = extern struct {
@@ -5960,8 +5960,8 @@ pub const IOrientationSensorReading2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5979,7 +5979,7 @@ pub const IOrientationSensorReading2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PerformanceCount: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IOrientationSensorReadingChangedEventArgs = extern struct {
@@ -6106,19 +6106,19 @@ pub const IOrientationSensorStatics3 = extern struct {
 };
 pub const IOrientationSensorStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithOptimizationGoal(self: *@This(), readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithOptimizationGoal(self: *@This(), readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithOptimizationGoal(@ptrCast(self), readingType, optimizationGoal, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
         var _r: *IAsyncOperation(OrientationSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6136,15 +6136,15 @@ pub const IOrientationSensorStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithOptimizationGoal: *const fn(self: *anyopaque, readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(OrientationSensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithOptimizationGoal: *const fn(self: *anyopaque, readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(OrientationSensor)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPedometer = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6193,7 +6193,7 @@ pub const IPedometer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PowerInMilliwatts: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_MinimumReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ReportInterval: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
@@ -6317,7 +6317,7 @@ pub const IPedometerReadingChangedEventArgs = extern struct {
 };
 pub const IPedometerStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
         var _r: *IAsyncOperation(Pedometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6329,8 +6329,8 @@ pub const IPedometerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6359,9 +6359,9 @@ pub const IPedometerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Pedometer)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Pedometer)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Pedometer)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, _r: **IAsyncOperation(IVectorView(PedometerReading))) callconv(.winapi) HRESULT,
         GetSystemHistoryAsyncWithDuration: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(PedometerReading))) callconv(.winapi) HRESULT,
     };
@@ -6391,8 +6391,8 @@ pub const IPedometerStatics2 = extern struct {
 };
 pub const IProximitySensor = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6443,7 +6443,7 @@ pub const IProximitySensor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MaxDistanceInMillimeters: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         get_MinDistanceInMillimeters: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         GetCurrentReading: *const fn(self: *anyopaque, _r: **ProximitySensorReading) callconv(.winapi) HRESULT,
@@ -6537,13 +6537,13 @@ pub const IProximitySensorReadingChangedEventArgs = extern struct {
 };
 pub const IProximitySensorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromId(self: *@This(), sensorId: HSTRING) core.HResult!*ProximitySensor {
+    pub fn FromId(self: *@This(), sensorId: ?HSTRING) core.HResult!*ProximitySensor {
         var _r: *ProximitySensor = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6561,8 +6561,8 @@ pub const IProximitySensorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **ProximitySensor) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **ProximitySensor) callconv(.winapi) HRESULT,
     };
 };
 pub const IProximitySensorStatics2 = extern struct {
@@ -6606,8 +6606,8 @@ pub const ISensorDataThreshold = extern struct {
 };
 pub const ISensorDataThresholdTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6630,7 +6630,7 @@ pub const ISensorDataThresholdTriggerDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SensorType: *const fn(self: *anyopaque, _r: *SensorType) callconv(.winapi) HRESULT,
     };
 };
@@ -6822,8 +6822,8 @@ pub const ISimpleOrientationSensor2 = extern struct {
 };
 pub const ISimpleOrientationSensorDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6840,7 +6840,7 @@ pub const ISimpleOrientationSensorDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISimpleOrientationSensorOrientationChangedEventArgs = extern struct {
@@ -6898,13 +6898,13 @@ pub const ISimpleOrientationSensorStatics = extern struct {
 };
 pub const ISimpleOrientationSensorStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(SimpleOrientationSensor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SimpleOrientationSensor) {
         var _r: *IAsyncOperation(SimpleOrientationSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6922,8 +6922,8 @@ pub const ISimpleOrientationSensorStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(SimpleOrientationSensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SimpleOrientationSensor)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWakeOnApproachOptions = extern struct {
@@ -6992,7 +6992,7 @@ pub const Inclinometer = extern struct {
         const this: *IInclinometer = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IInclinometerDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7051,11 +7051,11 @@ pub const Inclinometer = extern struct {
         const _f = try @This()._IInclinometerStatics2Cache.get();
         return try _f.GetDefaultForRelativeReadings();
     }
-    pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!?HSTRING {
         const _f = try @This()._IInclinometerStatics4Cache.get();
         return try _f.GetDeviceSelector(readingType);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Inclinometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Inclinometer) {
         const _f = try @This()._IInclinometerStatics4Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -7135,7 +7135,7 @@ pub const InclinometerReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IInclinometerReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7185,7 +7185,7 @@ pub const LightSensor = extern struct {
         const this: *ILightSensor = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILightSensorDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7224,11 +7224,11 @@ pub const LightSensor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ILightSensorStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LightSensor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LightSensor) {
         const _f = try @This()._ILightSensorStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -7300,7 +7300,7 @@ pub const LightSensorReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*ILightSensorReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7372,7 +7372,7 @@ pub const Magnetometer = extern struct {
         const this: *IMagnetometer = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMagnetometerDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7417,11 +7417,11 @@ pub const Magnetometer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMagnetometerStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Magnetometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Magnetometer) {
         const _f = try @This()._IMagnetometerStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -7503,7 +7503,7 @@ pub const MagnetometerReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IMagnetometerReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7588,7 +7588,7 @@ pub const OrientationSensor = extern struct {
         const this: *IOrientationSensor = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IOrientationSensorDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7649,15 +7649,15 @@ pub const OrientationSensor = extern struct {
         const _f = try @This()._IOrientationSensorStaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!?HSTRING {
         const _f = try @This()._IOrientationSensorStatics4Cache.get();
         return try _f.GetDeviceSelector(readingType);
     }
-    pub fn GetDeviceSelectorWithOptimizationGoal(readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithOptimizationGoal(readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!?HSTRING {
         const _f = try @This()._IOrientationSensorStatics4Cache.get();
         return try _f.GetDeviceSelectorWithOptimizationGoal(readingType, optimizationGoal);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
         const _f = try @This()._IOrientationSensorStatics4Cache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -7697,7 +7697,7 @@ pub const OrientationSensorReading = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IOrientationSensorReading2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7723,7 +7723,7 @@ pub const OrientationSensorReadingChangedEventArgs = extern struct {
 };
 pub const Pedometer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPedometer = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -7760,7 +7760,7 @@ pub const Pedometer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
         const _f = try @This()._IPedometerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -7768,7 +7768,7 @@ pub const Pedometer = extern struct {
         const _f = try @This()._IPedometerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IPedometerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -7851,7 +7851,7 @@ pub const PedometerStepKind = enum(i32) {
 };
 pub const ProximitySensor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximitySensor = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -7886,11 +7886,11 @@ pub const ProximitySensor = extern struct {
         const _f = try @This()._IProximitySensorStatics2Cache.get();
         return try _f.GetReadingsFromTriggerDetails(triggerDetails);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IProximitySensorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromId(sensorId: HSTRING) core.HResult!*ProximitySensor {
+    pub fn FromId(sensorId: ?HSTRING) core.HResult!*ProximitySensor {
         const _f = try @This()._IProximitySensorStaticsCache.get();
         return try _f.FromId(sensorId);
     }
@@ -7964,7 +7964,7 @@ pub const ProximitySensorReadingChangedEventArgs = extern struct {
 };
 pub const SensorDataThresholdTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISensorDataThresholdTriggerDetails = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -8092,7 +8092,7 @@ pub const SimpleOrientationSensor = extern struct {
         const this: *ISimpleOrientationSensor = @ptrCast(self);
         return try this.removeOrientationChanged(token);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISimpleOrientationSensorDeviceId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISimpleOrientationSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8117,11 +8117,11 @@ pub const SimpleOrientationSensor = extern struct {
         const _f = try @This()._ISimpleOrientationSensorStaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISimpleOrientationSensorStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SimpleOrientationSensor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SimpleOrientationSensor) {
         const _f = try @This()._ISimpleOrientationSensorStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
     }

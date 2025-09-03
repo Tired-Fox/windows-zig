@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DialApp = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialApp = @ptrCast(self);
         return try this.getAppName();
     }
-    pub fn RequestLaunchAsync(self: *@This(), appArgument: HSTRING) core.HResult!*IAsyncOperation(DialAppLaunchResult) {
+    pub fn RequestLaunchAsync(self: *@This(), appArgument: ?HSTRING) core.HResult!*IAsyncOperation(DialAppLaunchResult) {
         const this: *IDialApp = @ptrCast(self);
         return try this.RequestLaunchAsync(appArgument);
     }
@@ -41,7 +41,7 @@ pub const DialAppStateDetails = extern struct {
         const this: *IDialAppStateDetails = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getFullXml(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullXml(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialAppStateDetails = @ptrCast(self);
         return try this.getFullXml();
     }
@@ -59,15 +59,15 @@ pub const DialAppStopResult = enum(i32) {
 };
 pub const DialDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialDevice = @ptrCast(self);
         return try this.getId();
     }
-    pub fn GetDialApp(self: *@This(), appName: HSTRING) core.HResult!*DialApp {
+    pub fn GetDialApp(self: *@This(), appName: ?HSTRING) core.HResult!*DialApp {
         const this: *IDialDevice = @ptrCast(self);
         return try this.GetDialApp(appName);
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDialDevice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -82,11 +82,11 @@ pub const DialDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(appName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(appName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IDialDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(appName);
     }
-    pub fn FromIdAsync(value: HSTRING) core.HResult!*IAsyncOperation(DialDevice) {
+    pub fn FromIdAsync(value: ?HSTRING) core.HResult!*IAsyncOperation(DialDevice) {
         const _f = try @This()._IDialDeviceStaticsCache.get();
         return try _f.FromIdAsync(value);
     }
@@ -183,7 +183,7 @@ pub const DialDevicePicker = extern struct {
 };
 pub const DialDevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDialDevicePickerFilter = @ptrCast(self);
         return try this.getSupportedAppNames();
     }
@@ -219,15 +219,15 @@ pub const DialDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const DialReceiverApp = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(HSTRING,HSTRING)) {
+    pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(?HSTRING,?HSTRING)) {
         const this: *IDialReceiverApp = @ptrCast(self);
         return try this.GetAdditionalDataAsync();
     }
-    pub fn SetAdditionalDataAsync(self: *@This(), additionalData: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn SetAdditionalDataAsync(self: *@This(), additionalData: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         const this: *IDialReceiverApp = @ptrCast(self);
         return try this.SetAdditionalDataAsync(additionalData);
     }
-    pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IDialReceiverApp2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialReceiverApp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -249,13 +249,13 @@ pub const DialReceiverApp = extern struct {
 };
 pub const IDialApp = extern struct {
     vtable: *const VTable,
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestLaunchAsync(self: *@This(), appArgument: HSTRING) core.HResult!*IAsyncOperation(DialAppLaunchResult) {
+    pub fn RequestLaunchAsync(self: *@This(), appArgument: ?HSTRING) core.HResult!*IAsyncOperation(DialAppLaunchResult) {
         var _r: *IAsyncOperation(DialAppLaunchResult) = undefined;
         const _c = self.vtable.RequestLaunchAsync(@ptrCast(self), appArgument, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -285,8 +285,8 @@ pub const IDialApp = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        RequestLaunchAsync: *const fn(self: *anyopaque, appArgument: HSTRING, _r: **IAsyncOperation(DialAppLaunchResult)) callconv(.winapi) HRESULT,
+        get_AppName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        RequestLaunchAsync: *const fn(self: *anyopaque, appArgument: ?HSTRING, _r: **IAsyncOperation(DialAppLaunchResult)) callconv(.winapi) HRESULT,
         StopAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DialAppStopResult)) callconv(.winapi) HRESULT,
         GetAppStateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DialAppStateDetails)) callconv(.winapi) HRESULT,
     };
@@ -299,8 +299,8 @@ pub const IDialAppStateDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFullXml(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullXml(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullXml(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -318,18 +318,18 @@ pub const IDialAppStateDetails = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *DialAppState) callconv(.winapi) HRESULT,
-        get_FullXml: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FullXml: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialDevice = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDialApp(self: *@This(), appName: HSTRING) core.HResult!*DialApp {
+    pub fn GetDialApp(self: *@This(), appName: ?HSTRING) core.HResult!*DialApp {
         var _r: *DialApp = undefined;
         const _c = self.vtable.GetDialApp(@ptrCast(self), appName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -347,14 +347,14 @@ pub const IDialDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDialApp: *const fn(self: *anyopaque, appName: HSTRING, _r: **DialApp) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDialApp: *const fn(self: *anyopaque, appName: ?HSTRING, _r: **DialApp) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -377,7 +377,7 @@ pub const IDialDevice2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
 };
@@ -483,8 +483,8 @@ pub const IDialDevicePicker = extern struct {
 };
 pub const IDialDevicePickerFilter = extern struct {
     vtable: *const VTable,
-    pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedAppNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -501,7 +501,7 @@ pub const IDialDevicePickerFilter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SupportedAppNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_SupportedAppNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialDeviceSelectedEventArgs = extern struct {
@@ -529,13 +529,13 @@ pub const IDialDeviceSelectedEventArgs = extern struct {
 };
 pub const IDialDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), appName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), appName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), appName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), value: HSTRING) core.HResult!*IAsyncOperation(DialDevice) {
+    pub fn FromIdAsync(self: *@This(), value: ?HSTRING) core.HResult!*IAsyncOperation(DialDevice) {
         var _r: *IAsyncOperation(DialDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -559,8 +559,8 @@ pub const IDialDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, appName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, value: HSTRING, _r: **IAsyncOperation(DialDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, appName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAsyncOperation(DialDevice)) callconv(.winapi) HRESULT,
         DeviceInfoSupportsDialAsync: *const fn(self: *anyopaque, device: *DeviceInformation, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -589,13 +589,13 @@ pub const IDialDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const IDialReceiverApp = extern struct {
     vtable: *const VTable,
-    pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(HSTRING,HSTRING)) {
-        var _r: *IAsyncOperation(IMap(HSTRING,HSTRING)) = undefined;
+    pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(?HSTRING,?HSTRING)) {
+        var _r: *IAsyncOperation(IMap(?HSTRING,?HSTRING)) = undefined;
         const _c = self.vtable.GetAdditionalDataAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAdditionalDataAsync(self: *@This(), additionalData: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn SetAdditionalDataAsync(self: *@This(), additionalData: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetAdditionalDataAsync(@ptrCast(self), additionalData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -613,14 +613,14 @@ pub const IDialReceiverApp = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAdditionalDataAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMap(HSTRING,HSTRING))) callconv(.winapi) HRESULT,
-        SetAdditionalDataAsync: *const fn(self: *anyopaque, additionalData: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetAdditionalDataAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMap(?HSTRING,?HSTRING))) callconv(.winapi) HRESULT,
+        SetAdditionalDataAsync: *const fn(self: *anyopaque, additionalData: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialReceiverApp2 = extern struct {
     vtable: *const VTable,
-    pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetUniqueDeviceNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -637,7 +637,7 @@ pub const IDialReceiverApp2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetUniqueDeviceNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetUniqueDeviceNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialReceiverAppStatics = extern struct {

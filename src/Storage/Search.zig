@@ -32,11 +32,11 @@ pub const ContentIndexer = extern struct {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.UpdateAsync(indexableContent);
     }
-    pub fn DeleteAsync(self: *@This(), contentId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(self: *@This(), contentId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.DeleteAsync(contentId);
     }
-    pub fn DeleteMultipleAsync(self: *@This(), contentIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn DeleteMultipleAsync(self: *@This(), contentIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.DeleteMultipleAsync(contentIds);
     }
@@ -44,7 +44,7 @@ pub const ContentIndexer = extern struct {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.DeleteAllAsync();
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), contentId: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), contentId: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,IInspectable)) {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.RetrievePropertiesAsync(contentId, propertiesToRetrieve);
     }
@@ -52,19 +52,19 @@ pub const ContentIndexer = extern struct {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.getRevision();
     }
-    pub fn CreateQueryWithSortOrderAndSearchFilterLanguage(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrderAndSearchFilterLanguage(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: ?HSTRING) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQueryWithSortOrderAndSearchFilterLanguage(searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage);
     }
-    pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQueryWithSortOrder(searchFilter, propertiesToRetrieve, sortOrder);
     }
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQuery(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -73,7 +73,7 @@ pub const ContentIndexer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetIndexerWithIndexName(indexName: HSTRING) core.HResult!*ContentIndexer {
+    pub fn GetIndexerWithIndexName(indexName: ?HSTRING) core.HResult!*ContentIndexer {
         const _f = try @This()._IContentIndexerStaticsCache.get();
         return try _f.GetIndexerWithIndexName(indexName);
     }
@@ -94,11 +94,11 @@ pub const ContentIndexerQuery = extern struct {
         const this: *IContentIndexerQuery = @ptrCast(self);
         return try this.GetCountAsync();
     }
-    pub fn GetPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
+    pub fn GetPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) {
         const this: *IContentIndexerQuery = @ptrCast(self);
         return try this.GetPropertiesAsync();
     }
-    pub fn GetPropertiesAsyncWithStartIndexAndMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
+    pub fn GetPropertiesAsyncWithStartIndexAndMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) {
         const this: *IContentIndexerQuery = @ptrCast(self);
         return try this.GetPropertiesAsyncWithStartIndexAndMaxItems(startIndex, maxItems);
     }
@@ -143,13 +143,13 @@ pub const IContentIndexer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteAsync(self: *@This(), contentId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(self: *@This(), contentId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), contentId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteMultipleAsync(self: *@This(), contentIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn DeleteMultipleAsync(self: *@This(), contentIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMultipleAsync(@ptrCast(self), contentIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -161,8 +161,8 @@ pub const IContentIndexer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), contentId: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,IInspectable)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,IInspectable)) = undefined;
+    pub fn RetrievePropertiesAsync(self: *@This(), contentId: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,IInspectable)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,IInspectable)) = undefined;
         const _c = self.vtable.RetrievePropertiesAsync(@ptrCast(self), contentId, propertiesToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -187,10 +187,10 @@ pub const IContentIndexer = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AddAsync: *const fn(self: *anyopaque, indexableContent: *IIndexableContent, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UpdateAsync: *const fn(self: *anyopaque, indexableContent: *IIndexableContent, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteAsync: *const fn(self: *anyopaque, contentId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteMultipleAsync: *const fn(self: *anyopaque, contentIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteAsync: *const fn(self: *anyopaque, contentId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteMultipleAsync: *const fn(self: *anyopaque, contentIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAllAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RetrievePropertiesAsync: *const fn(self: *anyopaque, contentId: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), _r: **IAsyncOperation(IMapView(HSTRING,IInspectable))) callconv(.winapi) HRESULT,
+        RetrievePropertiesAsync: *const fn(self: *anyopaque, contentId: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), _r: **IAsyncOperation(IMapView(?HSTRING,IInspectable))) callconv(.winapi) HRESULT,
         get_Revision: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
     };
 };
@@ -202,14 +202,14 @@ pub const IContentIndexerQuery = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
-        var _r: *IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) = undefined;
+    pub fn GetPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) {
+        var _r: *IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) = undefined;
         const _c = self.vtable.GetPropertiesAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertiesAsyncWithStartIndexAndMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
-        var _r: *IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) = undefined;
+    pub fn GetPropertiesAsyncWithStartIndexAndMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) {
+        var _r: *IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable))) = undefined;
         const _c = self.vtable.GetPropertiesAsyncWithStartIndexAndMaxItems(@ptrCast(self), startIndex, maxItems, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -245,8 +245,8 @@ pub const IContentIndexerQuery = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
-        GetPropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable)))) callconv(.winapi) HRESULT,
-        GetPropertiesAsyncWithStartIndexAndMaxItems: *const fn(self: *anyopaque, startIndex: u32, maxItems: u32, _r: **IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable)))) callconv(.winapi) HRESULT,
+        GetPropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable)))) callconv(.winapi) HRESULT,
+        GetPropertiesAsyncWithStartIndexAndMaxItems: *const fn(self: *anyopaque, startIndex: u32, maxItems: u32, _r: **IAsyncOperation(IVectorView(IMapView(?HSTRING,IInspectable)))) callconv(.winapi) HRESULT,
         GetAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IIndexableContent))) callconv(.winapi) HRESULT,
         GetAsyncWithStartIndexAndMaxItems: *const fn(self: *anyopaque, startIndex: u32, maxItems: u32, _r: **IAsyncOperation(IVectorView(IIndexableContent))) callconv(.winapi) HRESULT,
         get_QueryFolder: *const fn(self: *anyopaque, _r: **StorageFolder) callconv(.winapi) HRESULT,
@@ -254,19 +254,19 @@ pub const IContentIndexerQuery = extern struct {
 };
 pub const IContentIndexerQueryOperations = extern struct {
     vtable: *const VTable,
-    pub fn CreateQueryWithSortOrderAndSearchFilterLanguage(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrderAndSearchFilterLanguage(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: ?HSTRING) core.HResult!*ContentIndexerQuery {
         var _r: *ContentIndexerQuery = undefined;
         const _c = self.vtable.CreateQueryWithSortOrderAndSearchFilterLanguage(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var _r: *ContentIndexerQuery = undefined;
         const _c = self.vtable.CreateQueryWithSortOrder(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQuery(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*ContentIndexerQuery {
         var _r: *ContentIndexerQuery = undefined;
         const _c = self.vtable.CreateQuery(@ptrCast(self), searchFilter, propertiesToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -284,14 +284,14 @@ pub const IContentIndexerQueryOperations = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateQueryWithSortOrderAndSearchFilterLanguage: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING, _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
-        CreateQueryWithSortOrder: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
-        CreateQuery: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
+        CreateQueryWithSortOrderAndSearchFilterLanguage: *const fn(self: *anyopaque, searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: ?HSTRING, _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
+        CreateQueryWithSortOrder: *const fn(self: *anyopaque, searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
+        CreateQuery: *const fn(self: *anyopaque, searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
     };
 };
 pub const IContentIndexerStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetIndexerWithIndexName(self: *@This(), indexName: HSTRING) core.HResult!*ContentIndexer {
+    pub fn GetIndexerWithIndexName(self: *@This(), indexName: ?HSTRING) core.HResult!*ContentIndexer {
         var _r: *ContentIndexer = undefined;
         const _c = self.vtable.GetIndexerWithIndexName(@ptrCast(self), indexName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -315,24 +315,24 @@ pub const IContentIndexerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetIndexerWithIndexName: *const fn(self: *anyopaque, indexName: HSTRING, _r: **ContentIndexer) callconv(.winapi) HRESULT,
+        GetIndexerWithIndexName: *const fn(self: *anyopaque, indexName: ?HSTRING, _r: **ContentIndexer) callconv(.winapi) HRESULT,
         GetIndexer: *const fn(self: *anyopaque, _r: **ContentIndexer) callconv(.winapi) HRESULT,
     };
 };
 pub const IIndexableContent = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,IInspectable) {
-        var _r: *IMap(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,IInspectable) {
+        var _r: *IMap(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -347,13 +347,13 @@ pub const IIndexableContent = extern struct {
         const _c = self.vtable.put_Stream(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getStreamContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStreamContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StreamContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putStreamContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStreamContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_StreamContentType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -369,19 +369,19 @@ pub const IIndexableContent = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_Stream: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
         put_Stream: *const fn(self: *anyopaque, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
-        get_StreamContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_StreamContentType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_StreamContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_StreamContentType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IQueryOptions = extern struct {
     vtable: *const VTable,
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypeFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -396,33 +396,33 @@ pub const IQueryOptions = extern struct {
         const _c = self.vtable.put_FolderDepth(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getApplicationSearchFilter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationSearchFilter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationSearchFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putApplicationSearchFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putApplicationSearchFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ApplicationSearchFilter(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserSearchFilter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserSearchFilter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserSearchFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserSearchFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserSearchFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserSearchFilter(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -442,8 +442,8 @@ pub const IQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGroupPropertyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroupPropertyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GroupPropertyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -454,13 +454,13 @@ pub const IQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SaveToString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn SaveToString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.SaveToString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn LoadFromString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LoadFromString(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -468,7 +468,7 @@ pub const IQueryOptions = extern struct {
         const _c = self.vtable.SetThumbnailPrefetch(@ptrCast(self), mode, requestedSize, options);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetPropertyPrefetch(self: *@This(), options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetPropertyPrefetch(self: *@This(), options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.SetPropertyPrefetch(@ptrCast(self), options, propertiesToRetrieve);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -484,29 +484,29 @@ pub const IQueryOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_FolderDepth: *const fn(self: *anyopaque, _r: *FolderDepth) callconv(.winapi) HRESULT,
         put_FolderDepth: *const fn(self: *anyopaque, value: FolderDepth) callconv(.winapi) HRESULT,
-        get_ApplicationSearchFilter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ApplicationSearchFilter: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserSearchFilter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserSearchFilter: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ApplicationSearchFilter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ApplicationSearchFilter: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserSearchFilter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserSearchFilter: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IndexerOption: *const fn(self: *anyopaque, _r: *IndexerOption) callconv(.winapi) HRESULT,
         put_IndexerOption: *const fn(self: *anyopaque, value: IndexerOption) callconv(.winapi) HRESULT,
         get_SortOrder: *const fn(self: *anyopaque, _r: **IVector(SortEntry)) callconv(.winapi) HRESULT,
-        get_GroupPropertyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_GroupPropertyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DateStackOption: *const fn(self: *anyopaque, _r: *DateStackOption) callconv(.winapi) HRESULT,
-        SaveToString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        LoadFromString: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SaveToString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        LoadFromString: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetThumbnailPrefetch: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) callconv(.winapi) HRESULT,
-        SetPropertyPrefetch: *const fn(self: *anyopaque, options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
+        SetPropertyPrefetch: *const fn(self: *anyopaque, options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IQueryOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateCommonFileQuery(self: *@This(), query: CommonFileQuery, fileTypeFilter: *IIterable(HSTRING)) core.HResult!*QueryOptions {
+    pub fn CreateCommonFileQuery(self: *@This(), query: CommonFileQuery, fileTypeFilter: *IIterable(?HSTRING)) core.HResult!*QueryOptions {
         var _r: *QueryOptions = undefined;
         const _c = self.vtable.CreateCommonFileQuery(@ptrCast(self), query, fileTypeFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -530,14 +530,14 @@ pub const IQueryOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateCommonFileQuery: *const fn(self: *anyopaque, query: CommonFileQuery, fileTypeFilter: *IIterable(HSTRING), _r: **QueryOptions) callconv(.winapi) HRESULT,
+        CreateCommonFileQuery: *const fn(self: *anyopaque, query: CommonFileQuery, fileTypeFilter: *IIterable(?HSTRING), _r: **QueryOptions) callconv(.winapi) HRESULT,
         CreateCommonFolderQuery: *const fn(self: *anyopaque, query: CommonFolderQuery, _r: **QueryOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IQueryOptionsWithProviderFilter = extern struct {
     vtable: *const VTable,
-    pub fn getStorageProviderIdFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getStorageProviderIdFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_StorageProviderIdFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -554,7 +554,7 @@ pub const IQueryOptionsWithProviderFilter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StorageProviderIdFilter: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_StorageProviderIdFilter: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageFileQueryResult = extern struct {
@@ -589,8 +589,8 @@ pub const IStorageFileQueryResult = extern struct {
 };
 pub const IStorageFileQueryResult2 = extern struct {
     vtable: *const VTable,
-    pub fn GetMatchingPropertiesWithRanges(self: *@This(), file: *StorageFile) core.HResult!*IMap(HSTRING,IVectorView(TextSegment)) {
-        var _r: *IMap(HSTRING,IVectorView(TextSegment)) = undefined;
+    pub fn GetMatchingPropertiesWithRanges(self: *@This(), file: *StorageFile) core.HResult!*IMap(?HSTRING,IVectorView(TextSegment)) {
+        var _r: *IMap(?HSTRING,IVectorView(TextSegment)) = undefined;
         const _c = self.vtable.GetMatchingPropertiesWithRanges(@ptrCast(self), file, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -607,7 +607,7 @@ pub const IStorageFileQueryResult2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetMatchingPropertiesWithRanges: *const fn(self: *anyopaque, file: *StorageFile, _r: **IMap(HSTRING,IVectorView(TextSegment))) callconv(.winapi) HRESULT,
+        GetMatchingPropertiesWithRanges: *const fn(self: *anyopaque, file: *StorageFile, _r: **IMap(?HSTRING,IVectorView(TextSegment))) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageFolderQueryOperations = extern struct {
@@ -940,13 +940,13 @@ pub const IStorageQueryResultBase = extern struct {
 };
 pub const IValueAndLanguage = extern struct {
     vtable: *const VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -972,23 +972,23 @@ pub const IValueAndLanguage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Value: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Value: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const IndexableContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,IInspectable) {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.getProperties();
     }
@@ -1000,11 +1000,11 @@ pub const IndexableContent = extern struct {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.putStream(value);
     }
-    pub fn getStreamContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getStreamContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.getStreamContentType();
     }
-    pub fn putStreamContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStreamContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIndexableContent = @ptrCast(self);
         return try this.putStreamContentType(value);
     }
@@ -1036,7 +1036,7 @@ pub const IndexerOption = enum(i32) {
 };
 pub const QueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getFileTypeFilter();
     }
@@ -1048,27 +1048,27 @@ pub const QueryOptions = extern struct {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.putFolderDepth(value);
     }
-    pub fn getApplicationSearchFilter(self: *@This()) core.HResult!HSTRING {
+    pub fn getApplicationSearchFilter(self: *@This()) core.HResult!?HSTRING {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getApplicationSearchFilter();
     }
-    pub fn putApplicationSearchFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putApplicationSearchFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.putApplicationSearchFilter(value);
     }
-    pub fn getUserSearchFilter(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserSearchFilter(self: *@This()) core.HResult!?HSTRING {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getUserSearchFilter();
     }
-    pub fn putUserSearchFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserSearchFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.putUserSearchFilter(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.putLanguage(value);
     }
@@ -1084,7 +1084,7 @@ pub const QueryOptions = extern struct {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getSortOrder();
     }
-    pub fn getGroupPropertyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroupPropertyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getGroupPropertyName();
     }
@@ -1092,11 +1092,11 @@ pub const QueryOptions = extern struct {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.getDateStackOption();
     }
-    pub fn SaveToString(self: *@This()) core.HResult!HSTRING {
+    pub fn SaveToString(self: *@This()) core.HResult!?HSTRING {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.SaveToString();
     }
-    pub fn LoadFromString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn LoadFromString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.LoadFromString(value);
     }
@@ -1104,11 +1104,11 @@ pub const QueryOptions = extern struct {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.SetThumbnailPrefetch(mode, requestedSize, options);
     }
-    pub fn SetPropertyPrefetch(self: *@This(), options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetPropertyPrefetch(self: *@This(), options: PropertyPrefetchOptions, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!void {
         const this: *IQueryOptions = @ptrCast(self);
         return try this.SetPropertyPrefetch(options, propertiesToRetrieve);
     }
-    pub fn getStorageProviderIdFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getStorageProviderIdFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IQueryOptionsWithProviderFilter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IQueryOptionsWithProviderFilter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1121,7 +1121,7 @@ pub const QueryOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IQueryOptions.IID)));
     }
-    pub fn CreateCommonFileQuery(query: CommonFileQuery, fileTypeFilter: *IIterable(HSTRING)) core.HResult!*QueryOptions {
+    pub fn CreateCommonFileQuery(query: CommonFileQuery, fileTypeFilter: *IIterable(?HSTRING)) core.HResult!*QueryOptions {
         const _f = try @This()._IQueryOptionsFactoryCache.get();
         return try _f.CreateCommonFileQuery(query, fileTypeFilter);
     }
@@ -1138,7 +1138,7 @@ pub const QueryOptions = extern struct {
     var _IQueryOptionsFactoryCache: FactoryCache(IQueryOptionsFactory, RUNTIME_NAME) = .{};
 };
 pub const SortEntry = extern struct {
-    PropertyName: HSTRING,
+    PropertyName: ?HSTRING,
     AscendingOrder: bool,
 };
 pub const SortEntryVector = extern struct {
@@ -1239,7 +1239,7 @@ pub const StorageFileQueryResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ApplyNewQueryOptions(newQueryOptions);
     }
-    pub fn GetMatchingPropertiesWithRanges(self: *@This(), file: *StorageFile) core.HResult!*IMap(HSTRING,IVectorView(TextSegment)) {
+    pub fn GetMatchingPropertiesWithRanges(self: *@This(), file: *StorageFile) core.HResult!*IMap(?HSTRING,IVectorView(TextSegment)) {
         var this: ?*IStorageFileQueryResult2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFileQueryResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1425,11 +1425,11 @@ pub const StorageLibraryContentChangedTriggerDetails = extern struct {
 };
 pub const ValueAndLanguage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IValueAndLanguage = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IValueAndLanguage = @ptrCast(self);
         return try this.putLanguage(value);
     }

@@ -17,7 +17,7 @@ pub const AggregateContactManager = extern struct {
         const this: *IAggregateContactManager = @ptrCast(self);
         return try this.TrySetPreferredSourceForPictureAsync(aggregateContact, rawContact);
     }
-    pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: HSTRING, remoteSourceId: HSTRING, accountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: ?HSTRING, remoteSourceId: ?HSTRING, accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IAggregateContactManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAggregateContactManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -31,11 +31,11 @@ pub const AggregateContactManager = extern struct {
 };
 pub const Contact = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContact = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContact = @ptrCast(self);
         return try this.putName(value);
     }
@@ -51,25 +51,25 @@ pub const Contact = extern struct {
         const this: *IContact = @ptrCast(self);
         return try this.getFields();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getNotes(self: *@This()) core.HResult!HSTRING {
+    pub fn getNotes(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNotes();
     }
-    pub fn putNotes(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNotes(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -105,7 +105,7 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getImportantDates();
     }
-    pub fn getDataSuppliers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDataSuppliers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IContact2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -135,103 +135,103 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProviderProperties();
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirstName();
     }
-    pub fn putFirstName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFirstName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFirstName(value);
     }
-    pub fn getLastName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLastName();
     }
-    pub fn putLastName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLastName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastName(value);
     }
-    pub fn getMiddleName(self: *@This()) core.HResult!HSTRING {
+    pub fn getMiddleName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMiddleName();
     }
-    pub fn putMiddleName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMiddleName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMiddleName(value);
     }
-    pub fn getYomiGivenName(self: *@This()) core.HResult!HSTRING {
+    pub fn getYomiGivenName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiGivenName();
     }
-    pub fn putYomiGivenName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYomiGivenName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putYomiGivenName(value);
     }
-    pub fn getYomiFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getYomiFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiFamilyName();
     }
-    pub fn putYomiFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYomiFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putYomiFamilyName(value);
     }
-    pub fn getHonorificNameSuffix(self: *@This()) core.HResult!HSTRING {
+    pub fn getHonorificNameSuffix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHonorificNameSuffix();
     }
-    pub fn putHonorificNameSuffix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHonorificNameSuffix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHonorificNameSuffix(value);
     }
-    pub fn getHonorificNamePrefix(self: *@This()) core.HResult!HSTRING {
+    pub fn getHonorificNamePrefix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHonorificNamePrefix();
     }
-    pub fn putHonorificNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHonorificNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHonorificNamePrefix(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
-    pub fn getYomiDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getYomiDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiDisplayName();
     }
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -255,31 +255,31 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMe();
     }
-    pub fn getAggregateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAggregateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAggregateId();
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
-    pub fn getRingToneToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getRingToneToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRingToneToken();
     }
-    pub fn putRingToneToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRingToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -315,13 +315,13 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSourceDisplayPicture(value);
     }
-    pub fn getTextToneToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextToneToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextToneToken();
     }
-    pub fn putTextToneToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -333,37 +333,37 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAggregate();
     }
-    pub fn getFullName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFullName();
     }
-    pub fn getDisplayNameOverride(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayNameOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayNameOverride();
     }
-    pub fn putDisplayNameOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayNameOverride(value);
     }
-    pub fn getNickname(self: *@This()) core.HResult!HSTRING {
+    pub fn getNickname(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNickname();
     }
-    pub fn putNickname(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNickname(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNickname(value);
     }
-    pub fn getSortName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSortName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -385,43 +385,43 @@ pub const Contact = extern struct {
 };
 pub const ContactAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getStreetAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getStreetAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getStreetAddress();
     }
-    pub fn putStreetAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStreetAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putStreetAddress(value);
     }
-    pub fn getLocality(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocality(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getLocality();
     }
-    pub fn putLocality(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocality(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putLocality(value);
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getRegion();
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putRegion(value);
     }
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getCountry();
     }
-    pub fn putCountry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCountry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putCountry(value);
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getPostalCode();
     }
-    pub fn putPostalCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPostalCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putPostalCode(value);
     }
@@ -433,11 +433,11 @@ pub const ContactAddress = extern struct {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -462,27 +462,27 @@ pub const ContactAddressKind = enum(i32) {
 };
 pub const ContactAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getAnnotationListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAnnotationListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getAnnotationListId();
     }
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getContactId();
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.putContactId(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.putRemoteId(value);
     }
@@ -502,13 +502,13 @@ pub const ContactAnnotation = extern struct {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getProviderProperties();
     }
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactAnnotation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactListId();
     }
-    pub fn putContactListId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactListId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactAnnotation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -530,15 +530,15 @@ pub const ContactAnnotation = extern struct {
 };
 pub const ContactAnnotationList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getProviderPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.getProviderPackageFamilyName();
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.getUserDataAccountId();
     }
@@ -550,11 +550,11 @@ pub const ContactAnnotationList = extern struct {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.TrySaveAnnotationAsync(annotation);
     }
-    pub fn GetAnnotationAsync(self: *@This(), annotationId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotation) {
+    pub fn GetAnnotationAsync(self: *@This(), annotationId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotation) {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.GetAnnotationAsync(annotationId);
     }
-    pub fn FindAnnotationsByRemoteIdAsync(self: *@This(), remoteId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
+    pub fn FindAnnotationsByRemoteIdAsync(self: *@This(), remoteId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.FindAnnotationsByRemoteIdAsync(remoteId);
     }
@@ -583,11 +583,11 @@ pub const ContactAnnotationOperations = enum(i32) {
 };
 pub const ContactAnnotationStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.FindContactIdsByEmailAsync(emailAddress);
     }
-    pub fn FindContactIdsByPhoneNumberAsync(self: *@This(), phoneNumber: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn FindContactIdsByPhoneNumberAsync(self: *@This(), phoneNumber: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.FindContactIdsByPhoneNumberAsync(phoneNumber);
     }
@@ -603,11 +603,11 @@ pub const ContactAnnotationStore = extern struct {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.CreateAnnotationListAsync();
     }
-    pub fn CreateAnnotationListAsyncWithUserDataAccountId(self: *@This(), userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
+    pub fn CreateAnnotationListAsyncWithUserDataAccountId(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.CreateAnnotationListAsyncWithUserDataAccountId(userDataAccountId);
     }
-    pub fn GetAnnotationListAsync(self: *@This(), annotationListId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
+    pub fn GetAnnotationListAsync(self: *@This(), annotationListId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.GetAnnotationListAsync(annotationListId);
     }
@@ -615,7 +615,7 @@ pub const ContactAnnotationStore = extern struct {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.FindAnnotationListsAsync();
     }
-    pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
+    pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         var this: ?*IContactAnnotationStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotationStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -693,7 +693,7 @@ pub const ContactCardOptions = extern struct {
         const this: *IContactCardOptions = @ptrCast(self);
         return try this.putInitialTabKind(value);
     }
-    pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IContactCardOptions2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactCardOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -815,19 +815,19 @@ pub const ContactChangedEventArgs = extern struct {
 };
 pub const ContactConnectedServiceAccount = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.putServiceName(value);
     }
@@ -879,11 +879,11 @@ pub const ContactDate = extern struct {
         const this: *IContactDate = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactDate = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactDate = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -908,11 +908,11 @@ pub const ContactDateKind = enum(i32) {
 };
 pub const ContactEmail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactEmail = @ptrCast(self);
         return try this.getAddress();
     }
-    pub fn putAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactEmail = @ptrCast(self);
         return try this.putAddress(value);
     }
@@ -924,11 +924,11 @@ pub const ContactEmail = extern struct {
         const this: *IContactEmail = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactEmail = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactEmail = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -961,26 +961,26 @@ pub const ContactField = extern struct {
         const this: *IContactField = @ptrCast(self);
         return try this.getCategory();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactField = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactField = @ptrCast(self);
         return try this.getValue();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateField(value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateField(value, ty);
     }
-    pub fn CreateFieldWithCategory(value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithCategory(value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateFieldWithCategory(value, ty, category);
     }
-    pub fn CreateFieldWithValueAndTyAndCategory(name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithValueAndTyAndCategory(name: ?HSTRING, value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const _f = try @This()._IContactFieldFactoryCache.get();
         return try _f.CreateFieldWithValueAndTyAndCategory(name, value, ty, category);
     }
@@ -1000,49 +1000,49 @@ pub const ContactFieldCategory = enum(i32) {
 };
 pub const ContactFieldFactory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateField(self: *@This(), value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(self: *@This(), value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
         return try this.CreateField(value, ty);
     }
-    pub fn CreateFieldWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithCategory(self: *@This(), value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
         return try this.CreateFieldWithCategory(value, ty, category);
     }
-    pub fn CreateFieldWithValueAndTyAndCategory(self: *@This(), name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithValueAndTyAndCategory(self: *@This(), name: ?HSTRING, value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
         return try this.CreateFieldWithValueAndTyAndCategory(name, value, ty, category);
     }
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocation(self: *@This(), unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocation(unstructuredAddress);
     }
-    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory, street: ?HSTRING, city: ?HSTRING, region: ?HSTRING, country: ?HSTRING, postalCode: ?HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessage(self: *@This(), userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessage(userName);
     }
-    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory, service: ?HSTRING, displayText: ?HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1086,7 +1086,7 @@ pub const ContactGroup = extern struct {
 };
 pub const ContactInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInformation = @ptrCast(self);
         return try this.getName();
     }
@@ -1114,7 +1114,7 @@ pub const ContactInformation = extern struct {
         const this: *IContactInformation = @ptrCast(self);
         return try this.getCustomFields();
     }
-    pub fn QueryCustomFields(self: *@This(), customName: HSTRING) core.HResult!*IVectorView(ContactField) {
+    pub fn QueryCustomFields(self: *@This(), customName: ?HSTRING) core.HResult!*IVectorView(ContactField) {
         const this: *IContactInformation = @ptrCast(self);
         return try this.QueryCustomFields(customName);
     }
@@ -1126,15 +1126,15 @@ pub const ContactInformation = extern struct {
 };
 pub const ContactInstantMessageField = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInstantMessageField = @ptrCast(self);
         return try this.getUserName();
     }
-    pub fn getService(self: *@This()) core.HResult!HSTRING {
+    pub fn getService(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInstantMessageField = @ptrCast(self);
         return try this.getService();
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInstantMessageField = @ptrCast(self);
         return try this.getDisplayText();
     }
@@ -1154,13 +1154,13 @@ pub const ContactInstantMessageField = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCategory();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1169,15 +1169,15 @@ pub const ContactInstantMessageField = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstantMessage(userName: HSTRING) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessage(userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessage(userName);
     }
-    pub fn CreateInstantMessageWithCategory(userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(userName: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName: ?HSTRING, category: ContactFieldCategory, service: ?HSTRING, displayText: ?HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName, category, service, displayText, verb);
     }
@@ -1190,67 +1190,67 @@ pub const ContactInstantMessageField = extern struct {
 };
 pub const ContactJobInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCompanyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getCompanyName();
     }
-    pub fn putCompanyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putCompanyName(value);
     }
-    pub fn getCompanyYomiName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCompanyYomiName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getCompanyYomiName();
     }
-    pub fn putCompanyYomiName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyYomiName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putCompanyYomiName(value);
     }
-    pub fn getDepartment(self: *@This()) core.HResult!HSTRING {
+    pub fn getDepartment(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getDepartment();
     }
-    pub fn putDepartment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDepartment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putDepartment(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getManager(self: *@This()) core.HResult!HSTRING {
+    pub fn getManager(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getManager();
     }
-    pub fn putManager(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putManager(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putManager(value);
     }
-    pub fn getOffice(self: *@This()) core.HResult!HSTRING {
+    pub fn getOffice(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getOffice();
     }
-    pub fn putOffice(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOffice(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putOffice(value);
     }
-    pub fn getCompanyAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getCompanyAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getCompanyAddress();
     }
-    pub fn putCompanyAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putCompanyAddress(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -1273,23 +1273,23 @@ pub const ContactLaunchActionVerbs = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCall() core.HResult!HSTRING {
+    pub fn getCall() core.HResult!?HSTRING {
         const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getCall();
     }
-    pub fn getMessage() core.HResult!HSTRING {
+    pub fn getMessage() core.HResult!?HSTRING {
         const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getMessage();
     }
-    pub fn getMap() core.HResult!HSTRING {
+    pub fn getMap() core.HResult!?HSTRING {
         const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getMap();
     }
-    pub fn getPost() core.HResult!HSTRING {
+    pub fn getPost() core.HResult!?HSTRING {
         const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getPost();
     }
-    pub fn getVideoCall() core.HResult!HSTRING {
+    pub fn getVideoCall() core.HResult!?HSTRING {
         const _f = try @This()._IContactLaunchActionVerbsStaticsCache.get();
         return try _f.getVideoCall();
     }
@@ -1299,19 +1299,19 @@ pub const ContactLaunchActionVerbs = extern struct {
 };
 pub const ContactList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactList = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactList = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactList = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactList = @ptrCast(self);
         return try this.getSourceDisplayName();
     }
@@ -1351,7 +1351,7 @@ pub const ContactList = extern struct {
         const this: *IContactList = @ptrCast(self);
         return try this.getSupportsServerSearch();
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactList = @ptrCast(self);
         return try this.getUserDataAccountId();
     }
@@ -1371,7 +1371,7 @@ pub const ContactList = extern struct {
         const this: *IContactList = @ptrCast(self);
         return try this.DeleteAsync();
     }
-    pub fn GetContactFromRemoteIdAsync(self: *@This(), remoteId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactFromRemoteIdAsync(self: *@This(), remoteId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         const this: *IContactList = @ptrCast(self);
         return try this.GetContactFromRemoteIdAsync(remoteId);
     }
@@ -1395,7 +1395,7 @@ pub const ContactList = extern struct {
         const this: *IContactList = @ptrCast(self);
         return try this.DeleteContactAsync(contact);
     }
-    pub fn GetContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         const this: *IContactList = @ptrCast(self);
         return try this.GetContactAsync(contactId);
     }
@@ -1423,7 +1423,7 @@ pub const ContactList = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLimitedWriteOperations();
     }
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*ContactChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var this: ?*IContactList3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1441,7 +1441,7 @@ pub const ContactListLimitedWriteOperations = extern struct {
         const this: *IContactListLimitedWriteOperations = @ptrCast(self);
         return try this.TryCreateOrUpdateContactAsync(contact);
     }
-    pub fn TryDeleteContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDeleteContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IContactListLimitedWriteOperations = @ptrCast(self);
         return try this.TryDeleteContactAsync(contactId);
     }
@@ -1755,27 +1755,27 @@ pub const ContactListSyncStatus = enum(i32) {
 };
 pub const ContactLocationField = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUnstructuredAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnstructuredAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getUnstructuredAddress();
     }
-    pub fn getStreet(self: *@This()) core.HResult!HSTRING {
+    pub fn getStreet(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getStreet();
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getCity();
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getRegion();
     }
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getCountry();
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getPostalCode();
     }
@@ -1791,13 +1791,13 @@ pub const ContactLocationField = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCategory();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1806,15 +1806,15 @@ pub const ContactLocationField = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateLocation(unstructuredAddress: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocation(unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocation(unstructuredAddress);
     }
-    pub fn CreateLocationWithCategory(unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(unstructuredAddress: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress: ?HSTRING, category: ContactFieldCategory, street: ?HSTRING, city: ?HSTRING, region: ?HSTRING, country: ?HSTRING, postalCode: ?HSTRING) core.HResult!*ContactLocationField {
         const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
@@ -1990,7 +1990,7 @@ pub const ContactMatchReason = extern struct {
         const this: *IContactMatchReason = @ptrCast(self);
         return try this.getSegments();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMatchReason = @ptrCast(self);
         return try this.getText();
     }
@@ -2078,11 +2078,11 @@ pub const ContactPanelLaunchFullAppRequestedEventArgs = extern struct {
 };
 pub const ContactPhone = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPhone = @ptrCast(self);
         return try this.getNumber();
     }
-    pub fn putNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactPhone = @ptrCast(self);
         return try this.putNumber(value);
     }
@@ -2094,11 +2094,11 @@ pub const ContactPhone = extern struct {
         const this: *IContactPhone = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPhone = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactPhone = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -2130,11 +2130,11 @@ pub const ContactPhoneKind = enum(i32) {
 };
 pub const ContactPicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPicker = @ptrCast(self);
         return try this.getCommitButtonText();
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactPicker = @ptrCast(self);
         return try this.putCommitButtonText(value);
     }
@@ -2146,7 +2146,7 @@ pub const ContactPicker = extern struct {
         const this: *IContactPicker = @ptrCast(self);
         return try this.putSelectionMode(value);
     }
-    pub fn getDesiredFields(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDesiredFields(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IContactPicker = @ptrCast(self);
         return try this.getDesiredFields();
     }
@@ -2217,7 +2217,7 @@ pub const ContactQueryOptions = extern struct {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.getTextSearch();
     }
-    pub fn getContactListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.getContactListIds();
     }
@@ -2245,7 +2245,7 @@ pub const ContactQueryOptions = extern struct {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.putDesiredOperations(value);
     }
-    pub fn getAnnotationListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAnnotationListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.getAnnotationListIds();
     }
@@ -2256,11 +2256,11 @@ pub const ContactQueryOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactQueryOptions.IID)));
     }
-    pub fn CreateWithText(text: HSTRING) core.HResult!*ContactQueryOptions {
+    pub fn CreateWithText(text: ?HSTRING) core.HResult!*ContactQueryOptions {
         const _f = try @This()._IContactQueryOptionsFactoryCache.get();
         return try _f.CreateWithText(text);
     }
-    pub fn CreateWithTextAndFields(text: HSTRING, fields: ContactQuerySearchFields) core.HResult!*ContactQueryOptions {
+    pub fn CreateWithTextAndFields(text: ?HSTRING, fields: ContactQuerySearchFields) core.HResult!*ContactQueryOptions {
         const _f = try @This()._IContactQueryOptionsFactoryCache.get();
         return try _f.CreateWithTextAndFields(text, fields);
     }
@@ -2293,11 +2293,11 @@ pub const ContactQueryTextSearch = extern struct {
         const this: *IContactQueryTextSearch = @ptrCast(self);
         return try this.putFields(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactQueryTextSearch = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactQueryTextSearch = @ptrCast(self);
         return try this.putText(value);
     }
@@ -2345,19 +2345,19 @@ pub const ContactSelectionMode = enum(i32) {
 };
 pub const ContactSignificantOther = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactSignificantOther = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactSignificantOther = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactSignificantOther = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactSignificantOther = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -2393,11 +2393,11 @@ pub const ContactStore = extern struct {
         const this: *IContactStore = @ptrCast(self);
         return try this.FindContactsAsync();
     }
-    pub fn FindContactsAsyncWithSearchText(self: *@This(), searchText: HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
+    pub fn FindContactsAsyncWithSearchText(self: *@This(), searchText: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         const this: *IContactStore = @ptrCast(self);
         return try this.FindContactsAsyncWithSearchText(searchText);
     }
-    pub fn GetContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         const this: *IContactStore = @ptrCast(self);
         return try this.GetContactAsync(contactId);
     }
@@ -2431,13 +2431,13 @@ pub const ContactStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindContactListsAsync();
     }
-    pub fn GetContactListAsync(self: *@This(), contactListId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn GetContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactListAsync(contactListId);
     }
-    pub fn CreateContactListAsync(self: *@This(), displayName: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsync(self: *@This(), displayName: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2461,13 +2461,13 @@ pub const ContactStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactReaderWithOptions(options);
     }
-    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateContactListAsyncWithUserDataAccountId(displayName, userDataAccountId);
     }
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*ContactChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var this: ?*IContactStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2502,21 +2502,21 @@ pub const ContactWebsite = extern struct {
         const this: *IContactWebsite = @ptrCast(self);
         return try this.putUri(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactWebsite = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactWebsite = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn getRawValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getRawValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactWebsite2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactWebsite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawValue();
     }
-    pub fn putRawValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRawValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactWebsite2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactWebsite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2606,7 +2606,7 @@ pub const IAggregateContactManager = extern struct {
 };
 pub const IAggregateContactManager2 = extern struct {
     vtable: *const VTable,
-    pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: HSTRING, remoteSourceId: HSTRING, accountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: ?HSTRING, remoteSourceId: ?HSTRING, accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetRemoteIdentificationInformationAsync(@ptrCast(self), contactListId, remoteSourceId, accountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2624,18 +2624,18 @@ pub const IAggregateContactManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetRemoteIdentificationInformationAsync: *const fn(self: *anyopaque, contactListId: HSTRING, remoteSourceId: HSTRING, accountId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetRemoteIdentificationInformationAsync: *const fn(self: *anyopaque, contactListId: ?HSTRING, remoteSourceId: ?HSTRING, accountId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IContact = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2667,8 +2667,8 @@ pub const IContact = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Thumbnail: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_Fields: *const fn(self: *anyopaque, _r: **IVector(IContactField)) callconv(.winapi) HRESULT,
@@ -2676,23 +2676,23 @@ pub const IContact = extern struct {
 };
 pub const IContact2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNotes(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNotes(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Notes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNotes(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNotes(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Notes(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2726,8 +2726,8 @@ pub const IContact2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDataSuppliers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDataSuppliers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DataSuppliers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2768,16 +2768,16 @@ pub const IContact2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Notes: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Notes: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Notes: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Notes: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Phones: *const fn(self: *anyopaque, _r: **IVector(ContactPhone)) callconv(.winapi) HRESULT,
         get_Emails: *const fn(self: *anyopaque, _r: **IVector(ContactEmail)) callconv(.winapi) HRESULT,
         get_Addresses: *const fn(self: *anyopaque, _r: **IVector(ContactAddress)) callconv(.winapi) HRESULT,
         get_ConnectedServiceAccounts: *const fn(self: *anyopaque, _r: **IVector(ContactConnectedServiceAccount)) callconv(.winapi) HRESULT,
         get_ImportantDates: *const fn(self: *anyopaque, _r: **IVector(ContactDate)) callconv(.winapi) HRESULT,
-        get_DataSuppliers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_DataSuppliers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_JobInfo: *const fn(self: *anyopaque, _r: **IVector(ContactJobInfo)) callconv(.winapi) HRESULT,
         get_SignificantOthers: *const fn(self: *anyopaque, _r: **IVector(ContactSignificantOther)) callconv(.winapi) HRESULT,
         get_Websites: *const fn(self: *anyopaque, _r: **IVector(ContactWebsite)) callconv(.winapi) HRESULT,
@@ -2786,8 +2786,8 @@ pub const IContact2 = extern struct {
 };
 pub const IContact3 = extern struct {
     vtable: *const VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2808,29 +2808,29 @@ pub const IContact3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAggregateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAggregateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AggregateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRingToneToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRingToneToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RingToneToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRingToneToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRingToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RingToneToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2862,13 +2862,13 @@ pub const IContact3 = extern struct {
         const _c = self.vtable.put_SourceDisplayPicture(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextToneToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextToneToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextToneToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTextToneToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TextToneToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2878,34 +2878,34 @@ pub const IContact3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFullName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayNameOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayNameOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayNameOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayNameOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayNameOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNickname(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNickname(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nickname(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNickname(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNickname(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Nickname(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSortName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSortName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SortName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2922,80 +2922,80 @@ pub const IContact3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DisplayPictureUserUpdateTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_DisplayPictureUserUpdateTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_IsMe: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_AggregateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RingToneToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RingToneToken: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AggregateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RingToneToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RingToneToken: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsDisplayPictureManuallySet: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_LargeDisplayPicture: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_SmallDisplayPicture: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_SourceDisplayPicture: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_SourceDisplayPicture: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_TextToneToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TextToneToken: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TextToneToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TextToneToken: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsAggregate: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_FullName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayNameOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayNameOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Nickname: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Nickname: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SortName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FullName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayNameOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayNameOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Nickname: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Nickname: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SortName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactAddress = extern struct {
     vtable: *const VTable,
-    pub fn getStreetAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStreetAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StreetAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putStreetAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStreetAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_StreetAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocality(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocality(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Locality(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocality(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocality(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Locality(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Region(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Country(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCountry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCountry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Country(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPostalCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPostalCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PostalCode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3009,13 +3009,13 @@ pub const IContactAddress = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3031,53 +3031,53 @@ pub const IContactAddress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StreetAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_StreetAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Locality: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Locality: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Region: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Region: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Country: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Country: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PostalCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PostalCode: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_StreetAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_StreetAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Locality: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Locality: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Region: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Region: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Country: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Country: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PostalCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PostalCode: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ContactAddressKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ContactAddressKind) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactAnnotation = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAnnotationListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAnnotationListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AnnotationListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3115,12 +3115,12 @@ pub const IContactAnnotation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AnnotationListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContactId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AnnotationListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedOperations: *const fn(self: *anyopaque, _r: *ContactAnnotationOperations) callconv(.winapi) HRESULT,
         put_SupportedOperations: *const fn(self: *anyopaque, value: ContactAnnotationOperations) callconv(.winapi) HRESULT,
         get_IsDisabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -3129,13 +3129,13 @@ pub const IContactAnnotation = extern struct {
 };
 pub const IContactAnnotation2 = extern struct {
     vtable: *const VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactListId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactListId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactListId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3151,26 +3151,26 @@ pub const IContactAnnotation2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactListId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactListId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactAnnotationList = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProviderPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3187,13 +3187,13 @@ pub const IContactAnnotationList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAnnotationAsync(self: *@This(), annotationId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotation) {
+    pub fn GetAnnotationAsync(self: *@This(), annotationId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotation) {
         var _r: *IAsyncOperation(ContactAnnotation) = undefined;
         const _c = self.vtable.GetAnnotationAsync(@ptrCast(self), annotationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAnnotationsByRemoteIdAsync(self: *@This(), remoteId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
+    pub fn FindAnnotationsByRemoteIdAsync(self: *@This(), remoteId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         var _r: *IAsyncOperation(IVectorView(ContactAnnotation)) = undefined;
         const _c = self.vtable.FindAnnotationsByRemoteIdAsync(@ptrCast(self), remoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3223,27 +3223,27 @@ pub const IContactAnnotationList = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ProviderPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TrySaveAnnotationAsync: *const fn(self: *anyopaque, annotation: *ContactAnnotation, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        GetAnnotationAsync: *const fn(self: *anyopaque, annotationId: HSTRING, _r: **IAsyncOperation(ContactAnnotation)) callconv(.winapi) HRESULT,
-        FindAnnotationsByRemoteIdAsync: *const fn(self: *anyopaque, remoteId: HSTRING, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
+        GetAnnotationAsync: *const fn(self: *anyopaque, annotationId: ?HSTRING, _r: **IAsyncOperation(ContactAnnotation)) callconv(.winapi) HRESULT,
+        FindAnnotationsByRemoteIdAsync: *const fn(self: *anyopaque, remoteId: ?HSTRING, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
         FindAnnotationsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
         DeleteAnnotationAsync: *const fn(self: *anyopaque, annotation: *ContactAnnotation, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactAnnotationStore = extern struct {
     vtable: *const VTable,
-    pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.FindContactIdsByEmailAsync(@ptrCast(self), emailAddress, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindContactIdsByPhoneNumberAsync(self: *@This(), phoneNumber: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn FindContactIdsByPhoneNumberAsync(self: *@This(), phoneNumber: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.FindContactIdsByPhoneNumberAsync(@ptrCast(self), phoneNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3266,13 +3266,13 @@ pub const IContactAnnotationStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAnnotationListAsyncWithUserDataAccountId(self: *@This(), userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
+    pub fn CreateAnnotationListAsyncWithUserDataAccountId(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         var _r: *IAsyncOperation(ContactAnnotationList) = undefined;
         const _c = self.vtable.CreateAnnotationListAsyncWithUserDataAccountId(@ptrCast(self), userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAnnotationListAsync(self: *@This(), annotationListId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
+    pub fn GetAnnotationListAsync(self: *@This(), annotationListId: ?HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         var _r: *IAsyncOperation(ContactAnnotationList) = undefined;
         const _c = self.vtable.GetAnnotationListAsync(@ptrCast(self), annotationListId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3296,19 +3296,19 @@ pub const IContactAnnotationStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindContactIdsByEmailAsync: *const fn(self: *anyopaque, emailAddress: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        FindContactIdsByPhoneNumberAsync: *const fn(self: *anyopaque, phoneNumber: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        FindContactIdsByEmailAsync: *const fn(self: *anyopaque, emailAddress: ?HSTRING, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
+        FindContactIdsByPhoneNumberAsync: *const fn(self: *anyopaque, phoneNumber: ?HSTRING, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
         FindAnnotationsForContactAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
         DisableAnnotationAsync: *const fn(self: *anyopaque, annotation: *ContactAnnotation, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         CreateAnnotationListAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ContactAnnotationList)) callconv(.winapi) HRESULT,
-        CreateAnnotationListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, userDataAccountId: HSTRING, _r: **IAsyncOperation(ContactAnnotationList)) callconv(.winapi) HRESULT,
-        GetAnnotationListAsync: *const fn(self: *anyopaque, annotationListId: HSTRING, _r: **IAsyncOperation(ContactAnnotationList)) callconv(.winapi) HRESULT,
+        CreateAnnotationListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, userDataAccountId: ?HSTRING, _r: **IAsyncOperation(ContactAnnotationList)) callconv(.winapi) HRESULT,
+        GetAnnotationListAsync: *const fn(self: *anyopaque, annotationListId: ?HSTRING, _r: **IAsyncOperation(ContactAnnotationList)) callconv(.winapi) HRESULT,
         FindAnnotationListsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ContactAnnotationList))) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactAnnotationStore2 = extern struct {
     vtable: *const VTable,
-    pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
+    pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         var _r: *IAsyncOperation(IVectorView(ContactAnnotation)) = undefined;
         const _c = self.vtable.FindAnnotationsForContactListAsync(@ptrCast(self), contactListId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3326,7 +3326,7 @@ pub const IContactAnnotationStore2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindAnnotationsForContactListAsync: *const fn(self: *anyopaque, contactListId: HSTRING, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
+        FindAnnotationsForContactListAsync: *const fn(self: *anyopaque, contactListId: ?HSTRING, _r: **IAsyncOperation(IVectorView(ContactAnnotation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactBatch = extern struct {
@@ -3422,8 +3422,8 @@ pub const IContactCardOptions = extern struct {
 };
 pub const IContactCardOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ServerSearchContactListIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3440,7 +3440,7 @@ pub const IContactCardOptions2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServerSearchContactListIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ServerSearchContactListIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactChange = extern struct {
@@ -3608,23 +3608,23 @@ pub const IContactChangedEventArgs = extern struct {
 };
 pub const IContactConnectedServiceAccount = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3640,10 +3640,10 @@ pub const IContactConnectedServiceAccount = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactDate = extern struct {
@@ -3688,13 +3688,13 @@ pub const IContactDate = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3718,19 +3718,19 @@ pub const IContactDate = extern struct {
         put_Year: *const fn(self: *anyopaque, value: *IReference(i32)) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ContactDateKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ContactDateKind) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactEmail = extern struct {
     vtable: *const VTable,
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Address(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3744,13 +3744,13 @@ pub const IContactEmail = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3766,12 +3766,12 @@ pub const IContactEmail = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Address: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Address: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Address: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Address: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ContactEmailKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ContactEmailKind) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactField = extern struct {
@@ -3788,14 +3788,14 @@ pub const IContactField = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3814,25 +3814,25 @@ pub const IContactField = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *ContactFieldType) callconv(.winapi) HRESULT,
         get_Category: *const fn(self: *anyopaque, _r: *ContactFieldCategory) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactFieldFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateField(self: *@This(), value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(self: *@This(), value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
         const _c = self.vtable.CreateField(@ptrCast(self), value, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFieldWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithCategory(self: *@This(), value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
         const _c = self.vtable.CreateFieldWithCategory(@ptrCast(self), value, ty, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFieldWithValueAndTyAndCategory(self: *@This(), name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithValueAndTyAndCategory(self: *@This(), name: ?HSTRING, value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
         const _c = self.vtable.CreateFieldWithValueAndTyAndCategory(@ptrCast(self), name, value, ty, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3850,9 +3850,9 @@ pub const IContactFieldFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateField: *const fn(self: *anyopaque, value: HSTRING, ty: ContactFieldType, _r: **ContactField) callconv(.winapi) HRESULT,
-        CreateFieldWithCategory: *const fn(self: *anyopaque, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
-        CreateFieldWithValueAndTyAndCategory: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateField: *const fn(self: *anyopaque, value: ?HSTRING, ty: ContactFieldType, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateFieldWithCategory: *const fn(self: *anyopaque, value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateFieldWithValueAndTyAndCategory: *const fn(self: *anyopaque, name: ?HSTRING, value: ?HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactGroup = extern struct {
@@ -3873,8 +3873,8 @@ pub const IContactGroup = extern struct {
 };
 pub const IContactInformation = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3915,7 +3915,7 @@ pub const IContactInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn QueryCustomFields(self: *@This(), customName: HSTRING) core.HResult!*IVectorView(ContactField) {
+    pub fn QueryCustomFields(self: *@This(), customName: ?HSTRING) core.HResult!*IVectorView(ContactField) {
         var _r: *IVectorView(ContactField) = undefined;
         const _c = self.vtable.QueryCustomFields(@ptrCast(self), customName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3933,32 +3933,32 @@ pub const IContactInformation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetThumbnailAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IRandomAccessStreamWithContentType)) callconv(.winapi) HRESULT,
         get_Emails: *const fn(self: *anyopaque, _r: **IVectorView(ContactField)) callconv(.winapi) HRESULT,
         get_PhoneNumbers: *const fn(self: *anyopaque, _r: **IVectorView(ContactField)) callconv(.winapi) HRESULT,
         get_Locations: *const fn(self: *anyopaque, _r: **IVectorView(ContactLocationField)) callconv(.winapi) HRESULT,
         get_InstantMessages: *const fn(self: *anyopaque, _r: **IVectorView(ContactInstantMessageField)) callconv(.winapi) HRESULT,
         get_CustomFields: *const fn(self: *anyopaque, _r: **IVectorView(ContactField)) callconv(.winapi) HRESULT,
-        QueryCustomFields: *const fn(self: *anyopaque, customName: HSTRING, _r: **IVectorView(ContactField)) callconv(.winapi) HRESULT,
+        QueryCustomFields: *const fn(self: *anyopaque, customName: ?HSTRING, _r: **IVectorView(ContactField)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactInstantMessageField = extern struct {
     vtable: *const VTable,
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getService(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getService(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Service(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3981,27 +3981,27 @@ pub const IContactInstantMessageField = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Service: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Service: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LaunchUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactInstantMessageFieldFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessage(self: *@This(), userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
         const _c = self.vtable.CreateInstantMessage(@ptrCast(self), userName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
         const _c = self.vtable.CreateInstantMessageWithCategory(@ptrCast(self), userName, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory, service: ?HSTRING, displayText: ?HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
         const _c = self.vtable.CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(@ptrCast(self), userName, category, service, displayText, verb, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4019,90 +4019,90 @@ pub const IContactInstantMessageFieldFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstantMessage: *const fn(self: *anyopaque, userName: HSTRING, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
-        CreateInstantMessageWithCategory: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
-        CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
+        CreateInstantMessage: *const fn(self: *anyopaque, userName: ?HSTRING, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
+        CreateInstantMessageWithCategory: *const fn(self: *anyopaque, userName: ?HSTRING, category: ContactFieldCategory, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
+        CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb: *const fn(self: *anyopaque, userName: ?HSTRING, category: ContactFieldCategory, service: ?HSTRING, displayText: ?HSTRING, verb: *Uri, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactJobInfo = extern struct {
     vtable: *const VTable,
-    pub fn getCompanyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CompanyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCompanyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CompanyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCompanyYomiName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCompanyYomiName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CompanyYomiName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCompanyYomiName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyYomiName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CompanyYomiName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDepartment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDepartment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Department(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDepartment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDepartment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Department(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getManager(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManager(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Manager(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putManager(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putManager(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Manager(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOffice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOffice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Office(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOffice(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOffice(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Office(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCompanyAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCompanyAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CompanyAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCompanyAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CompanyAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4118,52 +4118,52 @@ pub const IContactJobInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CompanyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CompanyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CompanyYomiName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CompanyYomiName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Department: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Department: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Manager: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Manager: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Office: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Office: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CompanyAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CompanyAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CompanyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CompanyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CompanyYomiName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CompanyYomiName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Department: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Department: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Manager: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Manager: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Office: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Office: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CompanyAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CompanyAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactLaunchActionVerbsStatics = extern struct {
     vtable: *const VTable,
-    pub fn getCall(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCall(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Call(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMap(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMap(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Map(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPost(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPost(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Post(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoCall(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoCall(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoCall(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4180,33 +4180,33 @@ pub const IContactLaunchActionVerbsStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Call: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Map: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Post: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoCall: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Call: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Map: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Post: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoCall: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactList = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4259,8 +4259,8 @@ pub const IContactList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4287,7 +4287,7 @@ pub const IContactList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContactFromRemoteIdAsync(self: *@This(), remoteId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactFromRemoteIdAsync(self: *@This(), remoteId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         var _r: *IAsyncOperation(Contact) = undefined;
         const _c = self.vtable.GetContactFromRemoteIdAsync(@ptrCast(self), remoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4323,7 +4323,7 @@ pub const IContactList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         var _r: *IAsyncOperation(Contact) = undefined;
         const _c = self.vtable.GetContactAsync(@ptrCast(self), contactId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4341,10 +4341,10 @@ pub const IContactList = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsHidden: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsHidden: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *ContactListOtherAppReadAccess) callconv(.winapi) HRESULT,
@@ -4354,18 +4354,18 @@ pub const IContactList = extern struct {
         get_ChangeTracker: *const fn(self: *anyopaque, _r: **ContactChangeTracker) callconv(.winapi) HRESULT,
         get_SyncManager: *const fn(self: *anyopaque, _r: **ContactListSyncManager) callconv(.winapi) HRESULT,
         get_SupportsServerSearch: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_ContactChanged: *const fn(self: *anyopaque, value: *TypedEventHandler(ContactList,ContactChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ContactChanged: *const fn(self: *anyopaque, value: EventRegistrationToken) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetContactFromRemoteIdAsync: *const fn(self: *anyopaque, remoteId: HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
+        GetContactFromRemoteIdAsync: *const fn(self: *anyopaque, remoteId: ?HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         GetMeContactAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         GetContactReader: *const fn(self: *anyopaque, _r: **ContactReader) callconv(.winapi) HRESULT,
         GetContactReaderWithOptions: *const fn(self: *anyopaque, options: *ContactQueryOptions, _r: **ContactReader) callconv(.winapi) HRESULT,
         SaveContactAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteContactAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetContactAsync: *const fn(self: *anyopaque, contactId: HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
+        GetContactAsync: *const fn(self: *anyopaque, contactId: ?HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactList2 = extern struct {
@@ -4411,7 +4411,7 @@ pub const IContactList3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*ContactChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var _r: *ContactChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4430,7 +4430,7 @@ pub const IContactList3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LimitedWriteOperations: *const fn(self: *anyopaque, _r: **ContactListLimitedWriteOperations) callconv(.winapi) HRESULT,
-        GetChangeTracker: *const fn(self: *anyopaque, identity: HSTRING, _r: **ContactChangeTracker) callconv(.winapi) HRESULT,
+        GetChangeTracker: *const fn(self: *anyopaque, identity: ?HSTRING, _r: **ContactChangeTracker) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactListLimitedWriteOperations = extern struct {
@@ -4441,7 +4441,7 @@ pub const IContactListLimitedWriteOperations = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDeleteContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDeleteContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDeleteContactAsync(@ptrCast(self), contactId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4460,7 +4460,7 @@ pub const IContactListLimitedWriteOperations = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCreateOrUpdateContactAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDeleteContactAsync: *const fn(self: *anyopaque, contactId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDeleteContactAsync: *const fn(self: *anyopaque, contactId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactListSyncConstraints = extern struct {
@@ -4904,38 +4904,38 @@ pub const IContactListSyncManager2 = extern struct {
 };
 pub const IContactLocationField = extern struct {
     vtable: *const VTable,
-    pub fn getUnstructuredAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnstructuredAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnstructuredAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStreet(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStreet(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Street(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Country(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4952,29 +4952,29 @@ pub const IContactLocationField = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UnstructuredAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Street: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_City: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Region: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Country: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PostalCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UnstructuredAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Street: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_City: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Region: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Country: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PostalCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactLocationFieldFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocation(self: *@This(), unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
         const _c = self.vtable.CreateLocation(@ptrCast(self), unstructuredAddress, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
         const _c = self.vtable.CreateLocationWithCategory(@ptrCast(self), unstructuredAddress, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory, street: ?HSTRING, city: ?HSTRING, region: ?HSTRING, country: ?HSTRING, postalCode: ?HSTRING) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
         const _c = self.vtable.CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(@ptrCast(self), unstructuredAddress, category, street, city, region, country, postalCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4992,9 +4992,9 @@ pub const IContactLocationFieldFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateLocation: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
-        CreateLocationWithCategory: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, _r: **ContactLocationField) callconv(.winapi) HRESULT,
-        CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
+        CreateLocation: *const fn(self: *anyopaque, unstructuredAddress: ?HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
+        CreateLocationWithCategory: *const fn(self: *anyopaque, unstructuredAddress: ?HSTRING, category: ContactFieldCategory, _r: **ContactLocationField) callconv(.winapi) HRESULT,
+        CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode: *const fn(self: *anyopaque, unstructuredAddress: ?HSTRING, category: ContactFieldCategory, street: ?HSTRING, city: ?HSTRING, region: ?HSTRING, country: ?HSTRING, postalCode: ?HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactManagerForUser = extern struct {
@@ -5334,8 +5334,8 @@ pub const IContactMatchReason = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5354,89 +5354,89 @@ pub const IContactMatchReason = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Field: *const fn(self: *anyopaque, _r: *ContactMatchReasonKind) callconv(.winapi) HRESULT,
         get_Segments: *const fn(self: *anyopaque, _r: **IVectorView(TextSegment)) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactName = extern struct {
     vtable: *const VTable,
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFirstName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFirstName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FirstName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLastName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LastName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLastName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLastName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LastName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMiddleName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMiddleName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MiddleName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMiddleName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMiddleName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MiddleName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getYomiGivenName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYomiGivenName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YomiGivenName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putYomiGivenName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYomiGivenName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_YomiGivenName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getYomiFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYomiFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YomiFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putYomiFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putYomiFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_YomiFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHonorificNameSuffix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHonorificNameSuffix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HonorificNameSuffix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHonorificNameSuffix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHonorificNameSuffix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HonorificNameSuffix(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHonorificNamePrefix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHonorificNamePrefix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HonorificNamePrefix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHonorificNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHonorificNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HonorificNamePrefix(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getYomiDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYomiDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YomiDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5453,22 +5453,22 @@ pub const IContactName = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FirstName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FirstName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_LastName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LastName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MiddleName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MiddleName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_YomiGivenName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_YomiGivenName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_YomiFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_YomiFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_HonorificNameSuffix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HonorificNameSuffix: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_HonorificNamePrefix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HonorificNamePrefix: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_YomiDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FirstName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FirstName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_LastName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LastName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MiddleName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MiddleName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_YomiGivenName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_YomiGivenName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_YomiFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_YomiFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_HonorificNameSuffix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HonorificNameSuffix: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_HonorificNamePrefix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HonorificNamePrefix: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_YomiDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactPanel = extern struct {
@@ -5581,13 +5581,13 @@ pub const IContactPanelLaunchFullAppRequestedEventArgs = extern struct {
 };
 pub const IContactPhone = extern struct {
     vtable: *const VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Number(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5601,13 +5601,13 @@ pub const IContactPhone = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5623,23 +5623,23 @@ pub const IContactPhone = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Number: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Number: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Number: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Number: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ContactPhoneKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ContactPhoneKind) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactPicker = extern struct {
     vtable: *const VTable,
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5653,8 +5653,8 @@ pub const IContactPicker = extern struct {
         const _c = self.vtable.put_SelectionMode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDesiredFields(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDesiredFields(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DesiredFields(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5683,11 +5683,11 @@ pub const IContactPicker = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CommitButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CommitButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CommitButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CommitButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SelectionMode: *const fn(self: *anyopaque, _r: *ContactSelectionMode) callconv(.winapi) HRESULT,
         put_SelectionMode: *const fn(self: *anyopaque, value: ContactSelectionMode) callconv(.winapi) HRESULT,
-        get_DesiredFields: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_DesiredFields: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         PickSingleContactAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ContactInformation)) callconv(.winapi) HRESULT,
         PickMultipleContactsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ContactInformation))) callconv(.winapi) HRESULT,
     };
@@ -5790,8 +5790,8 @@ pub const IContactQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContactListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ContactListIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5826,8 +5826,8 @@ pub const IContactQueryOptions = extern struct {
         const _c = self.vtable.put_DesiredOperations(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAnnotationListIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAnnotationListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AnnotationListIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5845,25 +5845,25 @@ pub const IContactQueryOptions = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TextSearch: *const fn(self: *anyopaque, _r: **ContactQueryTextSearch) callconv(.winapi) HRESULT,
-        get_ContactListIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ContactListIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_IncludeContactsFromHiddenLists: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IncludeContactsFromHiddenLists: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_DesiredFields: *const fn(self: *anyopaque, _r: *ContactQueryDesiredFields) callconv(.winapi) HRESULT,
         put_DesiredFields: *const fn(self: *anyopaque, value: ContactQueryDesiredFields) callconv(.winapi) HRESULT,
         get_DesiredOperations: *const fn(self: *anyopaque, _r: *ContactAnnotationOperations) callconv(.winapi) HRESULT,
         put_DesiredOperations: *const fn(self: *anyopaque, value: ContactAnnotationOperations) callconv(.winapi) HRESULT,
-        get_AnnotationListIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AnnotationListIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactQueryOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithText(self: *@This(), text: HSTRING) core.HResult!*ContactQueryOptions {
+    pub fn CreateWithText(self: *@This(), text: ?HSTRING) core.HResult!*ContactQueryOptions {
         var _r: *ContactQueryOptions = undefined;
         const _c = self.vtable.CreateWithText(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTextAndFields(self: *@This(), text: HSTRING, fields: ContactQuerySearchFields) core.HResult!*ContactQueryOptions {
+    pub fn CreateWithTextAndFields(self: *@This(), text: ?HSTRING, fields: ContactQuerySearchFields) core.HResult!*ContactQueryOptions {
         var _r: *ContactQueryOptions = undefined;
         const _c = self.vtable.CreateWithTextAndFields(@ptrCast(self), text, fields, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5881,8 +5881,8 @@ pub const IContactQueryOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithText: *const fn(self: *anyopaque, text: HSTRING, _r: **ContactQueryOptions) callconv(.winapi) HRESULT,
-        CreateWithTextAndFields: *const fn(self: *anyopaque, text: HSTRING, fields: ContactQuerySearchFields, _r: **ContactQueryOptions) callconv(.winapi) HRESULT,
+        CreateWithText: *const fn(self: *anyopaque, text: ?HSTRING, _r: **ContactQueryOptions) callconv(.winapi) HRESULT,
+        CreateWithTextAndFields: *const fn(self: *anyopaque, text: ?HSTRING, fields: ContactQuerySearchFields, _r: **ContactQueryOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactQueryTextSearch = extern struct {
@@ -5897,13 +5897,13 @@ pub const IContactQueryTextSearch = extern struct {
         const _c = self.vtable.put_Fields(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5931,8 +5931,8 @@ pub const IContactQueryTextSearch = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Fields: *const fn(self: *anyopaque, _r: *ContactQuerySearchFields) callconv(.winapi) HRESULT,
         put_Fields: *const fn(self: *anyopaque, value: ContactQuerySearchFields) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SearchScope: *const fn(self: *anyopaque, _r: *ContactQuerySearchScope) callconv(.winapi) HRESULT,
         put_SearchScope: *const fn(self: *anyopaque, value: ContactQuerySearchScope) callconv(.winapi) HRESULT,
     };
@@ -5969,23 +5969,23 @@ pub const IContactReader = extern struct {
 };
 pub const IContactSignificantOther = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6001,10 +6001,10 @@ pub const IContactSignificantOther = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactSignificantOther2 = extern struct {
@@ -6043,13 +6043,13 @@ pub const IContactStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindContactsAsyncWithSearchText(self: *@This(), searchText: HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
+    pub fn FindContactsAsyncWithSearchText(self: *@This(), searchText: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         var _r: *IAsyncOperation(IVectorView(Contact)) = undefined;
         const _c = self.vtable.FindContactsAsyncWithSearchText(@ptrCast(self), searchText, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
+    pub fn GetContactAsync(self: *@This(), contactId: ?HSTRING) core.HResult!*IAsyncOperation(Contact) {
         var _r: *IAsyncOperation(Contact) = undefined;
         const _c = self.vtable.GetContactAsync(@ptrCast(self), contactId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6068,8 +6068,8 @@ pub const IContactStore = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindContactsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(Contact))) callconv(.winapi) HRESULT,
-        FindContactsAsyncWithSearchText: *const fn(self: *anyopaque, searchText: HSTRING, _r: **IAsyncOperation(IVectorView(Contact))) callconv(.winapi) HRESULT,
-        GetContactAsync: *const fn(self: *anyopaque, contactId: HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
+        FindContactsAsyncWithSearchText: *const fn(self: *anyopaque, searchText: ?HSTRING, _r: **IAsyncOperation(IVectorView(Contact))) callconv(.winapi) HRESULT,
+        GetContactAsync: *const fn(self: *anyopaque, contactId: ?HSTRING, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactStore2 = extern struct {
@@ -6102,13 +6102,13 @@ pub const IContactStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContactListAsync(self: *@This(), contactListId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn GetContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var _r: *IAsyncOperation(ContactList) = undefined;
         const _c = self.vtable.GetContactListAsync(@ptrCast(self), contactListId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContactListAsync(self: *@This(), displayName: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsync(self: *@This(), displayName: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var _r: *IAsyncOperation(ContactList) = undefined;
         const _c = self.vtable.CreateContactListAsync(@ptrCast(self), displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6132,7 +6132,7 @@ pub const IContactStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var _r: *IAsyncOperation(ContactList) = undefined;
         const _c = self.vtable.CreateContactListAsyncWithUserDataAccountId(@ptrCast(self), displayName, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6155,17 +6155,17 @@ pub const IContactStore2 = extern struct {
         remove_ContactChanged: *const fn(self: *anyopaque, value: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_AggregateContactManager: *const fn(self: *anyopaque, _r: **AggregateContactManager) callconv(.winapi) HRESULT,
         FindContactListsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ContactList))) callconv(.winapi) HRESULT,
-        GetContactListAsync: *const fn(self: *anyopaque, contactListId: HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
-        CreateContactListAsync: *const fn(self: *anyopaque, displayName: HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
+        GetContactListAsync: *const fn(self: *anyopaque, contactListId: ?HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
+        CreateContactListAsync: *const fn(self: *anyopaque, displayName: ?HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
         GetMeContactAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         GetContactReader: *const fn(self: *anyopaque, _r: **ContactReader) callconv(.winapi) HRESULT,
         GetContactReaderWithOptions: *const fn(self: *anyopaque, options: *ContactQueryOptions, _r: **ContactReader) callconv(.winapi) HRESULT,
-        CreateContactListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, displayName: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
+        CreateContactListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, displayName: ?HSTRING, userDataAccountId: ?HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactStore3 = extern struct {
     vtable: *const VTable,
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*ContactChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var _r: *ContactChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6183,7 +6183,7 @@ pub const IContactStore3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetChangeTracker: *const fn(self: *anyopaque, identity: HSTRING, _r: **ContactChangeTracker) callconv(.winapi) HRESULT,
+        GetChangeTracker: *const fn(self: *anyopaque, identity: ?HSTRING, _r: **ContactChangeTracker) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactStoreNotificationTriggerDetails = extern struct {
@@ -6214,13 +6214,13 @@ pub const IContactWebsite = extern struct {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6238,19 +6238,19 @@ pub const IContactWebsite = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactWebsite2 = extern struct {
     vtable: *const VTable,
-    pub fn getRawValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRawValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawValue(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRawValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRawValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RawValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6266,8 +6266,8 @@ pub const IContactWebsite2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RawValue: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RawValue: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RawValue: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RawValue: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFullContactCardOptions = extern struct {
@@ -6300,38 +6300,38 @@ pub const IFullContactCardOptions = extern struct {
 };
 pub const IKnownContactFieldStatics = extern struct {
     vtable: *const VTable,
-    pub fn getEmail(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Email(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInstantMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInstantMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InstantMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertNameToType(self: *@This(), name: HSTRING) core.HResult!ContactFieldType {
+    pub fn ConvertNameToType(self: *@This(), name: ?HSTRING) core.HResult!ContactFieldType {
         var _r: ContactFieldType = undefined;
         const _c = self.vtable.ConvertNameToType(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertTypeToName(self: *@This(), ty: ContactFieldType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ConvertTypeToName(self: *@This(), ty: ContactFieldType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ConvertTypeToName(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6348,18 +6348,18 @@ pub const IKnownContactFieldStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Email: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InstantMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ConvertNameToType: *const fn(self: *anyopaque, name: HSTRING, _r: *ContactFieldType) callconv(.winapi) HRESULT,
-        ConvertTypeToName: *const fn(self: *anyopaque, ty: ContactFieldType, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Email: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InstantMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ConvertNameToType: *const fn(self: *anyopaque, name: ?HSTRING, _r: *ContactFieldType) callconv(.winapi) HRESULT,
+        ConvertTypeToName: *const fn(self: *anyopaque, ty: ContactFieldType, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPinnedContactIdsQueryResult = extern struct {
     vtable: *const VTable,
-    pub fn getContactIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getContactIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ContactIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6376,7 +6376,7 @@ pub const IPinnedContactIdsQueryResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ContactIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPinnedContactManager = extern struct {
@@ -6491,27 +6491,27 @@ pub const KnownContactField = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEmail() core.HResult!HSTRING {
+    pub fn getEmail() core.HResult!?HSTRING {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getEmail();
     }
-    pub fn getPhoneNumber() core.HResult!HSTRING {
+    pub fn getPhoneNumber() core.HResult!?HSTRING {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getPhoneNumber();
     }
-    pub fn getLocation() core.HResult!HSTRING {
+    pub fn getLocation() core.HResult!?HSTRING {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getLocation();
     }
-    pub fn getInstantMessage() core.HResult!HSTRING {
+    pub fn getInstantMessage() core.HResult!?HSTRING {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.getInstantMessage();
     }
-    pub fn ConvertNameToType(name: HSTRING) core.HResult!ContactFieldType {
+    pub fn ConvertNameToType(name: ?HSTRING) core.HResult!ContactFieldType {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.ConvertNameToType(name);
     }
-    pub fn ConvertTypeToName(ty: ContactFieldType) core.HResult!HSTRING {
+    pub fn ConvertTypeToName(ty: ContactFieldType) core.HResult!?HSTRING {
         const _f = try @This()._IKnownContactFieldStaticsCache.get();
         return try _f.ConvertTypeToName(ty);
     }
@@ -6521,7 +6521,7 @@ pub const KnownContactField = extern struct {
 };
 pub const PinnedContactIdsQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getContactIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IPinnedContactIdsQueryResult = @ptrCast(self);
         return try this.getContactIds();
     }

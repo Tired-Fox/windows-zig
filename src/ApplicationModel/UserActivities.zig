@@ -7,8 +7,8 @@ pub const IUserActivity = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActivityId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -29,13 +29,13 @@ pub const IUserActivity = extern struct {
         const _c = self.vtable.put_ContentUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -94,12 +94,12 @@ pub const IUserActivity = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *UserActivityState) callconv(.winapi) HRESULT,
-        get_ActivityId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActivityId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_VisualElements: *const fn(self: *anyopaque, _r: **UserActivityVisualElements) callconv(.winapi) HRESULT,
         get_ContentUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ContentUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FallbackUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_FallbackUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_ActivationUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
@@ -112,8 +112,8 @@ pub const IUserActivity = extern struct {
 };
 pub const IUserActivity2 = extern struct {
     vtable: *const VTable,
-    pub fn ToJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -130,7 +130,7 @@ pub const IUserActivity2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToJson: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ToJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivity3 = extern struct {
@@ -173,13 +173,13 @@ pub const IUserActivityAttribution = extern struct {
         const _c = self.vtable.put_IconUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAlternateText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlternateText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlternateText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAlternateText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlternateText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AlternateText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -207,8 +207,8 @@ pub const IUserActivityAttribution = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IconUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_IconUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_AlternateText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AlternateText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AlternateText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AlternateText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AddImageQuery: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AddImageQuery: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
@@ -238,13 +238,13 @@ pub const IUserActivityAttributionFactory = extern struct {
 };
 pub const IUserActivityChannel = extern struct {
     vtable: *const VTable,
-    pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
+    pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
         var _r: *IAsyncOperation(UserActivity) = undefined;
         const _c = self.vtable.GetOrCreateUserActivityAsync(@ptrCast(self), activityId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteActivityAsync(self: *@This(), activityId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteActivityAsync(@ptrCast(self), activityId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -268,8 +268,8 @@ pub const IUserActivityChannel = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetOrCreateUserActivityAsync: *const fn(self: *anyopaque, activityId: HSTRING, _r: **IAsyncOperation(UserActivity)) callconv(.winapi) HRESULT,
-        DeleteActivityAsync: *const fn(self: *anyopaque, activityId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetOrCreateUserActivityAsync: *const fn(self: *anyopaque, activityId: ?HSTRING, _r: **IAsyncOperation(UserActivity)) callconv(.winapi) HRESULT,
+        DeleteActivityAsync: *const fn(self: *anyopaque, activityId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAllActivitiesAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -281,7 +281,7 @@ pub const IUserActivityChannel2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSessionHistoryItemsForUserActivityAsync(self: *@This(), activityId: HSTRING, startTime: DateTime) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
+    pub fn GetSessionHistoryItemsForUserActivityAsync(self: *@This(), activityId: ?HSTRING, startTime: DateTime) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
         var _r: *IAsyncOperation(IVector(UserActivitySessionHistoryItem)) = undefined;
         const _c = self.vtable.GetSessionHistoryItemsForUserActivityAsync(@ptrCast(self), activityId, startTime, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -300,7 +300,7 @@ pub const IUserActivityChannel2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetRecentUserActivitiesAsync: *const fn(self: *anyopaque, maxUniqueActivities: i32, _r: **IAsyncOperation(IVector(UserActivitySessionHistoryItem))) callconv(.winapi) HRESULT,
-        GetSessionHistoryItemsForUserActivityAsync: *const fn(self: *anyopaque, activityId: HSTRING, startTime: DateTime, _r: **IAsyncOperation(IVector(UserActivitySessionHistoryItem))) callconv(.winapi) HRESULT,
+        GetSessionHistoryItemsForUserActivityAsync: *const fn(self: *anyopaque, activityId: ?HSTRING, startTime: DateTime, _r: **IAsyncOperation(IVector(UserActivitySessionHistoryItem))) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivityChannelStatics = extern struct {
@@ -379,8 +379,8 @@ pub const IUserActivityChannelStatics3 = extern struct {
 };
 pub const IUserActivityContentInfo = extern struct {
     vtable: *const VTable,
-    pub fn ToJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -397,12 +397,12 @@ pub const IUserActivityContentInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToJson: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ToJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivityContentInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromJson(self: *@This(), value: HSTRING) core.HResult!*UserActivityContentInfo {
+    pub fn FromJson(self: *@This(), value: ?HSTRING) core.HResult!*UserActivityContentInfo {
         var _r: *UserActivityContentInfo = undefined;
         const _c = self.vtable.FromJson(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -420,12 +420,12 @@ pub const IUserActivityContentInfoStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromJson: *const fn(self: *anyopaque, value: HSTRING, _r: **UserActivityContentInfo) callconv(.winapi) HRESULT,
+        FromJson: *const fn(self: *anyopaque, value: ?HSTRING, _r: **UserActivityContentInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivityFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithActivityId(self: *@This(), activityId: HSTRING) core.HResult!*UserActivity {
+    pub fn CreateWithActivityId(self: *@This(), activityId: ?HSTRING) core.HResult!*UserActivity {
         var _r: *UserActivity = undefined;
         const _c = self.vtable.CreateWithActivityId(@ptrCast(self), activityId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -443,7 +443,7 @@ pub const IUserActivityFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithActivityId: *const fn(self: *anyopaque, activityId: HSTRING, _r: **UserActivity) callconv(.winapi) HRESULT,
+        CreateWithActivityId: *const fn(self: *anyopaque, activityId: ?HSTRING, _r: **UserActivity) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivityRequest = extern struct {
@@ -550,8 +550,8 @@ pub const IUserActivityRequestedEventArgs = extern struct {
 };
 pub const IUserActivitySession = extern struct {
     vtable: *const VTable,
-    pub fn getActivityId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -568,7 +568,7 @@ pub const IUserActivitySession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ActivityId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActivityId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivitySessionHistoryItem = extern struct {
@@ -610,20 +610,20 @@ pub const IUserActivitySessionHistoryItem = extern struct {
 };
 pub const IUserActivityStatics = extern struct {
     vtable: *const VTable,
-    pub fn TryParseFromJson(self: *@This(), json: HSTRING) core.HResult!*UserActivity {
+    pub fn TryParseFromJson(self: *@This(), json: ?HSTRING) core.HResult!*UserActivity {
         var _r: *UserActivity = undefined;
         const _c = self.vtable.TryParseFromJson(@ptrCast(self), json, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParseFromJsonArray(self: *@This(), json: HSTRING) core.HResult!*IVector(UserActivity) {
+    pub fn TryParseFromJsonArray(self: *@This(), json: ?HSTRING) core.HResult!*IVector(UserActivity) {
         var _r: *IVector(UserActivity) = undefined;
         const _c = self.vtable.TryParseFromJsonArray(@ptrCast(self), json, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ToJsonArray(self: *@This(), activities: *IIterable(UserActivity)) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToJsonArray(self: *@This(), activities: *IIterable(UserActivity)) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJsonArray(@ptrCast(self), activities, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -640,30 +640,30 @@ pub const IUserActivityStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryParseFromJson: *const fn(self: *anyopaque, json: HSTRING, _r: **UserActivity) callconv(.winapi) HRESULT,
-        TryParseFromJsonArray: *const fn(self: *anyopaque, json: HSTRING, _r: **IVector(UserActivity)) callconv(.winapi) HRESULT,
-        ToJsonArray: *const fn(self: *anyopaque, activities: *IIterable(UserActivity), _r: *HSTRING) callconv(.winapi) HRESULT,
+        TryParseFromJson: *const fn(self: *anyopaque, json: ?HSTRING, _r: **UserActivity) callconv(.winapi) HRESULT,
+        TryParseFromJsonArray: *const fn(self: *anyopaque, json: ?HSTRING, _r: **IVector(UserActivity)) callconv(.winapi) HRESULT,
+        ToJsonArray: *const fn(self: *anyopaque, activities: *IIterable(UserActivity), _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserActivityVisualElements = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -709,10 +709,10 @@ pub const IUserActivityVisualElements = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         put_BackgroundColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
         get_Attribution: *const fn(self: *anyopaque, _r: **UserActivityAttribution) callconv(.winapi) HRESULT,
@@ -723,13 +723,13 @@ pub const IUserActivityVisualElements = extern struct {
 };
 pub const IUserActivityVisualElements2 = extern struct {
     vtable: *const VTable,
-    pub fn getAttributionDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAttributionDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionDisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAttributionDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAttributionDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AttributionDisplayText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -745,8 +745,8 @@ pub const IUserActivityVisualElements2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AttributionDisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AttributionDisplayText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AttributionDisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AttributionDisplayText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const UserActivity = extern struct {
@@ -755,7 +755,7 @@ pub const UserActivity = extern struct {
         const this: *IUserActivity = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getActivityId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivity = @ptrCast(self);
         return try this.getActivityId();
     }
@@ -771,11 +771,11 @@ pub const UserActivity = extern struct {
         const this: *IUserActivity = @ptrCast(self);
         return try this.putContentUri(value);
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivity = @ptrCast(self);
         return try this.getContentType();
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserActivity = @ptrCast(self);
         return try this.putContentType(value);
     }
@@ -811,7 +811,7 @@ pub const UserActivity = extern struct {
         const this: *IUserActivity = @ptrCast(self);
         return try this.CreateSession();
     }
-    pub fn ToJson(self: *@This()) core.HResult!HSTRING {
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserActivity2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -832,19 +832,19 @@ pub const UserActivity = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWithActivityId(activityId: HSTRING) core.HResult!*UserActivity {
+    pub fn CreateWithActivityId(activityId: ?HSTRING) core.HResult!*UserActivity {
         const _f = try @This()._IUserActivityFactoryCache.get();
         return try _f.CreateWithActivityId(activityId);
     }
-    pub fn TryParseFromJson(json: HSTRING) core.HResult!*UserActivity {
+    pub fn TryParseFromJson(json: ?HSTRING) core.HResult!*UserActivity {
         const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.TryParseFromJson(json);
     }
-    pub fn TryParseFromJsonArray(json: HSTRING) core.HResult!*IVector(UserActivity) {
+    pub fn TryParseFromJsonArray(json: ?HSTRING) core.HResult!*IVector(UserActivity) {
         const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.TryParseFromJsonArray(json);
     }
-    pub fn ToJsonArray(activities: *IIterable(UserActivity)) core.HResult!HSTRING {
+    pub fn ToJsonArray(activities: *IIterable(UserActivity)) core.HResult!?HSTRING {
         const _f = try @This()._IUserActivityStaticsCache.get();
         return try _f.ToJsonArray(activities);
     }
@@ -866,11 +866,11 @@ pub const UserActivityAttribution = extern struct {
         const this: *IUserActivityAttribution = @ptrCast(self);
         return try this.putIconUri(value);
     }
-    pub fn getAlternateText(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlternateText(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivityAttribution = @ptrCast(self);
         return try this.getAlternateText();
     }
-    pub fn putAlternateText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlternateText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserActivityAttribution = @ptrCast(self);
         return try this.putAlternateText(value);
     }
@@ -903,11 +903,11 @@ pub const UserActivityAttribution = extern struct {
 };
 pub const UserActivityChannel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
+    pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
         const this: *IUserActivityChannel = @ptrCast(self);
         return try this.GetOrCreateUserActivityAsync(activityId);
     }
-    pub fn DeleteActivityAsync(self: *@This(), activityId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserActivityChannel = @ptrCast(self);
         return try this.DeleteActivityAsync(activityId);
     }
@@ -921,7 +921,7 @@ pub const UserActivityChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecentUserActivitiesAsync(maxUniqueActivities);
     }
-    pub fn GetSessionHistoryItemsForUserActivityAsync(self: *@This(), activityId: HSTRING, startTime: DateTime) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
+    pub fn GetSessionHistoryItemsForUserActivityAsync(self: *@This(), activityId: ?HSTRING, startTime: DateTime) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
         var this: ?*IUserActivityChannel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -957,14 +957,14 @@ pub const UserActivityChannel = extern struct {
 };
 pub const UserActivityContentInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn ToJson(self: *@This()) core.HResult!HSTRING {
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivityContentInfo = @ptrCast(self);
         return try this.ToJson();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromJson(value: HSTRING) core.HResult!*UserActivityContentInfo {
+    pub fn FromJson(value: ?HSTRING) core.HResult!*UserActivityContentInfo {
         const _f = try @This()._IUserActivityContentInfoStaticsCache.get();
         return try _f.FromJson(value);
     }
@@ -1029,7 +1029,7 @@ pub const UserActivityRequestedEventArgs = extern struct {
 };
 pub const UserActivitySession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivityId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivitySession = @ptrCast(self);
         return try this.getActivityId();
     }
@@ -1071,19 +1071,19 @@ pub const UserActivityState = enum(i32) {
 };
 pub const UserActivityVisualElements = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.getDisplayText();
     }
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.putDisplayText(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -1111,13 +1111,13 @@ pub const UserActivityVisualElements = extern struct {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.getContent();
     }
-    pub fn getAttributionDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getAttributionDisplayText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserActivityVisualElements2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttributionDisplayText();
     }
-    pub fn putAttributionDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAttributionDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IUserActivityVisualElements2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

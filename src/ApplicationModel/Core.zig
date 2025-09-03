@@ -9,7 +9,7 @@ pub const AppListEntry = extern struct {
         const this: *IAppListEntry = @ptrCast(self);
         return try this.LaunchAsync();
     }
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -72,7 +72,7 @@ pub const CoreApplication = extern struct {
         const _f = try @This()._ICoreApplication2Cache.get();
         return try _f.EnablePrelaunch(value);
     }
-    pub fn getId() core.HResult!HSTRING {
+    pub fn getId() core.HResult!?HSTRING {
         const _f = try @This()._ICoreApplicationCache.get();
         return try _f.getId();
     }
@@ -128,11 +128,11 @@ pub const CoreApplication = extern struct {
         const _f = try @This()._ICoreApplicationUseCountCache.get();
         return try _f.DecrementApplicationUseCount();
     }
-    pub fn RequestRestartAsync(launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartAsync(launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         const _f = try @This()._ICoreApplication3Cache.get();
         return try _f.RequestRestartAsync(launchArguments);
     }
-    pub fn RequestRestartForUserAsync(user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartForUserAsync(user: *User, launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         const _f = try @This()._ICoreApplication3Cache.get();
         return try _f.RequestRestartForUserAsync(user, launchArguments);
     }
@@ -144,7 +144,7 @@ pub const CoreApplication = extern struct {
         const _f = try @This()._ICoreImmersiveApplicationCache.get();
         return try _f.getViews();
     }
-    pub fn CreateNewViewWithRuntimeTypeAndEntryPoint(runtimeType: HSTRING, entryPoint: HSTRING) core.HResult!*CoreApplicationView {
+    pub fn CreateNewViewWithRuntimeTypeAndEntryPoint(runtimeType: ?HSTRING, entryPoint: ?HSTRING) core.HResult!*CoreApplicationView {
         const _f = try @This()._ICoreImmersiveApplicationCache.get();
         return try _f.CreateNewView(runtimeType, entryPoint);
     }
@@ -338,8 +338,8 @@ pub const IAppListEntry = extern struct {
 };
 pub const IAppListEntry2 = extern struct {
     vtable: *const VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -356,7 +356,7 @@ pub const IAppListEntry2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppListEntry3 = extern struct {
@@ -407,8 +407,8 @@ pub const IAppListEntry4 = extern struct {
 };
 pub const ICoreApplication = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -465,7 +465,7 @@ pub const ICoreApplication = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_Suspending: *const fn(self: *anyopaque, handler: *EventHandler(SuspendingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Suspending: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_Resuming: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -535,13 +535,13 @@ pub const ICoreApplication2 = extern struct {
 };
 pub const ICoreApplication3 = extern struct {
     vtable: *const VTable,
-    pub fn RequestRestartAsync(self: *@This(), launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartAsync(self: *@This(), launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartAsync(@ptrCast(self), launchArguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestRestartForUserAsync(self: *@This(), user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartForUserAsync(self: *@This(), user: *User, launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartForUserAsync(@ptrCast(self), user, launchArguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -559,8 +559,8 @@ pub const ICoreApplication3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestRestartAsync: *const fn(self: *anyopaque, launchArguments: HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
-        RequestRestartForUserAsync: *const fn(self: *anyopaque, user: *User, launchArguments: HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
+        RequestRestartAsync: *const fn(self: *anyopaque, launchArguments: ?HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
+        RequestRestartForUserAsync: *const fn(self: *anyopaque, user: *User, launchArguments: ?HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreApplicationExit = extern struct {
@@ -898,7 +898,7 @@ pub const ICoreImmersiveApplication = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNewView(self: *@This(), runtimeType: HSTRING, entryPoint: HSTRING) core.HResult!*CoreApplicationView {
+    pub fn CreateNewView(self: *@This(), runtimeType: ?HSTRING, entryPoint: ?HSTRING) core.HResult!*CoreApplicationView {
         var _r: *CoreApplicationView = undefined;
         const _c = self.vtable.CreateNewView(@ptrCast(self), runtimeType, entryPoint, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -923,7 +923,7 @@ pub const ICoreImmersiveApplication = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Views: *const fn(self: *anyopaque, _r: **IVectorView(CoreApplicationView)) callconv(.winapi) HRESULT,
-        CreateNewView: *const fn(self: *anyopaque, runtimeType: HSTRING, entryPoint: HSTRING, _r: **CoreApplicationView) callconv(.winapi) HRESULT,
+        CreateNewView: *const fn(self: *anyopaque, runtimeType: ?HSTRING, entryPoint: ?HSTRING, _r: **CoreApplicationView) callconv(.winapi) HRESULT,
         get_MainView: *const fn(self: *anyopaque, _r: **CoreApplicationView) callconv(.winapi) HRESULT,
     };
 };
@@ -983,7 +983,7 @@ pub const IFrameworkView = extern struct {
         const _c = self.vtable.SetWindow(@ptrCast(self), window);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Load(self: *@This(), entryPoint: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), entryPoint: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Load(@ptrCast(self), entryPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1009,7 +1009,7 @@ pub const IFrameworkView = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Initialize: *const fn(self: *anyopaque, applicationView: *CoreApplicationView) callconv(.winapi) HRESULT,
         SetWindow: *const fn(self: *anyopaque, window: *CoreWindow) callconv(.winapi) HRESULT,
-        Load: *const fn(self: *anyopaque, entryPoint: HSTRING) callconv(.winapi) HRESULT,
+        Load: *const fn(self: *anyopaque, entryPoint: ?HSTRING) callconv(.winapi) HRESULT,
         Run: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Uninitialize: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };

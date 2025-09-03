@@ -54,11 +54,11 @@ pub const Binding = extern struct {
         const this: *IBinding = @ptrCast(self);
         return try this.putRelativeSource(value);
     }
-    pub fn getElementName(self: *@This()) core.HResult!HSTRING {
+    pub fn getElementName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBinding = @ptrCast(self);
         return try this.getElementName();
     }
-    pub fn putElementName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putElementName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBinding = @ptrCast(self);
         return try this.putElementName(value);
     }
@@ -78,11 +78,11 @@ pub const Binding = extern struct {
         const this: *IBinding = @ptrCast(self);
         return try this.putConverterParameter(value);
     }
-    pub fn getConverterLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getConverterLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IBinding = @ptrCast(self);
         return try this.getConverterLanguage();
     }
-    pub fn putConverterLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConverterLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBinding = @ptrCast(self);
         return try this.putConverterLanguage(value);
     }
@@ -415,13 +415,13 @@ pub const IBinding = extern struct {
         const _c = self.vtable.put_RelativeSource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getElementName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getElementName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ElementName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putElementName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putElementName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ElementName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -445,13 +445,13 @@ pub const IBinding = extern struct {
         const _c = self.vtable.put_ConverterParameter(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getConverterLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConverterLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConverterLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putConverterLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConverterLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ConverterLanguage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -475,14 +475,14 @@ pub const IBinding = extern struct {
         put_Source: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_RelativeSource: *const fn(self: *anyopaque, _r: **RelativeSource) callconv(.winapi) HRESULT,
         put_RelativeSource: *const fn(self: *anyopaque, value: *RelativeSource) callconv(.winapi) HRESULT,
-        get_ElementName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ElementName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ElementName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ElementName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Converter: *const fn(self: *anyopaque, _r: **IValueConverter) callconv(.winapi) HRESULT,
         put_Converter: *const fn(self: *anyopaque, value: *IValueConverter) callconv(.winapi) HRESULT,
         get_ConverterParameter: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_ConverterParameter: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_ConverterLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ConverterLanguage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ConverterLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ConverterLanguage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBinding2 = extern struct {
@@ -1079,8 +1079,8 @@ pub const ICustomProperty = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1130,7 +1130,7 @@ pub const ICustomProperty = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *TypeName) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetValue: *const fn(self: *anyopaque, target: *IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
         SetValue: *const fn(self: *anyopaque, target: *IInspectable, value: *IInspectable) callconv(.winapi) HRESULT,
         GetIndexedValue: *const fn(self: *anyopaque, target: *IInspectable, index: *IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -1141,20 +1141,20 @@ pub const ICustomProperty = extern struct {
 };
 pub const ICustomPropertyProvider = extern struct {
     vtable: *const VTable,
-    pub fn GetCustomProperty(self: *@This(), name: HSTRING) core.HResult!*ICustomProperty {
+    pub fn GetCustomProperty(self: *@This(), name: ?HSTRING) core.HResult!*ICustomProperty {
         var _r: *ICustomProperty = undefined;
         const _c = self.vtable.GetCustomProperty(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
+    pub fn GetIndexedProperty(self: *@This(), name: ?HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
         var _r: *ICustomProperty = undefined;
         const _c = self.vtable.GetIndexedProperty(@ptrCast(self), name, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStringRepresentation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStringRepresentation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringRepresentation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1177,9 +1177,9 @@ pub const ICustomPropertyProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCustomProperty: *const fn(self: *anyopaque, name: HSTRING, _r: **ICustomProperty) callconv(.winapi) HRESULT,
-        GetIndexedProperty: *const fn(self: *anyopaque, name: HSTRING, ty: TypeName, _r: **ICustomProperty) callconv(.winapi) HRESULT,
-        GetStringRepresentation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetCustomProperty: *const fn(self: *anyopaque, name: ?HSTRING, _r: **ICustomProperty) callconv(.winapi) HRESULT,
+        GetIndexedProperty: *const fn(self: *anyopaque, name: ?HSTRING, ty: TypeName, _r: **ICustomProperty) callconv(.winapi) HRESULT,
+        GetStringRepresentation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *TypeName) callconv(.winapi) HRESULT,
     };
 };
@@ -1294,8 +1294,8 @@ pub const INotifyPropertyChanged = extern struct {
 };
 pub const IPropertyChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPropertyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPropertyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PropertyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1312,12 +1312,12 @@ pub const IPropertyChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PropertyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PropertyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPropertyChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), name: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
+    pub fn CreateInstance(self: *@This(), name: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
         var _r: *PropertyChangedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), name, baseInterface, innerInterface, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1335,7 +1335,7 @@ pub const IPropertyChangedEventArgsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, name: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **PropertyChangedEventArgs) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, name: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **PropertyChangedEventArgs) callconv(.winapi) HRESULT,
     };
 };
 pub const IRelativeSource = extern struct {
@@ -1461,13 +1461,13 @@ pub const ISupportIncrementalLoading = extern struct {
 };
 pub const IValueConverter = extern struct {
     vtable: *const VTable,
-    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Convert(@ptrCast(self), value, targetType, parameter, language, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.ConvertBack(@ptrCast(self), value, targetType, parameter, language, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1485,8 +1485,8 @@ pub const IValueConverter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Convert: *const fn(self: *anyopaque, value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
-        ConvertBack: *const fn(self: *anyopaque, value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        Convert: *const fn(self: *anyopaque, value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        ConvertBack: *const fn(self: *anyopaque, value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const ItemIndexRange = extern struct {
@@ -1522,14 +1522,14 @@ pub const LoadMoreItemsResult = extern struct {
 };
 pub const PropertyChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPropertyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPropertyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPropertyChangedEventArgs = @ptrCast(self);
         return try this.getPropertyName();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(name: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
+    pub fn CreateInstance(name: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
         const _f = try @This()._IPropertyChangedEventArgsFactoryCache.get();
         return try _f.CreateInstance(name, baseInterface, innerInterface);
     }

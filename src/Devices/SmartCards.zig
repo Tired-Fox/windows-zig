@@ -31,13 +31,13 @@ pub const IKnownSmartCardAppletIds = extern struct {
 };
 pub const ISmartCardAppletIdGroup = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -89,8 +89,8 @@ pub const ISmartCardAppletIdGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AppletIds: *const fn(self: *anyopaque, _r: **IVector(IBuffer)) callconv(.winapi) HRESULT,
         get_SmartCardEmulationCategory: *const fn(self: *anyopaque, _r: *SmartCardEmulationCategory) callconv(.winapi) HRESULT,
         put_SmartCardEmulationCategory: *const fn(self: *anyopaque, value: SmartCardEmulationCategory) callconv(.winapi) HRESULT,
@@ -112,13 +112,13 @@ pub const ISmartCardAppletIdGroup2 = extern struct {
         const _c = self.vtable.put_Logo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -152,8 +152,8 @@ pub const ISmartCardAppletIdGroup2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Logo: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Logo: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
         get_SecureUserAuthenticationRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_SecureUserAuthenticationRequired: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -161,7 +161,7 @@ pub const ISmartCardAppletIdGroup2 = extern struct {
 };
 pub const ISmartCardAppletIdGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), displayName: HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
+    pub fn Create(self: *@This(), displayName: ?HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
         var _r: *SmartCardAppletIdGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), displayName, appletIds, emulationCategory, emulationType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -179,7 +179,7 @@ pub const ISmartCardAppletIdGroupFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, displayName: HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType, _r: **SmartCardAppletIdGroup) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, displayName: ?HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType, _r: **SmartCardAppletIdGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardAppletIdGroupRegistration = extern struct {
@@ -235,8 +235,8 @@ pub const ISmartCardAppletIdGroupRegistration = extern struct {
 };
 pub const ISmartCardAppletIdGroupRegistration2 = extern struct {
     vtable: *const VTable,
-    pub fn getSmartCardReaderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSmartCardReaderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmartCardReaderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -259,7 +259,7 @@ pub const ISmartCardAppletIdGroupRegistration2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartCardReaderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SmartCardReaderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         SetPropertiesAsync: *const fn(self: *anyopaque, props: *ValueSet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -485,31 +485,31 @@ pub const ISmartCardCryptogramGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteCryptogramMaterialStorageKeyAsync(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn DeleteCryptogramMaterialStorageKeyAsync(self: *@This(), storageKeyName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.DeleteCryptogramMaterialStorageKeyAsync(@ptrCast(self), storageKeyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCryptogramMaterialStorageKeyAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn CreateCryptogramMaterialStorageKeyAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.CreateCryptogramMaterialStorageKeyAsync(@ptrCast(self), promptingBehavior, storageKeyName, algorithm, capabilities, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestCryptogramMaterialStorageKeyInfoAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, format: CryptographicPublicKeyBlobType) core.HResult!*IAsyncOperation(SmartCardCryptogramStorageKeyInfo) {
+    pub fn RequestCryptogramMaterialStorageKeyInfoAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, format: CryptographicPublicKeyBlobType) core.HResult!*IAsyncOperation(SmartCardCryptogramStorageKeyInfo) {
         var _r: *IAsyncOperation(SmartCardCryptogramStorageKeyInfo) = undefined;
         const _c = self.vtable.RequestCryptogramMaterialStorageKeyInfoAsync(@ptrCast(self), promptingBehavior, storageKeyName, format, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportCryptogramMaterialPackageAsync(self: *@This(), format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: HSTRING, materialPackageName: HSTRING, cryptogramMaterialPackage: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn ImportCryptogramMaterialPackageAsync(self: *@This(), format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: ?HSTRING, materialPackageName: ?HSTRING, cryptogramMaterialPackage: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.ImportCryptogramMaterialPackageAsync(@ptrCast(self), format, storageKeyName, materialPackageName, cryptogramMaterialPackage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryProvePossessionOfCryptogramMaterialPackageAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: HSTRING, materialName: HSTRING, challenge: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramMaterialPossessionProof) {
+    pub fn TryProvePossessionOfCryptogramMaterialPackageAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: ?HSTRING, materialName: ?HSTRING, challenge: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramMaterialPossessionProof) {
         var _r: *IAsyncOperation(SmartCardCryptogramMaterialPossessionProof) = undefined;
         const _c = self.vtable.TryProvePossessionOfCryptogramMaterialPackageAsync(@ptrCast(self), promptingBehavior, responseFormat, materialPackageName, materialName, challenge, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -521,7 +521,7 @@ pub const ISmartCardCryptogramGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteCryptogramMaterialPackageAsync(self: *@This(), materialPackageName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn DeleteCryptogramMaterialPackageAsync(self: *@This(), materialPackageName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.DeleteCryptogramMaterialPackageAsync(@ptrCast(self), materialPackageName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -544,13 +544,13 @@ pub const ISmartCardCryptogramGenerator = extern struct {
         get_SupportedCryptogramMaterialPackageFormats: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramMaterialPackageFormat)) callconv(.winapi) HRESULT,
         get_SupportedCryptogramMaterialPackageConfirmationResponseFormats: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramMaterialPackageConfirmationResponseFormat)) callconv(.winapi) HRESULT,
         get_SupportedSmartCardCryptogramStorageKeyCapabilities: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramStorageKeyCapabilities)) callconv(.winapi) HRESULT,
-        DeleteCryptogramMaterialStorageKeyAsync: *const fn(self: *anyopaque, storageKeyName: HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
-        CreateCryptogramMaterialStorageKeyAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
-        RequestCryptogramMaterialStorageKeyInfoAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, format: CryptographicPublicKeyBlobType, _r: **IAsyncOperation(SmartCardCryptogramStorageKeyInfo)) callconv(.winapi) HRESULT,
-        ImportCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: HSTRING, materialPackageName: HSTRING, cryptogramMaterialPackage: *IBuffer, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
-        TryProvePossessionOfCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: HSTRING, materialName: HSTRING, challenge: *IBuffer, _r: **IAsyncOperation(SmartCardCryptogramMaterialPossessionProof)) callconv(.winapi) HRESULT,
+        DeleteCryptogramMaterialStorageKeyAsync: *const fn(self: *anyopaque, storageKeyName: ?HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
+        CreateCryptogramMaterialStorageKeyAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
+        RequestCryptogramMaterialStorageKeyInfoAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, format: CryptographicPublicKeyBlobType, _r: **IAsyncOperation(SmartCardCryptogramStorageKeyInfo)) callconv(.winapi) HRESULT,
+        ImportCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: ?HSTRING, materialPackageName: ?HSTRING, cryptogramMaterialPackage: *IBuffer, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
+        TryProvePossessionOfCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: ?HSTRING, materialName: ?HSTRING, challenge: *IBuffer, _r: **IAsyncOperation(SmartCardCryptogramMaterialPossessionProof)) callconv(.winapi) HRESULT,
         RequestUnlockCryptogramMaterialForUseAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
-        DeleteCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, materialPackageName: HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
+        DeleteCryptogramMaterialPackageAsync: *const fn(self: *anyopaque, materialPackageName: ?HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardCryptogramGenerator2 = extern struct {
@@ -573,13 +573,13 @@ pub const ISmartCardCryptogramGenerator2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
+    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
         var _r: *IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) = undefined;
         const _c = self.vtable.GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(@ptrCast(self), storageKeyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
+    pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
         var _r: *IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) = undefined;
         const _c = self.vtable.GetAllCryptogramMaterialCharacteristicsAsync(@ptrCast(self), promptingBehavior, materialPackageName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -600,8 +600,8 @@ pub const ISmartCardCryptogramGenerator2 = extern struct {
         ValidateRequestApduAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, apduToValidate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep), _r: **IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus)) callconv(.winapi) HRESULT,
         GetAllCryptogramStorageKeyCharacteristicsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult)) callconv(.winapi) HRESULT,
         GetAllCryptogramMaterialPackageCharacteristicsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult)) callconv(.winapi) HRESULT,
-        GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName: *const fn(self: *anyopaque, storageKeyName: HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult)) callconv(.winapi) HRESULT,
-        GetAllCryptogramMaterialCharacteristicsAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult)) callconv(.winapi) HRESULT,
+        GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName: *const fn(self: *anyopaque, storageKeyName: ?HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult)) callconv(.winapi) HRESULT,
+        GetAllCryptogramMaterialCharacteristicsAsync: *const fn(self: *anyopaque, promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: ?HSTRING, _r: **IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardCryptogramGeneratorStatics = extern struct {
@@ -742,8 +742,8 @@ pub const ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = 
 };
 pub const ISmartCardCryptogramMaterialCharacteristics = extern struct {
     vtable: *const VTable,
-    pub fn getMaterialName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMaterialName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaterialName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -802,7 +802,7 @@ pub const ISmartCardCryptogramMaterialCharacteristics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MaterialName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MaterialName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AllowedAlgorithms: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramAlgorithm)) callconv(.winapi) HRESULT,
         get_AllowedProofOfPossessionAlgorithms: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramMaterialPackageConfirmationResponseFormat)) callconv(.winapi) HRESULT,
         get_AllowedValidations: *const fn(self: *anyopaque, _r: **IVectorView(SmartCardCryptogramAlgorithm)) callconv(.winapi) HRESULT,
@@ -814,14 +814,14 @@ pub const ISmartCardCryptogramMaterialCharacteristics = extern struct {
 };
 pub const ISmartCardCryptogramMaterialPackageCharacteristics = extern struct {
     vtable: *const VTable,
-    pub fn getPackageName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStorageKeyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StorageKeyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -850,8 +850,8 @@ pub const ISmartCardCryptogramMaterialPackageCharacteristics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_StorageKeyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StorageKeyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DateImported: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_PackageFormat: *const fn(self: *anyopaque, _r: *SmartCardCryptogramMaterialPackageFormat) callconv(.winapi) HRESULT,
     };
@@ -908,23 +908,23 @@ pub const ISmartCardCryptogramPlacementStep = extern struct {
         const _c = self.vtable.put_SourceData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCryptogramMaterialPackageName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCryptogramMaterialPackageName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CryptogramMaterialPackageName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCryptogramMaterialPackageName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCryptogramMaterialPackageName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CryptogramMaterialPackageName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCryptogramMaterialName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCryptogramMaterialName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CryptogramMaterialName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCryptogramMaterialName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCryptogramMaterialName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CryptogramMaterialName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -994,10 +994,10 @@ pub const ISmartCardCryptogramPlacementStep = extern struct {
         put_Algorithm: *const fn(self: *anyopaque, value: SmartCardCryptogramAlgorithm) callconv(.winapi) HRESULT,
         get_SourceData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         put_SourceData: *const fn(self: *anyopaque, value: *IBuffer) callconv(.winapi) HRESULT,
-        get_CryptogramMaterialPackageName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CryptogramMaterialPackageName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CryptogramMaterialName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CryptogramMaterialName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CryptogramMaterialPackageName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CryptogramMaterialPackageName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CryptogramMaterialName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CryptogramMaterialName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TemplateOffset: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_TemplateOffset: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_CryptogramOffset: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -1012,8 +1012,8 @@ pub const ISmartCardCryptogramPlacementStep = extern struct {
 };
 pub const ISmartCardCryptogramStorageKeyCharacteristics = extern struct {
     vtable: *const VTable,
-    pub fn getStorageKeyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StorageKeyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1048,7 +1048,7 @@ pub const ISmartCardCryptogramStorageKeyCharacteristics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_StorageKeyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StorageKeyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DateCreated: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Algorithm: *const fn(self: *anyopaque, _r: *SmartCardCryptogramStorageKeyAlgorithm) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: *SmartCardCryptogramStorageKeyCapabilities) callconv(.winapi) HRESULT,
@@ -1121,8 +1121,8 @@ pub const ISmartCardCryptogramStorageKeyInfo = extern struct {
 };
 pub const ISmartCardCryptogramStorageKeyInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn getOperationalRequirements(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOperationalRequirements(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OperationalRequirements(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1139,7 +1139,7 @@ pub const ISmartCardCryptogramStorageKeyInfo2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OperationalRequirements: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OperationalRequirements: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardEmulator = extern struct {
@@ -1494,11 +1494,11 @@ pub const SmartCardActivationPolicyChangeResult = enum(i32) {
 };
 pub const SmartCardAppletIdGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardAppletIdGroup = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmartCardAppletIdGroup = @ptrCast(self);
         return try this.putDisplayName(value);
     }
@@ -1542,13 +1542,13 @@ pub const SmartCardAppletIdGroup = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLogo(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1579,7 +1579,7 @@ pub const SmartCardAppletIdGroup = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardAppletIdGroup.IID)));
     }
-    pub fn Create(displayName: HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
+    pub fn Create(displayName: ?HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
         const _f = try @This()._ISmartCardAppletIdGroupFactoryCache.get();
         return try _f.Create(displayName, appletIds, emulationCategory, emulationType);
     }
@@ -1623,7 +1623,7 @@ pub const SmartCardAppletIdGroupRegistration = extern struct {
         const this: *ISmartCardAppletIdGroupRegistration = @ptrCast(self);
         return try this.SetAutomaticResponseApdusAsync(apdus);
     }
-    pub fn getSmartCardReaderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSmartCardReaderId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardAppletIdGroupRegistration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroupRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1771,23 +1771,23 @@ pub const SmartCardCryptogramGenerator = extern struct {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.getSupportedSmartCardCryptogramStorageKeyCapabilities();
     }
-    pub fn DeleteCryptogramMaterialStorageKeyAsync(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn DeleteCryptogramMaterialStorageKeyAsync(self: *@This(), storageKeyName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.DeleteCryptogramMaterialStorageKeyAsync(storageKeyName);
     }
-    pub fn CreateCryptogramMaterialStorageKeyAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn CreateCryptogramMaterialStorageKeyAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, algorithm: SmartCardCryptogramStorageKeyAlgorithm, capabilities: SmartCardCryptogramStorageKeyCapabilities) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.CreateCryptogramMaterialStorageKeyAsync(promptingBehavior, storageKeyName, algorithm, capabilities);
     }
-    pub fn RequestCryptogramMaterialStorageKeyInfoAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: HSTRING, format: CryptographicPublicKeyBlobType) core.HResult!*IAsyncOperation(SmartCardCryptogramStorageKeyInfo) {
+    pub fn RequestCryptogramMaterialStorageKeyInfoAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, storageKeyName: ?HSTRING, format: CryptographicPublicKeyBlobType) core.HResult!*IAsyncOperation(SmartCardCryptogramStorageKeyInfo) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.RequestCryptogramMaterialStorageKeyInfoAsync(promptingBehavior, storageKeyName, format);
     }
-    pub fn ImportCryptogramMaterialPackageAsync(self: *@This(), format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: HSTRING, materialPackageName: HSTRING, cryptogramMaterialPackage: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn ImportCryptogramMaterialPackageAsync(self: *@This(), format: SmartCardCryptogramMaterialPackageFormat, storageKeyName: ?HSTRING, materialPackageName: ?HSTRING, cryptogramMaterialPackage: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.ImportCryptogramMaterialPackageAsync(format, storageKeyName, materialPackageName, cryptogramMaterialPackage);
     }
-    pub fn TryProvePossessionOfCryptogramMaterialPackageAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: HSTRING, materialName: HSTRING, challenge: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramMaterialPossessionProof) {
+    pub fn TryProvePossessionOfCryptogramMaterialPackageAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, responseFormat: SmartCardCryptogramMaterialPackageConfirmationResponseFormat, materialPackageName: ?HSTRING, materialName: ?HSTRING, challenge: *IBuffer) core.HResult!*IAsyncOperation(SmartCardCryptogramMaterialPossessionProof) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.TryProvePossessionOfCryptogramMaterialPackageAsync(promptingBehavior, responseFormat, materialPackageName, materialName, challenge);
     }
@@ -1795,7 +1795,7 @@ pub const SmartCardCryptogramGenerator = extern struct {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.RequestUnlockCryptogramMaterialForUseAsync(promptingBehavior);
     }
-    pub fn DeleteCryptogramMaterialPackageAsync(self: *@This(), materialPackageName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn DeleteCryptogramMaterialPackageAsync(self: *@This(), materialPackageName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.DeleteCryptogramMaterialPackageAsync(materialPackageName);
     }
@@ -1817,13 +1817,13 @@ pub const SmartCardCryptogramGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsync();
     }
-    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
+    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(storageKeyName);
     }
-    pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
+    pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1938,7 +1938,7 @@ pub const SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = e
 };
 pub const SmartCardCryptogramMaterialCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMaterialName(self: *@This()) core.HResult!HSTRING {
+    pub fn getMaterialName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramMaterialCharacteristics = @ptrCast(self);
         return try this.getMaterialName();
     }
@@ -1986,11 +1986,11 @@ pub const SmartCardCryptogramMaterialCharacteristics = extern struct {
 };
 pub const SmartCardCryptogramMaterialPackageCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramMaterialPackageCharacteristics = @ptrCast(self);
         return try this.getPackageName();
     }
-    pub fn getStorageKeyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramMaterialPackageCharacteristics = @ptrCast(self);
         return try this.getStorageKeyName();
     }
@@ -2074,19 +2074,19 @@ pub const SmartCardCryptogramPlacementStep = extern struct {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.putSourceData(value);
     }
-    pub fn getCryptogramMaterialPackageName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCryptogramMaterialPackageName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.getCryptogramMaterialPackageName();
     }
-    pub fn putCryptogramMaterialPackageName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCryptogramMaterialPackageName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.putCryptogramMaterialPackageName(value);
     }
-    pub fn getCryptogramMaterialName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCryptogramMaterialName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.getCryptogramMaterialName();
     }
-    pub fn putCryptogramMaterialName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCryptogramMaterialName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.putCryptogramMaterialName(value);
     }
@@ -2155,7 +2155,7 @@ pub const SmartCardCryptogramStorageKeyCapabilities = enum(i32) {
 };
 pub const SmartCardCryptogramStorageKeyCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getStorageKeyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramStorageKeyCharacteristics = @ptrCast(self);
         return try this.getStorageKeyName();
     }
@@ -2215,7 +2215,7 @@ pub const SmartCardCryptogramStorageKeyInfo = extern struct {
         const this: *ISmartCardCryptogramStorageKeyInfo = @ptrCast(self);
         return try this.getCapabilities();
     }
-    pub fn getOperationalRequirements(self: *@This()) core.HResult!HSTRING {
+    pub fn getOperationalRequirements(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardCryptogramStorageKeyInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramStorageKeyInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2468,13 +2468,13 @@ pub const ISmartCardTriggerDetails2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryLaunchCurrentAppAsync(@ptrCast(self), arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryLaunchCurrentAppAsyncWithBehavior(@ptrCast(self), arguments, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2493,8 +2493,8 @@ pub const ISmartCardTriggerDetails2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Emulator: *const fn(self: *anyopaque, _r: **SmartCardEmulator) callconv(.winapi) HRESULT,
-        TryLaunchCurrentAppAsync: *const fn(self: *anyopaque, arguments: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryLaunchCurrentAppAsyncWithBehavior: *const fn(self: *anyopaque, arguments: HSTRING, behavior: SmartCardLaunchBehavior, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryLaunchCurrentAppAsync: *const fn(self: *anyopaque, arguments: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryLaunchCurrentAppAsyncWithBehavior: *const fn(self: *anyopaque, arguments: ?HSTRING, behavior: SmartCardLaunchBehavior, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardTriggerDetails3 = extern struct {
@@ -2544,13 +2544,13 @@ pub const SmartCardTriggerDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmulator();
     }
-    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ISmartCardTriggerDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryLaunchCurrentAppAsync(arguments);
     }
-    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ISmartCardTriggerDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2945,8 +2945,8 @@ pub const ISmartCardProvisioning = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2983,7 +2983,7 @@ pub const ISmartCardProvisioning = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SmartCard: *const fn(self: *anyopaque, _r: **SmartCard) callconv(.winapi) HRESULT,
         GetIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Guid)) callconv(.winapi) HRESULT,
-        GetNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetChallengeContextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardChallengeContext)) callconv(.winapi) HRESULT,
         RequestPinChangeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPinResetAsync: *const fn(self: *anyopaque, handler: *SmartCardPinResetHandler, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -2991,8 +2991,8 @@ pub const ISmartCardProvisioning = extern struct {
 };
 pub const ISmartCardProvisioning2 = extern struct {
     vtable: *const VTable,
-    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAuthorityKeyContainerNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3009,7 +3009,7 @@ pub const ISmartCardProvisioning2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAuthorityKeyContainerNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetAuthorityKeyContainerNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardProvisioningStatics = extern struct {
@@ -3020,13 +3020,13 @@ pub const ISmartCardProvisioningStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestVirtualSmartCardCreationAsync(self: *@This(), friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.RequestVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.RequestVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3051,20 +3051,20 @@ pub const ISmartCardProvisioningStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FromSmartCardAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
         RequestVirtualSmartCardDeletionAsync: *const fn(self: *anyopaque, card: *SmartCard, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardProvisioningStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn RequestAttestedVirtualSmartCardCreationAsync(self: *@This(), friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestAttestedVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, cardId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3082,20 +3082,20 @@ pub const ISmartCardProvisioningStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAttestedVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
-        RequestAttestedVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestAttestedVirtualSmartCardCreationAsync: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
+        RequestAttestedVirtualSmartCardCreationAsyncWithCardId: *const fn(self: *anyopaque, friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid, _r: **IAsyncOperation(SmartCardProvisioning)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmartCardReader = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3150,8 +3150,8 @@ pub const ISmartCardReader = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *SmartCardReaderKind) callconv(.winapi) HRESULT,
         GetStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmartCardReaderStatus)) callconv(.winapi) HRESULT,
         FindAllCardsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SmartCard))) callconv(.winapi) HRESULT,
@@ -3163,19 +3163,19 @@ pub const ISmartCardReader = extern struct {
 };
 pub const ISmartCardReaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithKind(self: *@This(), kind: SmartCardReaderKind) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithKind(self: *@This(), kind: SmartCardReaderKind) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithKind(@ptrCast(self), kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
         var _r: *IAsyncOperation(SmartCardReader) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3193,9 +3193,9 @@ pub const ISmartCardReaderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithKind: *const fn(self: *anyopaque, kind: SmartCardReaderKind, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(SmartCardReader)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithKind: *const fn(self: *anyopaque, kind: SmartCardReaderKind, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmartCardReader)) callconv(.winapi) HRESULT,
     };
 };
 pub const SmartCard = extern struct {
@@ -3478,7 +3478,7 @@ pub const SmartCardProvisioning = extern struct {
         const this: *ISmartCardProvisioning = @ptrCast(self);
         return try this.GetIdAsync();
     }
-    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *ISmartCardProvisioning = @ptrCast(self);
         return try this.GetNameAsync();
     }
@@ -3494,7 +3494,7 @@ pub const SmartCardProvisioning = extern struct {
         const this: *ISmartCardProvisioning = @ptrCast(self);
         return try this.RequestPinResetAsync(handler);
     }
-    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*ISmartCardProvisioning2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardProvisioning2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3503,11 +3503,11 @@ pub const SmartCardProvisioning = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
         return try _f.RequestAttestedVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
-    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
         return try _f.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
@@ -3515,11 +3515,11 @@ pub const SmartCardProvisioning = extern struct {
         const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.FromSmartCardAsync(card);
     }
-    pub fn RequestVirtualSmartCardCreationAsync(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.RequestVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
-    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const _f = try @This()._ISmartCardProvisioningStaticsCache.get();
         return try _f.RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
@@ -3537,11 +3537,11 @@ pub const SmartCardProvisioning = extern struct {
 };
 pub const SmartCardReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardReader = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardReader = @ptrCast(self);
         return try this.getName();
     }
@@ -3576,15 +3576,15 @@ pub const SmartCardReader = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!?HSTRING {
         const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.GetDeviceSelectorWithKind(kind);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
         const _f = try @This()._ISmartCardReaderStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }

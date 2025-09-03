@@ -123,8 +123,8 @@ pub const ISpiControllerProvider = extern struct {
 };
 pub const ISpiDeviceProvider = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -163,7 +163,7 @@ pub const ISpiDeviceProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ConnectionSettings: *const fn(self: *anyopaque, _r: **ProviderSpiConnectionSettings) callconv(.winapi) HRESULT,
         Write: *const fn(self: *anyopaque, buffer: [*]u8) callconv(.winapi) HRESULT,
         Read: *const fn(self: *anyopaque, buffer: [*]u8) callconv(.winapi) HRESULT,

@@ -1,50 +1,50 @@
 // ----- This code is automatically generated -----
 pub const ILocalCategoriesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getBankAndCreditUnions(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBankAndCreditUnions(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BankAndCreditUnions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEatDrink(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEatDrink(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EatDrink(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHospitals(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHospitals(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hospitals(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHotelsAndMotels(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHotelsAndMotels(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HotelsAndMotels(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAll(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAll(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_All(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getParking(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getParking(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Parking(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSeeDo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSeeDo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SeeDo(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getShop(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getShop(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Shop(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -61,14 +61,14 @@ pub const ILocalCategoriesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_BankAndCreditUnions: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EatDrink: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hospitals: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HotelsAndMotels: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_All: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Parking: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SeeDo: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Shop: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_BankAndCreditUnions: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EatDrink: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hospitals: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HotelsAndMotels: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_All: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Parking: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SeeDo: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Shop: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILocalLocation = extern struct {
@@ -79,20 +79,20 @@ pub const ILocalLocation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Identifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -103,14 +103,14 @@ pub const ILocalLocation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDataAttribution(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDataAttribution(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataAttribution(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -128,18 +128,18 @@ pub const ILocalLocation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Address: *const fn(self: *anyopaque, _r: **MapAddress) callconv(.winapi) HRESULT,
-        get_Identifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Identifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Point: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DataAttribution: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DataAttribution: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILocalLocation2 = extern struct {
     vtable: *const VTable,
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -168,7 +168,7 @@ pub const ILocalLocation2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Category: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Category: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_RatingInfo: *const fn(self: *anyopaque, _r: **LocalLocationRatingInfo) callconv(.winapi) HRESULT,
         get_HoursOfOperation: *const fn(self: *anyopaque, _r: **IVectorView(LocalLocationHoursOfOperationItem)) callconv(.winapi) HRESULT,
     };
@@ -205,7 +205,7 @@ pub const ILocalLocationFinderResult = extern struct {
 };
 pub const ILocalLocationFinderStatics = extern struct {
     vtable: *const VTable,
-    pub fn FindLocalLocationsAsync(self: *@This(), searchTerm: HSTRING, searchArea: *Geocircle, localCategory: HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
+    pub fn FindLocalLocationsAsync(self: *@This(), searchTerm: ?HSTRING, searchArea: *Geocircle, localCategory: ?HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
         var _r: *IAsyncOperation(LocalLocationFinderResult) = undefined;
         const _c = self.vtable.FindLocalLocationsAsync(@ptrCast(self), searchTerm, searchArea, localCategory, maxResults, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -223,7 +223,7 @@ pub const ILocalLocationFinderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindLocalLocationsAsync: *const fn(self: *anyopaque, searchTerm: HSTRING, searchArea: *Geocircle, localCategory: HSTRING, maxResults: u32, _r: **IAsyncOperation(LocalLocationFinderResult)) callconv(.winapi) HRESULT,
+        FindLocalLocationsAsync: *const fn(self: *anyopaque, searchTerm: ?HSTRING, searchArea: *Geocircle, localCategory: ?HSTRING, maxResults: u32, _r: **IAsyncOperation(LocalLocationFinderResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILocalLocationHoursOfOperationItem = extern struct {
@@ -277,8 +277,8 @@ pub const ILocalLocationRatingInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProviderIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -297,7 +297,7 @@ pub const ILocalLocationRatingInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AggregateRating: *const fn(self: *anyopaque, _r: **IReference(f64)) callconv(.winapi) HRESULT,
         get_RatingCount: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
-        get_ProviderIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlaceInfoHelperStatics = extern struct {
@@ -328,35 +328,35 @@ pub const LocalCategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBankAndCreditUnions() core.HResult!HSTRING {
+    pub fn getBankAndCreditUnions() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getBankAndCreditUnions();
     }
-    pub fn getEatDrink() core.HResult!HSTRING {
+    pub fn getEatDrink() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getEatDrink();
     }
-    pub fn getHospitals() core.HResult!HSTRING {
+    pub fn getHospitals() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getHospitals();
     }
-    pub fn getHotelsAndMotels() core.HResult!HSTRING {
+    pub fn getHotelsAndMotels() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getHotelsAndMotels();
     }
-    pub fn getAll() core.HResult!HSTRING {
+    pub fn getAll() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getAll();
     }
-    pub fn getParking() core.HResult!HSTRING {
+    pub fn getParking() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getParking();
     }
-    pub fn getSeeDo() core.HResult!HSTRING {
+    pub fn getSeeDo() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getSeeDo();
     }
-    pub fn getShop() core.HResult!HSTRING {
+    pub fn getShop() core.HResult!?HSTRING {
         const _f = try @This()._ILocalCategoriesStaticsCache.get();
         return try _f.getShop();
     }
@@ -370,15 +370,15 @@ pub const LocalLocation = extern struct {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getAddress();
     }
-    pub fn getIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getIdentifier();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -386,15 +386,15 @@ pub const LocalLocation = extern struct {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getPoint();
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getPhoneNumber();
     }
-    pub fn getDataAttribution(self: *@This()) core.HResult!HSTRING {
+    pub fn getDataAttribution(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getDataAttribution();
     }
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILocalLocation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILocalLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -423,7 +423,7 @@ pub const LocalLocationFinder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FindLocalLocationsAsync(searchTerm: HSTRING, searchArea: *Geocircle, localCategory: HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
+    pub fn FindLocalLocationsAsync(searchTerm: ?HSTRING, searchArea: *Geocircle, localCategory: ?HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
         const _f = try @This()._ILocalLocationFinderStaticsCache.get();
         return try _f.FindLocalLocationsAsync(searchTerm, searchArea, localCategory, maxResults);
     }
@@ -487,7 +487,7 @@ pub const LocalLocationRatingInfo = extern struct {
         const this: *ILocalLocationRatingInfo = @ptrCast(self);
         return try this.getRatingCount();
     }
-    pub fn getProviderIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalLocationRatingInfo = @ptrCast(self);
         return try this.getProviderIdentifier();
     }

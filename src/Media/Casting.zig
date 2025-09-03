@@ -59,7 +59,7 @@ pub const CastingConnectionErrorOccurredEventArgs = extern struct {
         const this: *ICastingConnectionErrorOccurredEventArgs = @ptrCast(self);
         return try this.getErrorStatus();
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *ICastingConnectionErrorOccurredEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -87,11 +87,11 @@ pub const CastingConnectionState = enum(i32) {
 };
 pub const CastingDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICastingDevice = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICastingDevice = @ptrCast(self);
         return try this.getFriendlyName();
     }
@@ -110,15 +110,15 @@ pub const CastingDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!?HSTRING {
         const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(ty);
     }
-    pub fn GetDeviceSelectorFromCastingSourceAsync(castingSource: *CastingSource) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetDeviceSelectorFromCastingSourceAsync(castingSource: *CastingSource) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorFromCastingSourceAsync(castingSource);
     }
-    pub fn FromIdAsync(value: HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
+    pub fn FromIdAsync(value: ?HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
         const _f = try @This()._ICastingDeviceStaticsCache.get();
         return try _f.FromIdAsync(value);
     }
@@ -343,8 +343,8 @@ pub const ICastingConnectionErrorOccurredEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -362,19 +362,19 @@ pub const ICastingConnectionErrorOccurredEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ErrorStatus: *const fn(self: *anyopaque, _r: *CastingConnectionErrorStatus) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICastingDevice = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -409,8 +409,8 @@ pub const ICastingDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
         GetSupportedCastingPlaybackTypesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(CastingPlaybackTypes)) callconv(.winapi) HRESULT,
         CreateCastingConnection: *const fn(self: *anyopaque, _r: **CastingConnection) callconv(.winapi) HRESULT,
@@ -569,19 +569,19 @@ pub const ICastingDeviceSelectedEventArgs = extern struct {
 };
 pub const ICastingDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), ty: CastingPlaybackTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), ty: CastingPlaybackTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromCastingSourceAsync(self: *@This(), castingSource: *CastingSource) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetDeviceSelectorFromCastingSourceAsync(self: *@This(), castingSource: *CastingSource) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetDeviceSelectorFromCastingSourceAsync(@ptrCast(self), castingSource, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), value: HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
+    pub fn FromIdAsync(self: *@This(), value: ?HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
         var _r: *IAsyncOperation(CastingDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -605,9 +605,9 @@ pub const ICastingDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, ty: CastingPlaybackTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromCastingSourceAsync: *const fn(self: *anyopaque, castingSource: *CastingSource, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, value: HSTRING, _r: **IAsyncOperation(CastingDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, ty: CastingPlaybackTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromCastingSourceAsync: *const fn(self: *anyopaque, castingSource: *CastingSource, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAsyncOperation(CastingDevice)) callconv(.winapi) HRESULT,
         DeviceInfoSupportsCastingAsync: *const fn(self: *anyopaque, device: *DeviceInformation, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };

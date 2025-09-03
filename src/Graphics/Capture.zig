@@ -111,7 +111,7 @@ pub const GraphicsCaptureDirtyRegionMode = enum(i32) {
 };
 pub const GraphicsCaptureItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGraphicsCaptureItem = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -448,8 +448,8 @@ pub const IGraphicsCaptureAccessStatics = extern struct {
 };
 pub const IGraphicsCaptureItem = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -482,7 +482,7 @@ pub const IGraphicsCaptureItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Size: *const fn(self: *anyopaque, _r: *SizeInt32) callconv(.winapi) HRESULT,
         add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(GraphicsCaptureItem,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Closed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,

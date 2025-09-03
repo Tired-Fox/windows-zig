@@ -430,12 +430,12 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
 };
 pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.SetSupportedPdlPassthroughContentTypes(@ptrCast(self), supportedPdlContentTypes);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResourceLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -466,8 +466,8 @@ pub const IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = extern struct 
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetSupportedPdlPassthroughContentTypes: *const fn(self: *anyopaque, supportedPdlContentTypes: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
-        get_ResourceLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        SetSupportedPdlPassthroughContentTypes: *const fn(self: *anyopaque, supportedPdlContentTypes: *IIterable(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ResourceLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetCurrentPrintDeviceResources: *const fn(self: *anyopaque, _r: **XmlDocument) callconv(.winapi) HRESULT,
         UpdatePrintDeviceResources: *const fn(self: *anyopaque, updatedPdr: *XmlDocument) callconv(.winapi) HRESULT,
         SetPrintDeviceCapabilitiesUpdatePolicy: *const fn(self: *anyopaque, updatePolicy: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy) callconv(.winapi) HRESULT,
@@ -567,23 +567,23 @@ pub const IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStatics = extern struc
 };
 pub const IPrintSupportPrintTicketElement = extern struct {
     vtable: *const VTable,
-    pub fn getLocalName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LocalName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNamespaceUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNamespaceUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NamespaceUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNamespaceUri(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespaceUri(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NamespaceUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -599,10 +599,10 @@ pub const IPrintSupportPrintTicketElement = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LocalName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_NamespaceUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NamespaceUri: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LocalName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LocalName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_NamespaceUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NamespaceUri: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintSupportPrintTicketValidationRequestedEventArgs = extern struct {
@@ -795,8 +795,8 @@ pub const IPrintSupportSettingsUISession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -830,7 +830,7 @@ pub const IPrintSupportSettingsUISession = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SessionPrintTicket: *const fn(self: *anyopaque, _r: **WorkflowPrintTicket) callconv(.winapi) HRESULT,
-        get_DocumentTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DocumentTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LaunchKind: *const fn(self: *anyopaque, _r: *SettingsLaunchKind) callconv(.winapi) HRESULT,
         UpdatePrintTicket: *const fn(self: *anyopaque, printTicket: *WorkflowPrintTicket) callconv(.winapi) HRESULT,
         get_SessionInfo: *const fn(self: *anyopaque, _r: **PrintSupportSessionInfo) callconv(.winapi) HRESULT,
@@ -1087,13 +1087,13 @@ pub const PrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
         const this: *IPrintSupportPrintDeviceCapabilitiesChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
     }
-    pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSupportedPdlPassthroughContentTypes(supportedPdlContentTypes);
     }
-    pub fn getResourceLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1157,19 +1157,19 @@ pub const PrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
 };
 pub const PrintSupportPrintTicketElement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintSupportPrintTicketElement = @ptrCast(self);
         return try this.getLocalName();
     }
-    pub fn putLocalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintSupportPrintTicketElement = @ptrCast(self);
         return try this.putLocalName(value);
     }
-    pub fn getNamespaceUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getNamespaceUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintSupportPrintTicketElement = @ptrCast(self);
         return try this.getNamespaceUri();
     }
-    pub fn putNamespaceUri(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespaceUri(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintSupportPrintTicketElement = @ptrCast(self);
         return try this.putNamespaceUri(value);
     }
@@ -1315,7 +1315,7 @@ pub const PrintSupportSettingsUISession = extern struct {
         const this: *IPrintSupportSettingsUISession = @ptrCast(self);
         return try this.getSessionPrintTicket();
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintSupportSettingsUISession = @ptrCast(self);
         return try this.getDocumentTitle();
     }

@@ -4,7 +4,7 @@ pub const AppServiceCatalog = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FindAppServiceProvidersAsync(appServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindAppServiceProvidersAsync(appServiceName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         const _f = try @This()._IAppServiceCatalogStaticsCache.get();
         return try _f.FindAppServiceProvidersAsync(appServiceName);
     }
@@ -32,19 +32,19 @@ pub const AppServiceClosedStatus = enum(i32) {
 };
 pub const AppServiceConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceConnection = @ptrCast(self);
         return try this.getAppServiceName();
     }
-    pub fn putAppServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppServiceConnection = @ptrCast(self);
         return try this.putAppServiceName(value);
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceConnection = @ptrCast(self);
         return try this.getPackageFamilyName();
     }
-    pub fn putPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppServiceConnection = @ptrCast(self);
         return try this.putPackageFamilyName(value);
     }
@@ -204,11 +204,11 @@ pub const AppServiceResponseStatus = enum(i32) {
 };
 pub const AppServiceTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceTriggerDetails = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceTriggerDetails = @ptrCast(self);
         return try this.getCallerPackageFamilyName();
     }
@@ -222,13 +222,13 @@ pub const AppServiceTriggerDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRemoteSystemConnection();
     }
-    pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppServiceTriggerDetails3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceTriggerDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckCallerForCapabilityAsync(capabilityName);
     }
-    pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppServiceTriggerDetails4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceTriggerDetails4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -242,7 +242,7 @@ pub const AppServiceTriggerDetails = extern struct {
 };
 pub const IAppServiceCatalogStatics = extern struct {
     vtable: *const VTable,
-    pub fn FindAppServiceProvidersAsync(self: *@This(), appServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindAppServiceProvidersAsync(self: *@This(), appServiceName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         var _r: *IAsyncOperation(IVectorView(AppInfo)) = undefined;
         const _c = self.vtable.FindAppServiceProvidersAsync(@ptrCast(self), appServiceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -260,7 +260,7 @@ pub const IAppServiceCatalogStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindAppServiceProvidersAsync: *const fn(self: *anyopaque, appServiceName: HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
+        FindAppServiceProvidersAsync: *const fn(self: *anyopaque, appServiceName: ?HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppServiceClosedEventArgs = extern struct {
@@ -288,23 +288,23 @@ pub const IAppServiceClosedEventArgs = extern struct {
 };
 pub const IAppServiceConnection = extern struct {
     vtable: *const VTable,
-    pub fn getAppServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAppServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AppServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PackageFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -352,10 +352,10 @@ pub const IAppServiceConnection = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AppServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PackageFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AppServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AppServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         OpenAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AppServiceConnectionStatus)) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, message: *ValueSet, _r: **IAsyncOperation(AppServiceResponse)) callconv(.winapi) HRESULT,
         add_RequestReceived: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppServiceConnection,AppServiceRequestReceivedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -535,14 +535,14 @@ pub const IAppServiceResponse = extern struct {
 };
 pub const IAppServiceTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -565,8 +565,8 @@ pub const IAppServiceTriggerDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppServiceConnection: *const fn(self: *anyopaque, _r: **AppServiceConnection) callconv(.winapi) HRESULT,
     };
 };
@@ -595,7 +595,7 @@ pub const IAppServiceTriggerDetails2 = extern struct {
 };
 pub const IAppServiceTriggerDetails3 = extern struct {
     vtable: *const VTable,
-    pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.CheckCallerForCapabilityAsync(@ptrCast(self), capabilityName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -613,13 +613,13 @@ pub const IAppServiceTriggerDetails3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CheckCallerForCapabilityAsync: *const fn(self: *anyopaque, capabilityName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        CheckCallerForCapabilityAsync: *const fn(self: *anyopaque, capabilityName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppServiceTriggerDetails4 = extern struct {
     vtable: *const VTable,
-    pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerRemoteConnectionToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -636,7 +636,7 @@ pub const IAppServiceTriggerDetails4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallerRemoteConnectionToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallerRemoteConnectionToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStatelessAppServiceResponse = extern struct {

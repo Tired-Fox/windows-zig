@@ -17,11 +17,11 @@ pub const CortanaActionableInsights = extern struct {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsForImageAsyncWithOptions(imageStream, options);
     }
-    pub fn ShowInsightsForTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsForTextAsync(text);
     }
-    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: ?HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsForTextAsyncWithOptions(text, options);
     }
@@ -61,11 +61,11 @@ pub const CortanaActionableInsightsOptions = extern struct {
         const this: *ICortanaActionableInsightsOptions = @ptrCast(self);
         return try this.putContentSourceWebLink(value);
     }
-    pub fn getSurroundingText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSurroundingText(self: *@This()) core.HResult!?HSTRING {
         const this: *ICortanaActionableInsightsOptions = @ptrCast(self);
         return try this.getSurroundingText();
     }
-    pub fn putSurroundingText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSurroundingText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICortanaActionableInsightsOptions = @ptrCast(self);
         return try this.putSurroundingText(value);
     }
@@ -159,13 +159,13 @@ pub const ICortanaActionableInsights = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowInsightsForTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowInsightsForTextAsync(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: ?HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowInsightsForTextAsyncWithOptions(@ptrCast(self), text, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -199,8 +199,8 @@ pub const ICortanaActionableInsights = extern struct {
         IsAvailableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         ShowInsightsForImageAsync: *const fn(self: *anyopaque, imageStream: *IRandomAccessStreamReference, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowInsightsForImageAsyncWithOptions: *const fn(self: *anyopaque, imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowInsightsForTextAsync: *const fn(self: *anyopaque, text: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowInsightsForTextAsyncWithOptions: *const fn(self: *anyopaque, text: HSTRING, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowInsightsForTextAsync: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowInsightsForTextAsyncWithOptions: *const fn(self: *anyopaque, text: ?HSTRING, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowInsightsAsync: *const fn(self: *anyopaque, datapackage: *DataPackage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowInsightsAsyncWithOptions: *const fn(self: *anyopaque, datapackage: *DataPackage, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -217,13 +217,13 @@ pub const ICortanaActionableInsightsOptions = extern struct {
         const _c = self.vtable.put_ContentSourceWebLink(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSurroundingText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSurroundingText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SurroundingText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSurroundingText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSurroundingText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SurroundingText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -241,8 +241,8 @@ pub const ICortanaActionableInsightsOptions = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ContentSourceWebLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ContentSourceWebLink: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_SurroundingText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SurroundingText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SurroundingText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SurroundingText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICortanaActionableInsightsStatics = extern struct {

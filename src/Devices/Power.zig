@@ -155,7 +155,7 @@ pub const PowerGridForecast = extern struct {
 };
 pub const Battery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBattery = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -178,11 +178,11 @@ pub const Battery = extern struct {
         const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.getAggregateBattery();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Battery) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Battery) {
         const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBatteryStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -223,8 +223,8 @@ pub const BatteryReport = extern struct {
 };
 pub const IBattery = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -257,7 +257,7 @@ pub const IBattery = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetReport: *const fn(self: *anyopaque, _r: **BatteryReport) callconv(.winapi) HRESULT,
         add_ReportUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(Battery,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ReportUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -322,14 +322,14 @@ pub const IBatteryStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Battery) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Battery) {
         var _r: *IAsyncOperation(Battery) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -347,8 +347,8 @@ pub const IBatteryStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AggregateBattery: *const fn(self: *anyopaque, _r: **Battery) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Battery)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Battery)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

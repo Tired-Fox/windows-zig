@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
 pub const DisplayMonitor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDisplayMonitor = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDisplayMonitor = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -17,7 +17,7 @@ pub const DisplayMonitor = extern struct {
         const this: *IDisplayMonitor = @ptrCast(self);
         return try this.getPhysicalConnector();
     }
-    pub fn getDisplayAdapterDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayAdapterDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDisplayMonitor = @ptrCast(self);
         return try this.getDisplayAdapterDeviceId();
     }
@@ -90,15 +90,15 @@ pub const DisplayMonitor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn FromInterfaceIdAsync(deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
+    pub fn FromInterfaceIdAsync(deviceInterfaceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         const _f = try @This()._IDisplayMonitorStaticsCache.get();
         return try _f.FromInterfaceIdAsync(deviceInterfaceId);
     }
@@ -136,14 +136,14 @@ pub const DisplayMonitorUsageKind = enum(i32) {
 };
 pub const IDisplayMonitor = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -160,8 +160,8 @@ pub const IDisplayMonitor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayAdapterDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayAdapterDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayAdapterDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -268,11 +268,11 @@ pub const IDisplayMonitor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ConnectionKind: *const fn(self: *anyopaque, _r: *DisplayMonitorConnectionKind) callconv(.winapi) HRESULT,
         get_PhysicalConnector: *const fn(self: *anyopaque, _r: *DisplayMonitorPhysicalConnectorKind) callconv(.winapi) HRESULT,
-        get_DisplayAdapterDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayAdapterDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DisplayAdapterId: *const fn(self: *anyopaque, _r: *DisplayAdapterId) callconv(.winapi) HRESULT,
         get_DisplayAdapterTargetId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_UsageKind: *const fn(self: *anyopaque, _r: *DisplayMonitorUsageKind) callconv(.winapi) HRESULT,
@@ -315,19 +315,19 @@ pub const IDisplayMonitor2 = extern struct {
 };
 pub const IDisplayMonitorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         var _r: *IAsyncOperation(DisplayMonitor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromInterfaceIdAsync(self: *@This(), deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
+    pub fn FromInterfaceIdAsync(self: *@This(), deviceInterfaceId: ?HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
         var _r: *IAsyncOperation(DisplayMonitor) = undefined;
         const _c = self.vtable.FromInterfaceIdAsync(@ptrCast(self), deviceInterfaceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -345,9 +345,9 @@ pub const IDisplayMonitorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DisplayMonitor)) callconv(.winapi) HRESULT,
-        FromInterfaceIdAsync: *const fn(self: *anyopaque, deviceInterfaceId: HSTRING, _r: **IAsyncOperation(DisplayMonitor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(DisplayMonitor)) callconv(.winapi) HRESULT,
+        FromInterfaceIdAsync: *const fn(self: *anyopaque, deviceInterfaceId: ?HSTRING, _r: **IAsyncOperation(DisplayMonitor)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

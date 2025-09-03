@@ -4,7 +4,7 @@ pub const HtmlUtilities = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ConvertToText(html: HSTRING) core.HResult!HSTRING {
+    pub fn ConvertToText(html: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IHtmlUtilitiesCache.get();
         return try _f.ConvertToText(html);
     }
@@ -14,8 +14,8 @@ pub const HtmlUtilities = extern struct {
 };
 pub const IHtmlUtilities = extern struct {
     vtable: *const VTable,
-    pub fn ConvertToText(self: *@This(), html: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ConvertToText(self: *@This(), html: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ConvertToText(@ptrCast(self), html, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -32,7 +32,7 @@ pub const IHtmlUtilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ConvertToText: *const fn(self: *anyopaque, html: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ConvertToText: *const fn(self: *anyopaque, html: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

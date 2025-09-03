@@ -31,7 +31,7 @@ pub const DtdEntity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -151,43 +151,43 @@ pub const DtdEntity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -227,7 +227,7 @@ pub const DtdNotation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -347,43 +347,43 @@ pub const DtdNotation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -464,8 +464,8 @@ pub const IDtdNotation = extern struct {
 };
 pub const IXmlAttribute = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -476,13 +476,13 @@ pub const IXmlAttribute = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -498,10 +498,10 @@ pub const IXmlAttribute = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Specified: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlCDataSection = extern struct {
@@ -522,13 +522,13 @@ pub const IXmlCDataSection = extern struct {
 };
 pub const IXmlCharacterData = extern struct {
     vtable: *const VTable,
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Data(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -538,17 +538,17 @@ pub const IXmlCharacterData = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.SubstringData(@ptrCast(self), offset, count, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AppendData(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertData(self: *@This(), offset: u32, data: HSTRING) core.HResult!void {
+    pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.InsertData(@ptrCast(self), offset, data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -556,7 +556,7 @@ pub const IXmlCharacterData = extern struct {
         const _c = self.vtable.DeleteData(@ptrCast(self), offset, count);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: HSTRING) core.HResult!void {
+    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReplaceData(@ptrCast(self), offset, count, data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -572,14 +572,14 @@ pub const IXmlCharacterData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Data: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Data: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Data: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Data: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Length: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        SubstringData: *const fn(self: *anyopaque, offset: u32, count: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
-        AppendData: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
-        InsertData: *const fn(self: *anyopaque, offset: u32, data: HSTRING) callconv(.winapi) HRESULT,
+        SubstringData: *const fn(self: *anyopaque, offset: u32, count: u32, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        AppendData: *const fn(self: *anyopaque, data: ?HSTRING) callconv(.winapi) HRESULT,
+        InsertData: *const fn(self: *anyopaque, offset: u32, data: ?HSTRING) callconv(.winapi) HRESULT,
         DeleteData: *const fn(self: *anyopaque, offset: u32, count: u32) callconv(.winapi) HRESULT,
-        ReplaceData: *const fn(self: *anyopaque, offset: u32, count: u32, data: HSTRING) callconv(.winapi) HRESULT,
+        ReplaceData: *const fn(self: *anyopaque, offset: u32, count: u32, data: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlComment = extern struct {
@@ -618,7 +618,7 @@ pub const IXmlDocument = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateElement(self: *@This(), tagName: HSTRING) core.HResult!*XmlElement {
+    pub fn CreateElement(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.CreateElement(@ptrCast(self), tagName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -630,67 +630,67 @@ pub const IXmlDocument = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextNode(self: *@This(), data: HSTRING) core.HResult!*XmlText {
+    pub fn CreateTextNode(self: *@This(), data: ?HSTRING) core.HResult!*XmlText {
         var _r: *XmlText = undefined;
         const _c = self.vtable.CreateTextNode(@ptrCast(self), data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateComment(self: *@This(), data: HSTRING) core.HResult!*XmlComment {
+    pub fn CreateComment(self: *@This(), data: ?HSTRING) core.HResult!*XmlComment {
         var _r: *XmlComment = undefined;
         const _c = self.vtable.CreateComment(@ptrCast(self), data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateProcessingInstruction(self: *@This(), target: HSTRING, data: HSTRING) core.HResult!*XmlProcessingInstruction {
+    pub fn CreateProcessingInstruction(self: *@This(), target: ?HSTRING, data: ?HSTRING) core.HResult!*XmlProcessingInstruction {
         var _r: *XmlProcessingInstruction = undefined;
         const _c = self.vtable.CreateProcessingInstruction(@ptrCast(self), target, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAttribute(self: *@This(), name: HSTRING) core.HResult!*XmlAttribute {
+    pub fn CreateAttribute(self: *@This(), name: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.CreateAttribute(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEntityReference(self: *@This(), name: HSTRING) core.HResult!*XmlEntityReference {
+    pub fn CreateEntityReference(self: *@This(), name: ?HSTRING) core.HResult!*XmlEntityReference {
         var _r: *XmlEntityReference = undefined;
         const _c = self.vtable.CreateEntityReference(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetElementsByTagName(self: *@This(), tagName: HSTRING) core.HResult!*XmlNodeList {
+    pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.GetElementsByTagName(@ptrCast(self), tagName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCDataSection(self: *@This(), data: HSTRING) core.HResult!*XmlCDataSection {
+    pub fn CreateCDataSection(self: *@This(), data: ?HSTRING) core.HResult!*XmlCDataSection {
         var _r: *XmlCDataSection = undefined;
         const _c = self.vtable.CreateCDataSection(@ptrCast(self), data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDocumentUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDocumentUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn CreateAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.CreateAttributeNS(@ptrCast(self), namespaceUri, qualifiedName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateElementNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING) core.HResult!*XmlElement {
+    pub fn CreateElementNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.CreateElementNS(@ptrCast(self), namespaceUri, qualifiedName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetElementById(self: *@This(), elementId: HSTRING) core.HResult!*XmlElement {
+    pub fn GetElementById(self: *@This(), elementId: ?HSTRING) core.HResult!*XmlElement {
         var _r: *XmlElement = undefined;
         const _c = self.vtable.GetElementById(@ptrCast(self), elementId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -717,19 +717,19 @@ pub const IXmlDocument = extern struct {
         get_Doctype: *const fn(self: *anyopaque, _r: **XmlDocumentType) callconv(.winapi) HRESULT,
         get_Implementation: *const fn(self: *anyopaque, _r: **XmlDomImplementation) callconv(.winapi) HRESULT,
         get_DocumentElement: *const fn(self: *anyopaque, _r: **XmlElement) callconv(.winapi) HRESULT,
-        CreateElement: *const fn(self: *anyopaque, tagName: HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
+        CreateElement: *const fn(self: *anyopaque, tagName: ?HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
         CreateDocumentFragment: *const fn(self: *anyopaque, _r: **XmlDocumentFragment) callconv(.winapi) HRESULT,
-        CreateTextNode: *const fn(self: *anyopaque, data: HSTRING, _r: **XmlText) callconv(.winapi) HRESULT,
-        CreateComment: *const fn(self: *anyopaque, data: HSTRING, _r: **XmlComment) callconv(.winapi) HRESULT,
-        CreateProcessingInstruction: *const fn(self: *anyopaque, target: HSTRING, data: HSTRING, _r: **XmlProcessingInstruction) callconv(.winapi) HRESULT,
-        CreateAttribute: *const fn(self: *anyopaque, name: HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
-        CreateEntityReference: *const fn(self: *anyopaque, name: HSTRING, _r: **XmlEntityReference) callconv(.winapi) HRESULT,
-        GetElementsByTagName: *const fn(self: *anyopaque, tagName: HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
-        CreateCDataSection: *const fn(self: *anyopaque, data: HSTRING, _r: **XmlCDataSection) callconv(.winapi) HRESULT,
-        get_DocumentUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        CreateAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
-        CreateElementNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
-        GetElementById: *const fn(self: *anyopaque, elementId: HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
+        CreateTextNode: *const fn(self: *anyopaque, data: ?HSTRING, _r: **XmlText) callconv(.winapi) HRESULT,
+        CreateComment: *const fn(self: *anyopaque, data: ?HSTRING, _r: **XmlComment) callconv(.winapi) HRESULT,
+        CreateProcessingInstruction: *const fn(self: *anyopaque, target: ?HSTRING, data: ?HSTRING, _r: **XmlProcessingInstruction) callconv(.winapi) HRESULT,
+        CreateAttribute: *const fn(self: *anyopaque, name: ?HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
+        CreateEntityReference: *const fn(self: *anyopaque, name: ?HSTRING, _r: **XmlEntityReference) callconv(.winapi) HRESULT,
+        GetElementsByTagName: *const fn(self: *anyopaque, tagName: ?HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
+        CreateCDataSection: *const fn(self: *anyopaque, data: ?HSTRING, _r: **XmlCDataSection) callconv(.winapi) HRESULT,
+        get_DocumentUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        CreateAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: ?HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
+        CreateElementNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: ?HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
+        GetElementById: *const fn(self: *anyopaque, elementId: ?HSTRING, _r: **XmlElement) callconv(.winapi) HRESULT,
         ImportNode: *const fn(self: *anyopaque, node: *IXmlNode, deep: bool, _r: **IXmlNode) callconv(.winapi) HRESULT,
     };
 };
@@ -751,11 +751,11 @@ pub const IXmlDocumentFragment = extern struct {
 };
 pub const IXmlDocumentIO = extern struct {
     vtable: *const VTable,
-    pub fn LoadXml(self: *@This(), xml: HSTRING) core.HResult!void {
+    pub fn LoadXml(self: *@This(), xml: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LoadXml(@ptrCast(self), xml);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
+    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: ?HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
         const _c = self.vtable.LoadXmlWithLoadSettings(@ptrCast(self), xml, loadSettings);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -777,8 +777,8 @@ pub const IXmlDocumentIO = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        LoadXml: *const fn(self: *anyopaque, xml: HSTRING) callconv(.winapi) HRESULT,
-        LoadXmlWithLoadSettings: *const fn(self: *anyopaque, xml: HSTRING, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
+        LoadXml: *const fn(self: *anyopaque, xml: ?HSTRING) callconv(.winapi) HRESULT,
+        LoadXmlWithLoadSettings: *const fn(self: *anyopaque, xml: ?HSTRING, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
         SaveToFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -854,8 +854,8 @@ pub const IXmlDocumentStatics = extern struct {
 };
 pub const IXmlDocumentType = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -884,14 +884,14 @@ pub const IXmlDocumentType = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Entities: *const fn(self: *anyopaque, _r: **XmlNamedNodeMap) callconv(.winapi) HRESULT,
         get_Notations: *const fn(self: *anyopaque, _r: **XmlNamedNodeMap) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlDomImplementation = extern struct {
     vtable: *const VTable,
-    pub fn HasFeature(self: *@This(), feature: HSTRING, version: *IInspectable) core.HResult!bool {
+    pub fn HasFeature(self: *@This(), feature: ?HSTRING, version: *IInspectable) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasFeature(@ptrCast(self), feature, version, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -909,32 +909,32 @@ pub const IXmlDomImplementation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        HasFeature: *const fn(self: *anyopaque, feature: HSTRING, version: *IInspectable, _r: *bool) callconv(.winapi) HRESULT,
+        HasFeature: *const fn(self: *anyopaque, feature: ?HSTRING, version: *IInspectable, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlElement = extern struct {
     vtable: *const VTable,
-    pub fn getTagName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTagName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TagName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAttribute(self: *@This(), attributeName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAttribute(@ptrCast(self), attributeName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAttribute(self: *@This(), attributeName: HSTRING, attributeValue: HSTRING) core.HResult!void {
+    pub fn SetAttribute(self: *@This(), attributeName: ?HSTRING, attributeValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAttribute(@ptrCast(self), attributeName, attributeValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveAttribute(self: *@This(), attributeName: HSTRING) core.HResult!void {
+    pub fn RemoveAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAttribute(@ptrCast(self), attributeName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetAttributeNode(self: *@This(), attributeName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn GetAttributeNode(self: *@This(), attributeName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.GetAttributeNode(@ptrCast(self), attributeName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -952,23 +952,23 @@ pub const IXmlElement = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetElementsByTagName(self: *@This(), tagName: HSTRING) core.HResult!*XmlNodeList {
+    pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.GetElementsByTagName(@ptrCast(self), tagName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING, value: HSTRING) core.HResult!void {
+    pub fn SetAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAttributeNS(@ptrCast(self), namespaceUri, qualifiedName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAttributeNS(@ptrCast(self), namespaceUri, localName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!void {
+    pub fn RemoveAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAttributeNS(@ptrCast(self), namespaceUri, localName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -978,7 +978,7 @@ pub const IXmlElement = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAttributeNodeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn GetAttributeNodeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!*XmlAttribute {
         var _r: *XmlAttribute = undefined;
         const _c = self.vtable.GetAttributeNodeNS(@ptrCast(self), namespaceUri, localName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -996,19 +996,19 @@ pub const IXmlElement = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TagName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetAttribute: *const fn(self: *anyopaque, attributeName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetAttribute: *const fn(self: *anyopaque, attributeName: HSTRING, attributeValue: HSTRING) callconv(.winapi) HRESULT,
-        RemoveAttribute: *const fn(self: *anyopaque, attributeName: HSTRING) callconv(.winapi) HRESULT,
-        GetAttributeNode: *const fn(self: *anyopaque, attributeName: HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
+        get_TagName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetAttribute: *const fn(self: *anyopaque, attributeName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetAttribute: *const fn(self: *anyopaque, attributeName: ?HSTRING, attributeValue: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveAttribute: *const fn(self: *anyopaque, attributeName: ?HSTRING) callconv(.winapi) HRESULT,
+        GetAttributeNode: *const fn(self: *anyopaque, attributeName: ?HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
         SetAttributeNode: *const fn(self: *anyopaque, newAttribute: *XmlAttribute, _r: **XmlAttribute) callconv(.winapi) HRESULT,
         RemoveAttributeNode: *const fn(self: *anyopaque, attributeNode: *XmlAttribute, _r: **XmlAttribute) callconv(.winapi) HRESULT,
-        GetElementsByTagName: *const fn(self: *anyopaque, tagName: HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
-        SetAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: HSTRING, value: HSTRING) callconv(.winapi) HRESULT,
-        GetAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        RemoveAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: HSTRING) callconv(.winapi) HRESULT,
+        GetElementsByTagName: *const fn(self: *anyopaque, tagName: ?HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
+        SetAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, qualifiedName: ?HSTRING, value: ?HSTRING) callconv(.winapi) HRESULT,
+        GetAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        RemoveAttributeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: ?HSTRING) callconv(.winapi) HRESULT,
         SetAttributeNodeNS: *const fn(self: *anyopaque, newAttribute: *XmlAttribute, _r: **XmlAttribute) callconv(.winapi) HRESULT,
-        GetAttributeNodeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
+        GetAttributeNodeNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, localName: ?HSTRING, _r: **XmlAttribute) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlEntityReference = extern struct {
@@ -1117,7 +1117,7 @@ pub const IXmlNamedNodeMap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedItem(self: *@This(), name: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetNamedItem(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1129,19 +1129,19 @@ pub const IXmlNamedNodeMap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveNamedItem(self: *@This(), name: HSTRING) core.HResult!*IXmlNode {
+    pub fn RemoveNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.RemoveNamedItem(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetNamedItemNS(@ptrCast(self), namespaceUri, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: HSTRING) core.HResult!*IXmlNode {
+    pub fn RemoveNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.RemoveNamedItemNS(@ptrCast(self), namespaceUri, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1167,11 +1167,11 @@ pub const IXmlNamedNodeMap = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Length: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         Item: *const fn(self: *anyopaque, index: u32, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        GetNamedItem: *const fn(self: *anyopaque, name: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        GetNamedItem: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
         SetNamedItem: *const fn(self: *anyopaque, node: *IXmlNode, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        RemoveNamedItem: *const fn(self: *anyopaque, name: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        GetNamedItemNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, name: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        RemoveNamedItemNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, name: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        RemoveNamedItem: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        GetNamedItemNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, name: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        RemoveNamedItemNS: *const fn(self: *anyopaque, namespaceUri: *IInspectable, name: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
         SetNamedItemNS: *const fn(self: *anyopaque, node: *IXmlNode, _r: **IXmlNode) callconv(.winapi) HRESULT,
     };
 };
@@ -1193,8 +1193,8 @@ pub const IXmlNode = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1324,7 +1324,7 @@ pub const IXmlNode = extern struct {
         get_NodeValue: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_NodeValue: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_NodeType: *const fn(self: *anyopaque, _r: *NodeType) callconv(.winapi) HRESULT,
-        get_NodeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NodeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ParentNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
         get_ChildNodes: *const fn(self: *anyopaque, _r: **XmlNodeList) callconv(.winapi) HRESULT,
         get_FirstChild: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
@@ -1378,25 +1378,25 @@ pub const IXmlNodeList = extern struct {
 };
 pub const IXmlNodeSelector = extern struct {
     vtable: *const VTable,
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SelectSingleNode(@ptrCast(self), xpath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.SelectNodes(@ptrCast(self), xpath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SelectSingleNodeNS(@ptrCast(self), xpath, namespaces, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var _r: *XmlNodeList = undefined;
         const _c = self.vtable.SelectNodesNS(@ptrCast(self), xpath, namespaces, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1414,27 +1414,27 @@ pub const IXmlNodeSelector = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SelectSingleNode: *const fn(self: *anyopaque, xpath: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        SelectNodes: *const fn(self: *anyopaque, xpath: HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
-        SelectSingleNodeNS: *const fn(self: *anyopaque, xpath: HSTRING, namespaces: *IInspectable, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        SelectNodesNS: *const fn(self: *anyopaque, xpath: HSTRING, namespaces: *IInspectable, _r: **XmlNodeList) callconv(.winapi) HRESULT,
+        SelectSingleNode: *const fn(self: *anyopaque, xpath: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        SelectNodes: *const fn(self: *anyopaque, xpath: ?HSTRING, _r: **XmlNodeList) callconv(.winapi) HRESULT,
+        SelectSingleNodeNS: *const fn(self: *anyopaque, xpath: ?HSTRING, namespaces: *IInspectable, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        SelectNodesNS: *const fn(self: *anyopaque, xpath: ?HSTRING, namespaces: *IInspectable, _r: **XmlNodeList) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlNodeSerializer = extern struct {
     vtable: *const VTable,
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetXml(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InnerText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_InnerText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1450,26 +1450,26 @@ pub const IXmlNodeSerializer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetXml: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InnerText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_InnerText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        GetXml: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InnerText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_InnerText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlProcessingInstruction = extern struct {
     vtable: *const VTable,
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Data(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1485,9 +1485,9 @@ pub const IXmlProcessingInstruction = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Target: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Data: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Data: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Target: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Data: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Data: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlText = extern struct {
@@ -1530,7 +1530,7 @@ pub const NodeType = enum(i32) {
 };
 pub const XmlAttribute = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlAttribute = @ptrCast(self);
         return try this.getName();
     }
@@ -1538,11 +1538,11 @@ pub const XmlAttribute = extern struct {
         const this: *IXmlAttribute = @ptrCast(self);
         return try this.getSpecified();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlAttribute = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXmlAttribute = @ptrCast(self);
         return try this.putValue(value);
     }
@@ -1564,7 +1564,7 @@ pub const XmlAttribute = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1684,43 +1684,43 @@ pub const XmlAttribute = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1740,13 +1740,13 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SplitText(offset);
     }
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getData();
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1758,19 +1758,19 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLength();
     }
-    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!HSTRING {
+    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SubstringData(offset, count);
     }
-    pub fn AppendData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AppendData(data);
     }
-    pub fn InsertData(self: *@This(), offset: u32, data: HSTRING) core.HResult!void {
+    pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1782,7 +1782,7 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeleteData(offset, count);
     }
-    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: HSTRING) core.HResult!void {
+    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1806,7 +1806,7 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1926,43 +1926,43 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1976,13 +1976,13 @@ pub const XmlCDataSection = extern struct {
 };
 pub const XmlComment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getData();
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1994,19 +1994,19 @@ pub const XmlComment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLength();
     }
-    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!HSTRING {
+    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SubstringData(offset, count);
     }
-    pub fn AppendData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AppendData(data);
     }
-    pub fn InsertData(self: *@This(), offset: u32, data: HSTRING) core.HResult!void {
+    pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2018,7 +2018,7 @@ pub const XmlComment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeleteData(offset, count);
     }
-    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: HSTRING) core.HResult!void {
+    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2042,7 +2042,7 @@ pub const XmlComment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2162,43 +2162,43 @@ pub const XmlComment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2224,7 +2224,7 @@ pub const XmlDocument = extern struct {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.getDocumentElement();
     }
-    pub fn CreateElement(self: *@This(), tagName: HSTRING) core.HResult!*XmlElement {
+    pub fn CreateElement(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlElement {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateElement(tagName);
     }
@@ -2232,47 +2232,47 @@ pub const XmlDocument = extern struct {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateDocumentFragment();
     }
-    pub fn CreateTextNode(self: *@This(), data: HSTRING) core.HResult!*XmlText {
+    pub fn CreateTextNode(self: *@This(), data: ?HSTRING) core.HResult!*XmlText {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateTextNode(data);
     }
-    pub fn CreateComment(self: *@This(), data: HSTRING) core.HResult!*XmlComment {
+    pub fn CreateComment(self: *@This(), data: ?HSTRING) core.HResult!*XmlComment {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateComment(data);
     }
-    pub fn CreateProcessingInstruction(self: *@This(), target: HSTRING, data: HSTRING) core.HResult!*XmlProcessingInstruction {
+    pub fn CreateProcessingInstruction(self: *@This(), target: ?HSTRING, data: ?HSTRING) core.HResult!*XmlProcessingInstruction {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateProcessingInstruction(target, data);
     }
-    pub fn CreateAttribute(self: *@This(), name: HSTRING) core.HResult!*XmlAttribute {
+    pub fn CreateAttribute(self: *@This(), name: ?HSTRING) core.HResult!*XmlAttribute {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateAttribute(name);
     }
-    pub fn CreateEntityReference(self: *@This(), name: HSTRING) core.HResult!*XmlEntityReference {
+    pub fn CreateEntityReference(self: *@This(), name: ?HSTRING) core.HResult!*XmlEntityReference {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateEntityReference(name);
     }
-    pub fn GetElementsByTagName(self: *@This(), tagName: HSTRING) core.HResult!*XmlNodeList {
+    pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.GetElementsByTagName(tagName);
     }
-    pub fn CreateCDataSection(self: *@This(), data: HSTRING) core.HResult!*XmlCDataSection {
+    pub fn CreateCDataSection(self: *@This(), data: ?HSTRING) core.HResult!*XmlCDataSection {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateCDataSection(data);
     }
-    pub fn getDocumentUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getDocumentUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.getDocumentUri();
     }
-    pub fn CreateAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn CreateAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlAttribute {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateAttributeNS(namespaceUri, qualifiedName);
     }
-    pub fn CreateElementNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING) core.HResult!*XmlElement {
+    pub fn CreateElementNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING) core.HResult!*XmlElement {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.CreateElementNS(namespaceUri, qualifiedName);
     }
-    pub fn GetElementById(self: *@This(), elementId: HSTRING) core.HResult!*XmlElement {
+    pub fn GetElementById(self: *@This(), elementId: ?HSTRING) core.HResult!*XmlElement {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.GetElementById(elementId);
     }
@@ -2298,7 +2298,7 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2418,55 +2418,55 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInnerText(value);
     }
-    pub fn LoadXml(self: *@This(), xml: HSTRING) core.HResult!void {
+    pub fn LoadXml(self: *@This(), xml: ?HSTRING) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LoadXml(xml);
     }
-    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
+    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: ?HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2541,7 +2541,7 @@ pub const XmlDocumentFragment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2661,43 +2661,43 @@ pub const XmlDocumentFragment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2711,7 +2711,7 @@ pub const XmlDocumentFragment = extern struct {
 };
 pub const XmlDocumentType = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlDocumentType = @ptrCast(self);
         return try this.getName();
     }
@@ -2741,7 +2741,7 @@ pub const XmlDocumentType = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2861,43 +2861,43 @@ pub const XmlDocumentType = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2911,7 +2911,7 @@ pub const XmlDocumentType = extern struct {
 };
 pub const XmlDomImplementation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn HasFeature(self: *@This(), feature: HSTRING, version: *IInspectable) core.HResult!bool {
+    pub fn HasFeature(self: *@This(), feature: ?HSTRING, version: *IInspectable) core.HResult!bool {
         const this: *IXmlDomImplementation = @ptrCast(self);
         return try this.HasFeature(feature, version);
     }
@@ -2923,23 +2923,23 @@ pub const XmlDomImplementation = extern struct {
 };
 pub const XmlElement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTagName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTagName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlElement = @ptrCast(self);
         return try this.getTagName();
     }
-    pub fn GetAttribute(self: *@This(), attributeName: HSTRING) core.HResult!HSTRING {
+    pub fn GetAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!?HSTRING {
         const this: *IXmlElement = @ptrCast(self);
         return try this.GetAttribute(attributeName);
     }
-    pub fn SetAttribute(self: *@This(), attributeName: HSTRING, attributeValue: HSTRING) core.HResult!void {
+    pub fn SetAttribute(self: *@This(), attributeName: ?HSTRING, attributeValue: ?HSTRING) core.HResult!void {
         const this: *IXmlElement = @ptrCast(self);
         return try this.SetAttribute(attributeName, attributeValue);
     }
-    pub fn RemoveAttribute(self: *@This(), attributeName: HSTRING) core.HResult!void {
+    pub fn RemoveAttribute(self: *@This(), attributeName: ?HSTRING) core.HResult!void {
         const this: *IXmlElement = @ptrCast(self);
         return try this.RemoveAttribute(attributeName);
     }
-    pub fn GetAttributeNode(self: *@This(), attributeName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn GetAttributeNode(self: *@This(), attributeName: ?HSTRING) core.HResult!*XmlAttribute {
         const this: *IXmlElement = @ptrCast(self);
         return try this.GetAttributeNode(attributeName);
     }
@@ -2951,19 +2951,19 @@ pub const XmlElement = extern struct {
         const this: *IXmlElement = @ptrCast(self);
         return try this.RemoveAttributeNode(attributeNode);
     }
-    pub fn GetElementsByTagName(self: *@This(), tagName: HSTRING) core.HResult!*XmlNodeList {
+    pub fn GetElementsByTagName(self: *@This(), tagName: ?HSTRING) core.HResult!*XmlNodeList {
         const this: *IXmlElement = @ptrCast(self);
         return try this.GetElementsByTagName(tagName);
     }
-    pub fn SetAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: HSTRING, value: HSTRING) core.HResult!void {
+    pub fn SetAttributeNS(self: *@This(), namespaceUri: *IInspectable, qualifiedName: ?HSTRING, value: ?HSTRING) core.HResult!void {
         const this: *IXmlElement = @ptrCast(self);
         return try this.SetAttributeNS(namespaceUri, qualifiedName, value);
     }
-    pub fn GetAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!HSTRING {
+    pub fn GetAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!?HSTRING {
         const this: *IXmlElement = @ptrCast(self);
         return try this.GetAttributeNS(namespaceUri, localName);
     }
-    pub fn RemoveAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!void {
+    pub fn RemoveAttributeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!void {
         const this: *IXmlElement = @ptrCast(self);
         return try this.RemoveAttributeNS(namespaceUri, localName);
     }
@@ -2971,7 +2971,7 @@ pub const XmlElement = extern struct {
         const this: *IXmlElement = @ptrCast(self);
         return try this.SetAttributeNodeNS(newAttribute);
     }
-    pub fn GetAttributeNodeNS(self: *@This(), namespaceUri: *IInspectable, localName: HSTRING) core.HResult!*XmlAttribute {
+    pub fn GetAttributeNodeNS(self: *@This(), namespaceUri: *IInspectable, localName: ?HSTRING) core.HResult!*XmlAttribute {
         const this: *IXmlElement = @ptrCast(self);
         return try this.GetAttributeNodeNS(namespaceUri, localName);
     }
@@ -2993,7 +2993,7 @@ pub const XmlElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3113,43 +3113,43 @@ pub const XmlElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3181,7 +3181,7 @@ pub const XmlEntityReference = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3301,43 +3301,43 @@ pub const XmlEntityReference = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3415,7 +3415,7 @@ pub const XmlNamedNodeMap = extern struct {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.Item(index);
     }
-    pub fn GetNamedItem(self: *@This(), name: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.GetNamedItem(name);
     }
@@ -3423,15 +3423,15 @@ pub const XmlNamedNodeMap = extern struct {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.SetNamedItem(node);
     }
-    pub fn RemoveNamedItem(self: *@This(), name: HSTRING) core.HResult!*IXmlNode {
+    pub fn RemoveNamedItem(self: *@This(), name: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.RemoveNamedItem(name);
     }
-    pub fn GetNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.GetNamedItemNS(namespaceUri, name);
     }
-    pub fn RemoveNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: HSTRING) core.HResult!*IXmlNode {
+    pub fn RemoveNamedItemNS(self: *@This(), namespaceUri: *IInspectable, name: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.RemoveNamedItemNS(namespaceUri, name);
     }
@@ -3487,15 +3487,15 @@ pub const XmlNodeList = extern struct {
 };
 pub const XmlProcessingInstruction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlProcessingInstruction = @ptrCast(self);
         return try this.getTarget();
     }
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlProcessingInstruction = @ptrCast(self);
         return try this.getData();
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXmlProcessingInstruction = @ptrCast(self);
         return try this.putData(value);
     }
@@ -3517,7 +3517,7 @@ pub const XmlProcessingInstruction = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3637,43 +3637,43 @@ pub const XmlProcessingInstruction = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3691,13 +3691,13 @@ pub const XmlText = extern struct {
         const this: *IXmlText = @ptrCast(self);
         return try this.SplitText(offset);
     }
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getData();
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3709,19 +3709,19 @@ pub const XmlText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLength();
     }
-    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!HSTRING {
+    pub fn SubstringData(self: *@This(), offset: u32, count: u32) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SubstringData(offset, count);
     }
-    pub fn AppendData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn AppendData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AppendData(data);
     }
-    pub fn InsertData(self: *@This(), offset: u32, data: HSTRING) core.HResult!void {
+    pub fn InsertData(self: *@This(), offset: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3733,7 +3733,7 @@ pub const XmlText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeleteData(offset, count);
     }
-    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: HSTRING) core.HResult!void {
+    pub fn ReplaceData(self: *@This(), offset: u32, count: u32, data: ?HSTRING) core.HResult!void {
         var this: ?*IXmlCharacterData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlCharacterData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3757,7 +3757,7 @@ pub const XmlText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeType();
     }
-    pub fn getNodeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3877,43 +3877,43 @@ pub const XmlText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
+    pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNode(xpath);
     }
-    pub fn SelectNodes(self: *@This(), xpath: HSTRING) core.HResult!*XmlNodeList {
+    pub fn SelectNodes(self: *@This(), xpath: ?HSTRING) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodes(xpath);
     }
-    pub fn SelectSingleNodeNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
+    pub fn SelectSingleNodeNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectSingleNodeNS(xpath, namespaces);
     }
-    pub fn SelectNodesNS(self: *@This(), xpath: HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
+    pub fn SelectNodesNS(self: *@This(), xpath: ?HSTRING, namespaces: *IInspectable) core.HResult!*XmlNodeList {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+    pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXml();
     }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInnerText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerText();
     }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putInnerText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IXmlNodeSerializer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

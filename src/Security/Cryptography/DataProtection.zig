@@ -24,7 +24,7 @@ pub const DataProtectionProvider = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDataProtectionProvider.IID)));
     }
-    pub fn CreateOverloadExplicit(protectionDescriptor: HSTRING) core.HResult!*DataProtectionProvider {
+    pub fn CreateOverloadExplicit(protectionDescriptor: ?HSTRING) core.HResult!*DataProtectionProvider {
         const _f = try @This()._IDataProtectionProviderFactoryCache.get();
         return try _f.CreateOverloadExplicit(protectionDescriptor);
     }
@@ -82,7 +82,7 @@ pub const IDataProtectionProvider = extern struct {
 };
 pub const IDataProtectionProviderFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateOverloadExplicit(self: *@This(), protectionDescriptor: HSTRING) core.HResult!*DataProtectionProvider {
+    pub fn CreateOverloadExplicit(self: *@This(), protectionDescriptor: ?HSTRING) core.HResult!*DataProtectionProvider {
         var _r: *DataProtectionProvider = undefined;
         const _c = self.vtable.CreateOverloadExplicit(@ptrCast(self), protectionDescriptor, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -100,7 +100,7 @@ pub const IDataProtectionProviderFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateOverloadExplicit: *const fn(self: *anyopaque, protectionDescriptor: HSTRING, _r: **DataProtectionProvider) callconv(.winapi) HRESULT,
+        CreateOverloadExplicit: *const fn(self: *anyopaque, protectionDescriptor: ?HSTRING, _r: **DataProtectionProvider) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

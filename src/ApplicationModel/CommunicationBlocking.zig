@@ -8,15 +8,15 @@ pub const CommunicationBlockingAccessManager = extern struct {
         const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.getIsBlockingActive();
     }
-    pub fn IsBlockedNumberAsync(number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsBlockedNumberAsync(number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.IsBlockedNumberAsync(number);
     }
-    pub fn ShowBlockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn ShowBlockNumbersUI(phoneNumbers: *IIterable(?HSTRING)) core.HResult!bool {
         const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowBlockNumbersUI(phoneNumbers);
     }
-    pub fn ShowUnblockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn ShowUnblockNumbersUI(phoneNumbers: *IIterable(?HSTRING)) core.HResult!bool {
         const _f = try @This()._ICommunicationBlockingAccessManagerStaticsCache.get();
         return try _f.ShowUnblockNumbersUI(phoneNumbers);
     }
@@ -62,19 +62,19 @@ pub const ICommunicationBlockingAccessManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsBlockedNumberAsync(self: *@This(), number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsBlockedNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsBlockedNumberAsync(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowBlockNumbersUI(self: *@This(), phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn ShowBlockNumbersUI(self: *@This(), phoneNumbers: *IIterable(?HSTRING)) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ShowBlockNumbersUI(@ptrCast(self), phoneNumbers, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowUnblockNumbersUI(self: *@This(), phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn ShowUnblockNumbersUI(self: *@This(), phoneNumbers: *IIterable(?HSTRING)) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ShowUnblockNumbersUI(@ptrCast(self), phoneNumbers, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -101,9 +101,9 @@ pub const ICommunicationBlockingAccessManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsBlockingActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        IsBlockedNumberAsync: *const fn(self: *anyopaque, number: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        ShowBlockNumbersUI: *const fn(self: *anyopaque, phoneNumbers: *IIterable(HSTRING), _r: *bool) callconv(.winapi) HRESULT,
-        ShowUnblockNumbersUI: *const fn(self: *anyopaque, phoneNumbers: *IIterable(HSTRING), _r: *bool) callconv(.winapi) HRESULT,
+        IsBlockedNumberAsync: *const fn(self: *anyopaque, number: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        ShowBlockNumbersUI: *const fn(self: *anyopaque, phoneNumbers: *IIterable(?HSTRING), _r: *bool) callconv(.winapi) HRESULT,
+        ShowUnblockNumbersUI: *const fn(self: *anyopaque, phoneNumbers: *IIterable(?HSTRING), _r: *bool) callconv(.winapi) HRESULT,
         ShowBlockedCallsUI: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ShowBlockedMessagesUI: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };

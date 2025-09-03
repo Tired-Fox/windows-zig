@@ -69,7 +69,7 @@ pub const I2cController = extern struct {
 };
 pub const I2cDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *II2cDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -110,15 +110,15 @@ pub const I2cDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
-    pub fn FromIdAsync(deviceId: HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
         const _f = try @This()._II2cDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, settings);
     }
@@ -274,8 +274,8 @@ pub const II2cControllerStatics = extern struct {
 };
 pub const II2cDevice = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -328,7 +328,7 @@ pub const II2cDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ConnectionSettings: *const fn(self: *anyopaque, _r: **I2cConnectionSettings) callconv(.winapi) HRESULT,
         Write: *const fn(self: *anyopaque, buffer: [*]u8) callconv(.winapi) HRESULT,
         WritePartial: *const fn(self: *anyopaque, buffer: [*]u8, _r: *I2cTransferResult) callconv(.winapi) HRESULT,
@@ -340,19 +340,19 @@ pub const II2cDevice = extern struct {
 };
 pub const II2cDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithFriendlyName(@ptrCast(self), friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
         var _r: *IAsyncOperation(I2cDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -370,9 +370,9 @@ pub const II2cDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, settings: *I2cConnectionSettings, _r: **IAsyncOperation(I2cDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, settings: *I2cConnectionSettings, _r: **IAsyncOperation(I2cDevice)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

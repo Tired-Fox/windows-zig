@@ -1161,8 +1161,8 @@ pub const IPropertyValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1247,7 +1247,7 @@ pub const IPropertyValue = extern struct {
         const _c = self.vtable.GetBooleanArray(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetStringArray(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn GetStringArray(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetStringArray(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1304,7 +1304,7 @@ pub const IPropertyValue = extern struct {
         GetDouble: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         GetChar16: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
         GetBoolean: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetGuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetDateTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         GetTimeSpan: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
@@ -1322,7 +1322,7 @@ pub const IPropertyValue = extern struct {
         GetDoubleArray: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         GetChar16Array: *const fn(self: *anyopaque, value: u16) callconv(.winapi) HRESULT,
         GetBooleanArray: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        GetStringArray: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        GetStringArray: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         GetInspectableArray: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         GetGuidArray: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
         GetDateTimeArray: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
@@ -1406,7 +1406,7 @@ pub const IPropertyValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateString(self: *@This(), value: HSTRING) core.HResult!*IInspectable {
+    pub fn CreateString(self: *@This(), value: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateString(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1520,7 +1520,7 @@ pub const IPropertyValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStringArray(self: *@This(), value: [*]HSTRING) core.HResult!*IInspectable {
+    pub fn CreateStringArray(self: *@This(), value: ?[*]HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateStringArray(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1592,7 +1592,7 @@ pub const IPropertyValueStatics = extern struct {
         CreateDouble: *const fn(self: *anyopaque, value: f64, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateChar16: *const fn(self: *anyopaque, value: u16, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateBoolean: *const fn(self: *anyopaque, value: bool, _r: **IInspectable) callconv(.winapi) HRESULT,
-        CreateString: *const fn(self: *anyopaque, value: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        CreateString: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateInspectable: *const fn(self: *anyopaque, value: *IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateGuid: *const fn(self: *anyopaque, value: *Guid, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateDateTime: *const fn(self: *anyopaque, value: DateTime, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -1611,7 +1611,7 @@ pub const IPropertyValueStatics = extern struct {
         CreateDoubleArray: *const fn(self: *anyopaque, value: [*]f64, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateChar16Array: *const fn(self: *anyopaque, value: [*]u16, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateBooleanArray: *const fn(self: *anyopaque, value: [*]bool, _r: **IInspectable) callconv(.winapi) HRESULT,
-        CreateStringArray: *const fn(self: *anyopaque, value: [*]HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        CreateStringArray: *const fn(self: *anyopaque, value: ?[*]HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateInspectableArray: *const fn(self: *anyopaque, value: [*]IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateGuidArray: *const fn(self: *anyopaque, value: [*]Guid, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateDateTimeArray: *const fn(self: *anyopaque, value: [*]DateTime, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -1673,8 +1673,8 @@ pub fn IReference(T: type) type {
 }
 pub const IStringable = extern struct {
     vtable: *const VTable,
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1691,7 +1691,7 @@ pub const IStringable = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ToString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const Point = extern struct {
@@ -1794,7 +1794,7 @@ pub const PropertyValue = extern struct {
         const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateBoolean(value);
     }
-    pub fn CreateString(value: HSTRING) core.HResult!*IInspectable {
+    pub fn CreateString(value: ?HSTRING) core.HResult!*IInspectable {
         const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateString(value);
     }
@@ -1870,7 +1870,7 @@ pub const PropertyValue = extern struct {
         const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateBooleanArray(value);
     }
-    pub fn CreateStringArray(value: [*]HSTRING) core.HResult!*IInspectable {
+    pub fn CreateStringArray(value: ?[*]HSTRING) core.HResult!*IInspectable {
         const _f = try @This()._IPropertyValueStaticsCache.get();
         return try _f.CreateStringArray(value);
     }
@@ -2031,7 +2031,7 @@ pub const GuidHelper = extern struct {
 };
 pub const IGetActivationFactory = extern struct {
     vtable: *const VTable,
-    pub fn GetActivationFactory(self: *@This(), activatableClassId: HSTRING) core.HResult!*IInspectable {
+    pub fn GetActivationFactory(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetActivationFactory(@ptrCast(self), activatableClassId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2049,7 +2049,7 @@ pub const IGetActivationFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetActivationFactory: *const fn(self: *anyopaque, activatableClassId: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        GetActivationFactory: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const IGuidHelperStatics = extern struct {
@@ -2172,14 +2172,14 @@ pub const IMemoryBufferReference = extern struct {
 };
 pub const IUriEscapeStatics = extern struct {
     vtable: *const VTable,
-    pub fn UnescapeComponent(self: *@This(), toUnescape: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn UnescapeComponent(self: *@This(), toUnescape: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.UnescapeComponent(@ptrCast(self), toUnescape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EscapeComponent(self: *@This(), toEscape: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn EscapeComponent(self: *@This(), toEscape: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.EscapeComponent(@ptrCast(self), toEscape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2196,62 +2196,62 @@ pub const IUriEscapeStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        UnescapeComponent: *const fn(self: *anyopaque, toUnescape: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        EscapeComponent: *const fn(self: *anyopaque, toEscape: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        UnescapeComponent: *const fn(self: *anyopaque, toUnescape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        EscapeComponent: *const fn(self: *anyopaque, toEscape: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUriRuntimeClass = extern struct {
     vtable: *const VTable,
-    pub fn getAbsoluteUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtension(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Extension(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFragment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Fragment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHost(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Host(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQuery(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Query(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2262,20 +2262,20 @@ pub const IUriRuntimeClass = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRawUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSchemeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SchemeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2298,7 +2298,7 @@ pub const IUriRuntimeClass = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CombineUri(self: *@This(), relativeUri: HSTRING) core.HResult!*Uri {
+    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CombineUri(@ptrCast(self), relativeUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2316,34 +2316,34 @@ pub const IUriRuntimeClass = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AbsoluteUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Extension: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Fragment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Host: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Password: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Query: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AbsoluteUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Extension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Fragment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Host: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Query: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_QueryParsed: *const fn(self: *anyopaque, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
-        get_RawUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SchemeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RawUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SchemeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Port: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Suspicious: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         Equals: *const fn(self: *anyopaque, pUri: *Uri, _r: *bool) callconv(.winapi) HRESULT,
-        CombineUri: *const fn(self: *anyopaque, relativeUri: HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        CombineUri: *const fn(self: *anyopaque, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IUriRuntimeClassFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateUri(self: *@This(), uri: HSTRING) core.HResult!*Uri {
+    pub fn CreateUri(self: *@This(), uri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CreateUri(@ptrCast(self), uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithRelativeUri(self: *@This(), baseUri: HSTRING, relativeUri: HSTRING) core.HResult!*Uri {
+    pub fn CreateWithRelativeUri(self: *@This(), baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CreateWithRelativeUri(@ptrCast(self), baseUri, relativeUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2361,20 +2361,20 @@ pub const IUriRuntimeClassFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateUri: *const fn(self: *anyopaque, uri: HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
-        CreateWithRelativeUri: *const fn(self: *anyopaque, baseUri: HSTRING, relativeUri: HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        CreateUri: *const fn(self: *anyopaque, uri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        CreateWithRelativeUri: *const fn(self: *anyopaque, baseUri: ?HSTRING, relativeUri: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
     vtable: *const VTable,
-    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteCanonicalUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayIri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayIri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2391,20 +2391,20 @@ pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AbsoluteCanonicalUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayIri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AbsoluteCanonicalUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayIri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWwwFormUrlDecoderEntry = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2421,14 +2421,14 @@ pub const IWwwFormUrlDecoderEntry = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
     vtable: *const VTable,
-    pub fn GetFirstValueByName(self: *@This(), name: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFirstValueByName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2445,12 +2445,12 @@ pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetFirstValueByName: *const fn(self: *anyopaque, name: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetFirstValueByName: *const fn(self: *anyopaque, name: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWwwFormUrlDecoder(self: *@This(), query: HSTRING) core.HResult!*WwwFormUrlDecoder {
+    pub fn CreateWwwFormUrlDecoder(self: *@This(), query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
         var _r: *WwwFormUrlDecoder = undefined;
         const _c = self.vtable.CreateWwwFormUrlDecoder(@ptrCast(self), query, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2468,7 +2468,7 @@ pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWwwFormUrlDecoder: *const fn(self: *anyopaque, query: HSTRING, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
+        CreateWwwFormUrlDecoder: *const fn(self: *anyopaque, query: ?HSTRING, _r: **WwwFormUrlDecoder) callconv(.winapi) HRESULT,
     };
 };
 pub const MemoryBuffer = extern struct {
@@ -2499,39 +2499,39 @@ pub const MemoryBuffer = extern struct {
 };
 pub const Uri = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAbsoluteUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getAbsoluteUri();
     }
-    pub fn getDisplayUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getDisplayUri();
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getDomain();
     }
-    pub fn getExtension(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getExtension();
     }
-    pub fn getFragment(self: *@This()) core.HResult!HSTRING {
+    pub fn getFragment(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getFragment();
     }
-    pub fn getHost(self: *@This()) core.HResult!HSTRING {
+    pub fn getHost(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getHost();
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getPassword();
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getPath();
     }
-    pub fn getQuery(self: *@This()) core.HResult!HSTRING {
+    pub fn getQuery(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getQuery();
     }
@@ -2539,15 +2539,15 @@ pub const Uri = extern struct {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getQueryParsed();
     }
-    pub fn getRawUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getRawUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getRawUri();
     }
-    pub fn getSchemeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSchemeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getSchemeName();
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getUserName();
     }
@@ -2563,23 +2563,23 @@ pub const Uri = extern struct {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.Equals(pUri);
     }
-    pub fn CombineUri(self: *@This(), relativeUri: HSTRING) core.HResult!*Uri {
+    pub fn CombineUri(self: *@This(), relativeUri: ?HSTRING) core.HResult!*Uri {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.CombineUri(relativeUri);
     }
-    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbsoluteCanonicalUri();
     }
-    pub fn getDisplayIri(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayIri();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2588,19 +2588,19 @@ pub const Uri = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateUri(uri: HSTRING) core.HResult!*Uri {
+    pub fn CreateUri(uri: ?HSTRING) core.HResult!*Uri {
         const _f = try @This()._IUriRuntimeClassFactoryCache.get();
         return try _f.CreateUri(uri);
     }
-    pub fn CreateWithRelativeUri(baseUri: HSTRING, relativeUri: HSTRING) core.HResult!*Uri {
+    pub fn CreateWithRelativeUri(baseUri: ?HSTRING, relativeUri: ?HSTRING) core.HResult!*Uri {
         const _f = try @This()._IUriRuntimeClassFactoryCache.get();
         return try _f.CreateWithRelativeUri(baseUri, relativeUri);
     }
-    pub fn UnescapeComponent(toUnescape: HSTRING) core.HResult!HSTRING {
+    pub fn UnescapeComponent(toUnescape: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IUriEscapeStaticsCache.get();
         return try _f.UnescapeComponent(toUnescape);
     }
-    pub fn EscapeComponent(toEscape: HSTRING) core.HResult!HSTRING {
+    pub fn EscapeComponent(toEscape: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IUriEscapeStaticsCache.get();
         return try _f.EscapeComponent(toEscape);
     }
@@ -2614,7 +2614,7 @@ pub const Uri = extern struct {
 };
 pub const WwwFormUrlDecoder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetFirstValueByName(self: *@This(), name: HSTRING) core.HResult!HSTRING {
+    pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         const this: *IWwwFormUrlDecoderRuntimeClass = @ptrCast(self);
         return try this.GetFirstValueByName(name);
     }
@@ -2633,7 +2633,7 @@ pub const WwwFormUrlDecoder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWwwFormUrlDecoder(query: HSTRING) core.HResult!*WwwFormUrlDecoder {
+    pub fn CreateWwwFormUrlDecoder(query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
         const _f = try @This()._IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
         return try _f.CreateWwwFormUrlDecoder(query);
     }
@@ -2646,11 +2646,11 @@ pub const WwwFormUrlDecoder = extern struct {
 };
 pub const WwwFormUrlDecoderEntry = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
         return try this.getValue();
     }

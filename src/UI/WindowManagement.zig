@@ -17,11 +17,11 @@ pub const AppWindow = extern struct {
         const this: *IAppWindow = @ptrCast(self);
         return try this.getIsVisible();
     }
-    pub fn getPersistedStateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppWindow = @ptrCast(self);
         return try this.getPersistedStateId();
     }
-    pub fn putPersistedStateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppWindow = @ptrCast(self);
         return try this.putPersistedStateId(value);
     }
@@ -29,11 +29,11 @@ pub const AppWindow = extern struct {
         const this: *IAppWindow = @ptrCast(self);
         return try this.getPresenter();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppWindow = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppWindow = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -128,7 +128,7 @@ pub const AppWindow = extern struct {
         const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.ClearAllPersistedState();
     }
-    pub fn ClearPersistedState(key: HSTRING) core.HResult!void {
+    pub fn ClearPersistedState(key: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.ClearPersistedState(key);
     }
@@ -491,7 +491,7 @@ pub const DefaultPresentationConfiguration = extern struct {
 };
 pub const DisplayRegion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDisplayRegion = @ptrCast(self);
         return try this.getDisplayMonitorDeviceId();
     }
@@ -575,13 +575,13 @@ pub const IAppWindow = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPersistedStateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PersistedStateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPersistedStateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PersistedStateId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -591,13 +591,13 @@ pub const IAppWindow = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -717,11 +717,11 @@ pub const IAppWindow = extern struct {
         get_DispatcherQueue: *const fn(self: *anyopaque, _r: **DispatcherQueue) callconv(.winapi) HRESULT,
         get_Frame: *const fn(self: *anyopaque, _r: **AppWindowFrame) callconv(.winapi) HRESULT,
         get_IsVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_PersistedStateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PersistedStateId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PersistedStateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PersistedStateId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Presenter: *const fn(self: *anyopaque, _r: **AppWindowPresenter) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TitleBar: *const fn(self: *anyopaque, _r: **AppWindowTitleBar) callconv(.winapi) HRESULT,
         get_UIContext: *const fn(self: *anyopaque, _r: **UIContext) callconv(.winapi) HRESULT,
         get_WindowingEnvironment: *const fn(self: *anyopaque, _r: **WindowingEnvironment) callconv(.winapi) HRESULT,
@@ -1057,7 +1057,7 @@ pub const IAppWindowStatics = extern struct {
         const _c = self.vtable.ClearAllPersistedState(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ClearPersistedState(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn ClearPersistedState(self: *@This(), key: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearPersistedState(@ptrCast(self), key);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1075,7 +1075,7 @@ pub const IAppWindowStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCreateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AppWindow)) callconv(.winapi) HRESULT,
         ClearAllPersistedState: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ClearPersistedState: *const fn(self: *anyopaque, key: HSTRING) callconv(.winapi) HRESULT,
+        ClearPersistedState: *const fn(self: *anyopaque, key: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppWindowTitleBar = extern struct {
@@ -1349,8 +1349,8 @@ pub const IDefaultPresentationConfiguration = extern struct {
 };
 pub const IDisplayRegion = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMonitorDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1401,7 +1401,7 @@ pub const IDisplayRegion = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayMonitorDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMonitorDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_WorkAreaOffset: *const fn(self: *anyopaque, _r: *Point) callconv(.winapi) HRESULT,
         get_WorkAreaSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,

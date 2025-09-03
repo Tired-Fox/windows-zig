@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const BarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -13,7 +13,7 @@ pub const BarcodeScanner = extern struct {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.ClaimScannerAsync();
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.CheckHealthAsync(level);
     }
@@ -25,15 +25,15 @@ pub const BarcodeScanner = extern struct {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.IsSymbologySupportedAsync(barcodeSymbology);
     }
-    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.RetrieveStatisticsAsync(statisticsCategories);
     }
-    pub fn GetSupportedProfiles(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetSupportedProfiles(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.GetSupportedProfiles();
     }
-    pub fn IsProfileSupported(self: *@This(), profile: HSTRING) core.HResult!bool {
+    pub fn IsProfileSupported(self: *@This(), profile: ?HSTRING) core.HResult!bool {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.IsProfileSupported(profile);
     }
@@ -45,7 +45,7 @@ pub const BarcodeScanner = extern struct {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.removeStatusUpdated(token);
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBarcodeScanner2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScanner2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -64,15 +64,15 @@ pub const BarcodeScanner = extern struct {
         const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
         const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._IBarcodeScannerStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
@@ -592,7 +592,7 @@ pub const BarcodeSymbologies = extern struct {
         const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.getExtendedBase();
     }
-    pub fn GetName(scanDataType: u32) core.HResult!HSTRING {
+    pub fn GetName(scanDataType: u32) core.HResult!?HSTRING {
         const _f = try @This()._IBarcodeSymbologiesStaticsCache.get();
         return try _f.GetName(scanDataType);
     }
@@ -672,7 +672,7 @@ pub const BarcodeSymbologyDecodeLengthKind = enum(i32) {
 };
 pub const CashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICashDrawer = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -696,11 +696,11 @@ pub const CashDrawer = extern struct {
         const this: *ICashDrawer = @ptrCast(self);
         return try this.ClaimDrawerAsync();
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *ICashDrawer = @ptrCast(self);
         return try this.CheckHealthAsync(level);
     }
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *ICashDrawer = @ptrCast(self);
         return try this.GetStatisticsAsync(statisticsCategories);
     }
@@ -725,15 +725,15 @@ pub const CashDrawer = extern struct {
         const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
         const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._ICashDrawerStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
@@ -914,7 +914,7 @@ pub const CashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const ClaimedBarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -954,15 +954,15 @@ pub const ClaimedBarcodeScanner = extern struct {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.SetActiveSymbologiesAsync(symbologies);
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.ResetStatisticsAsync(statisticsCategories);
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.UpdateStatisticsAsync(statistics);
     }
-    pub fn SetActiveProfileAsync(self: *@This(), profile: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetActiveProfileAsync(self: *@This(), profile: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.SetActiveProfileAsync(profile);
     }
@@ -1096,7 +1096,7 @@ pub const ClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const ClaimedCashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedCashDrawer = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1128,11 +1128,11 @@ pub const ClaimedCashDrawer = extern struct {
         const this: *IClaimedCashDrawer = @ptrCast(self);
         return try this.RetainDeviceAsync();
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         const this: *IClaimedCashDrawer = @ptrCast(self);
         return try this.ResetStatisticsAsync(statisticsCategories);
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncOperation(bool) {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         const this: *IClaimedCashDrawer = @ptrCast(self);
         return try this.UpdateStatisticsAsync(statistics);
     }
@@ -1290,7 +1290,7 @@ pub const ClaimedJournalPrinter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
-    pub fn ValidateData(self: *@This(), data: HSTRING) core.HResult!bool {
+    pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1304,7 +1304,7 @@ pub const ClaimedJournalPrinter = extern struct {
 };
 pub const ClaimedLineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1312,23 +1312,23 @@ pub const ClaimedLineDisplay = extern struct {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getCapabilities();
     }
-    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getPhysicalDeviceName();
     }
-    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getPhysicalDeviceDescription();
     }
-    pub fn getDeviceControlDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getDeviceControlDescription();
     }
-    pub fn getDeviceControlVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getDeviceControlVersion();
     }
-    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getDeviceServiceVersion();
     }
@@ -1348,13 +1348,13 @@ pub const ClaimedLineDisplay = extern struct {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.removeReleaseDeviceRequested(token);
     }
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStatisticsAsync(statisticsCategories);
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1471,15 +1471,15 @@ pub const ClaimedLineDisplay = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
@@ -1500,7 +1500,7 @@ pub const ClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const ClaimedMagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1580,15 +1580,15 @@ pub const ClaimedMagneticStripeReader = extern struct {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.DeAuthenticateDeviceAsync(responseToken);
     }
-    pub fn UpdateKeyAsync(self: *@This(), key: HSTRING, keyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UpdateKeyAsync(self: *@This(), key: ?HSTRING, keyName: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.UpdateKeyAsync(key, keyName);
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.ResetStatisticsAsync(statisticsCategories);
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.UpdateStatisticsAsync(statistics);
     }
@@ -1666,7 +1666,7 @@ pub const ClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const ClaimedPosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedPosPrinter = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1726,11 +1726,11 @@ pub const ClaimedPosPrinter = extern struct {
         const this: *IClaimedPosPrinter = @ptrCast(self);
         return try this.RetainDeviceAsync();
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         const this: *IClaimedPosPrinter = @ptrCast(self);
         return try this.ResetStatisticsAsync(statisticsCategories);
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncOperation(bool) {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         const this: *IClaimedPosPrinter = @ptrCast(self);
         return try this.UpdateStatisticsAsync(statistics);
     }
@@ -1908,7 +1908,7 @@ pub const ClaimedReceiptPrinter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
-    pub fn ValidateData(self: *@This(), data: HSTRING) core.HResult!bool {
+    pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2082,7 +2082,7 @@ pub const ClaimedSlipPrinter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
-    pub fn ValidateData(self: *@This(), data: HSTRING) core.HResult!bool {
+    pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2096,8 +2096,8 @@ pub const ClaimedSlipPrinter = extern struct {
 };
 pub const IBarcodeScanner = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2114,8 +2114,8 @@ pub const IBarcodeScanner = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2132,19 +2132,19 @@ pub const IBarcodeScanner = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.RetrieveStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSupportedProfiles(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetSupportedProfiles(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetSupportedProfiles(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsProfileSupported(self: *@This(), profile: HSTRING) core.HResult!bool {
+    pub fn IsProfileSupported(self: *@This(), profile: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsProfileSupported(@ptrCast(self), profile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2172,23 +2172,23 @@ pub const IBarcodeScanner = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **BarcodeScannerCapabilities) callconv(.winapi) HRESULT,
         ClaimScannerAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ClaimedBarcodeScanner)) callconv(.winapi) HRESULT,
-        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetSupportedSymbologiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(u32))) callconv(.winapi) HRESULT,
         IsSymbologySupportedAsync: *const fn(self: *anyopaque, barcodeSymbology: u32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RetrieveStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
-        GetSupportedProfiles: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        IsProfileSupported: *const fn(self: *anyopaque, profile: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        RetrieveStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
+        GetSupportedProfiles: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        IsProfileSupported: *const fn(self: *anyopaque, profile: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         add_StatusUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(BarcodeScanner,BarcodeScannerStatusUpdatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScanner2 = extern struct {
     vtable: *const VTable,
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2205,7 +2205,7 @@ pub const IBarcodeScanner2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerCapabilities = extern struct {
@@ -2449,14 +2449,14 @@ pub const IBarcodeScannerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
         var _r: *IAsyncOperation(BarcodeScanner) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2474,14 +2474,14 @@ pub const IBarcodeScannerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(BarcodeScanner)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(BarcodeScanner)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(BarcodeScanner)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2498,7 +2498,7 @@ pub const IBarcodeScannerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
@@ -3091,8 +3091,8 @@ pub const IBarcodeSymbologiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetName(self: *@This(), scanDataType: u32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetName(self: *@This(), scanDataType: u32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), scanDataType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3202,7 +3202,7 @@ pub const IBarcodeSymbologiesStatics = extern struct {
         get_OcrB: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Micr: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_ExtendedBase: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        GetName: *const fn(self: *anyopaque, scanDataType: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetName: *const fn(self: *anyopaque, scanDataType: u32, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeSymbologiesStatics2 = extern struct {
@@ -3327,8 +3327,8 @@ pub const IBarcodeSymbologyAttributes = extern struct {
 };
 pub const ICashDrawer = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3363,14 +3363,14 @@ pub const ICashDrawer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3397,14 +3397,14 @@ pub const ICashDrawer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **CashDrawerCapabilities) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: **CashDrawerStatus) callconv(.winapi) HRESULT,
         get_IsDrawerOpen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_DrawerEventSource: *const fn(self: *anyopaque, _r: **CashDrawerEventSource) callconv(.winapi) HRESULT,
         ClaimDrawerAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ClaimedCashDrawer)) callconv(.winapi) HRESULT,
-        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         add_StatusUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(CashDrawer,CashDrawerStatusUpdatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -3621,14 +3621,14 @@ pub const ICashDrawerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
         var _r: *IAsyncOperation(CashDrawer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3646,14 +3646,14 @@ pub const ICashDrawerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(CashDrawer)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(CashDrawer)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(CashDrawer)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICashDrawerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3670,7 +3670,7 @@ pub const ICashDrawerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICashDrawerStatus = extern struct {
@@ -3728,8 +3728,8 @@ pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const IClaimedBarcodeScanner = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3782,19 +3782,19 @@ pub const IClaimedBarcodeScanner = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetActiveProfileAsync(self: *@This(), profile: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetActiveProfileAsync(self: *@This(), profile: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetActiveProfileAsync(@ptrCast(self), profile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3872,7 +3872,7 @@ pub const IClaimedBarcodeScanner = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDisabledOnDataReceived: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsDisabledOnDataReceived: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -3882,9 +3882,9 @@ pub const IClaimedBarcodeScanner = extern struct {
         DisableAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RetainDevice: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetActiveSymbologiesAsync: *const fn(self: *anyopaque, symbologies: *IIterable(u32), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetActiveProfileAsync: *const fn(self: *anyopaque, profile: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetActiveProfileAsync: *const fn(self: *anyopaque, profile: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         add_DataReceived: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedBarcodeScanner,BarcodeScannerDataReceivedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DataReceived: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_TriggerPressed: *const fn(self: *anyopaque, handler: *EventHandler(ClaimedBarcodeScanner), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4045,8 +4045,8 @@ pub const IClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const IClaimedCashDrawer = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4093,13 +4093,13 @@ pub const IClaimedCashDrawer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncOperation(bool) {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4127,7 +4127,7 @@ pub const IClaimedCashDrawer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsDrawerOpen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_CloseAlarm: *const fn(self: *anyopaque, _r: **CashDrawerCloseAlarm) callconv(.winapi) HRESULT,
@@ -4135,8 +4135,8 @@ pub const IClaimedCashDrawer = extern struct {
         EnableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         DisableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RetainDeviceAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_ReleaseDeviceRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedCashDrawer,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ReleaseDeviceRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -4210,8 +4210,8 @@ pub const IClaimedJournalPrinter = extern struct {
 };
 pub const IClaimedLineDisplay = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4222,32 +4222,32 @@ pub const IClaimedLineDisplay = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceControlDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceControlVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceServiceVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4284,13 +4284,13 @@ pub const IClaimedLineDisplay = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **LineDisplayCapabilities) callconv(.winapi) HRESULT,
-        get_PhysicalDeviceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PhysicalDeviceDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceControlDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceControlVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceServiceVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhysicalDeviceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PhysicalDeviceDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceControlDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceControlVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceServiceVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DefaultWindow: *const fn(self: *anyopaque, _r: **LineDisplayWindow) callconv(.winapi) HRESULT,
         RetainDevice: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         add_ReleaseDeviceRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedLineDisplay,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4299,14 +4299,14 @@ pub const IClaimedLineDisplay = extern struct {
 };
 pub const IClaimedLineDisplay2 = extern struct {
     vtable: *const VTable,
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4411,8 +4411,8 @@ pub const IClaimedLineDisplay2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         CheckPowerStatusAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(LineDisplayPowerStatus)) callconv(.winapi) HRESULT,
         add_StatusUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedLineDisplay,LineDisplayStatusUpdatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4476,20 +4476,20 @@ pub const IClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const IClaimedLineDisplayStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         var _r: *IAsyncOperation(ClaimedLineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4506,15 +4506,15 @@ pub const IClaimedLineDisplayStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(ClaimedLineDisplay)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(ClaimedLineDisplay)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IClaimedMagneticStripeReader = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4619,19 +4619,19 @@ pub const IClaimedMagneticStripeReader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateKeyAsync(self: *@This(), key: HSTRING, keyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UpdateKeyAsync(self: *@This(), key: ?HSTRING, keyName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateKeyAsync(@ptrCast(self), key, keyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncAction {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4699,7 +4699,7 @@ pub const IClaimedMagneticStripeReader = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDisabledOnDataReceived: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsDisabledOnDataReceived: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -4719,9 +4719,9 @@ pub const IClaimedMagneticStripeReader = extern struct {
         RetrieveDeviceAuthenticationDataAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         AuthenticateDeviceAsync: *const fn(self: *anyopaque, responseToken: [*]u8, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeAuthenticateDeviceAsync: *const fn(self: *anyopaque, responseToken: [*]u8, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        UpdateKeyAsync: *const fn(self: *anyopaque, key: HSTRING, keyName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        UpdateKeyAsync: *const fn(self: *anyopaque, key: ?HSTRING, keyName: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         add_BankCardDataReceived: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderBankCardDataReceivedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_BankCardDataReceived: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_AamvaCardDataReceived: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedMagneticStripeReader,MagneticStripeReaderAamvaCardDataReceivedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4780,8 +4780,8 @@ pub const IClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const IClaimedPosPrinter = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4864,13 +4864,13 @@ pub const IClaimedPosPrinter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn ResetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ResetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*IAsyncOperation(bool) {
+    pub fn UpdateStatisticsAsync(self: *@This(), statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UpdateStatisticsAsync(@ptrCast(self), statistics, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4898,7 +4898,7 @@ pub const IClaimedPosPrinter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_CharacterSet: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_CharacterSet: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -4913,8 +4913,8 @@ pub const IClaimedPosPrinter = extern struct {
         EnableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         DisableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RetainDeviceAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        ResetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        UpdateStatisticsAsync: *const fn(self: *anyopaque, statistics: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_ReleaseDeviceRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(ClaimedPosPrinter,PosPrinterReleaseDeviceRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ReleaseDeviceRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -5222,7 +5222,7 @@ pub const ICommonClaimedPosPrinterStation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ValidateData(self: *@This(), data: HSTRING) core.HResult!bool {
+    pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ValidateData(@ptrCast(self), data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5258,7 +5258,7 @@ pub const ICommonClaimedPosPrinterStation = extern struct {
         get_IsHeadCleaning: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsPaperEmpty: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsReadyToPrint: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        ValidateData: *const fn(self: *anyopaque, data: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        ValidateData: *const fn(self: *anyopaque, data: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ICommonPosPrintStationCapabilities = extern struct {
@@ -5449,7 +5449,7 @@ pub const ICommonReceiptSlipCapabilities = extern struct {
 };
 pub const IJournalPrintJob = extern struct {
     vtable: *const VTable,
-    pub fn Print(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5473,7 +5473,7 @@ pub const IJournalPrintJob = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Print: *const fn(self: *anyopaque, data: HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
+        Print: *const fn(self: *anyopaque, data: ?HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
         FeedPaperByLine: *const fn(self: *anyopaque, lineCount: i32) callconv(.winapi) HRESULT,
         FeedPaperByMapModeUnit: *const fn(self: *anyopaque, distance: i32) callconv(.winapi) HRESULT,
     };
@@ -5554,8 +5554,8 @@ pub const IJournalPrinterCapabilities2 = extern struct {
 };
 pub const ILineDisplay = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5566,32 +5566,32 @@ pub const ILineDisplay = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceControlDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceControlVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceControlVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceServiceVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5614,13 +5614,13 @@ pub const ILineDisplay = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **LineDisplayCapabilities) callconv(.winapi) HRESULT,
-        get_PhysicalDeviceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PhysicalDeviceDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceControlDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceControlVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceServiceVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhysicalDeviceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PhysicalDeviceDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceControlDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceControlVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceServiceVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ClaimAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ClaimedLineDisplay)) callconv(.winapi) HRESULT,
     };
 };
@@ -6137,7 +6137,7 @@ pub const ILineDisplayMarquee = extern struct {
 };
 pub const ILineDisplayStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
         var _r: *IAsyncOperation(LineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6149,14 +6149,14 @@ pub const ILineDisplayStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6173,10 +6173,10 @@ pub const ILineDisplayStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(LineDisplay)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(LineDisplay)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(LineDisplay)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILineDisplayStatics2 = extern struct {
@@ -6204,20 +6204,20 @@ pub const ILineDisplayStatics2 = extern struct {
 };
 pub const ILineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const VTable,
-    pub fn getAllStatistics(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAllStatistics(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AllStatistics(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnifiedPosStatistics(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnifiedPosStatistics(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnifiedPosStatistics(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getManufacturerStatistics(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManufacturerStatistics(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerStatistics(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6234,9 +6234,9 @@ pub const ILineDisplayStatisticsCategorySelector = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AllStatistics: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UnifiedPosStatistics: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ManufacturerStatistics: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AllStatistics: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UnifiedPosStatistics: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ManufacturerStatistics: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
@@ -6264,8 +6264,8 @@ pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const ILineDisplayStoredBitmap = extern struct {
     vtable: *const VTable,
-    pub fn getEscapeSequence(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEscapeSequence(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EscapeSequence(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6288,7 +6288,7 @@ pub const ILineDisplayStoredBitmap = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EscapeSequence: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EscapeSequence: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         TryDeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -6316,19 +6316,19 @@ pub const ILineDisplayWindow = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayTextAsyncWithDisplayAttribute(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttribute(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsyncWithDisplayAttribute(@ptrCast(self), text, displayAttribute, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(@ptrCast(self), text, displayAttribute, startPosition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDisplayTextAsync(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6362,9 +6362,9 @@ pub const ILineDisplayWindow = extern struct {
         get_InterCharacterWaitInterval: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_InterCharacterWaitInterval: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         TryRefreshAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayTextAsyncWithDisplayAttribute: *const fn(self: *anyopaque, text: HSTRING, displayAttribute: LineDisplayTextAttribute, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayTextAsyncWithDisplayAttributeAndStartPosition: *const fn(self: *anyopaque, text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayTextAsync: *const fn(self: *anyopaque, text: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayTextAsyncWithDisplayAttribute: *const fn(self: *anyopaque, text: ?HSTRING, displayAttribute: LineDisplayTextAttribute, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayTextAsyncWithDisplayAttributeAndStartPosition: *const fn(self: *anyopaque, text: ?HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayTextAsync: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryScrollTextAsync: *const fn(self: *anyopaque, direction: LineDisplayScrollDirection, numberOfColumnsOrRows: u32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryClearTextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
@@ -6450,8 +6450,8 @@ pub const ILineDisplayWindow2 = extern struct {
 };
 pub const IMagneticStripeReader = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6474,8 +6474,8 @@ pub const IMagneticStripeReader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6486,7 +6486,7 @@ pub const IMagneticStripeReader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.RetrieveStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6520,13 +6520,13 @@ pub const IMagneticStripeReader = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **MagneticStripeReaderCapabilities) callconv(.winapi) HRESULT,
         get_SupportedCardTypes: *const fn(self: *anyopaque, _r: *[*]u32) callconv(.winapi) HRESULT,
         get_DeviceAuthenticationProtocol: *const fn(self: *anyopaque, _r: *MagneticStripeReaderAuthenticationProtocol) callconv(.winapi) HRESULT,
-        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         ClaimReaderAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ClaimedMagneticStripeReader)) callconv(.winapi) HRESULT,
-        RetrieveStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
+        RetrieveStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         GetErrorReportingType: *const fn(self: *anyopaque, _r: *MagneticStripeReaderErrorReportingType) callconv(.winapi) HRESULT,
         add_StatusUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(MagneticStripeReader,MagneticStripeReaderStatusUpdatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -6540,110 +6540,110 @@ pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLicenseNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLicenseNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LicenseNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExpirationDate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRestrictions(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRestrictions(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Restrictions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getClass(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClass(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Class(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEndorsements(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEndorsements(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Endorsements(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBirthDate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBirthDate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BirthDate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSurname(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Surname(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSuffix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Suffix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGender(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGender(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gender(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHairColor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHairColor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HairColor(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEyeColor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEyeColor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EyeColor(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeight(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeight(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeight(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getState(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getState(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6661,24 +6661,24 @@ pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Report: *const fn(self: *anyopaque, _r: **MagneticStripeReaderReport) callconv(.winapi) HRESULT,
-        get_LicenseNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ExpirationDate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Restrictions: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Class: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Endorsements: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BirthDate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FirstName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Surname: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Suffix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Gender: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HairColor: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EyeColor: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Height: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Weight: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Address: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_City: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_State: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PostalCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LicenseNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ExpirationDate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Restrictions: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Class: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Endorsements: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BirthDate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FirstName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Surname: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Suffix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Gender: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HairColor: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EyeColor: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Height: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Weight: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Address: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_City: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_State: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PostalCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
@@ -6689,50 +6689,50 @@ pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccountNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExpirationDate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExpirationDate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMiddleInitial(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMiddleInitial(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MiddleInitial(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSurname(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Surname(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSuffix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Suffix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6750,20 +6750,20 @@ pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Report: *const fn(self: *anyopaque, _r: **MagneticStripeReaderReport) callconv(.winapi) HRESULT,
-        get_AccountNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ExpirationDate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FirstName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MiddleInitial: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Surname: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Suffix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AccountNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ExpirationDate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FirstName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MiddleInitial: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Surname: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Suffix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagneticStripeReaderCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn getCardAuthentication(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCardAuthentication(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CardAuthentication(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -6840,7 +6840,7 @@ pub const IMagneticStripeReaderCapabilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CardAuthentication: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CardAuthentication: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedEncryptionAlgorithms: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_AuthenticationLevel: *const fn(self: *anyopaque, _r: *MagneticStripeReaderAuthenticationLevel) callconv(.winapi) HRESULT,
         get_IsIsoSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -7024,8 +7024,8 @@ pub const IMagneticStripeReaderReport = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7065,7 +7065,7 @@ pub const IMagneticStripeReaderReport = extern struct {
         get_Track2: *const fn(self: *anyopaque, _r: **MagneticStripeReaderTrackData) callconv(.winapi) HRESULT,
         get_Track3: *const fn(self: *anyopaque, _r: **MagneticStripeReaderTrackData) callconv(.winapi) HRESULT,
         get_Track4: *const fn(self: *anyopaque, _r: **MagneticStripeReaderTrackData) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_CardAuthenticationData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         get_CardAuthenticationDataLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_AdditionalSecurityInformation: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
@@ -7079,14 +7079,14 @@ pub const IMagneticStripeReaderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
         var _r: *IAsyncOperation(MagneticStripeReader) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7104,14 +7104,14 @@ pub const IMagneticStripeReaderStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(MagneticStripeReader)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(MagneticStripeReader)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(MagneticStripeReader)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagneticStripeReaderStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7128,7 +7128,7 @@ pub const IMagneticStripeReaderStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
@@ -7223,8 +7223,8 @@ pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern 
 };
 pub const IPosPrinter = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7241,8 +7241,8 @@ pub const IPosPrinter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedTypeFaces(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedTypeFaces(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedTypeFaces(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7259,14 +7259,14 @@ pub const IPosPrinter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CheckHealthAsync(@ptrCast(self), level, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7293,14 +7293,14 @@ pub const IPosPrinter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **PosPrinterCapabilities) callconv(.winapi) HRESULT,
         get_SupportedCharacterSets: *const fn(self: *anyopaque, _r: **IVectorView(u32)) callconv(.winapi) HRESULT,
-        get_SupportedTypeFaces: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_SupportedTypeFaces: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: **PosPrinterStatus) callconv(.winapi) HRESULT,
         ClaimPrinterAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ClaimedPosPrinter)) callconv(.winapi) HRESULT,
-        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(HSTRING), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        CheckHealthAsync: *const fn(self: *anyopaque, level: UnifiedPosHealthCheckLevel, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetStatisticsAsync: *const fn(self: *anyopaque, statisticsCategories: *IIterable(?HSTRING), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         add_StatusUpdated: *const fn(self: *anyopaque, handler: *TypedEventHandler(PosPrinter,PosPrinterStatusUpdatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -7313,7 +7313,7 @@ pub const IPosPrinter2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFontProperty(self: *@This(), typeface: HSTRING) core.HResult!*PosPrinterFontProperty {
+    pub fn GetFontProperty(self: *@This(), typeface: ?HSTRING) core.HResult!*PosPrinterFontProperty {
         var _r: *PosPrinterFontProperty = undefined;
         const _c = self.vtable.GetFontProperty(@ptrCast(self), typeface, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7332,7 +7332,7 @@ pub const IPosPrinter2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SupportedBarcodeSymbologies: *const fn(self: *anyopaque, _r: **IVectorView(u32)) callconv(.winapi) HRESULT,
-        GetFontProperty: *const fn(self: *anyopaque, typeface: HSTRING, _r: **PosPrinterFontProperty) callconv(.winapi) HRESULT,
+        GetFontProperty: *const fn(self: *anyopaque, typeface: ?HSTRING, _r: **PosPrinterFontProperty) callconv(.winapi) HRESULT,
     };
 };
 pub const IPosPrinterCapabilities = extern struct {
@@ -7460,8 +7460,8 @@ pub const IPosPrinterCharacterSetIdsStatics = extern struct {
 };
 pub const IPosPrinterFontProperty = extern struct {
     vtable: *const VTable,
-    pub fn getTypeFace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7490,18 +7490,18 @@ pub const IPosPrinterFontProperty = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TypeFace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TypeFace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsScalableToAnySize: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_CharacterSizes: *const fn(self: *anyopaque, _r: **IVectorView(SizeUInt32)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPosPrinterJob = extern struct {
     vtable: *const VTable,
-    pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PrintLineWithData(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7527,21 +7527,21 @@ pub const IPosPrinterJob = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Print: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
-        PrintLineWithData: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
+        Print: *const fn(self: *anyopaque, data: ?HSTRING) callconv(.winapi) HRESULT,
+        PrintLineWithData: *const fn(self: *anyopaque, data: ?HSTRING) callconv(.winapi) HRESULT,
         PrintLine: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ExecuteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPosPrinterPrintOptions = extern struct {
     vtable: *const VTable,
-    pub fn getTypeFace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTypeFace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTypeFace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TypeFace(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7677,8 +7677,8 @@ pub const IPosPrinterPrintOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TypeFace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TypeFace: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TypeFace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TypeFace: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CharacterHeight: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_CharacterHeight: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_Bold: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -7729,14 +7729,14 @@ pub const IPosPrinterStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
         var _r: *IAsyncOperation(PosPrinter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7754,14 +7754,14 @@ pub const IPosPrinterStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PosPrinter)) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(PosPrinter)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(PosPrinter)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPosPrinterStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7778,7 +7778,7 @@ pub const IPosPrinterStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPosPrinterStatus = extern struct {
@@ -7868,15 +7868,15 @@ pub const IReceiptOrSlipJob = extern struct {
         const _c = self.vtable.PrintSavedBitmap(@ptrCast(self), bitmapNumber);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn DrawRuledLine(self: *@This(), positionList: HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
+    pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         const _c = self.vtable.DrawRuledLine(@ptrCast(self), positionList, lineDirection, lineWidth, lineStyle, lineColor);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintBarcode(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
+    pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         const _c = self.vtable.PrintBarcode(@ptrCast(self), data, symbology, height, width, textPosition, alignment);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintBarcodeCustomAlign(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
+    pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.PrintBarcodeCustomAlign(@ptrCast(self), data, symbology, height, width, textPosition, alignmentDistance);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7916,9 +7916,9 @@ pub const IReceiptOrSlipJob = extern struct {
         SetCustomAlignedBitmap: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) callconv(.winapi) HRESULT,
         SetCustomAlignedBitmapWithWidth: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) callconv(.winapi) HRESULT,
         PrintSavedBitmap: *const fn(self: *anyopaque, bitmapNumber: u32) callconv(.winapi) HRESULT,
-        DrawRuledLine: *const fn(self: *anyopaque, positionList: HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) callconv(.winapi) HRESULT,
-        PrintBarcode: *const fn(self: *anyopaque, data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
-        PrintBarcodeCustomAlign: *const fn(self: *anyopaque, data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) callconv(.winapi) HRESULT,
+        DrawRuledLine: *const fn(self: *anyopaque, positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) callconv(.winapi) HRESULT,
+        PrintBarcode: *const fn(self: *anyopaque, data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
+        PrintBarcodeCustomAlign: *const fn(self: *anyopaque, data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) callconv(.winapi) HRESULT,
         PrintBitmap: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
         PrintBitmapWithWidth: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) callconv(.winapi) HRESULT,
         PrintCustomAlignedBitmap: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignmentDistance: u32) callconv(.winapi) HRESULT,
@@ -7962,7 +7962,7 @@ pub const IReceiptPrintJob2 = extern struct {
         const _c = self.vtable.StampPaper(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Print(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7987,7 +7987,7 @@ pub const IReceiptPrintJob2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         StampPaper: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        Print: *const fn(self: *anyopaque, data: HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
+        Print: *const fn(self: *anyopaque, data: ?HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
         FeedPaperByLine: *const fn(self: *anyopaque, lineCount: i32) callconv(.winapi) HRESULT,
         FeedPaperByMapModeUnit: *const fn(self: *anyopaque, distance: i32) callconv(.winapi) HRESULT,
     };
@@ -8089,7 +8089,7 @@ pub const IReceiptPrinterCapabilities2 = extern struct {
 };
 pub const ISlipPrintJob = extern struct {
     vtable: *const VTable,
-    pub fn Print(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -8113,7 +8113,7 @@ pub const ISlipPrintJob = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Print: *const fn(self: *anyopaque, data: HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
+        Print: *const fn(self: *anyopaque, data: ?HSTRING, printOptions: *PosPrinterPrintOptions) callconv(.winapi) HRESULT,
         FeedPaperByLine: *const fn(self: *anyopaque, lineCount: i32) callconv(.winapi) HRESULT,
         FeedPaperByMapModeUnit: *const fn(self: *anyopaque, distance: i32) callconv(.winapi) HRESULT,
     };
@@ -8208,8 +8208,8 @@ pub const ISlipPrinterCapabilities2 = extern struct {
 };
 pub const IUnifiedPosErrorData = extern struct {
     vtable: *const VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8244,7 +8244,7 @@ pub const IUnifiedPosErrorData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Severity: *const fn(self: *anyopaque, _r: *UnifiedPosErrorSeverity) callconv(.winapi) HRESULT,
         get_Reason: *const fn(self: *anyopaque, _r: *UnifiedPosErrorReason) callconv(.winapi) HRESULT,
         get_ExtendedReason: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -8252,7 +8252,7 @@ pub const IUnifiedPosErrorData = extern struct {
 };
 pub const IUnifiedPosErrorDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), message: HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
+    pub fn CreateInstance(self: *@This(), message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
         var _r: *UnifiedPosErrorData = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), message, severity, reason, extendedReason, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8270,12 +8270,12 @@ pub const IUnifiedPosErrorDataFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, message: HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32, _r: **UnifiedPosErrorData) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32, _r: **UnifiedPosErrorData) callconv(.winapi) HRESULT,
     };
 };
 pub const JournalPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8293,11 +8293,11 @@ pub const JournalPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByMapModeUnit(distance);
     }
-    pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         const this: *IPosPrinterJob = @ptrCast(self);
         return try this.Print(data);
     }
-    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         const this: *IPosPrinterJob = @ptrCast(self);
         return try this.PrintLineWithData(data);
     }
@@ -8439,7 +8439,7 @@ pub const JournalPrinterCapabilities = extern struct {
 };
 pub const LineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -8447,23 +8447,23 @@ pub const LineDisplay = extern struct {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getCapabilities();
     }
-    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhysicalDeviceName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getPhysicalDeviceName();
     }
-    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhysicalDeviceDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getPhysicalDeviceDescription();
     }
-    pub fn getDeviceControlDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceControlDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getDeviceControlDescription();
     }
-    pub fn getDeviceControlVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceControlVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getDeviceControlVersion();
     }
-    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceServiceVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getDeviceServiceVersion();
     }
@@ -8490,7 +8490,7 @@ pub const LineDisplay = extern struct {
         const _f = try @This()._ILineDisplayStatics2Cache.get();
         return try _f.getStatisticsCategorySelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
         const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -8498,11 +8498,11 @@ pub const LineDisplay = extern struct {
         const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._ILineDisplayStaticsCache.get();
         return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
@@ -8840,15 +8840,15 @@ pub const LineDisplayScrollDirection = enum(i32) {
 };
 pub const LineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAllStatistics(self: *@This()) core.HResult!HSTRING {
+    pub fn getAllStatistics(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStatisticsCategorySelector = @ptrCast(self);
         return try this.getAllStatistics();
     }
-    pub fn getUnifiedPosStatistics(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnifiedPosStatistics(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStatisticsCategorySelector = @ptrCast(self);
         return try this.getUnifiedPosStatistics();
     }
-    pub fn getManufacturerStatistics(self: *@This()) core.HResult!HSTRING {
+    pub fn getManufacturerStatistics(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStatisticsCategorySelector = @ptrCast(self);
         return try this.getManufacturerStatistics();
     }
@@ -8872,7 +8872,7 @@ pub const LineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const LineDisplayStoredBitmap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEscapeSequence(self: *@This()) core.HResult!HSTRING {
+    pub fn getEscapeSequence(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStoredBitmap = @ptrCast(self);
         return try this.getEscapeSequence();
     }
@@ -8920,15 +8920,15 @@ pub const LineDisplayWindow = extern struct {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryRefreshAsync();
     }
-    pub fn TryDisplayTextAsyncWithDisplayAttribute(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttribute(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryDisplayTextAsyncWithDisplayAttribute(text, displayAttribute);
     }
-    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: ?HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(text, displayAttribute, startPosition);
     }
-    pub fn TryDisplayTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryDisplayTextAsync(text);
     }
@@ -9008,7 +9008,7 @@ pub const LineDisplayWindow = extern struct {
 };
 pub const MagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -9024,7 +9024,7 @@ pub const MagneticStripeReader = extern struct {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.getDeviceAuthenticationProtocol();
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.CheckHealthAsync(level);
     }
@@ -9032,7 +9032,7 @@ pub const MagneticStripeReader = extern struct {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.ClaimReaderAsync();
     }
-    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn RetrieveStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.RetrieveStatisticsAsync(statisticsCategories);
     }
@@ -9061,15 +9061,15 @@ pub const MagneticStripeReader = extern struct {
         const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
         const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._IMagneticStripeReaderStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
@@ -9087,75 +9087,75 @@ pub const MagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
     }
-    pub fn getLicenseNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getLicenseNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getLicenseNumber();
     }
-    pub fn getExpirationDate(self: *@This()) core.HResult!HSTRING {
+    pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getExpirationDate();
     }
-    pub fn getRestrictions(self: *@This()) core.HResult!HSTRING {
+    pub fn getRestrictions(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getRestrictions();
     }
-    pub fn getClass(self: *@This()) core.HResult!HSTRING {
+    pub fn getClass(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getClass();
     }
-    pub fn getEndorsements(self: *@This()) core.HResult!HSTRING {
+    pub fn getEndorsements(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getEndorsements();
     }
-    pub fn getBirthDate(self: *@This()) core.HResult!HSTRING {
+    pub fn getBirthDate(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getBirthDate();
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getFirstName();
     }
-    pub fn getSurname(self: *@This()) core.HResult!HSTRING {
+    pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getSurname();
     }
-    pub fn getSuffix(self: *@This()) core.HResult!HSTRING {
+    pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getSuffix();
     }
-    pub fn getGender(self: *@This()) core.HResult!HSTRING {
+    pub fn getGender(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getGender();
     }
-    pub fn getHairColor(self: *@This()) core.HResult!HSTRING {
+    pub fn getHairColor(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getHairColor();
     }
-    pub fn getEyeColor(self: *@This()) core.HResult!HSTRING {
+    pub fn getEyeColor(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getEyeColor();
     }
-    pub fn getHeight(self: *@This()) core.HResult!HSTRING {
+    pub fn getHeight(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getHeight();
     }
-    pub fn getWeight(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getWeight();
     }
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getAddress();
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getCity();
     }
-    pub fn getState(self: *@This()) core.HResult!HSTRING {
+    pub fn getState(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getPostalCode();
     }
@@ -9180,35 +9180,35 @@ pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
     }
-    pub fn getAccountNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccountNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getAccountNumber();
     }
-    pub fn getExpirationDate(self: *@This()) core.HResult!HSTRING {
+    pub fn getExpirationDate(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getExpirationDate();
     }
-    pub fn getServiceCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getServiceCode();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getFirstName();
     }
-    pub fn getMiddleInitial(self: *@This()) core.HResult!HSTRING {
+    pub fn getMiddleInitial(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getMiddleInitial();
     }
-    pub fn getSurname(self: *@This()) core.HResult!HSTRING {
+    pub fn getSurname(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getSurname();
     }
-    pub fn getSuffix(self: *@This()) core.HResult!HSTRING {
+    pub fn getSuffix(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getSuffix();
     }
@@ -9220,7 +9220,7 @@ pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
 };
 pub const MagneticStripeReaderCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCardAuthentication(self: *@This()) core.HResult!HSTRING {
+    pub fn getCardAuthentication(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderCapabilities = @ptrCast(self);
         return try this.getCardAuthentication();
     }
@@ -9374,7 +9374,7 @@ pub const MagneticStripeReaderReport = extern struct {
         const this: *IMagneticStripeReaderReport = @ptrCast(self);
         return try this.getTrack4();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *IMagneticStripeReaderReport = @ptrCast(self);
         return try this.getProperties();
     }
@@ -9472,7 +9472,7 @@ pub const PosConnectionTypes = enum(i32) {
 };
 pub const PosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -9484,7 +9484,7 @@ pub const PosPrinter = extern struct {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.getSupportedCharacterSets();
     }
-    pub fn getSupportedTypeFaces(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedTypeFaces(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.getSupportedTypeFaces();
     }
@@ -9496,11 +9496,11 @@ pub const PosPrinter = extern struct {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.ClaimPrinterAsync();
     }
-    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.CheckHealthAsync(level);
     }
-    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.GetStatisticsAsync(statisticsCategories);
     }
@@ -9518,7 +9518,7 @@ pub const PosPrinter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBarcodeSymbologies();
     }
-    pub fn GetFontProperty(self: *@This(), typeface: HSTRING) core.HResult!*PosPrinterFontProperty {
+    pub fn GetFontProperty(self: *@This(), typeface: ?HSTRING) core.HResult!*PosPrinterFontProperty {
         var this: ?*IPosPrinter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -9533,7 +9533,7 @@ pub const PosPrinter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._IPosPrinterStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
     }
@@ -9541,11 +9541,11 @@ pub const PosPrinter = extern struct {
         const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.GetDefaultAsync();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
         const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IPosPrinterStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -9672,7 +9672,7 @@ pub const PosPrinterColorCartridge = enum(i32) {
 };
 pub const PosPrinterFontProperty = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTypeFace(self: *@This()) core.HResult!HSTRING {
+    pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinterFontProperty = @ptrCast(self);
         return try this.getTypeFace();
     }
@@ -9721,11 +9721,11 @@ pub const PosPrinterMarkFeedKind = enum(i32) {
 };
 pub const PosPrinterPrintOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTypeFace(self: *@This()) core.HResult!HSTRING {
+    pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinterPrintOptions = @ptrCast(self);
         return try this.getTypeFace();
     }
-    pub fn putTypeFace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTypeFace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPosPrinterPrintOptions = @ptrCast(self);
         return try this.putTypeFace(value);
     }
@@ -9918,7 +9918,7 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StampPaper();
     }
-    pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -9984,19 +9984,19 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintSavedBitmap(bitmapNumber);
     }
-    pub fn DrawRuledLine(self: *@This(), positionList: HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
+    pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DrawRuledLine(positionList, lineDirection, lineWidth, lineStyle, lineColor);
     }
-    pub fn PrintBarcode(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
+    pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBarcode(data, symbology, height, width, textPosition, alignment);
     }
-    pub fn PrintBarcodeCustomAlign(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
+    pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -10026,13 +10026,13 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
-    pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
-    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -10250,7 +10250,7 @@ pub const SizeUInt32 = extern struct {
 };
 pub const SlipPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
+    pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -10300,15 +10300,15 @@ pub const SlipPrintJob = extern struct {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintSavedBitmap(bitmapNumber);
     }
-    pub fn DrawRuledLine(self: *@This(), positionList: HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
+    pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.DrawRuledLine(positionList, lineDirection, lineWidth, lineStyle, lineColor);
     }
-    pub fn PrintBarcode(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
+    pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintBarcode(data, symbology, height, width, textPosition, alignment);
     }
-    pub fn PrintBarcodeCustomAlign(self: *@This(), data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
+    pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintBarcodeCustomAlign(data, symbology, height, width, textPosition, alignmentDistance);
     }
@@ -10328,13 +10328,13 @@ pub const SlipPrintJob = extern struct {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
-    pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
-    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -10544,7 +10544,7 @@ pub const SlipPrinterCapabilities = extern struct {
 };
 pub const UnifiedPosErrorData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnifiedPosErrorData = @ptrCast(self);
         return try this.getMessage();
     }
@@ -10563,7 +10563,7 @@ pub const UnifiedPosErrorData = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(message: HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
+    pub fn CreateInstance(message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
         const _f = try @This()._IUnifiedPosErrorDataFactoryCache.get();
         return try _f.CreateInstance(message, severity, reason, extendedReason);
     }

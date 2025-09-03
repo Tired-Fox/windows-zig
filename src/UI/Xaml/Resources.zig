@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const CustomXamlResourceLoader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetResource(self: *@This(), resourceId: HSTRING, objectType: HSTRING, propertyName: HSTRING, propertyType: HSTRING) core.HResult!*IInspectable {
+    pub fn GetResource(self: *@This(), resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*ICustomXamlResourceLoaderOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomXamlResourceLoaderOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -71,7 +71,7 @@ pub const ICustomXamlResourceLoaderFactory = extern struct {
 };
 pub const ICustomXamlResourceLoaderOverrides = extern struct {
     vtable: *const VTable,
-    pub fn GetResource(self: *@This(), resourceId: HSTRING, objectType: HSTRING, propertyName: HSTRING, propertyType: HSTRING) core.HResult!*IInspectable {
+    pub fn GetResource(self: *@This(), resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetResource(@ptrCast(self), resourceId, objectType, propertyName, propertyType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -89,7 +89,7 @@ pub const ICustomXamlResourceLoaderOverrides = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetResource: *const fn(self: *anyopaque, resourceId: HSTRING, objectType: HSTRING, propertyName: HSTRING, propertyType: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        GetResource: *const fn(self: *anyopaque, resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const ICustomXamlResourceLoaderStatics = extern struct {

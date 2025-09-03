@@ -39,19 +39,19 @@ pub const AudioEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -196,19 +196,19 @@ pub const ContainerEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1435,18 +1435,18 @@ pub const IMediaEncodingProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subtype(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtype(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1464,249 +1464,249 @@ pub const IMediaEncodingProperties = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **MediaPropertySet) callconv(.winapi) HRESULT,
-        get_Type: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subtype: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Subtype: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Type: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subtype: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Subtype: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Aac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAacAdts(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAacAdts(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AacAdts(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAc3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAc3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ac3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAmrNb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAmrNb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AmrNb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAmrWb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAmrWb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AmrWb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getArgb32(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArgb32(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Argb32(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAsf(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAsf(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Asf(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAvi(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAvi(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Avi(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBgra8(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBgra8(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bgra8(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBmp(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBmp(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bmp(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEac3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEac3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Eac3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFloat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFloat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Float(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGif(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGif(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gif(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getH263(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getH263(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_H263(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getH264(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getH264(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_H264(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getH264Es(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getH264Es(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_H264Es(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHevc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHevc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hevc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHevcEs(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHevcEs(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HevcEs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIyuv(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIyuv(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Iyuv(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJpeg(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJpeg(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Jpeg(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJpegXr(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJpegXr(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JpegXr(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMjpg(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMjpg(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mjpg(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMpeg(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMpeg(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mpeg(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMpeg1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMpeg1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mpeg1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMpeg2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMpeg2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mpeg2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMp3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMp3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mp3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMpeg4(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMpeg4(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mpeg4(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNv12(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNv12(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nv12(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPcm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPcm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pcm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPng(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPng(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Png(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRgb24(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRgb24(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rgb24(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRgb32(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRgb32(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rgb32(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTiff(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTiff(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tiff(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWave(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWave(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wave(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWma8(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWma8(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wma8(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWma9(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWma9(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wma9(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWmv3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWmv3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wmv3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWvc1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWvc1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wvc1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getYuy2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYuy2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Yuy2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getYv12(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYv12(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Yv12(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1723,70 +1723,70 @@ pub const IMediaEncodingSubtypesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Aac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AacAdts: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ac3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AmrNb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AmrWb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Argb32: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Asf: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Avi: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Bgra8: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Bmp: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Eac3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Float: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Gif: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_H263: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_H264: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_H264Es: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hevc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HevcEs: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Iyuv: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Jpeg: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JpegXr: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mjpg: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mpeg: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mpeg1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mpeg2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mp3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mpeg4: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Nv12: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pcm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Png: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rgb24: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rgb32: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Tiff: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wave: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wma8: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wma9: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wmv3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wvc1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Yuy2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Yv12: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Aac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AacAdts: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ac3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AmrNb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AmrWb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Argb32: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Asf: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Avi: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Bgra8: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Bmp: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Eac3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Float: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Gif: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_H263: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_H264: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_H264Es: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hevc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HevcEs: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Iyuv: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Jpeg: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JpegXr: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mjpg: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mpeg: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mpeg1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mpeg2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mp3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mpeg4: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Nv12: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pcm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Png: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rgb24: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rgb32: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Tiff: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wave: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wma8: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wma9: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wmv3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wvc1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Yuy2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Yv12: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getVp9(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVp9(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Vp9(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getL8(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getL8(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_L8(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getL16(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getL16(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_L16(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getD16(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getD16(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_D16(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1803,22 +1803,22 @@ pub const IMediaEncodingSubtypesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Vp9: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_L8: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_L16: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_D16: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Vp9: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_L8: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_L16: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_D16: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn getAlac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Alac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFlac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFlac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Flac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1835,14 +1835,14 @@ pub const IMediaEncodingSubtypesStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Alac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Flac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Alac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Flac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn getP010(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getP010(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_P010(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1859,13 +1859,13 @@ pub const IMediaEncodingSubtypesStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_P010: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_P010: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn getHeif(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeif(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Heif(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1882,31 +1882,31 @@ pub const IMediaEncodingSubtypesStatics5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Heif: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Heif: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics6 = extern struct {
     vtable: *const VTable,
-    pub fn getPgs(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPgs(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pgs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSrt(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSrt(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Srt(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSsa(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSsa(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssa(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVobSub(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVobSub(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VobSub(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1923,16 +1923,16 @@ pub const IMediaEncodingSubtypesStatics6 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Pgs: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Srt: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ssa: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VobSub: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Pgs: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Srt: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ssa: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VobSub: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaEncodingSubtypesStatics7 = extern struct {
     vtable: *const VTable,
-    pub fn getAv1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAv1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Av1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1949,7 +1949,7 @@ pub const IMediaEncodingSubtypesStatics7 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Av1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Av1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaRatio = extern struct {
@@ -2307,7 +2307,7 @@ pub const IVideoEncodingPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUncompressed(self: *@This(), subtype: HSTRING, width: u32, height: u32) core.HResult!*VideoEncodingProperties {
+    pub fn CreateUncompressed(self: *@This(), subtype: ?HSTRING, width: u32, height: u32) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.CreateUncompressed(@ptrCast(self), subtype, width, height, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2327,7 +2327,7 @@ pub const IVideoEncodingPropertiesStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateH264: *const fn(self: *anyopaque, _r: **VideoEncodingProperties) callconv(.winapi) HRESULT,
         CreateMpeg2: *const fn(self: *anyopaque, _r: **VideoEncodingProperties) callconv(.winapi) HRESULT,
-        CreateUncompressed: *const fn(self: *anyopaque, subtype: HSTRING, width: u32, height: u32, _r: **VideoEncodingProperties) callconv(.winapi) HRESULT,
+        CreateUncompressed: *const fn(self: *anyopaque, subtype: ?HSTRING, width: u32, height: u32, _r: **VideoEncodingProperties) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoEncodingPropertiesStatics2 = extern struct {
@@ -2444,19 +2444,19 @@ pub const ImageEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2650,215 +2650,215 @@ pub const MediaEncodingSubtypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHeif() core.HResult!HSTRING {
+    pub fn getHeif() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics5Cache.get();
         return try _f.getHeif();
     }
-    pub fn getAac() core.HResult!HSTRING {
+    pub fn getAac() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAac();
     }
-    pub fn getAacAdts() core.HResult!HSTRING {
+    pub fn getAacAdts() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAacAdts();
     }
-    pub fn getAc3() core.HResult!HSTRING {
+    pub fn getAc3() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAc3();
     }
-    pub fn getAmrNb() core.HResult!HSTRING {
+    pub fn getAmrNb() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAmrNb();
     }
-    pub fn getAmrWb() core.HResult!HSTRING {
+    pub fn getAmrWb() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAmrWb();
     }
-    pub fn getArgb32() core.HResult!HSTRING {
+    pub fn getArgb32() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getArgb32();
     }
-    pub fn getAsf() core.HResult!HSTRING {
+    pub fn getAsf() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAsf();
     }
-    pub fn getAvi() core.HResult!HSTRING {
+    pub fn getAvi() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getAvi();
     }
-    pub fn getBgra8() core.HResult!HSTRING {
+    pub fn getBgra8() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getBgra8();
     }
-    pub fn getBmp() core.HResult!HSTRING {
+    pub fn getBmp() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getBmp();
     }
-    pub fn getEac3() core.HResult!HSTRING {
+    pub fn getEac3() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getEac3();
     }
-    pub fn getFloat() core.HResult!HSTRING {
+    pub fn getFloat() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getFloat();
     }
-    pub fn getGif() core.HResult!HSTRING {
+    pub fn getGif() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getGif();
     }
-    pub fn getH263() core.HResult!HSTRING {
+    pub fn getH263() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH263();
     }
-    pub fn getH264() core.HResult!HSTRING {
+    pub fn getH264() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH264();
     }
-    pub fn getH264Es() core.HResult!HSTRING {
+    pub fn getH264Es() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getH264Es();
     }
-    pub fn getHevc() core.HResult!HSTRING {
+    pub fn getHevc() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getHevc();
     }
-    pub fn getHevcEs() core.HResult!HSTRING {
+    pub fn getHevcEs() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getHevcEs();
     }
-    pub fn getIyuv() core.HResult!HSTRING {
+    pub fn getIyuv() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getIyuv();
     }
-    pub fn getJpeg() core.HResult!HSTRING {
+    pub fn getJpeg() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getJpeg();
     }
-    pub fn getJpegXr() core.HResult!HSTRING {
+    pub fn getJpegXr() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getJpegXr();
     }
-    pub fn getMjpg() core.HResult!HSTRING {
+    pub fn getMjpg() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMjpg();
     }
-    pub fn getMpeg() core.HResult!HSTRING {
+    pub fn getMpeg() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg();
     }
-    pub fn getMpeg1() core.HResult!HSTRING {
+    pub fn getMpeg1() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg1();
     }
-    pub fn getMpeg2() core.HResult!HSTRING {
+    pub fn getMpeg2() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg2();
     }
-    pub fn getMp3() core.HResult!HSTRING {
+    pub fn getMp3() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMp3();
     }
-    pub fn getMpeg4() core.HResult!HSTRING {
+    pub fn getMpeg4() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getMpeg4();
     }
-    pub fn getNv12() core.HResult!HSTRING {
+    pub fn getNv12() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getNv12();
     }
-    pub fn getPcm() core.HResult!HSTRING {
+    pub fn getPcm() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getPcm();
     }
-    pub fn getPng() core.HResult!HSTRING {
+    pub fn getPng() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getPng();
     }
-    pub fn getRgb24() core.HResult!HSTRING {
+    pub fn getRgb24() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getRgb24();
     }
-    pub fn getRgb32() core.HResult!HSTRING {
+    pub fn getRgb32() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getRgb32();
     }
-    pub fn getTiff() core.HResult!HSTRING {
+    pub fn getTiff() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getTiff();
     }
-    pub fn getWave() core.HResult!HSTRING {
+    pub fn getWave() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWave();
     }
-    pub fn getWma8() core.HResult!HSTRING {
+    pub fn getWma8() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWma8();
     }
-    pub fn getWma9() core.HResult!HSTRING {
+    pub fn getWma9() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWma9();
     }
-    pub fn getWmv3() core.HResult!HSTRING {
+    pub fn getWmv3() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWmv3();
     }
-    pub fn getWvc1() core.HResult!HSTRING {
+    pub fn getWvc1() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getWvc1();
     }
-    pub fn getYuy2() core.HResult!HSTRING {
+    pub fn getYuy2() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getYuy2();
     }
-    pub fn getYv12() core.HResult!HSTRING {
+    pub fn getYv12() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStaticsCache.get();
         return try _f.getYv12();
     }
-    pub fn getAlac() core.HResult!HSTRING {
+    pub fn getAlac() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics3Cache.get();
         return try _f.getAlac();
     }
-    pub fn getFlac() core.HResult!HSTRING {
+    pub fn getFlac() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics3Cache.get();
         return try _f.getFlac();
     }
-    pub fn getAv1() core.HResult!HSTRING {
+    pub fn getAv1() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics7Cache.get();
         return try _f.getAv1();
     }
-    pub fn getPgs() core.HResult!HSTRING {
+    pub fn getPgs() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getPgs();
     }
-    pub fn getSrt() core.HResult!HSTRING {
+    pub fn getSrt() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getSrt();
     }
-    pub fn getSsa() core.HResult!HSTRING {
+    pub fn getSsa() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getSsa();
     }
-    pub fn getVobSub() core.HResult!HSTRING {
+    pub fn getVobSub() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics6Cache.get();
         return try _f.getVobSub();
     }
-    pub fn getP010() core.HResult!HSTRING {
+    pub fn getP010() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics4Cache.get();
         return try _f.getP010();
     }
-    pub fn getVp9() core.HResult!HSTRING {
+    pub fn getVp9() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getVp9();
     }
-    pub fn getL8() core.HResult!HSTRING {
+    pub fn getL8() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getL8();
     }
-    pub fn getL16() core.HResult!HSTRING {
+    pub fn getL16() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getL16();
     }
-    pub fn getD16() core.HResult!HSTRING {
+    pub fn getD16() core.HResult!?HSTRING {
         const _f = try @This()._IMediaEncodingSubtypesStatics2Cache.get();
         return try _f.getD16();
     }
@@ -3013,15 +3013,15 @@ pub const TimedMetadataEncodingProperties = extern struct {
         const this: *IMediaEncodingProperties = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaEncodingProperties = @ptrCast(self);
         return try this.getType();
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaEncodingProperties = @ptrCast(self);
         return try this.putSubtype(value);
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaEncodingProperties = @ptrCast(self);
         return try this.getSubtype();
     }
@@ -3096,19 +3096,19 @@ pub const VideoEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn putSubtype(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3179,7 +3179,7 @@ pub const VideoEncodingProperties = extern struct {
         const _f = try @This()._IVideoEncodingPropertiesStaticsCache.get();
         return try _f.CreateMpeg2();
     }
-    pub fn CreateUncompressed(subtype: HSTRING, width: u32, height: u32) core.HResult!*VideoEncodingProperties {
+    pub fn CreateUncompressed(subtype: ?HSTRING, width: u32, height: u32) core.HResult!*VideoEncodingProperties {
         const _f = try @This()._IVideoEncodingPropertiesStaticsCache.get();
         return try _f.CreateUncompressed(subtype, width, height);
     }

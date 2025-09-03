@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const IWwanConnectionProfileDetails = extern struct {
     vtable: *const VTable,
-    pub fn getHomeProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccessPointName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -37,8 +37,8 @@ pub const IWwanConnectionProfileDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_HomeProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AccessPointName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HomeProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AccessPointName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetNetworkRegistrationState: *const fn(self: *anyopaque, _r: *WwanNetworkRegistrationState) callconv(.winapi) HRESULT,
         GetCurrentDataClass: *const fn(self: *anyopaque, _r: *WwanDataClass) callconv(.winapi) HRESULT,
     };
@@ -75,11 +75,11 @@ pub const IWwanConnectionProfileDetails2 = extern struct {
 };
 pub const WwanConnectionProfileDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getHomeProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getHomeProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWwanConnectionProfileDetails = @ptrCast(self);
         return try this.getHomeProviderId();
     }
-    pub fn getAccessPointName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWwanConnectionProfileDetails = @ptrCast(self);
         return try this.getAccessPointName();
     }
@@ -154,11 +154,11 @@ pub const AttributedNetworkUsage = extern struct {
         const this: *IAttributedNetworkUsage = @ptrCast(self);
         return try this.getBytesReceived();
     }
-    pub fn getAttributionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAttributionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAttributedNetworkUsage = @ptrCast(self);
         return try this.getAttributionId();
     }
-    pub fn getAttributionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAttributionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAttributedNetworkUsage = @ptrCast(self);
         return try this.getAttributionName();
     }
@@ -180,35 +180,35 @@ pub const CellularApnAuthenticationType = enum(i32) {
 };
 pub const CellularApnContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.getProviderId();
     }
-    pub fn putProviderId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.putProviderId(value);
     }
-    pub fn getAccessPointName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.getAccessPointName();
     }
-    pub fn putAccessPointName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessPointName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.putAccessPointName(value);
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.getUserName();
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.putUserName(value);
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.getPassword();
     }
-    pub fn putPassword(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.putPassword(value);
     }
@@ -228,13 +228,13 @@ pub const CellularApnContext = extern struct {
         const this: *ICellularApnContext = @ptrCast(self);
         return try this.putAuthenticationType(value);
     }
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICellularApnContext2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
-    pub fn putProfileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICellularApnContext2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -286,7 +286,7 @@ pub const ConnectionCost = extern struct {
 };
 pub const ConnectionProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IConnectionProfile = @ptrCast(self);
         return try this.getProfileName();
     }
@@ -294,7 +294,7 @@ pub const ConnectionProfile = extern struct {
         const this: *IConnectionProfile = @ptrCast(self);
         return try this.GetNetworkConnectivityLevel();
     }
-    pub fn GetNetworkNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetNetworkNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IConnectionProfile = @ptrCast(self);
         return try this.GetNetworkNames();
     }
@@ -677,14 +677,14 @@ pub const IAttributedNetworkUsage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAttributionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAttributionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAttributionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAttributionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -709,50 +709,50 @@ pub const IAttributedNetworkUsage = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_BytesSent: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_BytesReceived: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        get_AttributionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AttributionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AttributionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AttributionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AttributionThumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
 };
 pub const ICellularApnContext = extern struct {
     vtable: *const VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putProviderId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProviderId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAccessPointName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccessPointName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessPointName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAccessPointName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessPointName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccessPointName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPassword(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Password(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -788,14 +788,14 @@ pub const ICellularApnContext = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ProviderId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AccessPointName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AccessPointName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Password: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Password: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ProviderId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AccessPointName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AccessPointName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Password: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsCompressionEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsCompressionEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AuthenticationType: *const fn(self: *anyopaque, _r: *CellularApnAuthenticationType) callconv(.winapi) HRESULT,
@@ -804,13 +804,13 @@ pub const ICellularApnContext = extern struct {
 };
 pub const ICellularApnContext2 = extern struct {
     vtable: *const VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putProfileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProfileName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -826,8 +826,8 @@ pub const ICellularApnContext2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProfileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ProfileName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ProfileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ProfileName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IConnectionCost = extern struct {
@@ -899,8 +899,8 @@ pub const IConnectionCost2 = extern struct {
 };
 pub const IConnectionProfile = extern struct {
     vtable: *const VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -911,8 +911,8 @@ pub const IConnectionProfile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNetworkNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetNetworkNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetNetworkNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -965,9 +965,9 @@ pub const IConnectionProfile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProfileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProfileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetNetworkConnectivityLevel: *const fn(self: *anyopaque, _r: *NetworkConnectivityLevel) callconv(.winapi) HRESULT,
-        GetNetworkNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetNetworkNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         GetConnectionCost: *const fn(self: *anyopaque, _r: **ConnectionCost) callconv(.winapi) HRESULT,
         GetDataPlanStatus: *const fn(self: *anyopaque, _r: **DataPlanStatus) callconv(.winapi) HRESULT,
         get_NetworkAdapter: *const fn(self: *anyopaque, _r: **NetworkAdapter) callconv(.winapi) HRESULT,
@@ -1984,8 +1984,8 @@ pub const IProviderNetworkUsage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2004,7 +2004,7 @@ pub const IProviderNetworkUsage = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_BytesSent: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_BytesReceived: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IProxyConfiguration = extern struct {
@@ -2099,8 +2099,8 @@ pub const IRoutePolicyFactory = extern struct {
 };
 pub const IWlanConnectionProfileDetails = extern struct {
     vtable: *const VTable,
-    pub fn GetConnectedSsid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetConnectedSsid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetConnectedSsid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2117,7 +2117,7 @@ pub const IWlanConnectionProfileDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetConnectedSsid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetConnectedSsid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const LanIdentifier = extern struct {
@@ -2479,7 +2479,7 @@ pub const ProviderNetworkUsage = extern struct {
         const this: *IProviderNetworkUsage = @ptrCast(self);
         return try this.getBytesReceived();
     }
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProviderNetworkUsage = @ptrCast(self);
         return try this.getProviderId();
     }
@@ -2545,7 +2545,7 @@ pub const TriStates = enum(i32) {
 };
 pub const WlanConnectionProfileDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetConnectedSsid(self: *@This()) core.HResult!HSTRING {
+    pub fn GetConnectedSsid(self: *@This()) core.HResult!?HSTRING {
         const this: *IWlanConnectionProfileDetails = @ptrCast(self);
         return try this.GetConnectedSsid();
     }

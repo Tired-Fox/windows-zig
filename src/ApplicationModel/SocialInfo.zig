@@ -81,23 +81,23 @@ pub const ISocialFeedChildItem = extern struct {
 };
 pub const ISocialFeedContent = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Message(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -123,10 +123,10 @@ pub const ISocialFeedContent = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Message: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Message: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TargetUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_TargetUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
@@ -207,13 +207,13 @@ pub const ISocialFeedItem = extern struct {
         const _c = self.vtable.put_BadgeCountValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -263,8 +263,8 @@ pub const ISocialFeedItem = extern struct {
         put_BadgeStyle: *const fn(self: *anyopaque, value: SocialItemBadgeStyle) callconv(.winapi) HRESULT,
         get_BadgeCountValue: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_BadgeCountValue: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ChildItem: *const fn(self: *anyopaque, _r: **SocialFeedChildItem) callconv(.winapi) HRESULT,
         put_ChildItem: *const fn(self: *anyopaque, value: *SocialFeedChildItem) callconv(.winapi) HRESULT,
         get_Style: *const fn(self: *anyopaque, _r: *SocialFeedItemStyle) callconv(.winapi) HRESULT,
@@ -403,33 +403,33 @@ pub const ISocialItemThumbnail = extern struct {
 };
 pub const ISocialUserInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -455,12 +455,12 @@ pub const ISocialUserInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TargetUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_TargetUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
@@ -523,19 +523,19 @@ pub const SocialFeedChildItem = extern struct {
 };
 pub const SocialFeedContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedContent = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialFeedContent = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedContent = @ptrCast(self);
         return try this.getMessage();
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialFeedContent = @ptrCast(self);
         return try this.putMessage(value);
     }
@@ -611,11 +611,11 @@ pub const SocialFeedItem = extern struct {
         const this: *ISocialFeedItem = @ptrCast(self);
         return try this.putBadgeCountValue(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedItem = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialFeedItem = @ptrCast(self);
         return try this.putRemoteId(value);
     }
@@ -765,27 +765,27 @@ pub const SocialItemThumbnail = extern struct {
 };
 pub const SocialUserInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.getUserName();
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.putUserName(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.putRemoteId(value);
     }

@@ -124,8 +124,8 @@ pub const IPlayToConnectionErrorEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -143,7 +143,7 @@ pub const IPlayToConnectionErrorEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Code: *const fn(self: *anyopaque, _r: *PlayToConnectionError) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlayToConnectionStateChangedEventArgs = extern struct {
@@ -426,13 +426,13 @@ pub const IPlayToReceiver = extern struct {
         const _c = self.vtable.NotifyStopped(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -526,8 +526,8 @@ pub const IPlayToReceiver = extern struct {
         NotifyEnded: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         NotifyError: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         NotifyStopped: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         put_SupportsImage: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_SupportsImage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_SupportsAudio: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -608,7 +608,7 @@ pub const IPlayToSourceRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DisplayErrorString(self: *@This(), errorString: HSTRING) core.HResult!void {
+    pub fn DisplayErrorString(self: *@This(), errorString: ?HSTRING) core.HResult!void {
         const _c = self.vtable.DisplayErrorString(@ptrCast(self), errorString);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -635,7 +635,7 @@ pub const IPlayToSourceRequest = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        DisplayErrorString: *const fn(self: *anyopaque, errorString: HSTRING) callconv(.winapi) HRESULT,
+        DisplayErrorString: *const fn(self: *anyopaque, errorString: ?HSTRING) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **PlayToSourceDeferral) callconv(.winapi) HRESULT,
         SetSource: *const fn(self: *anyopaque, value: *PlayToSource) callconv(.winapi) HRESULT,
     };
@@ -665,8 +665,8 @@ pub const IPlayToSourceRequestedEventArgs = extern struct {
 };
 pub const IPlayToSourceSelectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -707,7 +707,7 @@ pub const IPlayToSourceSelectedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
         get_SupportsImage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_SupportsAudio: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -773,32 +773,32 @@ pub const ISourceChangeRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlbum(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Album(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGenre(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGenre(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Genre(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -821,8 +821,8 @@ pub const ISourceChangeRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -840,15 +840,15 @@ pub const ISourceChangeRequestedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Stream: *const fn(self: *anyopaque, _r: **IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Album: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Genre: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Album: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Genre: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Date: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_Rating: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IVolumeChangeRequestedEventArgs = extern struct {
@@ -935,7 +935,7 @@ pub const PlayToConnectionErrorEventArgs = extern struct {
         const this: *IPlayToConnectionErrorEventArgs = @ptrCast(self);
         return try this.getCode();
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayToConnectionErrorEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -1148,11 +1148,11 @@ pub const PlayToReceiver = extern struct {
         const this: *IPlayToReceiver = @ptrCast(self);
         return try this.NotifyStopped();
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayToReceiver = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPlayToReceiver = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
@@ -1260,7 +1260,7 @@ pub const PlayToSourceRequest = extern struct {
         const this: *IPlayToSourceRequest = @ptrCast(self);
         return try this.getDeadline();
     }
-    pub fn DisplayErrorString(self: *@This(), errorString: HSTRING) core.HResult!void {
+    pub fn DisplayErrorString(self: *@This(), errorString: ?HSTRING) core.HResult!void {
         const this: *IPlayToSourceRequest = @ptrCast(self);
         return try this.DisplayErrorString(errorString);
     }
@@ -1292,7 +1292,7 @@ pub const PlayToSourceRequestedEventArgs = extern struct {
 };
 pub const PlayToSourceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayToSourceSelectedEventArgs = @ptrCast(self);
         return try this.getFriendlyName();
     }
@@ -1336,23 +1336,23 @@ pub const SourceChangeRequestedEventArgs = extern struct {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getStream();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getAuthor();
     }
-    pub fn getAlbum(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getAlbum();
     }
-    pub fn getGenre(self: *@This()) core.HResult!HSTRING {
+    pub fn getGenre(self: *@This()) core.HResult!?HSTRING {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getGenre();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getDescription();
     }
@@ -1368,7 +1368,7 @@ pub const SourceChangeRequestedEventArgs = extern struct {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRating();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getProperties();
     }

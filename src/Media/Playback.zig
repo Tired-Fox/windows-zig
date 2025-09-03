@@ -3064,7 +3064,7 @@ pub const IMediaPlayerDataReceivedEventArgs = extern struct {
 };
 pub const IMediaPlayerEffects = extern struct {
     vtable: *const VTable,
-    pub fn AddAudioEffect(self: *@This(), activatableClassId: HSTRING, effectOptional: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, configuration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddAudioEffect(@ptrCast(self), activatableClassId, effectOptional, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3084,13 +3084,13 @@ pub const IMediaPlayerEffects = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddAudioEffect: *const fn(self: *anyopaque, activatableClassId: HSTRING, effectOptional: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        AddAudioEffect: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, effectOptional: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RemoveAllEffects: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaPlayerEffects2 = extern struct {
     vtable: *const VTable,
-    pub fn AddVideoEffect(self: *@This(), activatableClassId: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddVideoEffect(@ptrCast(self), activatableClassId, effectOptional, effectConfiguration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3106,7 +3106,7 @@ pub const IMediaPlayerEffects2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddVideoEffect: *const fn(self: *anyopaque, activatableClassId: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
+        AddVideoEffect: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaPlayerFailedEventArgs = extern struct {
@@ -3123,8 +3123,8 @@ pub const IMediaPlayerFailedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3143,7 +3143,7 @@ pub const IMediaPlayerFailedEventArgs = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Error: *const fn(self: *anyopaque, _r: *MediaPlayerError) callconv(.winapi) HRESULT,
         get_ExtendedErrorCode: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_ErrorMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ErrorMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaPlayerRateChangedEventArgs = extern struct {
@@ -3285,14 +3285,14 @@ pub const IPlaybackMediaMarker = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMediaMarkerType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaMarkerType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaMarkerType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3310,8 +3310,8 @@ pub const IPlaybackMediaMarker = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Time: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_MediaMarkerType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MediaMarkerType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlaybackMediaMarkerFactory = extern struct {
@@ -3322,7 +3322,7 @@ pub const IPlaybackMediaMarkerFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), value: TimeSpan, mediaMarketType: HSTRING, text: HSTRING) core.HResult!*PlaybackMediaMarker {
+    pub fn Create(self: *@This(), value: TimeSpan, mediaMarketType: ?HSTRING, text: ?HSTRING) core.HResult!*PlaybackMediaMarker {
         var _r: *PlaybackMediaMarker = undefined;
         const _c = self.vtable.Create(@ptrCast(self), value, mediaMarketType, text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3341,7 +3341,7 @@ pub const IPlaybackMediaMarkerFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromTime: *const fn(self: *anyopaque, value: TimeSpan, _r: **PlaybackMediaMarker) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, value: TimeSpan, mediaMarketType: HSTRING, text: HSTRING, _r: **PlaybackMediaMarker) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, value: TimeSpan, mediaMarketType: ?HSTRING, text: ?HSTRING, _r: **PlaybackMediaMarker) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlaybackMediaMarkerReachedEventArgs = extern struct {
@@ -5126,7 +5126,7 @@ pub const MediaPlayer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAudioDeviceType(value);
     }
-    pub fn AddAudioEffect(self: *@This(), activatableClassId: HSTRING, effectOptional: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, configuration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaPlayerEffects = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerEffects.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5288,7 +5288,7 @@ pub const MediaPlayer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSurface(compositor);
     }
-    pub fn AddVideoEffect(self: *@This(), activatableClassId: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaPlayerEffects2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerEffects2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5426,7 +5426,7 @@ pub const MediaPlayerFailedEventArgs = extern struct {
         const this: *IMediaPlayerFailedEventArgs = @ptrCast(self);
         return try this.getExtendedErrorCode();
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaPlayerFailedEventArgs = @ptrCast(self);
         return try this.getErrorMessage();
     }
@@ -5488,11 +5488,11 @@ pub const PlaybackMediaMarker = extern struct {
         const this: *IPlaybackMediaMarker = @ptrCast(self);
         return try this.getTime();
     }
-    pub fn getMediaMarkerType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMediaMarkerType(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlaybackMediaMarker = @ptrCast(self);
         return try this.getMediaMarkerType();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlaybackMediaMarker = @ptrCast(self);
         return try this.getText();
     }
@@ -5503,7 +5503,7 @@ pub const PlaybackMediaMarker = extern struct {
         const _f = try @This()._IPlaybackMediaMarkerFactoryCache.get();
         return try _f.CreateFromTime(value);
     }
-    pub fn Create(value: TimeSpan, mediaMarketType: HSTRING, text: HSTRING) core.HResult!*PlaybackMediaMarker {
+    pub fn Create(value: TimeSpan, mediaMarketType: ?HSTRING, text: ?HSTRING) core.HResult!*PlaybackMediaMarker {
         const _f = try @This()._IPlaybackMediaMarkerFactoryCache.get();
         return try _f.Create(value, mediaMarketType, text);
     }

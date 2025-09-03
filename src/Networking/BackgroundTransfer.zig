@@ -20,7 +20,7 @@ pub const BackgroundDownloader = extern struct {
         const this: *IBackgroundDownloader = @ptrCast(self);
         return try this.CreateDownloadAsync(uri, resultFile, requestBodyStream);
     }
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -50,25 +50,25 @@ pub const BackgroundDownloader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(credential);
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
-    pub fn putMethod(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMethod(value);
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -171,7 +171,7 @@ pub const BackgroundDownloader = extern struct {
         const _f = try @This()._IBackgroundDownloaderStaticMethodsCache.get();
         return try _f.GetCurrentDownloadsAsync();
     }
-    pub fn GetCurrentDownloadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
+    pub fn GetCurrentDownloadsAsyncWithGroup(group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         const _f = try @This()._IBackgroundDownloaderStaticMethodsCache.get();
         return try _f.GetCurrentDownloadsAsyncWithGroup(group);
     }
@@ -240,11 +240,11 @@ pub const BackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const BackgroundTransferContentPart = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SetHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTransferContentPart = @ptrCast(self);
         return try this.SetHeader(headerName, headerValue);
     }
-    pub fn SetText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTransferContentPart = @ptrCast(self);
         return try this.SetText(value);
     }
@@ -259,11 +259,11 @@ pub const BackgroundTransferContentPart = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTransferContentPart.IID)));
     }
-    pub fn CreateWithName(name: HSTRING) core.HResult!*BackgroundTransferContentPart {
+    pub fn CreateWithName(name: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         const _f = try @This()._IBackgroundTransferContentPartFactoryCache.get();
         return try _f.CreateWithName(name);
     }
-    pub fn CreateWithNameAndFileName(name: HSTRING, fileName: HSTRING) core.HResult!*BackgroundTransferContentPart {
+    pub fn CreateWithNameAndFileName(name: ?HSTRING, fileName: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         const _f = try @This()._IBackgroundTransferContentPartFactoryCache.get();
         return try _f.CreateWithNameAndFileName(name, fileName);
     }
@@ -299,7 +299,7 @@ pub const BackgroundTransferFileRange = extern struct {
 };
 pub const BackgroundTransferGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTransferGroup = @ptrCast(self);
         return try this.getName();
     }
@@ -314,7 +314,7 @@ pub const BackgroundTransferGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateGroup(name: HSTRING) core.HResult!*BackgroundTransferGroup {
+    pub fn CreateGroup(name: ?HSTRING) core.HResult!*BackgroundTransferGroup {
         const _f = try @This()._IBackgroundTransferGroupStaticsCache.get();
         return try _f.CreateGroup(name);
     }
@@ -385,15 +385,15 @@ pub const BackgroundUploader = extern struct {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsync(uri, parts);
     }
-    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsyncWithSubType(uri, parts, subType);
     }
-    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING, boundary: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsyncWithSubTypeAndBoundary(uri, parts, subType, boundary);
     }
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -423,25 +423,25 @@ pub const BackgroundUploader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(credential);
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
-    pub fn putMethod(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMethod(value);
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -548,7 +548,7 @@ pub const BackgroundUploader = extern struct {
         const _f = try @This()._IBackgroundUploaderStaticMethodsCache.get();
         return try _f.GetCurrentUploadsAsync();
     }
-    pub fn GetCurrentUploadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
+    pub fn GetCurrentUploadsAsyncWithGroup(group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         const _f = try @This()._IBackgroundUploaderStaticMethodsCache.get();
         return try _f.GetCurrentUploadsAsyncWithGroup(group);
     }
@@ -627,13 +627,13 @@ pub const DownloadOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedUri();
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -741,13 +741,13 @@ pub const DownloadOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeCurrentInTransferGroup();
     }
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
-    pub fn RemoveRequestHeader(self: *@This(), headerName: HSTRING) core.HResult!void {
+    pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -926,7 +926,7 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCurrentDownloadsAsyncWithGroup(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
+    pub fn GetCurrentDownloadsAsyncWithGroup(self: *@This(), group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsAsyncWithGroup(@ptrCast(self), group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -945,7 +945,7 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentDownloadsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
-        GetCurrentDownloadsAsyncWithGroup: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
+        GetCurrentDownloadsAsyncWithGroup: *const fn(self: *anyopaque, group: ?HSTRING, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundDownloaderStaticMethods2 = extern struct {
@@ -996,7 +996,7 @@ pub const IBackgroundDownloaderUserConsent = extern struct {
 };
 pub const IBackgroundTransferBase = extern struct {
     vtable: *const VTable,
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1020,23 +1020,23 @@ pub const IBackgroundTransferBase = extern struct {
         const _c = self.vtable.put_ProxyCredential(@ptrCast(self), credential);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMethod(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Method(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Group(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1062,15 +1062,15 @@ pub const IBackgroundTransferBase = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetRequestHeader: *const fn(self: *anyopaque, headerName: HSTRING, headerValue: HSTRING) callconv(.winapi) HRESULT,
+        SetRequestHeader: *const fn(self: *anyopaque, headerName: ?HSTRING, headerValue: ?HSTRING) callconv(.winapi) HRESULT,
         get_ServerCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         put_ServerCredential: *const fn(self: *anyopaque, credential: *PasswordCredential) callconv(.winapi) HRESULT,
         get_ProxyCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         put_ProxyCredential: *const fn(self: *anyopaque, credential: *PasswordCredential) callconv(.winapi) HRESULT,
-        get_Method: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Method: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Group: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Group: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Method: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Method: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Group: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Group: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CostPolicy: *const fn(self: *anyopaque, _r: *BackgroundTransferCostPolicy) callconv(.winapi) HRESULT,
         put_CostPolicy: *const fn(self: *anyopaque, value: BackgroundTransferCostPolicy) callconv(.winapi) HRESULT,
     };
@@ -1142,11 +1142,11 @@ pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const IBackgroundTransferContentPart = extern struct {
     vtable: *const VTable,
-    pub fn SetHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1166,20 +1166,20 @@ pub const IBackgroundTransferContentPart = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetHeader: *const fn(self: *anyopaque, headerName: HSTRING, headerValue: HSTRING) callconv(.winapi) HRESULT,
-        SetText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SetHeader: *const fn(self: *anyopaque, headerName: ?HSTRING, headerValue: ?HSTRING) callconv(.winapi) HRESULT,
+        SetText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetFile: *const fn(self: *anyopaque, value: *IStorageFile) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTransferContentPartFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithName(self: *@This(), name: HSTRING) core.HResult!*BackgroundTransferContentPart {
+    pub fn CreateWithName(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         var _r: *BackgroundTransferContentPart = undefined;
         const _c = self.vtable.CreateWithName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithNameAndFileName(self: *@This(), name: HSTRING, fileName: HSTRING) core.HResult!*BackgroundTransferContentPart {
+    pub fn CreateWithNameAndFileName(self: *@This(), name: ?HSTRING, fileName: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         var _r: *BackgroundTransferContentPart = undefined;
         const _c = self.vtable.CreateWithNameAndFileName(@ptrCast(self), name, fileName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1197,8 +1197,8 @@ pub const IBackgroundTransferContentPartFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithName: *const fn(self: *anyopaque, name: HSTRING, _r: **BackgroundTransferContentPart) callconv(.winapi) HRESULT,
-        CreateWithNameAndFileName: *const fn(self: *anyopaque, name: HSTRING, fileName: HSTRING, _r: **BackgroundTransferContentPart) callconv(.winapi) HRESULT,
+        CreateWithName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **BackgroundTransferContentPart) callconv(.winapi) HRESULT,
+        CreateWithNameAndFileName: *const fn(self: *anyopaque, name: ?HSTRING, fileName: ?HSTRING, _r: **BackgroundTransferContentPart) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTransferErrorStaticMethods = extern struct {
@@ -1226,8 +1226,8 @@ pub const IBackgroundTransferErrorStaticMethods = extern struct {
 };
 pub const IBackgroundTransferGroup = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1254,14 +1254,14 @@ pub const IBackgroundTransferGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TransferBehavior: *const fn(self: *anyopaque, _r: *BackgroundTransferBehavior) callconv(.winapi) HRESULT,
         put_TransferBehavior: *const fn(self: *anyopaque, value: BackgroundTransferBehavior) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTransferGroupStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateGroup(self: *@This(), name: HSTRING) core.HResult!*BackgroundTransferGroup {
+    pub fn CreateGroup(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.CreateGroup(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1279,7 +1279,7 @@ pub const IBackgroundTransferGroupStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateGroup: *const fn(self: *anyopaque, name: HSTRING, _r: **BackgroundTransferGroup) callconv(.winapi) HRESULT,
+        CreateGroup: *const fn(self: *anyopaque, name: ?HSTRING, _r: **BackgroundTransferGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTransferOperation = extern struct {
@@ -1296,14 +1296,14 @@ pub const IBackgroundTransferOperation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1344,8 +1344,8 @@ pub const IBackgroundTransferOperation = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Guid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_RequestedUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_Method: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Group: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Method: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Group: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CostPolicy: *const fn(self: *anyopaque, _r: *BackgroundTransferCostPolicy) callconv(.winapi) HRESULT,
         put_CostPolicy: *const fn(self: *anyopaque, value: BackgroundTransferCostPolicy) callconv(.winapi) HRESULT,
         GetResultStreamAt: *const fn(self: *anyopaque, position: u64, _r: **IInputStream) callconv(.winapi) HRESULT,
@@ -1437,13 +1437,13 @@ pub const IBackgroundUploader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadAsyncWithSubType(@ptrCast(self), uri, parts, subType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING, boundary: ?HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
         const _c = self.vtable.CreateUploadAsyncWithSubTypeAndBoundary(@ptrCast(self), uri, parts, subType, boundary, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1464,8 +1464,8 @@ pub const IBackgroundUploader = extern struct {
         CreateUpload: *const fn(self: *anyopaque, uri: *Uri, sourceFile: *IStorageFile, _r: **UploadOperation) callconv(.winapi) HRESULT,
         CreateUploadFromStreamAsync: *const fn(self: *anyopaque, uri: *Uri, sourceStream: *IInputStream, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
         CreateUploadAsync: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsyncWithSubType: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsyncWithSubTypeAndBoundary: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithSubType: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithSubTypeAndBoundary: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: ?HSTRING, boundary: ?HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundUploader2 = extern struct {
@@ -1598,7 +1598,7 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCurrentUploadsAsyncWithGroup(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
+    pub fn GetCurrentUploadsAsyncWithGroup(self: *@This(), group: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsAsyncWithGroup(@ptrCast(self), group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1617,7 +1617,7 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentUploadsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
-        GetCurrentUploadsAsyncWithGroup: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
+        GetCurrentUploadsAsyncWithGroup: *const fn(self: *anyopaque, group: ?HSTRING, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundUploaderStaticMethods2 = extern struct {
@@ -1897,11 +1897,11 @@ pub const IDownloadOperation4 = extern struct {
 };
 pub const IDownloadOperation5 = extern struct {
     vtable: *const VTable,
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveRequestHeader(self: *@This(), headerName: HSTRING) core.HResult!void {
+    pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveRequestHeader(@ptrCast(self), headerName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1917,8 +1917,8 @@ pub const IDownloadOperation5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetRequestHeader: *const fn(self: *anyopaque, headerName: HSTRING, headerValue: HSTRING) callconv(.winapi) HRESULT,
-        RemoveRequestHeader: *const fn(self: *anyopaque, headerName: HSTRING) callconv(.winapi) HRESULT,
+        SetRequestHeader: *const fn(self: *anyopaque, headerName: ?HSTRING, headerValue: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveRequestHeader: *const fn(self: *anyopaque, headerName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IResponseInformation = extern struct {
@@ -1941,8 +1941,8 @@ pub const IResponseInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaders(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getHeaders(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1962,7 +1962,7 @@ pub const IResponseInformation = extern struct {
         get_IsResumable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ActualUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_StatusCode: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Headers: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Headers: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUnconstrainedTransferRequestResult = extern struct {
@@ -2078,11 +2078,11 @@ pub const IUploadOperation3 = extern struct {
 };
 pub const IUploadOperation4 = extern struct {
     vtable: *const VTable,
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveRequestHeader(self: *@This(), headerName: HSTRING) core.HResult!void {
+    pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveRequestHeader(@ptrCast(self), headerName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2098,8 +2098,8 @@ pub const IUploadOperation4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetRequestHeader: *const fn(self: *anyopaque, headerName: HSTRING, headerValue: HSTRING) callconv(.winapi) HRESULT,
-        RemoveRequestHeader: *const fn(self: *anyopaque, headerName: HSTRING) callconv(.winapi) HRESULT,
+        SetRequestHeader: *const fn(self: *anyopaque, headerName: ?HSTRING, headerValue: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveRequestHeader: *const fn(self: *anyopaque, headerName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ResponseInformation = extern struct {
@@ -2116,7 +2116,7 @@ pub const ResponseInformation = extern struct {
         const this: *IResponseInformation = @ptrCast(self);
         return try this.getStatusCode();
     }
-    pub fn getHeaders(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getHeaders(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *IResponseInformation = @ptrCast(self);
         return try this.getHeaders();
     }
@@ -2168,13 +2168,13 @@ pub const UploadOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedUri();
     }
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2228,13 +2228,13 @@ pub const UploadOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeCurrentInTransferGroup();
     }
-    pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
+    pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
-    pub fn RemoveRequestHeader(self: *@This(), headerName: HSTRING) core.HResult!void {
+    pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

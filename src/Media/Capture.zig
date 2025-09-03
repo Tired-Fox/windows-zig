@@ -1673,31 +1673,31 @@ pub const AppCaptureMetadataPriority = enum(i32) {
 };
 pub const AppCaptureMetadataWriter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddStringEvent(self: *@This(), name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddStringEvent(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.AddStringEvent(name, value, priority);
     }
-    pub fn AddInt32Event(self: *@This(), name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddInt32Event(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.AddInt32Event(name, value, priority);
     }
-    pub fn AddDoubleEvent(self: *@This(), name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddDoubleEvent(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.AddDoubleEvent(name, value, priority);
     }
-    pub fn StartStringState(self: *@This(), name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartStringState(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.StartStringState(name, value, priority);
     }
-    pub fn StartInt32State(self: *@This(), name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartInt32State(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.StartInt32State(name, value, priority);
     }
-    pub fn StartDoubleState(self: *@This(), name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartDoubleState(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.StartDoubleState(name, value, priority);
     }
-    pub fn StopState(self: *@This(), name: HSTRING) core.HResult!void {
+    pub fn StopState(self: *@This(), name: ?HSTRING) core.HResult!void {
         const this: *IAppCaptureMetadataWriter = @ptrCast(self);
         return try this.StopState(name);
     }
@@ -1739,31 +1739,31 @@ pub const AppCaptureMetadataWriter = extern struct {
 };
 pub const IAppCaptureMetadataWriter = extern struct {
     vtable: *const VTable,
-    pub fn AddStringEvent(self: *@This(), name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddStringEvent(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddStringEvent(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddInt32Event(self: *@This(), name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddInt32Event(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddInt32Event(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddDoubleEvent(self: *@This(), name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn AddDoubleEvent(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.AddDoubleEvent(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartStringState(self: *@This(), name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartStringState(self: *@This(), name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartStringState(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartInt32State(self: *@This(), name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartInt32State(self: *@This(), name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartInt32State(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartDoubleState(self: *@This(), name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
+    pub fn StartDoubleState(self: *@This(), name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) core.HResult!void {
         const _c = self.vtable.StartDoubleState(@ptrCast(self), name, value, priority);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StopState(self: *@This(), name: HSTRING) core.HResult!void {
+    pub fn StopState(self: *@This(), name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.StopState(@ptrCast(self), name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1799,13 +1799,13 @@ pub const IAppCaptureMetadataWriter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddStringEvent: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        AddInt32Event: *const fn(self: *anyopaque, name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        AddDoubleEvent: *const fn(self: *anyopaque, name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        StartStringState: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        StartInt32State: *const fn(self: *anyopaque, name: HSTRING, value: i32, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        StartDoubleState: *const fn(self: *anyopaque, name: HSTRING, value: f64, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
-        StopState: *const fn(self: *anyopaque, name: HSTRING) callconv(.winapi) HRESULT,
+        AddStringEvent: *const fn(self: *anyopaque, name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        AddInt32Event: *const fn(self: *anyopaque, name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        AddDoubleEvent: *const fn(self: *anyopaque, name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        StartStringState: *const fn(self: *anyopaque, name: ?HSTRING, value: ?HSTRING, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        StartInt32State: *const fn(self: *anyopaque, name: ?HSTRING, value: i32, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        StartDoubleState: *const fn(self: *anyopaque, name: ?HSTRING, value: f64, priority: AppCaptureMetadataPriority) callconv(.winapi) HRESULT,
+        StopState: *const fn(self: *anyopaque, name: ?HSTRING) callconv(.winapi) HRESULT,
         StopAllStates: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_RemainingStorageBytesAvailable: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         add_MetadataPurged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppCaptureMetadataWriter,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1851,7 +1851,7 @@ pub const GameBarServices = extern struct {
         const this: *IGameBarServices = @ptrCast(self);
         return try this.getTargetInfo();
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameBarServices = @ptrCast(self);
         return try this.getSessionId();
     }
@@ -1931,15 +1931,15 @@ pub const GameBarServicesManagerGameBarServicesCreatedEventArgs = extern struct 
 };
 pub const GameBarServicesTargetInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameBarServicesTargetInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameBarServicesTargetInfo = @ptrCast(self);
         return try this.getAppId();
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameBarServicesTargetInfo = @ptrCast(self);
         return try this.getTitleId();
     }
@@ -1982,8 +1982,8 @@ pub const IGameBarServices = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2026,7 +2026,7 @@ pub const IGameBarServices = extern struct {
         EnableCapture: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         DisableCapture: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_TargetInfo: *const fn(self: *anyopaque, _r: **GameBarServicesTargetInfo) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppBroadcastServices: *const fn(self: *anyopaque, _r: **AppBroadcastServices) callconv(.winapi) HRESULT,
         get_AppCaptureServices: *const fn(self: *anyopaque, _r: **AppCaptureServices) callconv(.winapi) HRESULT,
         add_CommandReceived: *const fn(self: *anyopaque, value: *TypedEventHandler(GameBarServices,GameBarServicesCommandEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -2139,20 +2139,20 @@ pub const IGameBarServicesManagerStatics = extern struct {
 };
 pub const IGameBarServicesTargetInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2175,9 +2175,9 @@ pub const IGameBarServicesTargetInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TitleId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TitleId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DisplayMode: *const fn(self: *anyopaque, _r: *GameBarServicesDisplayMode) callconv(.winapi) HRESULT,
     };
 };
@@ -2512,7 +2512,7 @@ pub const CapturedFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3469,7 +3469,7 @@ pub const IMediaCapture = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3493,7 +3493,7 @@ pub const IMediaCapture = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: ?HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AddEffectAsync(@ptrCast(self), mediaStreamType, effectActivationID, effectSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3600,11 +3600,11 @@ pub const IMediaCapture = extern struct {
         StartRecordToStorageFileAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartRecordToStreamAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StopRecordAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         CapturePhotoToStorageFileAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         CapturePhotoToStreamAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AddEffectAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, effectActivationID: HSTRING, effectSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AddEffectAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, effectActivationID: ?HSTRING, effectSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ClearEffectsAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SetEncoderProperty: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, propertyId: *Guid, propertyValue: *IInspectable) callconv(.winapi) HRESULT,
         GetEncoderProperty: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, propertyId: *Guid, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -3643,7 +3643,7 @@ pub const IMediaCapture2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
+    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
         const _c = self.vtable.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3682,7 +3682,7 @@ pub const IMediaCapture2 = extern struct {
         PrepareLowLagRecordToStorageFileAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, file: *IStorageFile, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
         PrepareLowLagRecordToStreamAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
         PrepareLowLagRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
-        PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
+        PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
         PrepareLowLagPhotoCaptureAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoCapture)) callconv(.winapi) HRESULT,
         PrepareLowLagPhotoSequenceCaptureAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoSequenceCapture)) callconv(.winapi) HRESULT,
         SetEncodingPropertiesAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties, encoderProperties: *MediaPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -3858,8 +3858,8 @@ pub const IMediaCapture5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(HSTRING,MediaFrameSource) {
-        var _r: *IMapView(HSTRING,MediaFrameSource) = undefined;
+    pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(?HSTRING,MediaFrameSource) {
+        var _r: *IMapView(?HSTRING,MediaFrameSource) = undefined;
         const _c = self.vtable.get_FrameSources(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3870,13 +3870,13 @@ pub const IMediaCapture5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsyncWithOutputSubtype(@ptrCast(self), inputSource, outputSubtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(@ptrCast(self), inputSource, outputSubtype, outputSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3897,10 +3897,10 @@ pub const IMediaCapture5 = extern struct {
         RemoveEffectAsync: *const fn(self: *anyopaque, effect: *IMediaExtension, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         PauseRecordWithResultAsync: *const fn(self: *anyopaque, behavior: MediaCapturePauseBehavior, _r: **IAsyncOperation(MediaCapturePauseResult)) callconv(.winapi) HRESULT,
         StopRecordWithResultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(MediaCaptureStopResult)) callconv(.winapi) HRESULT,
-        get_FrameSources: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,MediaFrameSource)) callconv(.winapi) HRESULT,
+        get_FrameSources: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,MediaFrameSource)) callconv(.winapi) HRESULT,
         CreateFrameReaderAsync: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
-        CreateFrameReaderAsyncWithOutputSubtype: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
-        CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
+        CreateFrameReaderAsyncWithOutputSubtype: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
+        CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, outputSize: BitmapSize, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCapture6 = extern struct {
@@ -3963,8 +3963,8 @@ pub const IMediaCapture7 = extern struct {
 };
 pub const IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3987,14 +3987,14 @@ pub const IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern str
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *MediaCaptureDeviceExclusiveControlStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCaptureFailedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4017,7 +4017,7 @@ pub const IMediaCaptureFailedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Code: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
@@ -4046,22 +4046,22 @@ pub const IMediaCaptureFocusChangedEventArgs = extern struct {
 };
 pub const IMediaCaptureInitializationSettings = extern struct {
     vtable: *const VTable,
-    pub fn putAudioDeviceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudioDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudioDeviceId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAudioDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVideoDeviceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVideoDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_VideoDeviceId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4098,10 +4098,10 @@ pub const IMediaCaptureInitializationSettings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_AudioDeviceId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AudioDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_VideoDeviceId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_AudioDeviceId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_VideoDeviceId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_StreamingCaptureMode: *const fn(self: *anyopaque, value: StreamingCaptureMode) callconv(.winapi) HRESULT,
         get_StreamingCaptureMode: *const fn(self: *anyopaque, _r: *StreamingCaptureMode) callconv(.winapi) HRESULT,
         put_PhotoCaptureSource: *const fn(self: *anyopaque, value: PhotoCaptureSource) callconv(.winapi) HRESULT,
@@ -4449,14 +4449,14 @@ pub const IMediaCaptureRelativePanelWatcher = extern struct {
 };
 pub const IMediaCaptureSettings = extern struct {
     vtable: *const VTable,
-    pub fn getAudioDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4491,8 +4491,8 @@ pub const IMediaCaptureSettings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AudioDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AudioDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_StreamingCaptureMode: *const fn(self: *anyopaque, _r: *StreamingCaptureMode) callconv(.winapi) HRESULT,
         get_PhotoCaptureSource: *const fn(self: *anyopaque, _r: *PhotoCaptureSource) callconv(.winapi) HRESULT,
         get_VideoDeviceCharacteristic: *const fn(self: *anyopaque, _r: *VideoDeviceCharacteristic) callconv(.winapi) HRESULT,
@@ -4595,25 +4595,25 @@ pub const IMediaCaptureSettings3 = extern struct {
 };
 pub const IMediaCaptureStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsVideoProfileSupported(self: *@This(), videoDeviceId: HSTRING) core.HResult!bool {
+    pub fn IsVideoProfileSupported(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsVideoProfileSupported(@ptrCast(self), videoDeviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllVideoProfiles(self: *@This(), videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindAllVideoProfiles(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindAllVideoProfiles(@ptrCast(self), videoDeviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindConcurrentProfiles(self: *@This(), videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindConcurrentProfiles(self: *@This(), videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindConcurrentProfiles(@ptrCast(self), videoDeviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindKnownVideoProfiles(self: *@This(), videoDeviceId: HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindKnownVideoProfiles(self: *@This(), videoDeviceId: ?HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         var _r: *IVectorView(MediaCaptureVideoProfile) = undefined;
         const _c = self.vtable.FindKnownVideoProfiles(@ptrCast(self), videoDeviceId, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4631,10 +4631,10 @@ pub const IMediaCaptureStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsVideoProfileSupported: *const fn(self: *anyopaque, videoDeviceId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        FindAllVideoProfiles: *const fn(self: *anyopaque, videoDeviceId: HSTRING, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
-        FindConcurrentProfiles: *const fn(self: *anyopaque, videoDeviceId: HSTRING, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
-        FindKnownVideoProfiles: *const fn(self: *anyopaque, videoDeviceId: HSTRING, name: KnownVideoProfile, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
+        IsVideoProfileSupported: *const fn(self: *anyopaque, videoDeviceId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        FindAllVideoProfiles: *const fn(self: *anyopaque, videoDeviceId: ?HSTRING, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
+        FindConcurrentProfiles: *const fn(self: *anyopaque, videoDeviceId: ?HSTRING, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
+        FindKnownVideoProfiles: *const fn(self: *anyopaque, videoDeviceId: ?HSTRING, name: KnownVideoProfile, _r: **IVectorView(MediaCaptureVideoProfile)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCaptureStopResult = extern struct {
@@ -4681,7 +4681,7 @@ pub const IMediaCaptureVideoPreview = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4707,20 +4707,20 @@ pub const IMediaCaptureVideoPreview = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         StartPreviewAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartPreviewToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StopPreviewAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCaptureVideoProfile = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4761,8 +4761,8 @@ pub const IMediaCaptureVideoProfile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedPreviewMediaDescription: *const fn(self: *anyopaque, _r: **IVectorView(MediaCaptureVideoProfileMediaDescription)) callconv(.winapi) HRESULT,
         get_SupportedRecordMediaDescription: *const fn(self: *anyopaque, _r: **IVectorView(MediaCaptureVideoProfileMediaDescription)) callconv(.winapi) HRESULT,
         get_SupportedPhotoMediaDescription: *const fn(self: *anyopaque, _r: **IVectorView(MediaCaptureVideoProfileMediaDescription)) callconv(.winapi) HRESULT,
@@ -4852,8 +4852,8 @@ pub const IMediaCaptureVideoProfileMediaDescription = extern struct {
 };
 pub const IMediaCaptureVideoProfileMediaDescription2 = extern struct {
     vtable: *const VTable,
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtype(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4876,7 +4876,7 @@ pub const IMediaCaptureVideoProfileMediaDescription2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Subtype: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subtype: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IMapView(Guid,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
@@ -5130,7 +5130,7 @@ pub const MediaCapture = extern struct {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.StartRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
@@ -5146,7 +5146,7 @@ pub const MediaCapture = extern struct {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.CapturePhotoToStreamAsync(ty, stream);
     }
-    pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: ?HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.AddEffectAsync(mediaStreamType, effectActivationID, effectSettings);
     }
@@ -5226,7 +5226,7 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartPreviewToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5256,7 +5256,7 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrepareLowLagRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
+    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdAndCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: ?HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5412,7 +5412,7 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopRecordWithResultAsync();
     }
-    pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(HSTRING,MediaFrameSource) {
+    pub fn getFrameSources(self: *@This()) core.HResult!*IMapView(?HSTRING,MediaFrameSource) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5424,13 +5424,13 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsync(inputSource);
     }
-    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsyncWithOutputSubtype(inputSource, outputSubtype);
     }
-    pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtypeAndOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: ?HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5467,19 +5467,19 @@ pub const MediaCapture = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaCapture.IID)));
     }
-    pub fn IsVideoProfileSupported(videoDeviceId: HSTRING) core.HResult!bool {
+    pub fn IsVideoProfileSupported(videoDeviceId: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.IsVideoProfileSupported(videoDeviceId);
     }
-    pub fn FindAllVideoProfiles(videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindAllVideoProfiles(videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindAllVideoProfiles(videoDeviceId);
     }
-    pub fn FindConcurrentProfiles(videoDeviceId: HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindConcurrentProfiles(videoDeviceId: ?HSTRING) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindConcurrentProfiles(videoDeviceId);
     }
-    pub fn FindKnownVideoProfiles(videoDeviceId: HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
+    pub fn FindKnownVideoProfiles(videoDeviceId: ?HSTRING, name: KnownVideoProfile) core.HResult!*IVectorView(MediaCaptureVideoProfile) {
         const _f = try @This()._IMediaCaptureStaticsCache.get();
         return try _f.FindKnownVideoProfiles(videoDeviceId, name);
     }
@@ -5501,7 +5501,7 @@ pub const MediaCaptureDeviceExclusiveControlStatus = enum(i32) {
 };
 pub const MediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureDeviceExclusiveControlStatusChangedEventArgs = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -5517,7 +5517,7 @@ pub const MediaCaptureDeviceExclusiveControlStatusChangedEventArgs = extern stru
 };
 pub const MediaCaptureFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureFailedEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -5632,19 +5632,19 @@ pub const MediaCaptureFocusChangedEventArgs = extern struct {
 };
 pub const MediaCaptureInitializationSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putAudioDeviceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudioDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaCaptureInitializationSettings = @ptrCast(self);
         return try this.putAudioDeviceId(value);
     }
-    pub fn getAudioDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureInitializationSettings = @ptrCast(self);
         return try this.getAudioDeviceId();
     }
-    pub fn putVideoDeviceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVideoDeviceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaCaptureInitializationSettings = @ptrCast(self);
         return try this.putVideoDeviceId(value);
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureInitializationSettings = @ptrCast(self);
         return try this.getVideoDeviceId();
     }
@@ -5908,11 +5908,11 @@ pub const MediaCaptureRelativePanelWatcher = extern struct {
 };
 pub const MediaCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAudioDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAudioDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureSettings = @ptrCast(self);
         return try this.getAudioDeviceId();
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureSettings = @ptrCast(self);
         return try this.getVideoDeviceId();
     }
@@ -6020,11 +6020,11 @@ pub const MediaCaptureThermalStatus = enum(i32) {
 };
 pub const MediaCaptureVideoProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureVideoProfile = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaCaptureVideoProfile = @ptrCast(self);
         return try this.getVideoDeviceId();
     }
@@ -6084,7 +6084,7 @@ pub const MediaCaptureVideoProfileMediaDescription = extern struct {
         const this: *IMediaCaptureVideoProfileMediaDescription = @ptrCast(self);
         return try this.getIsHdrVideoSupported();
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCaptureVideoProfileMediaDescription2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoProfileMediaDescription2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6334,11 +6334,11 @@ pub const AppBroadcastBackgroundService = extern struct {
         const this: *IAppBroadcastBackgroundService = @ptrCast(self);
         return try this.getStreamInfo();
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastBackgroundService = @ptrCast(self);
         return try this.getAppId();
     }
-    pub fn getBroadcastTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastBackgroundService = @ptrCast(self);
         return try this.getBroadcastTitle();
     }
@@ -6362,35 +6362,35 @@ pub const AppBroadcastBackgroundService = extern struct {
         const this: *IAppBroadcastBackgroundService = @ptrCast(self);
         return try this.removeHeartbeatRequested(token);
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastBackgroundService = @ptrCast(self);
         return try this.getTitleId();
     }
-    pub fn putBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBroadcastTitle(value);
     }
-    pub fn getBroadcastLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBroadcastLanguage();
     }
-    pub fn putBroadcastLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBroadcastLanguage(value);
     }
-    pub fn getBroadcastChannel(self: *@This()) core.HResult!HSTRING {
+    pub fn getBroadcastChannel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBroadcastChannel();
     }
-    pub fn putBroadcastChannel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastChannel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBroadcastBackgroundService2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBroadcastBackgroundService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6464,11 +6464,11 @@ pub const AppBroadcastBackgroundServiceSignInInfo = extern struct {
         const this: *IAppBroadcastBackgroundServiceSignInInfo = @ptrCast(self);
         return try this.getAuthenticationResult();
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastBackgroundServiceSignInInfo = @ptrCast(self);
         return try this.putUserName(value);
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastBackgroundServiceSignInInfo = @ptrCast(self);
         return try this.getUserName();
     }
@@ -6520,11 +6520,11 @@ pub const AppBroadcastBackgroundServiceStreamInfo = extern struct {
         const this: *IAppBroadcastBackgroundServiceStreamInfo = @ptrCast(self);
         return try this.getBandwidthTestBitrate();
     }
-    pub fn putAudioCodec(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudioCodec(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastBackgroundServiceStreamInfo = @ptrCast(self);
         return try this.putAudioCodec(value);
     }
-    pub fn getAudioCodec(self: *@This()) core.HResult!HSTRING {
+    pub fn getAudioCodec(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastBackgroundServiceStreamInfo = @ptrCast(self);
         return try this.getAudioCodec();
     }
@@ -6681,11 +6681,11 @@ pub const AppBroadcastGlobalSettings = extern struct {
         const this: *IAppBroadcastGlobalSettings = @ptrCast(self);
         return try this.getIsCameraCaptureEnabledByDefault();
     }
-    pub fn putSelectedCameraId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedCameraId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastGlobalSettings = @ptrCast(self);
         return try this.putSelectedCameraId(value);
     }
-    pub fn getSelectedCameraId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedCameraId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastGlobalSettings = @ptrCast(self);
         return try this.getSelectedCameraId();
     }
@@ -6783,7 +6783,7 @@ pub const AppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const AppBroadcastPlugIn = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastPlugIn = @ptrCast(self);
         return try this.getAppId();
     }
@@ -6795,7 +6795,7 @@ pub const AppBroadcastPlugIn = extern struct {
         const this: *IAppBroadcastPlugIn = @ptrCast(self);
         return try this.getLogo();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastPlugIn = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -6997,11 +6997,11 @@ pub const AppBroadcastPreviewStreamVideoHeader = extern struct {
 };
 pub const AppBroadcastProviderSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putDefaultBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastProviderSettings = @ptrCast(self);
         return try this.putDefaultBroadcastTitle(value);
     }
-    pub fn getDefaultBroadcastTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDefaultBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastProviderSettings = @ptrCast(self);
         return try this.getDefaultBroadcastTitle();
     }
@@ -7069,23 +7069,23 @@ pub const AppBroadcastServices = extern struct {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.putCaptureTargetType(value);
     }
-    pub fn getBroadcastTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.getBroadcastTitle();
     }
-    pub fn putBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.putBroadcastTitle(value);
     }
-    pub fn getBroadcastLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.getBroadcastLanguage();
     }
-    pub fn putBroadcastLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.putBroadcastLanguage(value);
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastServices = @ptrCast(self);
         return try this.getUserName();
     }
@@ -7560,14 +7560,14 @@ pub const IAppBroadcastBackgroundService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBroadcastTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7596,8 +7596,8 @@ pub const IAppBroadcastBackgroundService = extern struct {
         const _c = self.vtable.remove_HeartbeatRequested(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7620,39 +7620,39 @@ pub const IAppBroadcastBackgroundService = extern struct {
         get_SignInInfo: *const fn(self: *anyopaque, _r: **AppBroadcastBackgroundServiceSignInInfo) callconv(.winapi) HRESULT,
         put_StreamInfo: *const fn(self: *anyopaque, value: *AppBroadcastBackgroundServiceStreamInfo) callconv(.winapi) HRESULT,
         get_StreamInfo: *const fn(self: *anyopaque, _r: **AppBroadcastBackgroundServiceStreamInfo) callconv(.winapi) HRESULT,
-        get_AppId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BroadcastTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BroadcastTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_ViewerCount: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_ViewerCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         TerminateBroadcast: *const fn(self: *anyopaque, reason: AppBroadcastTerminationReason, providerSpecificReason: u32) callconv(.winapi) HRESULT,
         add_HeartbeatRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppBroadcastBackgroundService,AppBroadcastHeartbeatRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_HeartbeatRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_TitleId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TitleId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppBroadcastBackgroundService2 = extern struct {
     vtable: *const VTable,
-    pub fn putBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBroadcastLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBroadcastLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastLanguage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBroadcastChannel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBroadcastChannel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastChannel(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBroadcastChannel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastChannel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastChannel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7698,11 +7698,11 @@ pub const IAppBroadcastBackgroundService2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_BroadcastTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_BroadcastLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BroadcastLanguage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_BroadcastChannel: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BroadcastChannel: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        put_BroadcastTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_BroadcastLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BroadcastLanguage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_BroadcastChannel: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BroadcastChannel: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_BroadcastTitleChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_BroadcastTitleChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_BroadcastLanguageChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppBroadcastBackgroundService,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -7745,12 +7745,12 @@ pub const IAppBroadcastBackgroundServiceSignInInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7783,8 +7783,8 @@ pub const IAppBroadcastBackgroundServiceSignInInfo = extern struct {
         put_OAuthCallbackUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_OAuthCallbackUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_AuthenticationResult: *const fn(self: *anyopaque, _r: **WebAuthenticationResult) callconv(.winapi) HRESULT,
-        put_UserName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_UserName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_SignInStateChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppBroadcastBackgroundServiceSignInInfo,AppBroadcastSignInStateChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SignInStateChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -7845,12 +7845,12 @@ pub const IAppBroadcastBackgroundServiceStreamInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAudioCodec(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudioCodec(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudioCodec(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAudioCodec(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioCodec(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioCodec(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7908,8 +7908,8 @@ pub const IAppBroadcastBackgroundServiceStreamInfo = extern struct {
         get_DesiredVideoEncodingBitrate: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         put_BandwidthTestBitrate: *const fn(self: *anyopaque, value: u64) callconv(.winapi) HRESULT,
         get_BandwidthTestBitrate: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        put_AudioCodec: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AudioCodec: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_AudioCodec: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioCodec: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_BroadcastStreamReader: *const fn(self: *anyopaque, _r: **AppBroadcastStreamReader) callconv(.winapi) HRESULT,
         add_StreamStateChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AppBroadcastBackgroundServiceStreamInfo,AppBroadcastStreamStateChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StreamStateChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -8056,12 +8056,12 @@ pub const IAppBroadcastGlobalSettings = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSelectedCameraId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedCameraId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedCameraId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSelectedCameraId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedCameraId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedCameraId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8124,8 +8124,8 @@ pub const IAppBroadcastGlobalSettings = extern struct {
         get_MicrophoneGain: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_IsCameraCaptureEnabledByDefault: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsCameraCaptureEnabledByDefault: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_SelectedCameraId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SelectedCameraId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_SelectedCameraId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedCameraId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_CameraOverlayLocation: *const fn(self: *anyopaque, value: AppBroadcastCameraOverlayLocation) callconv(.winapi) HRESULT,
         get_CameraOverlayLocation: *const fn(self: *anyopaque, _r: *AppBroadcastCameraOverlayLocation) callconv(.winapi) HRESULT,
         put_CameraOverlaySize: *const fn(self: *anyopaque, value: AppBroadcastCameraOverlaySize) callconv(.winapi) HRESULT,
@@ -8234,8 +8234,8 @@ pub const IAppBroadcastMicrophoneCaptureStateChangedEventArgs = extern struct {
 };
 pub const IAppBroadcastPlugIn = extern struct {
     vtable: *const VTable,
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8252,8 +8252,8 @@ pub const IAppBroadcastPlugIn = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8270,10 +8270,10 @@ pub const IAppBroadcastPlugIn = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ProviderSettings: *const fn(self: *anyopaque, _r: **AppBroadcastProviderSettings) callconv(.winapi) HRESULT,
         get_Logo: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppBroadcastPlugInManager = extern struct {
@@ -8601,12 +8601,12 @@ pub const IAppBroadcastPreviewStreamVideoHeader = extern struct {
 };
 pub const IAppBroadcastProviderSettings = extern struct {
     vtable: *const VTable,
-    pub fn putDefaultBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultBroadcastTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDefaultBroadcastTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDefaultBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultBroadcastTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8683,8 +8683,8 @@ pub const IAppBroadcastProviderSettings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DefaultBroadcastTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DefaultBroadcastTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DefaultBroadcastTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DefaultBroadcastTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_AudioEncodingBitrate: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_AudioEncodingBitrate: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_CustomVideoEncodingBitrate: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
@@ -8711,28 +8711,28 @@ pub const IAppBroadcastServices = extern struct {
         const _c = self.vtable.put_CaptureTargetType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBroadcastTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBroadcastTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBroadcastTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBroadcastLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBroadcastLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BroadcastLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBroadcastLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBroadcastLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_BroadcastLanguage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8791,11 +8791,11 @@ pub const IAppBroadcastServices = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CaptureTargetType: *const fn(self: *anyopaque, _r: *AppBroadcastCaptureTargetType) callconv(.winapi) HRESULT,
         put_CaptureTargetType: *const fn(self: *anyopaque, value: AppBroadcastCaptureTargetType) callconv(.winapi) HRESULT,
-        get_BroadcastTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BroadcastTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_BroadcastLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_BroadcastLanguage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_BroadcastTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BroadcastTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_BroadcastLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_BroadcastLanguage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CanCapture: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         EnterBroadcastModeAsync: *const fn(self: *anyopaque, plugIn: *AppBroadcastPlugIn, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         ExitBroadcastMode: *const fn(self: *anyopaque, reason: AppBroadcastExitBroadcastModeReason) callconv(.winapi) HRESULT,

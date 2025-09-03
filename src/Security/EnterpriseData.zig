@@ -21,7 +21,7 @@ pub const DataProtectionInfo = extern struct {
         const this: *IDataProtectionInfo = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataProtectionInfo = @ptrCast(self);
         return try this.getIdentity();
     }
@@ -36,7 +36,7 @@ pub const DataProtectionManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ProtectAsync(data: *IBuffer, identity: HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
+    pub fn ProtectAsync(data: *IBuffer, identity: ?HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
         const _f = try @This()._IDataProtectionManagerStaticsCache.get();
         return try _f.ProtectAsync(data, identity);
     }
@@ -44,7 +44,7 @@ pub const DataProtectionManager = extern struct {
         const _f = try @This()._IDataProtectionManagerStaticsCache.get();
         return try _f.UnprotectAsync(data);
     }
-    pub fn ProtectStreamAsync(unprotectedStream: *IInputStream, identity: HSTRING, protectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
+    pub fn ProtectStreamAsync(unprotectedStream: *IInputStream, identity: ?HSTRING, protectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
         const _f = try @This()._IDataProtectionManagerStaticsCache.get();
         return try _f.ProtectStreamAsync(unprotectedStream, identity, protectedStream);
     }
@@ -88,7 +88,7 @@ pub const FileProtectionInfo = extern struct {
         const this: *IFileProtectionInfo = @ptrCast(self);
         return try this.getIsRoamable();
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileProtectionInfo = @ptrCast(self);
         return try this.getIdentity();
     }
@@ -117,11 +117,11 @@ pub const FileProtectionManager = extern struct {
         const _f = try @This()._IFileProtectionManagerStatics2Cache.get();
         return try _f.LoadFileFromContainerAsync(containerFile, target, collisionOption);
     }
-    pub fn SaveFileAsContainerAsyncWithSharedWithIdentities(protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
+    pub fn SaveFileAsContainerAsyncWithSharedWithIdentities(protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
         const _f = try @This()._IFileProtectionManagerStatics2Cache.get();
         return try _f.SaveFileAsContainerAsync(protectedFile, sharedWithIdentities);
     }
-    pub fn ProtectAsync(target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
+    pub fn ProtectAsync(target: *IStorageItem, identity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
         const _f = try @This()._IFileProtectionManagerStaticsCache.get();
         return try _f.ProtectAsync(target, identity);
     }
@@ -145,7 +145,7 @@ pub const FileProtectionManager = extern struct {
         const _f = try @This()._IFileProtectionManagerStaticsCache.get();
         return try _f.LoadFileFromContainerAsyncWithTarget(containerFile, target);
     }
-    pub fn CreateProtectedAndOpenAsync(parentFolder: *IStorageFolder, desiredName: HSTRING, identity: HSTRING, collisionOption: CreationCollisionOption) core.HResult!*IAsyncOperation(ProtectedFileCreateResult) {
+    pub fn CreateProtectedAndOpenAsync(parentFolder: *IStorageFolder, desiredName: ?HSTRING, identity: ?HSTRING, collisionOption: CreationCollisionOption) core.HResult!*IAsyncOperation(ProtectedFileCreateResult) {
         const _f = try @This()._IFileProtectionManagerStaticsCache.get();
         return try _f.CreateProtectedAndOpenAsync(parentFolder, desiredName, identity, collisionOption);
     }
@@ -182,7 +182,7 @@ pub const FileRevocationManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ProtectAsync(storageItem: *IStorageItem, enterpriseIdentity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
+    pub fn ProtectAsync(storageItem: *IStorageItem, enterpriseIdentity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
         const _f = try @This()._IFileRevocationManagerStaticsCache.get();
         return try _f.ProtectAsync(storageItem, enterpriseIdentity);
     }
@@ -190,7 +190,7 @@ pub const FileRevocationManager = extern struct {
         const _f = try @This()._IFileRevocationManagerStaticsCache.get();
         return try _f.CopyProtectionAsync(sourceStorageItem, targetStorageItem);
     }
-    pub fn Revoke(enterpriseIdentity: HSTRING) core.HResult!void {
+    pub fn Revoke(enterpriseIdentity: ?HSTRING) core.HResult!void {
         const _f = try @This()._IFileRevocationManagerStaticsCache.get();
         return try _f.Revoke(enterpriseIdentity);
     }
@@ -264,8 +264,8 @@ pub const IDataProtectionInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Identity(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -283,12 +283,12 @@ pub const IDataProtectionInfo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *DataProtectionStatus) callconv(.winapi) HRESULT,
-        get_Identity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Identity: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataProtectionManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn ProtectAsync(self: *@This(), data: *IBuffer, identity: HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
+    pub fn ProtectAsync(self: *@This(), data: *IBuffer, identity: ?HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
         var _r: *IAsyncOperation(BufferProtectUnprotectResult) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), data, identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -300,7 +300,7 @@ pub const IDataProtectionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ProtectStreamAsync(self: *@This(), unprotectedStream: *IInputStream, identity: HSTRING, protectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
+    pub fn ProtectStreamAsync(self: *@This(), unprotectedStream: *IInputStream, identity: ?HSTRING, protectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
         var _r: *IAsyncOperation(DataProtectionInfo) = undefined;
         const _c = self.vtable.ProtectStreamAsync(@ptrCast(self), unprotectedStream, identity, protectedStream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -336,9 +336,9 @@ pub const IDataProtectionManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ProtectAsync: *const fn(self: *anyopaque, data: *IBuffer, identity: HSTRING, _r: **IAsyncOperation(BufferProtectUnprotectResult)) callconv(.winapi) HRESULT,
+        ProtectAsync: *const fn(self: *anyopaque, data: *IBuffer, identity: ?HSTRING, _r: **IAsyncOperation(BufferProtectUnprotectResult)) callconv(.winapi) HRESULT,
         UnprotectAsync: *const fn(self: *anyopaque, data: *IBuffer, _r: **IAsyncOperation(BufferProtectUnprotectResult)) callconv(.winapi) HRESULT,
-        ProtectStreamAsync: *const fn(self: *anyopaque, unprotectedStream: *IInputStream, identity: HSTRING, protectedStream: *IOutputStream, _r: **IAsyncOperation(DataProtectionInfo)) callconv(.winapi) HRESULT,
+        ProtectStreamAsync: *const fn(self: *anyopaque, unprotectedStream: *IInputStream, identity: ?HSTRING, protectedStream: *IOutputStream, _r: **IAsyncOperation(DataProtectionInfo)) callconv(.winapi) HRESULT,
         UnprotectStreamAsync: *const fn(self: *anyopaque, protectedStream: *IInputStream, unprotectedStream: *IOutputStream, _r: **IAsyncOperation(DataProtectionInfo)) callconv(.winapi) HRESULT,
         GetProtectionInfoAsync: *const fn(self: *anyopaque, protectedData: *IBuffer, _r: **IAsyncOperation(DataProtectionInfo)) callconv(.winapi) HRESULT,
         GetStreamProtectionInfoAsync: *const fn(self: *anyopaque, protectedStream: *IInputStream, _r: **IAsyncOperation(DataProtectionInfo)) callconv(.winapi) HRESULT,
@@ -358,8 +358,8 @@ pub const IFileProtectionInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Identity(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -378,7 +378,7 @@ pub const IFileProtectionInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *FileProtectionStatus) callconv(.winapi) HRESULT,
         get_IsRoamable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Identity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Identity: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileProtectionInfo2 = extern struct {
@@ -406,7 +406,7 @@ pub const IFileProtectionInfo2 = extern struct {
 };
 pub const IFileProtectionManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn ProtectAsync(self: *@This(), target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
+    pub fn ProtectAsync(self: *@This(), target: *IStorageItem, identity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
         var _r: *IAsyncOperation(FileProtectionInfo) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), target, identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -442,7 +442,7 @@ pub const IFileProtectionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateProtectedAndOpenAsync(self: *@This(), parentFolder: *IStorageFolder, desiredName: HSTRING, identity: HSTRING, collisionOption: CreationCollisionOption) core.HResult!*IAsyncOperation(ProtectedFileCreateResult) {
+    pub fn CreateProtectedAndOpenAsync(self: *@This(), parentFolder: *IStorageFolder, desiredName: ?HSTRING, identity: ?HSTRING, collisionOption: CreationCollisionOption) core.HResult!*IAsyncOperation(ProtectedFileCreateResult) {
         var _r: *IAsyncOperation(ProtectedFileCreateResult) = undefined;
         const _c = self.vtable.CreateProtectedAndOpenAsync(@ptrCast(self), parentFolder, desiredName, identity, collisionOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -460,13 +460,13 @@ pub const IFileProtectionManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ProtectAsync: *const fn(self: *anyopaque, target: *IStorageItem, identity: HSTRING, _r: **IAsyncOperation(FileProtectionInfo)) callconv(.winapi) HRESULT,
+        ProtectAsync: *const fn(self: *anyopaque, target: *IStorageItem, identity: ?HSTRING, _r: **IAsyncOperation(FileProtectionInfo)) callconv(.winapi) HRESULT,
         CopyProtectionAsync: *const fn(self: *anyopaque, source: *IStorageItem, target: *IStorageItem, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         GetProtectionInfoAsync: *const fn(self: *anyopaque, source: *IStorageItem, _r: **IAsyncOperation(FileProtectionInfo)) callconv(.winapi) HRESULT,
         SaveFileAsContainerAsync: *const fn(self: *anyopaque, protectedFile: *IStorageFile, _r: **IAsyncOperation(ProtectedContainerExportResult)) callconv(.winapi) HRESULT,
         LoadFileFromContainerAsync: *const fn(self: *anyopaque, containerFile: *IStorageFile, _r: **IAsyncOperation(ProtectedContainerImportResult)) callconv(.winapi) HRESULT,
         LoadFileFromContainerAsyncWithTarget: *const fn(self: *anyopaque, containerFile: *IStorageFile, target: *IStorageItem, _r: **IAsyncOperation(ProtectedContainerImportResult)) callconv(.winapi) HRESULT,
-        CreateProtectedAndOpenAsync: *const fn(self: *anyopaque, parentFolder: *IStorageFolder, desiredName: HSTRING, identity: HSTRING, collisionOption: CreationCollisionOption, _r: **IAsyncOperation(ProtectedFileCreateResult)) callconv(.winapi) HRESULT,
+        CreateProtectedAndOpenAsync: *const fn(self: *anyopaque, parentFolder: *IStorageFolder, desiredName: ?HSTRING, identity: ?HSTRING, collisionOption: CreationCollisionOption, _r: **IAsyncOperation(ProtectedFileCreateResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileProtectionManagerStatics2 = extern struct {
@@ -483,7 +483,7 @@ pub const IFileProtectionManagerStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SaveFileAsContainerAsync(self: *@This(), protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
+    pub fn SaveFileAsContainerAsync(self: *@This(), protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
         var _r: *IAsyncOperation(ProtectedContainerExportResult) = undefined;
         const _c = self.vtable.SaveFileAsContainerAsync(@ptrCast(self), protectedFile, sharedWithIdentities, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -503,7 +503,7 @@ pub const IFileProtectionManagerStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsContainerAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         LoadFileFromContainerAsync: *const fn(self: *anyopaque, containerFile: *IStorageFile, target: *IStorageItem, collisionOption: NameCollisionOption, _r: **IAsyncOperation(ProtectedContainerImportResult)) callconv(.winapi) HRESULT,
-        SaveFileAsContainerAsync: *const fn(self: *anyopaque, protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(HSTRING), _r: **IAsyncOperation(ProtectedContainerExportResult)) callconv(.winapi) HRESULT,
+        SaveFileAsContainerAsync: *const fn(self: *anyopaque, protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(?HSTRING), _r: **IAsyncOperation(ProtectedContainerExportResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileProtectionManagerStatics3 = extern struct {
@@ -538,7 +538,7 @@ pub const IFileProtectionManagerStatics3 = extern struct {
 };
 pub const IFileRevocationManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn ProtectAsync(self: *@This(), storageItem: *IStorageItem, enterpriseIdentity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
+    pub fn ProtectAsync(self: *@This(), storageItem: *IStorageItem, enterpriseIdentity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
         var _r: *IAsyncOperation(FileProtectionStatus) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), storageItem, enterpriseIdentity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -550,7 +550,7 @@ pub const IFileRevocationManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Revoke(self: *@This(), enterpriseIdentity: HSTRING) core.HResult!void {
+    pub fn Revoke(self: *@This(), enterpriseIdentity: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Revoke(@ptrCast(self), enterpriseIdentity);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -572,9 +572,9 @@ pub const IFileRevocationManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ProtectAsync: *const fn(self: *anyopaque, storageItem: *IStorageItem, enterpriseIdentity: HSTRING, _r: **IAsyncOperation(FileProtectionStatus)) callconv(.winapi) HRESULT,
+        ProtectAsync: *const fn(self: *anyopaque, storageItem: *IStorageItem, enterpriseIdentity: ?HSTRING, _r: **IAsyncOperation(FileProtectionStatus)) callconv(.winapi) HRESULT,
         CopyProtectionAsync: *const fn(self: *anyopaque, sourceStorageItem: *IStorageItem, targetStorageItem: *IStorageItem, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        Revoke: *const fn(self: *anyopaque, enterpriseIdentity: HSTRING) callconv(.winapi) HRESULT,
+        Revoke: *const fn(self: *anyopaque, enterpriseIdentity: ?HSTRING) callconv(.winapi) HRESULT,
         GetStatusAsync: *const fn(self: *anyopaque, storageItem: *IStorageItem, _r: **IAsyncOperation(FileProtectionStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -631,8 +631,8 @@ pub const IFileUnprotectOptionsFactory = extern struct {
 };
 pub const IProtectedAccessResumedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -649,13 +649,13 @@ pub const IProtectedAccessResumedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectedAccessSuspendingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -684,7 +684,7 @@ pub const IProtectedAccessSuspendingEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
     };
@@ -751,8 +751,8 @@ pub const IProtectedContainerImportResult = extern struct {
 };
 pub const IProtectedContentRevokedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -769,7 +769,7 @@ pub const IProtectedContentRevokedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Identities: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectedFileCreateResult = extern struct {
@@ -821,32 +821,32 @@ pub const IProtectionPolicyAuditInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDataDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDataDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DataDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDataDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDataDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSourceDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SourceDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSourceDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTargetDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -865,23 +865,23 @@ pub const IProtectionPolicyAuditInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         put_Action: *const fn(self: *anyopaque, value: ProtectionPolicyAuditAction) callconv(.winapi) HRESULT,
         get_Action: *const fn(self: *anyopaque, _r: *ProtectionPolicyAuditAction) callconv(.winapi) HRESULT,
-        put_DataDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DataDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SourceDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SourceDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TargetDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DataDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DataDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SourceDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TargetDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectionPolicyAuditInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), action: ProtectionPolicyAuditAction, dataDescription: HSTRING, sourceDescription: HSTRING, targetDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
+    pub fn Create(self: *@This(), action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, sourceDescription: ?HSTRING, targetDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         var _r: *ProtectionPolicyAuditInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), action, dataDescription, sourceDescription, targetDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithActionAndDataDescription(self: *@This(), action: ProtectionPolicyAuditAction, dataDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
+    pub fn CreateWithActionAndDataDescription(self: *@This(), action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         var _r: *ProtectionPolicyAuditInfo = undefined;
         const _c = self.vtable.CreateWithActionAndDataDescription(@ptrCast(self), action, dataDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -899,18 +899,18 @@ pub const IProtectionPolicyAuditInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, action: ProtectionPolicyAuditAction, dataDescription: HSTRING, sourceDescription: HSTRING, targetDescription: HSTRING, _r: **ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
-        CreateWithActionAndDataDescription: *const fn(self: *anyopaque, action: ProtectionPolicyAuditAction, dataDescription: HSTRING, _r: **ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, sourceDescription: ?HSTRING, targetDescription: ?HSTRING, _r: **ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
+        CreateWithActionAndDataDescription: *const fn(self: *anyopaque, action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, _r: **ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectionPolicyManager = extern struct {
     vtable: *const VTable,
-    pub fn putIdentity(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIdentity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Identity(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Identity(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -927,8 +927,8 @@ pub const IProtectionPolicyManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Identity: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Identity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Identity: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Identity: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectionPolicyManager2 = extern struct {
@@ -961,13 +961,13 @@ pub const IProtectionPolicyManager2 = extern struct {
 };
 pub const IProtectionPolicyManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsIdentityManaged(self: *@This(), identity: HSTRING) core.HResult!bool {
+    pub fn IsIdentityManaged(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsIdentityManaged(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryApplyProcessUIPolicy(self: *@This(), identity: HSTRING) core.HResult!bool {
+    pub fn TryApplyProcessUIPolicy(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryApplyProcessUIPolicy(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -977,19 +977,19 @@ pub const IProtectionPolicyManagerStatics = extern struct {
         const _c = self.vtable.ClearProcessUIPolicy(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CreateCurrentThreadNetworkContext(self: *@This(), identity: HSTRING) core.HResult!*ThreadNetworkContext {
+    pub fn CreateCurrentThreadNetworkContext(self: *@This(), identity: ?HSTRING) core.HResult!*ThreadNetworkContext {
         var _r: *ThreadNetworkContext = undefined;
         const _c = self.vtable.CreateCurrentThreadNetworkContext(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPrimaryManagedIdentityForNetworkEndpointAsync(self: *@This(), endpointHost: *HostName) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetPrimaryManagedIdentityForNetworkEndpointAsync(self: *@This(), endpointHost: *HostName) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetPrimaryManagedIdentityForNetworkEndpointAsync(@ptrCast(self), endpointHost, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RevokeContent(self: *@This(), identity: HSTRING) core.HResult!void {
+    pub fn RevokeContent(self: *@This(), identity: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RevokeContent(@ptrCast(self), identity);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1029,13 +1029,13 @@ pub const IProtectionPolicyManagerStatics = extern struct {
         const _c = self.vtable.remove_ProtectedContentRevoked(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CheckAccess(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
+    pub fn CheckAccess(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
         var _r: ProtectionPolicyEvaluationResult = undefined;
         const _c = self.vtable.CheckAccess(@ptrCast(self), sourceIdentity, targetIdentity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), sourceIdentity, targetIdentity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1053,12 +1053,12 @@ pub const IProtectionPolicyManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsIdentityManaged: *const fn(self: *anyopaque, identity: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        TryApplyProcessUIPolicy: *const fn(self: *anyopaque, identity: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsIdentityManaged: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TryApplyProcessUIPolicy: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         ClearProcessUIPolicy: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        CreateCurrentThreadNetworkContext: *const fn(self: *anyopaque, identity: HSTRING, _r: **ThreadNetworkContext) callconv(.winapi) HRESULT,
-        GetPrimaryManagedIdentityForNetworkEndpointAsync: *const fn(self: *anyopaque, endpointHost: *HostName, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        RevokeContent: *const fn(self: *anyopaque, identity: HSTRING) callconv(.winapi) HRESULT,
+        CreateCurrentThreadNetworkContext: *const fn(self: *anyopaque, identity: ?HSTRING, _r: **ThreadNetworkContext) callconv(.winapi) HRESULT,
+        GetPrimaryManagedIdentityForNetworkEndpointAsync: *const fn(self: *anyopaque, endpointHost: *HostName, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        RevokeContent: *const fn(self: *anyopaque, identity: ?HSTRING) callconv(.winapi) HRESULT,
         GetForCurrentView: *const fn(self: *anyopaque, _r: **ProtectionPolicyManager) callconv(.winapi) HRESULT,
         add_ProtectedAccessSuspending: *const fn(self: *anyopaque, handler: *EventHandler(ProtectedAccessSuspendingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ProtectedAccessSuspending: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1066,43 +1066,43 @@ pub const IProtectionPolicyManagerStatics = extern struct {
         remove_ProtectedAccessResumed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_ProtectedContentRevoked: *const fn(self: *anyopaque, handler: *EventHandler(ProtectedContentRevokedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ProtectedContentRevoked: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        CheckAccess: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
-        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        CheckAccess: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
+        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectionPolicyManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn HasContentBeenRevokedSince(self: *@This(), identity: HSTRING, since: DateTime) core.HResult!bool {
+    pub fn HasContentBeenRevokedSince(self: *@This(), identity: ?HSTRING, since: DateTime) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasContentBeenRevokedSince(@ptrCast(self), identity, since, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CheckAccessForApp(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
+    pub fn CheckAccessForApp(self: *@This(), sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
         var _r: ProtectionPolicyEvaluationResult = undefined;
         const _c = self.vtable.CheckAccessForApp(@ptrCast(self), sourceIdentity, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessForAppAsync(@ptrCast(self), sourceIdentity, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetEnforcementLevel(self: *@This(), identity: HSTRING) core.HResult!EnforcementLevel {
+    pub fn GetEnforcementLevel(self: *@This(), identity: ?HSTRING) core.HResult!EnforcementLevel {
         var _r: EnforcementLevel = undefined;
         const _c = self.vtable.GetEnforcementLevel(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsUserDecryptionAllowed(self: *@This(), identity: HSTRING) core.HResult!bool {
+    pub fn IsUserDecryptionAllowed(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsUserDecryptionAllowed(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsProtectionUnderLockRequired(self: *@This(), identity: HSTRING) core.HResult!bool {
+    pub fn IsProtectionUnderLockRequired(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsProtectionUnderLockRequired(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1136,12 +1136,12 @@ pub const IProtectionPolicyManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        HasContentBeenRevokedSince: *const fn(self: *anyopaque, identity: HSTRING, since: DateTime, _r: *bool) callconv(.winapi) HRESULT,
-        CheckAccessForApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
-        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        GetEnforcementLevel: *const fn(self: *anyopaque, identity: HSTRING, _r: *EnforcementLevel) callconv(.winapi) HRESULT,
-        IsUserDecryptionAllowed: *const fn(self: *anyopaque, identity: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsProtectionUnderLockRequired: *const fn(self: *anyopaque, identity: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        HasContentBeenRevokedSince: *const fn(self: *anyopaque, identity: ?HSTRING, since: DateTime, _r: *bool) callconv(.winapi) HRESULT,
+        CheckAccessForApp: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
+        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        GetEnforcementLevel: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *EnforcementLevel) callconv(.winapi) HRESULT,
+        IsUserDecryptionAllowed: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsProtectionUnderLockRequired: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         add_PolicyChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_PolicyChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_IsProtectionEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1149,31 +1149,31 @@ pub const IProtectionPolicyManagerStatics2 = extern struct {
 };
 pub const IProtectionPolicyManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsyncWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithMessageFromApp(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsyncWithMessageFromApp(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, messageFromApp, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessForAppAsync(@ptrCast(self), sourceIdentity, appPackageFamilyName, auditInfo, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForAppAsyncWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsyncWithMessageFromApp(self: *@This(), sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessForAppAsyncWithMessageFromApp(@ptrCast(self), sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LogAuditEvent(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!void {
+    pub fn LogAuditEvent(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!void {
         const _c = self.vtable.LogAuditEvent(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1189,40 +1189,40 @@ pub const IProtectionPolicyManagerStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessForAppAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        LogAuditEvent: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
+        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessForAppAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        LogAuditEvent: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IProtectionPolicyManagerStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn IsRoamableProtectionEnabled(self: *@This(), identity: HSTRING) core.HResult!bool {
+    pub fn IsRoamableProtectionEnabled(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsRoamableProtectionEnabled(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsync(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsync(self: *@This(), sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessForAppAsync(@ptrCast(self), sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessToFilesForAppAsync(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForAppAsync(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessToFilesForAppAsync(@ptrCast(self), sourceItemList, appPackageFamilyName, auditInfo, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(@ptrCast(self), sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1234,32 +1234,32 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(@ptrCast(self), sourceItemList, processId, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsFileProtectionRequiredAsync(self: *@This(), target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsFileProtectionRequiredAsync(self: *@This(), target: *IStorageItem, identity: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsFileProtectionRequiredAsync(@ptrCast(self), target, identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsFileProtectionRequiredForNewFileAsync(self: *@This(), parentFolder: *IStorageFolder, identity: HSTRING, desiredName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsFileProtectionRequiredForNewFileAsync(self: *@This(), parentFolder: *IStorageFolder, identity: ?HSTRING, desiredName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsFileProtectionRequiredForNewFileAsync(@ptrCast(self), parentFolder, identity, desiredName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrimaryManagedIdentity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrimaryManagedIdentity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrimaryManagedIdentity(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPrimaryManagedIdentityForIdentity(self: *@This(), identity: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetPrimaryManagedIdentityForIdentity(self: *@This(), identity: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetPrimaryManagedIdentityForIdentity(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1276,17 +1276,17 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsRoamableProtectionEnabled: *const fn(self: *anyopaque, identity: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessToFilesForAppAsync: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        IsRoamableProtectionEnabled: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessToFilesForAppAsync: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         RequestAccessToFilesForProcessAsync: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        IsFileProtectionRequiredAsync: *const fn(self: *anyopaque, target: *IStorageItem, identity: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        IsFileProtectionRequiredForNewFileAsync: *const fn(self: *anyopaque, parentFolder: *IStorageFolder, identity: HSTRING, desiredName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        get_PrimaryManagedIdentity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetPrimaryManagedIdentityForIdentity: *const fn(self: *anyopaque, identity: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        IsFileProtectionRequiredAsync: *const fn(self: *anyopaque, target: *IStorageItem, identity: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        IsFileProtectionRequiredForNewFileAsync: *const fn(self: *anyopaque, parentFolder: *IStorageFolder, identity: ?HSTRING, desiredName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        get_PrimaryManagedIdentity: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetPrimaryManagedIdentityForIdentity: *const fn(self: *anyopaque, identity: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IThreadNetworkContext = extern struct {
@@ -1307,7 +1307,7 @@ pub const IThreadNetworkContext = extern struct {
 };
 pub const ProtectedAccessResumedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedAccessResumedEventArgs = @ptrCast(self);
         return try this.getIdentities();
     }
@@ -1319,7 +1319,7 @@ pub const ProtectedAccessResumedEventArgs = extern struct {
 };
 pub const ProtectedAccessSuspendingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedAccessSuspendingEventArgs = @ptrCast(self);
         return try this.getIdentities();
     }
@@ -1371,7 +1371,7 @@ pub const ProtectedContainerImportResult = extern struct {
 };
 pub const ProtectedContentRevokedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedContentRevokedEventArgs = @ptrCast(self);
         return try this.getIdentities();
     }
@@ -1427,38 +1427,38 @@ pub const ProtectionPolicyAuditInfo = extern struct {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.getAction();
     }
-    pub fn putDataDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDataDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.putDataDescription(value);
     }
-    pub fn getDataDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDataDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.getDataDescription();
     }
-    pub fn putSourceDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.putSourceDescription(value);
     }
-    pub fn getSourceDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.getSourceDescription();
     }
-    pub fn putTargetDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.putTargetDescription(value);
     }
-    pub fn getTargetDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.getTargetDescription();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(action: ProtectionPolicyAuditAction, dataDescription: HSTRING, sourceDescription: HSTRING, targetDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
+    pub fn Create(action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, sourceDescription: ?HSTRING, targetDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         const _f = try @This()._IProtectionPolicyAuditInfoFactoryCache.get();
         return try _f.Create(action, dataDescription, sourceDescription, targetDescription);
     }
-    pub fn CreateWithActionAndDataDescription(action: ProtectionPolicyAuditAction, dataDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
+    pub fn CreateWithActionAndDataDescription(action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         const _f = try @This()._IProtectionPolicyAuditInfoFactoryCache.get();
         return try _f.CreateWithActionAndDataDescription(action, dataDescription);
     }
@@ -1471,11 +1471,11 @@ pub const ProtectionPolicyAuditInfo = extern struct {
 };
 pub const ProtectionPolicyManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putIdentity(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIdentity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProtectionPolicyManager = @ptrCast(self);
         return try this.putIdentity(value);
     }
-    pub fn getIdentity(self: *@This()) core.HResult!HSTRING {
+    pub fn getIdentity(self: *@This()) core.HResult!?HSTRING {
         const this: *IProtectionPolicyManager = @ptrCast(self);
         return try this.getIdentity();
     }
@@ -1494,23 +1494,23 @@ pub const ProtectionPolicyManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn IsRoamableProtectionEnabled(identity: HSTRING) core.HResult!bool {
+    pub fn IsRoamableProtectionEnabled(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.IsRoamableProtectionEnabled(identity);
     }
-    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo, messageFromApp, behavior);
     }
-    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, behavior);
     }
-    pub fn RequestAccessToFilesForAppAsync(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForAppAsync(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessToFilesForAppAsync(sourceItemList, appPackageFamilyName, auditInfo);
     }
-    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior);
     }
@@ -1518,47 +1518,47 @@ pub const ProtectionPolicyManager = extern struct {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessToFilesForProcessAsync(sourceItemList, processId, auditInfo);
     }
-    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(sourceItemList, processId, auditInfo, messageFromApp, behavior);
     }
-    pub fn IsFileProtectionRequiredAsync(target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsFileProtectionRequiredAsync(target: *IStorageItem, identity: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.IsFileProtectionRequiredAsync(target, identity);
     }
-    pub fn IsFileProtectionRequiredForNewFileAsync(parentFolder: *IStorageFolder, identity: HSTRING, desiredName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsFileProtectionRequiredForNewFileAsync(parentFolder: *IStorageFolder, identity: ?HSTRING, desiredName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.IsFileProtectionRequiredForNewFileAsync(parentFolder, identity, desiredName);
     }
-    pub fn getPrimaryManagedIdentity() core.HResult!HSTRING {
+    pub fn getPrimaryManagedIdentity() core.HResult!?HSTRING {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.getPrimaryManagedIdentity();
     }
-    pub fn GetPrimaryManagedIdentityForIdentity(identity: HSTRING) core.HResult!HSTRING {
+    pub fn GetPrimaryManagedIdentityForIdentity(identity: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
         return try _f.GetPrimaryManagedIdentityForIdentity(identity);
     }
-    pub fn HasContentBeenRevokedSince(identity: HSTRING, since: DateTime) core.HResult!bool {
+    pub fn HasContentBeenRevokedSince(identity: ?HSTRING, since: DateTime) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.HasContentBeenRevokedSince(identity, since);
     }
-    pub fn CheckAccessForApp(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
+    pub fn CheckAccessForApp(sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.CheckAccessForApp(sourceIdentity, appPackageFamilyName);
     }
-    pub fn RequestAccessForAppAsync(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsync(sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName);
     }
-    pub fn GetEnforcementLevel(identity: HSTRING) core.HResult!EnforcementLevel {
+    pub fn GetEnforcementLevel(identity: ?HSTRING) core.HResult!EnforcementLevel {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.GetEnforcementLevel(identity);
     }
-    pub fn IsUserDecryptionAllowed(identity: HSTRING) core.HResult!bool {
+    pub fn IsUserDecryptionAllowed(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.IsUserDecryptionAllowed(identity);
     }
-    pub fn IsProtectionUnderLockRequired(identity: HSTRING) core.HResult!bool {
+    pub fn IsProtectionUnderLockRequired(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.IsProtectionUnderLockRequired(identity);
     }
@@ -1574,11 +1574,11 @@ pub const ProtectionPolicyManager = extern struct {
         const _f = try @This()._IProtectionPolicyManagerStatics2Cache.get();
         return try _f.getIsProtectionEnabled();
     }
-    pub fn IsIdentityManaged(identity: HSTRING) core.HResult!bool {
+    pub fn IsIdentityManaged(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.IsIdentityManaged(identity);
     }
-    pub fn TryApplyProcessUIPolicy(identity: HSTRING) core.HResult!bool {
+    pub fn TryApplyProcessUIPolicy(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.TryApplyProcessUIPolicy(identity);
     }
@@ -1586,15 +1586,15 @@ pub const ProtectionPolicyManager = extern struct {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.ClearProcessUIPolicy();
     }
-    pub fn CreateCurrentThreadNetworkContext(identity: HSTRING) core.HResult!*ThreadNetworkContext {
+    pub fn CreateCurrentThreadNetworkContext(identity: ?HSTRING) core.HResult!*ThreadNetworkContext {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.CreateCurrentThreadNetworkContext(identity);
     }
-    pub fn GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost: *HostName) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost: *HostName) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost);
     }
-    pub fn RevokeContent(identity: HSTRING) core.HResult!void {
+    pub fn RevokeContent(identity: ?HSTRING) core.HResult!void {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.RevokeContent(identity);
     }
@@ -1626,31 +1626,31 @@ pub const ProtectionPolicyManager = extern struct {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.removeProtectedContentRevoked(token);
     }
-    pub fn CheckAccess(sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
+    pub fn CheckAccess(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.CheckAccess(sourceIdentity, targetIdentity);
     }
-    pub fn RequestAccessAsync(sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsync(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStaticsCache.get();
         return try _f.RequestAccessAsync(sourceIdentity, targetIdentity);
     }
-    pub fn RequestAccessAsyncWithAuditInfo(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithAuditInfo(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics3Cache.get();
         return try _f.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo);
     }
-    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics3Cache.get();
         return try _f.RequestAccessAsyncWithMessageFromApp(sourceIdentity, targetIdentity, auditInfo, messageFromApp);
     }
-    pub fn RequestAccessForAppAsyncWithAuditInfo(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsyncWithAuditInfo(sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics3Cache.get();
         return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo);
     }
-    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: ?HSTRING, appPackageFamilyName: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         const _f = try @This()._IProtectionPolicyManagerStatics3Cache.get();
         return try _f.RequestAccessForAppAsyncWithMessageFromApp(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp);
     }
-    pub fn LogAuditEvent(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!void {
+    pub fn LogAuditEvent(sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!void {
         const _f = try @This()._IProtectionPolicyManagerStatics3Cache.get();
         return try _f.LogAuditEvent(sourceIdentity, targetIdentity, auditInfo);
     }

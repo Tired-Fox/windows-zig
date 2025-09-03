@@ -7,14 +7,14 @@ pub const IPnpObject = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -36,38 +36,38 @@ pub const IPnpObject = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *PnpObjectType) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         Update: *const fn(self: *anyopaque, updateInfo: *PnpObjectUpdate) callconv(.winapi) HRESULT,
     };
 };
 pub const IPnpObjectStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromIdAsync(self: *@This(), ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
+    pub fn CreateFromIdAsync(self: *@This(), ty: PnpObjectType, id: ?HSTRING, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         var _r: *IAsyncOperation(PnpObject) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), ty, id, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsync(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         var _r: *IAsyncOperation(PnpObjectCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), ty, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         var _r: *IAsyncOperation(PnpObjectCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcher(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcher(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING)) core.HResult!*PnpObjectWatcher {
         var _r: *PnpObjectWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), ty, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcherWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING) core.HResult!*PnpObjectWatcher {
         var _r: *PnpObjectWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -85,11 +85,11 @@ pub const IPnpObjectStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObject)) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
-        FindAllAsyncWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
-        CreateWatcher: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
-        CreateWatcherWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
+        CreateFromIdAsync: *const fn(self: *anyopaque, ty: PnpObjectType, id: ?HSTRING, requestedProperties: *IIterable(?HSTRING), _r: **IAsyncOperation(PnpObject)) callconv(.winapi) HRESULT,
+        FindAllAsync: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
+        FindAllAsyncWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
+        CreateWatcher: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IPnpObjectUpdate = extern struct {
@@ -100,14 +100,14 @@ pub const IPnpObjectUpdate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -125,8 +125,8 @@ pub const IPnpObjectUpdate = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *PnpObjectType) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPnpObjectWatcher = extern struct {
@@ -228,11 +228,11 @@ pub const PnpObject = extern struct {
         const this: *IPnpObject = @ptrCast(self);
         return try this.getType();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPnpObject = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPnpObject = @ptrCast(self);
         return try this.getProperties();
     }
@@ -243,23 +243,23 @@ pub const PnpObject = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromIdAsync(ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
+    pub fn CreateFromIdAsync(ty: PnpObjectType, id: ?HSTRING, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         const _f = try @This()._IPnpObjectStaticsCache.get();
         return try _f.CreateFromIdAsync(ty, id, requestedProperties);
     }
-    pub fn FindAllAsync(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsync(ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         const _f = try @This()._IPnpObjectStaticsCache.get();
         return try _f.FindAllAsync(ty, requestedProperties);
     }
-    pub fn FindAllAsyncWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         const _f = try @This()._IPnpObjectStaticsCache.get();
         return try _f.FindAllAsyncWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
-    pub fn CreateWatcher(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcher(ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING)) core.HResult!*PnpObjectWatcher {
         const _f = try @This()._IPnpObjectStaticsCache.get();
         return try _f.CreateWatcher(ty, requestedProperties);
     }
-    pub fn CreateWatcherWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(?HSTRING), aqsFilter: ?HSTRING) core.HResult!*PnpObjectWatcher {
         const _f = try @This()._IPnpObjectStaticsCache.get();
         return try _f.CreateWatcherWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
@@ -306,11 +306,11 @@ pub const PnpObjectUpdate = extern struct {
         const this: *IPnpObjectUpdate = @ptrCast(self);
         return try this.getType();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPnpObjectUpdate = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPnpObjectUpdate = @ptrCast(self);
         return try this.getProperties();
     }

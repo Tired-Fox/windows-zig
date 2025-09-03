@@ -82,7 +82,7 @@ pub const GattCharacteristicNotificationTriggerDetails = extern struct {
 };
 pub const GattServiceProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattServiceProviderConnection = @ptrCast(self);
         return try this.getTriggerId();
     }
@@ -103,7 +103,7 @@ pub const GattServiceProviderConnection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
+    pub fn getAllServices() core.HResult!*IMapView(?HSTRING,GattServiceProviderConnection) {
         const _f = try @This()._IGattServiceProviderConnectionStaticsCache.get();
         return try _f.getAllServices();
     }
@@ -285,8 +285,8 @@ pub const IGattCharacteristicNotificationTriggerDetails2 = extern struct {
 };
 pub const IGattServiceProviderConnection = extern struct {
     vtable: *const VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -313,7 +313,7 @@ pub const IGattServiceProviderConnection = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TriggerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Service: *const fn(self: *anyopaque, _r: **GattLocalService) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
@@ -341,8 +341,8 @@ pub const IGattServiceProviderConnection2 = extern struct {
 };
 pub const IGattServiceProviderConnectionStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAllServices(self: *@This()) core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
-        var _r: *IMapView(HSTRING,GattServiceProviderConnection) = undefined;
+    pub fn getAllServices(self: *@This()) core.HResult!*IMapView(?HSTRING,GattServiceProviderConnection) {
+        var _r: *IMapView(?HSTRING,GattServiceProviderConnection) = undefined;
         const _c = self.vtable.get_AllServices(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -359,7 +359,7 @@ pub const IGattServiceProviderConnectionStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AllServices: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,GattServiceProviderConnection)) callconv(.winapi) HRESULT,
+        get_AllServices: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,GattServiceProviderConnection)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattServiceProviderTriggerDetails = extern struct {

@@ -22,25 +22,25 @@ pub const AudioStreamDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putName(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -70,13 +70,13 @@ pub const AudioStreamDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrailingEncoderPadding();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -104,11 +104,11 @@ pub const AudioStreamDescriptor = extern struct {
 };
 pub const AudioTrack = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -116,11 +116,11 @@ pub const AudioTrack = extern struct {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getTrackKind();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getLabel();
     }
@@ -148,7 +148,7 @@ pub const AudioTrack = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -204,11 +204,11 @@ pub const AudioTrackSupportInfo = extern struct {
 };
 pub const ChapterCue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChapterCue = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IChapterCue = @ptrCast(self);
         return try this.getTitle();
     }
@@ -236,13 +236,13 @@ pub const ChapterCue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -276,11 +276,11 @@ pub const CodecInfo = extern struct {
         const this: *ICodecInfo = @ptrCast(self);
         return try this.getCategory();
     }
-    pub fn getSubtypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSubtypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ICodecInfo = @ptrCast(self);
         return try this.getSubtypes();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICodecInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -300,7 +300,7 @@ pub const CodecKind = enum(i32) {
 };
 pub const CodecQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn FindAllAsync(self: *@This(), kind: CodecKind, category: CodecCategory, subType: HSTRING) core.HResult!*IAsyncOperation(IVectorView(CodecInfo)) {
+    pub fn FindAllAsync(self: *@This(), kind: CodecKind, category: CodecCategory, subType: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(CodecInfo)) {
         const this: *ICodecQuery = @ptrCast(self);
         return try this.FindAllAsync(kind, category, subType);
     }
@@ -323,207 +323,207 @@ pub const CodecSubtypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getVideoFormatDV25() core.HResult!HSTRING {
+    pub fn getVideoFormatDV25() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDV25();
     }
-    pub fn getVideoFormatDV50() core.HResult!HSTRING {
+    pub fn getVideoFormatDV50() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDV50();
     }
-    pub fn getVideoFormatDvc() core.HResult!HSTRING {
+    pub fn getVideoFormatDvc() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDvc();
     }
-    pub fn getVideoFormatDvh1() core.HResult!HSTRING {
+    pub fn getVideoFormatDvh1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDvh1();
     }
-    pub fn getVideoFormatDvhD() core.HResult!HSTRING {
+    pub fn getVideoFormatDvhD() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDvhD();
     }
-    pub fn getVideoFormatDvsd() core.HResult!HSTRING {
+    pub fn getVideoFormatDvsd() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDvsd();
     }
-    pub fn getVideoFormatDvsl() core.HResult!HSTRING {
+    pub fn getVideoFormatDvsl() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatDvsl();
     }
-    pub fn getVideoFormatH263() core.HResult!HSTRING {
+    pub fn getVideoFormatH263() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatH263();
     }
-    pub fn getVideoFormatH264() core.HResult!HSTRING {
+    pub fn getVideoFormatH264() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatH264();
     }
-    pub fn getVideoFormatH265() core.HResult!HSTRING {
+    pub fn getVideoFormatH265() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatH265();
     }
-    pub fn getVideoFormatH264ES() core.HResult!HSTRING {
+    pub fn getVideoFormatH264ES() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatH264ES();
     }
-    pub fn getVideoFormatHevc() core.HResult!HSTRING {
+    pub fn getVideoFormatHevc() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatHevc();
     }
-    pub fn getVideoFormatHevcES() core.HResult!HSTRING {
+    pub fn getVideoFormatHevcES() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatHevcES();
     }
-    pub fn getVideoFormatM4S2() core.HResult!HSTRING {
+    pub fn getVideoFormatM4S2() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatM4S2();
     }
-    pub fn getVideoFormatMjpg() core.HResult!HSTRING {
+    pub fn getVideoFormatMjpg() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMjpg();
     }
-    pub fn getVideoFormatMP43() core.HResult!HSTRING {
+    pub fn getVideoFormatMP43() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMP43();
     }
-    pub fn getVideoFormatMP4S() core.HResult!HSTRING {
+    pub fn getVideoFormatMP4S() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMP4S();
     }
-    pub fn getVideoFormatMP4V() core.HResult!HSTRING {
+    pub fn getVideoFormatMP4V() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMP4V();
     }
-    pub fn getVideoFormatMpeg2() core.HResult!HSTRING {
+    pub fn getVideoFormatMpeg2() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMpeg2();
     }
-    pub fn getVideoFormatVP80() core.HResult!HSTRING {
+    pub fn getVideoFormatVP80() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatVP80();
     }
-    pub fn getVideoFormatVP90() core.HResult!HSTRING {
+    pub fn getVideoFormatVP90() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatVP90();
     }
-    pub fn getVideoFormatMpg1() core.HResult!HSTRING {
+    pub fn getVideoFormatMpg1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMpg1();
     }
-    pub fn getVideoFormatMss1() core.HResult!HSTRING {
+    pub fn getVideoFormatMss1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMss1();
     }
-    pub fn getVideoFormatMss2() core.HResult!HSTRING {
+    pub fn getVideoFormatMss2() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatMss2();
     }
-    pub fn getVideoFormatWmv1() core.HResult!HSTRING {
+    pub fn getVideoFormatWmv1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatWmv1();
     }
-    pub fn getVideoFormatWmv2() core.HResult!HSTRING {
+    pub fn getVideoFormatWmv2() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatWmv2();
     }
-    pub fn getVideoFormatWmv3() core.HResult!HSTRING {
+    pub fn getVideoFormatWmv3() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatWmv3();
     }
-    pub fn getVideoFormatWvc1() core.HResult!HSTRING {
+    pub fn getVideoFormatWvc1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormatWvc1();
     }
-    pub fn getVideoFormat420O() core.HResult!HSTRING {
+    pub fn getVideoFormat420O() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getVideoFormat420O();
     }
-    pub fn getAudioFormatAac() core.HResult!HSTRING {
+    pub fn getAudioFormatAac() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAac();
     }
-    pub fn getAudioFormatAdts() core.HResult!HSTRING {
+    pub fn getAudioFormatAdts() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAdts();
     }
-    pub fn getAudioFormatAlac() core.HResult!HSTRING {
+    pub fn getAudioFormatAlac() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAlac();
     }
-    pub fn getAudioFormatAmrNB() core.HResult!HSTRING {
+    pub fn getAudioFormatAmrNB() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAmrNB();
     }
-    pub fn getAudioFormatAmrWB() core.HResult!HSTRING {
+    pub fn getAudioFormatAmrWB() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAmrWB();
     }
-    pub fn getAudioFormatAmrWP() core.HResult!HSTRING {
+    pub fn getAudioFormatAmrWP() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatAmrWP();
     }
-    pub fn getAudioFormatDolbyAC3() core.HResult!HSTRING {
+    pub fn getAudioFormatDolbyAC3() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatDolbyAC3();
     }
-    pub fn getAudioFormatDolbyAC3Spdif() core.HResult!HSTRING {
+    pub fn getAudioFormatDolbyAC3Spdif() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatDolbyAC3Spdif();
     }
-    pub fn getAudioFormatDolbyDDPlus() core.HResult!HSTRING {
+    pub fn getAudioFormatDolbyDDPlus() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatDolbyDDPlus();
     }
-    pub fn getAudioFormatDrm() core.HResult!HSTRING {
+    pub fn getAudioFormatDrm() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatDrm();
     }
-    pub fn getAudioFormatDts() core.HResult!HSTRING {
+    pub fn getAudioFormatDts() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatDts();
     }
-    pub fn getAudioFormatFlac() core.HResult!HSTRING {
+    pub fn getAudioFormatFlac() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatFlac();
     }
-    pub fn getAudioFormatFloat() core.HResult!HSTRING {
+    pub fn getAudioFormatFloat() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatFloat();
     }
-    pub fn getAudioFormatMP3() core.HResult!HSTRING {
+    pub fn getAudioFormatMP3() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatMP3();
     }
-    pub fn getAudioFormatMPeg() core.HResult!HSTRING {
+    pub fn getAudioFormatMPeg() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatMPeg();
     }
-    pub fn getAudioFormatMsp1() core.HResult!HSTRING {
+    pub fn getAudioFormatMsp1() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatMsp1();
     }
-    pub fn getAudioFormatOpus() core.HResult!HSTRING {
+    pub fn getAudioFormatOpus() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatOpus();
     }
-    pub fn getAudioFormatPcm() core.HResult!HSTRING {
+    pub fn getAudioFormatPcm() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatPcm();
     }
-    pub fn getAudioFormatWmaSpdif() core.HResult!HSTRING {
+    pub fn getAudioFormatWmaSpdif() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatWmaSpdif();
     }
-    pub fn getAudioFormatWMAudioLossless() core.HResult!HSTRING {
+    pub fn getAudioFormatWMAudioLossless() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatWMAudioLossless();
     }
-    pub fn getAudioFormatWMAudioV8() core.HResult!HSTRING {
+    pub fn getAudioFormatWMAudioV8() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatWMAudioV8();
     }
-    pub fn getAudioFormatWMAudioV9() core.HResult!HSTRING {
+    pub fn getAudioFormatWMAudioV9() core.HResult!?HSTRING {
         const _f = try @This()._ICodecSubtypesStaticsCache.get();
         return try _f.getAudioFormatWMAudioV9();
     }
@@ -565,13 +565,13 @@ pub const DataCue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -649,7 +649,7 @@ pub const FaceDetectionEffect = extern struct {
 };
 pub const FaceDetectionEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -701,7 +701,7 @@ pub const FaceDetectionEffectFrame = extern struct {
         const this: *IFaceDetectionEffectFrame = @ptrCast(self);
         return try this.getDetectedFaces();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrame = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -949,8 +949,8 @@ pub const IAudioTrack = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -977,7 +977,7 @@ pub const IAudioTrack = extern struct {
         remove_OpenFailed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         GetEncodingProperties: *const fn(self: *anyopaque, _r: **AudioEncodingProperties) callconv(.winapi) HRESULT,
         get_PlaybackItem: *const fn(self: *anyopaque, _r: **MediaPlaybackItem) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportInfo: *const fn(self: *anyopaque, _r: **AudioTrackSupportInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -1050,12 +1050,12 @@ pub const IAudioTrackSupportInfo = extern struct {
 };
 pub const IChapterCue = extern struct {
     vtable: *const VTable,
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1072,8 +1072,8 @@ pub const IChapterCue = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICodecInfo = extern struct {
@@ -1090,14 +1090,14 @@ pub const ICodecInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSubtypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Subtypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1122,14 +1122,14 @@ pub const ICodecInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *CodecKind) callconv(.winapi) HRESULT,
         get_Category: *const fn(self: *anyopaque, _r: *CodecCategory) callconv(.winapi) HRESULT,
-        get_Subtypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subtypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsTrusted: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ICodecQuery = extern struct {
     vtable: *const VTable,
-    pub fn FindAllAsync(self: *@This(), kind: CodecKind, category: CodecCategory, subType: HSTRING) core.HResult!*IAsyncOperation(IVectorView(CodecInfo)) {
+    pub fn FindAllAsync(self: *@This(), kind: CodecKind, category: CodecCategory, subType: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(CodecInfo)) {
         var _r: *IAsyncOperation(IVectorView(CodecInfo)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), kind, category, subType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1147,313 +1147,313 @@ pub const ICodecQuery = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, kind: CodecKind, category: CodecCategory, subType: HSTRING, _r: **IAsyncOperation(IVectorView(CodecInfo))) callconv(.winapi) HRESULT,
+        FindAllAsync: *const fn(self: *anyopaque, kind: CodecKind, category: CodecCategory, subType: ?HSTRING, _r: **IAsyncOperation(IVectorView(CodecInfo))) callconv(.winapi) HRESULT,
     };
 };
 pub const ICodecSubtypesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getVideoFormatDV25(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDV25(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDV25(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDV50(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDV50(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDV50(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDvc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDvc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDvc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDvh1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDvh1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDvh1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDvhD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDvhD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDvhD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDvsd(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDvsd(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDvsd(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatDvsl(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatDvsl(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatDvsl(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatH263(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatH263(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatH263(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatH264(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatH264(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatH264(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatH265(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatH265(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatH265(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatH264ES(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatH264ES(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatH264ES(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatHevc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatHevc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatHevc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatHevcES(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatHevcES(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatHevcES(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatM4S2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatM4S2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatM4S2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMjpg(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMjpg(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMjpg(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMP43(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMP43(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMP43(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMP4S(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMP4S(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMP4S(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMP4V(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMP4V(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMP4V(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMpeg2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMpeg2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMpeg2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatVP80(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatVP80(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatVP80(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatVP90(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatVP90(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatVP90(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMpg1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMpg1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMpg1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMss1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMss1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMss1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatMss2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatMss2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatMss2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatWmv1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatWmv1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatWmv1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatWmv2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatWmv2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatWmv2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatWmv3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatWmv3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatWmv3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormatWvc1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormatWvc1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormatWvc1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoFormat420O(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoFormat420O(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoFormat420O(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAdts(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAdts(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAdts(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAlac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAlac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAlac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAmrNB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAmrNB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAmrNB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAmrWB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAmrWB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAmrWB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatAmrWP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatAmrWP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatAmrWP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatDolbyAC3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatDolbyAC3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatDolbyAC3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatDolbyAC3Spdif(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatDolbyAC3Spdif(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatDolbyAC3Spdif(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatDolbyDDPlus(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatDolbyDDPlus(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatDolbyDDPlus(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatDrm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatDrm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatDrm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatDts(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatDts(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatDts(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatFlac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatFlac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatFlac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatFloat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatFloat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatFloat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatMP3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatMP3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatMP3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatMPeg(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatMPeg(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatMPeg(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatMsp1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatMsp1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatMsp1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatOpus(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatOpus(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatOpus(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatPcm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatPcm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatPcm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatWmaSpdif(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatWmaSpdif(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatWmaSpdif(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatWMAudioLossless(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatWMAudioLossless(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatWMAudioLossless(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatWMAudioV8(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatWMAudioV8(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatWMAudioV8(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFormatWMAudioV9(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioFormatWMAudioV9(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioFormatWMAudioV9(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1470,57 +1470,57 @@ pub const ICodecSubtypesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_VideoFormatDV25: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDV50: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDvc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDvh1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDvhD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDvsd: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatDvsl: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatH263: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatH264: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatH265: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatH264ES: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatHevc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatHevcES: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatM4S2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMjpg: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMP43: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMP4S: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMP4V: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMpeg2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatVP80: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatVP90: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMpg1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMss1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatMss2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatWmv1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatWmv2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatWmv3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormatWvc1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoFormat420O: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAdts: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAlac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAmrNB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAmrWB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatAmrWP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatDolbyAC3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatDolbyAC3Spdif: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatDolbyDDPlus: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatDrm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatDts: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatFlac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatFloat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatMP3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatMPeg: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatMsp1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatOpus: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatPcm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatWmaSpdif: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatWMAudioLossless: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatWMAudioV8: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AudioFormatWMAudioV9: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDV25: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDV50: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDvc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDvh1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDvhD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDvsd: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatDvsl: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatH263: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatH264: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatH265: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatH264ES: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatHevc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatHevcES: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatM4S2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMjpg: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMP43: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMP4S: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMP4V: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMpeg2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatVP80: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatVP90: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMpg1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMss1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatMss2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatWmv1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatWmv2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatWmv3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormatWvc1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoFormat420O: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAdts: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAlac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAmrNB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAmrWB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatAmrWP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatDolbyAC3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatDolbyAC3Spdif: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatDolbyDDPlus: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatDrm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatDts: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatFlac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatFloat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatMP3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatMPeg: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatMsp1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatOpus: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatPcm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatWmaSpdif: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatWMAudioLossless: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatWMAudioV8: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFormatWMAudioV9: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataCue = extern struct {
@@ -1931,13 +1931,13 @@ pub const IMediaBinder = extern struct {
         const _c = self.vtable.remove_Binding(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Token(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Token(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1961,8 +1961,8 @@ pub const IMediaBinder = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         add_Binding: *const fn(self: *anyopaque, handler: *TypedEventHandler(MediaBinder,MediaBindingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Binding: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_Token: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Token: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Token: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Token: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: **MediaSource) callconv(.winapi) HRESULT,
     };
 };
@@ -1994,11 +1994,11 @@ pub const IMediaBindingEventArgs = extern struct {
         const _c = self.vtable.SetUri(@ptrCast(self), uri);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetStream(self: *@This(), stream: *IRandomAccessStream, contentType: HSTRING) core.HResult!void {
+    pub fn SetStream(self: *@This(), stream: *IRandomAccessStream, contentType: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStream(@ptrCast(self), stream, contentType);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: HSTRING) core.HResult!void {
+    pub fn SetStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStreamReference(@ptrCast(self), stream, contentType);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2019,8 +2019,8 @@ pub const IMediaBindingEventArgs = extern struct {
         get_MediaBinder: *const fn(self: *anyopaque, _r: **MediaBinder) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
         SetUri: *const fn(self: *anyopaque, uri: *Uri) callconv(.winapi) HRESULT,
-        SetStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, contentType: HSTRING) callconv(.winapi) HRESULT,
-        SetStreamReference: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, contentType: HSTRING) callconv(.winapi) HRESULT,
+        SetStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, contentType: ?HSTRING) callconv(.winapi) HRESULT,
+        SetStreamReference: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, contentType: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaBindingEventArgs2 = extern struct {
@@ -2092,12 +2092,12 @@ pub const IMediaCue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2118,8 +2118,8 @@ pub const IMediaCue = extern struct {
         get_StartTime: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_Duration: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCueEventArgs = extern struct {
@@ -2502,13 +2502,13 @@ pub const IMediaSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStream(self: *@This(), stream: *IRandomAccessStream, contentType: HSTRING) core.HResult!*MediaSource {
+    pub fn CreateFromStream(self: *@This(), stream: *IRandomAccessStream, contentType: ?HSTRING) core.HResult!*MediaSource {
         var _r: *MediaSource = undefined;
         const _c = self.vtable.CreateFromStream(@ptrCast(self), stream, contentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: HSTRING) core.HResult!*MediaSource {
+    pub fn CreateFromStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: ?HSTRING) core.HResult!*MediaSource {
         var _r: *MediaSource = undefined;
         const _c = self.vtable.CreateFromStreamReference(@ptrCast(self), stream, contentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2537,8 +2537,8 @@ pub const IMediaSourceStatics = extern struct {
         CreateFromMseStreamSource: *const fn(self: *anyopaque, mediaSource: *MseStreamSource, _r: **MediaSource) callconv(.winapi) HRESULT,
         CreateFromIMediaSource: *const fn(self: *anyopaque, mediaSource: *IMediaSource, _r: **MediaSource) callconv(.winapi) HRESULT,
         CreateFromStorageFile: *const fn(self: *anyopaque, file: *IStorageFile, _r: **MediaSource) callconv(.winapi) HRESULT,
-        CreateFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, contentType: HSTRING, _r: **MediaSource) callconv(.winapi) HRESULT,
-        CreateFromStreamReference: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, contentType: HSTRING, _r: **MediaSource) callconv(.winapi) HRESULT,
+        CreateFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, contentType: ?HSTRING, _r: **MediaSource) callconv(.winapi) HRESULT,
+        CreateFromStreamReference: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, contentType: ?HSTRING, _r: **MediaSource) callconv(.winapi) HRESULT,
         CreateFromUri: *const fn(self: *anyopaque, uri: *Uri, _r: **MediaSource) callconv(.winapi) HRESULT,
     };
 };
@@ -2619,22 +2619,22 @@ pub const IMediaStreamDescriptor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2652,20 +2652,20 @@ pub const IMediaStreamDescriptor = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsSelected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaStreamDescriptor2 = extern struct {
     vtable: *const VTable,
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2682,8 +2682,8 @@ pub const IMediaStreamDescriptor2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaStreamSample = extern struct {
@@ -3518,14 +3518,14 @@ pub const IMediaStreamSourceSwitchStreamsRequestedEventArgs = extern struct {
 };
 pub const IMediaTrack = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3536,12 +3536,12 @@ pub const IMediaTrack = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3558,11 +3558,11 @@ pub const IMediaTrack = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TrackKind: *const fn(self: *anyopaque, _r: *MediaTrackKind) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMseSourceBuffer = extern struct {
@@ -3835,7 +3835,7 @@ pub const IMseStreamSource = extern struct {
         const _c = self.vtable.put_Duration(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddSourceBuffer(self: *@This(), mimeType: HSTRING) core.HResult!*MseSourceBuffer {
+    pub fn AddSourceBuffer(self: *@This(), mimeType: ?HSTRING) core.HResult!*MseSourceBuffer {
         var _r: *MseSourceBuffer = undefined;
         const _c = self.vtable.AddSourceBuffer(@ptrCast(self), mimeType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3872,7 +3872,7 @@ pub const IMseStreamSource = extern struct {
         get_ReadyState: *const fn(self: *anyopaque, _r: *MseReadyState) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
         put_Duration: *const fn(self: *anyopaque, value: *IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        AddSourceBuffer: *const fn(self: *anyopaque, mimeType: HSTRING, _r: **MseSourceBuffer) callconv(.winapi) HRESULT,
+        AddSourceBuffer: *const fn(self: *anyopaque, mimeType: ?HSTRING, _r: **MseSourceBuffer) callconv(.winapi) HRESULT,
         RemoveSourceBuffer: *const fn(self: *anyopaque, buffer: *MseSourceBuffer) callconv(.winapi) HRESULT,
         EndOfStream: *const fn(self: *anyopaque, status: MseEndOfStreamStatus) callconv(.winapi) HRESULT,
     };
@@ -3907,7 +3907,7 @@ pub const IMseStreamSource2 = extern struct {
 };
 pub const IMseStreamSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsContentTypeSupported(self: *@This(), contentType: HSTRING) core.HResult!bool {
+    pub fn IsContentTypeSupported(self: *@This(), contentType: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContentTypeSupported(@ptrCast(self), contentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3925,7 +3925,7 @@ pub const IMseStreamSourceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsContentTypeSupported: *const fn(self: *anyopaque, contentType: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsContentTypeSupported: *const fn(self: *anyopaque, contentType: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ISceneAnalysisEffect = extern struct {
@@ -4093,13 +4093,13 @@ pub const ISingleSelectMediaTrackList = extern struct {
 };
 pub const ISpeechCue = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4135,8 +4135,8 @@ pub const ISpeechCue = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_StartPositionInInput: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
         put_StartPositionInInput: *const fn(self: *anyopaque, value: *IReference(i32)) callconv(.winapi) HRESULT,
         get_EndPositionInInput: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
@@ -4246,8 +4246,8 @@ pub const ITimedMetadataTrack = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDispatchType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDispatchType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DispatchType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4281,7 +4281,7 @@ pub const ITimedMetadataTrack = extern struct {
         get_Cues: *const fn(self: *anyopaque, _r: **IVectorView(IMediaCue)) callconv(.winapi) HRESULT,
         get_ActiveCues: *const fn(self: *anyopaque, _r: **IVectorView(IMediaCue)) callconv(.winapi) HRESULT,
         get_TimedMetadataKind: *const fn(self: *anyopaque, _r: *TimedMetadataKind) callconv(.winapi) HRESULT,
-        get_DispatchType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DispatchType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         AddCue: *const fn(self: *anyopaque, cue: *IMediaCue) callconv(.winapi) HRESULT,
         RemoveCue: *const fn(self: *anyopaque, cue: *IMediaCue) callconv(.winapi) HRESULT,
     };
@@ -4294,8 +4294,8 @@ pub const ITimedMetadataTrack2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4313,7 +4313,7 @@ pub const ITimedMetadataTrack2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PlaybackItem: *const fn(self: *anyopaque, _r: **MediaPlaybackItem) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedMetadataTrackError = extern struct {
@@ -4348,7 +4348,7 @@ pub const ITimedMetadataTrackError = extern struct {
 };
 pub const ITimedMetadataTrackFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), id: HSTRING, language: HSTRING, kind: TimedMetadataKind) core.HResult!*TimedMetadataTrack {
+    pub fn Create(self: *@This(), id: ?HSTRING, language: ?HSTRING, kind: TimedMetadataKind) core.HResult!*TimedMetadataTrack {
         var _r: *TimedMetadataTrack = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, language, kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4366,7 +4366,7 @@ pub const ITimedMetadataTrackFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, id: HSTRING, language: HSTRING, kind: TimedMetadataKind, _r: **TimedMetadataTrack) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, id: ?HSTRING, language: ?HSTRING, kind: TimedMetadataKind, _r: **TimedMetadataTrack) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedMetadataTrackFailedEventArgs = extern struct {
@@ -4516,13 +4516,13 @@ pub const ITimedTextCue = extern struct {
 };
 pub const ITimedTextLine = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4544,20 +4544,20 @@ pub const ITimedTextLine = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Subformats: *const fn(self: *anyopaque, _r: **IVector(TimedTextSubformat)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextRegion = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4683,8 +4683,8 @@ pub const ITimedTextRegion = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Position: *const fn(self: *anyopaque, _r: *TimedTextPoint) callconv(.winapi) HRESULT,
         put_Position: *const fn(self: *anyopaque, value: TimedTextPoint) callconv(.winapi) HRESULT,
         get_Extent: *const fn(self: *anyopaque, _r: *TimedTextSize) callconv(.winapi) HRESULT,
@@ -4711,13 +4711,13 @@ pub const ITimedTextRegion = extern struct {
 };
 pub const ITimedTextRuby = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4763,8 +4763,8 @@ pub const ITimedTextRuby = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Position: *const fn(self: *anyopaque, _r: *TimedTextRubyPosition) callconv(.winapi) HRESULT,
         put_Position: *const fn(self: *anyopaque, value: TimedTextRubyPosition) callconv(.winapi) HRESULT,
         get_Align: *const fn(self: *anyopaque, _r: *TimedTextRubyAlign) callconv(.winapi) HRESULT,
@@ -4845,13 +4845,13 @@ pub const ITimedTextSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
         const _c = self.vtable.CreateFromStreamWithDefaultLanguage(@ptrCast(self), stream, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromUriWithDefaultLanguage(self: *@This(), uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithDefaultLanguage(self: *@This(), uri: *Uri, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
         const _c = self.vtable.CreateFromUriWithDefaultLanguage(@ptrCast(self), uri, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4871,8 +4871,8 @@ pub const ITimedTextSourceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **TimedTextSource) callconv(.winapi) HRESULT,
         CreateFromUri: *const fn(self: *anyopaque, uri: *Uri, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromStreamWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromUriWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromStreamWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, defaultLanguage: ?HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromUriWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, defaultLanguage: ?HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextSourceStatics2 = extern struct {
@@ -4889,13 +4889,13 @@ pub const ITimedTextSourceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamWithIndexWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithIndexWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
         const _c = self.vtable.CreateFromStreamWithIndexWithDefaultLanguage(@ptrCast(self), stream, indexStream, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromUriWithIndexWithDefaultLanguage(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithIndexWithDefaultLanguage(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
         const _c = self.vtable.CreateFromUriWithIndexWithDefaultLanguage(@ptrCast(self), uri, indexUri, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4915,29 +4915,29 @@ pub const ITimedTextSourceStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromStreamWithIndex: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, _r: **TimedTextSource) callconv(.winapi) HRESULT,
         CreateFromUriWithIndex: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromStreamWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromUriWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromStreamWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: ?HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromUriWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: ?HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextStyle = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFontFamily(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FontFamily(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFontFamily(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFontFamily(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FontFamily(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5053,10 +5053,10 @@ pub const ITimedTextStyle = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FontFamily: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FontFamily: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FontFamily: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FontFamily: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FontSize: *const fn(self: *anyopaque, _r: *TimedTextDouble) callconv(.winapi) HRESULT,
         put_FontSize: *const fn(self: *anyopaque, value: TimedTextDouble) callconv(.winapi) HRESULT,
         get_FontWeight: *const fn(self: *anyopaque, _r: *TimedTextWeight) callconv(.winapi) HRESULT,
@@ -5412,8 +5412,8 @@ pub const IVideoTrack = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5440,7 +5440,7 @@ pub const IVideoTrack = extern struct {
         remove_OpenFailed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         GetEncodingProperties: *const fn(self: *anyopaque, _r: **VideoEncodingProperties) callconv(.winapi) HRESULT,
         get_PlaybackItem: *const fn(self: *anyopaque, _r: **MediaPlaybackItem) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportInfo: *const fn(self: *anyopaque, _r: **VideoTrackSupportInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -5547,13 +5547,13 @@ pub const ImageCue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5642,11 +5642,11 @@ pub const MediaBinder = extern struct {
         const this: *IMediaBinder = @ptrCast(self);
         return try this.removeBinding(token);
     }
-    pub fn getToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaBinder = @ptrCast(self);
         return try this.getToken();
     }
-    pub fn putToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaBinder = @ptrCast(self);
         return try this.putToken(value);
     }
@@ -5690,11 +5690,11 @@ pub const MediaBindingEventArgs = extern struct {
         const this: *IMediaBindingEventArgs = @ptrCast(self);
         return try this.SetUri(uri);
     }
-    pub fn SetStream(self: *@This(), stream: *IRandomAccessStream, contentType: HSTRING) core.HResult!void {
+    pub fn SetStream(self: *@This(), stream: *IRandomAccessStream, contentType: ?HSTRING) core.HResult!void {
         const this: *IMediaBindingEventArgs = @ptrCast(self);
         return try this.SetStream(stream, contentType);
     }
-    pub fn SetStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: HSTRING) core.HResult!void {
+    pub fn SetStreamReference(self: *@This(), stream: *IRandomAccessStreamReference, contentType: ?HSTRING) core.HResult!void {
         const this: *IMediaBindingEventArgs = @ptrCast(self);
         return try this.SetStreamReference(stream, contentType);
     }
@@ -5863,11 +5863,11 @@ pub const MediaSource = extern struct {
         const _f = try @This()._IMediaSourceStaticsCache.get();
         return try _f.CreateFromStorageFile(file);
     }
-    pub fn CreateFromStream(stream: *IRandomAccessStream, contentType: HSTRING) core.HResult!*MediaSource {
+    pub fn CreateFromStream(stream: *IRandomAccessStream, contentType: ?HSTRING) core.HResult!*MediaSource {
         const _f = try @This()._IMediaSourceStaticsCache.get();
         return try _f.CreateFromStream(stream, contentType);
     }
-    pub fn CreateFromStreamReference(stream: *IRandomAccessStreamReference, contentType: HSTRING) core.HResult!*MediaSource {
+    pub fn CreateFromStreamReference(stream: *IRandomAccessStreamReference, contentType: ?HSTRING) core.HResult!*MediaSource {
         const _f = try @This()._IMediaSourceStaticsCache.get();
         return try _f.CreateFromStreamReference(stream, contentType);
     }
@@ -6674,7 +6674,7 @@ pub const MseStreamSource = extern struct {
         const this: *IMseStreamSource = @ptrCast(self);
         return try this.putDuration(value);
     }
-    pub fn AddSourceBuffer(self: *@This(), mimeType: HSTRING) core.HResult!*MseSourceBuffer {
+    pub fn AddSourceBuffer(self: *@This(), mimeType: ?HSTRING) core.HResult!*MseSourceBuffer {
         const this: *IMseStreamSource = @ptrCast(self);
         return try this.AddSourceBuffer(mimeType);
     }
@@ -6705,7 +6705,7 @@ pub const MseStreamSource = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMseStreamSource.IID)));
     }
-    pub fn IsContentTypeSupported(contentType: HSTRING) core.HResult!bool {
+    pub fn IsContentTypeSupported(contentType: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IMseStreamSourceStaticsCache.get();
         return try _f.IsContentTypeSupported(contentType);
     }
@@ -6757,7 +6757,7 @@ pub const SceneAnalysisEffect = extern struct {
 };
 pub const SceneAnalysisEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -6789,7 +6789,7 @@ pub const SceneAnalysisEffectFrame = extern struct {
         const this: *ISceneAnalysisEffectFrame = @ptrCast(self);
         return try this.getHighDynamicRange();
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrame = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6892,11 +6892,11 @@ pub const SceneAnalyzedEventArgs = extern struct {
 };
 pub const SpeechCue = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechCue = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISpeechCue = @ptrCast(self);
         return try this.putText(value);
     }
@@ -6940,13 +6940,13 @@ pub const SpeechCue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6990,13 +6990,13 @@ pub const TimedMetadataStreamDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7006,19 +7006,19 @@ pub const TimedMetadataStreamDescriptor = extern struct {
         const this: *IMediaStreamDescriptor = @ptrCast(self);
         return try this.getIsSelected();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaStreamDescriptor = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaStreamDescriptor = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaStreamDescriptor = @ptrCast(self);
         return try this.putLanguage(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaStreamDescriptor = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -7074,7 +7074,7 @@ pub const TimedMetadataTrack = extern struct {
         const this: *ITimedMetadataTrack = @ptrCast(self);
         return try this.getTimedMetadataKind();
     }
-    pub fn getDispatchType(self: *@This()) core.HResult!HSTRING {
+    pub fn getDispatchType(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedMetadataTrack = @ptrCast(self);
         return try this.getDispatchType();
     }
@@ -7086,13 +7086,13 @@ pub const TimedMetadataTrack = extern struct {
         const this: *ITimedMetadataTrack = @ptrCast(self);
         return try this.RemoveCue(cue);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7104,13 +7104,13 @@ pub const TimedMetadataTrack = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrackKind();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7122,7 +7122,7 @@ pub const TimedMetadataTrack = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimedMetadataTrack2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataTrack2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7131,7 +7131,7 @@ pub const TimedMetadataTrack = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(id: HSTRING, language: HSTRING, kind: TimedMetadataKind) core.HResult!*TimedMetadataTrack {
+    pub fn Create(id: ?HSTRING, language: ?HSTRING, kind: TimedMetadataKind) core.HResult!*TimedMetadataTrack {
         const _f = try @This()._ITimedMetadataTrackFactoryCache.get();
         return try _f.Create(id, language, kind);
     }
@@ -7269,13 +7269,13 @@ pub const TimedTextCue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7315,11 +7315,11 @@ pub const TimedTextFontStyle = enum(i32) {
 };
 pub const TimedTextLine = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedTextLine = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimedTextLine = @ptrCast(self);
         return try this.putText(value);
     }
@@ -7360,11 +7360,11 @@ pub const TimedTextPoint = extern struct {
 };
 pub const TimedTextRegion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedTextRegion = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimedTextRegion = @ptrCast(self);
         return try this.putName(value);
     }
@@ -7472,11 +7472,11 @@ pub const TimedTextRegion = extern struct {
 };
 pub const TimedTextRuby = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedTextRuby = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimedTextRuby = @ptrCast(self);
         return try this.putText(value);
     }
@@ -7560,11 +7560,11 @@ pub const TimedTextSource = extern struct {
         const _f = try @This()._ITimedTextSourceStatics2Cache.get();
         return try _f.CreateFromUriWithIndex(uri, indexUri);
     }
-    pub fn CreateFromStreamWithIndexWithDefaultLanguage(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithIndexWithDefaultLanguage(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         const _f = try @This()._ITimedTextSourceStatics2Cache.get();
         return try _f.CreateFromStreamWithIndexWithDefaultLanguage(stream, indexStream, defaultLanguage);
     }
-    pub fn CreateFromUriWithIndexWithDefaultLanguage(uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithIndexWithDefaultLanguage(uri: *Uri, indexUri: *Uri, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         const _f = try @This()._ITimedTextSourceStatics2Cache.get();
         return try _f.CreateFromUriWithIndexWithDefaultLanguage(uri, indexUri, defaultLanguage);
     }
@@ -7576,11 +7576,11 @@ pub const TimedTextSource = extern struct {
         const _f = try @This()._ITimedTextSourceStaticsCache.get();
         return try _f.CreateFromUri(uri);
     }
-    pub fn CreateFromStreamWithDefaultLanguage(stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithDefaultLanguage(stream: *IRandomAccessStream, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         const _f = try @This()._ITimedTextSourceStaticsCache.get();
         return try _f.CreateFromStreamWithDefaultLanguage(stream, defaultLanguage);
     }
-    pub fn CreateFromUriWithDefaultLanguage(uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithDefaultLanguage(uri: *Uri, defaultLanguage: ?HSTRING) core.HResult!*TimedTextSource {
         const _f = try @This()._ITimedTextSourceStaticsCache.get();
         return try _f.CreateFromUriWithDefaultLanguage(uri, defaultLanguage);
     }
@@ -7610,19 +7610,19 @@ pub const TimedTextSourceResolveResultEventArgs = extern struct {
 };
 pub const TimedTextStyle = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedTextStyle = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimedTextStyle = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getFontFamily(self: *@This()) core.HResult!HSTRING {
+    pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimedTextStyle = @ptrCast(self);
         return try this.getFontFamily();
     }
-    pub fn putFontFamily(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFontFamily(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimedTextStyle = @ptrCast(self);
         return try this.putFontFamily(value);
     }
@@ -7901,7 +7901,7 @@ pub const VideoStabilizationEffect = extern struct {
 };
 pub const VideoStabilizationEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -7952,37 +7952,37 @@ pub const VideoStreamDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putName(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8010,11 +8010,11 @@ pub const VideoStreamDescriptor = extern struct {
 };
 pub const VideoTrack = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -8022,11 +8022,11 @@ pub const VideoTrack = extern struct {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getTrackKind();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaTrack = @ptrCast(self);
         return try this.getLabel();
     }
@@ -8054,7 +8054,7 @@ pub const VideoTrack = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVideoTrack = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

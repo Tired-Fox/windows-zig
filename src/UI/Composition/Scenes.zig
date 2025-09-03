@@ -1103,25 +1103,25 @@ pub const SceneMesh = extern struct {
 pub const SceneMeshMaterialAttributeMap = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
+        var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,SceneAttributeSemantic) {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,SceneAttributeSemantic) {
+        var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
+        var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,SceneAttributeSemantic)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,SceneAttributeSemantic)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,SceneAttributeSemantic)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,SceneAttributeSemantic)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

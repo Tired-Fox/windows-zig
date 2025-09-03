@@ -1,20 +1,20 @@
 // ----- This code is automatically generated -----
 pub const IKnownPerceptionFrameKindStatics = extern struct {
     vtable: *const VTable,
-    pub fn getColor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getColor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDepth(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDepth(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Depth(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInfrared(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInfrared(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Infrared(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31,15 +31,15 @@ pub const IKnownPerceptionFrameKindStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Color: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Depth: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Infrared: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Color: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Depth: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Infrared: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionControlGroup = extern struct {
     vtable: *const VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FrameProviderIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -56,12 +56,12 @@ pub const IPerceptionControlGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FrameProviderIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_FrameProviderIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionControlGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), ids: *IIterable(HSTRING)) core.HResult!*PerceptionControlGroup {
+    pub fn Create(self: *@This(), ids: *IIterable(?HSTRING)) core.HResult!*PerceptionControlGroup {
         var _r: *PerceptionControlGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ids, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -79,13 +79,13 @@ pub const IPerceptionControlGroupFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, ids: *IIterable(HSTRING), _r: **PerceptionControlGroup) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, ids: *IIterable(?HSTRING), _r: **PerceptionControlGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionCorrelation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -114,14 +114,14 @@ pub const IPerceptionCorrelation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TargetId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Position: *const fn(self: *anyopaque, _r: *Vector3) callconv(.winapi) HRESULT,
         get_Orientation: *const fn(self: *anyopaque, _r: *Quaternion) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionCorrelationFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), targetId: HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
+    pub fn Create(self: *@This(), targetId: ?HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
         var _r: *PerceptionCorrelation = undefined;
         const _c = self.vtable.Create(@ptrCast(self), targetId, position, orientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -139,7 +139,7 @@ pub const IPerceptionCorrelationFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, targetId: HSTRING, position: Vector3, orientation: Quaternion, _r: **PerceptionCorrelation) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, targetId: ?HSTRING, position: Vector3, orientation: Quaternion, _r: **PerceptionCorrelation) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionCorrelationGroup = extern struct {
@@ -190,8 +190,8 @@ pub const IPerceptionCorrelationGroupFactory = extern struct {
 };
 pub const IPerceptionFaceAuthenticationGroup = extern struct {
     vtable: *const VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FrameProviderIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -208,12 +208,12 @@ pub const IPerceptionFaceAuthenticationGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FrameProviderIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_FrameProviderIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionFaceAuthenticationGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), ids: *IIterable(HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
+    pub fn Create(self: *@This(), ids: *IIterable(?HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
         var _r: *PerceptionFaceAuthenticationGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ids, startHandler, stopHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -231,7 +231,7 @@ pub const IPerceptionFaceAuthenticationGroupFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, ids: *IIterable(HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler, _r: **PerceptionFaceAuthenticationGroup) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, ids: *IIterable(?HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler, _r: **PerceptionFaceAuthenticationGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionFrame = extern struct {
@@ -330,43 +330,43 @@ pub const IPerceptionFrameProvider = extern struct {
 };
 pub const IPerceptionFrameProviderInfo = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDeviceKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDeviceKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DeviceKind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrameKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrameKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrameKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFrameKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrameKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FrameKind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -392,14 +392,14 @@ pub const IPerceptionFrameProviderInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DeviceKind: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FrameKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FrameKind: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DeviceKind: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FrameKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FrameKind: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Hidden: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Hidden: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
@@ -495,8 +495,8 @@ pub const IPerceptionFrameProviderManagerServiceStatics = extern struct {
 };
 pub const IPerceptionPropertyChangeRequest = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -535,7 +535,7 @@ pub const IPerceptionPropertyChangeRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Value: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *PerceptionFrameSourcePropertyChangeStatus) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: PerceptionFrameSourcePropertyChangeStatus) callconv(.winapi) HRESULT,
@@ -600,15 +600,15 @@ pub const KnownPerceptionFrameKind = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColor() core.HResult!HSTRING {
+    pub fn getColor() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getColor();
     }
-    pub fn getDepth() core.HResult!HSTRING {
+    pub fn getDepth() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getDepth();
     }
-    pub fn getInfrared() core.HResult!HSTRING {
+    pub fn getInfrared() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameKindStaticsCache.get();
         return try _f.getInfrared();
     }
@@ -618,14 +618,14 @@ pub const KnownPerceptionFrameKind = extern struct {
 };
 pub const PerceptionControlGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPerceptionControlGroup = @ptrCast(self);
         return try this.getFrameProviderIds();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(ids: *IIterable(HSTRING)) core.HResult!*PerceptionControlGroup {
+    pub fn Create(ids: *IIterable(?HSTRING)) core.HResult!*PerceptionControlGroup {
         const _f = try @This()._IPerceptionControlGroupFactoryCache.get();
         return try _f.Create(ids);
     }
@@ -638,7 +638,7 @@ pub const PerceptionControlGroup = extern struct {
 };
 pub const PerceptionCorrelation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionCorrelation = @ptrCast(self);
         return try this.getTargetId();
     }
@@ -653,7 +653,7 @@ pub const PerceptionCorrelation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(targetId: HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
+    pub fn Create(targetId: ?HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
         const _f = try @This()._IPerceptionCorrelationFactoryCache.get();
         return try _f.Create(targetId, position, orientation);
     }
@@ -686,14 +686,14 @@ pub const PerceptionCorrelationGroup = extern struct {
 };
 pub const PerceptionFaceAuthenticationGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPerceptionFaceAuthenticationGroup = @ptrCast(self);
         return try this.getFrameProviderIds();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(ids: *IIterable(HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
+    pub fn Create(ids: *IIterable(?HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
         const _f = try @This()._IPerceptionFaceAuthenticationGroupFactoryCache.get();
         return try _f.Create(ids, startHandler, stopHandler);
     }
@@ -730,35 +730,35 @@ pub const PerceptionFrame = extern struct {
 };
 pub const PerceptionFrameProviderInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.getDeviceKind();
     }
-    pub fn putDeviceKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDeviceKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.putDeviceKind(value);
     }
-    pub fn getFrameKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrameKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.getFrameKind();
     }
-    pub fn putFrameKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrameKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.putFrameKind(value);
     }
@@ -835,7 +835,7 @@ pub const PerceptionFrameProviderManagerService = extern struct {
 };
 pub const PerceptionPropertyChangeRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionPropertyChangeRequest = @ptrCast(self);
         return try this.getName();
     }

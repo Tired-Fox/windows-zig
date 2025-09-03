@@ -23,20 +23,20 @@ pub const ISearchSuggestion = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDetailText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDetailText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetailText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -47,8 +47,8 @@ pub const ISearchSuggestion = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getImageAlternateText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getImageAlternateText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ImageAlternateText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -66,11 +66,11 @@ pub const ISearchSuggestion = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *SearchSuggestionKind) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DetailText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DetailText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Image: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_ImageAlternateText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ImageAlternateText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchSuggestionManager = extern struct {
@@ -85,13 +85,13 @@ pub const ISearchSuggestionManager = extern struct {
         const _c = self.vtable.put_SearchHistoryEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SearchHistoryContext(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SearchHistoryContext(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -99,15 +99,15 @@ pub const ISearchSuggestionManager = extern struct {
         const _c = self.vtable.SetLocalContentSuggestionSettings(@ptrCast(self), settings);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetQuery(self: *@This(), queryText: HSTRING) core.HResult!void {
+    pub fn SetQuery(self: *@This(), queryText: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetQuery(@ptrCast(self), queryText);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetQueryWithLanguage(self: *@This(), queryText: HSTRING, language: HSTRING) core.HResult!void {
+    pub fn SetQueryWithLanguage(self: *@This(), queryText: ?HSTRING, language: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetQueryWithLanguage(@ptrCast(self), queryText, language);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
+    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: ?HSTRING, language: ?HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
         const _c = self.vtable.SetQueryWithLanguageAndLinguisticDetails(@ptrCast(self), queryText, language, linguisticDetails);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -117,11 +117,11 @@ pub const ISearchSuggestionManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddToHistory(self: *@This(), queryText: HSTRING) core.HResult!void {
+    pub fn AddToHistory(self: *@This(), queryText: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddToHistory(@ptrCast(self), queryText);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddToHistoryWithLanguage(self: *@This(), queryText: HSTRING, language: HSTRING) core.HResult!void {
+    pub fn AddToHistoryWithLanguage(self: *@This(), queryText: ?HSTRING, language: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddToHistoryWithLanguage(@ptrCast(self), queryText, language);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -163,15 +163,15 @@ pub const ISearchSuggestionManager = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SearchHistoryEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_SearchHistoryEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SearchHistoryContext: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SearchHistoryContext: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetLocalContentSuggestionSettings: *const fn(self: *anyopaque, settings: *LocalContentSuggestionSettings) callconv(.winapi) HRESULT,
-        SetQuery: *const fn(self: *anyopaque, queryText: HSTRING) callconv(.winapi) HRESULT,
-        SetQueryWithLanguage: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING) callconv(.winapi) HRESULT,
-        SetQueryWithLanguageAndLinguisticDetails: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
+        SetQuery: *const fn(self: *anyopaque, queryText: ?HSTRING) callconv(.winapi) HRESULT,
+        SetQueryWithLanguage: *const fn(self: *anyopaque, queryText: ?HSTRING, language: ?HSTRING) callconv(.winapi) HRESULT,
+        SetQueryWithLanguageAndLinguisticDetails: *const fn(self: *anyopaque, queryText: ?HSTRING, language: ?HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
         get_Suggestions: *const fn(self: *anyopaque, _r: **IObservableVector(SearchSuggestion)) callconv(.winapi) HRESULT,
-        AddToHistory: *const fn(self: *anyopaque, queryText: HSTRING) callconv(.winapi) HRESULT,
-        AddToHistoryWithLanguage: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING) callconv(.winapi) HRESULT,
+        AddToHistory: *const fn(self: *anyopaque, queryText: ?HSTRING) callconv(.winapi) HRESULT,
+        AddToHistoryWithLanguage: *const fn(self: *anyopaque, queryText: ?HSTRING, language: ?HSTRING) callconv(.winapi) HRESULT,
         ClearHistory: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         add_SuggestionsRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(SearchSuggestionManager,SearchSuggestionsRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SuggestionsRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -181,14 +181,14 @@ pub const ISearchSuggestionManager = extern struct {
 };
 pub const ISearchSuggestionsRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -217,8 +217,8 @@ pub const ISearchSuggestionsRequestedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinguisticDetails: *const fn(self: *anyopaque, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
         get_Request: *const fn(self: *anyopaque, _r: **SearchSuggestionsRequest) callconv(.winapi) HRESULT,
     };
@@ -237,15 +237,15 @@ pub const SearchSuggestion = extern struct {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getKind();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getText();
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getTag();
     }
-    pub fn getDetailText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDetailText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getDetailText();
     }
@@ -253,7 +253,7 @@ pub const SearchSuggestion = extern struct {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getImage();
     }
-    pub fn getImageAlternateText(self: *@This()) core.HResult!HSTRING {
+    pub fn getImageAlternateText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getImageAlternateText();
     }
@@ -278,11 +278,11 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.putSearchHistoryEnabled(value);
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.getSearchHistoryContext();
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.putSearchHistoryContext(value);
     }
@@ -290,15 +290,15 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetLocalContentSuggestionSettings(settings);
     }
-    pub fn SetQuery(self: *@This(), queryText: HSTRING) core.HResult!void {
+    pub fn SetQuery(self: *@This(), queryText: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetQuery(queryText);
     }
-    pub fn SetQueryWithLanguage(self: *@This(), queryText: HSTRING, language: HSTRING) core.HResult!void {
+    pub fn SetQueryWithLanguage(self: *@This(), queryText: ?HSTRING, language: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetQueryWithLanguage(queryText, language);
     }
-    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
+    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: ?HSTRING, language: ?HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetQueryWithLanguageAndLinguisticDetails(queryText, language, linguisticDetails);
     }
@@ -306,11 +306,11 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.getSuggestions();
     }
-    pub fn AddToHistory(self: *@This(), queryText: HSTRING) core.HResult!void {
+    pub fn AddToHistory(self: *@This(), queryText: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.AddToHistory(queryText);
     }
-    pub fn AddToHistoryWithLanguage(self: *@This(), queryText: HSTRING, language: HSTRING) core.HResult!void {
+    pub fn AddToHistoryWithLanguage(self: *@This(), queryText: ?HSTRING, language: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.AddToHistoryWithLanguage(queryText, language);
     }
@@ -350,11 +350,11 @@ pub const SearchSuggestionManager = extern struct {
 };
 pub const SearchSuggestionsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }

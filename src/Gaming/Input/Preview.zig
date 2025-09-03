@@ -35,11 +35,11 @@ pub const GameControllerProviderInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetParentProviderId(provider: *IGameControllerProvider) core.HResult!HSTRING {
+    pub fn GetParentProviderId(provider: *IGameControllerProvider) core.HResult!?HSTRING {
         const _f = try @This()._IGameControllerProviderInfoStaticsCache.get();
         return try _f.GetParentProviderId(provider);
     }
-    pub fn GetProviderId(provider: *IGameControllerProvider) core.HResult!HSTRING {
+    pub fn GetProviderId(provider: *IGameControllerProvider) core.HResult!?HSTRING {
         const _f = try @This()._IGameControllerProviderInfoStaticsCache.get();
         return try _f.GetProviderId(provider);
     }
@@ -70,14 +70,14 @@ pub const HeadsetOperation = enum(i32) {
 };
 pub const IGameControllerProviderInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetParentProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetParentProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetParentProviderId(@ptrCast(self), provider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetProviderId(self: *@This(), provider: *IGameControllerProvider) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetProviderId(@ptrCast(self), provider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -94,8 +94,8 @@ pub const IGameControllerProviderInfoStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetParentProviderId: *const fn(self: *anyopaque, provider: *IGameControllerProvider, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetProviderId: *const fn(self: *anyopaque, provider: *IGameControllerProvider, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetParentProviderId: *const fn(self: *anyopaque, provider: *IGameControllerProvider, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetProviderId: *const fn(self: *anyopaque, provider: *IGameControllerProvider, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILegacyGipGameControllerProvider = extern struct {
@@ -142,8 +142,8 @@ pub const ILegacyGipGameControllerProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPreferredTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getPreferredTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PreferredTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -207,7 +207,7 @@ pub const ILegacyGipGameControllerProvider = extern struct {
         get_IsFirmwareCorrupted: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsInterfaceSupported: *const fn(self: *anyopaque, interfaceId: *Guid, _r: *bool) callconv(.winapi) HRESULT,
         get_IsSyntheticDevice: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_PreferredTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_PreferredTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         ExecuteCommand: *const fn(self: *anyopaque, command: DeviceCommand) callconv(.winapi) HRESULT,
         SetHomeLedIntensity: *const fn(self: *anyopaque, intensity: u8) callconv(.winapi) HRESULT,
         GetExtendedDeviceInfo: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
@@ -232,22 +232,22 @@ pub const ILegacyGipGameControllerProviderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PairPilotToCopilot(self: *@This(), user: *User, pilotControllerProviderId: HSTRING, copilotControllerProviderId: HSTRING) core.HResult!void {
+    pub fn PairPilotToCopilot(self: *@This(), user: *User, pilotControllerProviderId: ?HSTRING, copilotControllerProviderId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PairPilotToCopilot(@ptrCast(self), user, pilotControllerProviderId, copilotControllerProviderId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ClearPairing(self: *@This(), user: *User, controllerProviderId: HSTRING) core.HResult!void {
+    pub fn ClearPairing(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearPairing(@ptrCast(self), user, controllerProviderId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn IsPilot(self: *@This(), user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn IsPilot(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.IsPilot(@ptrCast(self), user, controllerProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsCopilot(self: *@This(), user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn IsCopilot(self: *@This(), user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.IsCopilot(@ptrCast(self), user, controllerProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -266,10 +266,10 @@ pub const ILegacyGipGameControllerProviderStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FromGameController: *const fn(self: *anyopaque, controller: *IGameController, _r: **LegacyGipGameControllerProvider) callconv(.winapi) HRESULT,
         FromGameControllerProvider: *const fn(self: *anyopaque, provider: *IGameControllerProvider, _r: **LegacyGipGameControllerProvider) callconv(.winapi) HRESULT,
-        PairPilotToCopilot: *const fn(self: *anyopaque, user: *User, pilotControllerProviderId: HSTRING, copilotControllerProviderId: HSTRING) callconv(.winapi) HRESULT,
-        ClearPairing: *const fn(self: *anyopaque, user: *User, controllerProviderId: HSTRING) callconv(.winapi) HRESULT,
-        IsPilot: *const fn(self: *anyopaque, user: *User, controllerProviderId: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        IsCopilot: *const fn(self: *anyopaque, user: *User, controllerProviderId: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        PairPilotToCopilot: *const fn(self: *anyopaque, user: *User, pilotControllerProviderId: ?HSTRING, copilotControllerProviderId: ?HSTRING) callconv(.winapi) HRESULT,
+        ClearPairing: *const fn(self: *anyopaque, user: *User, controllerProviderId: ?HSTRING) callconv(.winapi) HRESULT,
+        IsPilot: *const fn(self: *anyopaque, user: *User, controllerProviderId: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        IsCopilot: *const fn(self: *anyopaque, user: *User, controllerProviderId: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const LegacyGipGameControllerProvider = extern struct {
@@ -302,7 +302,7 @@ pub const LegacyGipGameControllerProvider = extern struct {
         const this: *ILegacyGipGameControllerProvider = @ptrCast(self);
         return try this.getIsSyntheticDevice();
     }
-    pub fn getPreferredTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getPreferredTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ILegacyGipGameControllerProvider = @ptrCast(self);
         return try this.getPreferredTypes();
     }
@@ -349,19 +349,19 @@ pub const LegacyGipGameControllerProvider = extern struct {
         const _f = try @This()._ILegacyGipGameControllerProviderStaticsCache.get();
         return try _f.FromGameControllerProvider(provider);
     }
-    pub fn PairPilotToCopilot(user: *User, pilotControllerProviderId: HSTRING, copilotControllerProviderId: HSTRING) core.HResult!void {
+    pub fn PairPilotToCopilot(user: *User, pilotControllerProviderId: ?HSTRING, copilotControllerProviderId: ?HSTRING) core.HResult!void {
         const _f = try @This()._ILegacyGipGameControllerProviderStaticsCache.get();
         return try _f.PairPilotToCopilot(user, pilotControllerProviderId, copilotControllerProviderId);
     }
-    pub fn ClearPairing(user: *User, controllerProviderId: HSTRING) core.HResult!void {
+    pub fn ClearPairing(user: *User, controllerProviderId: ?HSTRING) core.HResult!void {
         const _f = try @This()._ILegacyGipGameControllerProviderStaticsCache.get();
         return try _f.ClearPairing(user, controllerProviderId);
     }
-    pub fn IsPilot(user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
+    pub fn IsPilot(user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._ILegacyGipGameControllerProviderStaticsCache.get();
         return try _f.IsPilot(user, controllerProviderId);
     }
-    pub fn IsCopilot(user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
+    pub fn IsCopilot(user: *User, controllerProviderId: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._ILegacyGipGameControllerProviderStaticsCache.get();
         return try _f.IsCopilot(user, controllerProviderId);
     }

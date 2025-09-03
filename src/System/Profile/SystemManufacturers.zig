@@ -13,8 +13,8 @@ pub const IOemSupportInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportProvider(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSupportProvider(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SupportProvider(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -33,13 +33,13 @@ pub const IOemSupportInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SupportLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_SupportAppLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_SupportProvider: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SupportProvider: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmbiosInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn getSerialNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SerialNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -56,49 +56,49 @@ pub const ISmbiosInformationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SerialNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SerialNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISystemSupportDeviceInfo = extern struct {
     vtable: *const VTable,
-    pub fn getOperatingSystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OperatingSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSystemManufacturer(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemManufacturer(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSystemProductName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemProductName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSystemSku(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemSku(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemHardwareVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemFirmwareVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -115,19 +115,19 @@ pub const ISystemSupportDeviceInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OperatingSystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SystemManufacturer: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SystemProductName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SystemSku: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SystemHardwareVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SystemFirmwareVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OperatingSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemManufacturer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemProductName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemSku: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemHardwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SystemFirmwareVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISystemSupportInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn getLocalSystemEdition(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalSystemEdition(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalSystemEdition(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -150,7 +150,7 @@ pub const ISystemSupportInfoStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalSystemEdition: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LocalSystemEdition: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OemSupportInfo: *const fn(self: *anyopaque, _r: **OemSupportInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -187,7 +187,7 @@ pub const OemSupportInfo = extern struct {
         const this: *IOemSupportInfo = @ptrCast(self);
         return try this.getSupportAppLink();
     }
-    pub fn getSupportProvider(self: *@This()) core.HResult!HSTRING {
+    pub fn getSupportProvider(self: *@This()) core.HResult!?HSTRING {
         const this: *IOemSupportInfo = @ptrCast(self);
         return try this.getSupportProvider();
     }
@@ -202,7 +202,7 @@ pub const SmbiosInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSerialNumber() core.HResult!HSTRING {
+    pub fn getSerialNumber() core.HResult!?HSTRING {
         const _f = try @This()._ISmbiosInformationStaticsCache.get();
         return try _f.getSerialNumber();
     }
@@ -212,31 +212,31 @@ pub const SmbiosInformation = extern struct {
 };
 pub const SystemSupportDeviceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOperatingSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getOperatingSystem(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getOperatingSystem();
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn getSystemManufacturer(self: *@This()) core.HResult!HSTRING {
+    pub fn getSystemManufacturer(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getSystemManufacturer();
     }
-    pub fn getSystemProductName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSystemProductName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getSystemProductName();
     }
-    pub fn getSystemSku(self: *@This()) core.HResult!HSTRING {
+    pub fn getSystemSku(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getSystemSku();
     }
-    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getSystemHardwareVersion();
     }
-    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemSupportDeviceInfo = @ptrCast(self);
         return try this.getSystemFirmwareVersion();
     }
@@ -251,7 +251,7 @@ pub const SystemSupportInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getLocalSystemEdition() core.HResult!HSTRING {
+    pub fn getLocalSystemEdition() core.HResult!?HSTRING {
         const _f = try @This()._ISystemSupportInfoStaticsCache.get();
         return try _f.getLocalSystemEdition();
     }

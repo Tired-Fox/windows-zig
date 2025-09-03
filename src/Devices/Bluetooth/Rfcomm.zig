@@ -7,8 +7,8 @@ pub const IRfcommDeviceService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getConnectionServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConnectionServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -56,7 +56,7 @@ pub const IRfcommDeviceService = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ConnectionHostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
-        get_ConnectionServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ConnectionServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ServiceId: *const fn(self: *anyopaque, _r: **RfcommServiceId) callconv(.winapi) HRESULT,
         get_ProtectionLevel: *const fn(self: *anyopaque, _r: *SocketProtectionLevel) callconv(.winapi) HRESULT,
         get_MaxProtectionLevel: *const fn(self: *anyopaque, _r: *SocketProtectionLevel) callconv(.winapi) HRESULT,
@@ -119,14 +119,14 @@ pub const IRfcommDeviceService3 = extern struct {
 };
 pub const IRfcommDeviceServiceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
         var _r: *IAsyncOperation(RfcommDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), serviceId: *RfcommServiceId) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), serviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -143,32 +143,32 @@ pub const IRfcommDeviceServiceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(RfcommDeviceService)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(RfcommDeviceService)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommDeviceServiceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelectorForBluetoothDevice(self: *@This(), bluetoothDevice: *BluetoothDevice) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDevice(self: *@This(), bluetoothDevice: *BluetoothDevice) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDevice(@ptrCast(self), bluetoothDevice, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceWithCacheMode(@ptrCast(self), bluetoothDevice, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceId(@ptrCast(self), bluetoothDevice, serviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -185,10 +185,10 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDevice: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceAndServiceId: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDevice: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceAndServiceId: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommDeviceServicesResult = extern struct {
@@ -235,8 +235,8 @@ pub const IRfcommServiceId = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn AsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.AsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -255,7 +255,7 @@ pub const IRfcommServiceId = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         AsShortId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        AsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        AsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommServiceIdStatics = extern struct {
@@ -420,7 +420,7 @@ pub const RfcommDeviceService = extern struct {
         const this: *IRfcommDeviceService = @ptrCast(self);
         return try this.getConnectionHostName();
     }
-    pub fn getConnectionServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRfcommDeviceService = @ptrCast(self);
         return try this.getConnectionServiceName();
     }
@@ -471,27 +471,27 @@ pub const RfcommDeviceService = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
         const _f = try @This()._IRfcommDeviceServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector(serviceId: *RfcommServiceId) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(serviceId: *RfcommServiceId) core.HResult!?HSTRING {
         const _f = try @This()._IRfcommDeviceServiceStaticsCache.get();
         return try _f.GetDeviceSelector(serviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDevice(bluetoothDevice: *BluetoothDevice) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDevice(bluetoothDevice: *BluetoothDevice) core.HResult!?HSTRING {
         const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDevice(bluetoothDevice);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice, cacheMode);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!?HSTRING {
         const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         const _f = try @This()._IRfcommDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
     }
@@ -529,7 +529,7 @@ pub const RfcommServiceId = extern struct {
         const this: *IRfcommServiceId = @ptrCast(self);
         return try this.AsShortId();
     }
-    pub fn AsString(self: *@This()) core.HResult!HSTRING {
+    pub fn AsString(self: *@This()) core.HResult!?HSTRING {
         const this: *IRfcommServiceId = @ptrCast(self);
         return try this.AsString();
     }

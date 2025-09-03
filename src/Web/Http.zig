@@ -17,7 +17,7 @@ pub const HttpBufferContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -35,7 +35,7 @@ pub const HttpBufferContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -81,7 +81,7 @@ pub const HttpClient = extern struct {
         const this: *IHttpClient = @ptrCast(self);
         return try this.GetInputStreamAsync(uri);
     }
-    pub fn GetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HSTRING,HttpProgress) {
+    pub fn GetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(?HSTRING,HttpProgress) {
         const this: *IHttpClient = @ptrCast(self);
         return try this.GetStringAsync(uri);
     }
@@ -165,13 +165,13 @@ pub const HttpClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySendRequestAsyncWithCompletionOption(request, completionOption);
     }
-    pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!HSTRING {
+    pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IHttpClient3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultPrivacyAnnotation();
     }
-    pub fn putDefaultPrivacyAnnotation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IHttpClient3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -183,7 +183,7 @@ pub const HttpClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -214,15 +214,15 @@ pub const HttpCompletionOption = enum(i32) {
 };
 pub const HttpCookie = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.getDomain();
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.getPath();
     }
@@ -250,15 +250,15 @@ pub const HttpCookie = extern struct {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.putSecure(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.putValue(value);
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -267,7 +267,7 @@ pub const HttpCookie = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(name: HSTRING, domain: HSTRING, path: HSTRING) core.HResult!*HttpCookie {
+    pub fn Create(name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
         const _f = try @This()._IHttpCookieFactoryCache.get();
         return try _f.Create(name, domain, path);
     }
@@ -338,7 +338,7 @@ pub const HttpFormUrlEncodedContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -356,7 +356,7 @@ pub const HttpFormUrlEncodedContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -365,7 +365,7 @@ pub const HttpFormUrlEncodedContent = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(content: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
+    pub fn Create(content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
         const _f = try @This()._IHttpFormUrlEncodedContentFactoryCache.get();
         return try _f.Create(content);
     }
@@ -404,7 +404,7 @@ pub const HttpGetBufferResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -444,7 +444,7 @@ pub const HttpGetInputStreamResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -474,7 +474,7 @@ pub const HttpGetStringResult = extern struct {
         const this: *IHttpGetStringResult = @ptrCast(self);
         return try this.getSucceeded();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpGetStringResult = @ptrCast(self);
         return try this.getValue();
     }
@@ -484,7 +484,7 @@ pub const HttpGetStringResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -498,11 +498,11 @@ pub const HttpGetStringResult = extern struct {
 };
 pub const HttpMethod = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMethod = @ptrCast(self);
         return try this.getMethod();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -511,7 +511,7 @@ pub const HttpMethod = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(method: HSTRING) core.HResult!*HttpMethod {
+    pub fn Create(method: ?HSTRING) core.HResult!*HttpMethod {
         const _f = try @This()._IHttpMethodFactoryCache.get();
         return try _f.Create(method);
     }
@@ -575,7 +575,7 @@ pub const HttpMultipartContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -599,7 +599,7 @@ pub const HttpMultipartContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -612,11 +612,11 @@ pub const HttpMultipartContent = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
-    pub fn CreateWithSubtype(subtype: HSTRING) core.HResult!*HttpMultipartContent {
+    pub fn CreateWithSubtype(subtype: ?HSTRING) core.HResult!*HttpMultipartContent {
         const _f = try @This()._IHttpMultipartContentFactoryCache.get();
         return try _f.CreateWithSubtype(subtype);
     }
-    pub fn CreateWithSubtypeAndBoundary(subtype: HSTRING, boundary: HSTRING) core.HResult!*HttpMultipartContent {
+    pub fn CreateWithSubtypeAndBoundary(subtype: ?HSTRING, boundary: ?HSTRING) core.HResult!*HttpMultipartContent {
         const _f = try @This()._IHttpMultipartContentFactoryCache.get();
         return try _f.CreateWithSubtypeAndBoundary(subtype, boundary);
     }
@@ -636,13 +636,13 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Add(content);
     }
-    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
+    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: ?HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddWithName(content, name);
     }
-    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: ?HSTRING, fileName: ?HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -664,7 +664,7 @@ pub const HttpMultipartFormDataContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -688,7 +688,7 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -701,7 +701,7 @@ pub const HttpMultipartFormDataContent = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
-    pub fn CreateWithBoundary(boundary: HSTRING) core.HResult!*HttpMultipartFormDataContent {
+    pub fn CreateWithBoundary(boundary: ?HSTRING) core.HResult!*HttpMultipartFormDataContent {
         const _f = try @This()._IHttpMultipartFormDataContentFactoryCache.get();
         return try _f.CreateWithBoundary(boundary);
     }
@@ -755,7 +755,7 @@ pub const HttpRequestMessage = extern struct {
         const this: *IHttpRequestMessage = @ptrCast(self);
         return try this.putMethod(value);
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,IInspectable) {
         const this: *IHttpRequestMessage = @ptrCast(self);
         return try this.getProperties();
     }
@@ -771,13 +771,13 @@ pub const HttpRequestMessage = extern struct {
         const this: *IHttpRequestMessage = @ptrCast(self);
         return try this.getTransportInformation();
     }
-    pub fn getPrivacyAnnotation(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IHttpRequestMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrivacyAnnotation();
     }
-    pub fn putPrivacyAnnotation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IHttpRequestMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpRequestMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -789,7 +789,7 @@ pub const HttpRequestMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -838,7 +838,7 @@ pub const HttpRequestResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -868,11 +868,11 @@ pub const HttpResponseMessage = extern struct {
         const this: *IHttpResponseMessage = @ptrCast(self);
         return try this.getIsSuccessStatusCode();
     }
-    pub fn getReasonPhrase(self: *@This()) core.HResult!HSTRING {
+    pub fn getReasonPhrase(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpResponseMessage = @ptrCast(self);
         return try this.getReasonPhrase();
     }
-    pub fn putReasonPhrase(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putReasonPhrase(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IHttpResponseMessage = @ptrCast(self);
         return try this.putReasonPhrase(value);
     }
@@ -918,7 +918,7 @@ pub const HttpResponseMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1026,7 +1026,7 @@ pub const HttpStreamContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -1044,7 +1044,7 @@ pub const HttpStreamContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1082,7 +1082,7 @@ pub const HttpStringContent = extern struct {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsInputStreamAsync();
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
         const this: *IHttpContent = @ptrCast(self);
         return try this.ReadAsStringAsync();
     }
@@ -1100,7 +1100,7 @@ pub const HttpStringContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1109,15 +1109,15 @@ pub const HttpStringContent = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromString(content: HSTRING) core.HResult!*HttpStringContent {
+    pub fn CreateFromString(content: ?HSTRING) core.HResult!*HttpStringContent {
         const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromString(content);
     }
-    pub fn CreateFromStringWithEncoding(content: HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
+    pub fn CreateFromStringWithEncoding(content: ?HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
         const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromStringWithEncoding(content, encoding);
     }
-    pub fn CreateFromStringWithEncodingAndMediaType(content: HSTRING, encoding: UnicodeEncoding, mediaType: HSTRING) core.HResult!*HttpStringContent {
+    pub fn CreateFromStringWithEncodingAndMediaType(content: ?HSTRING, encoding: UnicodeEncoding, mediaType: ?HSTRING) core.HResult!*HttpStringContent {
         const _f = try @This()._IHttpStringContentFactoryCache.get();
         return try _f.CreateFromStringWithEncodingAndMediaType(content, encoding, mediaType);
     }
@@ -1146,7 +1146,7 @@ pub const HttpTransportInformation = extern struct {
         const this: *IHttpTransportInformation = @ptrCast(self);
         return try this.getServerIntermediateCertificates();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1226,8 +1226,8 @@ pub const IHttpClient = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HSTRING,HttpProgress) {
-        var _r: *IAsyncOperationWithProgress(HSTRING,HttpProgress) = undefined;
+    pub fn GetStringAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(?HSTRING,HttpProgress) {
+        var _r: *IAsyncOperationWithProgress(?HSTRING,HttpProgress) = undefined;
         const _c = self.vtable.GetStringAsync(@ptrCast(self), uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1279,7 +1279,7 @@ pub const IHttpClient = extern struct {
         GetAsyncWithCompletionOption: *const fn(self: *anyopaque, uri: *Uri, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         GetBufferAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(IBuffer,HttpProgress)) callconv(.winapi) HRESULT,
         GetInputStreamAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(IInputStream,HttpProgress)) callconv(.winapi) HRESULT,
-        GetStringAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HSTRING,HttpProgress)) callconv(.winapi) HRESULT,
+        GetStringAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(?HSTRING,HttpProgress)) callconv(.winapi) HRESULT,
         PostAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         PutAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         SendRequestAsync: *const fn(self: *anyopaque, request: *HttpRequestMessage, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
@@ -1375,13 +1375,13 @@ pub const IHttpClient2 = extern struct {
 };
 pub const IHttpClient3 = extern struct {
     vtable: *const VTable,
-    pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultPrivacyAnnotation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDefaultPrivacyAnnotation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultPrivacyAnnotation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1397,8 +1397,8 @@ pub const IHttpClient3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DefaultPrivacyAnnotation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DefaultPrivacyAnnotation: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DefaultPrivacyAnnotation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DefaultPrivacyAnnotation: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpClientFactory = extern struct {
@@ -1450,8 +1450,8 @@ pub const IHttpContent = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(HSTRING,u64) {
-        var _r: *IAsyncOperationWithProgress(HSTRING,u64) = undefined;
+    pub fn ReadAsStringAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(?HSTRING,u64) {
+        var _r: *IAsyncOperationWithProgress(?HSTRING,u64) = undefined;
         const _c = self.vtable.ReadAsStringAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1484,27 +1484,27 @@ pub const IHttpContent = extern struct {
         BufferAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
         ReadAsBufferAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(IBuffer,u64)) callconv(.winapi) HRESULT,
         ReadAsInputStreamAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(IInputStream,u64)) callconv(.winapi) HRESULT,
-        ReadAsStringAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(HSTRING,u64)) callconv(.winapi) HRESULT,
+        ReadAsStringAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(?HSTRING,u64)) callconv(.winapi) HRESULT,
         TryComputeLength: *const fn(self: *anyopaque, length: u64, _r: *bool) callconv(.winapi) HRESULT,
         WriteToStreamAsync: *const fn(self: *anyopaque, outputStream: *IOutputStream, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpCookie = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1539,13 +1539,13 @@ pub const IHttpCookie = extern struct {
         const _c = self.vtable.put_Secure(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1561,22 +1561,22 @@ pub const IHttpCookie = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Expires: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_Expires: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_HttpOnly: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_HttpOnly: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Secure: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Secure: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpCookieFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), name: HSTRING, domain: HSTRING, path: HSTRING) core.HResult!*HttpCookie {
+    pub fn Create(self: *@This(), name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
         var _r: *HttpCookie = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, domain, path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1594,7 +1594,7 @@ pub const IHttpCookieFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, name: HSTRING, domain: HSTRING, path: HSTRING, _r: **HttpCookie) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING, _r: **HttpCookie) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpCookieManager = extern struct {
@@ -1641,7 +1641,7 @@ pub const IHttpCookieManager = extern struct {
 };
 pub const IHttpFormUrlEncodedContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), content: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
+    pub fn Create(self: *@This(), content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
         var _r: *HttpFormUrlEncodedContent = undefined;
         const _c = self.vtable.Create(@ptrCast(self), content, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1659,7 +1659,7 @@ pub const IHttpFormUrlEncodedContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, content: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **HttpFormUrlEncodedContent) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **HttpFormUrlEncodedContent) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpGetBufferResult = extern struct {
@@ -1790,8 +1790,8 @@ pub const IHttpGetStringResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1812,13 +1812,13 @@ pub const IHttpGetStringResult = extern struct {
         get_RequestMessage: *const fn(self: *anyopaque, _r: **HttpRequestMessage) callconv(.winapi) HRESULT,
         get_ResponseMessage: *const fn(self: *anyopaque, _r: **HttpResponseMessage) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMethod = extern struct {
     vtable: *const VTable,
-    pub fn getMethod(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1835,12 +1835,12 @@ pub const IHttpMethod = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Method: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Method: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMethodFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), method: HSTRING) core.HResult!*HttpMethod {
+    pub fn Create(self: *@This(), method: ?HSTRING) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.Create(@ptrCast(self), method, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1858,7 +1858,7 @@ pub const IHttpMethodFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, method: HSTRING, _r: **HttpMethod) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, method: ?HSTRING, _r: **HttpMethod) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMethodStatics = extern struct {
@@ -1949,13 +1949,13 @@ pub const IHttpMultipartContent = extern struct {
 };
 pub const IHttpMultipartContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithSubtype(self: *@This(), subtype: HSTRING) core.HResult!*HttpMultipartContent {
+    pub fn CreateWithSubtype(self: *@This(), subtype: ?HSTRING) core.HResult!*HttpMultipartContent {
         var _r: *HttpMultipartContent = undefined;
         const _c = self.vtable.CreateWithSubtype(@ptrCast(self), subtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithSubtypeAndBoundary(self: *@This(), subtype: HSTRING, boundary: HSTRING) core.HResult!*HttpMultipartContent {
+    pub fn CreateWithSubtypeAndBoundary(self: *@This(), subtype: ?HSTRING, boundary: ?HSTRING) core.HResult!*HttpMultipartContent {
         var _r: *HttpMultipartContent = undefined;
         const _c = self.vtable.CreateWithSubtypeAndBoundary(@ptrCast(self), subtype, boundary, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1973,8 +1973,8 @@ pub const IHttpMultipartContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithSubtype: *const fn(self: *anyopaque, subtype: HSTRING, _r: **HttpMultipartContent) callconv(.winapi) HRESULT,
-        CreateWithSubtypeAndBoundary: *const fn(self: *anyopaque, subtype: HSTRING, boundary: HSTRING, _r: **HttpMultipartContent) callconv(.winapi) HRESULT,
+        CreateWithSubtype: *const fn(self: *anyopaque, subtype: ?HSTRING, _r: **HttpMultipartContent) callconv(.winapi) HRESULT,
+        CreateWithSubtypeAndBoundary: *const fn(self: *anyopaque, subtype: ?HSTRING, boundary: ?HSTRING, _r: **HttpMultipartContent) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMultipartFormDataContent = extern struct {
@@ -1983,11 +1983,11 @@ pub const IHttpMultipartFormDataContent = extern struct {
         const _c = self.vtable.Add(@ptrCast(self), content);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
+    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddWithName(@ptrCast(self), content, name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: ?HSTRING, fileName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddWithNameAndFileName(@ptrCast(self), content, name, fileName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2004,13 +2004,13 @@ pub const IHttpMultipartFormDataContent = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Add: *const fn(self: *anyopaque, content: *IHttpContent) callconv(.winapi) HRESULT,
-        AddWithName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING) callconv(.winapi) HRESULT,
-        AddWithNameAndFileName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING, fileName: HSTRING) callconv(.winapi) HRESULT,
+        AddWithName: *const fn(self: *anyopaque, content: *IHttpContent, name: ?HSTRING) callconv(.winapi) HRESULT,
+        AddWithNameAndFileName: *const fn(self: *anyopaque, content: *IHttpContent, name: ?HSTRING, fileName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMultipartFormDataContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithBoundary(self: *@This(), boundary: HSTRING) core.HResult!*HttpMultipartFormDataContent {
+    pub fn CreateWithBoundary(self: *@This(), boundary: ?HSTRING) core.HResult!*HttpMultipartFormDataContent {
         var _r: *HttpMultipartFormDataContent = undefined;
         const _c = self.vtable.CreateWithBoundary(@ptrCast(self), boundary, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2028,7 +2028,7 @@ pub const IHttpMultipartFormDataContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithBoundary: *const fn(self: *anyopaque, boundary: HSTRING, _r: **HttpMultipartFormDataContent) callconv(.winapi) HRESULT,
+        CreateWithBoundary: *const fn(self: *anyopaque, boundary: ?HSTRING, _r: **HttpMultipartFormDataContent) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpRequestMessage = extern struct {
@@ -2059,8 +2059,8 @@ pub const IHttpRequestMessage = extern struct {
         const _c = self.vtable.put_Method(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,IInspectable) {
-        var _r: *IMap(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,IInspectable) {
+        var _r: *IMap(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2098,7 +2098,7 @@ pub const IHttpRequestMessage = extern struct {
         get_Headers: *const fn(self: *anyopaque, _r: **HttpRequestHeaderCollection) callconv(.winapi) HRESULT,
         get_Method: *const fn(self: *anyopaque, _r: **HttpMethod) callconv(.winapi) HRESULT,
         put_Method: *const fn(self: *anyopaque, value: *HttpMethod) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_RequestUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_RequestUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_TransportInformation: *const fn(self: *anyopaque, _r: **HttpTransportInformation) callconv(.winapi) HRESULT,
@@ -2106,13 +2106,13 @@ pub const IHttpRequestMessage = extern struct {
 };
 pub const IHttpRequestMessage2 = extern struct {
     vtable: *const VTable,
-    pub fn getPrivacyAnnotation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrivacyAnnotation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrivacyAnnotation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrivacyAnnotation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrivacyAnnotation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2128,8 +2128,8 @@ pub const IHttpRequestMessage2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrivacyAnnotation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrivacyAnnotation: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PrivacyAnnotation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrivacyAnnotation: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpRequestMessageFactory = extern struct {
@@ -2223,13 +2223,13 @@ pub const IHttpResponseMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getReasonPhrase(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getReasonPhrase(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReasonPhrase(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putReasonPhrase(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putReasonPhrase(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ReasonPhrase(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2295,8 +2295,8 @@ pub const IHttpResponseMessage = extern struct {
         put_Content: *const fn(self: *anyopaque, value: *IHttpContent) callconv(.winapi) HRESULT,
         get_Headers: *const fn(self: *anyopaque, _r: **HttpResponseHeaderCollection) callconv(.winapi) HRESULT,
         get_IsSuccessStatusCode: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_ReasonPhrase: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ReasonPhrase: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ReasonPhrase: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ReasonPhrase: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_RequestMessage: *const fn(self: *anyopaque, _r: **HttpRequestMessage) callconv(.winapi) HRESULT,
         put_RequestMessage: *const fn(self: *anyopaque, value: *HttpRequestMessage) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: *HttpResponseMessageSource) callconv(.winapi) HRESULT,
@@ -2356,19 +2356,19 @@ pub const IHttpStreamContentFactory = extern struct {
 };
 pub const IHttpStringContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromString(self: *@This(), content: HSTRING) core.HResult!*HttpStringContent {
+    pub fn CreateFromString(self: *@This(), content: ?HSTRING) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromString(@ptrCast(self), content, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStringWithEncoding(self: *@This(), content: HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
+    pub fn CreateFromStringWithEncoding(self: *@This(), content: ?HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromStringWithEncoding(@ptrCast(self), content, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStringWithEncodingAndMediaType(self: *@This(), content: HSTRING, encoding: UnicodeEncoding, mediaType: HSTRING) core.HResult!*HttpStringContent {
+    pub fn CreateFromStringWithEncodingAndMediaType(self: *@This(), content: ?HSTRING, encoding: UnicodeEncoding, mediaType: ?HSTRING) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromStringWithEncodingAndMediaType(@ptrCast(self), content, encoding, mediaType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2386,9 +2386,9 @@ pub const IHttpStringContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromString: *const fn(self: *anyopaque, content: HSTRING, _r: **HttpStringContent) callconv(.winapi) HRESULT,
-        CreateFromStringWithEncoding: *const fn(self: *anyopaque, content: HSTRING, encoding: UnicodeEncoding, _r: **HttpStringContent) callconv(.winapi) HRESULT,
-        CreateFromStringWithEncodingAndMediaType: *const fn(self: *anyopaque, content: HSTRING, encoding: UnicodeEncoding, mediaType: HSTRING, _r: **HttpStringContent) callconv(.winapi) HRESULT,
+        CreateFromString: *const fn(self: *anyopaque, content: ?HSTRING, _r: **HttpStringContent) callconv(.winapi) HRESULT,
+        CreateFromStringWithEncoding: *const fn(self: *anyopaque, content: ?HSTRING, encoding: UnicodeEncoding, _r: **HttpStringContent) callconv(.winapi) HRESULT,
+        CreateFromStringWithEncodingAndMediaType: *const fn(self: *anyopaque, content: ?HSTRING, encoding: UnicodeEncoding, mediaType: ?HSTRING, _r: **HttpStringContent) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpTransportInformation = extern struct {

@@ -7,15 +7,15 @@ pub const AddFileResult = enum(i32) {
 };
 pub const FileOpenPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddFile(self: *@This(), id: HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
+    pub fn AddFile(self: *@This(), id: ?HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.AddFile(id, file);
     }
-    pub fn RemoveFile(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn RemoveFile(self: *@This(), id: ?HSTRING) core.HResult!void {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.RemoveFile(id);
     }
-    pub fn ContainsFile(self: *@This(), id: HSTRING) core.HResult!bool {
+    pub fn ContainsFile(self: *@This(), id: ?HSTRING) core.HResult!bool {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.ContainsFile(id);
     }
@@ -23,7 +23,7 @@ pub const FileOpenPickerUI = extern struct {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.CanAddFile(file);
     }
-    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.getAllowedFileTypes();
     }
@@ -31,15 +31,15 @@ pub const FileOpenPickerUI = extern struct {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.getSelectionMode();
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.getSettingsIdentifier();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -67,7 +67,7 @@ pub const FileOpenPickerUI = extern struct {
 };
 pub const FileRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileRemovedEventArgs = @ptrCast(self);
         return try this.getId();
     }
@@ -79,27 +79,27 @@ pub const FileRemovedEventArgs = extern struct {
 };
 pub const FileSavePickerUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.getAllowedFileTypes();
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.getSettingsIdentifier();
     }
-    pub fn getFileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.getFileName();
     }
-    pub fn TrySetFileName(self: *@This(), value: HSTRING) core.HResult!SetFileNameResult {
+    pub fn TrySetFileName(self: *@This(), value: ?HSTRING) core.HResult!SetFileNameResult {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.TrySetFileName(value);
     }
@@ -131,17 +131,17 @@ pub const FileSelectionMode = enum(i32) {
 };
 pub const IFileOpenPickerUI = extern struct {
     vtable: *const VTable,
-    pub fn AddFile(self: *@This(), id: HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
+    pub fn AddFile(self: *@This(), id: ?HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
         var _r: AddFileResult = undefined;
         const _c = self.vtable.AddFile(@ptrCast(self), id, file, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveFile(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn RemoveFile(self: *@This(), id: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveFile(@ptrCast(self), id);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ContainsFile(self: *@This(), id: HSTRING) core.HResult!bool {
+    pub fn ContainsFile(self: *@This(), id: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ContainsFile(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -153,8 +153,8 @@ pub const IFileOpenPickerUI = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AllowedFileTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -165,19 +165,19 @@ pub const IFileOpenPickerUI = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -213,15 +213,15 @@ pub const IFileOpenPickerUI = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddFile: *const fn(self: *anyopaque, id: HSTRING, file: *IStorageFile, _r: *AddFileResult) callconv(.winapi) HRESULT,
-        RemoveFile: *const fn(self: *anyopaque, id: HSTRING) callconv(.winapi) HRESULT,
-        ContainsFile: *const fn(self: *anyopaque, id: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        AddFile: *const fn(self: *anyopaque, id: ?HSTRING, file: *IStorageFile, _r: *AddFileResult) callconv(.winapi) HRESULT,
+        RemoveFile: *const fn(self: *anyopaque, id: ?HSTRING) callconv(.winapi) HRESULT,
+        ContainsFile: *const fn(self: *anyopaque, id: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         CanAddFile: *const fn(self: *anyopaque, file: *IStorageFile, _r: *bool) callconv(.winapi) HRESULT,
-        get_AllowedFileTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_AllowedFileTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_SelectionMode: *const fn(self: *anyopaque, _r: *FileSelectionMode) callconv(.winapi) HRESULT,
-        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_FileRemoved: *const fn(self: *anyopaque, handler: *TypedEventHandler(FileOpenPickerUI,FileRemovedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_FileRemoved: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_Closing: *const fn(self: *anyopaque, handler: *TypedEventHandler(FileOpenPickerUI,PickerClosingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -230,8 +230,8 @@ pub const IFileOpenPickerUI = extern struct {
 };
 pub const IFileRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -248,40 +248,40 @@ pub const IFileRemovedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileSavePickerUI = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAllowedFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AllowedFileTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetFileName(self: *@This(), value: HSTRING) core.HResult!SetFileNameResult {
+    pub fn TrySetFileName(self: *@This(), value: ?HSTRING) core.HResult!SetFileNameResult {
         var _r: SetFileNameResult = undefined;
         const _c = self.vtable.TrySetFileName(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -319,12 +319,12 @@ pub const IFileSavePickerUI = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AllowedFileTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        TrySetFileName: *const fn(self: *anyopaque, value: HSTRING, _r: *SetFileNameResult) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AllowedFileTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        TrySetFileName: *const fn(self: *anyopaque, value: ?HSTRING, _r: *SetFileNameResult) callconv(.winapi) HRESULT,
         add_FileNameChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(FileSavePickerUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_FileNameChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_TargetFileRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(FileSavePickerUI,TargetFileRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,

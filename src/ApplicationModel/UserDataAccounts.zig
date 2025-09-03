@@ -1,19 +1,19 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAccount = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserDisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -33,14 +33,14 @@ pub const IUserDataAccount = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceAccountTypeId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -93,14 +93,14 @@ pub const IUserDataAccount = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UserDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserDisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserDisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *UserDataAccountOtherAppReadAccess) callconv(.winapi) HRESULT,
         put_OtherAppReadAccess: *const fn(self: *anyopaque, value: UserDataAccountOtherAppReadAccess) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_DeviceAccountTypeId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceAccountTypeId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FindAppointmentCalendarsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(AppointmentCalendar))) callconv(.winapi) HRESULT,
@@ -111,8 +111,8 @@ pub const IUserDataAccount = extern struct {
 };
 pub const IUserDataAccount2 = extern struct {
     vtable: *const VTable,
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -135,25 +135,25 @@ pub const IUserDataAccount2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsProtectedUnderLock: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccount3 = extern struct {
     vtable: *const VTable,
-    pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ExplictReadAccessPackageFamilyNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -169,9 +169,9 @@ pub const IUserDataAccount3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ExplictReadAccessPackageFamilyNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ExplictReadAccessPackageFamilyNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccount4 = extern struct {
@@ -204,8 +204,8 @@ pub const IUserDataAccount4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShowCreateContactGroupAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn TryShowCreateContactGroupAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.TryShowCreateContactGroupAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -235,7 +235,7 @@ pub const IUserDataAccount4 = extern struct {
         get_ProviderProperties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
         FindUserDataTaskListsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UserDataTaskList))) callconv(.winapi) HRESULT,
         FindContactGroupsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ContactGroup))) callconv(.winapi) HRESULT,
-        TryShowCreateContactGroupAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        TryShowCreateContactGroupAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         put_IsProtectedUnderLock: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
@@ -278,19 +278,19 @@ pub const IUserDataAccountManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAddAccountAsync(self: *@This(), contentKinds: UserDataAccountContentKinds) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn ShowAddAccountAsync(self: *@This(), contentKinds: UserDataAccountContentKinds) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAccountAsync(@ptrCast(self), contentKinds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAccountSettingsAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAccountSettingsAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAccountSettingsAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAccountErrorResolverAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAccountErrorResolverAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAccountErrorResolverAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -309,9 +309,9 @@ pub const IUserDataAccountManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestStoreAsync: *const fn(self: *anyopaque, storeAccessType: UserDataAccountStoreAccessType, _r: **IAsyncOperation(UserDataAccountStore)) callconv(.winapi) HRESULT,
-        ShowAddAccountAsync: *const fn(self: *anyopaque, contentKinds: UserDataAccountContentKinds, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        ShowAccountSettingsAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowAccountErrorResolverAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowAddAccountAsync: *const fn(self: *anyopaque, contentKinds: UserDataAccountContentKinds, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        ShowAccountSettingsAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowAccountErrorResolverAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountManagerStatics2 = extern struct {
@@ -345,13 +345,13 @@ pub const IUserDataAccountStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccountAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn GetAccountAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.GetAccountAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.CreateAccountAsync(@ptrCast(self), userDisplayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -370,13 +370,13 @@ pub const IUserDataAccountStore = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAccountsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UserDataAccount))) callconv(.winapi) HRESULT,
-        GetAccountAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
-        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
+        GetAccountAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
+        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: ?HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountStore2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.CreateAccountAsync(@ptrCast(self), userDisplayName, packageRelativeAppId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -404,14 +404,14 @@ pub const IUserDataAccountStore2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: HSTRING, packageRelativeAppId: HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
+        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
         add_StoreChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(UserDataAccountStore,UserDataAccountStoreChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StoreChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountStore3 = extern struct {
     vtable: *const VTable,
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.CreateAccountAsync(@ptrCast(self), userDisplayName, packageRelativeAppId, enterpriseId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -429,7 +429,7 @@ pub const IUserDataAccountStore3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
+        CreateAccountAsync: *const fn(self: *anyopaque, userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, enterpriseId: ?HSTRING, _r: **IAsyncOperation(UserDataAccount)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountStoreChangedEventArgs = extern struct {
@@ -457,15 +457,15 @@ pub const IUserDataAccountStoreChangedEventArgs = extern struct {
 };
 pub const UserDataAccount = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getUserDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getUserDisplayName();
     }
-    pub fn putUserDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.putUserDisplayName(value);
     }
@@ -481,11 +481,11 @@ pub const UserDataAccount = extern struct {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getIcon();
     }
-    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getDeviceAccountTypeId();
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getPackageFamilyName();
     }
@@ -513,7 +513,7 @@ pub const UserDataAccount = extern struct {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.FindContactAnnotationListsAsync();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserDataAccount2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -525,19 +525,19 @@ pub const UserDataAccount = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsProtectedUnderLock();
     }
-    pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IUserDataAccount3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExplictReadAccessPackageFamilyNames();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserDataAccount3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IUserDataAccount3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -573,7 +573,7 @@ pub const UserDataAccount = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindContactGroupsAsync();
     }
-    pub fn TryShowCreateContactGroupAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn TryShowCreateContactGroupAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IUserDataAccount4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -611,15 +611,15 @@ pub const UserDataAccountManager = extern struct {
         const _f = try @This()._IUserDataAccountManagerStaticsCache.get();
         return try _f.RequestStoreAsync(storeAccessType);
     }
-    pub fn ShowAddAccountAsync(contentKinds: UserDataAccountContentKinds) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowAddAccountAsync(contentKinds: UserDataAccountContentKinds) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserDataAccountManagerStaticsCache.get();
         return try _f.ShowAddAccountAsync(contentKinds);
     }
-    pub fn ShowAccountSettingsAsync(id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAccountSettingsAsync(id: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IUserDataAccountManagerStaticsCache.get();
         return try _f.ShowAccountSettingsAsync(id);
     }
-    pub fn ShowAccountErrorResolverAsync(id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAccountErrorResolverAsync(id: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IUserDataAccountManagerStaticsCache.get();
         return try _f.ShowAccountErrorResolverAsync(id);
     }
@@ -659,15 +659,15 @@ pub const UserDataAccountStore = extern struct {
         const this: *IUserDataAccountStore = @ptrCast(self);
         return try this.FindAccountsAsync();
     }
-    pub fn GetAccountAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn GetAccountAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         const this: *IUserDataAccountStore = @ptrCast(self);
         return try this.GetAccountAsync(id);
     }
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         const this: *IUserDataAccountStore = @ptrCast(self);
         return try this.CreateAccountAsync(userDisplayName);
     }
-    pub fn CreateAccountAsyncWithPackageRelativeAppId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsyncWithPackageRelativeAppId(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -685,7 +685,7 @@ pub const UserDataAccountStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
-    pub fn CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

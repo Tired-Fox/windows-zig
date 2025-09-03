@@ -8,13 +8,13 @@ pub const WebUILockScreenCallActivatedEventArgs = extern struct {
         const this: *ILockScreenCallActivatedEventArgs = @ptrCast(self);
         return try this.getCallUI();
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -130,11 +130,11 @@ pub const WebUIPrintTaskSettingsActivatedEventArgs = extern struct {
 };
 pub const WebUISearchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchActivatedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchActivatedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -222,7 +222,7 @@ pub const WebUICameraSettingsActivatedEventArgs = extern struct {
 };
 pub const WebUIWalletActionActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getItemId(self: *@This()) core.HResult!HSTRING {
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getItemId();
     }
@@ -230,7 +230,7 @@ pub const WebUIWalletActionActivatedEventArgs = extern struct {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getActionKind();
     }
-    pub fn getActionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getActionId();
     }
@@ -639,11 +639,11 @@ pub const HtmlPrintDocumentSource = extern struct {
         const this: *IHtmlPrintDocumentSource = @ptrCast(self);
         return try this.putPercentScale(scalePercent);
     }
-    pub fn getPageRange(self: *@This()) core.HResult!HSTRING {
+    pub fn getPageRange(self: *@This()) core.HResult!?HSTRING {
         const this: *IHtmlPrintDocumentSource = @ptrCast(self);
         return try this.getPageRange();
     }
-    pub fn TrySetPageRange(self: *@This(), strPageRange: HSTRING) core.HResult!bool {
+    pub fn TrySetPageRange(self: *@This(), strPageRange: ?HSTRING) core.HResult!bool {
         const this: *IHtmlPrintDocumentSource = @ptrCast(self);
         return try this.TrySetPageRange(strPageRange);
     }
@@ -808,13 +808,13 @@ pub const IHtmlPrintDocumentSource = extern struct {
         const _c = self.vtable.put_PercentScale(@ptrCast(self), scalePercent);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPageRange(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPageRange(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PageRange(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetPageRange(self: *@This(), strPageRange: HSTRING) core.HResult!bool {
+    pub fn TrySetPageRange(self: *@This(), strPageRange: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetPageRange(@ptrCast(self), strPageRange, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -848,8 +848,8 @@ pub const IHtmlPrintDocumentSource = extern struct {
         put_ShrinkToFit: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_PercentScale: *const fn(self: *anyopaque, _r: *f32) callconv(.winapi) HRESULT,
         put_PercentScale: *const fn(self: *anyopaque, scalePercent: f32) callconv(.winapi) HRESULT,
-        get_PageRange: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        TrySetPageRange: *const fn(self: *anyopaque, strPageRange: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        get_PageRange: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        TrySetPageRange: *const fn(self: *anyopaque, strPageRange: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const INewWebUIViewCreatedEventArgs = extern struct {
@@ -1007,13 +1007,13 @@ pub const IWebUIActivationStatics2 = extern struct {
 };
 pub const IWebUIActivationStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn RequestRestartAsync(self: *@This(), launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartAsync(self: *@This(), launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartAsync(@ptrCast(self), launchArguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestRestartForUserAsync(self: *@This(), user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartForUserAsync(self: *@This(), user: *User, launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartForUserAsync(@ptrCast(self), user, launchArguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1031,8 +1031,8 @@ pub const IWebUIActivationStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestRestartAsync: *const fn(self: *anyopaque, launchArguments: HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
-        RequestRestartForUserAsync: *const fn(self: *anyopaque, user: *User, launchArguments: HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
+        RequestRestartAsync: *const fn(self: *anyopaque, launchArguments: ?HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
+        RequestRestartForUserAsync: *const fn(self: *anyopaque, user: *User, launchArguments: ?HSTRING, _r: **IAsyncOperation(AppRestartFailureReason)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebUIActivationStatics4 = extern struct {
@@ -1757,11 +1757,11 @@ pub const WebUIApplication = extern struct {
         const _f = try @This()._IWebUIActivationStaticsCache.get();
         return try _f.removeNavigated(token);
     }
-    pub fn RequestRestartAsync(launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartAsync(launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         const _f = try @This()._IWebUIActivationStatics3Cache.get();
         return try _f.RequestRestartAsync(launchArguments);
     }
-    pub fn RequestRestartForUserAsync(user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
+    pub fn RequestRestartForUserAsync(user: *User, launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         const _f = try @This()._IWebUIActivationStatics3Cache.get();
         return try _f.RequestRestartForUserAsync(user, launchArguments);
     }
@@ -1778,7 +1778,7 @@ pub const WebUIAppointmentsProviderAddAppointmentActivatedEventArgs = extern str
         const this: *IAppointmentsProviderAddAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getAddAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1826,7 +1826,7 @@ pub const WebUIAppointmentsProviderRemoveAppointmentActivatedEventArgs = extern 
         const this: *IAppointmentsProviderRemoveAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getRemoveAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1874,7 +1874,7 @@ pub const WebUIAppointmentsProviderReplaceAppointmentActivatedEventArgs = extern
         const this: *IAppointmentsProviderReplaceAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getReplaceAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1922,15 +1922,15 @@ pub const WebUIAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = ex
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getInstanceStartDate();
     }
-    pub fn getLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getLocalId();
     }
-    pub fn getRoamingId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getRoamingId();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1982,7 +1982,7 @@ pub const WebUIAppointmentsProviderShowTimeFrameActivatedEventArgs = extern stru
         const this: *IAppointmentsProviderShowTimeFrameActivatedEventArgs = @ptrCast(self);
         return try this.getDuration();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2109,7 +2109,7 @@ pub const WebUIBackgroundTaskInstanceRuntimeClass = extern struct {
 };
 pub const WebUIBarcodeScannerPreviewActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getConnectionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerPreviewActivatedEventArgs = @ptrCast(self);
         return try this.getConnectionId();
     }
@@ -2281,11 +2281,11 @@ pub const WebUIContactPanelActivatedEventArgs = extern struct {
 };
 pub const WebUIDeviceActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceInformationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceInformationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceActivatedEventArgs = @ptrCast(self);
         return try this.getDeviceInformationId();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceActivatedEventArgs = @ptrCast(self);
         return try this.getVerb();
     }
@@ -2375,17 +2375,17 @@ pub const WebUIDevicePairingActivatedEventArgs = extern struct {
 };
 pub const WebUIDialReceiverActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialReceiverActivatedEventArgs = @ptrCast(self);
         return try this.getAppName();
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2439,7 +2439,7 @@ pub const WebUIFileActivatedEventArgs = extern struct {
         const this: *IFileActivatedEventArgs = @ptrCast(self);
         return try this.getFiles();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileActivatedEventArgs = @ptrCast(self);
         return try this.getVerb();
     }
@@ -2515,7 +2515,7 @@ pub const WebUIFileOpenPickerActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileOpenPickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2611,13 +2611,13 @@ pub const WebUIFileSavePickerActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCallerPackageFamilyName();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2739,11 +2739,11 @@ pub const WebUIFolderPickerContinuationEventArgs = extern struct {
 };
 pub const WebUILaunchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *ILaunchActivatedEventArgs = @ptrCast(self);
         return try this.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILaunchActivatedEventArgs = @ptrCast(self);
         return try this.getTileId();
     }
@@ -3003,7 +3003,7 @@ pub const WebUIProtocolActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3069,7 +3069,7 @@ pub const WebUIProtocolForResultsActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3191,7 +3191,7 @@ pub const WebUIShareTargetActivatedEventArgs = extern struct {
 };
 pub const WebUIStartupTaskActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTaskId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStartupTaskActivatedEventArgs = @ptrCast(self);
         return try this.getTaskId();
     }
@@ -3233,7 +3233,7 @@ pub const WebUIStartupTaskActivatedEventArgs = extern struct {
 };
 pub const WebUIToastNotificationActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArgument(self: *@This()) core.HResult!HSTRING {
+    pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastNotificationActivatedEventArgs = @ptrCast(self);
         return try this.getArgument();
     }
@@ -3355,7 +3355,7 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSource(source);
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebViewControl = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3433,7 +3433,7 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Navigate(source);
     }
-    pub fn NavigateToString(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn NavigateToString(self: *@This(), text: ?HSTRING) core.HResult!void {
         var this: ?*IWebViewControl = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3451,7 +3451,7 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateWithHttpRequestMessage(requestMessage);
     }
-    pub fn InvokeScriptAsync(self: *@This(), scriptName: HSTRING, arguments: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IWebViewControl = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3469,7 +3469,7 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CaptureSelectedContentToDataPackageAsync();
     }
-    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: HSTRING, relativePath: HSTRING) core.HResult!*Uri {
+    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         var this: ?*IWebViewControl = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3685,7 +3685,7 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeWebResourceRequested(token);
     }
-    pub fn AddInitializeScript(self: *@This(), script: HSTRING) core.HResult!void {
+    pub fn AddInitializeScript(self: *@This(), script: ?HSTRING) core.HResult!void {
         var this: ?*IWebViewControl2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3837,11 +3837,11 @@ pub const WebUIWebAuthenticationBrokerContinuationEventArgs = extern struct {
 };
 pub const WebUIContactCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3849,7 +3849,7 @@ pub const WebUIContactCallActivatedEventArgs = extern struct {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3895,7 +3895,7 @@ pub const WebUIContactMapActivatedEventArgs = extern struct {
         const this: *IContactMapActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3933,11 +3933,11 @@ pub const WebUIContactMapActivatedEventArgs = extern struct {
 };
 pub const WebUIContactMessageActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3945,7 +3945,7 @@ pub const WebUIContactMessageActivatedEventArgs = extern struct {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4019,11 +4019,11 @@ pub const WebUIContactPickerActivatedEventArgs = extern struct {
 };
 pub const WebUIContactPostActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -4031,7 +4031,7 @@ pub const WebUIContactPostActivatedEventArgs = extern struct {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4069,11 +4069,11 @@ pub const WebUIContactPostActivatedEventArgs = extern struct {
 };
 pub const WebUIContactVideoCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -4081,7 +4081,7 @@ pub const WebUIContactVideoCallActivatedEventArgs = extern struct {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

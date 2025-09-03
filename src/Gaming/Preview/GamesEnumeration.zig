@@ -16,7 +16,7 @@ pub const GameList = extern struct {
         const _f = try @This()._IGameListStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FindAllAsyncWithPackageFamilyName(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
+    pub fn FindAllAsyncWithPackageFamilyName(packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         const _f = try @This()._IGameListStaticsCache.get();
         return try _f.FindAllAsyncWithPackageFamilyName(packageFamilyName);
     }
@@ -155,7 +155,7 @@ pub const GameListEntry = extern struct {
         const this: *IGameListEntry = @ptrCast(self);
         return try this.getCategory();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IGameListEntry = @ptrCast(self);
         return try this.getProperties();
     }
@@ -175,7 +175,7 @@ pub const GameListEntry = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLauncherExecutable();
     }
-    pub fn getLaunchParameters(self: *@This()) core.HResult!HSTRING {
+    pub fn getLaunchParameters(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -187,19 +187,19 @@ pub const GameListEntry = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetLauncherExecutableFileAsync(executableFile);
     }
-    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetLauncherExecutableFileAsyncWithLaunchParams(executableFile, launchParams);
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTitleId();
     }
-    pub fn SetTitleIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetTitleIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -231,7 +231,7 @@ pub const GameListRemovedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn init(
-        cb: *const fn(?*anyopaque, identifier: HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, identifier: ?HSTRING) callconv(.winapi) void,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
         _r.* = .{
@@ -244,7 +244,7 @@ pub const GameListRemovedEventHandler = extern struct {
     /// This creates a heap allocated instance that only frees/destroys when all
     /// references are released including any references Windows makes.
     pub fn initWithState(
-        cb: *const fn(?*anyopaque, identifier: HSTRING) callconv(.winapi) void,
+        cb: *const fn(?*anyopaque, identifier: ?HSTRING) callconv(.winapi) void,
         context: anytype,
     ) !*@This() {
         const _r = try @import("std").heap.c_allocator.create(@This());
@@ -287,7 +287,7 @@ pub const GameListRemovedEventHandler = extern struct {
         if (left == 0) @import("std").heap.c_allocator.destroy(this);
         return left;
     }
-    pub fn Invoke(self: *anyopaque, identifier: HSTRING) callconv(.winapi) HRESULT {
+    pub fn Invoke(self: *anyopaque, identifier: ?HSTRING) callconv(.winapi) HRESULT {
         const this: *@This() = @ptrCast(@alignCast(self));
         this._cb(this._context, identifier);
         return 0;
@@ -301,7 +301,7 @@ pub const GameListRemovedEventHandler = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        Invoke: *const fn(self: *anyopaque, identifier: HSTRING) callconv(.winapi) HRESULT
+        Invoke: *const fn(self: *anyopaque, identifier: ?HSTRING) callconv(.winapi) HRESULT
     };
     pub const VTABLE = VTable {
         .QueryInterface = QueryInterface,
@@ -320,7 +320,7 @@ pub const GameModeConfiguration = extern struct {
         const this: *IGameModeConfiguration = @ptrCast(self);
         return try this.putIsEnabled(value);
     }
-    pub fn getRelatedProcessNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IGameModeConfiguration = @ptrCast(self);
         return try this.getRelatedProcessNames();
     }
@@ -392,7 +392,7 @@ pub const GameModeConfiguration = extern struct {
 };
 pub const GameModeUserConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IGameModeUserConfiguration = @ptrCast(self);
         return try this.getGamingRelatedProcessNames();
     }
@@ -434,8 +434,8 @@ pub const IGameListEntry = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -461,7 +461,7 @@ pub const IGameListEntry = extern struct {
         get_DisplayInfo: *const fn(self: *anyopaque, _r: **AppDisplayInfo) callconv(.winapi) HRESULT,
         LaunchAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         get_Category: *const fn(self: *anyopaque, _r: *GameListCategory) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         SetCategoryAsync: *const fn(self: *anyopaque, value: GameListCategory, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -479,8 +479,8 @@ pub const IGameListEntry2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLaunchParameters(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLaunchParameters(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LaunchParameters(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -491,19 +491,19 @@ pub const IGameListEntry2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetLauncherExecutableFileAsyncWithLaunchParams(@ptrCast(self), executableFile, launchParams, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetTitleIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetTitleIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetTitleIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -529,11 +529,11 @@ pub const IGameListEntry2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LaunchableState: *const fn(self: *anyopaque, _r: *GameListEntryLaunchableState) callconv(.winapi) HRESULT,
         get_LauncherExecutable: *const fn(self: *anyopaque, _r: **IStorageFile) callconv(.winapi) HRESULT,
-        get_LaunchParameters: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LaunchParameters: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         SetLauncherExecutableFileAsync: *const fn(self: *anyopaque, executableFile: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetLauncherExecutableFileAsyncWithLaunchParams: *const fn(self: *anyopaque, executableFile: *IStorageFile, launchParams: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        get_TitleId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetTitleIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetLauncherExecutableFileAsyncWithLaunchParams: *const fn(self: *anyopaque, executableFile: *IStorageFile, launchParams: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        get_TitleId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetTitleIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_GameModeConfiguration: *const fn(self: *anyopaque, _r: **GameModeConfiguration) callconv(.winapi) HRESULT,
     };
 };
@@ -545,7 +545,7 @@ pub const IGameListStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithPackageFamilyName(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
+    pub fn FindAllAsyncWithPackageFamilyName(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
         const _c = self.vtable.FindAllAsyncWithPackageFamilyName(@ptrCast(self), packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -594,7 +594,7 @@ pub const IGameListStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
-        FindAllAsyncWithPackageFamilyName: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
+        FindAllAsyncWithPackageFamilyName: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
         add_GameAdded: *const fn(self: *anyopaque, handler: *GameListChangedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_GameAdded: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_GameRemoved: *const fn(self: *anyopaque, handler: *GameListRemovedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -645,8 +645,8 @@ pub const IGameModeConfiguration = extern struct {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRelatedProcessNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RelatedProcessNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -741,7 +741,7 @@ pub const IGameModeConfiguration = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_RelatedProcessNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_RelatedProcessNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_PercentGpuTimeAllocatedToGame: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
         put_PercentGpuTimeAllocatedToGame: *const fn(self: *anyopaque, value: *IReference(i32)) callconv(.winapi) HRESULT,
         get_PercentGpuMemoryAllocatedToGame: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
@@ -761,8 +761,8 @@ pub const IGameModeConfiguration = extern struct {
 };
 pub const IGameModeUserConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_GamingRelatedProcessNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -785,7 +785,7 @@ pub const IGameModeUserConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_GamingRelatedProcessNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_GamingRelatedProcessNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };

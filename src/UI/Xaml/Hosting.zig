@@ -13,7 +13,7 @@ pub const DesignerAppExitedEventArgs = extern struct {
 };
 pub const DesignerAppManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDesignerAppManager = @ptrCast(self);
         return try this.getAppUserModelId();
     }
@@ -29,7 +29,7 @@ pub const DesignerAppManager = extern struct {
         const this: *IDesignerAppManager = @ptrCast(self);
         return try this.CreateNewViewAsync(initialViewState, initialViewSize);
     }
-    pub fn LoadObjectIntoAppAsync(self: *@This(), dllName: HSTRING, classId: *Guid, initializationData: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LoadObjectIntoAppAsync(self: *@This(), dllName: ?HSTRING, classId: *Guid, initializationData: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IDesignerAppManager = @ptrCast(self);
         return try this.LoadObjectIntoAppAsync(dllName, classId, initializationData);
     }
@@ -42,7 +42,7 @@ pub const DesignerAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(appUserModelId: HSTRING) core.HResult!*DesignerAppManager {
+    pub fn Create(appUserModelId: ?HSTRING) core.HResult!*DesignerAppManager {
         const _f = try @This()._IDesignerAppManagerFactoryCache.get();
         return try _f.Create(appUserModelId);
     }
@@ -59,7 +59,7 @@ pub const DesignerAppView = extern struct {
         const this: *IDesignerAppView = @ptrCast(self);
         return try this.getApplicationViewId();
     }
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDesignerAppView = @ptrCast(self);
         return try this.getAppUserModelId();
     }
@@ -194,8 +194,8 @@ pub const IDesignerAppExitedEventArgs = extern struct {
 };
 pub const IDesignerAppManager = extern struct {
     vtable: *const VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -216,7 +216,7 @@ pub const IDesignerAppManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadObjectIntoAppAsync(self: *@This(), dllName: HSTRING, classId: *Guid, initializationData: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LoadObjectIntoAppAsync(self: *@This(), dllName: ?HSTRING, classId: *Guid, initializationData: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LoadObjectIntoAppAsync(@ptrCast(self), dllName, classId, initializationData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -234,16 +234,16 @@ pub const IDesignerAppManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_DesignerAppExited: *const fn(self: *anyopaque, handler: *TypedEventHandler(DesignerAppManager,DesignerAppExitedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DesignerAppExited: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         CreateNewViewAsync: *const fn(self: *anyopaque, initialViewState: DesignerAppViewState, initialViewSize: Size, _r: **IAsyncOperation(DesignerAppView)) callconv(.winapi) HRESULT,
-        LoadObjectIntoAppAsync: *const fn(self: *anyopaque, dllName: HSTRING, classId: *Guid, initializationData: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LoadObjectIntoAppAsync: *const fn(self: *anyopaque, dllName: ?HSTRING, classId: *Guid, initializationData: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IDesignerAppManagerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), appUserModelId: HSTRING) core.HResult!*DesignerAppManager {
+    pub fn Create(self: *@This(), appUserModelId: ?HSTRING) core.HResult!*DesignerAppManager {
         var _r: *DesignerAppManager = undefined;
         const _c = self.vtable.Create(@ptrCast(self), appUserModelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -261,7 +261,7 @@ pub const IDesignerAppManagerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, appUserModelId: HSTRING, _r: **DesignerAppManager) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, appUserModelId: ?HSTRING, _r: **DesignerAppManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IDesignerAppView = extern struct {
@@ -272,8 +272,8 @@ pub const IDesignerAppView = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -309,7 +309,7 @@ pub const IDesignerAppView = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ApplicationViewId: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ViewState: *const fn(self: *anyopaque, _r: *DesignerAppViewState) callconv(.winapi) HRESULT,
         get_ViewSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
         UpdateViewAsync: *const fn(self: *anyopaque, viewState: DesignerAppViewState, viewSize: Size, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -621,23 +621,23 @@ pub const IXamlUIPresenter = extern struct {
         const _c = self.vtable.put_RootElement(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getThemeKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getThemeKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ThemeKey(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putThemeKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putThemeKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ThemeKey(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getThemeResourcesXaml(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getThemeResourcesXaml(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ThemeResourcesXaml(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putThemeResourcesXaml(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putThemeResourcesXaml(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ThemeResourcesXaml(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -667,10 +667,10 @@ pub const IXamlUIPresenter = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_RootElement: *const fn(self: *anyopaque, _r: **UIElement) callconv(.winapi) HRESULT,
         put_RootElement: *const fn(self: *anyopaque, value: *UIElement) callconv(.winapi) HRESULT,
-        get_ThemeKey: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ThemeKey: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ThemeResourcesXaml: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ThemeResourcesXaml: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ThemeKey: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ThemeKey: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ThemeResourcesXaml: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ThemeResourcesXaml: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetSize: *const fn(self: *anyopaque, width: i32, height: i32) callconv(.winapi) HRESULT,
         Render: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Present: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -678,8 +678,8 @@ pub const IXamlUIPresenter = extern struct {
 };
 pub const IXamlUIPresenterHost = extern struct {
     vtable: *const VTable,
-    pub fn ResolveFileResource(self: *@This(), path: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ResolveFileResource(self: *@This(), path: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ResolveFileResource(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -696,13 +696,13 @@ pub const IXamlUIPresenterHost = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ResolveFileResource: *const fn(self: *anyopaque, path: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ResolveFileResource: *const fn(self: *anyopaque, path: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXamlUIPresenterHost2 = extern struct {
     vtable: *const VTable,
-    pub fn GetGenericXamlFilePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetGenericXamlFilePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetGenericXamlFilePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -719,7 +719,7 @@ pub const IXamlUIPresenterHost2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetGenericXamlFilePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetGenericXamlFilePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXamlUIPresenterHost3 = extern struct {
@@ -911,19 +911,19 @@ pub const XamlUIPresenter = extern struct {
         const this: *IXamlUIPresenter = @ptrCast(self);
         return try this.putRootElement(value);
     }
-    pub fn getThemeKey(self: *@This()) core.HResult!HSTRING {
+    pub fn getThemeKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IXamlUIPresenter = @ptrCast(self);
         return try this.getThemeKey();
     }
-    pub fn putThemeKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putThemeKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXamlUIPresenter = @ptrCast(self);
         return try this.putThemeKey(value);
     }
-    pub fn getThemeResourcesXaml(self: *@This()) core.HResult!HSTRING {
+    pub fn getThemeResourcesXaml(self: *@This()) core.HResult!?HSTRING {
         const this: *IXamlUIPresenter = @ptrCast(self);
         return try this.getThemeResourcesXaml();
     }
-    pub fn putThemeResourcesXaml(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putThemeResourcesXaml(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXamlUIPresenter = @ptrCast(self);
         return try this.putThemeResourcesXaml(value);
     }

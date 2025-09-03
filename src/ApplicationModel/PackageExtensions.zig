@@ -1,20 +1,20 @@
 // ----- This code is automatically generated -----
 pub const IPackageExtension = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -37,8 +37,8 @@ pub const IPackageExtension = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPublicPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetPublicPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetPublicPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -67,13 +67,13 @@ pub const IPackageExtension = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
         GetExtensionProperties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
         GetExtensionPropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IPropertySet)) callconv(.winapi) HRESULT,
-        GetPublicPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetPublicPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetPublicFolder: *const fn(self: *anyopaque, _r: **StorageFolder) callconv(.winapi) HRESULT,
         GetPublicFolderAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
     };
@@ -92,7 +92,7 @@ pub const IPackageExtensionCatalog = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestRemovePackageAsync(self: *@This(), packageFullName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestRemovePackageAsync(self: *@This(), packageFullName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestRemovePackageAsync(@ptrCast(self), packageFullName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -162,7 +162,7 @@ pub const IPackageExtensionCatalog = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAll: *const fn(self: *anyopaque, _r: **IVectorView(PackageExtension)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PackageExtension))) callconv(.winapi) HRESULT,
-        RequestRemovePackageAsync: *const fn(self: *anyopaque, packageFullName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestRemovePackageAsync: *const fn(self: *anyopaque, packageFullName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_PackageInstalled: *const fn(self: *anyopaque, handler: *TypedEventHandler(PackageExtensionCatalog,PackageExtensionPackageInstalledEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_PackageInstalled: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_PackageUpdating: *const fn(self: *anyopaque, handler: *TypedEventHandler(PackageExtensionCatalog,PackageExtensionPackageUpdatingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -177,7 +177,7 @@ pub const IPackageExtensionCatalog = extern struct {
 };
 pub const IPackageExtensionCatalogStatics = extern struct {
     vtable: *const VTable,
-    pub fn Open(self: *@This(), packageExtensionName: HSTRING) core.HResult!*PackageExtensionCatalog {
+    pub fn Open(self: *@This(), packageExtensionName: ?HSTRING) core.HResult!*PackageExtensionCatalog {
         var _r: *PackageExtensionCatalog = undefined;
         const _c = self.vtable.Open(@ptrCast(self), packageExtensionName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -195,13 +195,13 @@ pub const IPackageExtensionCatalogStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Open: *const fn(self: *anyopaque, packageExtensionName: HSTRING, _r: **PackageExtensionCatalog) callconv(.winapi) HRESULT,
+        Open: *const fn(self: *anyopaque, packageExtensionName: ?HSTRING, _r: **PackageExtensionCatalog) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageExtensionPackageInstalledEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageExtensionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -230,15 +230,15 @@ pub const IPackageExtensionPackageInstalledEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
         get_Extensions: *const fn(self: *anyopaque, _r: **IVectorView(PackageExtension)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageExtensionPackageStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageExtensionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -261,14 +261,14 @@ pub const IPackageExtensionPackageStatusChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageExtensionPackageUninstallingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageExtensionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -291,14 +291,14 @@ pub const IPackageExtensionPackageUninstallingEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageExtensionPackageUpdatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageExtensionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -327,15 +327,15 @@ pub const IPackageExtensionPackageUpdatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
         get_Extensions: *const fn(self: *anyopaque, _r: **IVectorView(PackageExtension)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageExtensionPackageUpdatingEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageExtensionName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -358,21 +358,21 @@ pub const IPackageExtensionPackageUpdatingEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageExtensionName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
     };
 };
 pub const PackageExtension = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtension = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtension = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtension = @ptrCast(self);
         return try this.getDescription();
     }
@@ -388,7 +388,7 @@ pub const PackageExtension = extern struct {
         const this: *IPackageExtension = @ptrCast(self);
         return try this.GetExtensionPropertiesAsync();
     }
-    pub fn GetPublicPath(self: *@This()) core.HResult!HSTRING {
+    pub fn GetPublicPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtension = @ptrCast(self);
         return try this.GetPublicPath();
     }
@@ -416,7 +416,7 @@ pub const PackageExtensionCatalog = extern struct {
         const this: *IPackageExtensionCatalog = @ptrCast(self);
         return try this.FindAllAsync();
     }
-    pub fn RequestRemovePackageAsync(self: *@This(), packageFullName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestRemovePackageAsync(self: *@This(), packageFullName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IPackageExtensionCatalog = @ptrCast(self);
         return try this.RequestRemovePackageAsync(packageFullName);
     }
@@ -463,7 +463,7 @@ pub const PackageExtensionCatalog = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Open(packageExtensionName: HSTRING) core.HResult!*PackageExtensionCatalog {
+    pub fn Open(packageExtensionName: ?HSTRING) core.HResult!*PackageExtensionCatalog {
         const _f = try @This()._IPackageExtensionCatalogStaticsCache.get();
         return try _f.Open(packageExtensionName);
     }
@@ -476,7 +476,7 @@ pub const PackageExtensionCatalog = extern struct {
 };
 pub const PackageExtensionPackageInstalledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtensionPackageInstalledEventArgs = @ptrCast(self);
         return try this.getPackageExtensionName();
     }
@@ -496,7 +496,7 @@ pub const PackageExtensionPackageInstalledEventArgs = extern struct {
 };
 pub const PackageExtensionPackageStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtensionPackageStatusChangedEventArgs = @ptrCast(self);
         return try this.getPackageExtensionName();
     }
@@ -512,7 +512,7 @@ pub const PackageExtensionPackageStatusChangedEventArgs = extern struct {
 };
 pub const PackageExtensionPackageUninstallingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtensionPackageUninstallingEventArgs = @ptrCast(self);
         return try this.getPackageExtensionName();
     }
@@ -528,7 +528,7 @@ pub const PackageExtensionPackageUninstallingEventArgs = extern struct {
 };
 pub const PackageExtensionPackageUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtensionPackageUpdatedEventArgs = @ptrCast(self);
         return try this.getPackageExtensionName();
     }
@@ -548,7 +548,7 @@ pub const PackageExtensionPackageUpdatedEventArgs = extern struct {
 };
 pub const PackageExtensionPackageUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageExtensionName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageExtensionPackageUpdatingEventArgs = @ptrCast(self);
         return try this.getPackageExtensionName();
     }

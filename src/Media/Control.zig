@@ -9,7 +9,7 @@ pub const CurrentSessionChangedEventArgs = extern struct {
 };
 pub const GlobalSystemMediaTransportControlsSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSourceAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSession = @ptrCast(self);
         return try this.getSourceAppUserModelId();
     }
@@ -157,23 +157,23 @@ pub const GlobalSystemMediaTransportControlsSessionManager = extern struct {
 };
 pub const GlobalSystemMediaTransportControlsSessionMediaProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getSubtitle();
     }
-    pub fn getAlbumArtist(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlbumArtist(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getAlbumArtist();
     }
-    pub fn getArtist(self: *@This()) core.HResult!HSTRING {
+    pub fn getArtist(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getArtist();
     }
-    pub fn getAlbumTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlbumTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getAlbumTitle();
     }
@@ -181,7 +181,7 @@ pub const GlobalSystemMediaTransportControlsSessionMediaProperties = extern stru
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getTrackNumber();
     }
-    pub fn getGenres(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getGenres(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getGenres();
     }
@@ -361,8 +361,8 @@ pub const ICurrentSessionChangedEventArgs = extern struct {
 };
 pub const IGlobalSystemMediaTransportControlsSession = extern struct {
     vtable: *const VTable,
-    pub fn getSourceAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceAppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -517,7 +517,7 @@ pub const IGlobalSystemMediaTransportControlsSession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SourceAppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceAppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         TryGetMediaPropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GlobalSystemMediaTransportControlsSessionMediaProperties)) callconv(.winapi) HRESULT,
         GetTimelineProperties: *const fn(self: *anyopaque, _r: **GlobalSystemMediaTransportControlsSessionTimelineProperties) callconv(.winapi) HRESULT,
         GetPlaybackInfo: *const fn(self: *anyopaque, _r: **GlobalSystemMediaTransportControlsSessionPlaybackInfo) callconv(.winapi) HRESULT,
@@ -623,32 +623,32 @@ pub const IGlobalSystemMediaTransportControlsSessionManagerStatics = extern stru
 };
 pub const IGlobalSystemMediaTransportControlsSessionMediaProperties = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlbumArtist(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlbumArtist(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlbumArtist(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getArtist(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArtist(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Artist(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlbumTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlbumTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlbumTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -659,8 +659,8 @@ pub const IGlobalSystemMediaTransportControlsSessionMediaProperties = extern str
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGenres(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getGenres(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Genres(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -695,13 +695,13 @@ pub const IGlobalSystemMediaTransportControlsSessionMediaProperties = extern str
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subtitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AlbumArtist: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Artist: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AlbumTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subtitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AlbumArtist: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Artist: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AlbumTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TrackNumber: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_Genres: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Genres: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_AlbumTrackCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_PlaybackType: *const fn(self: *anyopaque, _r: **IReference(MediaPlaybackType)) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,

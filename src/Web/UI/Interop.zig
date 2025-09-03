@@ -86,8 +86,8 @@ pub const IWebViewControlProcess = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -137,7 +137,7 @@ pub const IWebViewControlProcess = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ProcessId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsPrivateNetworkClientServerCapabilityEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         CreateWebViewControlAsync: *const fn(self: *anyopaque, hostWindowHandle: i64, bounds: Rect, _r: **IAsyncOperation(WebViewControl)) callconv(.winapi) HRESULT,
         GetWebViewControls: *const fn(self: *anyopaque, _r: **IVectorView(WebViewControl)) callconv(.winapi) HRESULT,
@@ -171,12 +171,12 @@ pub const IWebViewControlProcessFactory = extern struct {
 };
 pub const IWebViewControlProcessOptions = extern struct {
     vtable: *const VTable,
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnterpriseId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -203,8 +203,8 @@ pub const IWebViewControlProcessOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_EnterpriseId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_EnterpriseId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_PrivateNetworkClientServerCapability: *const fn(self: *anyopaque, value: WebViewControlProcessCapabilityState) callconv(.winapi) HRESULT,
         get_PrivateNetworkClientServerCapability: *const fn(self: *anyopaque, _r: *WebViewControlProcessCapabilityState) callconv(.winapi) HRESULT,
     };
@@ -352,7 +352,7 @@ pub const WebViewControl = extern struct {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.putSource(source);
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.getDocumentTitle();
     }
@@ -404,7 +404,7 @@ pub const WebViewControl = extern struct {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.Navigate(source);
     }
-    pub fn NavigateToString(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn NavigateToString(self: *@This(), text: ?HSTRING) core.HResult!void {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.NavigateToString(text);
     }
@@ -416,7 +416,7 @@ pub const WebViewControl = extern struct {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.NavigateWithHttpRequestMessage(requestMessage);
     }
-    pub fn InvokeScriptAsync(self: *@This(), scriptName: HSTRING, arguments: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.InvokeScriptAsync(scriptName, arguments);
     }
@@ -428,7 +428,7 @@ pub const WebViewControl = extern struct {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.CaptureSelectedContentToDataPackageAsync();
     }
-    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: HSTRING, relativePath: HSTRING) core.HResult!*Uri {
+    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         const this: *IWebViewControl = @ptrCast(self);
         return try this.BuildLocalStreamUri(contentIdentifier, relativePath);
     }
@@ -650,7 +650,7 @@ pub const WebViewControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAcceleratorKeyPressed(token);
     }
-    pub fn AddInitializeScript(self: *@This(), script: HSTRING) core.HResult!void {
+    pub fn AddInitializeScript(self: *@This(), script: ?HSTRING) core.HResult!void {
         var this: ?*IWebViewControl2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -745,7 +745,7 @@ pub const WebViewControlProcess = extern struct {
         const this: *IWebViewControlProcess = @ptrCast(self);
         return try this.getProcessId();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewControlProcess = @ptrCast(self);
         return try this.getEnterpriseId();
     }
@@ -799,11 +799,11 @@ pub const WebViewControlProcessCapabilityState = enum(i32) {
 };
 pub const WebViewControlProcessOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWebViewControlProcessOptions = @ptrCast(self);
         return try this.putEnterpriseId(value);
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewControlProcessOptions = @ptrCast(self);
         return try this.getEnterpriseId();
     }

@@ -13,7 +13,7 @@ pub const Geofence = extern struct {
         const this: *IGeofence = @ptrCast(self);
         return try this.getDwellTime();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeofence = @ptrCast(self);
         return try this.getId();
     }
@@ -32,19 +32,19 @@ pub const Geofence = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(id: HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
+    pub fn Create(id: ?HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
         const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.Create(id, geoshape);
     }
-    pub fn CreateWithMonitorStates(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStates(id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
         const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStates(id, geoshape, monitoredStates, singleUse);
     }
-    pub fn CreateWithMonitorStatesAndDwellTime(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStatesAndDwellTime(id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
         const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStatesAndDwellTime(id, geoshape, monitoredStates, singleUse, dwellTime);
     }
-    pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
         const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration);
     }
@@ -165,8 +165,8 @@ pub const IGeofence = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -204,7 +204,7 @@ pub const IGeofence = extern struct {
         get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_DwellTime: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MonitoredStates: *const fn(self: *anyopaque, _r: *MonitoredGeofenceStates) callconv(.winapi) HRESULT,
         get_Geoshape: *const fn(self: *anyopaque, _r: **IGeoshape) callconv(.winapi) HRESULT,
         get_SingleUse: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -212,25 +212,25 @@ pub const IGeofence = extern struct {
 };
 pub const IGeofenceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), id: HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
+    pub fn Create(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, geoshape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithMonitorStates(self: *@This(), id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStates(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStates(@ptrCast(self), id, geoshape, monitoredStates, singleUse, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithMonitorStatesAndDwellTime(self: *@This(), id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStatesAndDwellTime(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStatesAndDwellTime(@ptrCast(self), id, geoshape, monitoredStates, singleUse, dwellTime, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(self: *@This(), id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
+    pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(@ptrCast(self), id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -248,10 +248,10 @@ pub const IGeofenceFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, id: HSTRING, geoshape: *IGeoshape, _r: **Geofence) callconv(.winapi) HRESULT,
-        CreateWithMonitorStates: *const fn(self: *anyopaque, id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, _r: **Geofence) callconv(.winapi) HRESULT,
-        CreateWithMonitorStatesAndDwellTime: *const fn(self: *anyopaque, id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, _r: **Geofence) callconv(.winapi) HRESULT,
-        CreateWithMonitorStatesDwellTimeStartTimeAndDuration: *const fn(self: *anyopaque, id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan, _r: **Geofence) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, id: ?HSTRING, geoshape: *IGeoshape, _r: **Geofence) callconv(.winapi) HRESULT,
+        CreateWithMonitorStates: *const fn(self: *anyopaque, id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, _r: **Geofence) callconv(.winapi) HRESULT,
+        CreateWithMonitorStatesAndDwellTime: *const fn(self: *anyopaque, id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, _r: **Geofence) callconv(.winapi) HRESULT,
+        CreateWithMonitorStatesDwellTimeStartTimeAndDuration: *const fn(self: *anyopaque, id: ?HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan, _r: **Geofence) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeofenceMonitor = extern struct {

@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const CallControl = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: HSTRING) core.HResult!u64 {
+    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
         const this: *ICallControl = @ptrCast(self);
         return try this.IndicateNewIncomingCall(enableRinger, callerId);
     }
@@ -76,7 +76,7 @@ pub const CallControl = extern struct {
         const _f = try @This()._ICallControlStaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*CallControl {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*CallControl {
         const _f = try @This()._ICallControlStaticsCache.get();
         return try _f.FromId(deviceId);
     }
@@ -279,7 +279,7 @@ pub const DialRequestedEventHandler = extern struct {
 };
 pub const ICallControl = extern struct {
     vtable: *const VTable,
-    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: HSTRING) core.HResult!u64 {
+    pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.IndicateNewIncomingCall(@ptrCast(self), enableRinger, callerId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -377,7 +377,7 @@ pub const ICallControl = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IndicateNewIncomingCall: *const fn(self: *anyopaque, enableRinger: bool, callerId: HSTRING, _r: *u64) callconv(.winapi) HRESULT,
+        IndicateNewIncomingCall: *const fn(self: *anyopaque, enableRinger: bool, callerId: ?HSTRING, _r: *u64) callconv(.winapi) HRESULT,
         IndicateNewOutgoingCall: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         IndicateActiveCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
         EndCall: *const fn(self: *anyopaque, callToken: u64) callconv(.winapi) HRESULT,
@@ -404,7 +404,7 @@ pub const ICallControlStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*CallControl {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*CallControl {
         var _r: *CallControl = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -423,7 +423,7 @@ pub const ICallControlStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, _r: **CallControl) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **CallControl) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **CallControl) callconv(.winapi) HRESULT,
     };
 };
 pub const IDialRequestedEventArgs = extern struct {
@@ -818,11 +818,11 @@ pub const AudioDeviceController = extern struct {
 };
 pub const AudioDeviceModule = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioDeviceModule = @ptrCast(self);
         return try this.getClassId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioDeviceModule = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -874,7 +874,7 @@ pub const AudioDeviceModulesManager = extern struct {
         const this: *IAudioDeviceModulesManager = @ptrCast(self);
         return try this.removeModuleNotificationReceived(token);
     }
-    pub fn FindAllById(self: *@This(), moduleId: HSTRING) core.HResult!*IVectorView(AudioDeviceModule) {
+    pub fn FindAllById(self: *@This(), moduleId: ?HSTRING) core.HResult!*IVectorView(AudioDeviceModule) {
         const this: *IAudioDeviceModulesManager = @ptrCast(self);
         return try this.FindAllById(moduleId);
     }
@@ -885,7 +885,7 @@ pub const AudioDeviceModulesManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(deviceId: HSTRING) core.HResult!*AudioDeviceModulesManager {
+    pub fn Create(deviceId: ?HSTRING) core.HResult!*AudioDeviceModulesManager {
         const _f = try @This()._IAudioDeviceModulesManagerFactoryCache.get();
         return try _f.Create(deviceId);
     }
@@ -999,7 +999,7 @@ pub const ColorTemperaturePreset = enum(i32) {
 };
 pub const DefaultAudioCaptureDeviceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDefaultAudioDeviceChangedEventArgs = @ptrCast(self);
         return try this.getId();
     }
@@ -1015,7 +1015,7 @@ pub const DefaultAudioCaptureDeviceChangedEventArgs = extern struct {
 };
 pub const DefaultAudioRenderDeviceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDefaultAudioDeviceChangedEventArgs = @ptrCast(self);
         return try this.getId();
     }
@@ -1599,11 +1599,11 @@ pub const IAdvancedPhotoControl = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController = extern struct {
     vtable: *const VTable,
-    pub fn SetDeviceProperty(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!void {
+    pub fn SetDeviceProperty(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetDeviceProperty(@ptrCast(self), propertyId, propertyValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetDeviceProperty(self: *@This(), propertyId: HSTRING) core.HResult!*IInspectable {
+    pub fn GetDeviceProperty(self: *@This(), propertyId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetDeviceProperty(@ptrCast(self), propertyId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1621,8 +1621,8 @@ pub const IAdvancedVideoCaptureDeviceController = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetDeviceProperty: *const fn(self: *anyopaque, propertyId: HSTRING, propertyValue: *IInspectable) callconv(.winapi) HRESULT,
-        GetDeviceProperty: *const fn(self: *anyopaque, propertyId: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        SetDeviceProperty: *const fn(self: *anyopaque, propertyId: ?HSTRING, propertyValue: *IInspectable) callconv(.winapi) HRESULT,
+        GetDeviceProperty: *const fn(self: *anyopaque, propertyId: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdvancedVideoCaptureDeviceController10 = extern struct {
@@ -1650,7 +1650,7 @@ pub const IAdvancedVideoCaptureDeviceController10 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController11 = extern struct {
     vtable: *const VTable,
-    pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
+    pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: ?HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryAcquireExclusiveControl(@ptrCast(self), deviceId, mode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1668,7 +1668,7 @@ pub const IAdvancedVideoCaptureDeviceController11 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryAcquireExclusiveControl: *const fn(self: *anyopaque, deviceId: HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode, _r: *bool) callconv(.winapi) HRESULT,
+        TryAcquireExclusiveControl: *const fn(self: *anyopaque, deviceId: ?HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdvancedVideoCaptureDeviceController2 = extern struct {
@@ -1871,19 +1871,19 @@ pub const IAdvancedVideoCaptureDeviceController4 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController5 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDevicePropertyById(self: *@This(), propertyId: HSTRING, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
+    pub fn GetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
         var _r: *VideoDeviceControllerGetDevicePropertyResult = undefined;
         const _c = self.vtable.GetDevicePropertyById(@ptrCast(self), propertyId, maxPropertyValueSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetDevicePropertyById(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
+    pub fn SetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
         var _r: VideoDeviceControllerSetDevicePropertyStatus = undefined;
         const _c = self.vtable.SetDevicePropertyById(@ptrCast(self), propertyId, propertyValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1913,9 +1913,9 @@ pub const IAdvancedVideoCaptureDeviceController5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDevicePropertyById: *const fn(self: *anyopaque, propertyId: HSTRING, maxPropertyValueSize: *IReference(u32), _r: **VideoDeviceControllerGetDevicePropertyResult) callconv(.winapi) HRESULT,
-        SetDevicePropertyById: *const fn(self: *anyopaque, propertyId: HSTRING, propertyValue: *IInspectable, _r: *VideoDeviceControllerSetDevicePropertyStatus) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDevicePropertyById: *const fn(self: *anyopaque, propertyId: ?HSTRING, maxPropertyValueSize: *IReference(u32), _r: **VideoDeviceControllerGetDevicePropertyResult) callconv(.winapi) HRESULT,
+        SetDevicePropertyById: *const fn(self: *anyopaque, propertyId: ?HSTRING, propertyValue: *IInspectable, _r: *VideoDeviceControllerSetDevicePropertyStatus) callconv(.winapi) HRESULT,
         GetDevicePropertyByExtendedId: *const fn(self: *anyopaque, extendedPropertyId: [*]u8, maxPropertyValueSize: *IReference(u32), _r: **VideoDeviceControllerGetDevicePropertyResult) callconv(.winapi) HRESULT,
         SetDevicePropertyByExtendedId: *const fn(self: *anyopaque, extendedPropertyId: [*]u8, propertyValue: [*]u8, _r: *VideoDeviceControllerSetDevicePropertyStatus) callconv(.winapi) HRESULT,
     };
@@ -2077,14 +2077,14 @@ pub const IAudioDeviceController2 = extern struct {
 };
 pub const IAudioDeviceModule = extern struct {
     vtable: *const VTable,
-    pub fn getClassId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClassId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClassId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2125,8 +2125,8 @@ pub const IAudioDeviceModule = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ClassId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ClassId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_InstanceId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_MajorVersion: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_MinorVersion: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -2175,7 +2175,7 @@ pub const IAudioDeviceModulesManager = extern struct {
         const _c = self.vtable.remove_ModuleNotificationReceived(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn FindAllById(self: *@This(), moduleId: HSTRING) core.HResult!*IVectorView(AudioDeviceModule) {
+    pub fn FindAllById(self: *@This(), moduleId: ?HSTRING) core.HResult!*IVectorView(AudioDeviceModule) {
         var _r: *IVectorView(AudioDeviceModule) = undefined;
         const _c = self.vtable.FindAllById(@ptrCast(self), moduleId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2201,13 +2201,13 @@ pub const IAudioDeviceModulesManager = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         add_ModuleNotificationReceived: *const fn(self: *anyopaque, handler: *TypedEventHandler(AudioDeviceModulesManager,AudioDeviceModuleNotificationEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ModuleNotificationReceived: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        FindAllById: *const fn(self: *anyopaque, moduleId: HSTRING, _r: **IVectorView(AudioDeviceModule)) callconv(.winapi) HRESULT,
+        FindAllById: *const fn(self: *anyopaque, moduleId: ?HSTRING, _r: **IVectorView(AudioDeviceModule)) callconv(.winapi) HRESULT,
         FindAll: *const fn(self: *anyopaque, _r: **IVectorView(AudioDeviceModule)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioDeviceModulesManagerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), deviceId: HSTRING) core.HResult!*AudioDeviceModulesManager {
+    pub fn Create(self: *@This(), deviceId: ?HSTRING) core.HResult!*AudioDeviceModulesManager {
         var _r: *AudioDeviceModulesManager = undefined;
         const _c = self.vtable.Create(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2225,7 +2225,7 @@ pub const IAudioDeviceModulesManagerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **AudioDeviceModulesManager) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **AudioDeviceModulesManager) callconv(.winapi) HRESULT,
     };
 };
 pub const ICameraOcclusionInfo = extern struct {
@@ -2325,8 +2325,8 @@ pub const ICameraOcclusionStateChangedEventArgs = extern struct {
 };
 pub const IDefaultAudioDeviceChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2349,7 +2349,7 @@ pub const IDefaultAudioDeviceChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Role: *const fn(self: *anyopaque, _r: *AudioDeviceRole) callconv(.winapi) HRESULT,
     };
 };
@@ -3646,32 +3646,32 @@ pub const IMediaDeviceController = extern struct {
 };
 pub const IMediaDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetAudioCaptureSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAudioCaptureSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioCaptureSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAudioRenderSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAudioRenderSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioRenderSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetVideoCaptureSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetVideoCaptureSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetVideoCaptureSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDefaultAudioCaptureId(self: *@This(), role: AudioDeviceRole) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDefaultAudioCaptureId(self: *@This(), role: AudioDeviceRole) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDefaultAudioCaptureId(@ptrCast(self), role, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDefaultAudioRenderId(self: *@This(), role: AudioDeviceRole) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDefaultAudioRenderId(self: *@This(), role: AudioDeviceRole) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDefaultAudioRenderId(@ptrCast(self), role, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3708,11 +3708,11 @@ pub const IMediaDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAudioCaptureSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetAudioRenderSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetVideoCaptureSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDefaultAudioCaptureId: *const fn(self: *anyopaque, role: AudioDeviceRole, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDefaultAudioRenderId: *const fn(self: *anyopaque, role: AudioDeviceRole, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAudioCaptureSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetAudioRenderSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetVideoCaptureSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDefaultAudioCaptureId: *const fn(self: *anyopaque, role: AudioDeviceRole, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDefaultAudioRenderId: *const fn(self: *anyopaque, role: AudioDeviceRole, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_DefaultAudioCaptureDeviceChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DefaultAudioCaptureDeviceChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_DefaultAudioRenderDeviceChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -4802,23 +4802,23 @@ pub const MediaDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetAudioCaptureSelector() core.HResult!HSTRING {
+    pub fn GetAudioCaptureSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetAudioCaptureSelector();
     }
-    pub fn GetAudioRenderSelector() core.HResult!HSTRING {
+    pub fn GetAudioRenderSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetAudioRenderSelector();
     }
-    pub fn GetVideoCaptureSelector() core.HResult!HSTRING {
+    pub fn GetVideoCaptureSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetVideoCaptureSelector();
     }
-    pub fn GetDefaultAudioCaptureId(role: AudioDeviceRole) core.HResult!HSTRING {
+    pub fn GetDefaultAudioCaptureId(role: AudioDeviceRole) core.HResult!?HSTRING {
         const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetDefaultAudioCaptureId(role);
     }
-    pub fn GetDefaultAudioRenderId(role: AudioDeviceRole) core.HResult!HSTRING {
+    pub fn GetDefaultAudioRenderId(role: AudioDeviceRole) core.HResult!?HSTRING {
         const _f = try @This()._IMediaDeviceStaticsCache.get();
         return try _f.GetDefaultAudioRenderId(role);
     }
@@ -5247,13 +5247,13 @@ pub const VideoDeviceController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMediaStreamPropertiesAsync(mediaStreamType, mediaEncodingProperties);
     }
-    pub fn SetDeviceProperty(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!void {
+    pub fn SetDeviceProperty(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!void {
         var this: ?*IAdvancedVideoCaptureDeviceController = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDeviceProperty(propertyId, propertyValue);
     }
-    pub fn GetDeviceProperty(self: *@This(), propertyId: HSTRING) core.HResult!*IInspectable {
+    pub fn GetDeviceProperty(self: *@This(), propertyId: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IAdvancedVideoCaptureDeviceController = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5391,19 +5391,19 @@ pub const VideoDeviceController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAdvancedPhotoControl();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn GetDevicePropertyById(self: *@This(), propertyId: HSTRING, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
+    pub fn GetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDevicePropertyById(propertyId, maxPropertyValueSize);
     }
-    pub fn SetDevicePropertyById(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
+    pub fn SetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5451,7 +5451,7 @@ pub const VideoDeviceController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCameraOcclusionInfo();
     }
-    pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
+    pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: ?HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
         var this: ?*IAdvancedVideoCaptureDeviceController11 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController11.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

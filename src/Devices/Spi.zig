@@ -197,8 +197,8 @@ pub const ISpiControllerStatics = extern struct {
 };
 pub const ISpiDevice = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -237,7 +237,7 @@ pub const ISpiDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ConnectionSettings: *const fn(self: *anyopaque, _r: **SpiConnectionSettings) callconv(.winapi) HRESULT,
         Write: *const fn(self: *anyopaque, buffer: [*]u8) callconv(.winapi) HRESULT,
         Read: *const fn(self: *anyopaque, buffer: [*]u8) callconv(.winapi) HRESULT,
@@ -247,25 +247,25 @@ pub const ISpiDevice = extern struct {
 };
 pub const ISpiDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithFriendlyName(@ptrCast(self), friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetBusInfo(self: *@This(), busId: HSTRING) core.HResult!*SpiBusInfo {
+    pub fn GetBusInfo(self: *@This(), busId: ?HSTRING) core.HResult!*SpiBusInfo {
         var _r: *SpiBusInfo = undefined;
         const _c = self.vtable.GetBusInfo(@ptrCast(self), busId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), busId: HSTRING, settings: *SpiConnectionSettings) core.HResult!*IAsyncOperation(SpiDevice) {
+    pub fn FromIdAsync(self: *@This(), busId: ?HSTRING, settings: *SpiConnectionSettings) core.HResult!*IAsyncOperation(SpiDevice) {
         var _r: *IAsyncOperation(SpiDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), busId, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -283,10 +283,10 @@ pub const ISpiDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetBusInfo: *const fn(self: *anyopaque, busId: HSTRING, _r: **SpiBusInfo) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, busId: HSTRING, settings: *SpiConnectionSettings, _r: **IAsyncOperation(SpiDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetBusInfo: *const fn(self: *anyopaque, busId: ?HSTRING, _r: **SpiBusInfo) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, busId: ?HSTRING, settings: *SpiConnectionSettings, _r: **IAsyncOperation(SpiDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const SpiBusInfo = extern struct {
@@ -395,7 +395,7 @@ pub const SpiController = extern struct {
 };
 pub const SpiDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpiDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -428,19 +428,19 @@ pub const SpiDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISpiDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._ISpiDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
-    pub fn GetBusInfo(busId: HSTRING) core.HResult!*SpiBusInfo {
+    pub fn GetBusInfo(busId: ?HSTRING) core.HResult!*SpiBusInfo {
         const _f = try @This()._ISpiDeviceStaticsCache.get();
         return try _f.GetBusInfo(busId);
     }
-    pub fn FromIdAsync(busId: HSTRING, settings: *SpiConnectionSettings) core.HResult!*IAsyncOperation(SpiDevice) {
+    pub fn FromIdAsync(busId: ?HSTRING, settings: *SpiConnectionSettings) core.HResult!*IAsyncOperation(SpiDevice) {
         const _f = try @This()._ISpiDeviceStaticsCache.get();
         return try _f.FromIdAsync(busId, settings);
     }

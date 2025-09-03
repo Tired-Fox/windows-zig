@@ -53,8 +53,8 @@ pub const IJumpListItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -65,33 +65,33 @@ pub const IJumpListItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGroupName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroupName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GroupName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGroupName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroupName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_GroupName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -118,21 +118,21 @@ pub const IJumpListItem = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *JumpListItemKind) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_RemovedByUser: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_GroupName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_GroupName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_GroupName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_GroupName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Logo: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Logo: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IJumpListItemStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithArguments(self: *@This(), arguments: HSTRING, displayName: HSTRING) core.HResult!*JumpListItem {
+    pub fn CreateWithArguments(self: *@This(), arguments: ?HSTRING, displayName: ?HSTRING) core.HResult!*JumpListItem {
         var _r: *JumpListItem = undefined;
         const _c = self.vtable.CreateWithArguments(@ptrCast(self), arguments, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -156,7 +156,7 @@ pub const IJumpListItemStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithArguments: *const fn(self: *anyopaque, arguments: HSTRING, displayName: HSTRING, _r: **JumpListItem) callconv(.winapi) HRESULT,
+        CreateWithArguments: *const fn(self: *anyopaque, arguments: ?HSTRING, displayName: ?HSTRING, _r: **JumpListItem) callconv(.winapi) HRESULT,
         CreateSeparator: *const fn(self: *anyopaque, _r: **JumpListItem) callconv(.winapi) HRESULT,
     };
 };
@@ -192,42 +192,42 @@ pub const IJumpListStatics = extern struct {
 };
 pub const ISecondaryTile = extern struct {
     vtable: *const VTable,
-    pub fn putTileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TileId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putArguments(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putArguments(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Arguments(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putShortName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putShortName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ShortName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getShortName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getShortName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ShortName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -378,14 +378,14 @@ pub const ISecondaryTile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_TileId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Arguments: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ShortName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ShortName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_TileId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Arguments: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ShortName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ShortName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_Logo: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_Logo: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_SmallLogo: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
@@ -415,12 +415,12 @@ pub const ISecondaryTile = extern struct {
 };
 pub const ISecondaryTile2 = extern struct {
     vtable: *const VTable,
-    pub fn putPhoneticName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PhoneticName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPhoneticName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneticName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneticName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -463,8 +463,8 @@ pub const ISecondaryTile2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_PhoneticName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PhoneticName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_PhoneticName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneticName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_VisualElements: *const fn(self: *anyopaque, _r: **SecondaryTileVisualElements) callconv(.winapi) HRESULT,
         put_RoamingEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_RoamingEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -474,19 +474,19 @@ pub const ISecondaryTile2 = extern struct {
 };
 pub const ISecondaryTileFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateTile(self: *@This(), tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
+    pub fn CreateTile(self: *@This(), tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateTile(@ptrCast(self), tileId, shortName, displayName, arguments, tileOptions, logoReference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWideTile(self: *@This(), tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
+    pub fn CreateWideTile(self: *@This(), tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateWideTile(@ptrCast(self), tileId, shortName, displayName, arguments, tileOptions, logoReference, wideLogoReference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithId(self: *@This(), tileId: HSTRING) core.HResult!*SecondaryTile {
+    pub fn CreateWithId(self: *@This(), tileId: ?HSTRING) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateWithId(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -504,14 +504,14 @@ pub const ISecondaryTileFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateTile: *const fn(self: *anyopaque, tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri, _r: **SecondaryTile) callconv(.winapi) HRESULT,
-        CreateWideTile: *const fn(self: *anyopaque, tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri, _r: **SecondaryTile) callconv(.winapi) HRESULT,
-        CreateWithId: *const fn(self: *anyopaque, tileId: HSTRING, _r: **SecondaryTile) callconv(.winapi) HRESULT,
+        CreateTile: *const fn(self: *anyopaque, tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri, _r: **SecondaryTile) callconv(.winapi) HRESULT,
+        CreateWideTile: *const fn(self: *anyopaque, tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri, _r: **SecondaryTile) callconv(.winapi) HRESULT,
+        CreateWithId: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **SecondaryTile) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryTileFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateMinimalTile(self: *@This(), tileId: HSTRING, displayName: HSTRING, arguments: HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
+    pub fn CreateMinimalTile(self: *@This(), tileId: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateMinimalTile(@ptrCast(self), tileId, displayName, arguments, square150x150Logo, desiredSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -529,12 +529,12 @@ pub const ISecondaryTileFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateMinimalTile: *const fn(self: *anyopaque, tileId: HSTRING, displayName: HSTRING, arguments: HSTRING, square150x150Logo: *Uri, desiredSize: TileSize, _r: **SecondaryTile) callconv(.winapi) HRESULT,
+        CreateMinimalTile: *const fn(self: *anyopaque, tileId: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, square150x150Logo: *Uri, desiredSize: TileSize, _r: **SecondaryTile) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryTileStatics = extern struct {
     vtable: *const VTable,
-    pub fn Exists(self: *@This(), tileId: HSTRING) core.HResult!bool {
+    pub fn Exists(self: *@This(), tileId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Exists(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -546,7 +546,7 @@ pub const ISecondaryTileStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
+    pub fn FindAllAsyncWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         var _r: *IAsyncOperation(IVectorView(SecondaryTile)) = undefined;
         const _c = self.vtable.FindAllAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -570,9 +570,9 @@ pub const ISecondaryTileStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Exists: *const fn(self: *anyopaque, tileId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        Exists: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
-        FindAllAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
+        FindAllAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
         FindAllForPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
     };
 };
@@ -837,13 +837,13 @@ pub const IStartScreenManager = extern struct {
 };
 pub const IStartScreenManager2 = extern struct {
     vtable: *const VTable,
-    pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ContainsSecondaryTileAsync(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryRemoveSecondaryTileAsync(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -861,8 +861,8 @@ pub const IStartScreenManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ContainsSecondaryTileAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryRemoveSecondaryTileAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        ContainsSecondaryTileAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryRemoveSecondaryTileAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStartScreenManagerStatics = extern struct {
@@ -1093,7 +1093,7 @@ pub const JumpListItem = extern struct {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getKind();
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getArguments();
     }
@@ -1101,27 +1101,27 @@ pub const JumpListItem = extern struct {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getRemovedByUser();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getGroupName(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroupName(self: *@This()) core.HResult!?HSTRING {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getGroupName();
     }
-    pub fn putGroupName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroupName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.putGroupName(value);
     }
@@ -1136,7 +1136,7 @@ pub const JumpListItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWithArguments(arguments: HSTRING, displayName: HSTRING) core.HResult!*JumpListItem {
+    pub fn CreateWithArguments(arguments: ?HSTRING, displayName: ?HSTRING) core.HResult!*JumpListItem {
         const _f = try @This()._IJumpListItemStaticsCache.get();
         return try _f.CreateWithArguments(arguments, displayName);
     }
@@ -1162,35 +1162,35 @@ pub const JumpListSystemGroupKind = enum(i32) {
 };
 pub const SecondaryTile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putTileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.putTileId(value);
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.getTileId();
     }
-    pub fn putArguments(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putArguments(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.putArguments(value);
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.getArguments();
     }
-    pub fn putShortName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putShortName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.putShortName(value);
     }
-    pub fn getShortName(self: *@This()) core.HResult!HSTRING {
+    pub fn getShortName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.getShortName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -1294,13 +1294,13 @@ pub const SecondaryTile = extern struct {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.UpdateAsync();
     }
-    pub fn putPhoneticName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPhoneticName(value);
     }
-    pub fn getPhoneticName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneticName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISecondaryTile2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1343,23 +1343,23 @@ pub const SecondaryTile = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISecondaryTile.IID)));
     }
-    pub fn CreateTile(tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
+    pub fn CreateTile(tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
         const _f = try @This()._ISecondaryTileFactoryCache.get();
         return try _f.CreateTile(tileId, shortName, displayName, arguments, tileOptions, logoReference);
     }
-    pub fn CreateWideTile(tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
+    pub fn CreateWideTile(tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
         const _f = try @This()._ISecondaryTileFactoryCache.get();
         return try _f.CreateWideTile(tileId, shortName, displayName, arguments, tileOptions, logoReference, wideLogoReference);
     }
-    pub fn CreateWithId(tileId: HSTRING) core.HResult!*SecondaryTile {
+    pub fn CreateWithId(tileId: ?HSTRING) core.HResult!*SecondaryTile {
         const _f = try @This()._ISecondaryTileFactoryCache.get();
         return try _f.CreateWithId(tileId);
     }
-    pub fn CreateMinimalTile(tileId: HSTRING, displayName: HSTRING, arguments: HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
+    pub fn CreateMinimalTile(tileId: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
         const _f = try @This()._ISecondaryTileFactory2Cache.get();
         return try _f.CreateMinimalTile(tileId, displayName, arguments, square150x150Logo, desiredSize);
     }
-    pub fn Exists(tileId: HSTRING) core.HResult!bool {
+    pub fn Exists(tileId: ?HSTRING) core.HResult!bool {
         const _f = try @This()._ISecondaryTileStaticsCache.get();
         return try _f.Exists(tileId);
     }
@@ -1367,7 +1367,7 @@ pub const SecondaryTile = extern struct {
         const _f = try @This()._ISecondaryTileStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FindAllAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
+    pub fn FindAllAsyncWithApplicationId(applicationId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         const _f = try @This()._ISecondaryTileStaticsCache.get();
         return try _f.FindAllAsyncWithApplicationId(applicationId);
     }
@@ -1521,13 +1521,13 @@ pub const StartScreenManager = extern struct {
         const this: *IStartScreenManager = @ptrCast(self);
         return try this.RequestAddAppListEntryAsync(appListEntry);
     }
-    pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainsSecondaryTileAsync(tileId);
     }
-    pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

@@ -17,11 +17,11 @@ pub const CredentialPicker = extern struct {
         const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsync(options);
     }
-    pub fn PickAsyncWithTargetNameAndMessage(targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessage(targetName: ?HSTRING, message: ?HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsyncWithTargetNameAndMessage(targetName, message);
     }
-    pub fn PickAsyncWithTargetNameAndMessageAndCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessageAndCaption(targetName: ?HSTRING, message: ?HSTRING, caption: ?HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         const _f = try @This()._ICredentialPickerStaticsCache.get();
         return try _f.PickAsyncWithTargetNameAndMessageAndCaption(targetName, message, caption);
     }
@@ -31,19 +31,19 @@ pub const CredentialPicker = extern struct {
 };
 pub const CredentialPickerOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.putCaption(value);
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getCaption();
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.putMessage(value);
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getMessage();
     }
@@ -55,11 +55,11 @@ pub const CredentialPickerOptions = extern struct {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getErrorCode();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.putTargetName(value);
     }
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getTargetName();
     }
@@ -71,11 +71,11 @@ pub const CredentialPickerOptions = extern struct {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getAuthenticationProtocol();
     }
-    pub fn putCustomAuthenticationProtocol(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustomAuthenticationProtocol(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.putCustomAuthenticationProtocol(value);
     }
-    pub fn getCustomAuthenticationProtocol(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomAuthenticationProtocol(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getCustomAuthenticationProtocol();
     }
@@ -143,15 +143,15 @@ pub const CredentialPickerResults = extern struct {
         const this: *ICredentialPickerResults = @ptrCast(self);
         return try this.getCredential();
     }
-    pub fn getCredentialDomainName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCredentialDomainName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerResults = @ptrCast(self);
         return try this.getCredentialDomainName();
     }
-    pub fn getCredentialUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCredentialUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerResults = @ptrCast(self);
         return try this.getCredentialUserName();
     }
-    pub fn getCredentialPassword(self: *@This()) core.HResult!HSTRING {
+    pub fn getCredentialPassword(self: *@This()) core.HResult!?HSTRING {
         const this: *ICredentialPickerResults = @ptrCast(self);
         return try this.getCredentialPassword();
     }
@@ -168,22 +168,22 @@ pub const CredentialSaveOption = enum(i32) {
 };
 pub const ICredentialPickerOptions = extern struct {
     vtable: *const VTable,
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Message(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -198,12 +198,12 @@ pub const ICredentialPickerOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -218,12 +218,12 @@ pub const ICredentialPickerOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCustomAuthenticationProtocol(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustomAuthenticationProtocol(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CustomAuthenticationProtocol(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCustomAuthenticationProtocol(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomAuthenticationProtocol(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomAuthenticationProtocol(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -280,18 +280,18 @@ pub const ICredentialPickerOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Caption: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Message: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Caption: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Message: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_ErrorCode: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_ErrorCode: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_AuthenticationProtocol: *const fn(self: *anyopaque, value: AuthenticationProtocol) callconv(.winapi) HRESULT,
         get_AuthenticationProtocol: *const fn(self: *anyopaque, _r: *AuthenticationProtocol) callconv(.winapi) HRESULT,
-        put_CustomAuthenticationProtocol: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CustomAuthenticationProtocol: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_CustomAuthenticationProtocol: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CustomAuthenticationProtocol: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_PreviousCredential: *const fn(self: *anyopaque, value: *IBuffer) callconv(.winapi) HRESULT,
         get_PreviousCredential: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         put_AlwaysDisplayDialog: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -328,20 +328,20 @@ pub const ICredentialPickerResults = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCredentialDomainName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCredentialDomainName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CredentialDomainName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCredentialUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCredentialUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CredentialUserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCredentialPassword(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCredentialPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CredentialPassword(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -362,9 +362,9 @@ pub const ICredentialPickerResults = extern struct {
         get_CredentialSaveOption: *const fn(self: *anyopaque, _r: *CredentialSaveOption) callconv(.winapi) HRESULT,
         get_CredentialSaved: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Credential: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_CredentialDomainName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CredentialUserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CredentialPassword: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CredentialDomainName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CredentialUserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CredentialPassword: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICredentialPickerStatics = extern struct {
@@ -375,13 +375,13 @@ pub const ICredentialPickerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickAsyncWithTargetNameAndMessage(self: *@This(), targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessage(self: *@This(), targetName: ?HSTRING, message: ?HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         var _r: *IAsyncOperation(CredentialPickerResults) = undefined;
         const _c = self.vtable.PickAsyncWithTargetNameAndMessage(@ptrCast(self), targetName, message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickAsyncWithTargetNameAndMessageAndCaption(self: *@This(), targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessageAndCaption(self: *@This(), targetName: ?HSTRING, message: ?HSTRING, caption: ?HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         var _r: *IAsyncOperation(CredentialPickerResults) = undefined;
         const _c = self.vtable.PickAsyncWithTargetNameAndMessageAndCaption(@ptrCast(self), targetName, message, caption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -400,8 +400,8 @@ pub const ICredentialPickerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         PickAsync: *const fn(self: *anyopaque, options: *CredentialPickerOptions, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
-        PickAsyncWithTargetNameAndMessage: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
-        PickAsyncWithTargetNameAndMessageAndCaption: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, caption: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
+        PickAsyncWithTargetNameAndMessage: *const fn(self: *anyopaque, targetName: ?HSTRING, message: ?HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
+        PickAsyncWithTargetNameAndMessageAndCaption: *const fn(self: *anyopaque, targetName: ?HSTRING, message: ?HSTRING, caption: ?HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserConsentVerifierStatics = extern struct {
@@ -412,7 +412,7 @@ pub const IUserConsentVerifierStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestVerificationAsync(self: *@This(), message: HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
+    pub fn RequestVerificationAsync(self: *@This(), message: ?HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
         var _r: *IAsyncOperation(UserConsentVerificationResult) = undefined;
         const _c = self.vtable.RequestVerificationAsync(@ptrCast(self), message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -431,7 +431,7 @@ pub const IUserConsentVerifierStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CheckAvailabilityAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(UserConsentVerifierAvailability)) callconv(.winapi) HRESULT,
-        RequestVerificationAsync: *const fn(self: *anyopaque, message: HSTRING, _r: **IAsyncOperation(UserConsentVerificationResult)) callconv(.winapi) HRESULT,
+        RequestVerificationAsync: *const fn(self: *anyopaque, message: ?HSTRING, _r: **IAsyncOperation(UserConsentVerificationResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const UserConsentVerificationResult = enum(i32) {
@@ -452,7 +452,7 @@ pub const UserConsentVerifier = extern struct {
         const _f = try @This()._IUserConsentVerifierStaticsCache.get();
         return try _f.CheckAvailabilityAsync();
     }
-    pub fn RequestVerificationAsync(message: HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
+    pub fn RequestVerificationAsync(message: ?HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
         const _f = try @This()._IUserConsentVerifierStaticsCache.get();
         return try _f.RequestVerificationAsync(message);
     }

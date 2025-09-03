@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const ISecurityAppManager = extern struct {
     vtable: *const VTable,
-    pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
+    pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: ?HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.Register(@ptrCast(self), kind, displayName, detailsUri, registerPerUser, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -27,7 +27,7 @@ pub const ISecurityAppManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, kind: SecurityAppKind, displayName: HSTRING, detailsUri: *Uri, registerPerUser: bool, _r: **Guid) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, kind: SecurityAppKind, displayName: ?HSTRING, detailsUri: *Uri, registerPerUser: bool, _r: **Guid) callconv(.winapi) HRESULT,
         Unregister: *const fn(self: *anyopaque, kind: SecurityAppKind, guidRegistration: *Guid) callconv(.winapi) HRESULT,
         UpdateState: *const fn(self: *anyopaque, kind: SecurityAppKind, guidRegistration: *Guid, state: SecurityAppState, substatus: SecurityAppSubstatus, detailsUri: *Uri) callconv(.winapi) HRESULT,
     };
@@ -37,7 +37,7 @@ pub const SecurityAppKind = enum(i32) {
 };
 pub const SecurityAppManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
+    pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: ?HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
         const this: *ISecurityAppManager = @ptrCast(self);
         return try this.Register(kind, displayName, detailsUri, registerPerUser);
     }
@@ -85,13 +85,13 @@ pub const IWindowTab = extern struct {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -105,13 +105,13 @@ pub const IWindowTab = extern struct {
         const _c = self.vtable.put_Icon(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTreatAsSecondaryTileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTreatAsSecondaryTileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TreatAsSecondaryTileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTreatAsSecondaryTileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTreatAsSecondaryTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TreatAsSecondaryTileId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -143,12 +143,12 @@ pub const IWindowTab = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Tag: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Tag: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *WindowTabIcon) callconv(.winapi) HRESULT,
-        get_TreatAsSecondaryTileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TreatAsSecondaryTileId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TreatAsSecondaryTileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TreatAsSecondaryTileId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Group: *const fn(self: *anyopaque, _r: **WindowTabGroup) callconv(.winapi) HRESULT,
         put_Group: *const fn(self: *anyopaque, value: *WindowTabGroup) callconv(.winapi) HRESULT,
         ReportThumbnailAvailable: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -200,13 +200,13 @@ pub const IWindowTabCollection = extern struct {
 };
 pub const IWindowTabGroup = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -232,8 +232,8 @@ pub const IWindowTabGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *WindowTabIcon) callconv(.winapi) HRESULT,
     };
@@ -256,13 +256,13 @@ pub const IWindowTabIcon = extern struct {
 };
 pub const IWindowTabIconStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromFontGlyph(self: *@This(), glyph: HSTRING, fontFamily: HSTRING) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyph(self: *@This(), glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*WindowTabIcon {
         var _r: *WindowTabIcon = undefined;
         const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), glyph, fontFamily, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromFontGlyphWithFontUri(self: *@This(), glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontUri(self: *@This(), glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         var _r: *WindowTabIcon = undefined;
         const _c = self.vtable.CreateFromFontGlyphWithFontUri(@ptrCast(self), glyph, fontFamily, fontUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -286,8 +286,8 @@ pub const IWindowTabIconStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromFontGlyph: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
-        CreateFromFontGlyphWithFontUri: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
+        CreateFromFontGlyph: *const fn(self: *anyopaque, glyph: ?HSTRING, fontFamily: ?HSTRING, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
+        CreateFromFontGlyphWithFontUri: *const fn(self: *anyopaque, glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
         CreateFromImage: *const fn(self: *anyopaque, image: *IRandomAccessStreamReference, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
     };
 };
@@ -535,11 +535,11 @@ pub const WindowTab = extern struct {
         const this: *IWindowTab = @ptrCast(self);
         return try this.putTag(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowTab = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowTab = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -551,11 +551,11 @@ pub const WindowTab = extern struct {
         const this: *IWindowTab = @ptrCast(self);
         return try this.putIcon(value);
     }
-    pub fn getTreatAsSecondaryTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTreatAsSecondaryTileId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowTab = @ptrCast(self);
         return try this.getTreatAsSecondaryTileId();
     }
-    pub fn putTreatAsSecondaryTileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTreatAsSecondaryTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowTab = @ptrCast(self);
         return try this.putTreatAsSecondaryTileId(value);
     }
@@ -647,11 +647,11 @@ pub const WindowTabCollection = extern struct {
 };
 pub const WindowTabGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowTabGroup = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowTabGroup = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -682,11 +682,11 @@ pub const WindowTabIcon = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromFontGlyph(glyph: HSTRING, fontFamily: HSTRING) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyph(glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*WindowTabIcon {
         const _f = try @This()._IWindowTabIconStaticsCache.get();
         return try _f.CreateFromFontGlyph(glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyphWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontUri(glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         const _f = try @This()._IWindowTabIconStaticsCache.get();
         return try _f.CreateFromFontGlyphWithFontUri(glyph, fontFamily, fontUri);
     }
@@ -838,7 +838,7 @@ pub const AdaptiveCardBuilder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateAdaptiveCardFromJson(value: HSTRING) core.HResult!*IAdaptiveCard {
+    pub fn CreateAdaptiveCardFromJson(value: ?HSTRING) core.HResult!*IAdaptiveCard {
         const _f = try @This()._IAdaptiveCardBuilderStaticsCache.get();
         return try _f.CreateAdaptiveCardFromJson(value);
     }
@@ -848,7 +848,7 @@ pub const AdaptiveCardBuilder = extern struct {
 };
 pub const FocusSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFocusSession = @ptrCast(self);
         return try this.getId();
     }
@@ -868,7 +868,7 @@ pub const FocusSessionManager = extern struct {
         const this: *IFocusSessionManager = @ptrCast(self);
         return try this.getIsFocusActive();
     }
-    pub fn GetSession(self: *@This(), id: HSTRING) core.HResult!*FocusSession {
+    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
         const this: *IFocusSessionManager = @ptrCast(self);
         return try this.GetSession(id);
     }
@@ -912,8 +912,8 @@ pub const FocusSessionManager = extern struct {
 };
 pub const IAdaptiveCard = extern struct {
     vtable: *const VTable,
-    pub fn ToJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -930,12 +930,12 @@ pub const IAdaptiveCard = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToJson: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ToJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveCardBuilderStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateAdaptiveCardFromJson(self: *@This(), value: HSTRING) core.HResult!*IAdaptiveCard {
+    pub fn CreateAdaptiveCardFromJson(self: *@This(), value: ?HSTRING) core.HResult!*IAdaptiveCard {
         var _r: *IAdaptiveCard = undefined;
         const _c = self.vtable.CreateAdaptiveCardFromJson(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -953,13 +953,13 @@ pub const IAdaptiveCardBuilderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAdaptiveCardFromJson: *const fn(self: *anyopaque, value: HSTRING, _r: **IAdaptiveCard) callconv(.winapi) HRESULT,
+        CreateAdaptiveCardFromJson: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAdaptiveCard) callconv(.winapi) HRESULT,
     };
 };
 pub const IFocusSession = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -980,7 +980,7 @@ pub const IFocusSession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         End: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -992,7 +992,7 @@ pub const IFocusSessionManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSession(self: *@This(), id: HSTRING) core.HResult!*FocusSession {
+    pub fn GetSession(self: *@This(), id: ?HSTRING) core.HResult!*FocusSession {
         var _r: *FocusSession = undefined;
         const _c = self.vtable.GetSession(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1037,7 +1037,7 @@ pub const IFocusSessionManager = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsFocusActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetSession: *const fn(self: *anyopaque, id: HSTRING, _r: **FocusSession) callconv(.winapi) HRESULT,
+        GetSession: *const fn(self: *anyopaque, id: ?HSTRING, _r: **FocusSession) callconv(.winapi) HRESULT,
         TryStartFocusSession: *const fn(self: *anyopaque, _r: **FocusSession) callconv(.winapi) HRESULT,
         TryStartFocusSessionWithEndTime: *const fn(self: *anyopaque, endTime: DateTime, _r: **FocusSession) callconv(.winapi) HRESULT,
         DeactivateFocus: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -1248,7 +1248,7 @@ pub const ITaskbarManager = extern struct {
 };
 pub const ITaskbarManager2 = extern struct {
     vtable: *const VTable,
-    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsSecondaryTilePinnedAsync(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1260,7 +1260,7 @@ pub const ITaskbarManager2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUnpinSecondaryTileAsync(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1278,9 +1278,9 @@ pub const ITaskbarManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsSecondaryTilePinnedAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        IsSecondaryTilePinnedAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPinSecondaryTileAsync: *const fn(self: *anyopaque, secondaryTile: *SecondaryTile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryUnpinSecondaryTileAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryUnpinSecondaryTileAsync: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITaskbarManagerDesktopAppSupportStatics = extern struct {
@@ -1417,7 +1417,7 @@ pub const TaskbarManager = extern struct {
         const this: *ITaskbarManager = @ptrCast(self);
         return try this.RequestPinAppListEntryAsync(appListEntry);
     }
-    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ITaskbarManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1429,7 +1429,7 @@ pub const TaskbarManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestPinSecondaryTileAsync(secondaryTile);
     }
-    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryUnpinSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ITaskbarManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

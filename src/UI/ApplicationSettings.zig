@@ -63,11 +63,11 @@ pub const AccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
         const this: *IAccountsSettingsPaneCommandsRequestedEventArgs = @ptrCast(self);
         return try this.getCommands();
     }
-    pub fn getHeaderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getHeaderText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAccountsSettingsPaneCommandsRequestedEventArgs = @ptrCast(self);
         return try this.getHeaderText();
     }
-    pub fn putHeaderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHeaderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAccountsSettingsPaneCommandsRequestedEventArgs = @ptrCast(self);
         return try this.putHeaderText(value);
     }
@@ -268,13 +268,13 @@ pub const IAccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHeaderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHeaderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HeaderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -300,8 +300,8 @@ pub const IAccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
         get_WebAccountCommands: *const fn(self: *anyopaque, _r: **IVector(WebAccountCommand)) callconv(.winapi) HRESULT,
         get_CredentialCommands: *const fn(self: *anyopaque, _r: **IVector(CredentialCommand)) callconv(.winapi) HRESULT,
         get_Commands: *const fn(self: *anyopaque, _r: **IVector(SettingsCommand)) callconv(.winapi) HRESULT,
-        get_HeaderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HeaderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HeaderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **AccountsSettingsPaneEventDeferral) callconv(.winapi) HRESULT,
     };
 };
@@ -499,7 +499,7 @@ pub const ICredentialCommandFactory = extern struct {
 };
 pub const ISettingsCommandFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSettingsCommand(self: *@This(), settingsCommandId: *IInspectable, label: HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
+    pub fn CreateSettingsCommand(self: *@This(), settingsCommandId: *IInspectable, label: ?HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
         var _r: *SettingsCommand = undefined;
         const _c = self.vtable.CreateSettingsCommand(@ptrCast(self), settingsCommandId, label, handler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -517,7 +517,7 @@ pub const ISettingsCommandFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSettingsCommand: *const fn(self: *anyopaque, settingsCommandId: *IInspectable, label: HSTRING, handler: *UICommandInvokedHandler, _r: **SettingsCommand) callconv(.winapi) HRESULT,
+        CreateSettingsCommand: *const fn(self: *anyopaque, settingsCommandId: *IInspectable, label: ?HSTRING, handler: *UICommandInvokedHandler, _r: **SettingsCommand) callconv(.winapi) HRESULT,
     };
 };
 pub const ISettingsCommandStatics = extern struct {
@@ -681,11 +681,11 @@ pub const IWebAccountProviderCommandFactory = extern struct {
 };
 pub const SettingsCommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -708,7 +708,7 @@ pub const SettingsCommand = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateSettingsCommand(settingsCommandId: *IInspectable, label: HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
+    pub fn CreateSettingsCommand(settingsCommandId: *IInspectable, label: ?HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
         const _f = try @This()._ISettingsCommandFactoryCache.get();
         return try _f.CreateSettingsCommand(settingsCommandId, label, handler);
     }

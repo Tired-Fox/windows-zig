@@ -6,19 +6,19 @@ pub const DeviceAccountAuthenticationType = enum(i32) {
 };
 pub const DeviceAccountConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAccountName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getAccountName();
     }
-    pub fn putAccountName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccountName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putAccountName(value);
     }
-    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getDeviceAccountTypeId();
     }
-    pub fn putDeviceAccountTypeId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDeviceAccountTypeId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putDeviceAccountTypeId(value);
     }
@@ -30,19 +30,19 @@ pub const DeviceAccountConfiguration = extern struct {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putServerType(value);
     }
-    pub fn getEmailAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getEmailAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getEmailAddress();
     }
-    pub fn putEmailAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEmailAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putEmailAddress(value);
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getDomain();
     }
-    pub fn putDomain(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDomain(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putDomain(value);
     }
@@ -70,11 +70,11 @@ pub const DeviceAccountConfiguration = extern struct {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putCalendarSyncEnabled(value);
     }
-    pub fn getIncomingServerAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getIncomingServerAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getIncomingServerAddress();
     }
-    pub fn putIncomingServerAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putIncomingServerAddress(value);
     }
@@ -94,19 +94,19 @@ pub const DeviceAccountConfiguration = extern struct {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putIncomingServerRequiresSsl(value);
     }
-    pub fn getIncomingServerUsername(self: *@This()) core.HResult!HSTRING {
+    pub fn getIncomingServerUsername(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getIncomingServerUsername();
     }
-    pub fn putIncomingServerUsername(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putIncomingServerUsername(value);
     }
-    pub fn getOutgoingServerAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getOutgoingServerAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getOutgoingServerAddress();
     }
-    pub fn putOutgoingServerAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putOutgoingServerAddress(value);
     }
@@ -126,11 +126,11 @@ pub const DeviceAccountConfiguration = extern struct {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putOutgoingServerRequiresSsl(value);
     }
-    pub fn getOutgoingServerUsername(self: *@This()) core.HResult!HSTRING {
+    pub fn getOutgoingServerUsername(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getOutgoingServerUsername();
     }
-    pub fn putOutgoingServerUsername(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.putOutgoingServerUsername(value);
     }
@@ -158,13 +158,13 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingServerCredential(value);
     }
-    pub fn getOAuthRefreshToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getOAuthRefreshToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOAuthRefreshToken();
     }
-    pub fn putOAuthRefreshToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOAuthRefreshToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -212,13 +212,13 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSsoAuthenticationSupported();
     }
-    pub fn getSsoAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSsoAccountId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSsoAccountId();
     }
-    pub fn putSsoAccountId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsoAccountId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -290,13 +290,13 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAutoSelectAuthenticationCertificate(value);
     }
-    pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAuthenticationCertificateId();
     }
-    pub fn putAuthenticationCertificateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAuthenticationCertificateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -398,13 +398,13 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWasIncomingServerCertificateHashConfirmed(value);
     }
-    pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!HSTRING {
+    pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncomingServerCertificateHash();
     }
-    pub fn putIncomingServerCertificateHash(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -446,13 +446,13 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWasOutgoingServerCertificateHashConfirmed(value);
     }
-    pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!HSTRING {
+    pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingServerCertificateHash();
     }
-    pub fn putOutgoingServerCertificateHash(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDeviceAccountConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccountConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -515,23 +515,23 @@ pub const DeviceAccountSyncScheduleKind = enum(i32) {
 };
 pub const IDeviceAccountConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getAccountName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAccountName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccountName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccountName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceAccountTypeId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceAccountTypeId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDeviceAccountTypeId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDeviceAccountTypeId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DeviceAccountTypeId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -545,23 +545,23 @@ pub const IDeviceAccountConfiguration = extern struct {
         const _c = self.vtable.put_ServerType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getEmailAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEmailAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EmailAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEmailAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEmailAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EmailAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDomain(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDomain(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Domain(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -595,13 +595,13 @@ pub const IDeviceAccountConfiguration = extern struct {
         const _c = self.vtable.put_CalendarSyncEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIncomingServerAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIncomingServerAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIncomingServerAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -625,23 +625,23 @@ pub const IDeviceAccountConfiguration = extern struct {
         const _c = self.vtable.put_IncomingServerRequiresSsl(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIncomingServerUsername(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIncomingServerUsername(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerUsername(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIncomingServerUsername(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerUsername(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOutgoingServerAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOutgoingServerAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOutgoingServerAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -665,13 +665,13 @@ pub const IDeviceAccountConfiguration = extern struct {
         const _c = self.vtable.put_OutgoingServerRequiresSsl(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOutgoingServerUsername(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOutgoingServerUsername(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerUsername(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOutgoingServerUsername(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerUsername(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerUsername(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -687,38 +687,38 @@ pub const IDeviceAccountConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AccountName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AccountName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceAccountTypeId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DeviceAccountTypeId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AccountName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AccountName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceAccountTypeId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DeviceAccountTypeId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ServerType: *const fn(self: *anyopaque, _r: *DeviceAccountServerType) callconv(.winapi) HRESULT,
         put_ServerType: *const fn(self: *anyopaque, value: DeviceAccountServerType) callconv(.winapi) HRESULT,
-        get_EmailAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EmailAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Domain: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EmailAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EmailAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Domain: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_EmailSyncEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_EmailSyncEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ContactsSyncEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_ContactsSyncEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_CalendarSyncEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_CalendarSyncEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IncomingServerAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IncomingServerAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_IncomingServerAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IncomingServerAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IncomingServerPort: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_IncomingServerPort: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_IncomingServerRequiresSsl: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IncomingServerRequiresSsl: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IncomingServerUsername: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IncomingServerUsername: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_OutgoingServerAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OutgoingServerAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_IncomingServerUsername: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IncomingServerUsername: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_OutgoingServerAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OutgoingServerAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_OutgoingServerPort: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_OutgoingServerPort: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_OutgoingServerRequiresSsl: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_OutgoingServerRequiresSsl: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_OutgoingServerUsername: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OutgoingServerUsername: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OutgoingServerUsername: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OutgoingServerUsername: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceAccountConfiguration2 = extern struct {
@@ -743,13 +743,13 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         const _c = self.vtable.put_OutgoingServerCredential(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOAuthRefreshToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOAuthRefreshToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OAuthRefreshToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOAuthRefreshToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOAuthRefreshToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OAuthRefreshToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -789,13 +789,13 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSsoAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSsoAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SsoAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSsoAccountId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsoAccountId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SsoAccountId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -855,13 +855,13 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         const _c = self.vtable.put_AutoSelectAuthenticationCertificate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthenticationCertificateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AuthenticationCertificateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAuthenticationCertificateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAuthenticationCertificateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AuthenticationCertificateId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -945,13 +945,13 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         const _c = self.vtable.put_WasIncomingServerCertificateHashConfirmed(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIncomingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IncomingServerCertificateHash(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIncomingServerCertificateHash(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIncomingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IncomingServerCertificateHash(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -985,13 +985,13 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         const _c = self.vtable.put_WasOutgoingServerCertificateHashConfirmed(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOutgoingServerCertificateHash(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OutgoingServerCertificateHash(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOutgoingServerCertificateHash(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOutgoingServerCertificateHash(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OutgoingServerCertificateHash(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1021,8 +1021,8 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         put_IncomingServerCredential: *const fn(self: *anyopaque, value: *PasswordCredential) callconv(.winapi) HRESULT,
         get_OutgoingServerCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         put_OutgoingServerCredential: *const fn(self: *anyopaque, value: *PasswordCredential) callconv(.winapi) HRESULT,
-        get_OAuthRefreshToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OAuthRefreshToken: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OAuthRefreshToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OAuthRefreshToken: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsExternallyManaged: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsExternallyManaged: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AccountIconId: *const fn(self: *anyopaque, _r: *DeviceAccountIconId) callconv(.winapi) HRESULT,
@@ -1030,8 +1030,8 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         get_AuthenticationType: *const fn(self: *anyopaque, _r: *DeviceAccountAuthenticationType) callconv(.winapi) HRESULT,
         put_AuthenticationType: *const fn(self: *anyopaque, value: DeviceAccountAuthenticationType) callconv(.winapi) HRESULT,
         get_IsSsoAuthenticationSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_SsoAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SsoAccountId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SsoAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SsoAccountId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AlwaysDownloadFullMessage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AlwaysDownloadFullMessage: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_DoesPolicyAllowMailSync: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1043,8 +1043,8 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         put_IsClientAuthenticationCertificateRequired: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AutoSelectAuthenticationCertificate: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AutoSelectAuthenticationCertificate: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_AuthenticationCertificateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AuthenticationCertificateId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AuthenticationCertificateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AuthenticationCertificateId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CardDavSyncScheduleKind: *const fn(self: *anyopaque, _r: *DeviceAccountSyncScheduleKind) callconv(.winapi) HRESULT,
         put_CardDavSyncScheduleKind: *const fn(self: *anyopaque, value: DeviceAccountSyncScheduleKind) callconv(.winapi) HRESULT,
         get_CalDavSyncScheduleKind: *const fn(self: *anyopaque, _r: *DeviceAccountSyncScheduleKind) callconv(.winapi) HRESULT,
@@ -1061,24 +1061,24 @@ pub const IDeviceAccountConfiguration2 = extern struct {
         put_WasModifiedByUser: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_WasIncomingServerCertificateHashConfirmed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_WasIncomingServerCertificateHashConfirmed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_IncomingServerCertificateHash: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IncomingServerCertificateHash: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_IncomingServerCertificateHash: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IncomingServerCertificateHash: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsOutgoingServerAuthenticationRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsOutgoingServerAuthenticationRequired: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsOutgoingServerAuthenticationEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsOutgoingServerAuthenticationEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_WasOutgoingServerCertificateHashConfirmed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_WasOutgoingServerCertificateHashConfirmed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_OutgoingServerCertificateHash: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OutgoingServerCertificateHash: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OutgoingServerCertificateHash: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OutgoingServerCertificateHash: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsSyncScheduleManagedBySystem: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSyncScheduleManagedBySystem: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn AddAndShowDeviceAccountsAsync(self: *@This(), accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn AddAndShowDeviceAccountsAsync(self: *@This(), accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.AddAndShowDeviceAccountsAsync(@ptrCast(self), accounts, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1095,30 +1095,30 @@ pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddAndShowDeviceAccountsAsync: *const fn(self: *anyopaque, accounts: *IIterable(DeviceAccountConfiguration), _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        AddAndShowDeviceAccountsAsync: *const fn(self: *anyopaque, accounts: *IIterable(DeviceAccountConfiguration), _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn SuppressLocalAccountWithAccountAsync(self: *@This(), userDataAccountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SuppressLocalAccountWithAccountAsync(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SuppressLocalAccountWithAccountAsync(@ptrCast(self), userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDeviceAccountAsync(self: *@This(), account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CreateDeviceAccountAsync(self: *@This(), account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateDeviceAccountAsync(@ptrCast(self), account, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteDeviceAccountAsync(self: *@This(), accountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteDeviceAccountAsync(self: *@This(), accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteDeviceAccountAsync(@ptrCast(self), accountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceAccountConfigurationAsync(self: *@This(), accountId: HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
+    pub fn GetDeviceAccountConfigurationAsync(self: *@This(), accountId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
         var _r: *IAsyncOperation(DeviceAccountConfiguration) = undefined;
         const _c = self.vtable.GetDeviceAccountConfigurationAsync(@ptrCast(self), accountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1136,10 +1136,10 @@ pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SuppressLocalAccountWithAccountAsync: *const fn(self: *anyopaque, userDataAccountId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        CreateDeviceAccountAsync: *const fn(self: *anyopaque, account: *DeviceAccountConfiguration, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        DeleteDeviceAccountAsync: *const fn(self: *anyopaque, accountId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetDeviceAccountConfigurationAsync: *const fn(self: *anyopaque, accountId: HSTRING, _r: **IAsyncOperation(DeviceAccountConfiguration)) callconv(.winapi) HRESULT,
+        SuppressLocalAccountWithAccountAsync: *const fn(self: *anyopaque, userDataAccountId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CreateDeviceAccountAsync: *const fn(self: *anyopaque, account: *DeviceAccountConfiguration, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        DeleteDeviceAccountAsync: *const fn(self: *anyopaque, accountId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetDeviceAccountConfigurationAsync: *const fn(self: *anyopaque, accountId: ?HSTRING, _r: **IAsyncOperation(DeviceAccountConfiguration)) callconv(.winapi) HRESULT,
     };
 };
 pub const UserDataAccountSystemAccessManager = extern struct {
@@ -1147,23 +1147,23 @@ pub const UserDataAccountSystemAccessManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn AddAndShowDeviceAccountsAsync(accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn AddAndShowDeviceAccountsAsync(accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const _f = try @This()._IUserDataAccountSystemAccessManagerStaticsCache.get();
         return try _f.AddAndShowDeviceAccountsAsync(accounts);
     }
-    pub fn SuppressLocalAccountWithAccountAsync(userDataAccountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SuppressLocalAccountWithAccountAsync(userDataAccountId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.SuppressLocalAccountWithAccountAsync(userDataAccountId);
     }
-    pub fn CreateDeviceAccountAsync(account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CreateDeviceAccountAsync(account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.CreateDeviceAccountAsync(account);
     }
-    pub fn DeleteDeviceAccountAsync(accountId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteDeviceAccountAsync(accountId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.DeleteDeviceAccountAsync(accountId);
     }
-    pub fn GetDeviceAccountConfigurationAsync(accountId: HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
+    pub fn GetDeviceAccountConfigurationAsync(accountId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
         const _f = try @This()._IUserDataAccountSystemAccessManagerStatics2Cache.get();
         return try _f.GetDeviceAccountConfigurationAsync(accountId);
     }

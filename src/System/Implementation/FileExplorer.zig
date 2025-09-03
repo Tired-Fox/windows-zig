@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Json(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -19,12 +19,12 @@ pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Json: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Json: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), json: HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
+    pub fn CreateInstance(self: *@This(), json: ?HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
         var _r: *SysStorageProviderEventReceivedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), json, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -42,7 +42,7 @@ pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, json: HSTRING, _r: **SysStorageProviderEventReceivedEventArgs) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, json: ?HSTRING, _r: **SysStorageProviderEventReceivedEventArgs) callconv(.winapi) HRESULT,
     };
 };
 pub const ISysStorageProviderEventSource = extern struct {
@@ -75,13 +75,13 @@ pub const ISysStorageProviderEventSource = extern struct {
 };
 pub const ISysStorageProviderHandlerFactory = extern struct {
     vtable: *const VTable,
-    pub fn GetHttpRequestProvider(self: *@This(), syncRootId: HSTRING) core.HResult!*ISysStorageProviderHttpRequestProvider {
+    pub fn GetHttpRequestProvider(self: *@This(), syncRootId: ?HSTRING) core.HResult!*ISysStorageProviderHttpRequestProvider {
         var _r: *ISysStorageProviderHttpRequestProvider = undefined;
         const _c = self.vtable.GetHttpRequestProvider(@ptrCast(self), syncRootId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetEventSource(self: *@This(), syncRootId: HSTRING, eventName: HSTRING) core.HResult!*ISysStorageProviderEventSource {
+    pub fn GetEventSource(self: *@This(), syncRootId: ?HSTRING, eventName: ?HSTRING) core.HResult!*ISysStorageProviderEventSource {
         var _r: *ISysStorageProviderEventSource = undefined;
         const _c = self.vtable.GetEventSource(@ptrCast(self), syncRootId, eventName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -99,8 +99,8 @@ pub const ISysStorageProviderHandlerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetHttpRequestProvider: *const fn(self: *anyopaque, syncRootId: HSTRING, _r: **ISysStorageProviderHttpRequestProvider) callconv(.winapi) HRESULT,
-        GetEventSource: *const fn(self: *anyopaque, syncRootId: HSTRING, eventName: HSTRING, _r: **ISysStorageProviderEventSource) callconv(.winapi) HRESULT,
+        GetHttpRequestProvider: *const fn(self: *anyopaque, syncRootId: ?HSTRING, _r: **ISysStorageProviderHttpRequestProvider) callconv(.winapi) HRESULT,
+        GetEventSource: *const fn(self: *anyopaque, syncRootId: ?HSTRING, eventName: ?HSTRING, _r: **ISysStorageProviderEventSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ISysStorageProviderHttpRequestProvider = extern struct {
@@ -128,14 +128,14 @@ pub const ISysStorageProviderHttpRequestProvider = extern struct {
 };
 pub const SysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getJson(self: *@This()) core.HResult!HSTRING {
+    pub fn getJson(self: *@This()) core.HResult!?HSTRING {
         const this: *ISysStorageProviderEventReceivedEventArgs = @ptrCast(self);
         return try this.getJson();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(json: HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
+    pub fn CreateInstance(json: ?HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
         const _f = try @This()._ISysStorageProviderEventReceivedEventArgsFactoryCache.get();
         return try _f.CreateInstance(json);
     }

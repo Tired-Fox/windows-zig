@@ -486,11 +486,11 @@ pub const GamepadVibration = extern struct {
 };
 pub const Headset = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCaptureDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHeadset = @ptrCast(self);
         return try this.getCaptureDeviceId();
     }
-    pub fn getRenderDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHeadset = @ptrCast(self);
         return try this.getRenderDeviceId();
     }
@@ -923,14 +923,14 @@ pub const IGamepadStatics2 = extern struct {
 };
 pub const IHeadset = extern struct {
     vtable: *const VTable,
-    pub fn getCaptureDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CaptureDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRenderDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RenderDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -947,8 +947,8 @@ pub const IHeadset = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CaptureDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RenderDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CaptureDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RenderDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRacingWheel = extern struct {
@@ -1180,14 +1180,14 @@ pub const IRawGameController2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNonRoamableId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NonRoamableId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1205,8 +1205,8 @@ pub const IRawGameController2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SimpleHapticsControllers: *const fn(self: *anyopaque, _r: **IVectorView(SimpleHapticsController)) callconv(.winapi) HRESULT,
-        get_NonRoamableId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NonRoamableId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRawGameControllerStatics = extern struct {
@@ -1653,13 +1653,13 @@ pub const RawGameController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsControllers();
     }
-    pub fn getNonRoamableId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRawGameController2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNonRoamableId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRawGameController2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawGameController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

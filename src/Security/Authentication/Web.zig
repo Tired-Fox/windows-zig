@@ -83,8 +83,8 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
 };
 pub const IWebAuthenticationResult = extern struct {
     vtable: *const VTable,
-    pub fn getResponseData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResponseData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -113,7 +113,7 @@ pub const IWebAuthenticationResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResponseData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResponseData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ResponseStatus: *const fn(self: *anyopaque, _r: *WebAuthenticationStatus) callconv(.winapi) HRESULT,
         get_ResponseErrorDetail: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
@@ -174,7 +174,7 @@ pub const WebAuthenticationOptions = enum(i32) {
 };
 pub const WebAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResponseData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseData(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAuthenticationResult = @ptrCast(self);
         return try this.getResponseData();
     }

@@ -9,7 +9,7 @@ pub const ActionEntity = extern struct {
         const this: *IActionEntity = @ptrCast(self);
         return try this.getDisplayInfo();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionEntity2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -33,7 +33,7 @@ pub const ActionEntity = extern struct {
 };
 pub const ActionEntityDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionEntityDisplayInfo = @ptrCast(self);
         return try this.getTitle();
     }
@@ -51,29 +51,29 @@ pub const ActionEntityDisplayInfo = extern struct {
 };
 pub const ActionEntityFactory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateFileEntity(self: *@This(), path: HSTRING) core.HResult!*FileActionEntity {
+    pub fn CreateFileEntity(self: *@This(), path: ?HSTRING) core.HResult!*FileActionEntity {
         const this: *IActionEntityFactory2 = @ptrCast(self);
         return try this.CreateFileEntity(path);
     }
-    pub fn CreateDocumentEntity(self: *@This(), path: HSTRING) core.HResult!*DocumentActionEntity {
+    pub fn CreateDocumentEntity(self: *@This(), path: ?HSTRING) core.HResult!*DocumentActionEntity {
         const this: *IActionEntityFactory2 = @ptrCast(self);
         return try this.CreateDocumentEntity(path);
     }
-    pub fn CreatePhotoEntity(self: *@This(), path: HSTRING) core.HResult!*PhotoActionEntity {
+    pub fn CreatePhotoEntity(self: *@This(), path: ?HSTRING) core.HResult!*PhotoActionEntity {
         const this: *IActionEntityFactory2 = @ptrCast(self);
         return try this.CreatePhotoEntity(path);
     }
-    pub fn CreateTextEntity(self: *@This(), text: HSTRING) core.HResult!*TextActionEntity {
+    pub fn CreateTextEntity(self: *@This(), text: ?HSTRING) core.HResult!*TextActionEntity {
         const this: *IActionEntityFactory2 = @ptrCast(self);
         return try this.CreateTextEntity(text);
     }
-    pub fn CreateRemoteFileEntity(self: *@This(), sourceId: HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: HSTRING, contentType: HSTRING, driveId: HSTRING, accountId: HSTRING, extension: HSTRING) core.HResult!*RemoteFileActionEntity {
+    pub fn CreateRemoteFileEntity(self: *@This(), sourceId: ?HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: ?HSTRING, contentType: ?HSTRING, driveId: ?HSTRING, accountId: ?HSTRING, extension: ?HSTRING) core.HResult!*RemoteFileActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRemoteFileEntity(sourceId, fileKind, sourceUri, fileId, contentType, driveId, accountId, extension);
     }
-    pub fn CreateTextEntityWithTextFormat(self: *@This(), text: HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
+    pub fn CreateTextEntityWithTextFormat(self: *@This(), text: ?HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -85,7 +85,7 @@ pub const ActionEntityFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStreamingTextActionEntityWriter(textFormat);
     }
-    pub fn CreateTableEntity(self: *@This(), data: [*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
+    pub fn CreateTableEntity(self: *@This(), data: ?[*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
         var this: ?*IActionEntityFactory4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -156,7 +156,7 @@ pub const ActionInvocationContext = extern struct {
         const this: *IActionInvocationContext = @ptrCast(self);
         return try this.getEntityFactory();
     }
-    pub fn SetInputEntity(self: *@This(), inputName: HSTRING, inputValue: *ActionEntity) core.HResult!void {
+    pub fn SetInputEntity(self: *@This(), inputName: ?HSTRING, inputValue: *ActionEntity) core.HResult!void {
         const this: *IActionInvocationContext = @ptrCast(self);
         return try this.SetInputEntity(inputName, inputValue);
     }
@@ -164,7 +164,7 @@ pub const ActionInvocationContext = extern struct {
         const this: *IActionInvocationContext = @ptrCast(self);
         return try this.GetInputEntities();
     }
-    pub fn SetOutputEntity(self: *@This(), outputName: HSTRING, outputValue: *ActionEntity) core.HResult!void {
+    pub fn SetOutputEntity(self: *@This(), outputName: ?HSTRING, outputValue: *ActionEntity) core.HResult!void {
         const this: *IActionInvocationContext = @ptrCast(self);
         return try this.SetOutputEntity(outputName, outputValue);
     }
@@ -200,13 +200,13 @@ pub const ActionInvocationContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHelpDetails();
     }
-    pub fn getActionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionInvocationContext2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActionId();
     }
-    pub fn getInvokerAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getInvokerAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionInvocationContext2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -234,19 +234,19 @@ pub const ActionInvocationHelpDetails = extern struct {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -258,11 +258,11 @@ pub const ActionInvocationHelpDetails = extern struct {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.putHelpUri(value);
     }
-    pub fn getHelpUriDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getHelpUriDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.getHelpUriDescription();
     }
-    pub fn putHelpUriDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHelpUriDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.putHelpUriDescription(value);
     }
@@ -299,7 +299,7 @@ pub const ActionRuntime = extern struct {
         const this: *IActionRuntime = @ptrCast(self);
         return try this.getEntityFactory();
     }
-    pub fn CreateInvocationContext(self: *@This(), actionId: HSTRING) core.HResult!*ActionInvocationContext {
+    pub fn CreateInvocationContext(self: *@This(), actionId: ?HSTRING) core.HResult!*ActionInvocationContext {
         const this: *IActionRuntime = @ptrCast(self);
         return try this.CreateInvocationContext(actionId);
     }
@@ -309,25 +309,25 @@ pub const ActionRuntime = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateActionFeedback(feedbackKind);
     }
-    pub fn SetActionAvailability(self: *@This(), actionId: HSTRING, isAvailable: bool) core.HResult!void {
+    pub fn SetActionAvailability(self: *@This(), actionId: ?HSTRING, isAvailable: bool) core.HResult!void {
         var this: ?*IActionRuntime2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetActionAvailability(actionId, isAvailable);
     }
-    pub fn GetActionAvailability(self: *@This(), actionId: HSTRING) core.HResult!bool {
+    pub fn GetActionAvailability(self: *@This(), actionId: ?HSTRING) core.HResult!bool {
         var this: ?*IActionRuntime2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionAvailability(actionId);
     }
-    pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
+    pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: ?HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
         var this: ?*IActionRuntime3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInvocationContextWithWindowId(actionId, invokerWindowId);
     }
-    pub fn GetActionEntityById(self: *@This(), entityId: HSTRING) core.HResult!*ActionEntity {
+    pub fn GetActionEntityById(self: *@This(), entityId: ?HSTRING) core.HResult!*ActionEntity {
         var this: ?*IActionRuntime3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -339,7 +339,7 @@ pub const ActionRuntime = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLatestSupportedSchemaVersion();
     }
-    pub fn GetActionInvocationContextFromToken(self: *@This(), token: HSTRING) core.HResult!*ActionInvocationContext {
+    pub fn GetActionInvocationContextFromToken(self: *@This(), token: ?HSTRING) core.HResult!*ActionInvocationContext {
         var this: ?*IActionRuntime4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -375,7 +375,7 @@ pub const ContactActionEntity = extern struct {
 };
 pub const DocumentActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IDocumentActionEntity = @ptrCast(self);
         return try this.getFullPath();
     }
@@ -387,7 +387,7 @@ pub const DocumentActionEntity = extern struct {
 };
 pub const FileActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileActionEntity = @ptrCast(self);
         return try this.getFullPath();
     }
@@ -429,8 +429,8 @@ pub const IActionEntity = extern struct {
 };
 pub const IActionEntity2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -447,13 +447,13 @@ pub const IActionEntity2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionEntityDisplayInfo = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -470,7 +470,7 @@ pub const IActionEntityDisplayInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionEntityFactory = extern struct {
@@ -491,25 +491,25 @@ pub const IActionEntityFactory = extern struct {
 };
 pub const IActionEntityFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateFileEntity(self: *@This(), path: HSTRING) core.HResult!*FileActionEntity {
+    pub fn CreateFileEntity(self: *@This(), path: ?HSTRING) core.HResult!*FileActionEntity {
         var _r: *FileActionEntity = undefined;
         const _c = self.vtable.CreateFileEntity(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDocumentEntity(self: *@This(), path: HSTRING) core.HResult!*DocumentActionEntity {
+    pub fn CreateDocumentEntity(self: *@This(), path: ?HSTRING) core.HResult!*DocumentActionEntity {
         var _r: *DocumentActionEntity = undefined;
         const _c = self.vtable.CreateDocumentEntity(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreatePhotoEntity(self: *@This(), path: HSTRING) core.HResult!*PhotoActionEntity {
+    pub fn CreatePhotoEntity(self: *@This(), path: ?HSTRING) core.HResult!*PhotoActionEntity {
         var _r: *PhotoActionEntity = undefined;
         const _c = self.vtable.CreatePhotoEntity(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextEntity(self: *@This(), text: HSTRING) core.HResult!*TextActionEntity {
+    pub fn CreateTextEntity(self: *@This(), text: ?HSTRING) core.HResult!*TextActionEntity {
         var _r: *TextActionEntity = undefined;
         const _c = self.vtable.CreateTextEntity(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -527,21 +527,21 @@ pub const IActionEntityFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFileEntity: *const fn(self: *anyopaque, path: HSTRING, _r: **FileActionEntity) callconv(.winapi) HRESULT,
-        CreateDocumentEntity: *const fn(self: *anyopaque, path: HSTRING, _r: **DocumentActionEntity) callconv(.winapi) HRESULT,
-        CreatePhotoEntity: *const fn(self: *anyopaque, path: HSTRING, _r: **PhotoActionEntity) callconv(.winapi) HRESULT,
-        CreateTextEntity: *const fn(self: *anyopaque, text: HSTRING, _r: **TextActionEntity) callconv(.winapi) HRESULT,
+        CreateFileEntity: *const fn(self: *anyopaque, path: ?HSTRING, _r: **FileActionEntity) callconv(.winapi) HRESULT,
+        CreateDocumentEntity: *const fn(self: *anyopaque, path: ?HSTRING, _r: **DocumentActionEntity) callconv(.winapi) HRESULT,
+        CreatePhotoEntity: *const fn(self: *anyopaque, path: ?HSTRING, _r: **PhotoActionEntity) callconv(.winapi) HRESULT,
+        CreateTextEntity: *const fn(self: *anyopaque, text: ?HSTRING, _r: **TextActionEntity) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionEntityFactory3 = extern struct {
     vtable: *const VTable,
-    pub fn CreateRemoteFileEntity(self: *@This(), sourceId: HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: HSTRING, contentType: HSTRING, driveId: HSTRING, accountId: HSTRING, extension: HSTRING) core.HResult!*RemoteFileActionEntity {
+    pub fn CreateRemoteFileEntity(self: *@This(), sourceId: ?HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: ?HSTRING, contentType: ?HSTRING, driveId: ?HSTRING, accountId: ?HSTRING, extension: ?HSTRING) core.HResult!*RemoteFileActionEntity {
         var _r: *RemoteFileActionEntity = undefined;
         const _c = self.vtable.CreateRemoteFileEntity(@ptrCast(self), sourceId, fileKind, sourceUri, fileId, contentType, driveId, accountId, extension, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextEntity(self: *@This(), text: HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
+    pub fn CreateTextEntity(self: *@This(), text: ?HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
         var _r: *TextActionEntity = undefined;
         const _c = self.vtable.CreateTextEntity(@ptrCast(self), text, textFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -565,14 +565,14 @@ pub const IActionEntityFactory3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateRemoteFileEntity: *const fn(self: *anyopaque, sourceId: HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: HSTRING, contentType: HSTRING, driveId: HSTRING, accountId: HSTRING, extension: HSTRING, _r: **RemoteFileActionEntity) callconv(.winapi) HRESULT,
-        CreateTextEntity: *const fn(self: *anyopaque, text: HSTRING, textFormat: ActionEntityTextFormat, _r: **TextActionEntity) callconv(.winapi) HRESULT,
+        CreateRemoteFileEntity: *const fn(self: *anyopaque, sourceId: ?HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: ?HSTRING, contentType: ?HSTRING, driveId: ?HSTRING, accountId: ?HSTRING, extension: ?HSTRING, _r: **RemoteFileActionEntity) callconv(.winapi) HRESULT,
+        CreateTextEntity: *const fn(self: *anyopaque, text: ?HSTRING, textFormat: ActionEntityTextFormat, _r: **TextActionEntity) callconv(.winapi) HRESULT,
         CreateStreamingTextActionEntityWriter: *const fn(self: *anyopaque, textFormat: ActionEntityTextFormat, _r: **StreamingTextActionEntityWriter) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionEntityFactory4 = extern struct {
     vtable: *const VTable,
-    pub fn CreateTableEntity(self: *@This(), data: [*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
+    pub fn CreateTableEntity(self: *@This(), data: ?[*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
         var _r: *TableActionEntity = undefined;
         const _c = self.vtable.CreateTableEntity(@ptrCast(self), data, columnCount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -596,7 +596,7 @@ pub const IActionEntityFactory4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateTableEntity: *const fn(self: *anyopaque, data: [*]HSTRING, columnCount: u32, _r: **TableActionEntity) callconv(.winapi) HRESULT,
+        CreateTableEntity: *const fn(self: *anyopaque, data: ?[*]HSTRING, columnCount: u32, _r: **TableActionEntity) callconv(.winapi) HRESULT,
         CreateContactEntity: *const fn(self: *anyopaque, contact: *Contact, _r: **ContactActionEntity) callconv(.winapi) HRESULT,
     };
 };
@@ -647,7 +647,7 @@ pub const IActionInvocationContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetInputEntity(self: *@This(), inputName: HSTRING, inputValue: *ActionEntity) core.HResult!void {
+    pub fn SetInputEntity(self: *@This(), inputName: ?HSTRING, inputValue: *ActionEntity) core.HResult!void {
         const _c = self.vtable.SetInputEntity(@ptrCast(self), inputName, inputValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -657,7 +657,7 @@ pub const IActionInvocationContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetOutputEntity(self: *@This(), outputName: HSTRING, outputValue: *ActionEntity) core.HResult!void {
+    pub fn SetOutputEntity(self: *@This(), outputName: ?HSTRING, outputValue: *ActionEntity) core.HResult!void {
         const _c = self.vtable.SetOutputEntity(@ptrCast(self), outputName, outputValue);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -700,9 +700,9 @@ pub const IActionInvocationContext = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_EntityFactory: *const fn(self: *anyopaque, _r: **ActionEntityFactory) callconv(.winapi) HRESULT,
-        SetInputEntity: *const fn(self: *anyopaque, inputName: HSTRING, inputValue: *ActionEntity) callconv(.winapi) HRESULT,
+        SetInputEntity: *const fn(self: *anyopaque, inputName: ?HSTRING, inputValue: *ActionEntity) callconv(.winapi) HRESULT,
         GetInputEntities: *const fn(self: *anyopaque, _r: *[*]NamedActionEntity) callconv(.winapi) HRESULT,
-        SetOutputEntity: *const fn(self: *anyopaque, outputName: HSTRING, outputValue: *ActionEntity) callconv(.winapi) HRESULT,
+        SetOutputEntity: *const fn(self: *anyopaque, outputName: ?HSTRING, outputValue: *ActionEntity) callconv(.winapi) HRESULT,
         GetOutputEntities: *const fn(self: *anyopaque, _r: *[*]NamedActionEntity) callconv(.winapi) HRESULT,
         get_Result: *const fn(self: *anyopaque, _r: *ActionInvocationResult) callconv(.winapi) HRESULT,
         put_Result: *const fn(self: *anyopaque, value: ActionInvocationResult) callconv(.winapi) HRESULT,
@@ -724,14 +724,14 @@ pub const IActionInvocationContext2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInvokerAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInvokerAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InvokerAppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -750,8 +750,8 @@ pub const IActionInvocationContext2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_InvokerWindowId: *const fn(self: *anyopaque, _r: *WindowId) callconv(.winapi) HRESULT,
         get_HelpDetails: *const fn(self: *anyopaque, _r: **ActionInvocationHelpDetails) callconv(.winapi) HRESULT,
-        get_ActionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InvokerAppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InvokerAppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionInvocationHelpDetails = extern struct {
@@ -766,23 +766,23 @@ pub const IActionInvocationHelpDetails = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -796,13 +796,13 @@ pub const IActionInvocationHelpDetails = extern struct {
         const _c = self.vtable.put_HelpUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHelpUriDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHelpUriDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HelpUriDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHelpUriDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHelpUriDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HelpUriDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -820,14 +820,14 @@ pub const IActionInvocationHelpDetails = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ActionInvocationHelpKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ActionInvocationHelpKind) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HelpUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_HelpUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_HelpUriDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HelpUriDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_HelpUriDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HelpUriDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionRuntime = extern struct {
@@ -844,7 +844,7 @@ pub const IActionRuntime = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInvocationContext(self: *@This(), actionId: HSTRING) core.HResult!*ActionInvocationContext {
+    pub fn CreateInvocationContext(self: *@This(), actionId: ?HSTRING) core.HResult!*ActionInvocationContext {
         var _r: *ActionInvocationContext = undefined;
         const _c = self.vtable.CreateInvocationContext(@ptrCast(self), actionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -864,7 +864,7 @@ pub const IActionRuntime = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ActionCatalog: *const fn(self: *anyopaque, _r: **ActionCatalog) callconv(.winapi) HRESULT,
         get_EntityFactory: *const fn(self: *anyopaque, _r: **ActionEntityFactory) callconv(.winapi) HRESULT,
-        CreateInvocationContext: *const fn(self: *anyopaque, actionId: HSTRING, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
+        CreateInvocationContext: *const fn(self: *anyopaque, actionId: ?HSTRING, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionRuntime2 = extern struct {
@@ -875,11 +875,11 @@ pub const IActionRuntime2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetActionAvailability(self: *@This(), actionId: HSTRING, isAvailable: bool) core.HResult!void {
+    pub fn SetActionAvailability(self: *@This(), actionId: ?HSTRING, isAvailable: bool) core.HResult!void {
         const _c = self.vtable.SetActionAvailability(@ptrCast(self), actionId, isAvailable);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetActionAvailability(self: *@This(), actionId: HSTRING) core.HResult!bool {
+    pub fn GetActionAvailability(self: *@This(), actionId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetActionAvailability(@ptrCast(self), actionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -898,19 +898,19 @@ pub const IActionRuntime2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateActionFeedback: *const fn(self: *anyopaque, feedbackKind: ActionFeedbackKind, _r: **ActionFeedback) callconv(.winapi) HRESULT,
-        SetActionAvailability: *const fn(self: *anyopaque, actionId: HSTRING, isAvailable: bool) callconv(.winapi) HRESULT,
-        GetActionAvailability: *const fn(self: *anyopaque, actionId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        SetActionAvailability: *const fn(self: *anyopaque, actionId: ?HSTRING, isAvailable: bool) callconv(.winapi) HRESULT,
+        GetActionAvailability: *const fn(self: *anyopaque, actionId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionRuntime3 = extern struct {
     vtable: *const VTable,
-    pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
+    pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: ?HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
         var _r: *ActionInvocationContext = undefined;
         const _c = self.vtable.CreateInvocationContextWithWindowId(@ptrCast(self), actionId, invokerWindowId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetActionEntityById(self: *@This(), entityId: HSTRING) core.HResult!*ActionEntity {
+    pub fn GetActionEntityById(self: *@This(), entityId: ?HSTRING) core.HResult!*ActionEntity {
         var _r: *ActionEntity = undefined;
         const _c = self.vtable.GetActionEntityById(@ptrCast(self), entityId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -934,14 +934,14 @@ pub const IActionRuntime3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInvocationContextWithWindowId: *const fn(self: *anyopaque, actionId: HSTRING, invokerWindowId: WindowId, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
-        GetActionEntityById: *const fn(self: *anyopaque, entityId: HSTRING, _r: **ActionEntity) callconv(.winapi) HRESULT,
+        CreateInvocationContextWithWindowId: *const fn(self: *anyopaque, actionId: ?HSTRING, invokerWindowId: WindowId, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
+        GetActionEntityById: *const fn(self: *anyopaque, entityId: ?HSTRING, _r: **ActionEntity) callconv(.winapi) HRESULT,
         get_LatestSupportedSchemaVersion: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionRuntime4 = extern struct {
     vtable: *const VTable,
-    pub fn GetActionInvocationContextFromToken(self: *@This(), token: HSTRING) core.HResult!*ActionInvocationContext {
+    pub fn GetActionInvocationContextFromToken(self: *@This(), token: ?HSTRING) core.HResult!*ActionInvocationContext {
         var _r: *ActionInvocationContext = undefined;
         const _c = self.vtable.GetActionInvocationContextFromToken(@ptrCast(self), token, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -959,7 +959,7 @@ pub const IActionRuntime4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetActionInvocationContextFromToken: *const fn(self: *anyopaque, token: HSTRING, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
+        GetActionInvocationContextFromToken: *const fn(self: *anyopaque, token: ?HSTRING, _r: **ActionInvocationContext) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionRuntimeFactory = extern struct {
@@ -1003,8 +1003,8 @@ pub const IContactActionEntity = extern struct {
 };
 pub const IDocumentActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1021,13 +1021,13 @@ pub const IDocumentActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FullPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FullPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1044,18 +1044,18 @@ pub const IFileActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FullPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FullPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INamedActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1081,16 +1081,16 @@ pub const INamedActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Entity: *const fn(self: *anyopaque, _r: **ActionEntity) callconv(.winapi) HRESULT,
         put_Entity: *const fn(self: *anyopaque, value: *ActionEntity) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhotoActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1107,13 +1107,13 @@ pub const IPhotoActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FullPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FullPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteFileActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getSourceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1130,32 +1130,32 @@ pub const IRemoteFileActionEntity = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDriveId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDriveId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DriveId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtension(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Extension(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1172,14 +1172,14 @@ pub const IRemoteFileActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SourceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FileKind: *const fn(self: *anyopaque, _r: *RemoteFileKind) callconv(.winapi) HRESULT,
         get_SourceUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_FileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DriveId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Extension: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DriveId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Extension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStreamingTextActionEntity = extern struct {
@@ -1190,8 +1190,8 @@ pub const IStreamingTextActionEntity = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1225,7 +1225,7 @@ pub const IStreamingTextActionEntity = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsComplete: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TextFormat: *const fn(self: *anyopaque, _r: *ActionEntityTextFormat) callconv(.winapi) HRESULT,
         add_TextChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(StreamingTextActionEntity,StreamingTextActionEntityTextChangedArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_TextChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1233,8 +1233,8 @@ pub const IStreamingTextActionEntity = extern struct {
 };
 pub const IStreamingTextActionEntityTextChangedArgs = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1257,7 +1257,7 @@ pub const IStreamingTextActionEntityTextChangedArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsComplete: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
@@ -1275,7 +1275,7 @@ pub const IStreamingTextActionEntityWriter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetText(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), text: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), text);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1293,13 +1293,13 @@ pub const IStreamingTextActionEntityWriter = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ReaderEntity: *const fn(self: *anyopaque, _r: **StreamingTextActionEntity) callconv(.winapi) HRESULT,
         get_TextFormat: *const fn(self: *anyopaque, _r: *ActionEntityTextFormat) callconv(.winapi) HRESULT,
-        SetText: *const fn(self: *anyopaque, text: HSTRING) callconv(.winapi) HRESULT,
+        SetText: *const fn(self: *anyopaque, text: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITableActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn GetTextContent(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn GetTextContent(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.GetTextContent(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1328,15 +1328,15 @@ pub const ITableActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetTextContent: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        GetTextContent: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
         get_RowCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_ColumnCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextActionEntity = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1353,7 +1353,7 @@ pub const ITextActionEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextActionEntity2 = extern struct {
@@ -1381,11 +1381,11 @@ pub const ITextActionEntity2 = extern struct {
 };
 pub const NamedActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *INamedActionEntity = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *INamedActionEntity = @ptrCast(self);
         return try this.putName(value);
     }
@@ -1411,7 +1411,7 @@ pub const NamedActionEntity = extern struct {
 };
 pub const PhotoActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFullPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoActionEntity = @ptrCast(self);
         return try this.getFullPath();
     }
@@ -1423,7 +1423,7 @@ pub const PhotoActionEntity = extern struct {
 };
 pub const RemoteFileActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSourceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getSourceId();
     }
@@ -1435,23 +1435,23 @@ pub const RemoteFileActionEntity = extern struct {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getSourceUri();
     }
-    pub fn getFileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getFileId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getFileId();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getContentType();
     }
-    pub fn getDriveId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDriveId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getDriveId();
     }
-    pub fn getAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getAccountId();
     }
-    pub fn getExtension(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtension(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getExtension();
     }
@@ -1472,7 +1472,7 @@ pub const StreamingTextActionEntity = extern struct {
         const this: *IStreamingTextActionEntity = @ptrCast(self);
         return try this.getIsComplete();
     }
-    pub fn GetText(self: *@This()) core.HResult!HSTRING {
+    pub fn GetText(self: *@This()) core.HResult!?HSTRING {
         const this: *IStreamingTextActionEntity = @ptrCast(self);
         return try this.GetText();
     }
@@ -1496,7 +1496,7 @@ pub const StreamingTextActionEntity = extern struct {
 };
 pub const StreamingTextActionEntityTextChangedArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IStreamingTextActionEntityTextChangedArgs = @ptrCast(self);
         return try this.getText();
     }
@@ -1520,7 +1520,7 @@ pub const StreamingTextActionEntityWriter = extern struct {
         const this: *IStreamingTextActionEntityWriter = @ptrCast(self);
         return try this.getTextFormat();
     }
-    pub fn SetText(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), text: ?HSTRING) core.HResult!void {
         const this: *IStreamingTextActionEntityWriter = @ptrCast(self);
         return try this.SetText(text);
     }
@@ -1538,7 +1538,7 @@ pub const StreamingTextActionEntityWriter = extern struct {
 };
 pub const TableActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetTextContent(self: *@This()) core.HResult![*]HSTRING {
+    pub fn GetTextContent(self: *@This()) core.HResult!?[*]HSTRING {
         const this: *ITableActionEntity = @ptrCast(self);
         return try this.GetTextContent();
     }
@@ -1558,7 +1558,7 @@ pub const TableActionEntity = extern struct {
 };
 pub const TextActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextActionEntity = @ptrCast(self);
         return try this.getText();
     }

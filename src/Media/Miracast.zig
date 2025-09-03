@@ -136,7 +136,7 @@ pub const IMiracastReceiverConnection = extern struct {
         const _c = self.vtable.Disconnect(@ptrCast(self), reason);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
+    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.DisconnectWithMessage(@ptrCast(self), reason, message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -197,7 +197,7 @@ pub const IMiracastReceiverConnection = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Disconnect: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason) callconv(.winapi) HRESULT,
-        DisconnectWithMessage: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason, message: HSTRING) callconv(.winapi) HRESULT,
+        DisconnectWithMessage: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason, message: ?HSTRING) callconv(.winapi) HRESULT,
         Pause: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         PauseAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         Resume: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -216,8 +216,8 @@ pub const IMiracastReceiverConnectionCreatedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPin(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPin(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pin(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -241,7 +241,7 @@ pub const IMiracastReceiverConnectionCreatedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Connection: *const fn(self: *anyopaque, _r: **MiracastReceiverConnection) callconv(.winapi) HRESULT,
-        get_Pin: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Pin: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
     };
 };
@@ -692,33 +692,33 @@ pub const IMiracastReceiverSessionStartResult = extern struct {
 };
 pub const IMiracastReceiverSettings = extern struct {
     vtable: *const VTable,
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putModelName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putModelName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ModelName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getModelNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putModelNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putModelNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ModelNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -754,12 +754,12 @@ pub const IMiracastReceiverSettings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ModelName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ModelName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ModelNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ModelNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ModelName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ModelNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AuthorizationMethod: *const fn(self: *anyopaque, _r: *MiracastReceiverAuthorizationMethod) callconv(.winapi) HRESULT,
         put_AuthorizationMethod: *const fn(self: *anyopaque, value: MiracastReceiverAuthorizationMethod) callconv(.winapi) HRESULT,
         get_RequireAuthorizationFromKnownTransmitters: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -913,13 +913,13 @@ pub const IMiracastReceiverVideoStreamSettings = extern struct {
 };
 pub const IMiracastTransmitter = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -939,8 +939,8 @@ pub const IMiracastTransmitter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMacAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMacAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MacAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -963,12 +963,12 @@ pub const IMiracastTransmitter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AuthorizationStatus: *const fn(self: *anyopaque, _r: *MiracastTransmitterAuthorizationStatus) callconv(.winapi) HRESULT,
         put_AuthorizationStatus: *const fn(self: *anyopaque, value: MiracastTransmitterAuthorizationStatus) callconv(.winapi) HRESULT,
         GetConnections: *const fn(self: *anyopaque, _r: **IVectorView(MiracastReceiverConnection)) callconv(.winapi) HRESULT,
-        get_MacAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MacAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LastConnectionTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
     };
 };
@@ -1078,7 +1078,7 @@ pub const MiracastReceiverConnection = extern struct {
         const this: *IMiracastReceiverConnection = @ptrCast(self);
         return try this.Disconnect(reason);
     }
-    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
+    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: ?HSTRING) core.HResult!void {
         const this: *IMiracastReceiverConnection = @ptrCast(self);
         return try this.DisconnectWithMessage(reason, message);
     }
@@ -1132,7 +1132,7 @@ pub const MiracastReceiverConnectionCreatedEventArgs = extern struct {
         const this: *IMiracastReceiverConnectionCreatedEventArgs = @ptrCast(self);
         return try this.getConnection();
     }
-    pub fn getPin(self: *@This()) core.HResult!HSTRING {
+    pub fn getPin(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastReceiverConnectionCreatedEventArgs = @ptrCast(self);
         return try this.getPin();
     }
@@ -1442,27 +1442,27 @@ pub const MiracastReceiverSessionStartStatus = enum(i32) {
 };
 pub const MiracastReceiverSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.getModelName();
     }
-    pub fn putModelName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putModelName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.putModelName(value);
     }
-    pub fn getModelNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getModelNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.getModelNumber();
     }
-    pub fn putModelNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putModelNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.putModelNumber(value);
     }
@@ -1580,11 +1580,11 @@ pub const MiracastReceiverWiFiStatus = enum(i32) {
 };
 pub const MiracastTransmitter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastTransmitter = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMiracastTransmitter = @ptrCast(self);
         return try this.putName(value);
     }
@@ -1600,7 +1600,7 @@ pub const MiracastTransmitter = extern struct {
         const this: *IMiracastTransmitter = @ptrCast(self);
         return try this.GetConnections();
     }
-    pub fn getMacAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getMacAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastTransmitter = @ptrCast(self);
         return try this.getMacAddress();
     }

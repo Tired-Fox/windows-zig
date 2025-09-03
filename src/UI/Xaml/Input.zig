@@ -17,7 +17,7 @@ pub const AccessKeyDisplayDismissedEventArgs = extern struct {
 };
 pub const AccessKeyDisplayRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPressedKeys(self: *@This()) core.HResult!HSTRING {
+    pub fn getPressedKeys(self: *@This()) core.HResult!?HSTRING {
         const this: *IAccessKeyDisplayRequestedEventArgs = @ptrCast(self);
         return try this.getPressedKeys();
     }
@@ -717,8 +717,8 @@ pub const IAccessKeyDisplayDismissedEventArgs = extern struct {
 };
 pub const IAccessKeyDisplayRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPressedKeys(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPressedKeys(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PressedKeys(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -735,7 +735,7 @@ pub const IAccessKeyDisplayRequestedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PressedKeys: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PressedKeys: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAccessKeyInvokedEventArgs = extern struct {
@@ -1924,8 +1924,8 @@ pub const IKeyRoutedEventArgs2 = extern struct {
 };
 pub const IKeyRoutedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1942,7 +1942,7 @@ pub const IKeyRoutedEventArgs3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyboardAccelerator = extern struct {
@@ -3131,13 +3131,13 @@ pub const ITappedRoutedEventArgs = extern struct {
 };
 pub const IXamlUICommand = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3157,23 +3157,23 @@ pub const IXamlUICommand = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccessKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccessKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessKey(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAccessKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccessKey(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3223,15 +3223,15 @@ pub const IXamlUICommand = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IconSource: *const fn(self: *anyopaque, _r: **IconSource) callconv(.winapi) HRESULT,
         put_IconSource: *const fn(self: *anyopaque, value: *IconSource) callconv(.winapi) HRESULT,
         get_KeyboardAccelerators: *const fn(self: *anyopaque, _r: **IVector(KeyboardAccelerator)) callconv(.winapi) HRESULT,
-        get_AccessKey: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AccessKey: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AccessKey: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AccessKey: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Command: *const fn(self: *anyopaque, _r: **ICommand) callconv(.winapi) HRESULT,
         put_Command: *const fn(self: *anyopaque, value: *ICommand) callconv(.winapi) HRESULT,
         add_ExecuteRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(XamlUICommand,ExecuteRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -3600,7 +3600,7 @@ pub const KeyRoutedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOriginalKey();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IKeyRoutedEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4863,11 +4863,11 @@ pub const RightTappedRoutedEventArgs = extern struct {
 };
 pub const XamlUICommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -4883,19 +4883,19 @@ pub const XamlUICommand = extern struct {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.getKeyboardAccelerators();
     }
-    pub fn getAccessKey(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccessKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.getAccessKey();
     }
-    pub fn putAccessKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.putAccessKey(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IXamlUICommand = @ptrCast(self);
         return try this.putDescription(value);
     }

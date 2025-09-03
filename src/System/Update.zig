@@ -7,20 +7,20 @@ pub const ISystemUpdateItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -62,9 +62,9 @@ pub const ISystemUpdateItem = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *SystemUpdateItemState) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Revision: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_DownloadProgress: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_InstallProgress: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -186,19 +186,19 @@ pub const ISystemUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAutomaticRebootBlockIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetAutomaticRebootBlockIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAutomaticRebootBlockIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn BlockAutomaticRebootAsync(self: *@This(), lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn BlockAutomaticRebootAsync(self: *@This(), lockId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.BlockAutomaticRebootAsync(@ptrCast(self), lockId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UnblockAutomaticRebootAsync(self: *@This(), lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn UnblockAutomaticRebootAsync(self: *@This(), lockId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.UnblockAutomaticRebootAsync(@ptrCast(self), lockId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -222,14 +222,14 @@ pub const ISystemUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetFlightRing(self: *@This(), flightRing: HSTRING) core.HResult!bool {
+    pub fn SetFlightRing(self: *@This(), flightRing: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetFlightRing(@ptrCast(self), flightRing, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFlightRing(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetFlightRing(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFlightRing(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -271,14 +271,14 @@ pub const ISystemUpdateManagerStatics = extern struct {
         get_LastUpdateCheckTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_LastUpdateInstallTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_LastErrorInfo: *const fn(self: *anyopaque, _r: **SystemUpdateLastErrorInfo) callconv(.winapi) HRESULT,
-        GetAutomaticRebootBlockIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        BlockAutomaticRebootAsync: *const fn(self: *anyopaque, lockId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        UnblockAutomaticRebootAsync: *const fn(self: *anyopaque, lockId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        GetAutomaticRebootBlockIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        BlockAutomaticRebootAsync: *const fn(self: *anyopaque, lockId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        UnblockAutomaticRebootAsync: *const fn(self: *anyopaque, lockId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
         GetUpdateItems: *const fn(self: *anyopaque, _r: **IVectorView(SystemUpdateItem)) callconv(.winapi) HRESULT,
         get_AttentionRequiredReason: *const fn(self: *anyopaque, _r: *SystemUpdateAttentionRequiredReason) callconv(.winapi) HRESULT,
-        SetFlightRing: *const fn(self: *anyopaque, flightRing: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        GetFlightRing: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        SetFlightRing: *const fn(self: *anyopaque, flightRing: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetFlightRing: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         StartInstall: *const fn(self: *anyopaque, action: SystemUpdateStartInstallAction) callconv(.winapi) HRESULT,
         RebootToCompleteInstall: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartCancelUpdates: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -297,15 +297,15 @@ pub const SystemUpdateItem = extern struct {
         const this: *ISystemUpdateItem = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemUpdateItem = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemUpdateItem = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISystemUpdateItem = @ptrCast(self);
         return try this.getId();
     }
@@ -419,15 +419,15 @@ pub const SystemUpdateManager = extern struct {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.getLastErrorInfo();
     }
-    pub fn GetAutomaticRebootBlockIds() core.HResult!*IVectorView(HSTRING) {
+    pub fn GetAutomaticRebootBlockIds() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.GetAutomaticRebootBlockIds();
     }
-    pub fn BlockAutomaticRebootAsync(lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn BlockAutomaticRebootAsync(lockId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.BlockAutomaticRebootAsync(lockId);
     }
-    pub fn UnblockAutomaticRebootAsync(lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn UnblockAutomaticRebootAsync(lockId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.UnblockAutomaticRebootAsync(lockId);
     }
@@ -443,11 +443,11 @@ pub const SystemUpdateManager = extern struct {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.getAttentionRequiredReason();
     }
-    pub fn SetFlightRing(flightRing: HSTRING) core.HResult!bool {
+    pub fn SetFlightRing(flightRing: ?HSTRING) core.HResult!bool {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.SetFlightRing(flightRing);
     }
-    pub fn GetFlightRing() core.HResult!HSTRING {
+    pub fn GetFlightRing() core.HResult!?HSTRING {
         const _f = try @This()._ISystemUpdateManagerStaticsCache.get();
         return try _f.GetFlightRing();
     }

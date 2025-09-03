@@ -32,19 +32,19 @@ pub const ChatCapabilitiesManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetCachedCapabilitiesAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCachedCapabilitiesAsync(address: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const _f = try @This()._IChatCapabilitiesManagerStaticsCache.get();
         return try _f.GetCachedCapabilitiesAsync(address);
     }
-    pub fn GetCapabilitiesFromNetworkAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCapabilitiesFromNetworkAsync(address: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const _f = try @This()._IChatCapabilitiesManagerStaticsCache.get();
         return try _f.GetCapabilitiesFromNetworkAsync(address);
     }
-    pub fn GetCachedCapabilitiesAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCachedCapabilitiesAsyncWithTransportId(address: ?HSTRING, transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const _f = try @This()._IChatCapabilitiesManagerStatics2Cache.get();
         return try _f.GetCachedCapabilitiesAsync(address, transportId);
     }
-    pub fn GetCapabilitiesFromNetworkAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCapabilitiesFromNetworkAsyncWithTransportId(address: ?HSTRING, transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const _f = try @This()._IChatCapabilitiesManagerStatics2Cache.get();
         return try _f.GetCapabilitiesFromNetworkAsync(address, transportId);
     }
@@ -59,15 +59,15 @@ pub const ChatConversation = extern struct {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getHasUnreadMessages();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatConversation = @ptrCast(self);
         return try this.putSubject(value);
     }
@@ -79,11 +79,11 @@ pub const ChatConversation = extern struct {
         const this: *IChatConversation = @ptrCast(self);
         return try this.putIsConversationMuted(value);
     }
-    pub fn getMostRecentMessageId(self: *@This()) core.HResult!HSTRING {
+    pub fn getMostRecentMessageId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getMostRecentMessageId();
     }
-    pub fn getParticipants(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getParticipants(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getParticipants();
     }
@@ -111,11 +111,11 @@ pub const ChatConversation = extern struct {
         const this: *IChatConversation = @ptrCast(self);
         return try this.SaveAsync();
     }
-    pub fn NotifyLocalParticipantComposing(self: *@This(), transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) core.HResult!void {
+    pub fn NotifyLocalParticipantComposing(self: *@This(), transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) core.HResult!void {
         const this: *IChatConversation = @ptrCast(self);
         return try this.NotifyLocalParticipantComposing(transportId, participantAddress, isComposing);
     }
-    pub fn NotifyRemoteParticipantComposing(self: *@This(), transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) core.HResult!void {
+    pub fn NotifyRemoteParticipantComposing(self: *@This(), transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) core.HResult!void {
         const this: *IChatConversation = @ptrCast(self);
         return try this.NotifyRemoteParticipantComposing(transportId, participantAddress, isComposing);
     }
@@ -169,31 +169,31 @@ pub const ChatConversationReader = extern struct {
 };
 pub const ChatConversationThreadingInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.getContactId();
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.putContactId(value);
     }
-    pub fn getCustom(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustom(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.getCustom();
     }
-    pub fn putCustom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.putCustom(value);
     }
-    pub fn getConversationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getConversationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.getConversationId();
     }
-    pub fn putConversationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConversationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.putConversationId(value);
     }
-    pub fn getParticipants(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getParticipants(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.getParticipants();
     }
@@ -235,19 +235,19 @@ pub const ChatMessage = extern struct {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getAttachments();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getBody();
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatMessage = @ptrCast(self);
         return try this.putBody(value);
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getId();
     }
@@ -271,11 +271,11 @@ pub const ChatMessage = extern struct {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getNetworkTimestamp();
     }
-    pub fn getRecipients(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRecipients(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getRecipients();
     }
-    pub fn getRecipientSendStatuses(self: *@This()) core.HResult!*IMapView(HSTRING,ChatMessageStatus) {
+    pub fn getRecipientSendStatuses(self: *@This()) core.HResult!*IMapView(?HSTRING,ChatMessageStatus) {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getRecipientSendStatuses();
     }
@@ -283,19 +283,19 @@ pub const ChatMessage = extern struct {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getTransportFriendlyName();
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getTransportId();
     }
-    pub fn putTransportId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransportId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatMessage = @ptrCast(self);
         return try this.putTransportId(value);
     }
@@ -311,7 +311,7 @@ pub const ChatMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEstimatedDownloadSize(value);
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -419,7 +419,7 @@ pub const ChatMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsReceivedDuringQuietHours(value);
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -431,7 +431,7 @@ pub const ChatMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStatus(value);
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -467,19 +467,19 @@ pub const ChatMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecipientsDeliveryInfos();
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessage3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
-    pub fn getSyncId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSyncId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessage4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSyncId();
     }
-    pub fn putSyncId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSyncId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -523,19 +523,19 @@ pub const ChatMessageAttachment = extern struct {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.putGroupId(value);
     }
-    pub fn getMimeType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMimeType(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.getMimeType();
     }
-    pub fn putMimeType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMimeType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.putMimeType(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.putText(value);
     }
@@ -563,13 +563,13 @@ pub const ChatMessageAttachment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransferProgress(value);
     }
-    pub fn getOriginalFileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getOriginalFileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessageAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOriginalFileName();
     }
-    pub fn putOriginalFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOriginalFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessageAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -578,7 +578,7 @@ pub const ChatMessageAttachment = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateChatMessageAttachment(mimeType: HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
+    pub fn CreateChatMessageAttachment(mimeType: ?HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
         const _f = try @This()._IChatMessageAttachmentFactoryCache.get();
         return try _f.CreateChatMessageAttachment(mimeType, dataStreamReference);
     }
@@ -594,7 +594,7 @@ pub const ChatMessageBlocking = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn MarkMessageAsBlockedAsync(localChatMessageId: HSTRING, blocked: bool) core.HResult!*IAsyncAction {
+    pub fn MarkMessageAsBlockedAsync(localChatMessageId: ?HSTRING, blocked: bool) core.HResult!*IAsyncAction {
         const _f = try @This()._IChatMessageBlockingStaticCache.get();
         return try _f.MarkMessageAsBlockedAsync(localChatMessageId, blocked);
     }
@@ -718,11 +718,11 @@ pub const ChatMessageManager = extern struct {
         const _f = try @This()._IChatMessageManagerStaticCache.get();
         return try _f.ShowSmsSettings();
     }
-    pub fn RegisterTransportAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn RegisterTransportAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IChatMessageManager2StaticsCache.get();
         return try _f.RegisterTransportAsync();
     }
-    pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
+    pub fn GetTransportAsync(transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
         const _f = try @This()._IChatMessageManager2StaticsCache.get();
         return try _f.GetTransportAsync(transportId);
     }
@@ -818,15 +818,15 @@ pub const ChatMessageStore = extern struct {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.getChangeTracker();
     }
-    pub fn DeleteMessageAsync(self: *@This(), localMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteMessageAsync(self: *@This(), localMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.DeleteMessageAsync(localMessageId);
     }
-    pub fn DownloadMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.DownloadMessageAsync(localChatMessageId);
     }
-    pub fn GetMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.GetMessageAsync(localChatMessageId);
     }
@@ -838,11 +838,11 @@ pub const ChatMessageStore = extern struct {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.GetMessageReaderWithRecentTimeLimit(recentTimeLimit);
     }
-    pub fn MarkMessageReadAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkMessageReadAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.MarkMessageReadAsync(localChatMessageId);
     }
-    pub fn RetrySendMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RetrySendMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.RetrySendMessageAsync(localChatMessageId);
     }
@@ -862,19 +862,19 @@ pub const ChatMessageStore = extern struct {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.removeMessageChanged(value);
     }
-    pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: HSTRING, addresses: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: ?HSTRING, addresses: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ForwardMessageAsync(localChatMessageId, addresses);
     }
-    pub fn GetConversationAsync(self: *@This(), conversationId: HSTRING) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsync(self: *@This(), conversationId: ?HSTRING) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationAsync(conversationId);
     }
-    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: ?HSTRING, transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -892,13 +892,13 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationReader();
     }
-    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
+    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*ChatConversationReader {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationReaderWithTransportIds(transportIds);
     }
-    pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: HSTRING, remoteId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: ?HSTRING, remoteId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -910,7 +910,7 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUnseenCountAsync();
     }
-    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
+    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(i32) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -922,7 +922,7 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MarkAsSeenAsync();
     }
-    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -940,13 +940,13 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SaveMessageAsync(chatMessage);
     }
-    pub fn TryCancelDownloadMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryCancelDownloadMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancelDownloadMessageAsync(localChatMessageId);
     }
-    pub fn TryCancelSendMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryCancelSendMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -964,7 +964,7 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
-    pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -978,7 +978,7 @@ pub const ChatMessageStore = extern struct {
 };
 pub const ChatMessageStoreChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageStoreChangedEventArgs = @ptrCast(self);
         return try this.getId();
     }
@@ -1002,11 +1002,11 @@ pub const ChatMessageTransport = extern struct {
         const this: *IChatMessageTransport = @ptrCast(self);
         return try this.getIsActive();
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageTransport = @ptrCast(self);
         return try this.getTransportFriendlyName();
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageTransport = @ptrCast(self);
         return try this.getTransportId();
     }
@@ -1050,7 +1050,7 @@ pub const ChatMessageTransportConfiguration = extern struct {
         const this: *IChatMessageTransportConfiguration = @ptrCast(self);
         return try this.getSupportedVideoFormat();
     }
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IChatMessageTransportConfiguration = @ptrCast(self);
         return try this.getExtendedProperties();
     }
@@ -1108,11 +1108,11 @@ pub const ChatMessageValidationStatus = enum(i32) {
 };
 pub const ChatQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSearchString(self: *@This()) core.HResult!HSTRING {
+    pub fn getSearchString(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatQueryOptions = @ptrCast(self);
         return try this.getSearchString();
     }
-    pub fn putSearchString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatQueryOptions = @ptrCast(self);
         return try this.putSearchString(value);
     }
@@ -1132,11 +1132,11 @@ pub const ChatQueryOptions = extern struct {
 };
 pub const ChatRecipientDeliveryInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTransportAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatRecipientDeliveryInfo = @ptrCast(self);
         return try this.getTransportAddress();
     }
-    pub fn putTransportAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransportAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatRecipientDeliveryInfo = @ptrCast(self);
         return try this.putTransportAddress(value);
     }
@@ -1344,13 +1344,13 @@ pub const IChatCapabilities = extern struct {
 };
 pub const IChatCapabilitiesManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetCachedCapabilitiesAsync(self: *@This(), address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCachedCapabilitiesAsync(self: *@This(), address: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCachedCapabilitiesAsync(@ptrCast(self), address, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCapabilitiesFromNetworkAsync(self: *@This(), address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCapabilitiesFromNetworkAsync(self: *@This(), address: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCapabilitiesFromNetworkAsync(@ptrCast(self), address, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1368,19 +1368,19 @@ pub const IChatCapabilitiesManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCachedCapabilitiesAsync: *const fn(self: *anyopaque, address: HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
-        GetCapabilitiesFromNetworkAsync: *const fn(self: *anyopaque, address: HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
+        GetCachedCapabilitiesAsync: *const fn(self: *anyopaque, address: ?HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
+        GetCapabilitiesFromNetworkAsync: *const fn(self: *anyopaque, address: ?HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatCapabilitiesManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetCachedCapabilitiesAsync(self: *@This(), address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCachedCapabilitiesAsync(self: *@This(), address: ?HSTRING, transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCachedCapabilitiesAsync(@ptrCast(self), address, transportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCapabilitiesFromNetworkAsync(self: *@This(), address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCapabilitiesFromNetworkAsync(self: *@This(), address: ?HSTRING, transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCapabilitiesFromNetworkAsync(@ptrCast(self), address, transportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1398,8 +1398,8 @@ pub const IChatCapabilitiesManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCachedCapabilitiesAsync: *const fn(self: *anyopaque, address: HSTRING, transportId: HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
-        GetCapabilitiesFromNetworkAsync: *const fn(self: *anyopaque, address: HSTRING, transportId: HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
+        GetCachedCapabilitiesAsync: *const fn(self: *anyopaque, address: ?HSTRING, transportId: ?HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
+        GetCapabilitiesFromNetworkAsync: *const fn(self: *anyopaque, address: ?HSTRING, transportId: ?HSTRING, _r: **IAsyncOperation(ChatCapabilities)) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatConversation = extern struct {
@@ -1410,19 +1410,19 @@ pub const IChatConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1436,14 +1436,14 @@ pub const IChatConversation = extern struct {
         const _c = self.vtable.put_IsConversationMuted(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMostRecentMessageId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMostRecentMessageId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MostRecentMessageId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getParticipants(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getParticipants(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Participants(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1484,11 +1484,11 @@ pub const IChatConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn NotifyLocalParticipantComposing(self: *@This(), transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) core.HResult!void {
+    pub fn NotifyLocalParticipantComposing(self: *@This(), transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) core.HResult!void {
         const _c = self.vtable.NotifyLocalParticipantComposing(@ptrCast(self), transportId, participantAddress, isComposing);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn NotifyRemoteParticipantComposing(self: *@This(), transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) core.HResult!void {
+    pub fn NotifyRemoteParticipantComposing(self: *@This(), transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) core.HResult!void {
         const _c = self.vtable.NotifyRemoteParticipantComposing(@ptrCast(self), transportId, participantAddress, isComposing);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1515,21 +1515,21 @@ pub const IChatConversation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_HasUnreadMessages: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subject: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subject: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsConversationMuted: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsConversationMuted: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_MostRecentMessageId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Participants: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_MostRecentMessageId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Participants: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_ThreadingInfo: *const fn(self: *anyopaque, _r: **ChatConversationThreadingInfo) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
         MarkMessagesAsReadAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         MarkMessagesAsReadAsyncWithValue: *const fn(self: *anyopaque, value: DateTime, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        NotifyLocalParticipantComposing: *const fn(self: *anyopaque, transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
-        NotifyRemoteParticipantComposing: *const fn(self: *anyopaque, transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
+        NotifyLocalParticipantComposing: *const fn(self: *anyopaque, transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
+        NotifyRemoteParticipantComposing: *const fn(self: *anyopaque, transportId: ?HSTRING, participantAddress: ?HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
         add_RemoteParticipantComposingChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(ChatConversation,RemoteParticipantComposingChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_RemoteParticipantComposingChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -1594,38 +1594,38 @@ pub const IChatConversationReader = extern struct {
 };
 pub const IChatConversationThreadingInfo = extern struct {
     vtable: *const VTable,
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCustom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Custom(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCustom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Custom(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getConversationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConversationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConversationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putConversationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConversationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ConversationId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getParticipants(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getParticipants(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Participants(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1652,13 +1652,13 @@ pub const IChatConversationThreadingInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Custom: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Custom: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ConversationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ConversationId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Participants: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Custom: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Custom: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ConversationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ConversationId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Participants: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ChatConversationThreadingKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ChatConversationThreadingKind) callconv(.winapi) HRESULT,
     };
@@ -1694,24 +1694,24 @@ pub const IChatMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1746,14 +1746,14 @@ pub const IChatMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRecipients(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRecipients(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Recipients(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRecipientSendStatuses(self: *@This()) core.HResult!*IMapView(HSTRING,ChatMessageStatus) {
-        var _r: *IMapView(HSTRING,ChatMessageStatus) = undefined;
+    pub fn getRecipientSendStatuses(self: *@This()) core.HResult!*IMapView(?HSTRING,ChatMessageStatus) {
+        var _r: *IMapView(?HSTRING,ChatMessageStatus) = undefined;
         const _c = self.vtable.get_RecipientSendStatuses(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1764,25 +1764,25 @@ pub const IChatMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTransportId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransportId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TransportId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1799,22 +1799,22 @@ pub const IChatMessage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Attachments: *const fn(self: *anyopaque, _r: **IVector(ChatMessageAttachment)) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsForwardingDisabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsIncoming: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsRead: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_LocalTimestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_NetworkTimestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_Recipients: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_RecipientSendStatuses: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,ChatMessageStatus)) callconv(.winapi) HRESULT,
+        get_Recipients: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_RecipientSendStatuses: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,ChatMessageStatus)) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *ChatMessageStatus) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TransportId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TransportId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TransportId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TransportId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessage2 = extern struct {
@@ -1829,7 +1829,7 @@ pub const IChatMessage2 = extern struct {
         const _c = self.vtable.put_EstimatedDownloadSize(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_From(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1915,7 +1915,7 @@ pub const IChatMessage2 = extern struct {
         const _c = self.vtable.put_IsReceivedDuringQuietHours(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1923,7 +1923,7 @@ pub const IChatMessage2 = extern struct {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1967,7 +1967,7 @@ pub const IChatMessage2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_EstimatedDownloadSize: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         put_EstimatedDownloadSize: *const fn(self: *anyopaque, value: u64) callconv(.winapi) HRESULT,
-        put_From: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        put_From: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsAutoReply: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsAutoReply: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         put_IsForwardingDisabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -1985,9 +1985,9 @@ pub const IChatMessage2 = extern struct {
         put_NetworkTimestamp: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_IsReceivedDuringQuietHours: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsReceivedDuringQuietHours: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: ChatMessageStatus) callconv(.winapi) HRESULT,
-        put_Subject: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        put_Subject: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ShouldSuppressNotification: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_ShouldSuppressNotification: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ThreadingInfo: *const fn(self: *anyopaque, _r: **ChatConversationThreadingInfo) callconv(.winapi) HRESULT,
@@ -1997,8 +1997,8 @@ pub const IChatMessage2 = extern struct {
 };
 pub const IChatMessage3 = extern struct {
     vtable: *const VTable,
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2015,18 +2015,18 @@ pub const IChatMessage3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessage4 = extern struct {
     vtable: *const VTable,
-    pub fn getSyncId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSyncId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SyncId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSyncId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSyncId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SyncId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2042,8 +2042,8 @@ pub const IChatMessage4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SyncId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SyncId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SyncId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SyncId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageAttachment = extern struct {
@@ -2068,23 +2068,23 @@ pub const IChatMessageAttachment = extern struct {
         const _c = self.vtable.put_GroupId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMimeType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMimeType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MimeType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMimeType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMimeType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MimeType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2104,10 +2104,10 @@ pub const IChatMessageAttachment = extern struct {
         put_DataStreamReference: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_GroupId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_GroupId: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_MimeType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MimeType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MimeType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MimeType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageAttachment2 = extern struct {
@@ -2132,13 +2132,13 @@ pub const IChatMessageAttachment2 = extern struct {
         const _c = self.vtable.put_TransferProgress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOriginalFileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOriginalFileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OriginalFileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOriginalFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOriginalFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OriginalFileName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2158,13 +2158,13 @@ pub const IChatMessageAttachment2 = extern struct {
         put_Thumbnail: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_TransferProgress: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_TransferProgress: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
-        get_OriginalFileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OriginalFileName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OriginalFileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OriginalFileName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageAttachmentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateChatMessageAttachment(self: *@This(), mimeType: HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
+    pub fn CreateChatMessageAttachment(self: *@This(), mimeType: ?HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
         var _r: *ChatMessageAttachment = undefined;
         const _c = self.vtable.CreateChatMessageAttachment(@ptrCast(self), mimeType, dataStreamReference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2182,12 +2182,12 @@ pub const IChatMessageAttachmentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateChatMessageAttachment: *const fn(self: *anyopaque, mimeType: HSTRING, dataStreamReference: *IRandomAccessStreamReference, _r: **ChatMessageAttachment) callconv(.winapi) HRESULT,
+        CreateChatMessageAttachment: *const fn(self: *anyopaque, mimeType: ?HSTRING, dataStreamReference: *IRandomAccessStreamReference, _r: **ChatMessageAttachment) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageBlockingStatic = extern struct {
     vtable: *const VTable,
-    pub fn MarkMessageAsBlockedAsync(self: *@This(), localChatMessageId: HSTRING, blocked: bool) core.HResult!*IAsyncAction {
+    pub fn MarkMessageAsBlockedAsync(self: *@This(), localChatMessageId: ?HSTRING, blocked: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkMessageAsBlockedAsync(@ptrCast(self), localChatMessageId, blocked, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2205,7 +2205,7 @@ pub const IChatMessageBlockingStatic = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        MarkMessageAsBlockedAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, blocked: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkMessageAsBlockedAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, blocked: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageChange = extern struct {
@@ -2350,13 +2350,13 @@ pub const IChatMessageChangedEventArgs = extern struct {
 };
 pub const IChatMessageManager2Statics = extern struct {
     vtable: *const VTable,
-    pub fn RegisterTransportAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn RegisterTransportAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.RegisterTransportAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTransportAsync(self: *@This(), transportId: HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
+    pub fn GetTransportAsync(self: *@This(), transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
         var _r: *IAsyncOperation(ChatMessageTransport) = undefined;
         const _c = self.vtable.GetTransportAsync(@ptrCast(self), transportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2374,8 +2374,8 @@ pub const IChatMessageManager2Statics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RegisterTransportAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetTransportAsync: *const fn(self: *anyopaque, transportId: HSTRING, _r: **IAsyncOperation(ChatMessageTransport)) callconv(.winapi) HRESULT,
+        RegisterTransportAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetTransportAsync: *const fn(self: *anyopaque, transportId: ?HSTRING, _r: **IAsyncOperation(ChatMessageTransport)) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageManagerStatic = extern struct {
@@ -2564,19 +2564,19 @@ pub const IChatMessageStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteMessageAsync(self: *@This(), localMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteMessageAsync(self: *@This(), localMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), localMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DownloadMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DownloadMessageAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.GetMessageAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2594,13 +2594,13 @@ pub const IChatMessageStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkMessageReadAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkMessageReadAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkMessageReadAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RetrySendMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RetrySendMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RetrySendMessageAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2641,13 +2641,13 @@ pub const IChatMessageStore = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ChangeTracker: *const fn(self: *anyopaque, _r: **ChatMessageChangeTracker) callconv(.winapi) HRESULT,
-        DeleteMessageAsync: *const fn(self: *anyopaque, localMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
+        DeleteMessageAsync: *const fn(self: *anyopaque, localMessageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
         GetMessageReaderWithRecentTimeLimit: *const fn(self: *anyopaque, recentTimeLimit: TimeSpan, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
-        MarkMessageReadAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RetrySendMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkMessageReadAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RetrySendMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, chatMessage: *ChatMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ValidateMessage: *const fn(self: *anyopaque, chatMessage: *ChatMessage, _r: **ChatMessageValidationResult) callconv(.winapi) HRESULT,
         add_MessageChanged: *const fn(self: *anyopaque, value: *TypedEventHandler(ChatMessageStore,ChatMessageChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -2656,19 +2656,19 @@ pub const IChatMessageStore = extern struct {
 };
 pub const IChatMessageStore2 = extern struct {
     vtable: *const VTable,
-    pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: HSTRING, addresses: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: ?HSTRING, addresses: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.ForwardMessageAsync(@ptrCast(self), localChatMessageId, addresses, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationAsync(self: *@This(), conversationId: HSTRING) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsync(self: *@This(), conversationId: ?HSTRING) core.HResult!*IAsyncOperation(ChatConversation) {
         var _r: *IAsyncOperation(ChatConversation) = undefined;
         const _c = self.vtable.GetConversationAsync(@ptrCast(self), conversationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: ?HSTRING, transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
         var _r: *IAsyncOperation(ChatConversation) = undefined;
         const _c = self.vtable.GetConversationAsyncWithTransportIds(@ptrCast(self), conversationId, transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2686,13 +2686,13 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
+    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*ChatConversationReader {
         var _r: *ChatConversationReader = undefined;
         const _c = self.vtable.GetConversationReaderWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: HSTRING, remoteId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: ?HSTRING, remoteId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.GetMessageByRemoteIdAsync(@ptrCast(self), transportId, remoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2704,7 +2704,7 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
+    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(i32) {
         var _r: *IAsyncOperation(i32) = undefined;
         const _c = self.vtable.GetUnseenCountAsyncWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2716,7 +2716,7 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkAsSeenAsyncWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2734,13 +2734,13 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCancelDownloadMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryCancelDownloadMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryCancelDownloadMessageAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCancelSendMessageAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryCancelSendMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryCancelSendMessageAsync(@ptrCast(self), localChatMessageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2768,28 +2768,28 @@ pub const IChatMessageStore2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ForwardMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, addresses: *IIterable(HSTRING), _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
-        GetConversationAsync: *const fn(self: *anyopaque, conversationId: HSTRING, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
-        GetConversationAsyncWithTransportIds: *const fn(self: *anyopaque, conversationId: HSTRING, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
+        ForwardMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, addresses: *IIterable(?HSTRING), _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
+        GetConversationAsync: *const fn(self: *anyopaque, conversationId: ?HSTRING, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
+        GetConversationAsyncWithTransportIds: *const fn(self: *anyopaque, conversationId: ?HSTRING, transportIds: *IIterable(?HSTRING), _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationFromThreadingInfoAsync: *const fn(self: *anyopaque, threadingInfo: *ChatConversationThreadingInfo, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **ChatConversationReader) callconv(.winapi) HRESULT,
-        GetConversationReaderWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **ChatConversationReader) callconv(.winapi) HRESULT,
-        GetMessageByRemoteIdAsync: *const fn(self: *anyopaque, transportId: HSTRING, remoteId: HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
+        GetConversationReaderWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(?HSTRING), _r: **ChatConversationReader) callconv(.winapi) HRESULT,
+        GetMessageByRemoteIdAsync: *const fn(self: *anyopaque, transportId: ?HSTRING, remoteId: ?HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
         GetUnseenCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
-        GetUnseenCountAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
+        GetUnseenCountAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(?HSTRING), _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
         MarkAsSeenAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkAsSeenAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkAsSeenAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetSearchReader: *const fn(self: *anyopaque, value: *ChatQueryOptions, _r: **ChatSearchReader) callconv(.winapi) HRESULT,
         SaveMessageAsync: *const fn(self: *anyopaque, chatMessage: *ChatMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        TryCancelDownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryCancelSendMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryCancelDownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryCancelSendMessageAsync: *const fn(self: *anyopaque, localChatMessageId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_StoreChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(ChatMessageStore,ChatMessageStoreChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StoreChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageStore3 = extern struct {
     vtable: *const VTable,
-    pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
+    pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.GetMessageBySyncIdAsync(@ptrCast(self), syncId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2807,13 +2807,13 @@ pub const IChatMessageStore3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetMessageBySyncIdAsync: *const fn(self: *anyopaque, syncId: HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
+        GetMessageBySyncIdAsync: *const fn(self: *anyopaque, syncId: ?HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageStoreChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2836,7 +2836,7 @@ pub const IChatMessageStoreChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ChatStoreChangedEventKind) callconv(.winapi) HRESULT,
     };
 };
@@ -2854,14 +2854,14 @@ pub const IChatMessageTransport = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2886,8 +2886,8 @@ pub const IChatMessageTransport = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsAppSetAsNotificationProvider: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TransportId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TransportId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         RequestSetAsNotificationProviderAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -2947,8 +2947,8 @@ pub const IChatMessageTransportConfiguration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2969,7 +2969,7 @@ pub const IChatMessageTransportConfiguration = extern struct {
         get_MaxMessageSizeInKilobytes: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_MaxRecipientCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_SupportedVideoFormat: *const fn(self: *anyopaque, _r: **MediaEncodingProfile) callconv(.winapi) HRESULT,
-        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatMessageValidationResult = extern struct {
@@ -3018,13 +3018,13 @@ pub const IChatMessageValidationResult = extern struct {
 };
 pub const IChatQueryOptions = extern struct {
     vtable: *const VTable,
-    pub fn getSearchString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSearchString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SearchString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSearchString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SearchString(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3040,19 +3040,19 @@ pub const IChatQueryOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SearchString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SearchString: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SearchString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SearchString: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatRecipientDeliveryInfo = extern struct {
     vtable: *const VTable,
-    pub fn getTransportAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTransportAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransportAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TransportAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3118,8 +3118,8 @@ pub const IChatRecipientDeliveryInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TransportAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TransportAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TransportAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TransportAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_DeliveryTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_DeliveryTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_ReadTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
@@ -3259,20 +3259,20 @@ pub const IChatSyncManager = extern struct {
 };
 pub const IRcsEndUserMessage = extern struct {
     vtable: *const VTable,
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3295,7 +3295,7 @@ pub const IRcsEndUserMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SendResponseWithPinAsync(self: *@This(), action: *RcsEndUserMessageAction, pin: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SendResponseWithPinAsync(self: *@This(), action: *RcsEndUserMessageAction, pin: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SendResponseWithPinAsync(@ptrCast(self), action, pin, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3313,19 +3313,19 @@ pub const IRcsEndUserMessage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TransportId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TransportId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsPinRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Actions: *const fn(self: *anyopaque, _r: **IVectorView(RcsEndUserMessageAction)) callconv(.winapi) HRESULT,
         SendResponseAsync: *const fn(self: *anyopaque, action: *RcsEndUserMessageAction, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SendResponseWithPinAsync: *const fn(self: *anyopaque, action: *RcsEndUserMessageAction, pin: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SendResponseWithPinAsync: *const fn(self: *anyopaque, action: *RcsEndUserMessageAction, pin: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IRcsEndUserMessageAction = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3342,7 +3342,7 @@ pub const IRcsEndUserMessageAction = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRcsEndUserMessageAvailableEventArgs = extern struct {
@@ -3377,14 +3377,14 @@ pub const IRcsEndUserMessageAvailableEventArgs = extern struct {
 };
 pub const IRcsEndUserMessageAvailableTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3401,8 +3401,8 @@ pub const IRcsEndUserMessageAvailableTriggerDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRcsEndUserMessageManager = extern struct {
@@ -3447,7 +3447,7 @@ pub const IRcsManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTransportAsync(self: *@This(), transportId: HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
+    pub fn GetTransportAsync(self: *@This(), transportId: ?HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
         var _r: *IAsyncOperation(RcsTransport) = undefined;
         const _c = self.vtable.GetTransportAsync(@ptrCast(self), transportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3473,7 +3473,7 @@ pub const IRcsManagerStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetEndUserMessageManager: *const fn(self: *anyopaque, _r: **RcsEndUserMessageManager) callconv(.winapi) HRESULT,
         GetTransportsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(RcsTransport))) callconv(.winapi) HRESULT,
-        GetTransportAsync: *const fn(self: *anyopaque, transportId: HSTRING, _r: **IAsyncOperation(RcsTransport)) callconv(.winapi) HRESULT,
+        GetTransportAsync: *const fn(self: *anyopaque, transportId: ?HSTRING, _r: **IAsyncOperation(RcsTransport)) callconv(.winapi) HRESULT,
         LeaveConversationAsync: *const fn(self: *anyopaque, conversation: *ChatConversation, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -3530,8 +3530,8 @@ pub const IRcsServiceKindSupportedChangedEventArgs = extern struct {
 };
 pub const IRcsTransport = extern struct {
     vtable: *const VTable,
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3542,14 +3542,14 @@ pub const IRcsTransport = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3594,10 +3594,10 @@ pub const IRcsTransport = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TransportId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TransportFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TransportId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Configuration: *const fn(self: *anyopaque, _r: **RcsTransportConfiguration) callconv(.winapi) HRESULT,
         IsStoreAndForwardEnabled: *const fn(self: *anyopaque, serviceKind: RcsServiceKind, _r: *bool) callconv(.winapi) HRESULT,
         IsServiceKindSupported: *const fn(self: *anyopaque, serviceKind: RcsServiceKind, _r: *bool) callconv(.winapi) HRESULT,
@@ -3665,14 +3665,14 @@ pub const IRcsTransportConfiguration = extern struct {
 };
 pub const IRemoteParticipantComposingChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getParticipantAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getParticipantAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ParticipantAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3695,22 +3695,22 @@ pub const IRemoteParticipantComposingChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TransportId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ParticipantAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TransportId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ParticipantAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsComposing: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const RcsEndUserMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.getTransportId();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.getText();
     }
@@ -3726,7 +3726,7 @@ pub const RcsEndUserMessage = extern struct {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.SendResponseAsync(action);
     }
-    pub fn SendResponseWithPinAsync(self: *@This(), action: *RcsEndUserMessageAction, pin: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SendResponseWithPinAsync(self: *@This(), action: *RcsEndUserMessageAction, pin: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.SendResponseWithPinAsync(action, pin);
     }
@@ -3738,7 +3738,7 @@ pub const RcsEndUserMessage = extern struct {
 };
 pub const RcsEndUserMessageAction = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessageAction = @ptrCast(self);
         return try this.getLabel();
     }
@@ -3766,11 +3766,11 @@ pub const RcsEndUserMessageAvailableEventArgs = extern struct {
 };
 pub const RcsEndUserMessageAvailableTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessageAvailableTriggerDetails = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessageAvailableTriggerDetails = @ptrCast(self);
         return try this.getText();
     }
@@ -3817,7 +3817,7 @@ pub const RcsManager = extern struct {
         const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.GetTransportsAsync();
     }
-    pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
+    pub fn GetTransportAsync(transportId: ?HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
         const _f = try @This()._IRcsManagerStaticsCache.get();
         return try _f.GetTransportAsync(transportId);
     }
@@ -3850,7 +3850,7 @@ pub const RcsServiceKindSupportedChangedEventArgs = extern struct {
 };
 pub const RcsTransport = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IRcsTransport = @ptrCast(self);
         return try this.getExtendedProperties();
     }
@@ -3858,11 +3858,11 @@ pub const RcsTransport = extern struct {
         const this: *IRcsTransport = @ptrCast(self);
         return try this.getIsActive();
     }
-    pub fn getTransportFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsTransport = @ptrCast(self);
         return try this.getTransportFriendlyName();
     }
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsTransport = @ptrCast(self);
         return try this.getTransportId();
     }
@@ -3926,11 +3926,11 @@ pub const RcsTransportConfiguration = extern struct {
 };
 pub const RemoteParticipantComposingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTransportId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteParticipantComposingChangedEventArgs = @ptrCast(self);
         return try this.getTransportId();
     }
-    pub fn getParticipantAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getParticipantAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteParticipantComposingChangedEventArgs = @ptrCast(self);
         return try this.getParticipantAddress();
     }

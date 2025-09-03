@@ -132,11 +132,11 @@ pub const IInferencingOptionsPreview = extern struct {
 };
 pub const ILearningModelBindingPreview = extern struct {
     vtable: *const VTable,
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn BindWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
+    pub fn BindWithMetadata(self: *@This(), name: ?HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
         const _c = self.vtable.BindWithMetadata(@ptrCast(self), name, value, metadata);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -156,8 +156,8 @@ pub const ILearningModelBindingPreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        BindWithMetadata: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
+        Bind: *const fn(self: *anyopaque, name: ?HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
+        BindWithMetadata: *const fn(self: *anyopaque, name: ?HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -186,26 +186,26 @@ pub const ILearningModelBindingPreviewFactory = extern struct {
 };
 pub const ILearningModelDescriptionPreview = extern struct {
     vtable: *const VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -216,8 +216,8 @@ pub const ILearningModelDescriptionPreview = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Metadata(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -246,26 +246,26 @@ pub const ILearningModelDescriptionPreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Version: *const fn(self: *anyopaque, _r: *i64) callconv(.winapi) HRESULT,
-        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_InputFeatures: *const fn(self: *anyopaque, _r: **IIterable(ILearningModelVariableDescriptorPreview)) callconv(.winapi) HRESULT,
         get_OutputFeatures: *const fn(self: *anyopaque, _r: **IIterable(ILearningModelVariableDescriptorPreview)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelEvaluationResultPreview = extern struct {
     vtable: *const VTable,
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Outputs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -282,19 +282,19 @@ pub const ILearningModelEvaluationResultPreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CorrelationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Outputs: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_CorrelationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Outputs: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelPreview = extern struct {
     vtable: *const VTable,
-    pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
+    pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         var _r: *IAsyncOperation(LearningModelEvaluationResultPreview) = undefined;
         const _c = self.vtable.EvaluateAsync(@ptrCast(self), binding, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
+    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         var _r: *IAsyncOperation(LearningModelEvaluationResultPreview) = undefined;
         const _c = self.vtable.EvaluateFeaturesAsync(@ptrCast(self), features, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -328,8 +328,8 @@ pub const ILearningModelPreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        EvaluateAsync: *const fn(self: *anyopaque, binding: *LearningModelBindingPreview, correlationId: HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResultPreview)) callconv(.winapi) HRESULT,
-        EvaluateFeaturesAsync: *const fn(self: *anyopaque, features: *IMap(HSTRING,IInspectable), correlationId: HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResultPreview)) callconv(.winapi) HRESULT,
+        EvaluateAsync: *const fn(self: *anyopaque, binding: *LearningModelBindingPreview, correlationId: ?HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResultPreview)) callconv(.winapi) HRESULT,
+        EvaluateFeaturesAsync: *const fn(self: *anyopaque, features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResultPreview)) callconv(.winapi) HRESULT,
         get_Description: *const fn(self: *anyopaque, _r: **LearningModelDescriptionPreview) callconv(.winapi) HRESULT,
         get_InferencingOptions: *const fn(self: *anyopaque, _r: **InferencingOptionsPreview) callconv(.winapi) HRESULT,
         put_InferencingOptions: *const fn(self: *anyopaque, value: *InferencingOptionsPreview) callconv(.winapi) HRESULT,
@@ -367,14 +367,14 @@ pub const ILearningModelPreviewStatics = extern struct {
 };
 pub const ILearningModelVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -403,8 +403,8 @@ pub const ILearningModelVariableDescriptorPreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ModelFeatureKind: *const fn(self: *anyopaque, _r: *LearningModelFeatureKindPreview) callconv(.winapi) HRESULT,
         get_IsRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -417,8 +417,8 @@ pub const IMapVariableDescriptorPreview = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValidStringKeys(self: *@This()) core.HResult!*IIterable(HSTRING) {
-        var _r: *IIterable(HSTRING) = undefined;
+    pub fn getValidStringKeys(self: *@This()) core.HResult!*IIterable(?HSTRING) {
+        var _r: *IIterable(?HSTRING) = undefined;
         const _c = self.vtable.get_ValidStringKeys(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -448,7 +448,7 @@ pub const IMapVariableDescriptorPreview = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_KeyKind: *const fn(self: *anyopaque, _r: *FeatureElementKindPreview) callconv(.winapi) HRESULT,
-        get_ValidStringKeys: *const fn(self: *anyopaque, _r: **IIterable(HSTRING)) callconv(.winapi) HRESULT,
+        get_ValidStringKeys: *const fn(self: *anyopaque, _r: **IIterable(?HSTRING)) callconv(.winapi) HRESULT,
         get_ValidIntegerKeys: *const fn(self: *anyopaque, _r: **IIterable(i64)) callconv(.winapi) HRESULT,
         get_Fields: *const fn(self: *anyopaque, _r: **ILearningModelVariableDescriptorPreview) callconv(.winapi) HRESULT,
     };
@@ -520,13 +520,13 @@ pub const ImageVariableDescriptorPreview = extern struct {
         const this: *IImageVariableDescriptorPreview = @ptrCast(self);
         return try this.getHeight();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -600,11 +600,11 @@ pub const InferencingOptionsPreview = extern struct {
 };
 pub const LearningModelBindingPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
         return try this.Bind(name, value);
     }
-    pub fn BindWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
+    pub fn BindWithMetadata(self: *@This(), name: ?HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
         return try this.BindWithMetadata(name, value, metadata);
     }
@@ -613,19 +613,19 @@ pub const LearningModelBindingPreview = extern struct {
         return try this.Clear();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+    pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -646,19 +646,19 @@ pub const LearningModelBindingPreview = extern struct {
 };
 pub const LearningModelDescriptionPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getAuthor();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getDomain();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getDescription();
     }
@@ -666,7 +666,7 @@ pub const LearningModelDescriptionPreview = extern struct {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getMetadata();
     }
@@ -694,11 +694,11 @@ pub const LearningModelDeviceKindPreview = enum(i32) {
 };
 pub const LearningModelEvaluationResultPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelEvaluationResultPreview = @ptrCast(self);
         return try this.getCorrelationId();
     }
-    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *ILearningModelEvaluationResultPreview = @ptrCast(self);
         return try this.getOutputs();
     }
@@ -717,11 +717,11 @@ pub const LearningModelFeatureKindPreview = enum(i32) {
 };
 pub const LearningModelPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
+    pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         const this: *ILearningModelPreview = @ptrCast(self);
         return try this.EvaluateAsync(binding, correlationId);
     }
-    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
+    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         const this: *ILearningModelPreview = @ptrCast(self);
         return try this.EvaluateFeaturesAsync(features, correlationId);
     }
@@ -757,11 +757,11 @@ pub const LearningModelPreview = extern struct {
 };
 pub const LearningModelVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelVariableDescriptorPreview = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelVariableDescriptorPreview = @ptrCast(self);
         return try this.getDescription();
     }
@@ -785,7 +785,7 @@ pub const MapVariableDescriptorPreview = extern struct {
         const this: *IMapVariableDescriptorPreview = @ptrCast(self);
         return try this.getKeyKind();
     }
-    pub fn getValidStringKeys(self: *@This()) core.HResult!*IIterable(HSTRING) {
+    pub fn getValidStringKeys(self: *@This()) core.HResult!*IIterable(?HSTRING) {
         const this: *IMapVariableDescriptorPreview = @ptrCast(self);
         return try this.getValidStringKeys();
     }
@@ -797,13 +797,13 @@ pub const MapVariableDescriptorPreview = extern struct {
         const this: *IMapVariableDescriptorPreview = @ptrCast(self);
         return try this.getFields();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -833,13 +833,13 @@ pub const SequenceVariableDescriptorPreview = extern struct {
         const this: *ISequenceVariableDescriptorPreview = @ptrCast(self);
         return try this.getElementType();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -873,13 +873,13 @@ pub const TensorVariableDescriptorPreview = extern struct {
         const this: *ITensorVariableDescriptorPreview = @ptrCast(self);
         return try this.getShape();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

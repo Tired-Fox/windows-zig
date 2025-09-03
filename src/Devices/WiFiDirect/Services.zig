@@ -61,7 +61,7 @@ pub const IWiFiDirectService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithPin(self: *@This(), pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
+    pub fn ConnectAsyncWithPin(self: *@This(), pin: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
         var _r: *IAsyncOperation(WiFiDirectServiceSession) = undefined;
         const _c = self.vtable.ConnectAsyncWithPin(@ptrCast(self), pin, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -90,19 +90,19 @@ pub const IWiFiDirectService = extern struct {
         remove_SessionDeferred: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         GetProvisioningInfoAsync: *const fn(self: *anyopaque, selectedConfigurationMethod: WiFiDirectServiceConfigurationMethod, _r: **IAsyncOperation(WiFiDirectServiceProvisioningInfo)) callconv(.winapi) HRESULT,
         ConnectAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
-        ConnectAsyncWithPin: *const fn(self: *anyopaque, pin: HSTRING, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
+        ConnectAsyncWithPin: *const fn(self: *anyopaque, pin: ?HSTRING, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiDirectServiceAdvertiser = extern struct {
     vtable: *const VTable,
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceNamePrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getServiceNamePrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ServiceNamePrefixes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -221,7 +221,7 @@ pub const IWiFiDirectServiceAdvertiser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithPin(self: *@This(), deviceInfo: *DeviceInformation, pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
+    pub fn ConnectAsyncWithPin(self: *@This(), deviceInfo: *DeviceInformation, pin: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
         var _r: *IAsyncOperation(WiFiDirectServiceSession) = undefined;
         const _c = self.vtable.ConnectAsyncWithPin(@ptrCast(self), deviceInfo, pin, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -247,8 +247,8 @@ pub const IWiFiDirectServiceAdvertiser = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceNamePrefixes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceNamePrefixes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_ServiceInfo: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         put_ServiceInfo: *const fn(self: *anyopaque, value: *IBuffer) callconv(.winapi) HRESULT,
         get_AutoAcceptSession: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -271,14 +271,14 @@ pub const IWiFiDirectServiceAdvertiser = extern struct {
         add_AdvertisementStatusChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(WiFiDirectServiceAdvertiser,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_AdvertisementStatusChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         ConnectAsync: *const fn(self: *anyopaque, deviceInfo: *DeviceInformation, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
-        ConnectAsyncWithPin: *const fn(self: *anyopaque, deviceInfo: *DeviceInformation, pin: HSTRING, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
+        ConnectAsyncWithPin: *const fn(self: *anyopaque, deviceInfo: *DeviceInformation, pin: ?HSTRING, _r: **IAsyncOperation(WiFiDirectServiceSession)) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiDirectServiceAdvertiserFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWiFiDirectServiceAdvertiser(self: *@This(), serviceName: HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
+    pub fn CreateWiFiDirectServiceAdvertiser(self: *@This(), serviceName: ?HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
         var _r: *WiFiDirectServiceAdvertiser = undefined;
         const _c = self.vtable.CreateWiFiDirectServiceAdvertiser(@ptrCast(self), serviceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -296,7 +296,7 @@ pub const IWiFiDirectServiceAdvertiserFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWiFiDirectServiceAdvertiser: *const fn(self: *anyopaque, serviceName: HSTRING, _r: **WiFiDirectServiceAdvertiser) callconv(.winapi) HRESULT,
+        CreateWiFiDirectServiceAdvertiser: *const fn(self: *anyopaque, serviceName: ?HSTRING, _r: **WiFiDirectServiceAdvertiser) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiDirectServiceAutoAcceptSessionConnectedEventArgs = extern struct {
@@ -391,8 +391,8 @@ pub const IWiFiDirectServiceRemotePortAddedEventArgs = extern struct {
 };
 pub const IWiFiDirectServiceSession = extern struct {
     vtable: *const VTable,
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -421,14 +421,14 @@ pub const IWiFiDirectServiceSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSessionAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -483,13 +483,13 @@ pub const IWiFiDirectServiceSession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *WiFiDirectServiceSessionStatus) callconv(.winapi) HRESULT,
         get_ErrorStatus: *const fn(self: *anyopaque, _r: *WiFiDirectServiceSessionErrorStatus) callconv(.winapi) HRESULT,
         get_SessionId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_AdvertisementId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_ServiceAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SessionAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SessionAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetConnectionEndpointPairs: *const fn(self: *anyopaque, _r: **IVectorView(EndpointPair)) callconv(.winapi) HRESULT,
         add_SessionStatusChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(WiFiDirectServiceSession,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SessionStatusChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -584,19 +584,19 @@ pub const IWiFiDirectServiceSessionRequestedEventArgs = extern struct {
 };
 pub const IWiFiDirectServiceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetSelector(self: *@This(), serviceName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetSelector(self: *@This(), serviceName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetSelector(@ptrCast(self), serviceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSelectorWithServiceInfoFilter(self: *@This(), serviceName: HSTRING, serviceInfoFilter: *IBuffer) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetSelectorWithServiceInfoFilter(self: *@This(), serviceName: ?HSTRING, serviceInfoFilter: *IBuffer) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetSelectorWithServiceInfoFilter(@ptrCast(self), serviceName, serviceInfoFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectService) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectService) {
         var _r: *IAsyncOperation(WiFiDirectService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -614,9 +614,9 @@ pub const IWiFiDirectServiceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetSelector: *const fn(self: *anyopaque, serviceName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetSelectorWithServiceInfoFilter: *const fn(self: *anyopaque, serviceName: HSTRING, serviceInfoFilter: *IBuffer, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(WiFiDirectService)) callconv(.winapi) HRESULT,
+        GetSelector: *const fn(self: *anyopaque, serviceName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetSelectorWithServiceInfoFilter: *const fn(self: *anyopaque, serviceName: ?HSTRING, serviceInfoFilter: *IBuffer, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(WiFiDirectService)) callconv(.winapi) HRESULT,
     };
 };
 pub const WiFiDirectService = extern struct {
@@ -665,22 +665,22 @@ pub const WiFiDirectService = extern struct {
         const this: *IWiFiDirectService = @ptrCast(self);
         return try this.ConnectAsync();
     }
-    pub fn ConnectAsyncWithPin(self: *@This(), pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
+    pub fn ConnectAsyncWithPin(self: *@This(), pin: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
         const this: *IWiFiDirectService = @ptrCast(self);
         return try this.ConnectAsyncWithPin(pin);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetSelector(serviceName: HSTRING) core.HResult!HSTRING {
+    pub fn GetSelector(serviceName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.GetSelector(serviceName);
     }
-    pub fn GetSelectorWithServiceInfoFilter(serviceName: HSTRING, serviceInfoFilter: *IBuffer) core.HResult!HSTRING {
+    pub fn GetSelectorWithServiceInfoFilter(serviceName: ?HSTRING, serviceInfoFilter: *IBuffer) core.HResult!?HSTRING {
         const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.GetSelectorWithServiceInfoFilter(serviceName, serviceInfoFilter);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectService) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectService) {
         const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -699,11 +699,11 @@ pub const WiFiDirectServiceAdvertisementStatus = enum(i32) {
 };
 pub const WiFiDirectServiceAdvertiser = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn getServiceNamePrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getServiceNamePrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.getServiceNamePrefixes();
     }
@@ -795,7 +795,7 @@ pub const WiFiDirectServiceAdvertiser = extern struct {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.ConnectAsync(deviceInfo);
     }
-    pub fn ConnectAsyncWithPin(self: *@This(), deviceInfo: *DeviceInformation, pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
+    pub fn ConnectAsyncWithPin(self: *@This(), deviceInfo: *DeviceInformation, pin: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.ConnectAsyncWithPin(deviceInfo, pin);
     }
@@ -810,7 +810,7 @@ pub const WiFiDirectServiceAdvertiser = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWiFiDirectServiceAdvertiser(serviceName: HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
+    pub fn CreateWiFiDirectServiceAdvertiser(serviceName: ?HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
         const _f = try @This()._IWiFiDirectServiceAdvertiserFactoryCache.get();
         return try _f.CreateWiFiDirectServiceAdvertiser(serviceName);
     }
@@ -887,7 +887,7 @@ pub const WiFiDirectServiceRemotePortAddedEventArgs = extern struct {
 };
 pub const WiFiDirectServiceSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceSession = @ptrCast(self);
         return try this.getServiceName();
     }
@@ -907,11 +907,11 @@ pub const WiFiDirectServiceSession = extern struct {
         const this: *IWiFiDirectServiceSession = @ptrCast(self);
         return try this.getAdvertisementId();
     }
-    pub fn getServiceAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceSession = @ptrCast(self);
         return try this.getServiceAddress();
     }
-    pub fn getSessionAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceSession = @ptrCast(self);
         return try this.getSessionAddress();
     }

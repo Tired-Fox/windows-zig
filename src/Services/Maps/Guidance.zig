@@ -18,11 +18,11 @@ pub const GuidanceAudioNotificationRequestedEventArgs = extern struct {
         const this: *IGuidanceAudioNotificationRequestedEventArgs = @ptrCast(self);
         return try this.getAudioNotification();
     }
-    pub fn getAudioFilePaths(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getAudioFilePaths(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGuidanceAudioNotificationRequestedEventArgs = @ptrCast(self);
         return try this.getAudioFilePaths();
     }
-    pub fn getAudioText(self: *@This()) core.HResult!HSTRING {
+    pub fn getAudioText(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceAudioNotificationRequestedEventArgs = @ptrCast(self);
         return try this.getAudioText();
     }
@@ -84,19 +84,19 @@ pub const GuidanceManeuver = extern struct {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getDistanceFromPreviousManeuver();
     }
-    pub fn getDepartureRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDepartureRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getDepartureRoadName();
     }
-    pub fn getNextRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNextRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getNextRoadName();
     }
-    pub fn getDepartureShortRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDepartureShortRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getDepartureShortRoadName();
     }
-    pub fn getNextShortRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNextShortRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getNextShortRoadName();
     }
@@ -116,7 +116,7 @@ pub const GuidanceManeuver = extern struct {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getRoadSignpost();
     }
-    pub fn getInstructionText(self: *@This()) core.HResult!HSTRING {
+    pub fn getInstructionText(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getInstructionText();
     }
@@ -312,7 +312,7 @@ pub const GuidanceNavigator = extern struct {
         const this: *IGuidanceNavigator = @ptrCast(self);
         return try this.removeUserLocationRestored(token);
     }
-    pub fn SetGuidanceVoice(self: *@This(), voiceId: i32, voiceFolder: HSTRING) core.HResult!void {
+    pub fn SetGuidanceVoice(self: *@This(), voiceId: i32, voiceFolder: ?HSTRING) core.HResult!void {
         const this: *IGuidanceNavigator = @ptrCast(self);
         return try this.SetGuidanceVoice(voiceId, voiceFolder);
     }
@@ -381,11 +381,11 @@ pub const GuidanceReroutedEventArgs = extern struct {
 };
 pub const GuidanceRoadSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSegment = @ptrCast(self);
         return try this.getRoadName();
     }
-    pub fn getShortRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getShortRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSegment = @ptrCast(self);
         return try this.getShortRoadName();
     }
@@ -401,7 +401,7 @@ pub const GuidanceRoadSegment = extern struct {
         const this: *IGuidanceRoadSegment = @ptrCast(self);
         return try this.getPath();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSegment = @ptrCast(self);
         return try this.getId();
     }
@@ -431,11 +431,11 @@ pub const GuidanceRoadSegment = extern struct {
 };
 pub const GuidanceRoadSignpost = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getExitNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getExitNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSignpost = @ptrCast(self);
         return try this.getExitNumber();
     }
-    pub fn getExit(self: *@This()) core.HResult!HSTRING {
+    pub fn getExit(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSignpost = @ptrCast(self);
         return try this.getExit();
     }
@@ -447,7 +447,7 @@ pub const GuidanceRoadSignpost = extern struct {
         const this: *IGuidanceRoadSignpost = @ptrCast(self);
         return try this.getForegroundColor();
     }
-    pub fn getExitDirections(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getExitDirections(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGuidanceRoadSignpost = @ptrCast(self);
         return try this.getExitDirections();
     }
@@ -587,7 +587,7 @@ pub const GuidanceUpdatedEventArgs = extern struct {
         const this: *IGuidanceUpdatedEventArgs = @ptrCast(self);
         return try this.getTimeToDestination();
     }
-    pub fn getRoadName(self: *@This()) core.HResult!HSTRING {
+    pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceUpdatedEventArgs = @ptrCast(self);
         return try this.getRoadName();
     }
@@ -621,14 +621,14 @@ pub const IGuidanceAudioNotificationRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioFilePaths(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAudioFilePaths(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AudioFilePaths(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAudioText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudioText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudioText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -646,8 +646,8 @@ pub const IGuidanceAudioNotificationRequestedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AudioNotification: *const fn(self: *anyopaque, _r: *GuidanceAudioNotificationKind) callconv(.winapi) HRESULT,
-        get_AudioFilePaths: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_AudioText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AudioFilePaths: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_AudioText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGuidanceLaneInfo = extern struct {
@@ -700,26 +700,26 @@ pub const IGuidanceManeuver = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDepartureRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDepartureRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DepartureRoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNextRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNextRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NextRoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDepartureShortRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDepartureShortRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DepartureShortRoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNextShortRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNextShortRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NextShortRoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -748,8 +748,8 @@ pub const IGuidanceManeuver = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInstructionText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInstructionText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InstructionText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -769,15 +769,15 @@ pub const IGuidanceManeuver = extern struct {
         get_StartLocation: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
         get_DistanceFromRouteStart: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_DistanceFromPreviousManeuver: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_DepartureRoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NextRoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DepartureShortRoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NextShortRoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DepartureRoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NextRoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DepartureShortRoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NextShortRoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *GuidanceManeuverKind) callconv(.winapi) HRESULT,
         get_StartAngle: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_EndAngle: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_RoadSignpost: *const fn(self: *anyopaque, _r: **GuidanceRoadSignpost) callconv(.winapi) HRESULT,
-        get_InstructionText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InstructionText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGuidanceMapMatchedCoordinate = extern struct {
@@ -951,7 +951,7 @@ pub const IGuidanceNavigator = extern struct {
         const _c = self.vtable.remove_UserLocationRestored(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetGuidanceVoice(self: *@This(), voiceId: i32, voiceFolder: HSTRING) core.HResult!void {
+    pub fn SetGuidanceVoice(self: *@This(), voiceId: i32, voiceFolder: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetGuidanceVoice(@ptrCast(self), voiceId, voiceFolder);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1000,7 +1000,7 @@ pub const IGuidanceNavigator = extern struct {
         remove_UserLocationLost: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_UserLocationRestored: *const fn(self: *anyopaque, handler: *TypedEventHandler(GuidanceNavigator,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_UserLocationRestored: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        SetGuidanceVoice: *const fn(self: *anyopaque, voiceId: i32, voiceFolder: HSTRING) callconv(.winapi) HRESULT,
+        SetGuidanceVoice: *const fn(self: *anyopaque, voiceId: i32, voiceFolder: ?HSTRING) callconv(.winapi) HRESULT,
         UpdateUserLocation: *const fn(self: *anyopaque, userLocation: *Geocoordinate) callconv(.winapi) HRESULT,
         UpdateUserLocationWithPositionOverride: *const fn(self: *anyopaque, userLocation: *Geocoordinate, positionOverride: BasicGeoposition) callconv(.winapi) HRESULT,
     };
@@ -1116,14 +1116,14 @@ pub const IGuidanceReroutedEventArgs = extern struct {
 };
 pub const IGuidanceRoadSegment = extern struct {
     vtable: *const VTable,
-    pub fn getRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getShortRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getShortRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ShortRoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1146,8 +1146,8 @@ pub const IGuidanceRoadSegment = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1182,12 +1182,12 @@ pub const IGuidanceRoadSegment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ShortRoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ShortRoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SpeedLimit: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_TravelTime: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_Path: *const fn(self: *anyopaque, _r: **Geopath) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsHighway: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsTunnel: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsTollRoad: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1218,14 +1218,14 @@ pub const IGuidanceRoadSegment2 = extern struct {
 };
 pub const IGuidanceRoadSignpost = extern struct {
     vtable: *const VTable,
-    pub fn getExitNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExitNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExitNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExit(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExit(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exit(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1242,8 +1242,8 @@ pub const IGuidanceRoadSignpost = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExitDirections(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getExitDirections(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ExitDirections(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1260,11 +1260,11 @@ pub const IGuidanceRoadSignpost = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ExitNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Exit: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExitNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Exit: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_BackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         get_ForegroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
-        get_ExitDirections: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_ExitDirections: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGuidanceRoute = extern struct {
@@ -1498,8 +1498,8 @@ pub const IGuidanceUpdatedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRoadName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1549,7 +1549,7 @@ pub const IGuidanceUpdatedEventArgs = extern struct {
         get_ElapsedDistance: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_ElapsedTime: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_TimeToDestination: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_RoadName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RoadName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Route: *const fn(self: *anyopaque, _r: **GuidanceRoute) callconv(.winapi) HRESULT,
         get_CurrentLocation: *const fn(self: *anyopaque, _r: **GuidanceMapMatchedCoordinate) callconv(.winapi) HRESULT,
         get_IsNewManeuver: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,

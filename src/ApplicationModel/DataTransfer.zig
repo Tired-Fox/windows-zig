@@ -103,11 +103,11 @@ pub const ClipboardContentOptions = extern struct {
         const this: *IClipboardContentOptions = @ptrCast(self);
         return try this.putIsAllowedInHistory(value);
     }
-    pub fn getRoamingFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRoamingFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IClipboardContentOptions = @ptrCast(self);
         return try this.getRoamingFormats();
     }
-    pub fn getHistoryFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getHistoryFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IClipboardContentOptions = @ptrCast(self);
         return try this.getHistoryFormats();
     }
@@ -135,7 +135,7 @@ pub const ClipboardHistoryChangedEventArgs = extern struct {
 };
 pub const ClipboardHistoryItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClipboardHistoryItem = @ptrCast(self);
         return try this.getId();
     }
@@ -208,15 +208,15 @@ pub const DataPackage = extern struct {
         const this: *IDataPackage = @ptrCast(self);
         return try this.removeDestroyed(token);
     }
-    pub fn SetData(self: *@This(), formatId: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn SetData(self: *@This(), formatId: ?HSTRING, value: *IInspectable) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetData(formatId, value);
     }
-    pub fn SetDataProvider(self: *@This(), formatId: HSTRING, delayRenderer: *DataProviderHandler) core.HResult!void {
+    pub fn SetDataProvider(self: *@This(), formatId: ?HSTRING, delayRenderer: *DataProviderHandler) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetDataProvider(formatId, delayRenderer);
     }
-    pub fn SetText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetText(value);
     }
@@ -224,15 +224,15 @@ pub const DataPackage = extern struct {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetUri(value);
     }
-    pub fn SetHtmlFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetHtmlFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetHtmlFormat(value);
     }
-    pub fn getResourceMap(self: *@This()) core.HResult!*IMap(HSTRING,RandomAccessStreamReference) {
+    pub fn getResourceMap(self: *@This()) core.HResult!*IMap(?HSTRING,RandomAccessStreamReference) {
         const this: *IDataPackage = @ptrCast(self);
         return try this.getResourceMap();
     }
-    pub fn SetRtf(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetRtf(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetRtf(value);
     }
@@ -306,19 +306,19 @@ pub const DataPackageOperation = enum(i32) {
 };
 pub const DataPackagePropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -330,15 +330,15 @@ pub const DataPackagePropertySet = extern struct {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putThumbnail(value);
     }
-    pub fn getFileTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getFileTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.getFileTypes();
     }
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.getApplicationName();
     }
-    pub fn putApplicationName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putApplicationName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putApplicationName(value);
     }
@@ -351,25 +351,25 @@ pub const DataPackagePropertySet = extern struct {
         return try this.putApplicationListingUri(value);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -398,13 +398,13 @@ pub const DataPackagePropertySet = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentSourceApplicationLink(value);
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageFamilyName();
     }
-    pub fn putPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -434,25 +434,25 @@ pub const DataPackagePropertySet = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLogoBackgroundColor(value);
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEnterpriseId(value);
     }
-    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceUserActivityJson();
     }
-    pub fn putContentSourceUserActivityJson(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentSourceUserActivityJson(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -466,11 +466,11 @@ pub const DataPackagePropertySet = extern struct {
 };
 pub const DataPackagePropertySetView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getDescription();
     }
@@ -478,11 +478,11 @@ pub const DataPackagePropertySetView = extern struct {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getThumbnail();
     }
-    pub fn getFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getFileTypes();
     }
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getApplicationName();
     }
@@ -490,7 +490,7 @@ pub const DataPackagePropertySetView = extern struct {
         const this: *IDataPackagePropertySetView = @ptrCast(self);
         return try this.getApplicationListingUri();
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -520,13 +520,13 @@ pub const DataPackagePropertySetView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLogoBackgroundColor();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
-    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -539,19 +539,19 @@ pub const DataPackagePropertySetView = extern struct {
         return try this.?.getIsFromRoamingClipboard();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+    pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -576,23 +576,23 @@ pub const DataPackageView = extern struct {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.ReportOperationCompleted(value);
     }
-    pub fn getAvailableFormats(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getAvailableFormats(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.getAvailableFormats();
     }
-    pub fn Contains(self: *@This(), formatId: HSTRING) core.HResult!bool {
+    pub fn Contains(self: *@This(), formatId: ?HSTRING) core.HResult!bool {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.Contains(formatId);
     }
-    pub fn GetDataAsync(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
+    pub fn GetDataAsync(self: *@This(), formatId: ?HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetDataAsync(formatId);
     }
-    pub fn GetTextAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetTextAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetTextAsync();
     }
-    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetTextAsyncWithFormatId(formatId);
     }
@@ -600,15 +600,15 @@ pub const DataPackageView = extern struct {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetUriAsync();
     }
-    pub fn GetHtmlFormatAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetHtmlFormatAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetHtmlFormatAsync();
     }
-    pub fn GetResourceMapAsync(self: *@This()) core.HResult!*IAsyncOperation(IMapView(HSTRING,RandomAccessStreamReference)) {
+    pub fn GetResourceMapAsync(self: *@This()) core.HResult!*IAsyncOperation(IMapView(?HSTRING,RandomAccessStreamReference)) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetResourceMapAsync();
     }
-    pub fn GetRtfAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetRtfAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetRtfAsync();
     }
@@ -638,7 +638,7 @@ pub const DataPackageView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
-    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var this: ?*IDataPackageView3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -650,7 +650,7 @@ pub const DataPackageView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UnlockAndAssumeEnterpriseIdentity();
     }
-    pub fn SetAcceptedFormatId(self: *@This(), formatId: HSTRING) core.HResult!void {
+    pub fn SetAcceptedFormatId(self: *@This(), formatId: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackageView4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -763,7 +763,7 @@ pub const DataProviderHandler = extern struct {
 };
 pub const DataProviderRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFormatId(self: *@This()) core.HResult!HSTRING {
+    pub fn getFormatId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDataProviderRequest = @ptrCast(self);
         return try this.getFormatId();
     }
@@ -799,7 +799,7 @@ pub const DataRequest = extern struct {
         const this: *IDataRequest = @ptrCast(self);
         return try this.getDeadline();
     }
-    pub fn FailWithDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn FailWithDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDataRequest = @ptrCast(self);
         return try this.FailWithDisplayText(value);
     }
@@ -900,11 +900,11 @@ pub const HtmlFormatHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetStaticFragment(htmlFormat: HSTRING) core.HResult!HSTRING {
+    pub fn GetStaticFragment(htmlFormat: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IHtmlFormatHelperStaticsCache.get();
         return try _f.GetStaticFragment(htmlFormat);
     }
-    pub fn CreateHtmlFormat(htmlFragment: HSTRING) core.HResult!HSTRING {
+    pub fn CreateHtmlFormat(htmlFragment: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IHtmlFormatHelperStaticsCache.get();
         return try _f.CreateHtmlFormat(htmlFragment);
     }
@@ -934,14 +934,14 @@ pub const IClipboardContentOptions = extern struct {
         const _c = self.vtable.put_IsAllowedInHistory(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRoamingFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRoamingFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RoamingFormats(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHistoryFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getHistoryFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_HistoryFormats(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -962,8 +962,8 @@ pub const IClipboardContentOptions = extern struct {
         put_IsRoamable: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsAllowedInHistory: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsAllowedInHistory: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_RoamingFormats: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_HistoryFormats: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_RoamingFormats: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_HistoryFormats: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IClipboardHistoryChangedEventArgs = extern struct {
@@ -984,8 +984,8 @@ pub const IClipboardHistoryChangedEventArgs = extern struct {
 };
 pub const IClipboardHistoryItem = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1014,7 +1014,7 @@ pub const IClipboardHistoryItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Content: *const fn(self: *anyopaque, _r: **DataPackageView) callconv(.winapi) HRESULT,
     };
@@ -1244,15 +1244,15 @@ pub const IDataPackage = extern struct {
         const _c = self.vtable.remove_Destroyed(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetData(self: *@This(), formatId: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn SetData(self: *@This(), formatId: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetData(@ptrCast(self), formatId, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetDataProvider(self: *@This(), formatId: HSTRING, delayRenderer: *DataProviderHandler) core.HResult!void {
+    pub fn SetDataProvider(self: *@This(), formatId: ?HSTRING, delayRenderer: *DataProviderHandler) core.HResult!void {
         const _c = self.vtable.SetDataProvider(@ptrCast(self), formatId, delayRenderer);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1260,17 +1260,17 @@ pub const IDataPackage = extern struct {
         const _c = self.vtable.SetUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetHtmlFormat(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetHtmlFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHtmlFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResourceMap(self: *@This()) core.HResult!*IMap(HSTRING,RandomAccessStreamReference) {
-        var _r: *IMap(HSTRING,RandomAccessStreamReference) = undefined;
+    pub fn getResourceMap(self: *@This()) core.HResult!*IMap(?HSTRING,RandomAccessStreamReference) {
+        var _r: *IMap(?HSTRING,RandomAccessStreamReference) = undefined;
         const _c = self.vtable.get_ResourceMap(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetRtf(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetRtf(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRtf(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1306,13 +1306,13 @@ pub const IDataPackage = extern struct {
         remove_OperationCompleted: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_Destroyed: *const fn(self: *anyopaque, handler: *TypedEventHandler(DataPackage,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Destroyed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        SetData: *const fn(self: *anyopaque, formatId: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        SetDataProvider: *const fn(self: *anyopaque, formatId: HSTRING, delayRenderer: *DataProviderHandler) callconv(.winapi) HRESULT,
-        SetText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SetData: *const fn(self: *anyopaque, formatId: ?HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
+        SetDataProvider: *const fn(self: *anyopaque, formatId: ?HSTRING, delayRenderer: *DataProviderHandler) callconv(.winapi) HRESULT,
+        SetText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        SetHtmlFormat: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ResourceMap: *const fn(self: *anyopaque, _r: **IMap(HSTRING,RandomAccessStreamReference)) callconv(.winapi) HRESULT,
-        SetRtf: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SetHtmlFormat: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceMap: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,RandomAccessStreamReference)) callconv(.winapi) HRESULT,
+        SetRtf: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetBitmap: *const fn(self: *anyopaque, value: *RandomAccessStreamReference) callconv(.winapi) HRESULT,
         SetStorageItems: *const fn(self: *anyopaque, value: *IIterable(IStorageItem)) callconv(.winapi) HRESULT,
         SetStorageItemsWithReadOnly: *const fn(self: *anyopaque, value: *IIterable(IStorageItem), readOnly: bool) callconv(.winapi) HRESULT,
@@ -1402,23 +1402,23 @@ pub const IDataPackage4 = extern struct {
 };
 pub const IDataPackagePropertySet = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1432,19 +1432,19 @@ pub const IDataPackagePropertySet = extern struct {
         const _c = self.vtable.put_Thumbnail(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFileTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getFileTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putApplicationName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putApplicationName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ApplicationName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1470,15 +1470,15 @@ pub const IDataPackagePropertySet = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Thumbnail: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_FileTypes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_ApplicationName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ApplicationName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FileTypes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ApplicationName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ApplicationName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ApplicationListingUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ApplicationListingUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
@@ -1505,13 +1505,13 @@ pub const IDataPackagePropertySet2 = extern struct {
         const _c = self.vtable.put_ContentSourceApplicationLink(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PackageFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1551,8 +1551,8 @@ pub const IDataPackagePropertySet2 = extern struct {
         put_ContentSourceWebLink: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_ContentSourceApplicationLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ContentSourceApplicationLink: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PackageFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Square30x30Logo: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Square30x30Logo: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_LogoBackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
@@ -1561,13 +1561,13 @@ pub const IDataPackagePropertySet2 = extern struct {
 };
 pub const IDataPackagePropertySet3 = extern struct {
     vtable: *const VTable,
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnterpriseId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1583,19 +1583,19 @@ pub const IDataPackagePropertySet3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EnterpriseId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EnterpriseId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackagePropertySet4 = extern struct {
     vtable: *const VTable,
-    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentSourceUserActivityJson(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentSourceUserActivityJson(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentSourceUserActivityJson(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentSourceUserActivityJson(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1611,20 +1611,20 @@ pub const IDataPackagePropertySet4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentSourceUserActivityJson: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentSourceUserActivityJson: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentSourceUserActivityJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentSourceUserActivityJson: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackagePropertySetView = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1635,14 +1635,14 @@ pub const IDataPackagePropertySetView = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getFileTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1665,18 +1665,18 @@ pub const IDataPackagePropertySetView = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **RandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_FileTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_ApplicationName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FileTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ApplicationName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ApplicationListingUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackagePropertySetView2 = extern struct {
     vtable: *const VTable,
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1717,7 +1717,7 @@ pub const IDataPackagePropertySetView2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ContentSourceWebLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_ContentSourceApplicationLink: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_Square30x30Logo: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
@@ -1726,8 +1726,8 @@ pub const IDataPackagePropertySetView2 = extern struct {
 };
 pub const IDataPackagePropertySetView3 = extern struct {
     vtable: *const VTable,
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1744,13 +1744,13 @@ pub const IDataPackagePropertySetView3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackagePropertySetView4 = extern struct {
     vtable: *const VTable,
-    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentSourceUserActivityJson(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1767,7 +1767,7 @@ pub const IDataPackagePropertySetView4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentSourceUserActivityJson: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContentSourceUserActivityJson: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackagePropertySetView5 = extern struct {
@@ -1811,32 +1811,32 @@ pub const IDataPackageView = extern struct {
         const _c = self.vtable.ReportOperationCompleted(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAvailableFormats(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAvailableFormats(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AvailableFormats(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Contains(self: *@This(), formatId: HSTRING) core.HResult!bool {
+    pub fn Contains(self: *@This(), formatId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Contains(@ptrCast(self), formatId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDataAsync(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
+    pub fn GetDataAsync(self: *@This(), formatId: ?HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
         var _r: *IAsyncOperation(IInspectable) = undefined;
         const _c = self.vtable.GetDataAsync(@ptrCast(self), formatId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTextAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetTextAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetTextAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetTextAsyncWithFormatId(@ptrCast(self), formatId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1847,20 +1847,20 @@ pub const IDataPackageView = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHtmlFormatAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetHtmlFormatAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetHtmlFormatAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetResourceMapAsync(self: *@This()) core.HResult!*IAsyncOperation(IMapView(HSTRING,RandomAccessStreamReference)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,RandomAccessStreamReference)) = undefined;
+    pub fn GetResourceMapAsync(self: *@This()) core.HResult!*IAsyncOperation(IMapView(?HSTRING,RandomAccessStreamReference)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,RandomAccessStreamReference)) = undefined;
         const _c = self.vtable.GetResourceMapAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRtfAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetRtfAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetRtfAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1892,15 +1892,15 @@ pub const IDataPackageView = extern struct {
         get_Properties: *const fn(self: *anyopaque, _r: **DataPackagePropertySetView) callconv(.winapi) HRESULT,
         get_RequestedOperation: *const fn(self: *anyopaque, _r: *DataPackageOperation) callconv(.winapi) HRESULT,
         ReportOperationCompleted: *const fn(self: *anyopaque, value: DataPackageOperation) callconv(.winapi) HRESULT,
-        get_AvailableFormats: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        Contains: *const fn(self: *anyopaque, formatId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        GetDataAsync: *const fn(self: *anyopaque, formatId: HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT,
-        GetTextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetTextAsyncWithFormatId: *const fn(self: *anyopaque, formatId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        get_AvailableFormats: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        Contains: *const fn(self: *anyopaque, formatId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetDataAsync: *const fn(self: *anyopaque, formatId: ?HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT,
+        GetTextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetTextAsyncWithFormatId: *const fn(self: *anyopaque, formatId: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetUriAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
-        GetHtmlFormatAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetResourceMapAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMapView(HSTRING,RandomAccessStreamReference))) callconv(.winapi) HRESULT,
-        GetRtfAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetHtmlFormatAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetResourceMapAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMapView(?HSTRING,RandomAccessStreamReference))) callconv(.winapi) HRESULT,
+        GetRtfAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetBitmapAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
         GetStorageItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IStorageItem))) callconv(.winapi) HRESULT,
     };
@@ -1943,7 +1943,7 @@ pub const IDataPackageView3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsyncWithEnterpriseId(@ptrCast(self), enterpriseId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1968,13 +1968,13 @@ pub const IDataPackageView3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessAsyncWithEnterpriseId: *const fn(self: *anyopaque, enterpriseId: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessAsyncWithEnterpriseId: *const fn(self: *anyopaque, enterpriseId: ?HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         UnlockAndAssumeEnterpriseIdentity: *const fn(self: *anyopaque, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackageView4 = extern struct {
     vtable: *const VTable,
-    pub fn SetAcceptedFormatId(self: *@This(), formatId: HSTRING) core.HResult!void {
+    pub fn SetAcceptedFormatId(self: *@This(), formatId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAcceptedFormatId(@ptrCast(self), formatId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1990,7 +1990,7 @@ pub const IDataPackageView4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetAcceptedFormatId: *const fn(self: *anyopaque, formatId: HSTRING) callconv(.winapi) HRESULT,
+        SetAcceptedFormatId: *const fn(self: *anyopaque, formatId: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataProviderDeferral = extern struct {
@@ -2016,8 +2016,8 @@ pub const IDataProviderDeferral = extern struct {
 };
 pub const IDataProviderRequest = extern struct {
     vtable: *const VTable,
-    pub fn getFormatId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormatId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormatId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2050,7 +2050,7 @@ pub const IDataProviderRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FormatId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FormatId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **DataProviderDeferral) callconv(.winapi) HRESULT,
         SetData: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
@@ -2074,7 +2074,7 @@ pub const IDataRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FailWithDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn FailWithDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.FailWithDisplayText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2099,7 +2099,7 @@ pub const IDataRequest = extern struct {
         get_Data: *const fn(self: *anyopaque, _r: **DataPackage) callconv(.winapi) HRESULT,
         put_Data: *const fn(self: *anyopaque, value: *DataPackage) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        FailWithDisplayText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        FailWithDisplayText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **DataRequestDeferral) callconv(.winapi) HRESULT,
     };
 };
@@ -2289,14 +2289,14 @@ pub const IDataTransferManagerStatics3 = extern struct {
 };
 pub const IHtmlFormatHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetStaticFragment(self: *@This(), htmlFormat: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStaticFragment(self: *@This(), htmlFormat: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStaticFragment(@ptrCast(self), htmlFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateHtmlFormat(self: *@This(), htmlFragment: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn CreateHtmlFormat(self: *@This(), htmlFragment: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.CreateHtmlFormat(@ptrCast(self), htmlFragment, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2313,8 +2313,8 @@ pub const IHtmlFormatHelperStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStaticFragment: *const fn(self: *anyopaque, htmlFormat: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        CreateHtmlFormat: *const fn(self: *anyopaque, htmlFragment: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStaticFragment: *const fn(self: *anyopaque, htmlFormat: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        CreateHtmlFormat: *const fn(self: *anyopaque, htmlFragment: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IOperationCompletedEventArgs = extern struct {
@@ -2342,8 +2342,8 @@ pub const IOperationCompletedEventArgs = extern struct {
 };
 pub const IOperationCompletedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getAcceptedFormatId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAcceptedFormatId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AcceptedFormatId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2360,7 +2360,7 @@ pub const IOperationCompletedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AcceptedFormatId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AcceptedFormatId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IShareCompletedEventArgs = extern struct {
@@ -2388,8 +2388,8 @@ pub const IShareCompletedEventArgs = extern struct {
 };
 pub const IShareProvider = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2428,7 +2428,7 @@ pub const IShareProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DisplayIcon: *const fn(self: *anyopaque, _r: **RandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_BackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         get_Tag: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -2437,7 +2437,7 @@ pub const IShareProvider = extern struct {
 };
 pub const IShareProviderFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), title: HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
+    pub fn Create(self: *@This(), title: ?HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
         var _r: *ShareProvider = undefined;
         const _c = self.vtable.Create(@ptrCast(self), title, displayIcon, backgroundColor, handler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2455,7 +2455,7 @@ pub const IShareProviderFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, title: HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler, _r: **ShareProvider) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, title: ?HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler, _r: **ShareProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const IShareProviderOperation = extern struct {
@@ -2532,8 +2532,8 @@ pub const IShareProvidersRequestedEventArgs = extern struct {
 };
 pub const IShareTargetInfo = extern struct {
     vtable: *const VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2556,7 +2556,7 @@ pub const IShareTargetInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ShareProvider: *const fn(self: *anyopaque, _r: **ShareProvider) callconv(.winapi) HRESULT,
     };
 };
@@ -2602,19 +2602,19 @@ pub const IShareUIOptions = extern struct {
 };
 pub const ISharedStorageAccessManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn AddFile(self: *@This(), file: *IStorageFile) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn AddFile(self: *@This(), file: *IStorageFile) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.AddFile(@ptrCast(self), file, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RedeemTokenForFileAsync(self: *@This(), token: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn RedeemTokenForFileAsync(self: *@This(), token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.RedeemTokenForFileAsync(@ptrCast(self), token, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveFile(self: *@This(), token: HSTRING) core.HResult!void {
+    pub fn RemoveFile(self: *@This(), token: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveFile(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2630,45 +2630,45 @@ pub const ISharedStorageAccessManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddFile: *const fn(self: *anyopaque, file: *IStorageFile, _r: *HSTRING) callconv(.winapi) HRESULT,
-        RedeemTokenForFileAsync: *const fn(self: *anyopaque, token: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        RemoveFile: *const fn(self: *anyopaque, token: HSTRING) callconv(.winapi) HRESULT,
+        AddFile: *const fn(self: *anyopaque, file: *IStorageFile, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        RedeemTokenForFileAsync: *const fn(self: *anyopaque, token: ?HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        RemoveFile: *const fn(self: *anyopaque, token: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardDataFormatsStatics = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHtml(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHtml(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Html(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRtf(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRtf(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rtf(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBitmap(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBitmap(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bitmap(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStorageItems(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStorageItems(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StorageItems(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2685,24 +2685,24 @@ pub const IStandardDataFormatsStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Uri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Html: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rtf: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Bitmap: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_StorageItems: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Uri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Html: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rtf: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Bitmap: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StorageItems: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardDataFormatsStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getWebLink(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWebLink(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WebLink(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getApplicationLink(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationLink(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationLink(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2719,14 +2719,14 @@ pub const IStandardDataFormatsStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_WebLink: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ApplicationLink: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_WebLink: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ApplicationLink: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardDataFormatsStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn getUserActivityJsonArray(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserActivityJsonArray(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserActivityJsonArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2743,13 +2743,13 @@ pub const IStandardDataFormatsStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserActivityJsonArray: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserActivityJsonArray: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetApplicationChosenEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2766,7 +2766,7 @@ pub const ITargetApplicationChosenEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ApplicationName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ApplicationName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const OperationCompletedEventArgs = extern struct {
@@ -2775,7 +2775,7 @@ pub const OperationCompletedEventArgs = extern struct {
         const this: *IOperationCompletedEventArgs = @ptrCast(self);
         return try this.getOperation();
     }
-    pub fn getAcceptedFormatId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAcceptedFormatId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IOperationCompletedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOperationCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2806,7 +2806,7 @@ pub const ShareCompletedEventArgs = extern struct {
 };
 pub const ShareProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IShareProvider = @ptrCast(self);
         return try this.getTitle();
     }
@@ -2829,7 +2829,7 @@ pub const ShareProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(title: HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
+    pub fn Create(title: ?HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
         const _f = try @This()._IShareProviderFactoryCache.get();
         return try _f.Create(title, displayIcon, backgroundColor, handler);
     }
@@ -2969,7 +2969,7 @@ pub const ShareProvidersRequestedEventArgs = extern struct {
 };
 pub const ShareTargetInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IShareTargetInfo = @ptrCast(self);
         return try this.getAppUserModelId();
     }
@@ -3025,15 +3025,15 @@ pub const SharedStorageAccessManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn AddFile(file: *IStorageFile) core.HResult!HSTRING {
+    pub fn AddFile(file: *IStorageFile) core.HResult!?HSTRING {
         const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.AddFile(file);
     }
-    pub fn RedeemTokenForFileAsync(token: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn RedeemTokenForFileAsync(token: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.RedeemTokenForFileAsync(token);
     }
-    pub fn RemoveFile(token: HSTRING) core.HResult!void {
+    pub fn RemoveFile(token: ?HSTRING) core.HResult!void {
         const _f = try @This()._ISharedStorageAccessManagerStaticsCache.get();
         return try _f.RemoveFile(token);
     }
@@ -3046,39 +3046,39 @@ pub const StandardDataFormats = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUserActivityJsonArray() core.HResult!HSTRING {
+    pub fn getUserActivityJsonArray() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStatics3Cache.get();
         return try _f.getUserActivityJsonArray();
     }
-    pub fn getWebLink() core.HResult!HSTRING {
+    pub fn getWebLink() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStatics2Cache.get();
         return try _f.getWebLink();
     }
-    pub fn getApplicationLink() core.HResult!HSTRING {
+    pub fn getApplicationLink() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStatics2Cache.get();
         return try _f.getApplicationLink();
     }
-    pub fn getText() core.HResult!HSTRING {
+    pub fn getText() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getText();
     }
-    pub fn getUri() core.HResult!HSTRING {
+    pub fn getUri() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getUri();
     }
-    pub fn getHtml() core.HResult!HSTRING {
+    pub fn getHtml() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getHtml();
     }
-    pub fn getRtf() core.HResult!HSTRING {
+    pub fn getRtf() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getRtf();
     }
-    pub fn getBitmap() core.HResult!HSTRING {
+    pub fn getBitmap() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getBitmap();
     }
-    pub fn getStorageItems() core.HResult!HSTRING {
+    pub fn getStorageItems() core.HResult!?HSTRING {
         const _f = try @This()._IStandardDataFormatsStaticsCache.get();
         return try _f.getStorageItems();
     }
@@ -3090,7 +3090,7 @@ pub const StandardDataFormats = extern struct {
 };
 pub const TargetApplicationChosenEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getApplicationName(self: *@This()) core.HResult!HSTRING {
+    pub fn getApplicationName(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetApplicationChosenEventArgs = @ptrCast(self);
         return try this.getApplicationName();
     }

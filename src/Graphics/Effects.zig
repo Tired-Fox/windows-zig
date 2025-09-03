@@ -1,13 +1,13 @@
 // ----- This code is automatically generated -----
 pub const IGraphicsEffect = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), name: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -23,8 +23,8 @@ pub const IGraphicsEffect = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, name: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, name: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGraphicsEffectSource = extern struct {

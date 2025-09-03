@@ -1,26 +1,26 @@
 // ----- This code is automatically generated -----
 pub const IKnownRemoteSystemCapabilitiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAppService(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppService(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppService(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLaunchUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLaunchUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LaunchUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteSession(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteSession(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteSession(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSpatialEntity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSpatialEntity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SpatialEntity(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -37,28 +37,28 @@ pub const IKnownRemoteSystemCapabilitiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppService: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LaunchUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteSession: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SpatialEntity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppService: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LaunchUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteSession: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SpatialEntity: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystem = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -87,9 +87,9 @@ pub const IRemoteSystem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Kind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Kind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *RemoteSystemStatus) callconv(.winapi) HRESULT,
         get_IsAvailableByProximity: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -102,7 +102,7 @@ pub const IRemoteSystem2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCapabilitySupportedAsync(self: *@This(), capabilityName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn GetCapabilitySupportedAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.GetCapabilitySupportedAsync(@ptrCast(self), capabilityName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -121,19 +121,19 @@ pub const IRemoteSystem2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsAvailableBySpatialProximity: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetCapabilitySupportedAsync: *const fn(self: *anyopaque, capabilityName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        GetCapabilitySupportedAsync: *const fn(self: *anyopaque, capabilityName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystem3 = extern struct {
     vtable: *const VTable,
-    pub fn getManufacturerDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManufacturerDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -150,8 +150,8 @@ pub const IRemoteSystem3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ManufacturerDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ManufacturerDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystem4 = extern struct {
@@ -248,14 +248,14 @@ pub const IRemoteSystemAddedEventArgs = extern struct {
 };
 pub const IRemoteSystemApp = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -272,8 +272,8 @@ pub const IRemoteSystemApp = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAttributes(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getAttributes(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Attributes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -290,11 +290,11 @@ pub const IRemoteSystemApp = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsAvailableByProximity: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsAvailableBySpatialProximity: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Attributes: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Attributes: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemApp2 = extern struct {
@@ -305,8 +305,8 @@ pub const IRemoteSystemApp2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getConnectionToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -324,7 +324,7 @@ pub const IRemoteSystemApp2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        get_ConnectionToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ConnectionToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemAppRegistration = extern struct {
@@ -335,8 +335,8 @@ pub const IRemoteSystemAppRegistration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAttributes(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getAttributes(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Attributes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -360,7 +360,7 @@ pub const IRemoteSystemAppRegistration = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        get_Attributes: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Attributes: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -534,8 +534,8 @@ pub const IRemoteSystemConnectionRequest2 = extern struct {
 };
 pub const IRemoteSystemConnectionRequest3 = extern struct {
     vtable: *const VTable,
-    pub fn getConnectionToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -552,7 +552,7 @@ pub const IRemoteSystemConnectionRequest3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ConnectionToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ConnectionToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemConnectionRequestFactory = extern struct {
@@ -603,13 +603,13 @@ pub const IRemoteSystemConnectionRequestStatics = extern struct {
 };
 pub const IRemoteSystemConnectionRequestStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromConnectionToken(self: *@This(), connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
+    pub fn CreateFromConnectionToken(self: *@This(), connectionToken: ?HSTRING) core.HResult!*RemoteSystemConnectionRequest {
         var _r: *RemoteSystemConnectionRequest = undefined;
         const _c = self.vtable.CreateFromConnectionToken(@ptrCast(self), connectionToken, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromConnectionTokenForUser(self: *@This(), user: *User, connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
+    pub fn CreateFromConnectionTokenForUser(self: *@This(), user: *User, connectionToken: ?HSTRING) core.HResult!*RemoteSystemConnectionRequest {
         var _r: *RemoteSystemConnectionRequest = undefined;
         const _c = self.vtable.CreateFromConnectionTokenForUser(@ptrCast(self), user, connectionToken, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -627,8 +627,8 @@ pub const IRemoteSystemConnectionRequestStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromConnectionToken: *const fn(self: *anyopaque, connectionToken: HSTRING, _r: **RemoteSystemConnectionRequest) callconv(.winapi) HRESULT,
-        CreateFromConnectionTokenForUser: *const fn(self: *anyopaque, user: *User, connectionToken: HSTRING, _r: **RemoteSystemConnectionRequest) callconv(.winapi) HRESULT,
+        CreateFromConnectionToken: *const fn(self: *anyopaque, connectionToken: ?HSTRING, _r: **RemoteSystemConnectionRequest) callconv(.winapi) HRESULT,
+        CreateFromConnectionTokenForUser: *const fn(self: *anyopaque, user: *User, connectionToken: ?HSTRING, _r: **RemoteSystemConnectionRequest) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemDiscoveryTypeFilter = extern struct {
@@ -711,8 +711,8 @@ pub const IRemoteSystemFilter = extern struct {
 };
 pub const IRemoteSystemKindFilter = extern struct {
     vtable: *const VTable,
-    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_RemoteSystemKinds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -729,12 +729,12 @@ pub const IRemoteSystemKindFilter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RemoteSystemKinds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_RemoteSystemKinds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemKindFilterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), remoteSystemKinds: *IIterable(HSTRING)) core.HResult!*RemoteSystemKindFilter {
+    pub fn Create(self: *@This(), remoteSystemKinds: *IIterable(?HSTRING)) core.HResult!*RemoteSystemKindFilter {
         var _r: *RemoteSystemKindFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), remoteSystemKinds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -752,37 +752,37 @@ pub const IRemoteSystemKindFilterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, remoteSystemKinds: *IIterable(HSTRING), _r: **RemoteSystemKindFilter) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, remoteSystemKinds: *IIterable(?HSTRING), _r: **RemoteSystemKindFilter) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemKindStatics = extern struct {
     vtable: *const VTable,
-    pub fn getPhone(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhone(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Phone(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHub(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHub(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hub(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHolographic(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHolographic(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Holographic(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDesktop(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDesktop(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Desktop(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXbox(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXbox(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Xbox(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -799,29 +799,29 @@ pub const IRemoteSystemKindStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Phone: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hub: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Holographic: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Desktop: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Xbox: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Phone: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hub: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Holographic: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Desktop: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Xbox: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemKindStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getIot(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIot(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Iot(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTablet(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTablet(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tablet(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLaptop(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLaptop(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Laptop(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -838,15 +838,15 @@ pub const IRemoteSystemKindStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Iot: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Tablet: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Laptop: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Iot: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Tablet: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Laptop: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getRemoteSystemId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteSystemId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteSystemId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -863,25 +863,25 @@ pub const IRemoteSystemRemovedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RemoteSystemId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteSystemId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemSession = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getControllerDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getControllerDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ControllerDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -920,9 +920,9 @@ pub const IRemoteSystemSession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ControllerDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ControllerDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_Disconnected: *const fn(self: *anyopaque, handler: *TypedEventHandler(RemoteSystemSession,RemoteSystemSessionDisconnectedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Disconnected: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         CreateParticipantWatcher: *const fn(self: *anyopaque, _r: **RemoteSystemSessionParticipantWatcher) callconv(.winapi) HRESULT,
@@ -996,13 +996,13 @@ pub const IRemoteSystemSessionController = extern struct {
 };
 pub const IRemoteSystemSessionControllerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateController(self: *@This(), displayName: HSTRING) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateController(self: *@This(), displayName: ?HSTRING) core.HResult!*RemoteSystemSessionController {
         var _r: *RemoteSystemSessionController = undefined;
         const _c = self.vtable.CreateController(@ptrCast(self), displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateControllerWithOptions(self: *@This(), displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateControllerWithOptions(self: *@This(), displayName: ?HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
         var _r: *RemoteSystemSessionController = undefined;
         const _c = self.vtable.CreateControllerWithOptions(@ptrCast(self), displayName, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1020,8 +1020,8 @@ pub const IRemoteSystemSessionControllerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateController: *const fn(self: *anyopaque, displayName: HSTRING, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
-        CreateControllerWithOptions: *const fn(self: *anyopaque, displayName: HSTRING, options: *RemoteSystemSessionOptions, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
+        CreateController: *const fn(self: *anyopaque, displayName: ?HSTRING, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
+        CreateControllerWithOptions: *const fn(self: *anyopaque, displayName: ?HSTRING, options: *RemoteSystemSessionOptions, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemSessionCreationResult = extern struct {
@@ -1079,14 +1079,14 @@ pub const IRemoteSystemSessionDisconnectedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getControllerDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getControllerDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ControllerDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1109,8 +1109,8 @@ pub const IRemoteSystemSessionInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ControllerDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ControllerDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         JoinAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(RemoteSystemSessionJoinResult)) callconv(.winapi) HRESULT,
     };
 };
@@ -1341,13 +1341,13 @@ pub const IRemoteSystemSessionMessageChannel = extern struct {
 };
 pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), session: *RemoteSystemSession, channelName: HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn Create(self: *@This(), session: *RemoteSystemSession, channelName: ?HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
         var _r: *RemoteSystemSessionMessageChannel = undefined;
         const _c = self.vtable.Create(@ptrCast(self), session, channelName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithReliability(self: *@This(), session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn CreateWithReliability(self: *@This(), session: *RemoteSystemSession, channelName: ?HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
         var _r: *RemoteSystemSessionMessageChannel = undefined;
         const _c = self.vtable.CreateWithReliability(@ptrCast(self), session, channelName, reliability, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1365,8 +1365,8 @@ pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: HSTRING, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
-        CreateWithReliability: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: ?HSTRING, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
+        CreateWithReliability: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: ?HSTRING, reliability: RemoteSystemSessionMessageChannelReliability, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemSessionOptions = extern struct {
@@ -2075,19 +2075,19 @@ pub const KnownRemoteSystemCapabilities = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAppService() core.HResult!HSTRING {
+    pub fn getAppService() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getAppService();
     }
-    pub fn getLaunchUri() core.HResult!HSTRING {
+    pub fn getLaunchUri() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getLaunchUri();
     }
-    pub fn getRemoteSession() core.HResult!HSTRING {
+    pub fn getRemoteSession() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getRemoteSession();
     }
-    pub fn getSpatialEntity() core.HResult!HSTRING {
+    pub fn getSpatialEntity() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try _f.getSpatialEntity();
     }
@@ -2097,15 +2097,15 @@ pub const KnownRemoteSystemCapabilities = extern struct {
 };
 pub const RemoteSystem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystem = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystem = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystem = @ptrCast(self);
         return try this.getKind();
     }
@@ -2123,19 +2123,19 @@ pub const RemoteSystem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAvailableBySpatialProximity();
     }
-    pub fn GetCapabilitySupportedAsync(self: *@This(), capabilityName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn GetCapabilitySupportedAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IRemoteSystem2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCapabilitySupportedAsync(capabilityName);
     }
-    pub fn getManufacturerDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getManufacturerDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystem3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getManufacturerDisplayName();
     }
-    pub fn getModelDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getModelDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystem3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2219,11 +2219,11 @@ pub const RemoteSystemAddedEventArgs = extern struct {
 };
 pub const RemoteSystemApp = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemApp = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemApp = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -2235,7 +2235,7 @@ pub const RemoteSystemApp = extern struct {
         const this: *IRemoteSystemApp = @ptrCast(self);
         return try this.getIsAvailableBySpatialProximity();
     }
-    pub fn getAttributes(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getAttributes(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *IRemoteSystemApp = @ptrCast(self);
         return try this.getAttributes();
     }
@@ -2245,7 +2245,7 @@ pub const RemoteSystemApp = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn getConnectionToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystemApp2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemApp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2263,7 +2263,7 @@ pub const RemoteSystemAppRegistration = extern struct {
         const this: *IRemoteSystemAppRegistration = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn getAttributes(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getAttributes(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IRemoteSystemAppRegistration = @ptrCast(self);
         return try this.getAttributes();
     }
@@ -2345,7 +2345,7 @@ pub const RemoteSystemConnectionRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteSystemApp();
     }
-    pub fn getConnectionToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystemConnectionRequest3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemConnectionRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2362,11 +2362,11 @@ pub const RemoteSystemConnectionRequest = extern struct {
         const _f = try @This()._IRemoteSystemConnectionRequestStaticsCache.get();
         return try _f.CreateForApp(remoteSystemApp);
     }
-    pub fn CreateFromConnectionToken(connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
+    pub fn CreateFromConnectionToken(connectionToken: ?HSTRING) core.HResult!*RemoteSystemConnectionRequest {
         const _f = try @This()._IRemoteSystemConnectionRequestStatics2Cache.get();
         return try _f.CreateFromConnectionToken(connectionToken);
     }
-    pub fn CreateFromConnectionTokenForUser(user: *User, connectionToken: HSTRING) core.HResult!*RemoteSystemConnectionRequest {
+    pub fn CreateFromConnectionTokenForUser(user: *User, connectionToken: ?HSTRING) core.HResult!*RemoteSystemConnectionRequest {
         const _f = try @This()._IRemoteSystemConnectionRequestStatics2Cache.get();
         return try _f.CreateFromConnectionTokenForUser(user, connectionToken);
     }
@@ -2415,14 +2415,14 @@ pub const RemoteSystemEnumerationCompletedEventArgs = extern struct {
 };
 pub const RemoteSystemKindFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IRemoteSystemKindFilter = @ptrCast(self);
         return try this.getRemoteSystemKinds();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(remoteSystemKinds: *IIterable(HSTRING)) core.HResult!*RemoteSystemKindFilter {
+    pub fn Create(remoteSystemKinds: *IIterable(?HSTRING)) core.HResult!*RemoteSystemKindFilter {
         const _f = try @This()._IRemoteSystemKindFilterFactoryCache.get();
         return try _f.Create(remoteSystemKinds);
     }
@@ -2438,35 +2438,35 @@ pub const RemoteSystemKinds = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPhone() core.HResult!HSTRING {
+    pub fn getPhone() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getPhone();
     }
-    pub fn getHub() core.HResult!HSTRING {
+    pub fn getHub() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getHub();
     }
-    pub fn getHolographic() core.HResult!HSTRING {
+    pub fn getHolographic() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getHolographic();
     }
-    pub fn getDesktop() core.HResult!HSTRING {
+    pub fn getDesktop() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getDesktop();
     }
-    pub fn getXbox() core.HResult!HSTRING {
+    pub fn getXbox() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStaticsCache.get();
         return try _f.getXbox();
     }
-    pub fn getIot() core.HResult!HSTRING {
+    pub fn getIot() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getIot();
     }
-    pub fn getTablet() core.HResult!HSTRING {
+    pub fn getTablet() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getTablet();
     }
-    pub fn getLaptop() core.HResult!HSTRING {
+    pub fn getLaptop() core.HResult!?HSTRING {
         const _f = try @This()._IRemoteSystemKindStatics2Cache.get();
         return try _f.getLaptop();
     }
@@ -2484,7 +2484,7 @@ pub const RemoteSystemPlatform = enum(i32) {
 };
 pub const RemoteSystemRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteSystemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemRemovedEventArgs = @ptrCast(self);
         return try this.getRemoteSystemId();
     }
@@ -2496,15 +2496,15 @@ pub const RemoteSystemRemovedEventArgs = extern struct {
 };
 pub const RemoteSystemSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSession = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSession = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getControllerDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getControllerDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSession = @ptrCast(self);
         return try this.getControllerDisplayName();
     }
@@ -2577,11 +2577,11 @@ pub const RemoteSystemSessionController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateController(displayName: HSTRING) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateController(displayName: ?HSTRING) core.HResult!*RemoteSystemSessionController {
         const _f = try @This()._IRemoteSystemSessionControllerFactoryCache.get();
         return try _f.CreateController(displayName);
     }
-    pub fn CreateControllerWithOptions(displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateControllerWithOptions(displayName: ?HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
         const _f = try @This()._IRemoteSystemSessionControllerFactoryCache.get();
         return try _f.CreateControllerWithOptions(displayName, options);
     }
@@ -2632,11 +2632,11 @@ pub const RemoteSystemSessionDisconnectedReason = enum(i32) {
 };
 pub const RemoteSystemSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSessionInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getControllerDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getControllerDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSessionInfo = @ptrCast(self);
         return try this.getControllerDisplayName();
     }
@@ -2786,11 +2786,11 @@ pub const RemoteSystemSessionMessageChannel = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(session: *RemoteSystemSession, channelName: HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn Create(session: *RemoteSystemSession, channelName: ?HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
         const _f = try @This()._IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try _f.Create(session, channelName);
     }
-    pub fn CreateWithReliability(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn CreateWithReliability(session: *RemoteSystemSession, channelName: ?HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
         const _f = try @This()._IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try _f.CreateWithReliability(session, channelName, reliability);
     }

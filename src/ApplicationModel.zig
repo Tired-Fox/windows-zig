@@ -17,8 +17,8 @@ pub const IStartupTask = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTaskId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -38,7 +38,7 @@ pub const IStartupTask = extern struct {
         RequestEnableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StartupTaskState)) callconv(.winapi) HRESULT,
         Disable: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *StartupTaskState) callconv(.winapi) HRESULT,
-        get_TaskId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TaskId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStartupTaskStatics = extern struct {
@@ -49,7 +49,7 @@ pub const IStartupTaskStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAsync(self: *@This(), taskId: HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
+    pub fn GetAsync(self: *@This(), taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
         var _r: *IAsyncOperation(StartupTask) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), taskId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -68,7 +68,7 @@ pub const IStartupTaskStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetForCurrentPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StartupTask))) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, taskId: HSTRING, _r: **IAsyncOperation(StartupTask)) callconv(.winapi) HRESULT,
+        GetAsync: *const fn(self: *anyopaque, taskId: ?HSTRING, _r: **IAsyncOperation(StartupTask)) callconv(.winapi) HRESULT,
     };
 };
 pub const StartupTask = extern struct {
@@ -85,7 +85,7 @@ pub const StartupTask = extern struct {
         const this: *IStartupTask = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getTaskId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStartupTask = @ptrCast(self);
         return try this.getTaskId();
     }
@@ -96,7 +96,7 @@ pub const StartupTask = extern struct {
         const _f = try @This()._IStartupTaskStaticsCache.get();
         return try _f.GetForCurrentPackageAsync();
     }
-    pub fn GetAsync(taskId: HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
+    pub fn GetAsync(taskId: ?HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
         const _f = try @This()._IStartupTaskStaticsCache.get();
         return try _f.GetAsync(taskId);
     }
@@ -121,11 +121,11 @@ pub const AddResourcePackageOptions = enum(i32) {
 };
 pub const AppDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppDisplayInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppDisplayInfo = @ptrCast(self);
         return try this.getDescription();
     }
@@ -146,11 +146,11 @@ pub const AppExecutionContext = enum(i32) {
 };
 pub const AppInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInfo = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInfo = @ptrCast(self);
         return try this.getAppUserModelId();
     }
@@ -158,7 +158,7 @@ pub const AppInfo = extern struct {
         const this: *IAppInfo = @ptrCast(self);
         return try this.getDisplayInfo();
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInfo = @ptrCast(self);
         return try this.getPackageFamilyName();
     }
@@ -174,7 +174,7 @@ pub const AppInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExecutionContext();
     }
-    pub fn getSupportedFileExtensions(self: *@This()) core.HResult![*]HSTRING {
+    pub fn getSupportedFileExtensions(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IAppInfo4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInfo4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -187,11 +187,11 @@ pub const AppInfo = extern struct {
         const _f = try @This()._IAppInfoStaticsCache.get();
         return try _f.getCurrent();
     }
-    pub fn GetFromAppUserModelId(appUserModelId: HSTRING) core.HResult!*AppInfo {
+    pub fn GetFromAppUserModelId(appUserModelId: ?HSTRING) core.HResult!*AppInfo {
         const _f = try @This()._IAppInfoStaticsCache.get();
         return try _f.GetFromAppUserModelId(appUserModelId);
     }
-    pub fn GetFromAppUserModelIdForUser(user: *User, appUserModelId: HSTRING) core.HResult!*AppInfo {
+    pub fn GetFromAppUserModelIdForUser(user: *User, appUserModelId: ?HSTRING) core.HResult!*AppInfo {
         const _f = try @This()._IAppInfoStaticsCache.get();
         return try _f.GetFromAppUserModelIdForUser(user, appUserModelId);
     }
@@ -310,7 +310,7 @@ pub const AppInstallerPolicySource = enum(i32) {
 };
 pub const AppInstance = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getKey(self: *@This()) core.HResult!HSTRING {
+    pub fn getKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInstance = @ptrCast(self);
         return try this.getKey();
     }
@@ -333,7 +333,7 @@ pub const AppInstance = extern struct {
         const _f = try @This()._IAppInstanceStaticsCache.get();
         return try _f.GetActivatedEventArgs();
     }
-    pub fn FindOrRegisterInstanceForKey(key: HSTRING) core.HResult!*AppInstance {
+    pub fn FindOrRegisterInstanceForKey(key: ?HSTRING) core.HResult!*AppInstance {
         const _f = try @This()._IAppInstanceStaticsCache.get();
         return try _f.FindOrRegisterInstanceForKey(key);
     }
@@ -440,14 +440,14 @@ pub const FindRelatedPackagesOptions = extern struct {
 };
 pub const IAppDisplayInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -470,21 +470,21 @@ pub const IAppDisplayInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLogo: *const fn(self: *anyopaque, size: Size, _r: **RandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInfo = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -495,8 +495,8 @@ pub const IAppInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -513,10 +513,10 @@ pub const IAppInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DisplayInfo: *const fn(self: *anyopaque, _r: **AppDisplayInfo) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInfo2 = extern struct {
@@ -567,8 +567,8 @@ pub const IAppInfo3 = extern struct {
 };
 pub const IAppInfo4 = extern struct {
     vtable: *const VTable,
-    pub fn getSupportedFileExtensions(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn getSupportedFileExtensions(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_SupportedFileExtensions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -585,7 +585,7 @@ pub const IAppInfo4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SupportedFileExtensions: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedFileExtensions: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInfoStatics = extern struct {
@@ -596,13 +596,13 @@ pub const IAppInfoStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFromAppUserModelId(self: *@This(), appUserModelId: HSTRING) core.HResult!*AppInfo {
+    pub fn GetFromAppUserModelId(self: *@This(), appUserModelId: ?HSTRING) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.GetFromAppUserModelId(@ptrCast(self), appUserModelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFromAppUserModelIdForUser(self: *@This(), user: *User, appUserModelId: HSTRING) core.HResult!*AppInfo {
+    pub fn GetFromAppUserModelIdForUser(self: *@This(), user: *User, appUserModelId: ?HSTRING) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.GetFromAppUserModelIdForUser(@ptrCast(self), user, appUserModelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -621,8 +621,8 @@ pub const IAppInfoStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Current: *const fn(self: *anyopaque, _r: **AppInfo) callconv(.winapi) HRESULT,
-        GetFromAppUserModelId: *const fn(self: *anyopaque, appUserModelId: HSTRING, _r: **AppInfo) callconv(.winapi) HRESULT,
-        GetFromAppUserModelIdForUser: *const fn(self: *anyopaque, user: *User, appUserModelId: HSTRING, _r: **AppInfo) callconv(.winapi) HRESULT,
+        GetFromAppUserModelId: *const fn(self: *anyopaque, appUserModelId: ?HSTRING, _r: **AppInfo) callconv(.winapi) HRESULT,
+        GetFromAppUserModelIdForUser: *const fn(self: *anyopaque, user: *User, appUserModelId: ?HSTRING, _r: **AppInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInstallerInfo = extern struct {
@@ -771,8 +771,8 @@ pub const IAppInstallerInfo2 = extern struct {
 };
 pub const IAppInstance = extern struct {
     vtable: *const VTable,
-    pub fn getKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -799,7 +799,7 @@ pub const IAppInstance = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Key: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Key: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsCurrentInstance: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         RedirectActivationTo: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
@@ -818,7 +818,7 @@ pub const IAppInstanceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindOrRegisterInstanceForKey(self: *@This(), key: HSTRING) core.HResult!*AppInstance {
+    pub fn FindOrRegisterInstanceForKey(self: *@This(), key: ?HSTRING) core.HResult!*AppInstance {
         var _r: *AppInstance = undefined;
         const _c = self.vtable.FindOrRegisterInstanceForKey(@ptrCast(self), key, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -848,7 +848,7 @@ pub const IAppInstanceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_RecommendedInstance: *const fn(self: *anyopaque, _r: **AppInstance) callconv(.winapi) HRESULT,
         GetActivatedEventArgs: *const fn(self: *anyopaque, _r: **IActivatedEventArgs) callconv(.winapi) HRESULT,
-        FindOrRegisterInstanceForKey: *const fn(self: *anyopaque, key: HSTRING, _r: **AppInstance) callconv(.winapi) HRESULT,
+        FindOrRegisterInstanceForKey: *const fn(self: *anyopaque, key: ?HSTRING, _r: **AppInstance) callconv(.winapi) HRESULT,
         Unregister: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         GetInstances: *const fn(self: *anyopaque, _r: **IVector(AppInstance)) callconv(.winapi) HRESULT,
     };
@@ -1046,8 +1046,8 @@ pub const ILeavingBackgroundEventArgs = extern struct {
 };
 pub const ILimitedAccessFeatureRequestResult = extern struct {
     vtable: *const VTable,
-    pub fn getFeatureId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFeatureId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FeatureId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1076,14 +1076,14 @@ pub const ILimitedAccessFeatureRequestResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FeatureId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FeatureId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *LimitedAccessFeatureStatus) callconv(.winapi) HRESULT,
         get_EstimatedRemovalDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILimitedAccessFeaturesStatics = extern struct {
     vtable: *const VTable,
-    pub fn TryUnlockFeature(self: *@This(), featureId: HSTRING, token: HSTRING, attestation: HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
+    pub fn TryUnlockFeature(self: *@This(), featureId: ?HSTRING, token: ?HSTRING, attestation: ?HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
         var _r: *LimitedAccessFeatureRequestResult = undefined;
         const _c = self.vtable.TryUnlockFeature(@ptrCast(self), featureId, token, attestation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1101,7 +1101,7 @@ pub const ILimitedAccessFeaturesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryUnlockFeature: *const fn(self: *anyopaque, featureId: HSTRING, token: HSTRING, attestation: HSTRING, _r: **LimitedAccessFeatureRequestResult) callconv(.winapi) HRESULT,
+        TryUnlockFeature: *const fn(self: *anyopaque, featureId: ?HSTRING, token: ?HSTRING, attestation: ?HSTRING, _r: **LimitedAccessFeatureRequestResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackage = extern struct {
@@ -1150,20 +1150,20 @@ pub const IPackage = extern struct {
 };
 pub const IPackage2 = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublisherDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublisherDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PublisherDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1204,9 +1204,9 @@ pub const IPackage2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PublisherDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PublisherDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Logo: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_IsResourcePackage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsBundle: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1295,19 +1295,19 @@ pub const IPackage5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContentGroupAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(PackageContentGroup) {
+    pub fn GetContentGroupAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(PackageContentGroup) {
         var _r: *IAsyncOperation(PackageContentGroup) = undefined;
         const _c = self.vtable.GetContentGroupAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var _r: *IAsyncOperation(IVector(PackageContentGroup)) = undefined;
         const _c = self.vtable.StageContentGroupsAsync(@ptrCast(self), names, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(?HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var _r: *IAsyncOperation(IVector(PackageContentGroup)) = undefined;
         const _c = self.vtable.StageContentGroupsAsyncWithMoveToHeadOfQueue(@ptrCast(self), names, moveToHeadOfQueue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1332,9 +1332,9 @@ pub const IPackage5 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetContentGroupsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
-        GetContentGroupAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(PackageContentGroup)) callconv(.winapi) HRESULT,
-        StageContentGroupsAsync: *const fn(self: *anyopaque, names: *IIterable(HSTRING), _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
-        StageContentGroupsAsyncWithMoveToHeadOfQueue: *const fn(self: *anyopaque, names: *IIterable(HSTRING), moveToHeadOfQueue: bool, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
+        GetContentGroupAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncOperation(PackageContentGroup)) callconv(.winapi) HRESULT,
+        StageContentGroupsAsync: *const fn(self: *anyopaque, names: *IIterable(?HSTRING), _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
+        StageContentGroupsAsyncWithMoveToHeadOfQueue: *const fn(self: *anyopaque, names: *IIterable(?HSTRING), moveToHeadOfQueue: bool, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
         SetInUseAsync: *const fn(self: *anyopaque, inUse: bool, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -1418,38 +1418,38 @@ pub const IPackage8 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInstalledPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInstalledPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InstalledPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMutablePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMutablePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MutablePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEffectivePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEffectivePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EffectivePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEffectiveExternalPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEffectiveExternalPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EffectiveExternalPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMachineExternalPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMachineExternalPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MachineExternalPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserExternalPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserExternalPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserExternalPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1487,12 +1487,12 @@ pub const IPackage8 = extern struct {
         get_EffectiveExternalLocation: *const fn(self: *anyopaque, _r: **StorageFolder) callconv(.winapi) HRESULT,
         get_MachineExternalLocation: *const fn(self: *anyopaque, _r: **StorageFolder) callconv(.winapi) HRESULT,
         get_UserExternalLocation: *const fn(self: *anyopaque, _r: **StorageFolder) callconv(.winapi) HRESULT,
-        get_InstalledPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MutablePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EffectivePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EffectiveExternalPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MachineExternalPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UserExternalPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InstalledPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MutablePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EffectivePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EffectiveExternalPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MachineExternalPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserExternalPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLogoAsRandomAccessStreamReference: *const fn(self: *anyopaque, size: Size, _r: **RandomAccessStreamReference) callconv(.winapi) HRESULT,
         GetAppListEntries: *const fn(self: *anyopaque, _r: **IVectorView(AppListEntry)) callconv(.winapi) HRESULT,
         get_IsStub: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1506,8 +1506,8 @@ pub const IPackage9 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSourceUriSchemeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceUriSchemeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceUriSchemeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1525,7 +1525,7 @@ pub const IPackage9 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindRelatedPackages: *const fn(self: *anyopaque, options: *FindRelatedPackagesOptions, _r: **IVector(Package)) callconv(.winapi) HRESULT,
-        get_SourceUriSchemeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceUriSchemeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageCatalog = extern struct {
@@ -1616,7 +1616,7 @@ pub const IPackageCatalog2 = extern struct {
         const _c = self.vtable.remove_PackageContentGroupStaging(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddOptionalPackageAsync(self: *@This(), optionalPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(PackageCatalogAddOptionalPackageResult) {
+    pub fn AddOptionalPackageAsync(self: *@This(), optionalPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(PackageCatalogAddOptionalPackageResult) {
         var _r: *IAsyncOperation(PackageCatalogAddOptionalPackageResult) = undefined;
         const _c = self.vtable.AddOptionalPackageAsync(@ptrCast(self), optionalPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1636,12 +1636,12 @@ pub const IPackageCatalog2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         add_PackageContentGroupStaging: *const fn(self: *anyopaque, handler: *TypedEventHandler(PackageCatalog,PackageContentGroupStagingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_PackageContentGroupStaging: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        AddOptionalPackageAsync: *const fn(self: *anyopaque, optionalPackageFamilyName: HSTRING, _r: **IAsyncOperation(PackageCatalogAddOptionalPackageResult)) callconv(.winapi) HRESULT,
+        AddOptionalPackageAsync: *const fn(self: *anyopaque, optionalPackageFamilyName: ?HSTRING, _r: **IAsyncOperation(PackageCatalogAddOptionalPackageResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageCatalog3 = extern struct {
     vtable: *const VTable,
-    pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
+    pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
         var _r: *IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) = undefined;
         const _c = self.vtable.RemoveOptionalPackagesAsync(@ptrCast(self), optionalPackageFamilyNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1659,12 +1659,12 @@ pub const IPackageCatalog3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RemoveOptionalPackagesAsync: *const fn(self: *anyopaque, optionalPackageFamilyNames: *IIterable(HSTRING), _r: **IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult)) callconv(.winapi) HRESULT,
+        RemoveOptionalPackagesAsync: *const fn(self: *anyopaque, optionalPackageFamilyNames: *IIterable(?HSTRING), _r: **IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageCatalog4 = extern struct {
     vtable: *const VTable,
-    pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: HSTRING, resourceID: HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
+    pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: ?HSTRING, resourceID: ?HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
         var _r: *IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) = undefined;
         const _c = self.vtable.AddResourcePackageAsync(@ptrCast(self), resourcePackageFamilyName, resourceID, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1688,7 +1688,7 @@ pub const IPackageCatalog4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddResourcePackageAsync: *const fn(self: *anyopaque, resourcePackageFamilyName: HSTRING, resourceID: HSTRING, options: AddResourcePackageOptions, _r: **IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress)) callconv(.winapi) HRESULT,
+        AddResourcePackageAsync: *const fn(self: *anyopaque, resourcePackageFamilyName: ?HSTRING, resourceID: ?HSTRING, options: AddResourcePackageOptions, _r: **IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress)) callconv(.winapi) HRESULT,
         RemoveResourcePackagesAsync: *const fn(self: *anyopaque, resourcePackages: *IIterable(Package), _r: **IAsyncOperation(PackageCatalogRemoveResourcePackagesResult)) callconv(.winapi) HRESULT,
     };
 };
@@ -1880,8 +1880,8 @@ pub const IPackageContentGroup = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1911,7 +1911,7 @@ pub const IPackageContentGroup = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Package: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *PackageContentGroupState) callconv(.winapi) HRESULT,
         get_IsRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -1948,8 +1948,8 @@ pub const IPackageContentGroupStagingEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContentGroupName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentGroupName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentGroupName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1977,14 +1977,14 @@ pub const IPackageContentGroupStagingEventArgs = extern struct {
         get_Progress: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_IsComplete: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ErrorCode: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_ContentGroupName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContentGroupName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsContentGroupRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageContentGroupStatics = extern struct {
     vtable: *const VTable,
-    pub fn getRequiredGroupName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRequiredGroupName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RequiredGroupName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2001,13 +2001,13 @@ pub const IPackageContentGroupStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RequiredGroupName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RequiredGroupName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageId = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2024,32 +2024,32 @@ pub const IPackageId = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResourceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Publisher(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublisherId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublisherId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PublisherId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFullName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2066,26 +2066,26 @@ pub const IPackageId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Version: *const fn(self: *anyopaque, _r: *PackageVersion) callconv(.winapi) HRESULT,
         get_Architecture: *const fn(self: *anyopaque, _r: *ProcessorArchitecture) callconv(.winapi) HRESULT,
-        get_ResourceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Publisher: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PublisherId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FullName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Publisher: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PublisherId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FullName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageIdWithMetadata = extern struct {
     vtable: *const VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2102,8 +2102,8 @@ pub const IPackageIdWithMetadata = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProductId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProductId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPackageInstallingEventArgs = extern struct {
@@ -2524,13 +2524,13 @@ pub const IPackageWithMetadata = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetThumbnailToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetThumbnailToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetThumbnailToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Launch(self: *@This(), parameters: HSTRING) core.HResult!void {
+    pub fn Launch(self: *@This(), parameters: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Launch(@ptrCast(self), parameters);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2547,8 +2547,8 @@ pub const IPackageWithMetadata = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_InstallDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        GetThumbnailToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        Launch: *const fn(self: *anyopaque, parameters: HSTRING) callconv(.winapi) HRESULT,
+        GetThumbnailToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        Launch: *const fn(self: *anyopaque, parameters: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISuspendingDeferral = extern struct {
@@ -2639,7 +2639,7 @@ pub const LeavingBackgroundEventArgs = extern struct {
 };
 pub const LimitedAccessFeatureRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFeatureId(self: *@This()) core.HResult!HSTRING {
+    pub fn getFeatureId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILimitedAccessFeatureRequestResult = @ptrCast(self);
         return try this.getFeatureId();
     }
@@ -2668,7 +2668,7 @@ pub const LimitedAccessFeatures = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn TryUnlockFeature(featureId: HSTRING, token: HSTRING, attestation: HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
+    pub fn TryUnlockFeature(featureId: ?HSTRING, token: ?HSTRING, attestation: ?HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
         const _f = try @This()._ILimitedAccessFeaturesStaticsCache.get();
         return try _f.TryUnlockFeature(featureId, token, attestation);
     }
@@ -2694,19 +2694,19 @@ pub const Package = extern struct {
         const this: *IPackage = @ptrCast(self);
         return try this.getDependencies();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
-    pub fn getPublisherDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublisherDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPublisherDisplayName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2760,13 +2760,13 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInstallDate();
     }
-    pub fn GetThumbnailToken(self: *@This()) core.HResult!HSTRING {
+    pub fn GetThumbnailToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageWithMetadata = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailToken();
     }
-    pub fn Launch(self: *@This(), parameters: HSTRING) core.HResult!void {
+    pub fn Launch(self: *@This(), parameters: ?HSTRING) core.HResult!void {
         var this: ?*IPackageWithMetadata = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2796,19 +2796,19 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContentGroupsAsync();
     }
-    pub fn GetContentGroupAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(PackageContentGroup) {
+    pub fn GetContentGroupAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(PackageContentGroup) {
         var this: ?*IPackage5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContentGroupAsync(name);
     }
-    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StageContentGroupsAsync(names);
     }
-    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(?HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2862,37 +2862,37 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserExternalLocation();
     }
-    pub fn getInstalledPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getInstalledPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInstalledPath();
     }
-    pub fn getMutablePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getMutablePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMutablePath();
     }
-    pub fn getEffectivePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getEffectivePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectivePath();
     }
-    pub fn getEffectiveExternalPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getEffectiveExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectiveExternalPath();
     }
-    pub fn getMachineExternalPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getMachineExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMachineExternalPath();
     }
-    pub fn getUserExternalPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2922,7 +2922,7 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindRelatedPackages(options);
     }
-    pub fn getSourceUriSchemeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceUriSchemeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage9 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2996,19 +2996,19 @@ pub const PackageCatalog = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePackageContentGroupStaging(token);
     }
-    pub fn AddOptionalPackageAsync(self: *@This(), optionalPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(PackageCatalogAddOptionalPackageResult) {
+    pub fn AddOptionalPackageAsync(self: *@This(), optionalPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(PackageCatalogAddOptionalPackageResult) {
         var this: ?*IPackageCatalog2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOptionalPackageAsync(optionalPackageFamilyName);
     }
-    pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
+    pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
         var this: ?*IPackageCatalog3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOptionalPackagesAsync(optionalPackageFamilyNames);
     }
-    pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: HSTRING, resourceID: HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
+    pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: ?HSTRING, resourceID: ?HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
         var this: ?*IPackageCatalog4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3117,7 +3117,7 @@ pub const PackageContentGroup = extern struct {
         const this: *IPackageContentGroup = @ptrCast(self);
         return try this.getPackage();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageContentGroup = @ptrCast(self);
         return try this.getName();
     }
@@ -3132,7 +3132,7 @@ pub const PackageContentGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRequiredGroupName() core.HResult!HSTRING {
+    pub fn getRequiredGroupName() core.HResult!?HSTRING {
         const _f = try @This()._IPackageContentGroupStaticsCache.get();
         return try _f.getRequiredGroupName();
     }
@@ -3165,7 +3165,7 @@ pub const PackageContentGroupStagingEventArgs = extern struct {
         const this: *IPackageContentGroupStagingEventArgs = @ptrCast(self);
         return try this.getErrorCode();
     }
-    pub fn getContentGroupName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentGroupName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageContentGroupStagingEventArgs = @ptrCast(self);
         return try this.getContentGroupName();
     }
@@ -3187,7 +3187,7 @@ pub const PackageContentGroupState = enum(i32) {
 };
 pub const PackageId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getName();
     }
@@ -3199,33 +3199,33 @@ pub const PackageId = extern struct {
         const this: *IPackageId = @ptrCast(self);
         return try this.getArchitecture();
     }
-    pub fn getResourceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getResourceId();
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getPublisher();
     }
-    pub fn getPublisherId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublisherId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getPublisherId();
     }
-    pub fn getFullName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getFullName();
     }
-    pub fn getFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getFamilyName();
     }
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageIdWithMetadata = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageIdWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProductId();
     }
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageIdWithMetadata = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageIdWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3542,23 +3542,23 @@ pub const FullTrustProcessLauncher = extern struct {
         const _f = try @This()._IFullTrustProcessLauncherStaticsCache.get();
         return try _f.LaunchFullTrustProcessForCurrentAppAsync();
     }
-    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IFullTrustProcessLauncherStaticsCache.get();
         return try _f.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId);
     }
-    pub fn LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IFullTrustProcessLauncherStaticsCache.get();
         return try _f.LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId);
     }
-    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId: ?HSTRING, parameterGroupId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IFullTrustProcessLauncherStaticsCache.get();
         return try _f.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId, parameterGroupId);
     }
-    pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
+    pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine: ?HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         const _f = try @This()._IFullTrustProcessLauncherStatics2Cache.get();
         return try _f.LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine);
     }
-    pub fn LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId: HSTRING, commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
+    pub fn LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId: ?HSTRING, commandLine: ?HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         const _f = try @This()._IFullTrustProcessLauncherStatics2Cache.get();
         return try _f.LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId, commandLine);
     }
@@ -3605,19 +3605,19 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(self: *@This(), parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(self: *@This(), parameterGroupId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(@ptrCast(self), parameterGroupId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForAppAsync(self: *@This(), fullTrustPackageRelativeAppId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsync(self: *@This(), fullTrustPackageRelativeAppId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForAppAsync(@ptrCast(self), fullTrustPackageRelativeAppId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(self: *@This(), fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(self: *@This(), fullTrustPackageRelativeAppId: ?HSTRING, parameterGroupId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(@ptrCast(self), fullTrustPackageRelativeAppId, parameterGroupId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3636,20 +3636,20 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForAppAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, parameterGroupId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForAppAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: ?HSTRING, parameterGroupId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IFullTrustProcessLauncherStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(self: *@This(), commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
+    pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(self: *@This(), commandLine: ?HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         var _r: *IAsyncOperation(FullTrustProcessLaunchResult) = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(@ptrCast(self), commandLine, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForAppWithArgumentsAsync(self: *@This(), fullTrustPackageRelativeAppId: HSTRING, commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
+    pub fn LaunchFullTrustProcessForAppWithArgumentsAsync(self: *@This(), fullTrustPackageRelativeAppId: ?HSTRING, commandLine: ?HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         var _r: *IAsyncOperation(FullTrustProcessLaunchResult) = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForAppWithArgumentsAsync(@ptrCast(self), fullTrustPackageRelativeAppId, commandLine, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3667,8 +3667,8 @@ pub const IFullTrustProcessLauncherStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForCurrentAppWithArgumentsAsync: *const fn(self: *anyopaque, commandLine: HSTRING, _r: **IAsyncOperation(FullTrustProcessLaunchResult)) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForAppWithArgumentsAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, commandLine: HSTRING, _r: **IAsyncOperation(FullTrustProcessLaunchResult)) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForCurrentAppWithArgumentsAsync: *const fn(self: *anyopaque, commandLine: ?HSTRING, _r: **IAsyncOperation(FullTrustProcessLaunchResult)) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForAppWithArgumentsAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: ?HSTRING, commandLine: ?HSTRING, _r: **IAsyncOperation(FullTrustProcessLaunchResult)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("./root.zig").IUnknown;

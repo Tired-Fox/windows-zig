@@ -5,11 +5,11 @@ pub const AgentAuthorizationResponse = enum(i32) {
 };
 pub const AgentContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentContext = @ptrCast(self);
         return try this.getAppUserModelId();
     }
-    pub fn RequestResourceAccess(self: *@This(), resource: *Uri, description: HSTRING, reasonForAsking: HSTRING) core.HResult!AgentAuthorizationResponse {
+    pub fn RequestResourceAccess(self: *@This(), resource: *Uri, description: ?HSTRING, reasonForAsking: ?HSTRING) core.HResult!AgentAuthorizationResponse {
         const this: *IAgentContext = @ptrCast(self);
         return try this.RequestResourceAccess(resource, description, reasonForAsking);
     }
@@ -33,11 +33,11 @@ pub const AgentInfo = extern struct {
         const this: *IAgentInfo = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentInfo = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentInfo = @ptrCast(self);
         return try this.getDescription();
     }
@@ -56,35 +56,35 @@ pub const AgentResources = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFileSystemRead() core.HResult!HSTRING {
+    pub fn getFileSystemRead() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemRead();
     }
-    pub fn getFileSystemWrite() core.HResult!HSTRING {
+    pub fn getFileSystemWrite() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemWrite();
     }
-    pub fn getFileSystemDelete() core.HResult!HSTRING {
+    pub fn getFileSystemDelete() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemDelete();
     }
-    pub fn getFileSystemCreate() core.HResult!HSTRING {
+    pub fn getFileSystemCreate() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getFileSystemCreate();
     }
-    pub fn getHttpGet() core.HResult!HSTRING {
+    pub fn getHttpGet() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpGet();
     }
-    pub fn getHttpPost() core.HResult!HSTRING {
+    pub fn getHttpPost() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpPost();
     }
-    pub fn getHttpPut() core.HResult!HSTRING {
+    pub fn getHttpPut() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpPut();
     }
-    pub fn getHttpDelete() core.HResult!HSTRING {
+    pub fn getHttpDelete() core.HResult!?HSTRING {
         const _f = try @This()._IAgentResourcesStaticsCache.get();
         return try _f.getHttpDelete();
     }
@@ -94,13 +94,13 @@ pub const AgentResources = extern struct {
 };
 pub const IAgentContext = extern struct {
     vtable: *const VTable,
-    pub fn getAppUserModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestResourceAccess(self: *@This(), resource: *Uri, description: HSTRING, reasonForAsking: HSTRING) core.HResult!AgentAuthorizationResponse {
+    pub fn RequestResourceAccess(self: *@This(), resource: *Uri, description: ?HSTRING, reasonForAsking: ?HSTRING) core.HResult!AgentAuthorizationResponse {
         var _r: AgentAuthorizationResponse = undefined;
         const _c = self.vtable.RequestResourceAccess(@ptrCast(self), resource, description, reasonForAsking, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -118,8 +118,8 @@ pub const IAgentContext = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppUserModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        RequestResourceAccess: *const fn(self: *anyopaque, resource: *Uri, description: HSTRING, reasonForAsking: HSTRING, _r: *AgentAuthorizationResponse) callconv(.winapi) HRESULT,
+        get_AppUserModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        RequestResourceAccess: *const fn(self: *anyopaque, resource: *Uri, description: ?HSTRING, reasonForAsking: ?HSTRING, _r: *AgentAuthorizationResponse) callconv(.winapi) HRESULT,
     };
 };
 pub const IAgentContextStatics = extern struct {
@@ -153,14 +153,14 @@ pub const IAgentInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -184,57 +184,57 @@ pub const IAgentInfo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetPackage: *const fn(self: *anyopaque, _r: **Package) callconv(.winapi) HRESULT,
     };
 };
 pub const IAgentResourcesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getFileSystemRead(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileSystemRead(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileSystemRead(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileSystemWrite(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileSystemWrite(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileSystemWrite(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileSystemDelete(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileSystemDelete(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileSystemDelete(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileSystemCreate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileSystemCreate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileSystemCreate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHttpGet(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHttpGet(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HttpGet(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHttpPost(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHttpPost(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HttpPost(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHttpPut(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHttpPut(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HttpPut(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHttpDelete(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHttpDelete(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HttpDelete(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -251,14 +251,14 @@ pub const IAgentResourcesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FileSystemRead: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FileSystemWrite: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FileSystemDelete: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FileSystemCreate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HttpGet: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HttpPost: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HttpPut: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HttpDelete: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FileSystemRead: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FileSystemWrite: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FileSystemDelete: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FileSystemCreate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HttpGet: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HttpPost: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HttpPut: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HttpDelete: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

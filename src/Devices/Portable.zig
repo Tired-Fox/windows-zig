@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const IServiceDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), serviceType: ServiceDeviceType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), serviceType: ServiceDeviceType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), serviceType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromServiceId(self: *@This(), serviceId: *Guid) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromServiceId(self: *@This(), serviceId: *Guid) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromServiceId(@ptrCast(self), serviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -25,20 +25,20 @@ pub const IServiceDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, serviceType: ServiceDeviceType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromServiceId: *const fn(self: *anyopaque, serviceId: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, serviceType: ServiceDeviceType, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromServiceId: *const fn(self: *anyopaque, serviceId: *Guid, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*StorageFolder {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -55,8 +55,8 @@ pub const IStorageDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **StorageFolder) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **StorageFolder) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ServiceDevice = extern struct {
@@ -64,11 +64,11 @@ pub const ServiceDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(serviceType: ServiceDeviceType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(serviceType: ServiceDeviceType) core.HResult!?HSTRING {
         const _f = try @This()._IServiceDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(serviceType);
     }
-    pub fn GetDeviceSelectorFromServiceId(serviceId: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromServiceId(serviceId: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._IServiceDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorFromServiceId(serviceId);
     }
@@ -90,11 +90,11 @@ pub const StorageDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*StorageFolder {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*StorageFolder {
         const _f = try @This()._IStorageDeviceStaticsCache.get();
         return try _f.FromId(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IStorageDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }

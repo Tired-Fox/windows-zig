@@ -95,20 +95,20 @@ pub const IPrintWorkflowBackgroundSetupRequestedEventArgs = extern struct {
 };
 pub const IPrintWorkflowConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getSourceAppDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceAppDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceAppDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJobTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJobTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JobTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -125,9 +125,9 @@ pub const IPrintWorkflowConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SourceAppDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JobTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceAppDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JobTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintWorkflowConfiguration2 = extern struct {
@@ -806,19 +806,19 @@ pub const IPrintWorkflowPdlModificationRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateJobOnPrinter(self: *@This(), targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinter(self: *@This(), targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinter(@ptrCast(self), targetContentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinterWithAttributes(@ptrCast(self), jobAttributes, targetContentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinterWithAttributesBuffer(@ptrCast(self), jobAttributesBuffer, targetContentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -852,22 +852,22 @@ pub const IPrintWorkflowPdlModificationRequestedEventArgs = extern struct {
         get_PrinterJob: *const fn(self: *anyopaque, _r: **PrintWorkflowPrinterJob) callconv(.winapi) HRESULT,
         get_SourceContent: *const fn(self: *anyopaque, _r: **PrintWorkflowPdlSourceContent) callconv(.winapi) HRESULT,
         get_UILauncher: *const fn(self: *anyopaque, _r: **PrintWorkflowUILauncher) callconv(.winapi) HRESULT,
-        CreateJobOnPrinter: *const fn(self: *anyopaque, targetContentType: HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
-        CreateJobOnPrinterWithAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
-        CreateJobOnPrinterWithAttributesBuffer: *const fn(self: *anyopaque, jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
+        CreateJobOnPrinter: *const fn(self: *anyopaque, targetContentType: ?HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
+        CreateJobOnPrinterWithAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
+        CreateJobOnPrinterWithAttributesBuffer: *const fn(self: *anyopaque, jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
         GetPdlConverter: *const fn(self: *anyopaque, conversionType: PrintWorkflowPdlConversionType, _r: **PrintWorkflowPdlConverter) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintWorkflowPdlModificationRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, operationAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, operationAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinterWithAttributes(@ptrCast(self), jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinterWithAttributesBuffer(@ptrCast(self), jobAttributesBuffer, targetContentType, operationAttributesBuffer, jobAttributesMergePolicy, operationAttributesMergePolicy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -885,14 +885,14 @@ pub const IPrintWorkflowPdlModificationRequestedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateJobOnPrinterWithAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, operationAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
-        CreateJobOnPrinterWithAttributesBuffer: *const fn(self: *anyopaque, jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
+        CreateJobOnPrinterWithAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, operationAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
+        CreateJobOnPrinterWithAttributesBuffer: *const fn(self: *anyopaque, jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, _r: **PrintWorkflowPdlTargetStream) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintWorkflowPdlSourceContent = extern struct {
     vtable: *const VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -921,7 +921,7 @@ pub const IPrintWorkflowPdlSourceContent = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetInputStream: *const fn(self: *anyopaque, _r: **IInputStream) callconv(.winapi) HRESULT,
         GetContentFileAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
     };
@@ -980,14 +980,14 @@ pub const IPrintWorkflowPrinterJob = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetJobAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IBuffer {
+    pub fn GetJobAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.GetJobAttributesAsBuffer(@ptrCast(self), attributeNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetJobAttributes(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IMap(HSTRING,IppAttributeValue) {
-        var _r: *IMap(HSTRING,IppAttributeValue) = undefined;
+    pub fn GetJobAttributes(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
+        var _r: *IMap(?HSTRING,IppAttributeValue) = undefined;
         const _c = self.vtable.GetJobAttributes(@ptrCast(self), attributeNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -998,7 +998,7 @@ pub const IPrintWorkflowPrinterJob = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetJobAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
+    pub fn SetJobAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
         var _r: *IppSetAttributesResult = undefined;
         const _c = self.vtable.SetJobAttributes(@ptrCast(self), jobAttributes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1020,16 +1020,16 @@ pub const IPrintWorkflowPrinterJob = extern struct {
         get_Printer: *const fn(self: *anyopaque, _r: **IppPrintDevice) callconv(.winapi) HRESULT,
         GetJobStatus: *const fn(self: *anyopaque, _r: *PrintWorkflowPrinterJobStatus) callconv(.winapi) HRESULT,
         GetJobPrintTicket: *const fn(self: *anyopaque, _r: **WorkflowPrintTicket) callconv(.winapi) HRESULT,
-        GetJobAttributesAsBuffer: *const fn(self: *anyopaque, attributeNames: *IIterable(HSTRING), _r: **IBuffer) callconv(.winapi) HRESULT,
-        GetJobAttributes: *const fn(self: *anyopaque, attributeNames: *IIterable(HSTRING), _r: **IMap(HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
+        GetJobAttributesAsBuffer: *const fn(self: *anyopaque, attributeNames: *IIterable(?HSTRING), _r: **IBuffer) callconv(.winapi) HRESULT,
+        GetJobAttributes: *const fn(self: *anyopaque, attributeNames: *IIterable(?HSTRING), _r: **IMap(?HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
         SetJobAttributesFromBuffer: *const fn(self: *anyopaque, jobAttributesBuffer: *IBuffer, _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
-        SetJobAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
+        SetJobAttributes: *const fn(self: *anyopaque, jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintWorkflowPrinterJob2 = extern struct {
     vtable: *const VTable,
-    pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: HSTRING) core.HResult!*IMap(HSTRING,IppAttributeValue) {
-        var _r: *IMap(HSTRING,IppAttributeValue) = undefined;
+    pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: ?HSTRING) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
+        var _r: *IMap(?HSTRING,IppAttributeValue) = undefined;
         const _c = self.vtable.ConvertPrintTicketToJobAttributes(@ptrCast(self), printTicket, targetPdlFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1046,7 +1046,7 @@ pub const IPrintWorkflowPrinterJob2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ConvertPrintTicketToJobAttributes: *const fn(self: *anyopaque, printTicket: *WorkflowPrintTicket, targetPdlFormat: HSTRING, _r: **IMap(HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
+        ConvertPrintTicketToJobAttributes: *const fn(self: *anyopaque, printTicket: *WorkflowPrintTicket, targetPdlFormat: ?HSTRING, _r: **IMap(?HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintWorkflowSourceContent = extern struct {
@@ -1601,15 +1601,15 @@ pub const PrintWorkflowConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AbortPrintFlow(reason);
     }
-    pub fn getSourceAppDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceAppDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintWorkflowConfiguration = @ptrCast(self);
         return try this.getSourceAppDisplayName();
     }
-    pub fn getJobTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getJobTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintWorkflowConfiguration = @ptrCast(self);
         return try this.getJobTitle();
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintWorkflowConfiguration = @ptrCast(self);
         return try this.getSessionId();
     }
@@ -2022,15 +2022,15 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.getUILauncher();
     }
-    pub fn CreateJobOnPrinter(self: *@This(), targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinter(self: *@This(), targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.CreateJobOnPrinter(targetContentType);
     }
-    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.CreateJobOnPrinterWithAttributes(jobAttributes, targetContentType);
     }
-    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING) core.HResult!*PrintWorkflowPdlTargetStream {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.CreateJobOnPrinterWithAttributesBuffer(jobAttributesBuffer, targetContentType);
     }
@@ -2042,13 +2042,13 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
     }
-    pub fn CreateJobOnPrinterWithAttributesWithOperationAttributesAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, operationAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesWithOperationAttributesAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, operationAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateJobOnPrinterWithAttributesWithOperationAttributesAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy);
     }
-    pub fn CreateJobOnPrinterWithAttributesBufferWithOperationAttributesBufferAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesBufferWithOperationAttributesBufferAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2062,7 +2062,7 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
 };
 pub const PrintWorkflowPdlSourceContent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintWorkflowPdlSourceContent = @ptrCast(self);
         return try this.getContentType();
     }
@@ -2114,11 +2114,11 @@ pub const PrintWorkflowPrinterJob = extern struct {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.GetJobPrintTicket();
     }
-    pub fn GetJobAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IBuffer {
+    pub fn GetJobAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IBuffer {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.GetJobAttributesAsBuffer(attributeNames);
     }
-    pub fn GetJobAttributes(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IMap(HSTRING,IppAttributeValue) {
+    pub fn GetJobAttributes(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.GetJobAttributes(attributeNames);
     }
@@ -2126,11 +2126,11 @@ pub const PrintWorkflowPrinterJob = extern struct {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.SetJobAttributesFromBuffer(jobAttributesBuffer);
     }
-    pub fn SetJobAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
+    pub fn SetJobAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.SetJobAttributes(jobAttributes);
     }
-    pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: HSTRING) core.HResult!*IMap(HSTRING,IppAttributeValue) {
+    pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: ?HSTRING) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
         var this: ?*IPrintWorkflowPrinterJob2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPrinterJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

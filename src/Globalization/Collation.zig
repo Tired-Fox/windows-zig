@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
 pub const CharacterGrouping = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFirst(self: *@This()) core.HResult!HSTRING {
+    pub fn getFirst(self: *@This()) core.HResult!?HSTRING {
         const this: *ICharacterGrouping = @ptrCast(self);
         return try this.getFirst();
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *ICharacterGrouping = @ptrCast(self);
         return try this.getLabel();
     }
@@ -17,7 +17,7 @@ pub const CharacterGrouping = extern struct {
 };
 pub const CharacterGroupings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), text: HSTRING) core.HResult!HSTRING {
+    pub fn Lookup(self: *@This(), text: ?HSTRING) core.HResult!?HSTRING {
         const this: *ICharacterGroupings = @ptrCast(self);
         return try this.Lookup(text);
     }
@@ -40,7 +40,7 @@ pub const CharacterGroupings = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICharacterGroupings.IID)));
     }
-    pub fn Create(language: HSTRING) core.HResult!*CharacterGroupings {
+    pub fn Create(language: ?HSTRING) core.HResult!*CharacterGroupings {
         const _f = try @This()._ICharacterGroupingsFactoryCache.get();
         return try _f.Create(language);
     }
@@ -54,14 +54,14 @@ pub const CharacterGroupings = extern struct {
 };
 pub const ICharacterGrouping = extern struct {
     vtable: *const VTable,
-    pub fn getFirst(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirst(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_First(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -78,14 +78,14 @@ pub const ICharacterGrouping = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_First: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_First: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICharacterGroupings = extern struct {
     vtable: *const VTable,
-    pub fn Lookup(self: *@This(), text: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn Lookup(self: *@This(), text: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.Lookup(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -102,12 +102,12 @@ pub const ICharacterGroupings = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Lookup: *const fn(self: *anyopaque, text: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        Lookup: *const fn(self: *anyopaque, text: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICharacterGroupingsFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), language: HSTRING) core.HResult!*CharacterGroupings {
+    pub fn Create(self: *@This(), language: ?HSTRING) core.HResult!*CharacterGroupings {
         var _r: *CharacterGroupings = undefined;
         const _c = self.vtable.Create(@ptrCast(self), language, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -125,7 +125,7 @@ pub const ICharacterGroupingsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, language: HSTRING, _r: **CharacterGroupings) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, language: ?HSTRING, _r: **CharacterGroupings) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

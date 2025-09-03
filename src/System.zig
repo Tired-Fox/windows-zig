@@ -50,7 +50,7 @@ pub const AppDiagnosticInfo = extern struct {
         const _f = try @This()._IAppDiagnosticInfoStatics2Cache.get();
         return try _f.RequestAccessAsync();
     }
-    pub fn RequestInfoForPackageAsync(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
+    pub fn RequestInfoForPackageAsync(packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         const _f = try @This()._IAppDiagnosticInfoStatics2Cache.get();
         return try _f.RequestInfoForPackageAsync(packageFamilyName);
     }
@@ -58,7 +58,7 @@ pub const AppDiagnosticInfo = extern struct {
         const _f = try @This()._IAppDiagnosticInfoStatics2Cache.get();
         return try _f.RequestInfoForAppAsync();
     }
-    pub fn RequestInfoForAppAsyncWithAppUserModelId(appUserModelId: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
+    pub fn RequestInfoForAppAsyncWithAppUserModelId(appUserModelId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         const _f = try @This()._IAppDiagnosticInfoStatics2Cache.get();
         return try _f.RequestInfoForAppAsyncWithAppUserModelId(appUserModelId);
     }
@@ -216,15 +216,15 @@ pub const AppResourceGroupBackgroundTaskReport = extern struct {
         const this: *IAppResourceGroupBackgroundTaskReport = @ptrCast(self);
         return try this.getTaskId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppResourceGroupBackgroundTaskReport = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getTrigger(self: *@This()) core.HResult!HSTRING {
+    pub fn getTrigger(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppResourceGroupBackgroundTaskReport = @ptrCast(self);
         return try this.getTrigger();
     }
-    pub fn getEntryPoint(self: *@This()) core.HResult!HSTRING {
+    pub fn getEntryPoint(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppResourceGroupBackgroundTaskReport = @ptrCast(self);
         return try this.getEntryPoint();
     }
@@ -438,11 +438,11 @@ pub const AppResourceGroupStateReport = extern struct {
 };
 pub const AppUriHandlerHost = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppUriHandlerHost = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppUriHandlerHost = @ptrCast(self);
         return try this.putName(value);
     }
@@ -465,7 +465,7 @@ pub const AppUriHandlerHost = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppUriHandlerHost.IID)));
     }
-    pub fn CreateInstance(name: HSTRING) core.HResult!*AppUriHandlerHost {
+    pub fn CreateInstance(name: ?HSTRING) core.HResult!*AppUriHandlerHost {
         const _f = try @This()._IAppUriHandlerHostFactoryCache.get();
         return try _f.CreateInstance(name);
     }
@@ -479,7 +479,7 @@ pub const AppUriHandlerHost = extern struct {
 };
 pub const AppUriHandlerRegistration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppUriHandlerRegistration = @ptrCast(self);
         return try this.getName();
     }
@@ -507,7 +507,7 @@ pub const AppUriHandlerRegistration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateHosts(hosts);
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppUriHandlerRegistration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -525,11 +525,11 @@ pub const AppUriHandlerRegistrationManager = extern struct {
         const this: *IAppUriHandlerRegistrationManager = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn TryGetRegistration(self: *@This(), name: HSTRING) core.HResult!*AppUriHandlerRegistration {
+    pub fn TryGetRegistration(self: *@This(), name: ?HSTRING) core.HResult!*AppUriHandlerRegistration {
         const this: *IAppUriHandlerRegistrationManager = @ptrCast(self);
         return try this.TryGetRegistration(name);
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppUriHandlerRegistrationManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistrationManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -538,11 +538,11 @@ pub const AppUriHandlerRegistrationManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetForPackage(packageFamilyName: HSTRING) core.HResult!*AppUriHandlerRegistrationManager {
+    pub fn GetForPackage(packageFamilyName: ?HSTRING) core.HResult!*AppUriHandlerRegistrationManager {
         const _f = try @This()._IAppUriHandlerRegistrationManagerStatics2Cache.get();
         return try _f.GetForPackage(packageFamilyName);
     }
-    pub fn GetForPackageForUser(packageFamilyName: HSTRING, user: *User) core.HResult!*AppUriHandlerRegistrationManager {
+    pub fn GetForPackageForUser(packageFamilyName: ?HSTRING, user: *User) core.HResult!*AppUriHandlerRegistrationManager {
         const _f = try @This()._IAppUriHandlerRegistrationManagerStatics2Cache.get();
         return try _f.GetForPackageForUser(packageFamilyName, user);
     }
@@ -965,7 +965,7 @@ pub const IAppDiagnosticInfoStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestInfoForPackageAsync(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
+    pub fn RequestInfoForPackageAsync(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         var _r: *IAsyncOperation(IVector(AppDiagnosticInfo)) = undefined;
         const _c = self.vtable.RequestInfoForPackageAsync(@ptrCast(self), packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -977,7 +977,7 @@ pub const IAppDiagnosticInfoStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestInfoForAppAsyncWithAppUserModelId(self: *@This(), appUserModelId: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
+    pub fn RequestInfoForAppAsyncWithAppUserModelId(self: *@This(), appUserModelId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         var _r: *IAsyncOperation(IVector(AppDiagnosticInfo)) = undefined;
         const _c = self.vtable.RequestInfoForAppAsyncWithAppUserModelId(@ptrCast(self), appUserModelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -997,9 +997,9 @@ pub const IAppDiagnosticInfoStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, _r: **AppDiagnosticInfoWatcher) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DiagnosticAccessStatus)) callconv(.winapi) HRESULT,
-        RequestInfoForPackageAsync: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **IAsyncOperation(IVector(AppDiagnosticInfo))) callconv(.winapi) HRESULT,
+        RequestInfoForPackageAsync: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **IAsyncOperation(IVector(AppDiagnosticInfo))) callconv(.winapi) HRESULT,
         RequestInfoForAppAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVector(AppDiagnosticInfo))) callconv(.winapi) HRESULT,
-        RequestInfoForAppAsyncWithAppUserModelId: *const fn(self: *anyopaque, appUserModelId: HSTRING, _r: **IAsyncOperation(IVector(AppDiagnosticInfo))) callconv(.winapi) HRESULT,
+        RequestInfoForAppAsyncWithAppUserModelId: *const fn(self: *anyopaque, appUserModelId: ?HSTRING, _r: **IAsyncOperation(IVector(AppDiagnosticInfo))) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppDiagnosticInfoWatcher = extern struct {
@@ -1234,20 +1234,20 @@ pub const IAppResourceGroupBackgroundTaskReport = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTrigger(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTrigger(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Trigger(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEntryPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEntryPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntryPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1265,9 +1265,9 @@ pub const IAppResourceGroupBackgroundTaskReport = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TaskId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Trigger: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EntryPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Trigger: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EntryPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppResourceGroupInfo = extern struct {
@@ -1594,13 +1594,13 @@ pub const IAppResourceGroupStateReport = extern struct {
 };
 pub const IAppUriHandlerHost = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1616,8 +1616,8 @@ pub const IAppUriHandlerHost = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppUriHandlerHost2 = extern struct {
@@ -1650,7 +1650,7 @@ pub const IAppUriHandlerHost2 = extern struct {
 };
 pub const IAppUriHandlerHostFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), name: HSTRING) core.HResult!*AppUriHandlerHost {
+    pub fn CreateInstance(self: *@This(), name: ?HSTRING) core.HResult!*AppUriHandlerHost {
         var _r: *AppUriHandlerHost = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1668,13 +1668,13 @@ pub const IAppUriHandlerHostFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, name: HSTRING, _r: **AppUriHandlerHost) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, name: ?HSTRING, _r: **AppUriHandlerHost) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppUriHandlerRegistration = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1709,7 +1709,7 @@ pub const IAppUriHandlerRegistration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
         GetAppAddedHostsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVector(AppUriHandlerHost))) callconv(.winapi) HRESULT,
         SetAppAddedHostsAsync: *const fn(self: *anyopaque, hosts: *IIterable(AppUriHandlerHost), _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1727,8 +1727,8 @@ pub const IAppUriHandlerRegistration2 = extern struct {
         const _c = self.vtable.UpdateHosts(@ptrCast(self), hosts);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1747,7 +1747,7 @@ pub const IAppUriHandlerRegistration2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetAllHosts: *const fn(self: *anyopaque, _r: **IVector(AppUriHandlerHost)) callconv(.winapi) HRESULT,
         UpdateHosts: *const fn(self: *anyopaque, hosts: *IIterable(AppUriHandlerHost)) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppUriHandlerRegistrationManager = extern struct {
@@ -1758,7 +1758,7 @@ pub const IAppUriHandlerRegistrationManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetRegistration(self: *@This(), name: HSTRING) core.HResult!*AppUriHandlerRegistration {
+    pub fn TryGetRegistration(self: *@This(), name: ?HSTRING) core.HResult!*AppUriHandlerRegistration {
         var _r: *AppUriHandlerRegistration = undefined;
         const _c = self.vtable.TryGetRegistration(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1777,13 +1777,13 @@ pub const IAppUriHandlerRegistrationManager = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        TryGetRegistration: *const fn(self: *anyopaque, name: HSTRING, _r: **AppUriHandlerRegistration) callconv(.winapi) HRESULT,
+        TryGetRegistration: *const fn(self: *anyopaque, name: ?HSTRING, _r: **AppUriHandlerRegistration) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppUriHandlerRegistrationManager2 = extern struct {
     vtable: *const VTable,
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1800,7 +1800,7 @@ pub const IAppUriHandlerRegistrationManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppUriHandlerRegistrationManagerStatics = extern struct {
@@ -1835,13 +1835,13 @@ pub const IAppUriHandlerRegistrationManagerStatics = extern struct {
 };
 pub const IAppUriHandlerRegistrationManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetForPackage(self: *@This(), packageFamilyName: HSTRING) core.HResult!*AppUriHandlerRegistrationManager {
+    pub fn GetForPackage(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*AppUriHandlerRegistrationManager {
         var _r: *AppUriHandlerRegistrationManager = undefined;
         const _c = self.vtable.GetForPackage(@ptrCast(self), packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetForPackageForUser(self: *@This(), packageFamilyName: HSTRING, user: *User) core.HResult!*AppUriHandlerRegistrationManager {
+    pub fn GetForPackageForUser(self: *@This(), packageFamilyName: ?HSTRING, user: *User) core.HResult!*AppUriHandlerRegistrationManager {
         var _r: *AppUriHandlerRegistrationManager = undefined;
         const _c = self.vtable.GetForPackageForUser(@ptrCast(self), packageFamilyName, user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1859,8 +1859,8 @@ pub const IAppUriHandlerRegistrationManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForPackage: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **AppUriHandlerRegistrationManager) callconv(.winapi) HRESULT,
-        GetForPackageForUser: *const fn(self: *anyopaque, packageFamilyName: HSTRING, user: *User, _r: **AppUriHandlerRegistrationManager) callconv(.winapi) HRESULT,
+        GetForPackage: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **AppUriHandlerRegistrationManager) callconv(.winapi) HRESULT,
+        GetForPackageForUser: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, user: *User, _r: **AppUriHandlerRegistrationManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IDispatcherQueue = extern struct {
@@ -2140,56 +2140,56 @@ pub const IFolderLauncherOptions = extern struct {
 };
 pub const IKnownUserPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLastName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LastName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProviderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccountName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGuestHost(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGuestHost(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GuestHost(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrincipalName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrincipalName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrincipalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDomainName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomainName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DomainName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSessionInitiationProtocolUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionInitiationProtocolUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionInitiationProtocolUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2206,21 +2206,21 @@ pub const IKnownUserPropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FirstName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LastName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ProviderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AccountName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GuestHost: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PrincipalName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DomainName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SessionInitiationProtocolUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FirstName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LastName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AccountName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GuestHost: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PrincipalName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DomainName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SessionInitiationProtocolUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownUserPropertiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getAgeEnforcementRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAgeEnforcementRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AgeEnforcementRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2237,7 +2237,7 @@ pub const IKnownUserPropertiesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AgeEnforcementRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AgeEnforcementRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILaunchUriResult = extern struct {
@@ -2298,23 +2298,23 @@ pub const ILauncherOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPreferredApplicationPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPreferredApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PreferredApplicationPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPreferredApplicationPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreferredApplicationPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PreferredApplicationPackageFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPreferredApplicationDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPreferredApplicationDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PreferredApplicationDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPreferredApplicationDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreferredApplicationDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PreferredApplicationDisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2328,13 +2328,13 @@ pub const ILauncherOptions = extern struct {
         const _c = self.vtable.put_FallbackUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2355,25 +2355,25 @@ pub const ILauncherOptions = extern struct {
         get_DisplayApplicationPicker: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_DisplayApplicationPicker: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_UI: *const fn(self: *anyopaque, _r: **LauncherUIOptions) callconv(.winapi) HRESULT,
-        get_PreferredApplicationPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PreferredApplicationPackageFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PreferredApplicationDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PreferredApplicationDisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PreferredApplicationPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PreferredApplicationPackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PreferredApplicationDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PreferredApplicationDisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FallbackUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_FallbackUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILauncherOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn getTargetApplicationPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetApplicationPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetApplicationPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetApplicationPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetApplicationPackageFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2399,8 +2399,8 @@ pub const ILauncherOptions2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetApplicationPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetApplicationPackageFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetApplicationPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetApplicationPackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_NeighboringFilesQuery: *const fn(self: *anyopaque, _r: **StorageFileQueryResult) callconv(.winapi) HRESULT,
         put_NeighboringFilesQuery: *const fn(self: *anyopaque, value: *StorageFileQueryResult) callconv(.winapi) HRESULT,
     };
@@ -2531,7 +2531,7 @@ pub const ILauncherStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn QueryUriSupportAsyncWithPackageFamilyName(self: *@This(), uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryUriSupportAsyncWithPackageFamilyName(self: *@This(), uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         var _r: *IAsyncOperation(LaunchQuerySupportStatus) = undefined;
         const _c = self.vtable.QueryUriSupportAsyncWithPackageFamilyName(@ptrCast(self), uri, launchQuerySupportType, packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2543,25 +2543,25 @@ pub const ILauncherStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn QueryFileSupportAsyncWithPackageFamilyName(self: *@This(), file: *StorageFile, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryFileSupportAsyncWithPackageFamilyName(self: *@This(), file: *StorageFile, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         var _r: *IAsyncOperation(LaunchQuerySupportStatus) = undefined;
         const _c = self.vtable.QueryFileSupportAsyncWithPackageFamilyName(@ptrCast(self), file, packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindUriSchemeHandlersAsync(self: *@This(), scheme: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindUriSchemeHandlersAsync(self: *@This(), scheme: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         var _r: *IAsyncOperation(IVectorView(AppInfo)) = undefined;
         const _c = self.vtable.FindUriSchemeHandlersAsync(@ptrCast(self), scheme, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(self: *@This(), scheme: HSTRING, launchQuerySupportType: LaunchQuerySupportType) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(self: *@This(), scheme: ?HSTRING, launchQuerySupportType: LaunchQuerySupportType) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         var _r: *IAsyncOperation(IVectorView(AppInfo)) = undefined;
         const _c = self.vtable.FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(@ptrCast(self), scheme, launchQuerySupportType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindFileHandlersAsync(self: *@This(), extension: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindFileHandlersAsync(self: *@This(), extension: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         var _r: *IAsyncOperation(IVectorView(AppInfo)) = undefined;
         const _c = self.vtable.FindFileHandlersAsync(@ptrCast(self), extension, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2583,12 +2583,12 @@ pub const ILauncherStatics2 = extern struct {
         LaunchUriForResultsAsyncWithInputData: *const fn(self: *anyopaque, uri: *Uri, options: *LauncherOptions, inputData: *ValueSet, _r: **IAsyncOperation(LaunchUriResult)) callconv(.winapi) HRESULT,
         LaunchUriAsync: *const fn(self: *anyopaque, uri: *Uri, options: *LauncherOptions, inputData: *ValueSet, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         QueryUriSupportAsync: *const fn(self: *anyopaque, uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
-        QueryUriSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
+        QueryUriSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: ?HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
         QueryFileSupportAsync: *const fn(self: *anyopaque, file: *StorageFile, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
-        QueryFileSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, file: *StorageFile, packageFamilyName: HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
-        FindUriSchemeHandlersAsync: *const fn(self: *anyopaque, scheme: HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
-        FindUriSchemeHandlersAsyncWithLaunchQuerySupportType: *const fn(self: *anyopaque, scheme: HSTRING, launchQuerySupportType: LaunchQuerySupportType, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
-        FindFileHandlersAsync: *const fn(self: *anyopaque, extension: HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
+        QueryFileSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, file: *StorageFile, packageFamilyName: ?HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
+        FindUriSchemeHandlersAsync: *const fn(self: *anyopaque, scheme: ?HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
+        FindUriSchemeHandlersAsyncWithLaunchQuerySupportType: *const fn(self: *anyopaque, scheme: ?HSTRING, launchQuerySupportType: LaunchQuerySupportType, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
+        FindFileHandlersAsync: *const fn(self: *anyopaque, extension: ?HSTRING, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
     };
 };
 pub const ILauncherStatics3 = extern struct {
@@ -2629,7 +2629,7 @@ pub const ILauncherStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn QueryAppUriSupportAsyncWithPackageFamilyName(self: *@This(), uri: *Uri, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryAppUriSupportAsyncWithPackageFamilyName(self: *@This(), uri: *Uri, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         var _r: *IAsyncOperation(LaunchQuerySupportStatus) = undefined;
         const _c = self.vtable.QueryAppUriSupportAsyncWithPackageFamilyName(@ptrCast(self), uri, packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2684,7 +2684,7 @@ pub const ILauncherStatics4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         QueryAppUriSupportAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
-        QueryAppUriSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, uri: *Uri, packageFamilyName: HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
+        QueryAppUriSupportAsyncWithPackageFamilyName: *const fn(self: *anyopaque, uri: *Uri, packageFamilyName: ?HSTRING, _r: **IAsyncOperation(LaunchQuerySupportStatus)) callconv(.winapi) HRESULT,
         FindAppUriHandlersAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(IVectorView(AppInfo))) callconv(.winapi) HRESULT,
         LaunchUriForUserAsync: *const fn(self: *anyopaque, user: *User, uri: *Uri, _r: **IAsyncOperation(LaunchUriStatus)) callconv(.winapi) HRESULT,
         LaunchUriForUserAsyncWithOptions: *const fn(self: *anyopaque, user: *User, uri: *Uri, options: *LauncherOptions, _r: **IAsyncOperation(LaunchUriStatus)) callconv(.winapi) HRESULT,
@@ -2695,25 +2695,25 @@ pub const ILauncherStatics4 = extern struct {
 };
 pub const ILauncherStatics5 = extern struct {
     vtable: *const VTable,
-    pub fn LaunchFolderPathAsync(self: *@This(), path: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathAsync(self: *@This(), path: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchFolderPathAsync(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFolderPathAsyncWithOptions(self: *@This(), path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathAsyncWithOptions(self: *@This(), path: ?HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchFolderPathAsyncWithOptions(@ptrCast(self), path, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFolderPathForUserAsync(self: *@This(), user: *User, path: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathForUserAsync(self: *@This(), user: *User, path: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchFolderPathForUserAsync(@ptrCast(self), user, path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFolderPathForUserAsyncWithOptions(self: *@This(), user: *User, path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathForUserAsyncWithOptions(self: *@This(), user: *User, path: ?HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchFolderPathForUserAsyncWithOptions(@ptrCast(self), user, path, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2731,10 +2731,10 @@ pub const ILauncherStatics5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        LaunchFolderPathAsync: *const fn(self: *anyopaque, path: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        LaunchFolderPathAsyncWithOptions: *const fn(self: *anyopaque, path: HSTRING, options: *FolderLauncherOptions, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        LaunchFolderPathForUserAsync: *const fn(self: *anyopaque, user: *User, path: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        LaunchFolderPathForUserAsyncWithOptions: *const fn(self: *anyopaque, user: *User, path: HSTRING, options: *FolderLauncherOptions, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        LaunchFolderPathAsync: *const fn(self: *anyopaque, path: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        LaunchFolderPathAsyncWithOptions: *const fn(self: *anyopaque, path: ?HSTRING, options: *FolderLauncherOptions, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        LaunchFolderPathForUserAsync: *const fn(self: *anyopaque, user: *User, path: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        LaunchFolderPathForUserAsyncWithOptions: *const fn(self: *anyopaque, user: *User, path: ?HSTRING, options: *FolderLauncherOptions, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILauncherUIOptions = extern struct {
@@ -3029,8 +3029,8 @@ pub const IRemoteLauncherOptions = extern struct {
         const _c = self.vtable.put_FallbackUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPreferredAppIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getPreferredAppIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_PreferredAppIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3049,7 +3049,7 @@ pub const IRemoteLauncherOptions = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_FallbackUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_FallbackUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_PreferredAppIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_PreferredAppIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteLauncherStatics = extern struct {
@@ -3091,8 +3091,8 @@ pub const IRemoteLauncherStatics = extern struct {
 };
 pub const IUser = extern struct {
     vtable: *const VTable,
-    pub fn getNonRoamableId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NonRoamableId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3109,13 +3109,13 @@ pub const IUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertyAsync(self: *@This(), value: HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
+    pub fn GetPropertyAsync(self: *@This(), value: ?HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
         var _r: *IAsyncOperation(IInspectable) = undefined;
         const _c = self.vtable.GetPropertyAsync(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertiesAsync(self: *@This(), values: *IVectorView(HSTRING)) core.HResult!*IAsyncOperation(IPropertySet) {
+    pub fn GetPropertiesAsync(self: *@This(), values: *IVectorView(?HSTRING)) core.HResult!*IAsyncOperation(IPropertySet) {
         var _r: *IAsyncOperation(IPropertySet) = undefined;
         const _c = self.vtable.GetPropertiesAsync(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3139,11 +3139,11 @@ pub const IUser = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NonRoamableId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NonRoamableId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AuthenticationStatus: *const fn(self: *anyopaque, _r: *UserAuthenticationStatus) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *UserType) callconv(.winapi) HRESULT,
-        GetPropertyAsync: *const fn(self: *anyopaque, value: HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT,
-        GetPropertiesAsync: *const fn(self: *anyopaque, values: *IVectorView(HSTRING), _r: **IAsyncOperation(IPropertySet)) callconv(.winapi) HRESULT,
+        GetPropertyAsync: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT,
+        GetPropertiesAsync: *const fn(self: *anyopaque, values: *IVectorView(?HSTRING), _r: **IAsyncOperation(IPropertySet)) callconv(.winapi) HRESULT,
         GetPictureAsync: *const fn(self: *anyopaque, desiredSize: UserPictureSize, _r: **IAsyncOperation(IRandomAccessStreamReference)) callconv(.winapi) HRESULT,
     };
 };
@@ -3283,8 +3283,8 @@ pub const IUserChangedEventArgs2 = extern struct {
 };
 pub const IUserDeviceAssociationChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3313,14 +3313,14 @@ pub const IUserDeviceAssociationChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_NewUser: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
         get_OldUser: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDeviceAssociationStatics = extern struct {
     vtable: *const VTable,
-    pub fn FindUserFromDeviceId(self: *@This(), deviceId: HSTRING) core.HResult!*User {
+    pub fn FindUserFromDeviceId(self: *@This(), deviceId: ?HSTRING) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.FindUserFromDeviceId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3348,7 +3348,7 @@ pub const IUserDeviceAssociationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindUserFromDeviceId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **User) callconv(.winapi) HRESULT,
+        FindUserFromDeviceId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **User) callconv(.winapi) HRESULT,
         add_UserDeviceAssociationChanged: *const fn(self: *anyopaque, handler: *EventHandler(UserDeviceAssociationChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_UserDeviceAssociationChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -3449,7 +3449,7 @@ pub const IUserStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFromId(self: *@This(), nonRoamableId: HSTRING) core.HResult!*User {
+    pub fn GetFromId(self: *@This(), nonRoamableId: ?HSTRING) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.GetFromId(@ptrCast(self), nonRoamableId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3471,7 +3471,7 @@ pub const IUserStatics = extern struct {
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(User))) callconv(.winapi) HRESULT,
         FindAllAsyncWithTy: *const fn(self: *anyopaque, ty: UserType, _r: **IAsyncOperation(IVectorView(User))) callconv(.winapi) HRESULT,
         FindAllAsyncWithTyAndStatus: *const fn(self: *anyopaque, ty: UserType, status: UserAuthenticationStatus, _r: **IAsyncOperation(IVectorView(User))) callconv(.winapi) HRESULT,
-        GetFromId: *const fn(self: *anyopaque, nonRoamableId: HSTRING, _r: **User) callconv(.winapi) HRESULT,
+        GetFromId: *const fn(self: *anyopaque, nonRoamableId: ?HSTRING, _r: **User) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserStatics2 = extern struct {
@@ -3619,43 +3619,43 @@ pub const KnownUserProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDisplayName() core.HResult!HSTRING {
+    pub fn getDisplayName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getDisplayName();
     }
-    pub fn getFirstName() core.HResult!HSTRING {
+    pub fn getFirstName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getFirstName();
     }
-    pub fn getLastName() core.HResult!HSTRING {
+    pub fn getLastName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getLastName();
     }
-    pub fn getProviderName() core.HResult!HSTRING {
+    pub fn getProviderName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getProviderName();
     }
-    pub fn getAccountName() core.HResult!HSTRING {
+    pub fn getAccountName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getAccountName();
     }
-    pub fn getGuestHost() core.HResult!HSTRING {
+    pub fn getGuestHost() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getGuestHost();
     }
-    pub fn getPrincipalName() core.HResult!HSTRING {
+    pub fn getPrincipalName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getPrincipalName();
     }
-    pub fn getDomainName() core.HResult!HSTRING {
+    pub fn getDomainName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getDomainName();
     }
-    pub fn getSessionInitiationProtocolUri() core.HResult!HSTRING {
+    pub fn getSessionInitiationProtocolUri() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStaticsCache.get();
         return try _f.getSessionInitiationProtocolUri();
     }
-    pub fn getAgeEnforcementRegion() core.HResult!HSTRING {
+    pub fn getAgeEnforcementRegion() core.HResult!?HSTRING {
         const _f = try @This()._IKnownUserPropertiesStatics2Cache.get();
         return try _f.getAgeEnforcementRegion();
     }
@@ -3713,7 +3713,7 @@ pub const Launcher = extern struct {
         const _f = try @This()._ILauncherStatics4Cache.get();
         return try _f.QueryAppUriSupportAsync(uri);
     }
-    pub fn QueryAppUriSupportAsyncWithPackageFamilyName(uri: *Uri, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryAppUriSupportAsyncWithPackageFamilyName(uri: *Uri, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         const _f = try @This()._ILauncherStatics4Cache.get();
         return try _f.QueryAppUriSupportAsyncWithPackageFamilyName(uri, packageFamilyName);
     }
@@ -3757,19 +3757,19 @@ pub const Launcher = extern struct {
         const _f = try @This()._ILauncherStaticsCache.get();
         return try _f.LaunchUriAsyncWithOptions(uri, options);
     }
-    pub fn LaunchFolderPathAsync(path: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathAsync(path: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ILauncherStatics5Cache.get();
         return try _f.LaunchFolderPathAsync(path);
     }
-    pub fn LaunchFolderPathAsyncWithOptions(path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathAsyncWithOptions(path: ?HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ILauncherStatics5Cache.get();
         return try _f.LaunchFolderPathAsyncWithOptions(path, options);
     }
-    pub fn LaunchFolderPathForUserAsync(user: *User, path: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathForUserAsync(user: *User, path: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ILauncherStatics5Cache.get();
         return try _f.LaunchFolderPathForUserAsync(user, path);
     }
-    pub fn LaunchFolderPathForUserAsyncWithOptions(user: *User, path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathForUserAsyncWithOptions(user: *User, path: ?HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ILauncherStatics5Cache.get();
         return try _f.LaunchFolderPathForUserAsyncWithOptions(user, path, options);
     }
@@ -3797,7 +3797,7 @@ pub const Launcher = extern struct {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.QueryUriSupportAsync(uri, launchQuerySupportType);
     }
-    pub fn QueryUriSupportAsyncWithPackageFamilyName(uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryUriSupportAsyncWithPackageFamilyName(uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.QueryUriSupportAsyncWithPackageFamilyName(uri, launchQuerySupportType, packageFamilyName);
     }
@@ -3805,19 +3805,19 @@ pub const Launcher = extern struct {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.QueryFileSupportAsync(file);
     }
-    pub fn QueryFileSupportAsyncWithPackageFamilyName(file: *StorageFile, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryFileSupportAsyncWithPackageFamilyName(file: *StorageFile, packageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.QueryFileSupportAsyncWithPackageFamilyName(file, packageFamilyName);
     }
-    pub fn FindUriSchemeHandlersAsync(scheme: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindUriSchemeHandlersAsync(scheme: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.FindUriSchemeHandlersAsync(scheme);
     }
-    pub fn FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(scheme: HSTRING, launchQuerySupportType: LaunchQuerySupportType) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(scheme: ?HSTRING, launchQuerySupportType: LaunchQuerySupportType) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.FindUriSchemeHandlersAsyncWithLaunchQuerySupportType(scheme, launchQuerySupportType);
     }
-    pub fn FindFileHandlersAsync(extension: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
+    pub fn FindFileHandlersAsync(extension: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         const _f = try @This()._ILauncherStatics2Cache.get();
         return try _f.FindFileHandlersAsync(extension);
     }
@@ -3831,13 +3831,13 @@ pub const Launcher = extern struct {
 };
 pub const LauncherOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetApplicationPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILauncherOptions2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTargetApplicationPackageFamilyName();
     }
-    pub fn putTargetApplicationPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetApplicationPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ILauncherOptions2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3875,19 +3875,19 @@ pub const LauncherOptions = extern struct {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.getUI();
     }
-    pub fn getPreferredApplicationPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPreferredApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.getPreferredApplicationPackageFamilyName();
     }
-    pub fn putPreferredApplicationPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreferredApplicationPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.putPreferredApplicationPackageFamilyName(value);
     }
-    pub fn getPreferredApplicationDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPreferredApplicationDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.getPreferredApplicationDisplayName();
     }
-    pub fn putPreferredApplicationDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreferredApplicationDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.putPreferredApplicationDisplayName(value);
     }
@@ -3899,11 +3899,11 @@ pub const LauncherOptions = extern struct {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.putFallbackUri(value);
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.getContentType();
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILauncherOptions = @ptrCast(self);
         return try this.putContentType(value);
     }
@@ -4131,7 +4131,7 @@ pub const RemoteLauncherOptions = extern struct {
         const this: *IRemoteLauncherOptions = @ptrCast(self);
         return try this.putFallbackUri(value);
     }
-    pub fn getPreferredAppIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getPreferredAppIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IRemoteLauncherOptions = @ptrCast(self);
         return try this.getPreferredAppIds();
     }
@@ -4151,7 +4151,7 @@ pub const RemoteLauncherOptions = extern struct {
 };
 pub const User = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNonRoamableId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNonRoamableId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUser = @ptrCast(self);
         return try this.getNonRoamableId();
     }
@@ -4163,11 +4163,11 @@ pub const User = extern struct {
         const this: *IUser = @ptrCast(self);
         return try this.getType();
     }
-    pub fn GetPropertyAsync(self: *@This(), value: HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
+    pub fn GetPropertyAsync(self: *@This(), value: ?HSTRING) core.HResult!*IAsyncOperation(IInspectable) {
         const this: *IUser = @ptrCast(self);
         return try this.GetPropertyAsync(value);
     }
-    pub fn GetPropertiesAsync(self: *@This(), values: *IVectorView(HSTRING)) core.HResult!*IAsyncOperation(IPropertySet) {
+    pub fn GetPropertiesAsync(self: *@This(), values: *IVectorView(?HSTRING)) core.HResult!*IAsyncOperation(IPropertySet) {
         const this: *IUser = @ptrCast(self);
         return try this.GetPropertiesAsync(values);
     }
@@ -4200,7 +4200,7 @@ pub const User = extern struct {
         const _f = try @This()._IUserStaticsCache.get();
         return try _f.FindAllAsyncWithTyAndStatus(ty, status);
     }
-    pub fn GetFromId(nonRoamableId: HSTRING) core.HResult!*User {
+    pub fn GetFromId(nonRoamableId: ?HSTRING) core.HResult!*User {
         const _f = try @This()._IUserStaticsCache.get();
         return try _f.GetFromId(nonRoamableId);
     }
@@ -4292,7 +4292,7 @@ pub const UserDeviceAssociation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FindUserFromDeviceId(deviceId: HSTRING) core.HResult!*User {
+    pub fn FindUserFromDeviceId(deviceId: ?HSTRING) core.HResult!*User {
         const _f = try @This()._IUserDeviceAssociationStaticsCache.get();
         return try _f.FindUserFromDeviceId(deviceId);
     }
@@ -4310,7 +4310,7 @@ pub const UserDeviceAssociation = extern struct {
 };
 pub const UserDeviceAssociationChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDeviceAssociationChangedEventArgs = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -4722,13 +4722,13 @@ pub const IProcessLauncherOptions = extern struct {
         const _c = self.vtable.put_StandardError(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWorkingDirectory(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWorkingDirectory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WorkingDirectory(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putWorkingDirectory(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWorkingDirectory(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WorkingDirectory(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4750,8 +4750,8 @@ pub const IProcessLauncherOptions = extern struct {
         put_StandardOutput: *const fn(self: *anyopaque, value: *IOutputStream) callconv(.winapi) HRESULT,
         get_StandardError: *const fn(self: *anyopaque, _r: **IOutputStream) callconv(.winapi) HRESULT,
         put_StandardError: *const fn(self: *anyopaque, value: *IOutputStream) callconv(.winapi) HRESULT,
-        get_WorkingDirectory: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_WorkingDirectory: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_WorkingDirectory: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_WorkingDirectory: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IProcessLauncherResult = extern struct {
@@ -4779,13 +4779,13 @@ pub const IProcessLauncherResult = extern struct {
 };
 pub const IProcessLauncherStatics = extern struct {
     vtable: *const VTable,
-    pub fn RunToCompletionAsync(self: *@This(), fileName: HSTRING, args: HSTRING) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
+    pub fn RunToCompletionAsync(self: *@This(), fileName: ?HSTRING, args: ?HSTRING) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
         var _r: *IAsyncOperation(ProcessLauncherResult) = undefined;
         const _c = self.vtable.RunToCompletionAsync(@ptrCast(self), fileName, args, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RunToCompletionAsyncWithOptions(self: *@This(), fileName: HSTRING, args: HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
+    pub fn RunToCompletionAsyncWithOptions(self: *@This(), fileName: ?HSTRING, args: ?HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
         var _r: *IAsyncOperation(ProcessLauncherResult) = undefined;
         const _c = self.vtable.RunToCompletionAsyncWithOptions(@ptrCast(self), fileName, args, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4803,8 +4803,8 @@ pub const IProcessLauncherStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RunToCompletionAsync: *const fn(self: *anyopaque, fileName: HSTRING, args: HSTRING, _r: **IAsyncOperation(ProcessLauncherResult)) callconv(.winapi) HRESULT,
-        RunToCompletionAsyncWithOptions: *const fn(self: *anyopaque, fileName: HSTRING, args: HSTRING, options: *ProcessLauncherOptions, _r: **IAsyncOperation(ProcessLauncherResult)) callconv(.winapi) HRESULT,
+        RunToCompletionAsync: *const fn(self: *anyopaque, fileName: ?HSTRING, args: ?HSTRING, _r: **IAsyncOperation(ProcessLauncherResult)) callconv(.winapi) HRESULT,
+        RunToCompletionAsyncWithOptions: *const fn(self: *anyopaque, fileName: ?HSTRING, args: ?HSTRING, options: *ProcessLauncherOptions, _r: **IAsyncOperation(ProcessLauncherResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IShutdownManagerStatics = extern struct {
@@ -4868,14 +4868,14 @@ pub const IShutdownManagerStatics2 = extern struct {
 };
 pub const ITimeZoneSettingsStatics = extern struct {
     vtable: *const VTable,
-    pub fn getCurrentTimeZoneDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrentTimeZoneDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrentTimeZoneDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedTimeZoneDisplayNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedTimeZoneDisplayNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedTimeZoneDisplayNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4886,7 +4886,7 @@ pub const ITimeZoneSettingsStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeTimeZoneByDisplayName(self: *@This(), timeZoneDisplayName: HSTRING) core.HResult!void {
+    pub fn ChangeTimeZoneByDisplayName(self: *@This(), timeZoneDisplayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ChangeTimeZoneByDisplayName(@ptrCast(self), timeZoneDisplayName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4902,10 +4902,10 @@ pub const ITimeZoneSettingsStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CurrentTimeZoneDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SupportedTimeZoneDisplayNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_CurrentTimeZoneDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedTimeZoneDisplayNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_CanChangeTimeZone: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        ChangeTimeZoneByDisplayName: *const fn(self: *anyopaque, timeZoneDisplayName: HSTRING) callconv(.winapi) HRESULT,
+        ChangeTimeZoneByDisplayName: *const fn(self: *anyopaque, timeZoneDisplayName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimeZoneSettingsStatics2 = extern struct {
@@ -4940,11 +4940,11 @@ pub const ProcessLauncher = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn RunToCompletionAsync(fileName: HSTRING, args: HSTRING) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
+    pub fn RunToCompletionAsync(fileName: ?HSTRING, args: ?HSTRING) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
         const _f = try @This()._IProcessLauncherStaticsCache.get();
         return try _f.RunToCompletionAsync(fileName, args);
     }
-    pub fn RunToCompletionAsyncWithOptions(fileName: HSTRING, args: HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
+    pub fn RunToCompletionAsyncWithOptions(fileName: ?HSTRING, args: ?HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
         const _f = try @This()._IProcessLauncherStaticsCache.get();
         return try _f.RunToCompletionAsyncWithOptions(fileName, args, options);
     }
@@ -4978,11 +4978,11 @@ pub const ProcessLauncherOptions = extern struct {
         const this: *IProcessLauncherOptions = @ptrCast(self);
         return try this.putStandardError(value);
     }
-    pub fn getWorkingDirectory(self: *@This()) core.HResult!HSTRING {
+    pub fn getWorkingDirectory(self: *@This()) core.HResult!?HSTRING {
         const this: *IProcessLauncherOptions = @ptrCast(self);
         return try this.getWorkingDirectory();
     }
-    pub fn putWorkingDirectory(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWorkingDirectory(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProcessLauncherOptions = @ptrCast(self);
         return try this.putWorkingDirectory(value);
     }
@@ -5051,11 +5051,11 @@ pub const TimeZoneSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrentTimeZoneDisplayName() core.HResult!HSTRING {
+    pub fn getCurrentTimeZoneDisplayName() core.HResult!?HSTRING {
         const _f = try @This()._ITimeZoneSettingsStaticsCache.get();
         return try _f.getCurrentTimeZoneDisplayName();
     }
-    pub fn getSupportedTimeZoneDisplayNames() core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedTimeZoneDisplayNames() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._ITimeZoneSettingsStaticsCache.get();
         return try _f.getSupportedTimeZoneDisplayNames();
     }
@@ -5063,7 +5063,7 @@ pub const TimeZoneSettings = extern struct {
         const _f = try @This()._ITimeZoneSettingsStaticsCache.get();
         return try _f.getCanChangeTimeZone();
     }
-    pub fn ChangeTimeZoneByDisplayName(timeZoneDisplayName: HSTRING) core.HResult!void {
+    pub fn ChangeTimeZoneByDisplayName(timeZoneDisplayName: ?HSTRING) core.HResult!void {
         const _f = try @This()._ITimeZoneSettingsStaticsCache.get();
         return try _f.ChangeTimeZoneByDisplayName(timeZoneDisplayName);
     }

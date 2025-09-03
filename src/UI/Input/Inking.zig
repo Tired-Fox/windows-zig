@@ -1077,8 +1077,8 @@ pub const IInkRecognitionResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTextCandidates(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetTextCandidates(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetTextCandidates(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1102,14 +1102,14 @@ pub const IInkRecognitionResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_BoundingRect: *const fn(self: *anyopaque, _r: *Rect) callconv(.winapi) HRESULT,
-        GetTextCandidates: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetTextCandidates: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         GetStrokes: *const fn(self: *anyopaque, _r: **IVectorView(InkStroke)) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkRecognizer = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1126,7 +1126,7 @@ pub const IInkRecognizer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkRecognizerContainer = extern struct {
@@ -1931,8 +1931,8 @@ pub const IPenAndInkSettings = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFontFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFontFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FontFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1964,7 +1964,7 @@ pub const IPenAndInkSettings = extern struct {
         get_IsHandwritingDirectlyIntoTextFieldEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_PenHandedness: *const fn(self: *anyopaque, _r: *PenHandedness) callconv(.winapi) HRESULT,
         get_HandwritingLineHeight: *const fn(self: *anyopaque, _r: *HandwritingLineHeight) callconv(.winapi) HRESULT,
-        get_FontFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FontFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_UserConsentsToHandwritingTelemetryCollection: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsTouchHandwritingEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -2805,7 +2805,7 @@ pub const InkRecognitionResult = extern struct {
         const this: *IInkRecognitionResult = @ptrCast(self);
         return try this.getBoundingRect();
     }
-    pub fn GetTextCandidates(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetTextCandidates(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IInkRecognitionResult = @ptrCast(self);
         return try this.GetTextCandidates();
     }
@@ -2826,7 +2826,7 @@ pub const InkRecognitionTarget = enum(i32) {
 };
 pub const InkRecognizer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkRecognizer = @ptrCast(self);
         return try this.getName();
     }
@@ -3304,7 +3304,7 @@ pub const PenAndInkSettings = extern struct {
         const this: *IPenAndInkSettings = @ptrCast(self);
         return try this.getHandwritingLineHeight();
     }
-    pub fn getFontFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFontFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPenAndInkSettings = @ptrCast(self);
         return try this.getFontFamilyName();
     }

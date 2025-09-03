@@ -17,7 +17,7 @@ pub const Certificate = extern struct {
         const this: *ICertificate = @ptrCast(self);
         return try this.GetHashValue();
     }
-    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
+    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: ?HSTRING) core.HResult![*]u8 {
         const this: *ICertificate = @ptrCast(self);
         return try this.GetHashValueWithHashAlgorithmName(hashAlgorithmName);
     }
@@ -25,11 +25,11 @@ pub const Certificate = extern struct {
         const this: *ICertificate = @ptrCast(self);
         return try this.GetCertificateBlob();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificate = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getIssuer(self: *@This()) core.HResult!HSTRING {
+    pub fn getIssuer(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificate = @ptrCast(self);
         return try this.getIssuer();
     }
@@ -49,15 +49,15 @@ pub const Certificate = extern struct {
         const this: *ICertificate = @ptrCast(self);
         return try this.getValidTo();
     }
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ICertificate = @ptrCast(self);
         return try this.getEnhancedKeyUsages();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificate = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificate = @ptrCast(self);
         return try this.getFriendlyName();
     }
@@ -73,19 +73,19 @@ pub const Certificate = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyUsages();
     }
-    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyAlgorithmName();
     }
-    pub fn getSignatureAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignatureAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSignatureAlgorithmName();
     }
-    pub fn getSignatureHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignatureHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -103,13 +103,13 @@ pub const Certificate = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPerUser();
     }
-    pub fn getStoreName(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStoreName();
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -160,19 +160,19 @@ pub const CertificateEnrollmentManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateRequestAsync(request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CreateRequestAsync(request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.CreateRequestAsync(request);
     }
-    pub fn InstallCertificateAsync(certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
+    pub fn InstallCertificateAsync(certificate: ?HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
         const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.InstallCertificateAsync(certificate, installOption);
     }
-    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._ICertificateEnrollmentManagerStaticsCache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
-    pub fn ImportPfxDataAsync(pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         const _f = try @This()._ICertificateEnrollmentManagerStatics3Cache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, pfxImportParameters);
     }
@@ -180,7 +180,7 @@ pub const CertificateEnrollmentManager = extern struct {
         const _f = try @This()._ICertificateEnrollmentManagerStatics2Cache.get();
         return try _f.getUserCertificateEnrollmentManager();
     }
-    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._ICertificateEnrollmentManagerStatics2Cache.get();
         return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
@@ -192,11 +192,11 @@ pub const CertificateEnrollmentManager = extern struct {
 };
 pub const CertificateExtension = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getObjectId(self: *@This()) core.HResult!HSTRING {
+    pub fn getObjectId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.getObjectId();
     }
-    pub fn putObjectId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putObjectId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.putObjectId(value);
     }
@@ -208,7 +208,7 @@ pub const CertificateExtension = extern struct {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.putIsCritical(value);
     }
-    pub fn EncodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn EncodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.EncodeValue(value);
     }
@@ -316,23 +316,23 @@ pub const CertificateKeyUsages = extern struct {
 };
 pub const CertificateQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.getEnhancedKeyUsages();
     }
-    pub fn getIssuerName(self: *@This()) core.HResult!HSTRING {
+    pub fn getIssuerName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.getIssuerName();
     }
-    pub fn putIssuerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIssuerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.putIssuerName(value);
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
@@ -376,13 +376,13 @@ pub const CertificateQuery = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeExpiredCertificates(value);
     }
-    pub fn getStoreName(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateQuery2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStoreName();
     }
-    pub fn putStoreName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStoreName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateQuery2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -404,19 +404,19 @@ pub const CertificateQuery = extern struct {
 };
 pub const CertificateRequestProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putSubject(value);
     }
-    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getKeyAlgorithmName();
     }
-    pub fn putKeyAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putKeyAlgorithmName(value);
     }
@@ -428,19 +428,19 @@ pub const CertificateRequestProperties = extern struct {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putKeySize(value);
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
-    pub fn getHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getHashAlgorithmName();
     }
-    pub fn putHashAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHashAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putHashAlgorithmName(value);
     }
@@ -468,21 +468,21 @@ pub const CertificateRequestProperties = extern struct {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putKeyProtectionLevel(value);
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getKeyStorageProviderName();
     }
-    pub fn putKeyStorageProviderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyStorageProviderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.putKeyStorageProviderName(value);
     }
-    pub fn getSmartcardReaderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSmartcardReaderName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmartcardReaderName();
     }
-    pub fn putSmartcardReaderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSmartcardReaderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -512,13 +512,13 @@ pub const CertificateRequestProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAttestationCredentialCertificate(value);
     }
-    pub fn getCurveName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurveName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurveName();
     }
-    pub fn putCurveName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurveName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -536,25 +536,25 @@ pub const CertificateRequestProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCurveParameters(value);
     }
-    pub fn getContainerNamePrefix(self: *@This()) core.HResult!HSTRING {
+    pub fn getContainerNamePrefix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContainerNamePrefix();
     }
-    pub fn putContainerNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContainerNamePrefix(value);
     }
-    pub fn getContainerName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContainerName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContainerName();
     }
-    pub fn putContainerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -572,7 +572,7 @@ pub const CertificateRequestProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseExistingKey(value);
     }
-    pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ICertificateRequestProperties4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -614,7 +614,7 @@ pub const CertificateStore = extern struct {
         const this: *ICertificateStore = @ptrCast(self);
         return try this.Delete(certificate);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -631,7 +631,7 @@ pub const CertificateStores = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetUserStoreByName(storeName: HSTRING) core.HResult!*UserCertificateStore {
+    pub fn GetUserStoreByName(storeName: ?HSTRING) core.HResult!*UserCertificateStore {
         const _f = try @This()._ICertificateStoresStatics2Cache.get();
         return try _f.GetUserStoreByName(storeName);
     }
@@ -651,7 +651,7 @@ pub const CertificateStores = extern struct {
         const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.getIntermediateCertificationAuthorities();
     }
-    pub fn GetStoreByName(storeName: HSTRING) core.HResult!*CertificateStore {
+    pub fn GetStoreByName(storeName: ?HSTRING) core.HResult!*CertificateStore {
         const _f = try @This()._ICertificateStoresStaticsCache.get();
         return try _f.GetStoreByName(storeName);
     }
@@ -662,7 +662,7 @@ pub const CertificateStores = extern struct {
 };
 pub const ChainBuildingParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IChainBuildingParameters = @ptrCast(self);
         return try this.getEnhancedKeyUsages();
     }
@@ -852,11 +852,11 @@ pub const CmsSignerInfo = extern struct {
         const this: *ICmsSignerInfo = @ptrCast(self);
         return try this.putCertificate(value);
     }
-    pub fn getHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICmsSignerInfo = @ptrCast(self);
         return try this.getHashAlgorithmName();
     }
-    pub fn putHashAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHashAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICmsSignerInfo = @ptrCast(self);
         return try this.putHashAlgorithmName(value);
     }
@@ -935,7 +935,7 @@ pub const ICertificate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
+    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: ?HSTRING) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetHashValueWithHashAlgorithmName(@ptrCast(self), hashAlgorithmName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -947,14 +947,14 @@ pub const ICertificate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIssuer(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIssuer(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Issuer(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -983,18 +983,18 @@ pub const ICertificate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_EnhancedKeyUsages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1015,17 +1015,17 @@ pub const ICertificate = extern struct {
         BuildChainAsyncWithParameters: *const fn(self: *anyopaque, certificates: *IIterable(Certificate), parameters: *ChainBuildingParameters, _r: **IAsyncOperation(CertificateChain)) callconv(.winapi) HRESULT,
         get_SerialNumber: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         GetHashValue: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
-        GetHashValueWithHashAlgorithmName: *const fn(self: *anyopaque, hashAlgorithmName: HSTRING, _r: *[*]u8) callconv(.winapi) HRESULT,
+        GetHashValueWithHashAlgorithmName: *const fn(self: *anyopaque, hashAlgorithmName: ?HSTRING, _r: *[*]u8) callconv(.winapi) HRESULT,
         GetCertificateBlob: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Issuer: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Issuer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_HasPrivateKey: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsStronglyProtected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ValidFrom: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_ValidTo: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificate2 = extern struct {
@@ -1042,20 +1042,20 @@ pub const ICertificate2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSignatureAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignatureAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignatureAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSignatureHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignatureHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignatureHashAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1080,9 +1080,9 @@ pub const ICertificate2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsSecurityDeviceBound: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_KeyUsages: *const fn(self: *anyopaque, _r: **CertificateKeyUsages) callconv(.winapi) HRESULT,
-        get_KeyAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SignatureAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SignatureHashAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_KeyAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SignatureAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SignatureHashAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SubjectAlternativeName: *const fn(self: *anyopaque, _r: **SubjectAlternativeNameInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -1094,14 +1094,14 @@ pub const ICertificate3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStoreName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyStorageProviderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1119,8 +1119,8 @@ pub const ICertificate3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsPerUser: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_StoreName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StoreName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateChain = extern struct {
@@ -1162,19 +1162,19 @@ pub const ICertificateChain = extern struct {
 };
 pub const ICertificateEnrollmentManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateRequestAsync(@ptrCast(self), request, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallCertificateAsync(self: *@This(), certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
+    pub fn InstallCertificateAsync(self: *@This(), certificate: ?HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InstallCertificateAsync(@ptrCast(self), certificate, installOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1192,9 +1192,9 @@ pub const ICertificateEnrollmentManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateRequestAsync: *const fn(self: *anyopaque, request: *CertificateRequestProperties, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        InstallCertificateAsync: *const fn(self: *anyopaque, certificate: HSTRING, installOption: InstallOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CreateRequestAsync: *const fn(self: *anyopaque, request: *CertificateRequestProperties, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        InstallCertificateAsync: *const fn(self: *anyopaque, certificate: ?HSTRING, installOption: InstallOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateEnrollmentManagerStatics2 = extern struct {
@@ -1205,7 +1205,7 @@ pub const ICertificateEnrollmentManagerStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1224,12 +1224,12 @@ pub const ICertificateEnrollmentManagerStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_UserCertificateEnrollmentManager: *const fn(self: *anyopaque, _r: **UserCertificateEnrollmentManager) callconv(.winapi) HRESULT,
-        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateEnrollmentManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, pfxImportParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1247,18 +1247,18 @@ pub const ICertificateEnrollmentManagerStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateExtension = extern struct {
     vtable: *const VTable,
-    pub fn getObjectId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getObjectId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ObjectId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putObjectId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putObjectId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ObjectId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1272,7 +1272,7 @@ pub const ICertificateExtension = extern struct {
         const _c = self.vtable.put_IsCritical(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn EncodeValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn EncodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.EncodeValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1298,11 +1298,11 @@ pub const ICertificateExtension = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ObjectId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ObjectId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ObjectId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ObjectId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsCritical: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsCritical: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        EncodeValue: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        EncodeValue: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Value: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         put_Value: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
     };
@@ -1444,29 +1444,29 @@ pub const ICertificateKeyUsages = extern struct {
 };
 pub const ICertificateQuery = extern struct {
     vtable: *const VTable,
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EnhancedKeyUsages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIssuerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIssuerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IssuerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIssuerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIssuerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IssuerName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1502,11 +1502,11 @@ pub const ICertificateQuery = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_IssuerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IssuerName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_IssuerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IssuerName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbprint: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         put_Thumbprint: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
         get_HardwareOnly: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1535,13 +1535,13 @@ pub const ICertificateQuery2 = extern struct {
         const _c = self.vtable.put_IncludeExpiredCertificates(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getStoreName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putStoreName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStoreName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_StoreName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1561,29 +1561,29 @@ pub const ICertificateQuery2 = extern struct {
         put_IncludeDuplicates: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IncludeExpiredCertificates: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IncludeExpiredCertificates: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_StoreName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_StoreName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_StoreName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_StoreName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateRequestProperties = extern struct {
     vtable: *const VTable,
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyAlgorithmName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1597,23 +1597,23 @@ pub const ICertificateRequestProperties = extern struct {
         const _c = self.vtable.put_KeySize(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HashAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHashAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHashAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HashAlgorithmName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1647,13 +1647,13 @@ pub const ICertificateRequestProperties = extern struct {
         const _c = self.vtable.put_KeyProtectionLevel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyStorageProviderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyStorageProviderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyStorageProviderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyStorageProviderName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1669,35 +1669,35 @@ pub const ICertificateRequestProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subject: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_KeyAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyAlgorithmName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subject: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_KeyAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyAlgorithmName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_KeySize: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_KeySize: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_HashAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HashAlgorithmName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_HashAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HashAlgorithmName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Exportable: *const fn(self: *anyopaque, _r: *ExportOption) callconv(.winapi) HRESULT,
         put_Exportable: *const fn(self: *anyopaque, value: ExportOption) callconv(.winapi) HRESULT,
         get_KeyUsages: *const fn(self: *anyopaque, _r: *EnrollKeyUsages) callconv(.winapi) HRESULT,
         put_KeyUsages: *const fn(self: *anyopaque, value: EnrollKeyUsages) callconv(.winapi) HRESULT,
         get_KeyProtectionLevel: *const fn(self: *anyopaque, _r: *KeyProtectionLevel) callconv(.winapi) HRESULT,
         put_KeyProtectionLevel: *const fn(self: *anyopaque, value: KeyProtectionLevel) callconv(.winapi) HRESULT,
-        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyStorageProviderName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyStorageProviderName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateRequestProperties2 = extern struct {
     vtable: *const VTable,
-    pub fn getSmartcardReaderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSmartcardReaderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmartcardReaderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSmartcardReaderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSmartcardReaderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SmartcardReaderName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1733,8 +1733,8 @@ pub const ICertificateRequestProperties2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmartcardReaderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SmartcardReaderName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SmartcardReaderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SmartcardReaderName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SigningCertificate: *const fn(self: *anyopaque, _r: **Certificate) callconv(.winapi) HRESULT,
         put_SigningCertificate: *const fn(self: *anyopaque, value: *Certificate) callconv(.winapi) HRESULT,
         get_AttestationCredentialCertificate: *const fn(self: *anyopaque, _r: **Certificate) callconv(.winapi) HRESULT,
@@ -1743,13 +1743,13 @@ pub const ICertificateRequestProperties2 = extern struct {
 };
 pub const ICertificateRequestProperties3 = extern struct {
     vtable: *const VTable,
-    pub fn getCurveName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurveName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurveName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCurveName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurveName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CurveName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1763,23 +1763,23 @@ pub const ICertificateRequestProperties3 = extern struct {
         const _c = self.vtable.put_CurveParameters(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContainerNamePrefix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContainerNamePrefix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContainerNamePrefix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContainerNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContainerNamePrefix(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContainerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContainerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContainerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContainerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContainerName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1805,22 +1805,22 @@ pub const ICertificateRequestProperties3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CurveName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CurveName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CurveName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CurveName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CurveParameters: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         put_CurveParameters: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
-        get_ContainerNamePrefix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContainerNamePrefix: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContainerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContainerName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContainerNamePrefix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContainerNamePrefix: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContainerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContainerName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_UseExistingKey: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_UseExistingKey: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateRequestProperties4 = extern struct {
     vtable: *const VTable,
-    pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SuppressedDefaults(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1849,7 +1849,7 @@ pub const ICertificateRequestProperties4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SuppressedDefaults: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_SuppressedDefaults: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_SubjectAlternativeName: *const fn(self: *anyopaque, _r: **SubjectAlternativeNameInfo) callconv(.winapi) HRESULT,
         get_Extensions: *const fn(self: *anyopaque, _r: **IVector(CertificateExtension)) callconv(.winapi) HRESULT,
     };
@@ -1882,8 +1882,8 @@ pub const ICertificateStore = extern struct {
 };
 pub const ICertificateStore2 = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1900,7 +1900,7 @@ pub const ICertificateStore2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateStoresStatics = extern struct {
@@ -1929,7 +1929,7 @@ pub const ICertificateStoresStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStoreByName(self: *@This(), storeName: HSTRING) core.HResult!*CertificateStore {
+    pub fn GetStoreByName(self: *@This(), storeName: ?HSTRING) core.HResult!*CertificateStore {
         var _r: *CertificateStore = undefined;
         const _c = self.vtable.GetStoreByName(@ptrCast(self), storeName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1951,12 +1951,12 @@ pub const ICertificateStoresStatics = extern struct {
         FindAllAsyncWithQuery: *const fn(self: *anyopaque, query: *CertificateQuery, _r: **IAsyncOperation(IVectorView(Certificate))) callconv(.winapi) HRESULT,
         get_TrustedRootCertificationAuthorities: *const fn(self: *anyopaque, _r: **CertificateStore) callconv(.winapi) HRESULT,
         get_IntermediateCertificationAuthorities: *const fn(self: *anyopaque, _r: **CertificateStore) callconv(.winapi) HRESULT,
-        GetStoreByName: *const fn(self: *anyopaque, storeName: HSTRING, _r: **CertificateStore) callconv(.winapi) HRESULT,
+        GetStoreByName: *const fn(self: *anyopaque, storeName: ?HSTRING, _r: **CertificateStore) callconv(.winapi) HRESULT,
     };
 };
 pub const ICertificateStoresStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetUserStoreByName(self: *@This(), storeName: HSTRING) core.HResult!*UserCertificateStore {
+    pub fn GetUserStoreByName(self: *@This(), storeName: ?HSTRING) core.HResult!*UserCertificateStore {
         var _r: *UserCertificateStore = undefined;
         const _c = self.vtable.GetUserStoreByName(@ptrCast(self), storeName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1974,13 +1974,13 @@ pub const ICertificateStoresStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetUserStoreByName: *const fn(self: *anyopaque, storeName: HSTRING, _r: **UserCertificateStore) callconv(.winapi) HRESULT,
+        GetUserStoreByName: *const fn(self: *anyopaque, storeName: ?HSTRING, _r: **UserCertificateStore) callconv(.winapi) HRESULT,
     };
 };
 pub const IChainBuildingParameters = extern struct {
     vtable: *const VTable,
-    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EnhancedKeyUsages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2053,7 +2053,7 @@ pub const IChainBuildingParameters = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_EnhancedKeyUsages: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_ValidationTimestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_ValidationTimestamp: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_RevocationCheckEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2292,13 +2292,13 @@ pub const ICmsSignerInfo = extern struct {
         const _c = self.vtable.put_Certificate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHashAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HashAlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putHashAlgorithmName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putHashAlgorithmName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_HashAlgorithmName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2322,8 +2322,8 @@ pub const ICmsSignerInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Certificate: *const fn(self: *anyopaque, _r: **Certificate) callconv(.winapi) HRESULT,
         put_Certificate: *const fn(self: *anyopaque, value: *Certificate) callconv(.winapi) HRESULT,
-        get_HashAlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_HashAlgorithmName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_HashAlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_HashAlgorithmName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_TimestampInfo: *const fn(self: *anyopaque, _r: **CmsTimestampInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -2366,50 +2366,50 @@ pub const ICmsTimestampInfo = extern struct {
 };
 pub const IKeyAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getRsa(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsa(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rsa(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDsa(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDsa(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Dsa(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdh256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdh256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdh256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdh384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdh384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdh384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdh521(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdh521(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdh521(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsa256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsa256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdsa256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsa384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsa384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdsa384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsa521(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsa521(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdsa521(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2426,26 +2426,26 @@ pub const IKeyAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Rsa: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Dsa: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdh256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdh384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdh521: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdsa256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdsa384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdsa521: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Rsa: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Dsa: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdh256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdh384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdh521: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdsa256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdsa384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdsa521: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getEcdsa(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsa(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdsa(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdh(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdh(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdh(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2462,20 +2462,20 @@ pub const IKeyAlgorithmNamesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Ecdsa: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ecdh: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdsa: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ecdh: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyAttestationHelperStatics = extern struct {
     vtable: *const VTable,
-    pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.DecryptTpmAttestationCredentialAsync(@ptrCast(self), credential, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTpmAttestationCredentialId(self: *@This(), credential: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetTpmAttestationCredentialId(self: *@This(), credential: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTpmAttestationCredentialId(@ptrCast(self), credential, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2492,14 +2492,14 @@ pub const IKeyAttestationHelperStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        DecryptTpmAttestationCredentialAsync: *const fn(self: *anyopaque, credential: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetTpmAttestationCredentialId: *const fn(self: *anyopaque, credential: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        DecryptTpmAttestationCredentialAsync: *const fn(self: *anyopaque, credential: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetTpmAttestationCredentialId: *const fn(self: *anyopaque, credential: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyAttestationHelperStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: ?HSTRING, containerName: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.DecryptTpmAttestationCredentialAsync(@ptrCast(self), credential, containerName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2516,25 +2516,25 @@ pub const IKeyAttestationHelperStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        DecryptTpmAttestationCredentialAsync: *const fn(self: *anyopaque, credential: HSTRING, containerName: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        DecryptTpmAttestationCredentialAsync: *const fn(self: *anyopaque, credential: ?HSTRING, containerName: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyStorageProviderNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getSoftwareKeyStorageProvider(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSoftwareKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SoftwareKeyStorageProvider(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSmartcardKeyStorageProvider(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSmartcardKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmartcardKeyStorageProvider(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPlatformKeyStorageProvider(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlatformKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlatformKeyStorageProvider(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2551,15 +2551,15 @@ pub const IKeyStorageProviderNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SoftwareKeyStorageProvider: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SmartcardKeyStorageProvider: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PlatformKeyStorageProvider: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SoftwareKeyStorageProvider: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SmartcardKeyStorageProvider: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PlatformKeyStorageProvider: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyStorageProviderNamesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getPassportKeyStorageProvider(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPassportKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PassportKeyStorageProvider(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2576,7 +2576,7 @@ pub const IKeyStorageProviderNamesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PassportKeyStorageProvider: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PassportKeyStorageProvider: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPfxImportParameters = extern struct {
@@ -2611,43 +2611,43 @@ pub const IPfxImportParameters = extern struct {
         const _c = self.vtable.put_InstallOptions(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyStorageProviderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putKeyStorageProviderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyStorageProviderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_KeyStorageProviderName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContainerNamePrefix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContainerNamePrefix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContainerNamePrefix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContainerNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContainerNamePrefix(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getReaderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getReaderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReaderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putReaderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putReaderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ReaderName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2669,32 +2669,32 @@ pub const IPfxImportParameters = extern struct {
         put_KeyProtectionLevel: *const fn(self: *anyopaque, value: KeyProtectionLevel) callconv(.winapi) HRESULT,
         get_InstallOptions: *const fn(self: *anyopaque, _r: *InstallOptions) callconv(.winapi) HRESULT,
         put_InstallOptions: *const fn(self: *anyopaque, value: InstallOptions) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_KeyStorageProviderName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContainerNamePrefix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContainerNamePrefix: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ReaderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ReaderName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_KeyStorageProviderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_KeyStorageProviderName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContainerNamePrefix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContainerNamePrefix: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ReaderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ReaderName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardCertificateStoreNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getPersonal(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPersonal(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Personal(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTrustedRootCertificationAuthorities(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTrustedRootCertificationAuthorities(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TrustedRootCertificationAuthorities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIntermediateCertificationAuthorities(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIntermediateCertificationAuthorities(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IntermediateCertificationAuthorities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2711,45 +2711,45 @@ pub const IStandardCertificateStoreNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Personal: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TrustedRootCertificationAuthorities: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IntermediateCertificationAuthorities: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Personal: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TrustedRootCertificationAuthorities: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IntermediateCertificationAuthorities: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISubjectAlternativeNameInfo = extern struct {
     vtable: *const VTable,
-    pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_EmailName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIPAddress(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getIPAddress(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_IPAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUrl(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getUrl(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Url(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDnsName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getDnsName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DnsName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDistinguishedName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getDistinguishedName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DistinguishedName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrincipalName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getPrincipalName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PrincipalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2766,48 +2766,48 @@ pub const ISubjectAlternativeNameInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EmailName: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_IPAddress: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Url: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_DnsName: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_DistinguishedName: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_PrincipalName: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_EmailName: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_IPAddress: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Url: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DnsName: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DistinguishedName: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_PrincipalName: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISubjectAlternativeNameInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn getEmailNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getEmailNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EmailNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIPAddresses(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getIPAddresses(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_IPAddresses(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUrls(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getUrls(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Urls(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDnsNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDnsNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DnsNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDistinguishedNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDistinguishedNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DistinguishedNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrincipalNames(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getPrincipalNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_PrincipalNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2830,36 +2830,36 @@ pub const ISubjectAlternativeNameInfo2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EmailNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_IPAddresses: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Urls: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_DnsNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_DistinguishedNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_PrincipalNames: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_EmailNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_IPAddresses: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Urls: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DnsNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DistinguishedNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_PrincipalNames: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Extension: *const fn(self: *anyopaque, _r: **CertificateExtension) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserCertificateEnrollmentManager = extern struct {
     vtable: *const VTable,
-    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateRequestAsync(@ptrCast(self), request, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallCertificateAsync(self: *@This(), certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
+    pub fn InstallCertificateAsync(self: *@This(), certificate: ?HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InstallCertificateAsync(@ptrCast(self), certificate, installOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPfxDataAsyncWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithKeyStorageProvider(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsyncWithKeyStorageProvider(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2877,15 +2877,15 @@ pub const IUserCertificateEnrollmentManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateRequestAsync: *const fn(self: *anyopaque, request: *CertificateRequestProperties, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        InstallCertificateAsync: *const fn(self: *anyopaque, certificate: HSTRING, installOption: InstallOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ImportPfxDataAsyncWithKeyStorageProvider: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CreateRequestAsync: *const fn(self: *anyopaque, request: *CertificateRequestProperties, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        InstallCertificateAsync: *const fn(self: *anyopaque, certificate: ?HSTRING, installOption: InstallOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsyncWithKeyStorageProvider: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserCertificateEnrollmentManager2 = extern struct {
     vtable: *const VTable,
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, pfxImportParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2903,7 +2903,7 @@ pub const IUserCertificateEnrollmentManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserCertificateStore = extern struct {
@@ -2920,8 +2920,8 @@ pub const IUserCertificateStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2940,7 +2940,7 @@ pub const IUserCertificateStore = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAddAsync: *const fn(self: *anyopaque, certificate: *Certificate, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteAsync: *const fn(self: *anyopaque, certificate: *Certificate, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const InstallOptions = enum(i32) {
@@ -2952,43 +2952,43 @@ pub const KeyAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRsa() core.HResult!HSTRING {
+    pub fn getRsa() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getRsa();
     }
-    pub fn getDsa() core.HResult!HSTRING {
+    pub fn getDsa() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getDsa();
     }
-    pub fn getEcdh256() core.HResult!HSTRING {
+    pub fn getEcdh256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh256();
     }
-    pub fn getEcdh384() core.HResult!HSTRING {
+    pub fn getEcdh384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh384();
     }
-    pub fn getEcdh521() core.HResult!HSTRING {
+    pub fn getEcdh521() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdh521();
     }
-    pub fn getEcdsa256() core.HResult!HSTRING {
+    pub fn getEcdsa256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa256();
     }
-    pub fn getEcdsa384() core.HResult!HSTRING {
+    pub fn getEcdsa384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa384();
     }
-    pub fn getEcdsa521() core.HResult!HSTRING {
+    pub fn getEcdsa521() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsa521();
     }
-    pub fn getEcdsa() core.HResult!HSTRING {
+    pub fn getEcdsa() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdsa();
     }
-    pub fn getEcdh() core.HResult!HSTRING {
+    pub fn getEcdh() core.HResult!?HSTRING {
         const _f = try @This()._IKeyAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdh();
     }
@@ -3002,15 +3002,15 @@ pub const KeyAttestationHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn DecryptTpmAttestationCredentialAsyncWithContainerName(credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn DecryptTpmAttestationCredentialAsyncWithContainerName(credential: ?HSTRING, containerName: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IKeyAttestationHelperStatics2Cache.get();
         return try _f.DecryptTpmAttestationCredentialAsync(credential, containerName);
     }
-    pub fn DecryptTpmAttestationCredentialAsync(credential: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn DecryptTpmAttestationCredentialAsync(credential: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IKeyAttestationHelperStaticsCache.get();
         return try _f.DecryptTpmAttestationCredentialAsync(credential);
     }
-    pub fn GetTpmAttestationCredentialId(credential: HSTRING) core.HResult!HSTRING {
+    pub fn GetTpmAttestationCredentialId(credential: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IKeyAttestationHelperStaticsCache.get();
         return try _f.GetTpmAttestationCredentialId(credential);
     }
@@ -3035,19 +3035,19 @@ pub const KeyStorageProviderNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPassportKeyStorageProvider() core.HResult!HSTRING {
+    pub fn getPassportKeyStorageProvider() core.HResult!?HSTRING {
         const _f = try @This()._IKeyStorageProviderNamesStatics2Cache.get();
         return try _f.getPassportKeyStorageProvider();
     }
-    pub fn getSoftwareKeyStorageProvider() core.HResult!HSTRING {
+    pub fn getSoftwareKeyStorageProvider() core.HResult!?HSTRING {
         const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getSoftwareKeyStorageProvider();
     }
-    pub fn getSmartcardKeyStorageProvider() core.HResult!HSTRING {
+    pub fn getSmartcardKeyStorageProvider() core.HResult!?HSTRING {
         const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getSmartcardKeyStorageProvider();
     }
-    pub fn getPlatformKeyStorageProvider() core.HResult!HSTRING {
+    pub fn getPlatformKeyStorageProvider() core.HResult!?HSTRING {
         const _f = try @This()._IKeyStorageProviderNamesStaticsCache.get();
         return try _f.getPlatformKeyStorageProvider();
     }
@@ -3082,35 +3082,35 @@ pub const PfxImportParameters = extern struct {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putInstallOptions(value);
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn putFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putFriendlyName(value);
     }
-    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.getKeyStorageProviderName();
     }
-    pub fn putKeyStorageProviderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putKeyStorageProviderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putKeyStorageProviderName(value);
     }
-    pub fn getContainerNamePrefix(self: *@This()) core.HResult!HSTRING {
+    pub fn getContainerNamePrefix(self: *@This()) core.HResult!?HSTRING {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.getContainerNamePrefix();
     }
-    pub fn putContainerNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContainerNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putContainerNamePrefix(value);
     }
-    pub fn getReaderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getReaderName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.getReaderName();
     }
-    pub fn putReaderName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putReaderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putReaderName(value);
     }
@@ -3140,15 +3140,15 @@ pub const StandardCertificateStoreNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPersonal() core.HResult!HSTRING {
+    pub fn getPersonal() core.HResult!?HSTRING {
         const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getPersonal();
     }
-    pub fn getTrustedRootCertificationAuthorities() core.HResult!HSTRING {
+    pub fn getTrustedRootCertificationAuthorities() core.HResult!?HSTRING {
         const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getTrustedRootCertificationAuthorities();
     }
-    pub fn getIntermediateCertificationAuthorities() core.HResult!HSTRING {
+    pub fn getIntermediateCertificationAuthorities() core.HResult!?HSTRING {
         const _f = try @This()._IStandardCertificateStoreNamesStaticsCache.get();
         return try _f.getIntermediateCertificationAuthorities();
     }
@@ -3158,61 +3158,61 @@ pub const StandardCertificateStoreNames = extern struct {
 };
 pub const SubjectAlternativeNameInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getEmailName();
     }
-    pub fn getIPAddress(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getIPAddress(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getIPAddress();
     }
-    pub fn getUrl(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getUrl(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getUrl();
     }
-    pub fn getDnsName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getDnsName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getDnsName();
     }
-    pub fn getDistinguishedName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getDistinguishedName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getDistinguishedName();
     }
-    pub fn getPrincipalName(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getPrincipalName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getPrincipalName();
     }
-    pub fn getEmailNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getEmailNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmailNames();
     }
-    pub fn getIPAddresses(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getIPAddresses(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIPAddresses();
     }
-    pub fn getUrls(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getUrls(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUrls();
     }
-    pub fn getDnsNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDnsNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDnsNames();
     }
-    pub fn getDistinguishedNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDistinguishedNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDistinguishedNames();
     }
-    pub fn getPrincipalNames(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getPrincipalNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3240,23 +3240,23 @@ pub const SubjectAlternativeNameInfo = extern struct {
 };
 pub const UserCertificateEnrollmentManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.CreateRequestAsync(request);
     }
-    pub fn InstallCertificateAsync(self: *@This(), certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
+    pub fn InstallCertificateAsync(self: *@This(), certificate: ?HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.InstallCertificateAsync(certificate, installOption);
     }
-    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
-    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: ?HSTRING, keyStorageProvider: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
-    pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var this: ?*IUserCertificateEnrollmentManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserCertificateEnrollmentManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3278,7 +3278,7 @@ pub const UserCertificateStore = extern struct {
         const this: *IUserCertificateStore = @ptrCast(self);
         return try this.RequestDeleteAsync(certificate);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserCertificateStore = @ptrCast(self);
         return try this.getName();
     }

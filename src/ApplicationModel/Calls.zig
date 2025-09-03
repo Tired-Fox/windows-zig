@@ -76,13 +76,13 @@ pub const ILockScreenCallUI = extern struct {
         const _c = self.vtable.remove_Closed(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCallTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCallTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -103,8 +103,8 @@ pub const ILockScreenCallUI = extern struct {
         remove_EndRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_Closed: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenCallUI,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Closed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_CallTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CallTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CallTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CallTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const LockScreenCallEndCallDeferral = extern struct {
@@ -157,11 +157,11 @@ pub const LockScreenCallUI = extern struct {
         const this: *ILockScreenCallUI = @ptrCast(self);
         return try this.removeClosed(token);
     }
-    pub fn getCallTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ILockScreenCallUI = @ptrCast(self);
         return try this.getCallTitle();
     }
-    pub fn putCallTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILockScreenCallUI = @ptrCast(self);
         return try this.putCallTitle(value);
     }
@@ -225,8 +225,8 @@ pub const IPhoneCall = extern struct {
         const _c = self.vtable.remove_IsMutedChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCallId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -387,7 +387,7 @@ pub const IPhoneCall = extern struct {
         remove_AudioDeviceChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_IsMutedChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(PhoneCall,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_IsMutedChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_CallId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsMuted: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *PhoneCallStatus) callconv(.winapi) HRESULT,
         get_AudioDevice: *const fn(self: *anyopaque, _r: *PhoneCallAudioDevice) callconv(.winapi) HRESULT,
@@ -435,7 +435,7 @@ pub const IPhoneCallBlockingStatics = extern struct {
         const _c = self.vtable.put_BlockPrivateNumbers(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetCallBlockingListAsync(self: *@This(), phoneNumberList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn SetCallBlockingListAsync(self: *@This(), phoneNumberList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.SetCallBlockingListAsync(@ptrCast(self), phoneNumberList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -457,7 +457,7 @@ pub const IPhoneCallBlockingStatics = extern struct {
         put_BlockUnknownNumbers: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_BlockPrivateNumbers: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_BlockPrivateNumbers: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        SetCallBlockingListAsync: *const fn(self: *anyopaque, phoneNumberList: *IIterable(HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        SetCallBlockingListAsync: *const fn(self: *anyopaque, phoneNumberList: *IIterable(?HSTRING), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallInfo = extern struct {
@@ -480,14 +480,14 @@ pub const IPhoneCallInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -513,14 +513,14 @@ pub const IPhoneCallInfo = extern struct {
         get_LineId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_IsHoldSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CallDirection: *const fn(self: *anyopaque, _r: *PhoneCallDirection) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn ShowPhoneCallUI(self: *@This(), phoneNumber: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn ShowPhoneCallUI(self: *@This(), phoneNumber: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ShowPhoneCallUI(@ptrCast(self), phoneNumber, displayName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -536,7 +536,7 @@ pub const IPhoneCallManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ShowPhoneCallUI: *const fn(self: *anyopaque, phoneNumber: HSTRING, displayName: HSTRING) callconv(.winapi) HRESULT,
+        ShowPhoneCallUI: *const fn(self: *anyopaque, phoneNumber: ?HSTRING, displayName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallManagerStatics2 = extern struct {
@@ -595,7 +595,7 @@ pub const IPhoneCallManagerStatics2 = extern struct {
 };
 pub const IPhoneCallStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetFromId(self: *@This(), callId: HSTRING) core.HResult!*PhoneCall {
+    pub fn GetFromId(self: *@This(), callId: ?HSTRING) core.HResult!*PhoneCall {
         var _r: *PhoneCall = undefined;
         const _c = self.vtable.GetFromId(@ptrCast(self), callId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -613,12 +613,12 @@ pub const IPhoneCallStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetFromId: *const fn(self: *anyopaque, callId: HSTRING, _r: **PhoneCall) callconv(.winapi) HRESULT,
+        GetFromId: *const fn(self: *anyopaque, callId: ?HSTRING, _r: **PhoneCall) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallStore = extern struct {
     vtable: *const VTable,
-    pub fn IsEmergencyPhoneNumberAsync(self: *@This(), number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsEmergencyPhoneNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsEmergencyPhoneNumberAsync(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -648,7 +648,7 @@ pub const IPhoneCallStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsEmergencyPhoneNumberAsync: *const fn(self: *anyopaque, number: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        IsEmergencyPhoneNumberAsync: *const fn(self: *anyopaque, number: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         GetDefaultLineAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Guid)) callconv(.winapi) HRESULT,
         RequestLineWatcher: *const fn(self: *anyopaque, _r: **PhoneLineWatcher) callconv(.winapi) HRESULT,
     };
@@ -678,7 +678,7 @@ pub const IPhoneCallVideoCapabilities = extern struct {
 };
 pub const IPhoneCallVideoCapabilitiesManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetCapabilitiesAsync(self: *@This(), phoneNumber: HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
+    pub fn GetCapabilitiesAsync(self: *@This(), phoneNumber: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
         var _r: *IAsyncOperation(PhoneCallVideoCapabilities) = undefined;
         const _c = self.vtable.GetCapabilitiesAsync(@ptrCast(self), phoneNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -696,7 +696,7 @@ pub const IPhoneCallVideoCapabilitiesManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCapabilitiesAsync: *const fn(self: *anyopaque, phoneNumber: HSTRING, _r: **IAsyncOperation(PhoneCallVideoCapabilities)) callconv(.winapi) HRESULT,
+        GetCapabilitiesAsync: *const fn(self: *anyopaque, phoneNumber: ?HSTRING, _r: **IAsyncOperation(PhoneCallVideoCapabilities)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallsResult = extern struct {
@@ -731,23 +731,23 @@ pub const IPhoneCallsResult = extern struct {
 };
 pub const IPhoneDialOptions = extern struct {
     vtable: *const VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Number(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -803,10 +803,10 @@ pub const IPhoneDialOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Number: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Number: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Number: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Number: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
         put_Contact: *const fn(self: *anyopaque, value: *Contact) callconv(.winapi) HRESULT,
         get_ContactPhone: *const fn(self: *anyopaque, _r: **ContactPhone) callconv(.winapi) HRESULT,
@@ -847,8 +847,8 @@ pub const IPhoneLine = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -859,8 +859,8 @@ pub const IPhoneLine = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNetworkName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNetworkName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -901,13 +901,13 @@ pub const IPhoneLine = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsImmediateDialNumberAsync(self: *@This(), number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsImmediateDialNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsImmediateDialNumberAsync(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Dial(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn Dial(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Dial(@ptrCast(self), number, displayName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -932,17 +932,17 @@ pub const IPhoneLine = extern struct {
         get_Id: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_DisplayColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         get_NetworkState: *const fn(self: *anyopaque, _r: *PhoneNetworkState) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Voicemail: *const fn(self: *anyopaque, _r: **PhoneVoicemail) callconv(.winapi) HRESULT,
-        get_NetworkName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NetworkName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CellularDetails: *const fn(self: *anyopaque, _r: **PhoneLineCellularDetails) callconv(.winapi) HRESULT,
         get_Transport: *const fn(self: *anyopaque, _r: *PhoneLineTransport) callconv(.winapi) HRESULT,
         get_CanDial: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_SupportsTile: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_VideoCallingCapabilities: *const fn(self: *anyopaque, _r: **PhoneCallVideoCapabilities) callconv(.winapi) HRESULT,
         get_LineConfiguration: *const fn(self: *anyopaque, _r: **PhoneLineConfiguration) callconv(.winapi) HRESULT,
-        IsImmediateDialNumberAsync: *const fn(self: *anyopaque, number: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        Dial: *const fn(self: *anyopaque, number: HSTRING, displayName: HSTRING) callconv(.winapi) HRESULT,
+        IsImmediateDialNumberAsync: *const fn(self: *anyopaque, number: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        Dial: *const fn(self: *anyopaque, number: ?HSTRING, displayName: ?HSTRING) callconv(.winapi) HRESULT,
         DialWithOptions: *const fn(self: *anyopaque, options: *PhoneDialOptions) callconv(.winapi) HRESULT,
     };
 };
@@ -952,8 +952,8 @@ pub const IPhoneLine2 = extern struct {
         const _c = self.vtable.EnableTextReply(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTransportDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -971,18 +971,18 @@ pub const IPhoneLine2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         EnableTextReply: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_TransportDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TransportDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneLine3 = extern struct {
     vtable: *const VTable,
-    pub fn DialWithResult(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!*PhoneLineDialResult {
+    pub fn DialWithResult(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*PhoneLineDialResult {
         var _r: *PhoneLineDialResult = undefined;
         const _c = self.vtable.DialWithResult(@ptrCast(self), number, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DialWithResultAsync(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
+    pub fn DialWithResultAsync(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
         var _r: *IAsyncOperation(PhoneLineDialResult) = undefined;
         const _c = self.vtable.DialWithResultAsync(@ptrCast(self), number, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1012,8 +1012,8 @@ pub const IPhoneLine3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        DialWithResult: *const fn(self: *anyopaque, number: HSTRING, displayName: HSTRING, _r: **PhoneLineDialResult) callconv(.winapi) HRESULT,
-        DialWithResultAsync: *const fn(self: *anyopaque, number: HSTRING, displayName: HSTRING, _r: **IAsyncOperation(PhoneLineDialResult)) callconv(.winapi) HRESULT,
+        DialWithResult: *const fn(self: *anyopaque, number: ?HSTRING, displayName: ?HSTRING, _r: **PhoneLineDialResult) callconv(.winapi) HRESULT,
+        DialWithResultAsync: *const fn(self: *anyopaque, number: ?HSTRING, displayName: ?HSTRING, _r: **IAsyncOperation(PhoneLineDialResult)) callconv(.winapi) HRESULT,
         GetAllActivePhoneCalls: *const fn(self: *anyopaque, _r: **PhoneCallsResult) callconv(.winapi) HRESULT,
         GetAllActivePhoneCallsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PhoneCallsResult)) callconv(.winapi) HRESULT,
     };
@@ -1044,8 +1044,8 @@ pub const IPhoneLineCellularDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNetworkOperatorDisplayText(self: *@This(), location: PhoneLineNetworkOperatorDisplayTextLocation) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNetworkOperatorDisplayText(self: *@This(), location: PhoneLineNetworkOperatorDisplayTextLocation) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNetworkOperatorDisplayText(@ptrCast(self), location, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1066,7 +1066,7 @@ pub const IPhoneLineCellularDetails = extern struct {
         get_SimSlotIndex: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_IsModemOn: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_RegistrationRejectCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        GetNetworkOperatorDisplayText: *const fn(self: *anyopaque, location: PhoneLineNetworkOperatorDisplayTextLocation, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetNetworkOperatorDisplayText: *const fn(self: *anyopaque, location: PhoneLineNetworkOperatorDisplayTextLocation, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneLineConfiguration = extern struct {
@@ -1077,8 +1077,8 @@ pub const IPhoneLineConfiguration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1096,7 +1096,7 @@ pub const IPhoneLineConfiguration = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsVideoCallingEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_ExtendedProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneLineDialResult = extern struct {
@@ -1154,8 +1154,8 @@ pub const IPhoneLineStatics = extern struct {
 };
 pub const IPhoneLineTransportDevice = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1218,7 +1218,7 @@ pub const IPhoneLineTransportDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Transport: *const fn(self: *anyopaque, _r: *PhoneLineTransport) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceAccessStatus)) callconv(.winapi) HRESULT,
         RegisterApp: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -1286,20 +1286,20 @@ pub const IPhoneLineTransportDevice2 = extern struct {
 };
 pub const IPhoneLineTransportDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromId(self: *@This(), id: HSTRING) core.HResult!*PhoneLineTransportDevice {
+    pub fn FromId(self: *@This(), id: ?HSTRING) core.HResult!*PhoneLineTransportDevice {
         var _r: *PhoneLineTransportDevice = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithTransport(self: *@This(), transport: PhoneLineTransport) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithTransport(self: *@This(), transport: PhoneLineTransport) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithTransport(@ptrCast(self), transport, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1316,9 +1316,9 @@ pub const IPhoneLineTransportDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, id: HSTRING, _r: **PhoneLineTransportDevice) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithTransport: *const fn(self: *anyopaque, transport: PhoneLineTransport, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, id: ?HSTRING, _r: **PhoneLineTransportDevice) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithTransport: *const fn(self: *anyopaque, transport: PhoneLineTransport, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneLineWatcher = extern struct {
@@ -1439,8 +1439,8 @@ pub const IPhoneLineWatcherEventArgs = extern struct {
 };
 pub const IPhoneVoicemail = extern struct {
     vtable: *const VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1475,7 +1475,7 @@ pub const IPhoneVoicemail = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Number: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Number: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MessageCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *PhoneVoicemailType) callconv(.winapi) HRESULT,
         DialVoicemailAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1512,7 +1512,7 @@ pub const PhoneCall = extern struct {
         const this: *IPhoneCall = @ptrCast(self);
         return try this.removeIsMutedChanged(token);
     }
-    pub fn getCallId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCall = @ptrCast(self);
         return try this.getCallId();
     }
@@ -1611,7 +1611,7 @@ pub const PhoneCall = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetFromId(callId: HSTRING) core.HResult!*PhoneCall {
+    pub fn GetFromId(callId: ?HSTRING) core.HResult!*PhoneCall {
         const _f = try @This()._IPhoneCallStaticsCache.get();
         return try _f.GetFromId(callId);
     }
@@ -1648,7 +1648,7 @@ pub const PhoneCallBlocking = extern struct {
         const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.putBlockPrivateNumbers(value);
     }
-    pub fn SetCallBlockingListAsync(phoneNumberList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(bool) {
+    pub fn SetCallBlockingListAsync(phoneNumberList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IPhoneCallBlockingStaticsCache.get();
         return try _f.SetCallBlockingListAsync(phoneNumberList);
     }
@@ -1675,11 +1675,11 @@ pub const PhoneCallInfo = extern struct {
         const this: *IPhoneCallInfo = @ptrCast(self);
         return try this.getStartTime();
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallInfo = @ptrCast(self);
         return try this.getPhoneNumber();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -1698,7 +1698,7 @@ pub const PhoneCallManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ShowPhoneCallUI(phoneNumber: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn ShowPhoneCallUI(phoneNumber: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _f = try @This()._IPhoneCallManagerStaticsCache.get();
         return try _f.ShowPhoneCallUI(phoneNumber, displayName);
     }
@@ -1753,7 +1753,7 @@ pub const PhoneCallStatus = enum(i32) {
 };
 pub const PhoneCallStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn IsEmergencyPhoneNumberAsync(self: *@This(), number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsEmergencyPhoneNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IPhoneCallStore = @ptrCast(self);
         return try this.IsEmergencyPhoneNumberAsync(number);
     }
@@ -1788,7 +1788,7 @@ pub const PhoneCallVideoCapabilitiesManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetCapabilitiesAsync(phoneNumber: HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
+    pub fn GetCapabilitiesAsync(phoneNumber: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallVideoCapabilities) {
         const _f = try @This()._IPhoneCallVideoCapabilitiesManagerStaticsCache.get();
         return try _f.GetCapabilitiesAsync(phoneNumber);
     }
@@ -1814,19 +1814,19 @@ pub const PhoneCallsResult = extern struct {
 };
 pub const PhoneDialOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneDialOptions = @ptrCast(self);
         return try this.getNumber();
     }
-    pub fn putNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneDialOptions = @ptrCast(self);
         return try this.putNumber(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneDialOptions = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneDialOptions = @ptrCast(self);
         return try this.putDisplayName(value);
     }
@@ -1898,7 +1898,7 @@ pub const PhoneLine = extern struct {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.getNetworkState();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -1906,7 +1906,7 @@ pub const PhoneLine = extern struct {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.getVoicemail();
     }
-    pub fn getNetworkName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNetworkName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.getNetworkName();
     }
@@ -1934,11 +1934,11 @@ pub const PhoneLine = extern struct {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.getLineConfiguration();
     }
-    pub fn IsImmediateDialNumberAsync(self: *@This(), number: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn IsImmediateDialNumberAsync(self: *@This(), number: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.IsImmediateDialNumberAsync(number);
     }
-    pub fn Dial(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn Dial(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const this: *IPhoneLine = @ptrCast(self);
         return try this.Dial(number, displayName);
     }
@@ -1952,19 +1952,19 @@ pub const PhoneLine = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTextReply(value);
     }
-    pub fn getTransportDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransportDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhoneLine2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransportDeviceId();
     }
-    pub fn DialWithResult(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!*PhoneLineDialResult {
+    pub fn DialWithResult(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*PhoneLineDialResult {
         var this: ?*IPhoneLine3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DialWithResult(number, displayName);
     }
-    pub fn DialWithResultAsync(self: *@This(), number: HSTRING, displayName: HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
+    pub fn DialWithResultAsync(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
         var this: ?*IPhoneLine3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2014,7 +2014,7 @@ pub const PhoneLineCellularDetails = extern struct {
         const this: *IPhoneLineCellularDetails = @ptrCast(self);
         return try this.getRegistrationRejectCode();
     }
-    pub fn GetNetworkOperatorDisplayText(self: *@This(), location: PhoneLineNetworkOperatorDisplayTextLocation) core.HResult!HSTRING {
+    pub fn GetNetworkOperatorDisplayText(self: *@This(), location: PhoneLineNetworkOperatorDisplayTextLocation) core.HResult!?HSTRING {
         const this: *IPhoneLineCellularDetails = @ptrCast(self);
         return try this.GetNetworkOperatorDisplayText(location);
     }
@@ -2030,7 +2030,7 @@ pub const PhoneLineConfiguration = extern struct {
         const this: *IPhoneLineConfiguration = @ptrCast(self);
         return try this.getIsVideoCallingEnabled();
     }
-    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPhoneLineConfiguration = @ptrCast(self);
         return try this.getExtendedProperties();
     }
@@ -2076,7 +2076,7 @@ pub const PhoneLineTransport = enum(i32) {
 };
 pub const PhoneLineTransportDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneLineTransportDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -2155,15 +2155,15 @@ pub const PhoneLineTransportDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromId(id: HSTRING) core.HResult!*PhoneLineTransportDevice {
+    pub fn FromId(id: ?HSTRING) core.HResult!*PhoneLineTransportDevice {
         const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.FromId(id);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithTransport(transport: PhoneLineTransport) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithTransport(transport: PhoneLineTransport) core.HResult!?HSTRING {
         const _f = try @This()._IPhoneLineTransportDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithTransport(transport);
     }
@@ -2274,7 +2274,7 @@ pub const PhoneSimState = enum(i32) {
 };
 pub const PhoneVoicemail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneVoicemail = @ptrCast(self);
         return try this.getNumber();
     }
@@ -2308,35 +2308,35 @@ pub const TransportDeviceAudioRoutingStatus = enum(i32) {
 };
 pub const AcceptedVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContext();
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContext(value);
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactName();
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactName(value);
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactNumber();
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactNumber(value);
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putServiceName(value);
     }
@@ -2348,7 +2348,7 @@ pub const AcceptedVoipPhoneCallOptions = extern struct {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putMedia(value);
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IAcceptedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getAssociatedDeviceIds();
     }
@@ -2359,7 +2359,7 @@ pub const AcceptedVoipPhoneCallOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAcceptedVoipPhoneCallOptions.IID)));
     }
-    pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
+    pub fn CreateInstance(associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
         const _f = try @This()._IAcceptedVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
@@ -2373,35 +2373,35 @@ pub const AcceptedVoipPhoneCallOptions = extern struct {
 };
 pub const AppInitiatedVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContext();
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContext(value);
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactName();
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactName(value);
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactNumber();
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactNumber(value);
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putServiceName(value);
     }
@@ -2413,7 +2413,7 @@ pub const AppInitiatedVoipPhoneCallOptions = extern struct {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.putMedia(value);
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IAppInitiatedVoipPhoneCallOptions = @ptrCast(self);
         return try this.getAssociatedDeviceIds();
     }
@@ -2424,7 +2424,7 @@ pub const AppInitiatedVoipPhoneCallOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppInitiatedVoipPhoneCallOptions.IID)));
     }
-    pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
+    pub fn CreateInstance(associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
         const _f = try @This()._IAppInitiatedVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
@@ -2442,7 +2442,7 @@ pub const CallAnswerEventArgs = extern struct {
         const this: *ICallAnswerEventArgs = @ptrCast(self);
         return try this.getAcceptedMedia();
     }
-    pub fn getSourceDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICallAnswerEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICallAnswerEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2480,43 +2480,43 @@ pub const CallStateChangeEventArgs = extern struct {
 };
 pub const IAcceptedVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2530,8 +2530,8 @@ pub const IAcceptedVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2548,22 +2548,22 @@ pub const IAcceptedVoipPhoneCallOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Context: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Context: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Context: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Context: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Media: *const fn(self: *anyopaque, _r: *VoipPhoneCallMedia) callconv(.winapi) HRESULT,
         put_Media: *const fn(self: *anyopaque, value: VoipPhoneCallMedia) callconv(.winapi) HRESULT,
-        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAcceptedVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
+    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AcceptedVoipPhoneCallOptions {
         var _r: *AcceptedVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2581,48 +2581,48 @@ pub const IAcceptedVoipPhoneCallOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING), _r: **AcceptedVoipPhoneCallOptions) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING), _r: **AcceptedVoipPhoneCallOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2636,8 +2636,8 @@ pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2654,22 +2654,22 @@ pub const IAppInitiatedVoipPhoneCallOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Context: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Context: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Context: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Context: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Media: *const fn(self: *anyopaque, _r: *VoipPhoneCallMedia) callconv(.winapi) HRESULT,
         put_Media: *const fn(self: *anyopaque, value: VoipPhoneCallMedia) callconv(.winapi) HRESULT,
-        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppInitiatedVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
+    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*AppInitiatedVoipPhoneCallOptions {
         var _r: *AppInitiatedVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2687,7 +2687,7 @@ pub const IAppInitiatedVoipPhoneCallOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING), _r: **AppInitiatedVoipPhoneCallOptions) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING), _r: **AppInitiatedVoipPhoneCallOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const ICallAnswerEventArgs = extern struct {
@@ -2715,8 +2715,8 @@ pub const ICallAnswerEventArgs = extern struct {
 };
 pub const ICallAnswerEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getSourceDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2733,7 +2733,7 @@ pub const ICallAnswerEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SourceDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICallRejectEventArgs = extern struct {
@@ -2784,33 +2784,33 @@ pub const ICallStateChangeEventArgs = extern struct {
 };
 pub const IIncomingVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2824,13 +2824,13 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_ContactImage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2844,13 +2844,13 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_BrandingImage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCallDetails(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallDetails(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallDetails(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCallDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallDetails(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2884,18 +2884,18 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_RingTimeout(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactRemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactRemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2912,34 +2912,34 @@ pub const IIncomingVoipPhoneCallOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Context: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Context: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Context: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Context: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ContactImage: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ContactImage: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BrandingImage: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_BrandingImage: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_CallDetails: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CallDetails: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CallDetails: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CallDetails: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Ringtone: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Ringtone: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_Media: *const fn(self: *anyopaque, _r: *VoipPhoneCallMedia) callconv(.winapi) HRESULT,
         put_Media: *const fn(self: *anyopaque, value: VoipPhoneCallMedia) callconv(.winapi) HRESULT,
         get_RingTimeout: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_RingTimeout: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
-        get_ContactRemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactRemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ContactRemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactRemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIncomingVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
+    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
         var _r: *IncomingVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2957,7 +2957,7 @@ pub const IIncomingVoipPhoneCallOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING), _r: **IncomingVoipPhoneCallOptions) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING), _r: **IncomingVoipPhoneCallOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IMuteChangeEventArgs = extern struct {
@@ -2985,33 +2985,33 @@ pub const IMuteChangeEventArgs = extern struct {
 };
 pub const IOutgoingVoipPhoneCallOptions = extern struct {
     vtable: *const VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Context(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3025,8 +3025,8 @@ pub const IOutgoingVoipPhoneCallOptions = extern struct {
         const _c = self.vtable.put_Media(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AssociatedDeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3043,20 +3043,20 @@ pub const IOutgoingVoipPhoneCallOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Context: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Context: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContactName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Context: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Context: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Media: *const fn(self: *anyopaque, _r: *VoipPhoneCallMedia) callconv(.winapi) HRESULT,
         put_Media: *const fn(self: *anyopaque, value: VoipPhoneCallMedia) callconv(.winapi) HRESULT,
-        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AssociatedDeviceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IOutgoingVoipPhoneCallOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
+    pub fn CreateInstance(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
         var _r: *OutgoingVoipPhoneCallOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), associatedDeviceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3074,12 +3074,12 @@ pub const IOutgoingVoipPhoneCallOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING), _r: **OutgoingVoipPhoneCallOptions) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING), _r: **OutgoingVoipPhoneCallOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoipCallCoordinator = extern struct {
     vtable: *const VTable,
-    pub fn ReserveCallResourcesAsync(self: *@This(), taskEntryPoint: HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
+    pub fn ReserveCallResourcesAsync(self: *@This(), taskEntryPoint: ?HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var _r: *IAsyncOperation(VoipPhoneCallResourceReservationStatus) = undefined;
         const _c = self.vtable.ReserveCallResourcesAsync(@ptrCast(self), taskEntryPoint, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3095,13 +3095,13 @@ pub const IVoipCallCoordinator = extern struct {
         const _c = self.vtable.remove_MuteStateChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RequestNewIncomingCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewIncomingCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestNewOutgoingCall(self: *@This(), context: HSTRING, contactName: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewOutgoingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewOutgoingCall(@ptrCast(self), context, contactName, serviceName, media, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3115,13 +3115,13 @@ pub const IVoipCallCoordinator = extern struct {
         const _c = self.vtable.NotifyUnmuted(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RequestOutgoingUpgradeToVideoCall(self: *@This(), callUpgradeGuid: *Guid, context: HSTRING, contactName: HSTRING, serviceName: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestOutgoingUpgradeToVideoCall(self: *@This(), callUpgradeGuid: *Guid, context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestOutgoingUpgradeToVideoCall(@ptrCast(self), callUpgradeGuid, context, contactName, serviceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestIncomingUpgradeToVideoCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
+    pub fn RequestIncomingUpgradeToVideoCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestIncomingUpgradeToVideoCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, ringTimeout, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3147,22 +3147,22 @@ pub const IVoipCallCoordinator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ReserveCallResourcesAsync: *const fn(self: *anyopaque, taskEntryPoint: HSTRING, _r: **IAsyncOperation(VoipPhoneCallResourceReservationStatus)) callconv(.winapi) HRESULT,
+        ReserveCallResourcesAsync: *const fn(self: *anyopaque, taskEntryPoint: ?HSTRING, _r: **IAsyncOperation(VoipPhoneCallResourceReservationStatus)) callconv(.winapi) HRESULT,
         add_MuteStateChanged: *const fn(self: *anyopaque, muteChangeHandler: *TypedEventHandler(VoipCallCoordinator,MuteChangeEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_MuteStateChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        RequestNewIncomingCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
-        RequestNewOutgoingCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestNewIncomingCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestNewOutgoingCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
         NotifyMuted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         NotifyUnmuted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        RequestOutgoingUpgradeToVideoCall: *const fn(self: *anyopaque, callUpgradeGuid: *Guid, context: HSTRING, contactName: HSTRING, serviceName: HSTRING, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
-        RequestIncomingUpgradeToVideoCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, ringTimeout: TimeSpan, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestOutgoingUpgradeToVideoCall: *const fn(self: *anyopaque, callUpgradeGuid: *Guid, context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestIncomingUpgradeToVideoCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, ringTimeout: TimeSpan, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
         TerminateCellularCall: *const fn(self: *anyopaque, callUpgradeGuid: *Guid) callconv(.winapi) HRESULT,
         CancelUpgrade: *const fn(self: *anyopaque, callUpgradeGuid: *Guid) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoipCallCoordinator2 = extern struct {
     vtable: *const VTable,
-    pub fn SetupNewAcceptedCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn SetupNewAcceptedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.SetupNewAcceptedCall(@ptrCast(self), context, contactName, contactNumber, serviceName, media, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3180,18 +3180,18 @@ pub const IVoipCallCoordinator2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetupNewAcceptedCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        SetupNewAcceptedCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoipCallCoordinator3 = extern struct {
     vtable: *const VTable,
-    pub fn RequestNewAppInitiatedCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewAppInitiatedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewAppInitiatedCall(@ptrCast(self), context, contactName, contactNumber, serviceName, media, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestNewIncomingCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING) core.HResult!*VoipPhoneCall {
         var _r: *VoipPhoneCall = undefined;
         const _c = self.vtable.RequestNewIncomingCall(@ptrCast(self), context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3209,8 +3209,8 @@ pub const IVoipCallCoordinator3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestNewAppInitiatedCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
-        RequestNewIncomingCall: *const fn(self: *anyopaque, context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestNewAppInitiatedCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
+        RequestNewIncomingCall: *const fn(self: *anyopaque, context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING, _r: **VoipPhoneCall) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoipCallCoordinator4 = extern struct {
@@ -3311,8 +3311,8 @@ pub const IVoipCallCoordinatorStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForCallControl(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForCallControl(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForCallControl(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3330,7 +3330,7 @@ pub const IVoipCallCoordinatorStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsCallControlDeviceKindSupportedForAssociation: *const fn(self: *anyopaque, kind: VoipCallControlDeviceKind, _r: *bool) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForCallControl: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForCallControl: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoipPhoneCall = extern struct {
@@ -3397,13 +3397,13 @@ pub const IVoipPhoneCall = extern struct {
         const _c = self.vtable.NotifyCallEnded(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3456,8 +3456,8 @@ pub const IVoipPhoneCall = extern struct {
         NotifyCallHeld: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         NotifyCallActive: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         NotifyCallEnded: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        get_ContactName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContactName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_StartTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_CallMedia: *const fn(self: *anyopaque, _r: *VoipPhoneCallMedia) callconv(.winapi) HRESULT,
@@ -3515,24 +3515,24 @@ pub const IVoipPhoneCall4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn NotifyCallActive(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
+    pub fn NotifyCallActive(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.NotifyCallActive(@ptrCast(self), associatedDeviceIds);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddAssociatedCallControlDevice(@ptrCast(self), deviceId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAssociatedCallControlDevice(@ptrCast(self), deviceId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.SetAssociatedCallControlDevices(@ptrCast(self), associatedDeviceIds);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAssociatedCallControlDevices(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3550,36 +3550,36 @@ pub const IVoipPhoneCall4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsUsingAssociatedDevicesList: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        NotifyCallActive: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
-        AddAssociatedCallControlDevice: *const fn(self: *anyopaque, deviceId: HSTRING) callconv(.winapi) HRESULT,
-        RemoveAssociatedCallControlDevice: *const fn(self: *anyopaque, deviceId: HSTRING) callconv(.winapi) HRESULT,
-        SetAssociatedCallControlDevices: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
-        GetAssociatedCallControlDevices: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        NotifyCallActive: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING)) callconv(.winapi) HRESULT,
+        AddAssociatedCallControlDevice: *const fn(self: *anyopaque, deviceId: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveAssociatedCallControlDevice: *const fn(self: *anyopaque, deviceId: ?HSTRING) callconv(.winapi) HRESULT,
+        SetAssociatedCallControlDevices: *const fn(self: *anyopaque, associatedDeviceIds: *IIterable(?HSTRING)) callconv(.winapi) HRESULT,
+        GetAssociatedCallControlDevices: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IncomingVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContext();
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContext(value);
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactName();
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactName(value);
     }
-    pub fn getContactNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactNumber();
     }
-    pub fn putContactNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactNumber(value);
     }
@@ -3591,11 +3591,11 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactImage(value);
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putServiceName(value);
     }
@@ -3607,11 +3607,11 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putBrandingImage(value);
     }
-    pub fn getCallDetails(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallDetails(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getCallDetails();
     }
-    pub fn putCallDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putCallDetails(value);
     }
@@ -3639,15 +3639,15 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putRingTimeout(value);
     }
-    pub fn getContactRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactRemoteId();
     }
-    pub fn putContactRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactRemoteId(value);
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIncomingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getAssociatedDeviceIds();
     }
@@ -3658,7 +3658,7 @@ pub const IncomingVoipPhoneCallOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IIncomingVoipPhoneCallOptions.IID)));
     }
-    pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
+    pub fn CreateInstance(associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*IncomingVoipPhoneCallOptions {
         const _f = try @This()._IIncomingVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
@@ -3684,27 +3684,27 @@ pub const MuteChangeEventArgs = extern struct {
 };
 pub const OutgoingVoipPhoneCallOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContext();
     }
-    pub fn putContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContext(value);
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getContactName();
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putContactName(value);
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getServiceName();
     }
-    pub fn putServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putServiceName(value);
     }
@@ -3716,7 +3716,7 @@ pub const OutgoingVoipPhoneCallOptions = extern struct {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.putMedia(value);
     }
-    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAssociatedDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IOutgoingVoipPhoneCallOptions = @ptrCast(self);
         return try this.getAssociatedDeviceIds();
     }
@@ -3727,7 +3727,7 @@ pub const OutgoingVoipPhoneCallOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IOutgoingVoipPhoneCallOptions.IID)));
     }
-    pub fn CreateInstance(associatedDeviceIds: *IIterable(HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
+    pub fn CreateInstance(associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!*OutgoingVoipPhoneCallOptions {
         const _f = try @This()._IOutgoingVoipPhoneCallOptionsFactoryCache.get();
         return try _f.CreateInstance(associatedDeviceIds);
     }
@@ -3745,7 +3745,7 @@ pub const VoipCallControlDeviceKind = enum(i32) {
 };
 pub const VoipCallCoordinator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn ReserveCallResourcesAsyncWithTaskEntryPoint(self: *@This(), taskEntryPoint: HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
+    pub fn ReserveCallResourcesAsyncWithTaskEntryPoint(self: *@This(), taskEntryPoint: ?HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.ReserveCallResourcesAsyncWithTaskEntryPoint(taskEntryPoint);
     }
@@ -3757,11 +3757,11 @@ pub const VoipCallCoordinator = extern struct {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.removeMuteStateChanged(token);
     }
-    pub fn RequestNewIncomingCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.RequestNewIncomingCall(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout);
     }
-    pub fn RequestNewOutgoingCall(self: *@This(), context: HSTRING, contactName: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewOutgoingCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.RequestNewOutgoingCall(context, contactName, serviceName, media);
     }
@@ -3773,11 +3773,11 @@ pub const VoipCallCoordinator = extern struct {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.NotifyUnmuted();
     }
-    pub fn RequestOutgoingUpgradeToVideoCall(self: *@This(), callUpgradeGuid: *Guid, context: HSTRING, contactName: HSTRING, serviceName: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestOutgoingUpgradeToVideoCall(self: *@This(), callUpgradeGuid: *Guid, context: ?HSTRING, contactName: ?HSTRING, serviceName: ?HSTRING) core.HResult!*VoipPhoneCall {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.RequestOutgoingUpgradeToVideoCall(callUpgradeGuid, context, contactName, serviceName);
     }
-    pub fn RequestIncomingUpgradeToVideoCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
+    pub fn RequestIncomingUpgradeToVideoCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.RequestIncomingUpgradeToVideoCall(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, ringTimeout);
     }
@@ -3789,19 +3789,19 @@ pub const VoipCallCoordinator = extern struct {
         const this: *IVoipCallCoordinator = @ptrCast(self);
         return try this.CancelUpgrade(callUpgradeGuid);
     }
-    pub fn SetupNewAcceptedCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn SetupNewAcceptedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetupNewAcceptedCall(context, contactName, contactNumber, serviceName, media);
     }
-    pub fn RequestNewAppInitiatedCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewAppInitiatedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewAppInitiatedCall(context, contactName, contactNumber, serviceName, media);
     }
-    pub fn RequestNewIncomingCallWithContactRemoteId(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCallWithContactRemoteId(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3848,7 +3848,7 @@ pub const VoipCallCoordinator = extern struct {
         const _f = try @This()._IVoipCallCoordinatorStatics2Cache.get();
         return try _f.IsCallControlDeviceKindSupportedForAssociation(kind);
     }
-    pub fn GetDeviceSelectorForCallControl() core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForCallControl() core.HResult!?HSTRING {
         const _f = try @This()._IVoipCallCoordinatorStatics2Cache.get();
         return try _f.GetDeviceSelectorForCallControl();
     }
@@ -3914,11 +3914,11 @@ pub const VoipPhoneCall = extern struct {
         const this: *IVoipPhoneCall = @ptrCast(self);
         return try this.NotifyCallEnded();
     }
-    pub fn getContactName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoipPhoneCall = @ptrCast(self);
         return try this.getContactName();
     }
-    pub fn putContactName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoipPhoneCall = @ptrCast(self);
         return try this.putContactName(value);
     }
@@ -3960,31 +3960,31 @@ pub const VoipPhoneCall = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUsingAssociatedDevicesList();
     }
-    pub fn NotifyCallActiveWithAssociatedDeviceIds(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
+    pub fn NotifyCallActiveWithAssociatedDeviceIds(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NotifyCallActiveWithAssociatedDeviceIds(associatedDeviceIds);
     }
-    pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddAssociatedCallControlDevice(deviceId);
     }
-    pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAssociatedCallControlDevice(deviceId);
     }
-    pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
+    pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAssociatedCallControlDevices(associatedDeviceIds);
     }
-    pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4021,8 +4021,8 @@ pub const VoipPhoneCallState = enum(i32) {
 };
 pub const IPhoneCallHistoryEntry = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4147,29 +4147,29 @@ pub const IPhoneCallHistoryEntry = extern struct {
         const _c = self.vtable.put_OtherAppReadAccess(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSourceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSourceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SourceId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4205,7 +4205,7 @@ pub const IPhoneCallHistoryEntry = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Address: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
         put_Address: *const fn(self: *anyopaque, value: *PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
@@ -4230,11 +4230,11 @@ pub const IPhoneCallHistoryEntry = extern struct {
         put_Media: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryMedia) callconv(.winapi) HRESULT,
         get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
         put_OtherAppReadAccess: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryOtherAppReadAccess) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SourceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SourceId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SourceId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SourceIdKind: *const fn(self: *anyopaque, _r: *PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
         put_SourceIdKind: *const fn(self: *anyopaque, value: PhoneCallHistorySourceIdKind) callconv(.winapi) HRESULT,
         get_StartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
@@ -4243,33 +4243,33 @@ pub const IPhoneCallHistoryEntry = extern struct {
 };
 pub const IPhoneCallHistoryEntryAddress = extern struct {
     vtable: *const VTable,
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContactId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRawAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRawAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RawAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4295,19 +4295,19 @@ pub const IPhoneCallHistoryEntryAddress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContactId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RawAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RawAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContactId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RawAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RawAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_RawAddressKind: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
         put_RawAddressKind: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryRawAddressKind) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), rawAddress: HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
+    pub fn Create(self: *@This(), rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
         var _r: *PhoneCallHistoryEntryAddress = undefined;
         const _c = self.vtable.Create(@ptrCast(self), rawAddress, rawAddressKind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4325,7 +4325,7 @@ pub const IPhoneCallHistoryEntryAddressFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, rawAddress: HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind, _r: **PhoneCallHistoryEntryAddress) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
@@ -4340,8 +4340,8 @@ pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
         const _c = self.vtable.put_DesiredMedia(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SourceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4360,7 +4360,7 @@ pub const IPhoneCallHistoryEntryQueryOptions = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_DesiredMedia: *const fn(self: *anyopaque, _r: *PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
         put_DesiredMedia: *const fn(self: *anyopaque, value: PhoneCallHistoryEntryQueryDesiredMedia) callconv(.winapi) HRESULT,
-        get_SourceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_SourceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallHistoryEntryReader = extern struct {
@@ -4464,7 +4464,7 @@ pub const IPhoneCallHistoryManagerStatics2 = extern struct {
 };
 pub const IPhoneCallHistoryStore = extern struct {
     vtable: *const VTable,
-    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
+    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
         var _r: *IAsyncOperation(PhoneCallHistoryEntry) = undefined;
         const _c = self.vtable.GetEntryAsync(@ptrCast(self), callHistoryEntryId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4524,13 +4524,13 @@ pub const IPhoneCallHistoryStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(u32) {
+    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.GetSourcesUnseenCountAsync(@ptrCast(self), sourceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkSourcesAsSeenAsync(@ptrCast(self), sourceIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4548,7 +4548,7 @@ pub const IPhoneCallHistoryStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetEntryAsync: *const fn(self: *anyopaque, callHistoryEntryId: HSTRING, _r: **IAsyncOperation(PhoneCallHistoryEntry)) callconv(.winapi) HRESULT,
+        GetEntryAsync: *const fn(self: *anyopaque, callHistoryEntryId: ?HSTRING, _r: **IAsyncOperation(PhoneCallHistoryEntry)) callconv(.winapi) HRESULT,
         GetEntryReader: *const fn(self: *anyopaque, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
         GetEntryReaderWithQueryOptions: *const fn(self: *anyopaque, queryOptions: *PhoneCallHistoryEntryQueryOptions, _r: **PhoneCallHistoryEntryReader) callconv(.winapi) HRESULT,
         SaveEntryAsync: *const fn(self: *anyopaque, callHistoryEntry: *PhoneCallHistoryEntry, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -4558,13 +4558,13 @@ pub const IPhoneCallHistoryStore = extern struct {
         MarkEntriesAsSeenAsync: *const fn(self: *anyopaque, callHistoryEntries: *IIterable(PhoneCallHistoryEntry), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetUnseenCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         MarkAllAsSeenAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetSourcesUnseenCountAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(HSTRING), _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
-        MarkSourcesAsSeenAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetSourcesUnseenCountAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
+        MarkSourcesAsSeenAsync: *const fn(self: *anyopaque, sourceIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const PhoneCallHistoryEntry = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.getId();
     }
@@ -4664,23 +4664,23 @@ pub const PhoneCallHistoryEntry = extern struct {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.putOtherAppReadAccess(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.putRemoteId(value);
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.getSourceDisplayName();
     }
-    pub fn getSourceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.getSourceId();
     }
-    pub fn putSourceId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSourceId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallHistoryEntry = @ptrCast(self);
         return try this.putSourceId(value);
     }
@@ -4716,27 +4716,27 @@ pub const PhoneCallHistoryEntry = extern struct {
 };
 pub const PhoneCallHistoryEntryAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.getContactId();
     }
-    pub fn putContactId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContactId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.putContactId(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getRawAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getRawAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.getRawAddress();
     }
-    pub fn putRawAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRawAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallHistoryEntryAddress = @ptrCast(self);
         return try this.putRawAddress(value);
     }
@@ -4755,7 +4755,7 @@ pub const PhoneCallHistoryEntryAddress = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneCallHistoryEntryAddress.IID)));
     }
-    pub fn Create(rawAddress: HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
+    pub fn Create(rawAddress: ?HSTRING, rawAddressKind: PhoneCallHistoryEntryRawAddressKind) core.HResult!*PhoneCallHistoryEntryAddress {
         const _f = try @This()._IPhoneCallHistoryEntryAddressFactoryCache.get();
         return try _f.Create(rawAddress, rawAddressKind);
     }
@@ -4791,7 +4791,7 @@ pub const PhoneCallHistoryEntryQueryOptions = extern struct {
         const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
         return try this.putDesiredMedia(value);
     }
-    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSourceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IPhoneCallHistoryEntryQueryOptions = @ptrCast(self);
         return try this.getSourceIds();
     }
@@ -4865,7 +4865,7 @@ pub const PhoneCallHistorySourceIdKind = enum(i32) {
 };
 pub const PhoneCallHistoryStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
+    pub fn GetEntryAsync(self: *@This(), callHistoryEntryId: ?HSTRING) core.HResult!*IAsyncOperation(PhoneCallHistoryEntry) {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
         return try this.GetEntryAsync(callHistoryEntryId);
     }
@@ -4905,11 +4905,11 @@ pub const PhoneCallHistoryStore = extern struct {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
         return try this.MarkAllAsSeenAsync();
     }
-    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(u32) {
+    pub fn GetSourcesUnseenCountAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(u32) {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
         return try this.GetSourcesUnseenCountAsync(sourceIds);
     }
-    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkSourcesAsSeenAsync(self: *@This(), sourceIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
         return try this.MarkSourcesAsSeenAsync(sourceIds);
     }

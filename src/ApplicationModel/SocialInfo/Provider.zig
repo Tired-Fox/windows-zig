@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const ISocialDashboardItemUpdater = extern struct {
     vtable: *const VTable,
-    pub fn getOwnerRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OwnerRemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -61,7 +61,7 @@ pub const ISocialDashboardItemUpdater = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OwnerRemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OwnerRemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Content: *const fn(self: *anyopaque, _r: **SocialFeedContent) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_Timestamp: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
@@ -74,8 +74,8 @@ pub const ISocialDashboardItemUpdater = extern struct {
 };
 pub const ISocialFeedUpdater = extern struct {
     vtable: *const VTable,
-    pub fn getOwnerRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OwnerRemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -110,7 +110,7 @@ pub const ISocialFeedUpdater = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OwnerRemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OwnerRemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *SocialFeedKind) callconv(.winapi) HRESULT,
         get_Items: *const fn(self: *anyopaque, _r: **IVector(SocialFeedItem)) callconv(.winapi) HRESULT,
         CommitAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -118,23 +118,23 @@ pub const ISocialFeedUpdater = extern struct {
 };
 pub const ISocialInfoProviderManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateSocialFeedUpdaterAsync(self: *@This(), kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
+    pub fn CreateSocialFeedUpdaterAsync(self: *@This(), kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: ?HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
         var _r: *IAsyncOperation(SocialFeedUpdater) = undefined;
         const _c = self.vtable.CreateSocialFeedUpdaterAsync(@ptrCast(self), kind, mode, ownerRemoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDashboardItemUpdaterAsync(self: *@This(), ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
+    pub fn CreateDashboardItemUpdaterAsync(self: *@This(), ownerRemoteId: ?HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
         var _r: *IAsyncOperation(SocialDashboardItemUpdater) = undefined;
         const _c = self.vtable.CreateDashboardItemUpdaterAsync(@ptrCast(self), ownerRemoteId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateBadgeCountValue(self: *@This(), itemRemoteId: HSTRING, newCount: i32) core.HResult!void {
+    pub fn UpdateBadgeCountValue(self: *@This(), itemRemoteId: ?HSTRING, newCount: i32) core.HResult!void {
         const _c = self.vtable.UpdateBadgeCountValue(@ptrCast(self), itemRemoteId, newCount);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReportNewContentAvailable(self: *@This(), contactRemoteId: HSTRING, kind: SocialFeedKind) core.HResult!void {
+    pub fn ReportNewContentAvailable(self: *@This(), contactRemoteId: ?HSTRING, kind: SocialFeedKind) core.HResult!void {
         const _c = self.vtable.ReportNewContentAvailable(@ptrCast(self), contactRemoteId, kind);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -162,17 +162,17 @@ pub const ISocialInfoProviderManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSocialFeedUpdaterAsync: *const fn(self: *anyopaque, kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: HSTRING, _r: **IAsyncOperation(SocialFeedUpdater)) callconv(.winapi) HRESULT,
-        CreateDashboardItemUpdaterAsync: *const fn(self: *anyopaque, ownerRemoteId: HSTRING, _r: **IAsyncOperation(SocialDashboardItemUpdater)) callconv(.winapi) HRESULT,
-        UpdateBadgeCountValue: *const fn(self: *anyopaque, itemRemoteId: HSTRING, newCount: i32) callconv(.winapi) HRESULT,
-        ReportNewContentAvailable: *const fn(self: *anyopaque, contactRemoteId: HSTRING, kind: SocialFeedKind) callconv(.winapi) HRESULT,
+        CreateSocialFeedUpdaterAsync: *const fn(self: *anyopaque, kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: ?HSTRING, _r: **IAsyncOperation(SocialFeedUpdater)) callconv(.winapi) HRESULT,
+        CreateDashboardItemUpdaterAsync: *const fn(self: *anyopaque, ownerRemoteId: ?HSTRING, _r: **IAsyncOperation(SocialDashboardItemUpdater)) callconv(.winapi) HRESULT,
+        UpdateBadgeCountValue: *const fn(self: *anyopaque, itemRemoteId: ?HSTRING, newCount: i32) callconv(.winapi) HRESULT,
+        ReportNewContentAvailable: *const fn(self: *anyopaque, contactRemoteId: ?HSTRING, kind: SocialFeedKind) callconv(.winapi) HRESULT,
         ProvisionAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         DeprovisionAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const SocialDashboardItemUpdater = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOwnerRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialDashboardItemUpdater = @ptrCast(self);
         return try this.getOwnerRemoteId();
     }
@@ -216,7 +216,7 @@ pub const SocialDashboardItemUpdater = extern struct {
 };
 pub const SocialFeedUpdater = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOwnerRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedUpdater = @ptrCast(self);
         return try this.getOwnerRemoteId();
     }
@@ -243,19 +243,19 @@ pub const SocialInfoProviderManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateSocialFeedUpdaterAsync(kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
+    pub fn CreateSocialFeedUpdaterAsync(kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: ?HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
         const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.CreateSocialFeedUpdaterAsync(kind, mode, ownerRemoteId);
     }
-    pub fn CreateDashboardItemUpdaterAsync(ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
+    pub fn CreateDashboardItemUpdaterAsync(ownerRemoteId: ?HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
         const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.CreateDashboardItemUpdaterAsync(ownerRemoteId);
     }
-    pub fn UpdateBadgeCountValue(itemRemoteId: HSTRING, newCount: i32) core.HResult!void {
+    pub fn UpdateBadgeCountValue(itemRemoteId: ?HSTRING, newCount: i32) core.HResult!void {
         const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.UpdateBadgeCountValue(itemRemoteId, newCount);
     }
-    pub fn ReportNewContentAvailable(contactRemoteId: HSTRING, kind: SocialFeedKind) core.HResult!void {
+    pub fn ReportNewContentAvailable(contactRemoteId: ?HSTRING, kind: SocialFeedKind) core.HResult!void {
         const _f = try @This()._ISocialInfoProviderManagerStaticsCache.get();
         return try _f.ReportNewContentAvailable(contactRemoteId, kind);
     }

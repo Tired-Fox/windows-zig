@@ -24,43 +24,43 @@ pub const ApiInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn IsTypePresent(typeName: HSTRING) core.HResult!bool {
+    pub fn IsTypePresent(typeName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsTypePresent(typeName);
     }
-    pub fn IsMethodPresent(typeName: HSTRING, methodName: HSTRING) core.HResult!bool {
+    pub fn IsMethodPresent(typeName: ?HSTRING, methodName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsMethodPresent(typeName, methodName);
     }
-    pub fn IsMethodPresentWithInputParameterCount(typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
+    pub fn IsMethodPresentWithInputParameterCount(typeName: ?HSTRING, methodName: ?HSTRING, inputParameterCount: u32) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsMethodPresentWithInputParameterCount(typeName, methodName, inputParameterCount);
     }
-    pub fn IsEventPresent(typeName: HSTRING, eventName: HSTRING) core.HResult!bool {
+    pub fn IsEventPresent(typeName: ?HSTRING, eventName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsEventPresent(typeName, eventName);
     }
-    pub fn IsPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsPropertyPresent(typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsPropertyPresent(typeName, propertyName);
     }
-    pub fn IsReadOnlyPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsReadOnlyPropertyPresent(typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsReadOnlyPropertyPresent(typeName, propertyName);
     }
-    pub fn IsWriteablePropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsWriteablePropertyPresent(typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsWriteablePropertyPresent(typeName, propertyName);
     }
-    pub fn IsEnumNamedValuePresent(enumTypeName: HSTRING, valueName: HSTRING) core.HResult!bool {
+    pub fn IsEnumNamedValuePresent(enumTypeName: ?HSTRING, valueName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsEnumNamedValuePresent(enumTypeName, valueName);
     }
-    pub fn IsApiContractPresent(contractName: HSTRING, majorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresent(contractName: ?HSTRING, majorVersion: u16) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsApiContractPresent(contractName, majorVersion);
     }
-    pub fn IsApiContractPresentWithMinorVersion(contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresentWithMinorVersion(contractName: ?HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
         const _f = try @This()._IApiInformationStaticsCache.get();
         return try _f.IsApiContractPresentWithMinorVersion(contractName, majorVersion, minorVersion);
     }
@@ -179,61 +179,61 @@ pub const HasVariantAttribute = extern struct {
 };
 pub const IApiInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsTypePresent(self: *@This(), typeName: HSTRING) core.HResult!bool {
+    pub fn IsTypePresent(self: *@This(), typeName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsTypePresent(@ptrCast(self), typeName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsMethodPresent(self: *@This(), typeName: HSTRING, methodName: HSTRING) core.HResult!bool {
+    pub fn IsMethodPresent(self: *@This(), typeName: ?HSTRING, methodName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsMethodPresent(@ptrCast(self), typeName, methodName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsMethodPresentWithInputParameterCount(self: *@This(), typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
+    pub fn IsMethodPresentWithInputParameterCount(self: *@This(), typeName: ?HSTRING, methodName: ?HSTRING, inputParameterCount: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsMethodPresentWithInputParameterCount(@ptrCast(self), typeName, methodName, inputParameterCount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsEventPresent(self: *@This(), typeName: HSTRING, eventName: HSTRING) core.HResult!bool {
+    pub fn IsEventPresent(self: *@This(), typeName: ?HSTRING, eventName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEventPresent(@ptrCast(self), typeName, eventName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsPropertyPresent(self: *@This(), typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsPropertyPresent(self: *@This(), typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPropertyPresent(@ptrCast(self), typeName, propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsReadOnlyPropertyPresent(self: *@This(), typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsReadOnlyPropertyPresent(self: *@This(), typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsReadOnlyPropertyPresent(@ptrCast(self), typeName, propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsWriteablePropertyPresent(self: *@This(), typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
+    pub fn IsWriteablePropertyPresent(self: *@This(), typeName: ?HSTRING, propertyName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsWriteablePropertyPresent(@ptrCast(self), typeName, propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsEnumNamedValuePresent(self: *@This(), enumTypeName: HSTRING, valueName: HSTRING) core.HResult!bool {
+    pub fn IsEnumNamedValuePresent(self: *@This(), enumTypeName: ?HSTRING, valueName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnumNamedValuePresent(@ptrCast(self), enumTypeName, valueName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsApiContractPresent(self: *@This(), contractName: HSTRING, majorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresent(self: *@This(), contractName: ?HSTRING, majorVersion: u16) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsApiContractPresent(@ptrCast(self), contractName, majorVersion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsApiContractPresentWithMinorVersion(self: *@This(), contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresentWithMinorVersion(self: *@This(), contractName: ?HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsApiContractPresentWithMinorVersion(@ptrCast(self), contractName, majorVersion, minorVersion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -251,16 +251,16 @@ pub const IApiInformationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsTypePresent: *const fn(self: *anyopaque, typeName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsMethodPresent: *const fn(self: *anyopaque, typeName: HSTRING, methodName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsMethodPresentWithInputParameterCount: *const fn(self: *anyopaque, typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32, _r: *bool) callconv(.winapi) HRESULT,
-        IsEventPresent: *const fn(self: *anyopaque, typeName: HSTRING, eventName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsPropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsReadOnlyPropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsWriteablePropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsEnumNamedValuePresent: *const fn(self: *anyopaque, enumTypeName: HSTRING, valueName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsApiContractPresent: *const fn(self: *anyopaque, contractName: HSTRING, majorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
-        IsApiContractPresentWithMinorVersion: *const fn(self: *anyopaque, contractName: HSTRING, majorVersion: u16, minorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
+        IsTypePresent: *const fn(self: *anyopaque, typeName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsMethodPresent: *const fn(self: *anyopaque, typeName: ?HSTRING, methodName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsMethodPresentWithInputParameterCount: *const fn(self: *anyopaque, typeName: ?HSTRING, methodName: ?HSTRING, inputParameterCount: u32, _r: *bool) callconv(.winapi) HRESULT,
+        IsEventPresent: *const fn(self: *anyopaque, typeName: ?HSTRING, eventName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsPropertyPresent: *const fn(self: *anyopaque, typeName: ?HSTRING, propertyName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsReadOnlyPropertyPresent: *const fn(self: *anyopaque, typeName: ?HSTRING, propertyName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsWriteablePropertyPresent: *const fn(self: *anyopaque, typeName: ?HSTRING, propertyName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsEnumNamedValuePresent: *const fn(self: *anyopaque, enumTypeName: ?HSTRING, valueName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsApiContractPresent: *const fn(self: *anyopaque, contractName: ?HSTRING, majorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
+        IsApiContractPresentWithMinorVersion: *const fn(self: *anyopaque, contractName: ?HSTRING, majorVersion: u16, minorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const InternalAttribute = extern struct {

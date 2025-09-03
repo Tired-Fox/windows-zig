@@ -17,7 +17,7 @@ pub const GattCharacteristic = extern struct {
         const this: *IGattCharacteristic = @ptrCast(self);
         return try this.putProtectionLevel(value);
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattCharacteristic = @ptrCast(self);
         return try this.getUserDescription();
     }
@@ -650,7 +650,7 @@ pub const GattDeviceService = extern struct {
         const this: *IGattDeviceService = @ptrCast(self);
         return try this.GetIncludedServices(serviceUuid);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattDeviceService = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -773,15 +773,15 @@ pub const GattDeviceService = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
         const _f = try @This()._IGattDeviceServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelectorFromUuid(serviceUuid: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromUuid(serviceUuid: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStaticsCache.get();
         return try _f.GetDeviceSelectorFromUuid(serviceUuid);
     }
-    pub fn GetDeviceSelectorFromShortId(serviceShortId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromShortId(serviceShortId: u16) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStaticsCache.get();
         return try _f.GetDeviceSelectorFromShortId(serviceShortId);
     }
@@ -789,23 +789,23 @@ pub const GattDeviceService = extern struct {
         const _f = try @This()._IGattDeviceServiceStaticsCache.get();
         return try _f.ConvertShortIdToUuid(shortId);
     }
-    pub fn FromIdAsyncWithSharingMode(deviceId: HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
+    pub fn FromIdAsyncWithSharingMode(deviceId: ?HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
         const _f = try @This()._IGattDeviceServiceStatics2Cache.get();
         return try _f.FromIdAsync(deviceId, sharingMode);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId: *BluetoothDeviceId) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId: *BluetoothDeviceId) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(bluetoothDeviceId, cacheMode);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId, serviceUuid);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
         const _f = try @This()._IGattDeviceServiceStatics2Cache.get();
         return try _f.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(bluetoothDeviceId, serviceUuid, cacheMode);
     }
@@ -867,7 +867,7 @@ pub const GattLocalCharacteristic = extern struct {
         const this: *IGattLocalCharacteristic = @ptrCast(self);
         return try this.getDescriptors();
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattLocalCharacteristic = @ptrCast(self);
         return try this.getUserDescription();
     }
@@ -951,11 +951,11 @@ pub const GattLocalCharacteristicParameters = extern struct {
         const this: *IGattLocalCharacteristicParameters = @ptrCast(self);
         return try this.getWriteProtectionLevel();
     }
-    pub fn putUserDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IGattLocalCharacteristicParameters = @ptrCast(self);
         return try this.putUserDescription(value);
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattLocalCharacteristicParameters = @ptrCast(self);
         return try this.getUserDescription();
     }
@@ -1996,8 +1996,8 @@ pub const IGattCharacteristic = extern struct {
         const _c = self.vtable.put_ProtectionLevel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2082,7 +2082,7 @@ pub const IGattCharacteristic = extern struct {
         get_CharacteristicProperties: *const fn(self: *anyopaque, _r: *GattCharacteristicProperties) callconv(.winapi) HRESULT,
         get_ProtectionLevel: *const fn(self: *anyopaque, _r: *GattProtectionLevel) callconv(.winapi) HRESULT,
         put_ProtectionLevel: *const fn(self: *anyopaque, value: GattProtectionLevel) callconv(.winapi) HRESULT,
-        get_UserDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Uuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_AttributeHandle: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
         get_PresentationFormats: *const fn(self: *anyopaque, _r: **IVectorView(GattPresentationFormat)) callconv(.winapi) HRESULT,
@@ -3128,8 +3128,8 @@ pub const IGattDeviceService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3160,7 +3160,7 @@ pub const IGattDeviceService = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCharacteristics: *const fn(self: *anyopaque, characteristicUuid: *Guid, _r: **IVectorView(GattCharacteristic)) callconv(.winapi) HRESULT,
         GetIncludedServices: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: **IVectorView(GattDeviceService)) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Uuid: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_AttributeHandle: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
     };
@@ -3318,20 +3318,20 @@ pub const IGattDeviceService3 = extern struct {
 };
 pub const IGattDeviceServiceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
         var _r: *IAsyncOperation(GattDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromUuid(self: *@This(), serviceUuid: *Guid) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromUuid(self: *@This(), serviceUuid: *Guid) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromUuid(@ptrCast(self), serviceUuid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromShortId(self: *@This(), serviceShortId: u16) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromShortId(self: *@This(), serviceShortId: u16) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromShortId(@ptrCast(self), serviceShortId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3354,40 +3354,40 @@ pub const IGattDeviceServiceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(GattDeviceService)) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromUuid: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromShortId: *const fn(self: *anyopaque, serviceShortId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(GattDeviceService)) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromUuid: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromShortId: *const fn(self: *anyopaque, serviceShortId: u16, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ConvertShortIdToUuid: *const fn(self: *anyopaque, shortId: u16, _r: **Guid) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattDeviceServiceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
         var _r: *IAsyncOperation(GattDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, sharingMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceId(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceId(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceId(@ptrCast(self), bluetoothDeviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(@ptrCast(self), bluetoothDeviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdAndUuid(@ptrCast(self), bluetoothDeviceId, serviceUuid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(@ptrCast(self), bluetoothDeviceId, serviceUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3404,11 +3404,11 @@ pub const IGattDeviceServiceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, sharingMode: GattSharingMode, _r: **IAsyncOperation(GattDeviceService)) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceId: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceIdAndUuid: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, sharingMode: GattSharingMode, _r: **IAsyncOperation(GattDeviceService)) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceId: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceIdAndUuid: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattDeviceServicesResult = extern struct {
@@ -3492,8 +3492,8 @@ pub const IGattLocalCharacteristic = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3571,7 +3571,7 @@ pub const IGattLocalCharacteristic = extern struct {
         get_WriteProtectionLevel: *const fn(self: *anyopaque, _r: *GattProtectionLevel) callconv(.winapi) HRESULT,
         CreateDescriptorAsync: *const fn(self: *anyopaque, descriptorUuid: *Guid, parameters: *GattLocalDescriptorParameters, _r: **IAsyncOperation(GattLocalDescriptorResult)) callconv(.winapi) HRESULT,
         get_Descriptors: *const fn(self: *anyopaque, _r: **IVectorView(GattLocalDescriptor)) callconv(.winapi) HRESULT,
-        get_UserDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PresentationFormats: *const fn(self: *anyopaque, _r: **IVectorView(GattPresentationFormat)) callconv(.winapi) HRESULT,
         get_SubscribedClients: *const fn(self: *anyopaque, _r: **IVectorView(GattSubscribedClient)) callconv(.winapi) HRESULT,
         add_SubscribedClientsChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(GattLocalCharacteristic,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -3626,12 +3626,12 @@ pub const IGattLocalCharacteristicParameters = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3662,8 +3662,8 @@ pub const IGattLocalCharacteristicParameters = extern struct {
         get_ReadProtectionLevel: *const fn(self: *anyopaque, _r: *GattProtectionLevel) callconv(.winapi) HRESULT,
         put_WriteProtectionLevel: *const fn(self: *anyopaque, value: GattProtectionLevel) callconv(.winapi) HRESULT,
         get_WriteProtectionLevel: *const fn(self: *anyopaque, _r: *GattProtectionLevel) callconv(.winapi) HRESULT,
-        put_UserDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UserDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_UserDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PresentationFormats: *const fn(self: *anyopaque, _r: **IVector(GattPresentationFormat)) callconv(.winapi) HRESULT,
     };
 };

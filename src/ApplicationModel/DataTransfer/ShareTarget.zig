@@ -1,13 +1,13 @@
 // ----- This code is automatically generated -----
 pub const IQuickLink = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -21,24 +21,24 @@ pub const IQuickLink = extern struct {
         const _c = self.vtable.put_Thumbnail(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSupportedDataFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSupportedDataFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedDataFormats(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedFileTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSupportedFileTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedFileTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -55,14 +55,14 @@ pub const IQuickLink = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **RandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Thumbnail: *const fn(self: *anyopaque, value: *RandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SupportedDataFormats: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_SupportedFileTypes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedDataFormats: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_SupportedFileTypes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IShareOperation = extern struct {
@@ -73,8 +73,8 @@ pub const IShareOperation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQuickLinkId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQuickLinkId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QuickLinkId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -103,7 +103,7 @@ pub const IShareOperation = extern struct {
         const _c = self.vtable.ReportCompleted(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReportError(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ReportError(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReportError(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -120,14 +120,14 @@ pub const IShareOperation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Data: *const fn(self: *anyopaque, _r: **DataPackageView) callconv(.winapi) HRESULT,
-        get_QuickLinkId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QuickLinkId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         RemoveThisQuickLink: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportStarted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportDataRetrieved: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportSubmittedBackgroundTask: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportCompletedWithQuicklink: *const fn(self: *anyopaque, quicklink: *QuickLink) callconv(.winapi) HRESULT,
         ReportCompleted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ReportError: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        ReportError: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IShareOperation2 = extern struct {
@@ -176,11 +176,11 @@ pub const IShareOperation3 = extern struct {
 };
 pub const QuickLink = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQuickLink = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -192,19 +192,19 @@ pub const QuickLink = extern struct {
         const this: *IQuickLink = @ptrCast(self);
         return try this.putThumbnail(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IQuickLink = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getSupportedDataFormats(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSupportedDataFormats(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getSupportedDataFormats();
     }
-    pub fn getSupportedFileTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSupportedFileTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getSupportedFileTypes();
     }
@@ -228,7 +228,7 @@ pub const ShareOperation = extern struct {
         const this: *IShareOperation = @ptrCast(self);
         return try this.getData();
     }
-    pub fn getQuickLinkId(self: *@This()) core.HResult!HSTRING {
+    pub fn getQuickLinkId(self: *@This()) core.HResult!?HSTRING {
         const this: *IShareOperation = @ptrCast(self);
         return try this.getQuickLinkId();
     }
@@ -256,7 +256,7 @@ pub const ShareOperation = extern struct {
         const this: *IShareOperation = @ptrCast(self);
         return try this.ReportCompleted();
     }
-    pub fn ReportError(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ReportError(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IShareOperation = @ptrCast(self);
         return try this.ReportError(value);
     }

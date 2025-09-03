@@ -13,19 +13,19 @@ pub const ContentLinkInfo = extern struct {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.getDisplayText();
     }
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putDisplayText(value);
     }
-    pub fn getSecondaryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getSecondaryText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.getSecondaryText();
     }
-    pub fn putSecondaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putSecondaryText(value);
     }
@@ -37,11 +37,11 @@ pub const ContentLinkInfo = extern struct {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putUri(value);
     }
-    pub fn getLinkContentKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getLinkContentKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.getLinkContentKind();
     }
-    pub fn putLinkContentKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLinkContentKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putLinkContentKind(value);
     }
@@ -163,23 +163,23 @@ pub const IContentLinkInfo = extern struct {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSecondaryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecondaryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecondaryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSecondaryText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSecondaryText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SecondaryText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -193,13 +193,13 @@ pub const IContentLinkInfo = extern struct {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLinkContentKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLinkContentKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LinkContentKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLinkContentKind(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLinkContentKind(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LinkContentKind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -217,14 +217,14 @@ pub const IContentLinkInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Id: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SecondaryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SecondaryText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SecondaryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SecondaryText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_LinkContentKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LinkContentKind: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LinkContentKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LinkContentKind: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFontWeights = extern struct {
@@ -456,13 +456,13 @@ pub const ITextCharacterFormat = extern struct {
         const _c = self.vtable.put_Kerning(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguageTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageTag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguageTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguageTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LanguageTag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -472,13 +472,13 @@ pub const ITextCharacterFormat = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -648,11 +648,11 @@ pub const ITextCharacterFormat = extern struct {
         put_Italic: *const fn(self: *anyopaque, value: FormatEffect) callconv(.winapi) HRESULT,
         get_Kerning: *const fn(self: *anyopaque, _r: *f32) callconv(.winapi) HRESULT,
         put_Kerning: *const fn(self: *anyopaque, value: f32) callconv(.winapi) HRESULT,
-        get_LanguageTag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LanguageTag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LanguageTag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LanguageTag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LinkType: *const fn(self: *anyopaque, _r: *LinkType) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Outline: *const fn(self: *anyopaque, _r: *FormatEffect) callconv(.winapi) HRESULT,
         put_Outline: *const fn(self: *anyopaque, value: FormatEffect) callconv(.winapi) HRESULT,
         get_Position: *const fn(self: *anyopaque, _r: *f32) callconv(.winapi) HRESULT,
@@ -860,7 +860,7 @@ pub const ITextDocument = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetText(self: *@This(), options: TextGetOptions, value: HSTRING) core.HResult!void {
+    pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetText(@ptrCast(self), options, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -884,7 +884,7 @@ pub const ITextDocument = extern struct {
         const _c = self.vtable.SetDefaultParagraphFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetText(self: *@This(), options: TextSetOptions, value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), options, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -923,13 +923,13 @@ pub const ITextDocument = extern struct {
         GetDefaultParagraphFormat: *const fn(self: *anyopaque, _r: **ITextParagraphFormat) callconv(.winapi) HRESULT,
         GetRange: *const fn(self: *anyopaque, startPosition: i32, endPosition: i32, _r: **ITextRange) callconv(.winapi) HRESULT,
         GetRangeFromPoint: *const fn(self: *anyopaque, point: Point, options: PointOptions, _r: **ITextRange) callconv(.winapi) HRESULT,
-        GetText: *const fn(self: *anyopaque, options: TextGetOptions, value: HSTRING) callconv(.winapi) HRESULT,
+        GetText: *const fn(self: *anyopaque, options: TextGetOptions, value: ?HSTRING) callconv(.winapi) HRESULT,
         LoadFromStream: *const fn(self: *anyopaque, options: TextSetOptions, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
         Redo: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SaveToStream: *const fn(self: *anyopaque, options: TextGetOptions, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
         SetDefaultCharacterFormat: *const fn(self: *anyopaque, value: *ITextCharacterFormat) callconv(.winapi) HRESULT,
         SetDefaultParagraphFormat: *const fn(self: *anyopaque, value: *ITextParagraphFormat) callconv(.winapi) HRESULT,
-        SetText: *const fn(self: *anyopaque, options: TextSetOptions, value: HSTRING) callconv(.winapi) HRESULT,
+        SetText: *const fn(self: *anyopaque, options: TextSetOptions, value: ?HSTRING) callconv(.winapi) HRESULT,
         Undo: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -996,11 +996,11 @@ pub const ITextDocument3 = extern struct {
 };
 pub const ITextDocument4 = extern struct {
     vtable: *const VTable,
-    pub fn SetMath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetMath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetMath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn GetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetMath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1020,8 +1020,8 @@ pub const ITextDocument4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetMath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        GetMath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SetMath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        GetMath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetMathMode: *const fn(self: *anyopaque, mode: RichEditMathMode) callconv(.winapi) HRESULT,
     };
 };
@@ -1387,13 +1387,13 @@ pub const ITextRange = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLink(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLink(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Link(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLink(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Link(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1423,13 +1423,13 @@ pub const ITextRange = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1473,7 +1473,7 @@ pub const ITextRange = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindText(self: *@This(), value: HSTRING, scanLength: i32, options: FindOptions) core.HResult!i32 {
+    pub fn FindText(self: *@This(), value: ?HSTRING, scanLength: i32, options: FindOptions) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.FindText(@ptrCast(self), value, scanLength, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1503,7 +1503,7 @@ pub const ITextRange = extern struct {
         const _c = self.vtable.GetRect(@ptrCast(self), options, rect, hit);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetText(self: *@This(), options: TextGetOptions, value: HSTRING) core.HResult!void {
+    pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.GetText(@ptrCast(self), options, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1517,7 +1517,7 @@ pub const ITextRange = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InsertImage(self: *@This(), width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: HSTRING, value: *IRandomAccessStream) core.HResult!void {
+    pub fn InsertImage(self: *@This(), width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: ?HSTRING, value: *IRandomAccessStream) core.HResult!void {
         const _c = self.vtable.InsertImage(@ptrCast(self), width, height, ascent, verticalAlign, alternateText, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1575,7 +1575,7 @@ pub const ITextRange = extern struct {
         const _c = self.vtable.SetRange(@ptrCast(self), startPosition, endPosition);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetText(self: *@This(), options: TextSetOptions, value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetText(@ptrCast(self), options, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1612,15 +1612,15 @@ pub const ITextRange = extern struct {
         get_Gravity: *const fn(self: *anyopaque, _r: *RangeGravity) callconv(.winapi) HRESULT,
         put_Gravity: *const fn(self: *anyopaque, value: RangeGravity) callconv(.winapi) HRESULT,
         get_Length: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_Link: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Link: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Link: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Link: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ParagraphFormat: *const fn(self: *anyopaque, _r: **ITextParagraphFormat) callconv(.winapi) HRESULT,
         put_ParagraphFormat: *const fn(self: *anyopaque, value: *ITextParagraphFormat) callconv(.winapi) HRESULT,
         get_StartPosition: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_StartPosition: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_StoryLength: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         CanPaste: *const fn(self: *anyopaque, format: i32, _r: *bool) callconv(.winapi) HRESULT,
         ChangeCase: *const fn(self: *anyopaque, value: LetterCase) callconv(.winapi) HRESULT,
         Collapse: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -1629,16 +1629,16 @@ pub const ITextRange = extern struct {
         Delete: *const fn(self: *anyopaque, unit: TextRangeUnit, count: i32, _r: *i32) callconv(.winapi) HRESULT,
         EndOf: *const fn(self: *anyopaque, unit: TextRangeUnit, extend: bool, _r: *i32) callconv(.winapi) HRESULT,
         Expand: *const fn(self: *anyopaque, unit: TextRangeUnit, _r: *i32) callconv(.winapi) HRESULT,
-        FindText: *const fn(self: *anyopaque, value: HSTRING, scanLength: i32, options: FindOptions, _r: *i32) callconv(.winapi) HRESULT,
+        FindText: *const fn(self: *anyopaque, value: ?HSTRING, scanLength: i32, options: FindOptions, _r: *i32) callconv(.winapi) HRESULT,
         GetCharacterUtf32: *const fn(self: *anyopaque, value: u32, offset: i32) callconv(.winapi) HRESULT,
         GetClone: *const fn(self: *anyopaque, _r: **ITextRange) callconv(.winapi) HRESULT,
         GetIndex: *const fn(self: *anyopaque, unit: TextRangeUnit, _r: *i32) callconv(.winapi) HRESULT,
         GetPoint: *const fn(self: *anyopaque, horizontalAlign: HorizontalCharacterAlignment, verticalAlign: VerticalCharacterAlignment, options: PointOptions, point: Point) callconv(.winapi) HRESULT,
         GetRect: *const fn(self: *anyopaque, options: PointOptions, rect: Rect, hit: i32) callconv(.winapi) HRESULT,
-        GetText: *const fn(self: *anyopaque, options: TextGetOptions, value: HSTRING) callconv(.winapi) HRESULT,
+        GetText: *const fn(self: *anyopaque, options: TextGetOptions, value: ?HSTRING) callconv(.winapi) HRESULT,
         GetTextViaStream: *const fn(self: *anyopaque, options: TextGetOptions, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
         InRange: *const fn(self: *anyopaque, range: *ITextRange, _r: *bool) callconv(.winapi) HRESULT,
-        InsertImage: *const fn(self: *anyopaque, width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: HSTRING, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
+        InsertImage: *const fn(self: *anyopaque, width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: ?HSTRING, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
         InStory: *const fn(self: *anyopaque, range: *ITextRange, _r: *bool) callconv(.winapi) HRESULT,
         IsEqual: *const fn(self: *anyopaque, range: *ITextRange, _r: *bool) callconv(.winapi) HRESULT,
         Move: *const fn(self: *anyopaque, unit: TextRangeUnit, count: i32, _r: *i32) callconv(.winapi) HRESULT,
@@ -1650,7 +1650,7 @@ pub const ITextRange = extern struct {
         SetIndex: *const fn(self: *anyopaque, unit: TextRangeUnit, index: i32, extend: bool) callconv(.winapi) HRESULT,
         SetPoint: *const fn(self: *anyopaque, point: Point, options: PointOptions, extend: bool) callconv(.winapi) HRESULT,
         SetRange: *const fn(self: *anyopaque, startPosition: i32, endPosition: i32) callconv(.winapi) HRESULT,
-        SetText: *const fn(self: *anyopaque, options: TextSetOptions, value: HSTRING) callconv(.winapi) HRESULT,
+        SetText: *const fn(self: *anyopaque, options: TextSetOptions, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetTextViaStream: *const fn(self: *anyopaque, options: TextSetOptions, value: *IRandomAccessStream) callconv(.winapi) HRESULT,
         StartOf: *const fn(self: *anyopaque, unit: TextRangeUnit, extend: bool, _r: *i32) callconv(.winapi) HRESULT,
     };
@@ -1709,7 +1709,7 @@ pub const ITextSelection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TypeText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn TypeText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.TypeText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1734,7 +1734,7 @@ pub const ITextSelection = extern struct {
         MoveLeft: *const fn(self: *anyopaque, unit: TextRangeUnit, count: i32, extend: bool, _r: *i32) callconv(.winapi) HRESULT,
         MoveRight: *const fn(self: *anyopaque, unit: TextRangeUnit, count: i32, extend: bool, _r: *i32) callconv(.winapi) HRESULT,
         MoveUp: *const fn(self: *anyopaque, unit: TextRangeUnit, count: i32, extend: bool, _r: *i32) callconv(.winapi) HRESULT,
-        TypeText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        TypeText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const LetterCase = enum(i32) {
@@ -1878,13 +1878,13 @@ pub const RichEditTextDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearUndoRedoHistory();
     }
-    pub fn SetMath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMath(value);
     }
-    pub fn GetMath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn GetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1972,7 +1972,7 @@ pub const RichEditTextDocument = extern struct {
         const this: *ITextDocument = @ptrCast(self);
         return try this.GetRangeFromPoint(point, options);
     }
-    pub fn GetText(self: *@This(), options: TextGetOptions, value: HSTRING) core.HResult!void {
+    pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const this: *ITextDocument = @ptrCast(self);
         return try this.GetText(options, value);
     }
@@ -1996,7 +1996,7 @@ pub const RichEditTextDocument = extern struct {
         const this: *ITextDocument = @ptrCast(self);
         return try this.SetDefaultParagraphFormat(value);
     }
-    pub fn SetText(self: *@This(), options: TextSetOptions, value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const this: *ITextDocument = @ptrCast(self);
         return try this.SetText(options, value);
     }
@@ -2068,11 +2068,11 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.getLength();
     }
-    pub fn getLink(self: *@This()) core.HResult!HSTRING {
+    pub fn getLink(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextRange = @ptrCast(self);
         return try this.getLink();
     }
-    pub fn putLink(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextRange = @ptrCast(self);
         return try this.putLink(value);
     }
@@ -2096,11 +2096,11 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.getStoryLength();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextRange = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextRange = @ptrCast(self);
         return try this.putText(value);
     }
@@ -2136,7 +2136,7 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.Expand(unit);
     }
-    pub fn FindText(self: *@This(), value: HSTRING, scanLength: i32, options: FindOptions) core.HResult!i32 {
+    pub fn FindText(self: *@This(), value: ?HSTRING, scanLength: i32, options: FindOptions) core.HResult!i32 {
         const this: *ITextRange = @ptrCast(self);
         return try this.FindText(value, scanLength, options);
     }
@@ -2160,7 +2160,7 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.GetRect(options, rect, hit);
     }
-    pub fn GetText(self: *@This(), options: TextGetOptions, value: HSTRING) core.HResult!void {
+    pub fn GetText(self: *@This(), options: TextGetOptions, value: ?HSTRING) core.HResult!void {
         const this: *ITextRange = @ptrCast(self);
         return try this.GetText(options, value);
     }
@@ -2172,7 +2172,7 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.InRange(range);
     }
-    pub fn InsertImage(self: *@This(), width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: HSTRING, value: *IRandomAccessStream) core.HResult!void {
+    pub fn InsertImage(self: *@This(), width: i32, height: i32, ascent: i32, verticalAlign: VerticalCharacterAlignment, alternateText: ?HSTRING, value: *IRandomAccessStream) core.HResult!void {
         const this: *ITextRange = @ptrCast(self);
         return try this.InsertImage(width, height, ascent, verticalAlign, alternateText, value);
     }
@@ -2220,7 +2220,7 @@ pub const RichEditTextRange = extern struct {
         const this: *ITextRange = @ptrCast(self);
         return try this.SetRange(startPosition, endPosition);
     }
-    pub fn SetText(self: *@This(), options: TextSetOptions, value: HSTRING) core.HResult!void {
+    pub fn SetText(self: *@This(), options: TextSetOptions, value: ?HSTRING) core.HResult!void {
         const this: *ITextRange = @ptrCast(self);
         return try this.SetText(options, value);
     }

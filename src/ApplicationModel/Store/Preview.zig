@@ -90,19 +90,19 @@ pub const IDeliveryOptimizationSettingsStatics = extern struct {
 };
 pub const IStoreConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn SetSystemConfiguration(self: *@This(), catalogHardwareManufacturerId: HSTRING, catalogStoreContentModifierId: HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: HSTRING) core.HResult!void {
+    pub fn SetSystemConfiguration(self: *@This(), catalogHardwareManufacturerId: ?HSTRING, catalogStoreContentModifierId: ?HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetSystemConfiguration(@ptrCast(self), catalogHardwareManufacturerId, catalogStoreContentModifierId, systemConfigurationExpiration, catalogHardwareDescriptor);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetMobileOperatorConfiguration(self: *@This(), mobileOperatorId: HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
+    pub fn SetMobileOperatorConfiguration(self: *@This(), mobileOperatorId: ?HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
         const _c = self.vtable.SetMobileOperatorConfiguration(@ptrCast(self), mobileOperatorId, appDownloadLimitInMegabytes, updateDownloadLimitInMegabytes);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetStoreWebAccountId(self: *@This(), webAccountId: HSTRING) core.HResult!void {
+    pub fn SetStoreWebAccountId(self: *@This(), webAccountId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStoreWebAccountId(@ptrCast(self), webAccountId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn IsStoreWebAccountId(self: *@This(), webAccountId: HSTRING) core.HResult!bool {
+    pub fn IsStoreWebAccountId(self: *@This(), webAccountId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsStoreWebAccountId(@ptrCast(self), webAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -132,10 +132,10 @@ pub const IStoreConfigurationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetSystemConfiguration: *const fn(self: *anyopaque, catalogHardwareManufacturerId: HSTRING, catalogStoreContentModifierId: HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: HSTRING) callconv(.winapi) HRESULT,
-        SetMobileOperatorConfiguration: *const fn(self: *anyopaque, mobileOperatorId: HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) callconv(.winapi) HRESULT,
-        SetStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: HSTRING) callconv(.winapi) HRESULT,
-        IsStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        SetSystemConfiguration: *const fn(self: *anyopaque, catalogHardwareManufacturerId: ?HSTRING, catalogStoreContentModifierId: ?HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: ?HSTRING) callconv(.winapi) HRESULT,
+        SetMobileOperatorConfiguration: *const fn(self: *anyopaque, mobileOperatorId: ?HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) callconv(.winapi) HRESULT,
+        SetStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: ?HSTRING) callconv(.winapi) HRESULT,
+        IsStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         get_HardwareManufacturerInfo: *const fn(self: *anyopaque, _r: **StoreHardwareManufacturerInfo) callconv(.winapi) HRESULT,
         FilterUnsupportedSystemFeaturesAsync: *const fn(self: *anyopaque, systemFeatures: *IIterable(StoreSystemFeature), _r: **IAsyncOperation(IVectorView(StoreSystemFeature))) callconv(.winapi) HRESULT,
     };
@@ -188,11 +188,11 @@ pub const IStoreConfigurationStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: HSTRING) core.HResult!void {
+    pub fn SetStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStoreWebAccountIdForUser(@ptrCast(self), user, webAccountId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn IsStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: HSTRING) core.HResult!bool {
+    pub fn IsStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsStoreWebAccountIdForUser(@ptrCast(self), user, webAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -223,42 +223,42 @@ pub const IStoreConfigurationStatics3 = extern struct {
         HasStoreWebAccount: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         HasStoreWebAccountForUser: *const fn(self: *anyopaque, user: *User, _r: *bool) callconv(.winapi) HRESULT,
         GetStoreLogDataAsync: *const fn(self: *anyopaque, options: StoreLogOptions, _r: **IAsyncOperation(IRandomAccessStreamReference)) callconv(.winapi) HRESULT,
-        SetStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING) callconv(.winapi) HRESULT,
-        IsStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        SetStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: ?HSTRING) callconv(.winapi) HRESULT,
+        IsStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         GetPurchasePromptingPolicyForUser: *const fn(self: *anyopaque, user: *User, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         SetPurchasePromptingPolicyForUser: *const fn(self: *anyopaque, user: *User, value: *IReference(u32)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreConfigurationStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn GetStoreWebAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStoreWebAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStoreWebAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStoreWebAccountIdForUser(self: *@This(), user: *User) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStoreWebAccountIdForUser(self: *@This(), user: *User) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStoreWebAccountIdForUser(@ptrCast(self), user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetEnterpriseStoreWebAccountId(self: *@This(), webAccountId: HSTRING) core.HResult!void {
+    pub fn SetEnterpriseStoreWebAccountId(self: *@This(), webAccountId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetEnterpriseStoreWebAccountId(@ptrCast(self), webAccountId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetEnterpriseStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: HSTRING) core.HResult!void {
+    pub fn SetEnterpriseStoreWebAccountIdForUser(self: *@This(), user: *User, webAccountId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetEnterpriseStoreWebAccountIdForUser(@ptrCast(self), user, webAccountId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetEnterpriseStoreWebAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetEnterpriseStoreWebAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetEnterpriseStoreWebAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetEnterpriseStoreWebAccountIdForUser(self: *@This(), user: *User) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetEnterpriseStoreWebAccountIdForUser(self: *@This(), user: *User) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetEnterpriseStoreWebAccountIdForUser(@ptrCast(self), user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -287,12 +287,12 @@ pub const IStoreConfigurationStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStoreWebAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetEnterpriseStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: HSTRING) callconv(.winapi) HRESULT,
-        SetEnterpriseStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING) callconv(.winapi) HRESULT,
-        GetEnterpriseStoreWebAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetEnterpriseStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStoreWebAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetEnterpriseStoreWebAccountId: *const fn(self: *anyopaque, webAccountId: ?HSTRING) callconv(.winapi) HRESULT,
+        SetEnterpriseStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, webAccountId: ?HSTRING) callconv(.winapi) HRESULT,
+        GetEnterpriseStoreWebAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetEnterpriseStoreWebAccountIdForUser: *const fn(self: *anyopaque, user: *User, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ShouldRestrictToEnterpriseStoreOnly: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         ShouldRestrictToEnterpriseStoreOnlyForUser: *const fn(self: *anyopaque, user: *User, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -317,11 +317,11 @@ pub const IStoreConfigurationStatics5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PinToDesktop(self: *@This(), appPackageFamilyName: HSTRING) core.HResult!void {
+    pub fn PinToDesktop(self: *@This(), appPackageFamilyName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PinToDesktop(@ptrCast(self), appPackageFamilyName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PinToDesktopForUser(self: *@This(), user: *User, appPackageFamilyName: HSTRING) core.HResult!void {
+    pub fn PinToDesktopForUser(self: *@This(), user: *User, appPackageFamilyName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.PinToDesktopForUser(@ptrCast(self), user, appPackageFamilyName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -340,32 +340,32 @@ pub const IStoreConfigurationStatics5 = extern struct {
         IsPinToDesktopSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsPinToTaskbarSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsPinToStartSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        PinToDesktop: *const fn(self: *anyopaque, appPackageFamilyName: HSTRING) callconv(.winapi) HRESULT,
-        PinToDesktopForUser: *const fn(self: *anyopaque, user: *User, appPackageFamilyName: HSTRING) callconv(.winapi) HRESULT,
+        PinToDesktop: *const fn(self: *anyopaque, appPackageFamilyName: ?HSTRING) callconv(.winapi) HRESULT,
+        PinToDesktopForUser: *const fn(self: *anyopaque, user: *User, appPackageFamilyName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreHardwareManufacturerInfo = extern struct {
     vtable: *const VTable,
-    pub fn getHardwareManufacturerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHardwareManufacturerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HardwareManufacturerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStoreContentModifierId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStoreContentModifierId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreContentModifierId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getManufacturerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManufacturerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -382,15 +382,15 @@ pub const IStoreHardwareManufacturerInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_HardwareManufacturerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_StoreContentModifierId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ManufacturerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HardwareManufacturerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StoreContentModifierId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ManufacturerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePreview = extern struct {
     vtable: *const VTable,
-    pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(self: *@This(), productId: HSTRING, skuId: HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
+    pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
         var _r: *IAsyncOperation(StorePreviewPurchaseResults) = undefined;
         const _c = self.vtable.RequestProductPurchaseByProductIdAndSkuIdAsync(@ptrCast(self), productId, skuId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -414,32 +414,32 @@ pub const IStorePreview = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestProductPurchaseByProductIdAndSkuIdAsync: *const fn(self: *anyopaque, productId: HSTRING, skuId: HSTRING, _r: **IAsyncOperation(StorePreviewPurchaseResults)) callconv(.winapi) HRESULT,
+        RequestProductPurchaseByProductIdAndSkuIdAsync: *const fn(self: *anyopaque, productId: ?HSTRING, skuId: ?HSTRING, _r: **IAsyncOperation(StorePreviewPurchaseResults)) callconv(.winapi) HRESULT,
         LoadAddOnProductInfosAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StorePreviewProductInfo))) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorePreviewProductInfo = extern struct {
     vtable: *const VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProductType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -462,10 +462,10 @@ pub const IStorePreviewProductInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProductId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ProductType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProductId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProductType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SkuInfoList: *const fn(self: *anyopaque, _r: **IVectorView(StorePreviewSkuInfo)) callconv(.winapi) HRESULT,
     };
 };
@@ -494,56 +494,56 @@ pub const IStorePreviewPurchaseResults = extern struct {
 };
 pub const IStorePreviewSkuInfo = extern struct {
     vtable: *const VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSkuId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSkuId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSkuType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSkuType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCustomDeveloperData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomDeveloperData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomDeveloperData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrencyCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrencyCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFormattedListPrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormattedListPrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedListPrice(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExtendedData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -560,15 +560,15 @@ pub const IStorePreviewSkuInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProductId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SkuId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SkuType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CustomDeveloperData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CurrencyCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FormattedListPrice: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ExtendedData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProductId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SkuId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SkuType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CustomDeveloperData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CurrencyCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FormattedListPrice: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerHelper = extern struct {
@@ -618,35 +618,35 @@ pub const StoreConfiguration = extern struct {
         const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.IsPinToStartSupported();
     }
-    pub fn PinToDesktop(appPackageFamilyName: HSTRING) core.HResult!void {
+    pub fn PinToDesktop(appPackageFamilyName: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.PinToDesktop(appPackageFamilyName);
     }
-    pub fn PinToDesktopForUser(user: *User, appPackageFamilyName: HSTRING) core.HResult!void {
+    pub fn PinToDesktopForUser(user: *User, appPackageFamilyName: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStatics5Cache.get();
         return try _f.PinToDesktopForUser(user, appPackageFamilyName);
     }
-    pub fn GetStoreWebAccountId() core.HResult!HSTRING {
+    pub fn GetStoreWebAccountId() core.HResult!?HSTRING {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetStoreWebAccountId();
     }
-    pub fn GetStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
+    pub fn GetStoreWebAccountIdForUser(user: *User) core.HResult!?HSTRING {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetStoreWebAccountIdForUser(user);
     }
-    pub fn SetEnterpriseStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
+    pub fn SetEnterpriseStoreWebAccountId(webAccountId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.SetEnterpriseStoreWebAccountId(webAccountId);
     }
-    pub fn SetEnterpriseStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
+    pub fn SetEnterpriseStoreWebAccountIdForUser(user: *User, webAccountId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.SetEnterpriseStoreWebAccountIdForUser(user, webAccountId);
     }
-    pub fn GetEnterpriseStoreWebAccountId() core.HResult!HSTRING {
+    pub fn GetEnterpriseStoreWebAccountId() core.HResult!?HSTRING {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetEnterpriseStoreWebAccountId();
     }
-    pub fn GetEnterpriseStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
+    pub fn GetEnterpriseStoreWebAccountIdForUser(user: *User) core.HResult!?HSTRING {
         const _f = try @This()._IStoreConfigurationStatics4Cache.get();
         return try _f.GetEnterpriseStoreWebAccountIdForUser(user);
     }
@@ -670,11 +670,11 @@ pub const StoreConfiguration = extern struct {
         const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.GetStoreLogDataAsync(options);
     }
-    pub fn SetStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
+    pub fn SetStoreWebAccountIdForUser(user: *User, webAccountId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.SetStoreWebAccountIdForUser(user, webAccountId);
     }
-    pub fn IsStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!bool {
+    pub fn IsStoreWebAccountIdForUser(user: *User, webAccountId: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IStoreConfigurationStatics3Cache.get();
         return try _f.IsStoreWebAccountIdForUser(user, webAccountId);
     }
@@ -694,19 +694,19 @@ pub const StoreConfiguration = extern struct {
         const _f = try @This()._IStoreConfigurationStatics2Cache.get();
         return try _f.putPurchasePromptingPolicy(value);
     }
-    pub fn SetSystemConfiguration(catalogHardwareManufacturerId: HSTRING, catalogStoreContentModifierId: HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: HSTRING) core.HResult!void {
+    pub fn SetSystemConfiguration(catalogHardwareManufacturerId: ?HSTRING, catalogStoreContentModifierId: ?HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetSystemConfiguration(catalogHardwareManufacturerId, catalogStoreContentModifierId, systemConfigurationExpiration, catalogHardwareDescriptor);
     }
-    pub fn SetMobileOperatorConfiguration(mobileOperatorId: HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
+    pub fn SetMobileOperatorConfiguration(mobileOperatorId: ?HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetMobileOperatorConfiguration(mobileOperatorId, appDownloadLimitInMegabytes, updateDownloadLimitInMegabytes);
     }
-    pub fn SetStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
+    pub fn SetStoreWebAccountId(webAccountId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.SetStoreWebAccountId(webAccountId);
     }
-    pub fn IsStoreWebAccountId(webAccountId: HSTRING) core.HResult!bool {
+    pub fn IsStoreWebAccountId(webAccountId: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IStoreConfigurationStaticsCache.get();
         return try _f.IsStoreWebAccountId(webAccountId);
     }
@@ -728,19 +728,19 @@ pub const StoreConfiguration = extern struct {
 };
 pub const StoreHardwareManufacturerInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getHardwareManufacturerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getHardwareManufacturerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreHardwareManufacturerInfo = @ptrCast(self);
         return try this.getHardwareManufacturerId();
     }
-    pub fn getStoreContentModifierId(self: *@This()) core.HResult!HSTRING {
+    pub fn getStoreContentModifierId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreHardwareManufacturerInfo = @ptrCast(self);
         return try this.getStoreContentModifierId();
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreHardwareManufacturerInfo = @ptrCast(self);
         return try this.getModelName();
     }
-    pub fn getManufacturerName(self: *@This()) core.HResult!HSTRING {
+    pub fn getManufacturerName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreHardwareManufacturerInfo = @ptrCast(self);
         return try this.getManufacturerName();
     }
@@ -759,7 +759,7 @@ pub const StorePreview = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(productId: HSTRING, skuId: HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
+    pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(productId: ?HSTRING, skuId: ?HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
         const _f = try @This()._IStorePreviewCache.get();
         return try _f.RequestProductPurchaseByProductIdAndSkuIdAsync(productId, skuId);
     }
@@ -773,19 +773,19 @@ pub const StorePreview = extern struct {
 };
 pub const StorePreviewProductInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewProductInfo = @ptrCast(self);
         return try this.getProductId();
     }
-    pub fn getProductType(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductType(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewProductInfo = @ptrCast(self);
         return try this.getProductType();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewProductInfo = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewProductInfo = @ptrCast(self);
         return try this.getDescription();
     }
@@ -819,39 +819,39 @@ pub const StorePreviewPurchaseResults = extern struct {
 };
 pub const StorePreviewSkuInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProductId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getProductId();
     }
-    pub fn getSkuId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSkuId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getSkuId();
     }
-    pub fn getSkuType(self: *@This()) core.HResult!HSTRING {
+    pub fn getSkuType(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getSkuType();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getCustomDeveloperData(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomDeveloperData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getCustomDeveloperData();
     }
-    pub fn getCurrencyCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getCurrencyCode();
     }
-    pub fn getFormattedListPrice(self: *@This()) core.HResult!HSTRING {
+    pub fn getFormattedListPrice(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getFormattedListPrice();
     }
-    pub fn getExtendedData(self: *@This()) core.HResult!HSTRING {
+    pub fn getExtendedData(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePreviewSkuInfo = @ptrCast(self);
         return try this.getExtendedData();
     }

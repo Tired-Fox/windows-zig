@@ -17,11 +17,11 @@ pub const CoreWindowDialog = extern struct {
         const this: *ICoreWindowDialog = @ptrCast(self);
         return try this.getMinSize();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ICoreWindowDialog = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICoreWindowDialog = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -72,7 +72,7 @@ pub const CoreWindowDialog = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreWindowDialog.IID)));
     }
-    pub fn CreateWithTitle(title: HSTRING) core.HResult!*CoreWindowDialog {
+    pub fn CreateWithTitle(title: ?HSTRING) core.HResult!*CoreWindowDialog {
         const _f = try @This()._ICoreWindowDialogFactoryCache.get();
         return try _f.CreateWithTitle(title);
     }
@@ -102,11 +102,11 @@ pub const CoreWindowFlyout = extern struct {
         const this: *ICoreWindowFlyout = @ptrCast(self);
         return try this.getMinSize();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ICoreWindowFlyout = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICoreWindowFlyout = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -149,7 +149,7 @@ pub const CoreWindowFlyout = extern struct {
         const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
         return try _f.Create(position);
     }
-    pub fn CreateWithTitle(position: Point, title: HSTRING) core.HResult!*CoreWindowFlyout {
+    pub fn CreateWithTitle(position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
         const _f = try @This()._ICoreWindowFlyoutFactoryCache.get();
         return try _f.CreateWithTitle(position, title);
     }
@@ -196,13 +196,13 @@ pub const ICoreWindowDialog = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -274,8 +274,8 @@ pub const ICoreWindowDialog = extern struct {
         remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
         get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
@@ -290,7 +290,7 @@ pub const ICoreWindowDialog = extern struct {
 };
 pub const ICoreWindowDialogFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithTitle(self: *@This(), title: HSTRING) core.HResult!*CoreWindowDialog {
+    pub fn CreateWithTitle(self: *@This(), title: ?HSTRING) core.HResult!*CoreWindowDialog {
         var _r: *CoreWindowDialog = undefined;
         const _c = self.vtable.CreateWithTitle(@ptrCast(self), title, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -308,7 +308,7 @@ pub const ICoreWindowDialogFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithTitle: *const fn(self: *anyopaque, title: HSTRING, _r: **CoreWindowDialog) callconv(.winapi) HRESULT,
+        CreateWithTitle: *const fn(self: *anyopaque, title: ?HSTRING, _r: **CoreWindowDialog) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreWindowFlyout = extern struct {
@@ -335,13 +335,13 @@ pub const ICoreWindowFlyout = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -403,8 +403,8 @@ pub const ICoreWindowFlyout = extern struct {
         remove_Showing: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_MaxSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
         get_MinSize: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsInteractionDelayed: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_IsInteractionDelayed: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
@@ -423,7 +423,7 @@ pub const ICoreWindowFlyoutFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTitle(self: *@This(), position: Point, title: HSTRING) core.HResult!*CoreWindowFlyout {
+    pub fn CreateWithTitle(self: *@This(), position: Point, title: ?HSTRING) core.HResult!*CoreWindowFlyout {
         var _r: *CoreWindowFlyout = undefined;
         const _c = self.vtable.CreateWithTitle(@ptrCast(self), position, title, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -442,7 +442,7 @@ pub const ICoreWindowFlyoutFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, position: Point, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
-        CreateWithTitle: *const fn(self: *anyopaque, position: Point, title: HSTRING, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
+        CreateWithTitle: *const fn(self: *anyopaque, position: Point, title: ?HSTRING, _r: **CoreWindowFlyout) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreWindowPopupShowingEventArgs = extern struct {
@@ -492,7 +492,7 @@ pub const AcceleratorKeyEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAcceleratorKeyEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAcceleratorKeyEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -870,7 +870,7 @@ pub const CoreComponentInputSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosestInteractiveBoundsRequested(cookie);
     }
-    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICoreKeyboardInputSource2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1563,7 +1563,7 @@ pub const CoreWindow = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosestInteractiveBoundsRequested(cookie);
     }
-    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICoreWindow3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1814,8 +1814,8 @@ pub const IAcceleratorKeyEventArgs = extern struct {
 };
 pub const IAcceleratorKeyEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1832,7 +1832,7 @@ pub const IAcceleratorKeyEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationProviderRequestedEventArgs = extern struct {
@@ -2433,8 +2433,8 @@ pub const ICoreKeyboardInputSource = extern struct {
 };
 pub const ICoreKeyboardInputSource2 = extern struct {
     vtable: *const VTable,
-    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetCurrentKeyEventDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2451,7 +2451,7 @@ pub const ICoreKeyboardInputSource2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCurrentKeyEventDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetCurrentKeyEventDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICorePointerInputSource = extern struct {
@@ -3058,8 +3058,8 @@ pub const ICoreWindow3 = extern struct {
         const _c = self.vtable.remove_ClosestInteractiveBoundsRequested(@ptrCast(self), cookie);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetCurrentKeyEventDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3078,7 +3078,7 @@ pub const ICoreWindow3 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         add_ClosestInteractiveBoundsRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreWindow,ClosestInteractiveBoundsRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ClosestInteractiveBoundsRequested: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
-        GetCurrentKeyEventDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetCurrentKeyEventDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreWindow4 = extern struct {
@@ -3396,8 +3396,8 @@ pub const IKeyEventArgs = extern struct {
 };
 pub const IKeyEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3414,7 +3414,7 @@ pub const IKeyEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointerEventArgs = extern struct {
@@ -3803,7 +3803,7 @@ pub const KeyEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IKeyEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

@@ -49,15 +49,15 @@ pub const BitmapCodecInformation = extern struct {
         const this: *IBitmapCodecInformation = @ptrCast(self);
         return try this.getCodecId();
     }
-    pub fn getFileExtensions(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getFileExtensions(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IBitmapCodecInformation = @ptrCast(self);
         return try this.getFileExtensions();
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBitmapCodecInformation = @ptrCast(self);
         return try this.getFriendlyName();
     }
-    pub fn getMimeTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getMimeTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IBitmapCodecInformation = @ptrCast(self);
         return try this.getMimeTypes();
     }
@@ -288,7 +288,7 @@ pub const BitmapEncoder = extern struct {
         const this: *IBitmapEncoder = @ptrCast(self);
         return try this.GoToNextFrameAsync();
     }
-    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         const this: *IBitmapEncoder = @ptrCast(self);
         return try this.GoToNextFrameAsyncWithEncodingOptions(encodingOptions);
     }
@@ -341,7 +341,7 @@ pub const BitmapEncoder = extern struct {
         const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateAsync(encoderId, stream);
     }
-    pub fn CreateAsyncWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         const _f = try @This()._IBitmapEncoderStaticsCache.get();
         return try _f.CreateAsyncWithEncodingOptions(encoderId, stream, encodingOptions);
     }
@@ -465,11 +465,11 @@ pub const BitmapPlaneDescription = extern struct {
 };
 pub const BitmapProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         const this: *IBitmapProperties = @ptrCast(self);
         return try this.SetPropertiesAsync(propertiesToSet);
     }
-    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
+    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
         var this: ?*IBitmapPropertiesView = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapPropertiesView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -483,7 +483,7 @@ pub const BitmapProperties = extern struct {
 };
 pub const BitmapPropertiesView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
+    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
         const this: *IBitmapPropertiesView = @ptrCast(self);
         return try this.GetPropertiesAsync(propertiesToRetrieve);
     }
@@ -496,19 +496,19 @@ pub const BitmapPropertiesView = extern struct {
 pub const BitmapPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
+        const this: *IMap(?HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,BitmapTypedValue) {
-        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,BitmapTypedValue) {
+        const this: *IMap(?HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
+        const this: *IMap(?HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,BitmapTypedValue)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,BitmapTypedValue)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -671,20 +671,20 @@ pub const IBitmapCodecInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFileExtensions(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getFileExtensions(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FileExtensions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMimeTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getMimeTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_MimeTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -702,9 +702,9 @@ pub const IBitmapCodecInformation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CodecId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_FileExtensions: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MimeTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_FileExtensions: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MimeTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapDecoder = extern struct {
@@ -940,7 +940,7 @@ pub const IBitmapEncoder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.GoToNextFrameAsyncWithEncodingOptions(@ptrCast(self), encodingOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -976,7 +976,7 @@ pub const IBitmapEncoder = extern struct {
         get_BitmapTransform: *const fn(self: *anyopaque, _r: **BitmapTransform) callconv(.winapi) HRESULT,
         SetPixelData: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, width: u32, height: u32, dpiX: f64, dpiY: f64, pixels: [*]u8) callconv(.winapi) HRESULT,
         GoToNextFrameAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GoToNextFrameAsyncWithEncodingOptions: *const fn(self: *anyopaque, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GoToNextFrameAsyncWithEncodingOptions: *const fn(self: *anyopaque, encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FlushAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -1030,7 +1030,7 @@ pub const IBitmapEncoderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsyncWithEncodingOptions(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithEncodingOptions(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         var _r: *IAsyncOperation(BitmapEncoder) = undefined;
         const _c = self.vtable.CreateAsyncWithEncodingOptions(@ptrCast(self), encoderId, stream, encodingOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1068,7 +1068,7 @@ pub const IBitmapEncoderStatics = extern struct {
         get_JpegXREncoderId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetEncoderInformationEnumerator: *const fn(self: *anyopaque, _r: **IVectorView(BitmapCodecInformation)) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
-        CreateAsyncWithEncodingOptions: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
+        CreateAsyncWithEncodingOptions: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForTranscodingAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForInPlacePropertyEncodingAsync: *const fn(self: *anyopaque, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
     };
@@ -1256,7 +1256,7 @@ pub const IBitmapFrameWithSoftwareBitmap = extern struct {
 };
 pub const IBitmapProperties = extern struct {
     vtable: *const VTable,
-    pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetPropertiesAsync(@ptrCast(self), propertiesToSet, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1274,12 +1274,12 @@ pub const IBitmapProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetPropertiesAsync: *const fn(self: *anyopaque, propertiesToSet: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetPropertiesAsync: *const fn(self: *anyopaque, propertiesToSet: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapPropertiesView = extern struct {
     vtable: *const VTable,
-    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
+    pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
         var _r: *IAsyncOperation(BitmapPropertySet) = undefined;
         const _c = self.vtable.GetPropertiesAsync(@ptrCast(self), propertiesToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1297,7 +1297,7 @@ pub const IBitmapPropertiesView = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPropertiesAsync: *const fn(self: *anyopaque, propertiesToRetrieve: *IIterable(HSTRING), _r: **IAsyncOperation(BitmapPropertySet)) callconv(.winapi) HRESULT,
+        GetPropertiesAsync: *const fn(self: *anyopaque, propertiesToRetrieve: *IIterable(?HSTRING), _r: **IAsyncOperation(BitmapPropertySet)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapTransform = extern struct {
@@ -1743,7 +1743,7 @@ pub const ImageStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

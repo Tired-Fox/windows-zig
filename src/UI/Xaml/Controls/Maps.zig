@@ -267,8 +267,8 @@ pub const IMapControlDataHelperStatics = extern struct {
 };
 pub const IMapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -279,8 +279,8 @@ pub const IMapControlTransitFeatureClickEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -297,15 +297,15 @@ pub const IMapControlTransitFeatureClickEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -316,8 +316,8 @@ pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -334,15 +334,15 @@ pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -353,8 +353,8 @@ pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -371,15 +371,15 @@ pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -390,8 +390,8 @@ pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_TransitProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -408,9 +408,9 @@ pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
-        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_TransitProperties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
@@ -596,7 +596,7 @@ pub const MapControlDataHelper = extern struct {
 };
 pub const MapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -604,7 +604,7 @@ pub const MapControlTransitFeatureClickEventArgs = extern struct {
         const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
     }
@@ -624,7 +624,7 @@ pub const MapControlTransitFeatureClickEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -632,7 +632,7 @@ pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
         const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
     }
@@ -652,7 +652,7 @@ pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -660,7 +660,7 @@ pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
         const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
     }
@@ -680,7 +680,7 @@ pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
 };
 pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -688,7 +688,7 @@ pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
         const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
     }
@@ -748,15 +748,15 @@ pub const CustomMapTileDataSource = extern struct {
 };
 pub const HttpMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUriFormatString(self: *@This()) core.HResult!HSTRING {
+    pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMapTileDataSource = @ptrCast(self);
         return try this.getUriFormatString();
     }
-    pub fn putUriFormatString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IHttpMapTileDataSource = @ptrCast(self);
         return try this.putUriFormatString(value);
     }
-    pub fn getAdditionalRequestHeaders(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getAdditionalRequestHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IHttpMapTileDataSource = @ptrCast(self);
         return try this.getAdditionalRequestHeaders();
     }
@@ -783,7 +783,7 @@ pub const HttpMapTileDataSource = extern struct {
         const _f = try @This()._IHttpMapTileDataSourceFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
-    pub fn CreateInstanceWithUriFormatString(uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
+    pub fn CreateInstanceWithUriFormatString(uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         const _f = try @This()._IHttpMapTileDataSourceFactoryCache.get();
         return try _f.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
     }
@@ -847,18 +847,18 @@ pub const ICustomMapTileDataSourceFactory = extern struct {
 };
 pub const IHttpMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn getUriFormatString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUriFormatString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UriFormatString(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAdditionalRequestHeaders(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getAdditionalRequestHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_AdditionalRequestHeaders(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -895,9 +895,9 @@ pub const IHttpMapTileDataSource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UriFormatString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UriFormatString: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AdditionalRequestHeaders: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_UriFormatString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UriFormatString: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AdditionalRequestHeaders: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_AllowCaching: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowCaching: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         add_UriRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(HttpMapTileDataSource,MapTileUriRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -912,7 +912,7 @@ pub const IHttpMapTileDataSourceFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
+    pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         var _r: *HttpMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstanceWithUriFormatString(@ptrCast(self), uriFormatString, baseInterface, innerInterface, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -931,18 +931,18 @@ pub const IHttpMapTileDataSourceFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HttpMapTileDataSource) callconv(.winapi) HRESULT,
-        CreateInstanceWithUriFormatString: *const fn(self: *anyopaque, uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HttpMapTileDataSource) callconv(.winapi) HRESULT,
+        CreateInstanceWithUriFormatString: *const fn(self: *anyopaque, uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HttpMapTileDataSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ILocalMapTileDataSource = extern struct {
     vtable: *const VTable,
-    pub fn getUriFormatString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUriFormatString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UriFormatString(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -968,8 +968,8 @@ pub const ILocalMapTileDataSource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UriFormatString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UriFormatString: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_UriFormatString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UriFormatString: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_UriRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(LocalMapTileDataSource,MapTileUriRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_UriRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -982,7 +982,7 @@ pub const ILocalMapTileDataSourceFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
+    pub fn CreateInstanceWithUriFormatString(self: *@This(), uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         var _r: *LocalMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstanceWithUriFormatString(@ptrCast(self), uriFormatString, baseInterface, innerInterface, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1001,7 +1001,7 @@ pub const ILocalMapTileDataSourceFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **LocalMapTileDataSource) callconv(.winapi) HRESULT,
-        CreateInstanceWithUriFormatString: *const fn(self: *anyopaque, uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **LocalMapTileDataSource) callconv(.winapi) HRESULT,
+        CreateInstanceWithUriFormatString: *const fn(self: *anyopaque, uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **LocalMapTileDataSource) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapActualCameraChangedEventArgs = extern struct {
@@ -1448,13 +1448,13 @@ pub const IMapControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMapServiceToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMapServiceToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapServiceToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMapServiceToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapServiceToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapServiceToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1716,8 +1716,8 @@ pub const IMapControl = extern struct {
         get_LandmarksVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_LandmarksVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_LoadingStatus: *const fn(self: *anyopaque, _r: *MapLoadingStatus) callconv(.winapi) HRESULT,
-        get_MapServiceToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MapServiceToken: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MapServiceToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MapServiceToken: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_MaxZoomLevel: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_MinZoomLevel: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_PedestrianFeaturesVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2301,13 +2301,13 @@ pub const IMapControl6 = extern struct {
 };
 pub const IMapControl7 = extern struct {
     vtable: *const VTable,
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Region(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2323,8 +2323,8 @@ pub const IMapControl7 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Region: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Region: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Region: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Region: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl8 = extern struct {
@@ -2912,23 +2912,23 @@ pub const IMapElement2 = extern struct {
 };
 pub const IMapElement3 = extern struct {
     vtable: *const VTable,
-    pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapStyleSheetEntry(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMapStyleSheetEntry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapStyleSheetEntry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapStyleSheetEntry(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapStyleSheetEntryState(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMapStyleSheetEntryState(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapStyleSheetEntryState(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MapStyleSheetEntryState(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2954,10 +2954,10 @@ pub const IMapElement3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MapStyleSheetEntry: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MapStyleSheetEntry: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MapStyleSheetEntryState: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MapStyleSheetEntryState: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MapStyleSheetEntry: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MapStyleSheetEntry: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MapStyleSheetEntryState: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MapStyleSheetEntryState: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Tag: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Tag: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
     };
@@ -3635,13 +3635,13 @@ pub const IMapIcon = extern struct {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3679,8 +3679,8 @@ pub const IMapIcon = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Location: *const fn(self: *anyopaque, _r: **Geopoint) callconv(.winapi) HRESULT,
         put_Location: *const fn(self: *anyopaque, value: *Geopoint) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_NormalizedAnchorPoint: *const fn(self: *anyopaque, _r: *Point) callconv(.winapi) HRESULT,
         put_NormalizedAnchorPoint: *const fn(self: *anyopaque, value: Point) callconv(.winapi) HRESULT,
         get_Image: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
@@ -4532,386 +4532,386 @@ pub const IMapStyleSheet = extern struct {
 };
 pub const IMapStyleSheetEntriesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getArea(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArea(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Area(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAirport(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAirport(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Airport(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCemetery(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCemetery(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Cemetery(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContinent(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContinent(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Continent(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEducation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEducation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Education(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIndigenousPeoplesReserve(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIndigenousPeoplesReserve(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IndigenousPeoplesReserve(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIsland(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIsland(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Island(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMedical(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMedical(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Medical(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMilitary(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMilitary(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Military(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNautical(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNautical(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nautical(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNeighborhood(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNeighborhood(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Neighborhood(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRunway(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRunway(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Runway(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSand(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSand(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sand(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getShoppingCenter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getShoppingCenter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ShoppingCenter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStadium(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStadium(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Stadium(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVegetation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVegetation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Vegetation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getForest(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getForest(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Forest(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGolfCourse(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGolfCourse(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GolfCourse(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPark(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPark(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Park(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPlayingField(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlayingField(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlayingField(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getReserve(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getReserve(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Reserve(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Point(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNaturalPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNaturalPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NaturalPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPeak(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPeak(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Peak(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVolcanicPeak(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVolcanicPeak(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VolcanicPeak(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWaterPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWaterPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WaterPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPointOfInterest(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPointOfInterest(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PointOfInterest(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBusiness(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBusiness(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Business(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFoodPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFoodPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FoodPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPopulatedPlace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPopulatedPlace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PopulatedPlace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCapital(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapital(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Capital(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAdminDistrictCapital(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdminDistrictCapital(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdminDistrictCapital(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCountryRegionCapital(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountryRegionCapital(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CountryRegionCapital(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRoadShield(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoadShield(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadShield(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRoadExit(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoadExit(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadExit(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransit(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransit(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Transit(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPolitical(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPolitical(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Political(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCountryRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountryRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CountryRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAdminDistrict(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdminDistrict(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdminDistrict(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDistrict(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDistrict(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_District(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStructure(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStructure(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Structure(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBuilding(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBuilding(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Building(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEducationBuilding(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEducationBuilding(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EducationBuilding(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMedicalBuilding(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMedicalBuilding(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MedicalBuilding(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransitBuilding(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransitBuilding(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransitBuilding(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransportation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransportation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Transportation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRoad(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoad(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Road(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getControlledAccessHighway(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getControlledAccessHighway(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ControlledAccessHighway(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHighSpeedRamp(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHighSpeedRamp(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HighSpeedRamp(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHighway(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHighway(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Highway(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMajorRoad(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMajorRoad(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MajorRoad(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getArterialRoad(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArterialRoad(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ArterialRoad(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStreet(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStreet(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Street(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRamp(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRamp(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ramp(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnpavedStreet(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnpavedStreet(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnpavedStreet(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTollRoad(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTollRoad(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TollRoad(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRailway(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRailway(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Railway(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTrail(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTrail(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Trail(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWaterRoute(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWaterRoute(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WaterRoute(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWater(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWater(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Water(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRiver(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRiver(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_River(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRouteLine(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRouteLine(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RouteLine(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWalkingRoute(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWalkingRoute(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WalkingRoute(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDrivingRoute(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDrivingRoute(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DrivingRoute(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4928,88 +4928,88 @@ pub const IMapStyleSheetEntriesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Area: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Airport: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Cemetery: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Continent: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Education: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IndigenousPeoplesReserve: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Island: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Medical: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Military: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Nautical: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Neighborhood: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Runway: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sand: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ShoppingCenter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Stadium: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Vegetation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Forest: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GolfCourse: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Park: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PlayingField: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Reserve: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Point: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NaturalPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Peak: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VolcanicPeak: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WaterPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PointOfInterest: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Business: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FoodPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PopulatedPlace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Capital: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AdminDistrictCapital: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CountryRegionCapital: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RoadShield: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RoadExit: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Transit: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Political: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CountryRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AdminDistrict: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_District: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Structure: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Building: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EducationBuilding: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MedicalBuilding: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TransitBuilding: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Transportation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Road: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ControlledAccessHighway: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HighSpeedRamp: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Highway: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MajorRoad: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ArterialRoad: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Street: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ramp: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UnpavedStreet: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TollRoad: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Railway: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Trail: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WaterRoute: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Water: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_River: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RouteLine: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WalkingRoute: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DrivingRoute: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Area: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Airport: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Cemetery: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Continent: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Education: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IndigenousPeoplesReserve: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Island: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Medical: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Military: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Nautical: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Neighborhood: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Runway: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sand: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ShoppingCenter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Stadium: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Vegetation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Forest: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GolfCourse: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Park: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PlayingField: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Reserve: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Point: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NaturalPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Peak: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VolcanicPeak: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WaterPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PointOfInterest: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Business: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FoodPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PopulatedPlace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Capital: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AdminDistrictCapital: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CountryRegionCapital: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RoadShield: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RoadExit: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Transit: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Political: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CountryRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AdminDistrict: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_District: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Structure: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Building: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EducationBuilding: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MedicalBuilding: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TransitBuilding: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Transportation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Road: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ControlledAccessHighway: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HighSpeedRamp: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Highway: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MajorRoad: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ArterialRoad: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Street: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ramp: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UnpavedStreet: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TollRoad: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Railway: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Trail: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WaterRoute: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Water: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_River: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RouteLine: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WalkingRoute: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DrivingRoute: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapStyleSheetEntryStatesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getDisabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Disabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHover(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHover(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hover(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSelected(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelected(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Selected(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5026,9 +5026,9 @@ pub const IMapStyleSheetEntryStatesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Disabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hover: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Selected: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Disabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hover: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Selected: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapStyleSheetStatics = extern struct {
@@ -5075,13 +5075,13 @@ pub const IMapStyleSheetStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ParseFromJson(self: *@This(), styleAsJson: HSTRING) core.HResult!*MapStyleSheet {
+    pub fn ParseFromJson(self: *@This(), styleAsJson: ?HSTRING) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.ParseFromJson(@ptrCast(self), styleAsJson, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParseFromJson(self: *@This(), styleAsJson: HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
+    pub fn TryParseFromJson(self: *@This(), styleAsJson: ?HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParseFromJson(@ptrCast(self), styleAsJson, styleSheet, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5106,8 +5106,8 @@ pub const IMapStyleSheetStatics = extern struct {
         RoadHighContrastLight: *const fn(self: *anyopaque, _r: **MapStyleSheet) callconv(.winapi) HRESULT,
         RoadHighContrastDark: *const fn(self: *anyopaque, _r: **MapStyleSheet) callconv(.winapi) HRESULT,
         Combine: *const fn(self: *anyopaque, styleSheets: *IIterable(MapStyleSheet), _r: **MapStyleSheet) callconv(.winapi) HRESULT,
-        ParseFromJson: *const fn(self: *anyopaque, styleAsJson: HSTRING, _r: **MapStyleSheet) callconv(.winapi) HRESULT,
-        TryParseFromJson: *const fn(self: *anyopaque, styleAsJson: HSTRING, styleSheet: *MapStyleSheet, _r: *bool) callconv(.winapi) HRESULT,
+        ParseFromJson: *const fn(self: *anyopaque, styleAsJson: ?HSTRING, _r: **MapStyleSheet) callconv(.winapi) HRESULT,
+        TryParseFromJson: *const fn(self: *anyopaque, styleAsJson: ?HSTRING, styleSheet: *MapStyleSheet, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapTargetCameraChangedEventArgs = extern struct {
@@ -6024,11 +6024,11 @@ pub const IStreetsidePanoramaStatics = extern struct {
 };
 pub const LocalMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUriFormatString(self: *@This()) core.HResult!HSTRING {
+    pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalMapTileDataSource = @ptrCast(self);
         return try this.getUriFormatString();
     }
-    pub fn putUriFormatString(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUriFormatString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILocalMapTileDataSource = @ptrCast(self);
         return try this.putUriFormatString(value);
     }
@@ -6047,7 +6047,7 @@ pub const LocalMapTileDataSource = extern struct {
         const _f = try @This()._ILocalMapTileDataSourceFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
     }
-    pub fn CreateInstanceWithUriFormatString(uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
+    pub fn CreateInstanceWithUriFormatString(uriFormatString: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         const _f = try @This()._ILocalMapTileDataSourceFactoryCache.get();
         return try _f.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
     }
@@ -6146,25 +6146,25 @@ pub const MapElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapTabIndex(value);
     }
-    pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!HSTRING {
+    pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapStyleSheetEntry();
     }
-    pub fn putMapStyleSheetEntry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapStyleSheetEntry(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapStyleSheetEntry(value);
     }
-    pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!HSTRING {
+    pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapStyleSheetEntryState();
     }
-    pub fn putMapStyleSheetEntryState(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapStyleSheetEntryState(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6460,11 +6460,11 @@ pub const MapControl = extern struct {
         const this: *IMapControl = @ptrCast(self);
         return try this.getLoadingStatus();
     }
-    pub fn getMapServiceToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getMapServiceToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControl = @ptrCast(self);
         return try this.getMapServiceToken();
     }
-    pub fn putMapServiceToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMapServiceToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMapControl = @ptrCast(self);
         return try this.putMapServiceToken(value);
     }
@@ -7092,13 +7092,13 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapControl7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRegion();
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapControl7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7766,11 +7766,11 @@ pub const MapIcon = extern struct {
         const this: *IMapIcon = @ptrCast(self);
         return try this.putLocation(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapIcon = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMapIcon = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -8256,11 +8256,11 @@ pub const MapStyleSheet = extern struct {
         const _f = try @This()._IMapStyleSheetStaticsCache.get();
         return try _f.Combine(styleSheets);
     }
-    pub fn ParseFromJson(styleAsJson: HSTRING) core.HResult!*MapStyleSheet {
+    pub fn ParseFromJson(styleAsJson: ?HSTRING) core.HResult!*MapStyleSheet {
         const _f = try @This()._IMapStyleSheetStaticsCache.get();
         return try _f.ParseFromJson(styleAsJson);
     }
-    pub fn TryParseFromJson(styleAsJson: HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
+    pub fn TryParseFromJson(styleAsJson: ?HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
         const _f = try @This()._IMapStyleSheetStaticsCache.get();
         return try _f.TryParseFromJson(styleAsJson, styleSheet);
     }
@@ -8276,259 +8276,259 @@ pub const MapStyleSheetEntries = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getArea() core.HResult!HSTRING {
+    pub fn getArea() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getArea();
     }
-    pub fn getAirport() core.HResult!HSTRING {
+    pub fn getAirport() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getAirport();
     }
-    pub fn getCemetery() core.HResult!HSTRING {
+    pub fn getCemetery() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getCemetery();
     }
-    pub fn getContinent() core.HResult!HSTRING {
+    pub fn getContinent() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getContinent();
     }
-    pub fn getEducation() core.HResult!HSTRING {
+    pub fn getEducation() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getEducation();
     }
-    pub fn getIndigenousPeoplesReserve() core.HResult!HSTRING {
+    pub fn getIndigenousPeoplesReserve() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getIndigenousPeoplesReserve();
     }
-    pub fn getIsland() core.HResult!HSTRING {
+    pub fn getIsland() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getIsland();
     }
-    pub fn getMedical() core.HResult!HSTRING {
+    pub fn getMedical() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getMedical();
     }
-    pub fn getMilitary() core.HResult!HSTRING {
+    pub fn getMilitary() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getMilitary();
     }
-    pub fn getNautical() core.HResult!HSTRING {
+    pub fn getNautical() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getNautical();
     }
-    pub fn getNeighborhood() core.HResult!HSTRING {
+    pub fn getNeighborhood() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getNeighborhood();
     }
-    pub fn getRunway() core.HResult!HSTRING {
+    pub fn getRunway() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRunway();
     }
-    pub fn getSand() core.HResult!HSTRING {
+    pub fn getSand() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getSand();
     }
-    pub fn getShoppingCenter() core.HResult!HSTRING {
+    pub fn getShoppingCenter() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getShoppingCenter();
     }
-    pub fn getStadium() core.HResult!HSTRING {
+    pub fn getStadium() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getStadium();
     }
-    pub fn getVegetation() core.HResult!HSTRING {
+    pub fn getVegetation() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getVegetation();
     }
-    pub fn getForest() core.HResult!HSTRING {
+    pub fn getForest() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getForest();
     }
-    pub fn getGolfCourse() core.HResult!HSTRING {
+    pub fn getGolfCourse() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getGolfCourse();
     }
-    pub fn getPark() core.HResult!HSTRING {
+    pub fn getPark() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPark();
     }
-    pub fn getPlayingField() core.HResult!HSTRING {
+    pub fn getPlayingField() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPlayingField();
     }
-    pub fn getReserve() core.HResult!HSTRING {
+    pub fn getReserve() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getReserve();
     }
-    pub fn getPoint() core.HResult!HSTRING {
+    pub fn getPoint() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPoint();
     }
-    pub fn getNaturalPoint() core.HResult!HSTRING {
+    pub fn getNaturalPoint() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getNaturalPoint();
     }
-    pub fn getPeak() core.HResult!HSTRING {
+    pub fn getPeak() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPeak();
     }
-    pub fn getVolcanicPeak() core.HResult!HSTRING {
+    pub fn getVolcanicPeak() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getVolcanicPeak();
     }
-    pub fn getWaterPoint() core.HResult!HSTRING {
+    pub fn getWaterPoint() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getWaterPoint();
     }
-    pub fn getPointOfInterest() core.HResult!HSTRING {
+    pub fn getPointOfInterest() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPointOfInterest();
     }
-    pub fn getBusiness() core.HResult!HSTRING {
+    pub fn getBusiness() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getBusiness();
     }
-    pub fn getFoodPoint() core.HResult!HSTRING {
+    pub fn getFoodPoint() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getFoodPoint();
     }
-    pub fn getPopulatedPlace() core.HResult!HSTRING {
+    pub fn getPopulatedPlace() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPopulatedPlace();
     }
-    pub fn getCapital() core.HResult!HSTRING {
+    pub fn getCapital() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getCapital();
     }
-    pub fn getAdminDistrictCapital() core.HResult!HSTRING {
+    pub fn getAdminDistrictCapital() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getAdminDistrictCapital();
     }
-    pub fn getCountryRegionCapital() core.HResult!HSTRING {
+    pub fn getCountryRegionCapital() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getCountryRegionCapital();
     }
-    pub fn getRoadShield() core.HResult!HSTRING {
+    pub fn getRoadShield() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRoadShield();
     }
-    pub fn getRoadExit() core.HResult!HSTRING {
+    pub fn getRoadExit() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRoadExit();
     }
-    pub fn getTransit() core.HResult!HSTRING {
+    pub fn getTransit() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getTransit();
     }
-    pub fn getPolitical() core.HResult!HSTRING {
+    pub fn getPolitical() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getPolitical();
     }
-    pub fn getCountryRegion() core.HResult!HSTRING {
+    pub fn getCountryRegion() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getCountryRegion();
     }
-    pub fn getAdminDistrict() core.HResult!HSTRING {
+    pub fn getAdminDistrict() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getAdminDistrict();
     }
-    pub fn getDistrict() core.HResult!HSTRING {
+    pub fn getDistrict() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getDistrict();
     }
-    pub fn getStructure() core.HResult!HSTRING {
+    pub fn getStructure() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getStructure();
     }
-    pub fn getBuilding() core.HResult!HSTRING {
+    pub fn getBuilding() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getBuilding();
     }
-    pub fn getEducationBuilding() core.HResult!HSTRING {
+    pub fn getEducationBuilding() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getEducationBuilding();
     }
-    pub fn getMedicalBuilding() core.HResult!HSTRING {
+    pub fn getMedicalBuilding() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getMedicalBuilding();
     }
-    pub fn getTransitBuilding() core.HResult!HSTRING {
+    pub fn getTransitBuilding() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getTransitBuilding();
     }
-    pub fn getTransportation() core.HResult!HSTRING {
+    pub fn getTransportation() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getTransportation();
     }
-    pub fn getRoad() core.HResult!HSTRING {
+    pub fn getRoad() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRoad();
     }
-    pub fn getControlledAccessHighway() core.HResult!HSTRING {
+    pub fn getControlledAccessHighway() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getControlledAccessHighway();
     }
-    pub fn getHighSpeedRamp() core.HResult!HSTRING {
+    pub fn getHighSpeedRamp() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getHighSpeedRamp();
     }
-    pub fn getHighway() core.HResult!HSTRING {
+    pub fn getHighway() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getHighway();
     }
-    pub fn getMajorRoad() core.HResult!HSTRING {
+    pub fn getMajorRoad() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getMajorRoad();
     }
-    pub fn getArterialRoad() core.HResult!HSTRING {
+    pub fn getArterialRoad() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getArterialRoad();
     }
-    pub fn getStreet() core.HResult!HSTRING {
+    pub fn getStreet() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getStreet();
     }
-    pub fn getRamp() core.HResult!HSTRING {
+    pub fn getRamp() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRamp();
     }
-    pub fn getUnpavedStreet() core.HResult!HSTRING {
+    pub fn getUnpavedStreet() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getUnpavedStreet();
     }
-    pub fn getTollRoad() core.HResult!HSTRING {
+    pub fn getTollRoad() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getTollRoad();
     }
-    pub fn getRailway() core.HResult!HSTRING {
+    pub fn getRailway() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRailway();
     }
-    pub fn getTrail() core.HResult!HSTRING {
+    pub fn getTrail() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getTrail();
     }
-    pub fn getWaterRoute() core.HResult!HSTRING {
+    pub fn getWaterRoute() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getWaterRoute();
     }
-    pub fn getWater() core.HResult!HSTRING {
+    pub fn getWater() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getWater();
     }
-    pub fn getRiver() core.HResult!HSTRING {
+    pub fn getRiver() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRiver();
     }
-    pub fn getRouteLine() core.HResult!HSTRING {
+    pub fn getRouteLine() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getRouteLine();
     }
-    pub fn getWalkingRoute() core.HResult!HSTRING {
+    pub fn getWalkingRoute() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getWalkingRoute();
     }
-    pub fn getDrivingRoute() core.HResult!HSTRING {
+    pub fn getDrivingRoute() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntriesStaticsCache.get();
         return try _f.getDrivingRoute();
     }
@@ -8541,15 +8541,15 @@ pub const MapStyleSheetEntryStates = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDisabled() core.HResult!HSTRING {
+    pub fn getDisabled() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntryStatesStaticsCache.get();
         return try _f.getDisabled();
     }
-    pub fn getHover() core.HResult!HSTRING {
+    pub fn getHover() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntryStatesStaticsCache.get();
         return try _f.getHover();
     }
-    pub fn getSelected() core.HResult!HSTRING {
+    pub fn getSelected() core.HResult!?HSTRING {
         const _f = try @This()._IMapStyleSheetEntryStatesStaticsCache.get();
         return try _f.getSelected();
     }

@@ -1,37 +1,37 @@
 // ----- This code is automatically generated -----
 pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const VTable,
-    pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
+    pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: ?HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) = undefined;
         const _c = self.vtable.GetOneTimePassCodeAsync(@ptrCast(self), userAccountId, codeLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddDeviceAsync(self: *@This(), userAccountId: HSTRING, authenticationToken: HSTRING, wnsChannelId: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn AddDeviceAsync(self: *@This(), userAccountId: ?HSTRING, authenticationToken: ?HSTRING, wnsChannelId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.AddDeviceAsync(@ptrCast(self), userAccountId, authenticationToken, wnsChannelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveDeviceAsync(self: *@This(), userAccountId: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn RemoveDeviceAsync(self: *@This(), userAccountId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.RemoveDeviceAsync(@ptrCast(self), userAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateWnsChannelAsync(self: *@This(), userAccountId: HSTRING, channelUri: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn UpdateWnsChannelAsync(self: *@This(), userAccountId: ?HSTRING, channelUri: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.UpdateWnsChannelAsync(@ptrCast(self), userAccountId, channelUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSessionsAsync(self: *@This(), userAccountIdList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) {
+    pub fn GetSessionsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) = undefined;
         const _c = self.vtable.GetSessionsAsync(@ptrCast(self), userAccountIdList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSessionsAndUnregisteredAccountsAsync(self: *@This(), userAccountIdList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) {
+    pub fn GetSessionsAndUnregisteredAccountsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) = undefined;
         const _c = self.vtable.GetSessionsAndUnregisteredAccountsAsync(@ptrCast(self), userAccountIdList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -43,7 +43,7 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -55,7 +55,7 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
         const _c = self.vtable.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), userAccountId, sessionId, sessionAuthenticationType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -73,16 +73,16 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetOneTimePassCodeAsync: *const fn(self: *anyopaque, userAccountId: HSTRING, codeLength: u32, _r: **IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo)) callconv(.winapi) HRESULT,
-        AddDeviceAsync: *const fn(self: *anyopaque, userAccountId: HSTRING, authenticationToken: HSTRING, wnsChannelId: HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        RemoveDeviceAsync: *const fn(self: *anyopaque, userAccountId: HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        UpdateWnsChannelAsync: *const fn(self: *anyopaque, userAccountId: HSTRING, channelUri: HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        GetSessionsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult)) callconv(.winapi) HRESULT,
-        GetSessionsAndUnregisteredAccountsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo)) callconv(.winapi) HRESULT,
+        GetOneTimePassCodeAsync: *const fn(self: *anyopaque, userAccountId: ?HSTRING, codeLength: u32, _r: **IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo)) callconv(.winapi) HRESULT,
+        AddDeviceAsync: *const fn(self: *anyopaque, userAccountId: ?HSTRING, authenticationToken: ?HSTRING, wnsChannelId: ?HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        RemoveDeviceAsync: *const fn(self: *anyopaque, userAccountId: ?HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        UpdateWnsChannelAsync: *const fn(self: *anyopaque, userAccountId: ?HSTRING, channelUri: ?HSTRING, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        GetSessionsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(?HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult)) callconv(.winapi) HRESULT,
+        GetSessionsAndUnregisteredAccountsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(?HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo)) callconv(.winapi) HRESULT,
         ApproveSessionAsync: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
         DenySessionAsync: *const fn(self: *anyopaque, authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
@@ -140,8 +140,8 @@ pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const VTable,
-    pub fn getCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -176,7 +176,7 @@ pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Code: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Code: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TimeInterval: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_TimeToLive: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_ServiceResponse: *const fn(self: *anyopaque, _r: *MicrosoftAccountMultiFactorServiceResponse) callconv(.winapi) HRESULT,
@@ -184,20 +184,20 @@ pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const VTable,
-    pub fn getUserAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplaySessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplaySessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplaySessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -238,9 +238,9 @@ pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplaySessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplaySessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ApprovalStatus: *const fn(self: *anyopaque, _r: *MicrosoftAccountMultiFactorSessionApprovalStatus) callconv(.winapi) HRESULT,
         get_AuthenticationType: *const fn(self: *anyopaque, _r: *MicrosoftAccountMultiFactorAuthenticationType) callconv(.winapi) HRESULT,
         get_RequestTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
@@ -255,8 +255,8 @@ pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = exter
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnregisteredAccounts(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getUnregisteredAccounts(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_UnregisteredAccounts(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -280,33 +280,33 @@ pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = exter
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Sessions: *const fn(self: *anyopaque, _r: **IVectorView(MicrosoftAccountMultiFactorSessionInfo)) callconv(.winapi) HRESULT,
-        get_UnregisteredAccounts: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_UnregisteredAccounts: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_ServiceResponse: *const fn(self: *anyopaque, _r: *MicrosoftAccountMultiFactorServiceResponse) callconv(.winapi) HRESULT,
     };
 };
 pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
+    pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: ?HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.GetOneTimePassCodeAsync(userAccountId, codeLength);
     }
-    pub fn AddDeviceAsync(self: *@This(), userAccountId: HSTRING, authenticationToken: HSTRING, wnsChannelId: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn AddDeviceAsync(self: *@This(), userAccountId: ?HSTRING, authenticationToken: ?HSTRING, wnsChannelId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.AddDeviceAsync(userAccountId, authenticationToken, wnsChannelId);
     }
-    pub fn RemoveDeviceAsync(self: *@This(), userAccountId: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn RemoveDeviceAsync(self: *@This(), userAccountId: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.RemoveDeviceAsync(userAccountId);
     }
-    pub fn UpdateWnsChannelAsync(self: *@This(), userAccountId: HSTRING, channelUri: HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn UpdateWnsChannelAsync(self: *@This(), userAccountId: ?HSTRING, channelUri: ?HSTRING) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.UpdateWnsChannelAsync(userAccountId, channelUri);
     }
-    pub fn GetSessionsAsync(self: *@This(), userAccountIdList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) {
+    pub fn GetSessionsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.GetSessionsAsync(userAccountIdList);
     }
-    pub fn GetSessionsAndUnregisteredAccountsAsync(self: *@This(), userAccountIdList: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) {
+    pub fn GetSessionsAndUnregisteredAccountsAsync(self: *@This(), userAccountIdList: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.GetSessionsAndUnregisteredAccountsAsync(userAccountIdList);
     }
@@ -314,7 +314,7 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.ApproveSessionAsync(sessionAuthentictionStatus, authenticationSessionInfo);
     }
-    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType);
     }
@@ -322,7 +322,7 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.DenySessionAsync(authenticationSessionInfo);
     }
-    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: ?HSTRING, sessionId: ?HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
     }
@@ -362,7 +362,7 @@ pub const MicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const MicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorOneTimeCodedInfo = @ptrCast(self);
         return try this.getCode();
     }
@@ -419,15 +419,15 @@ pub const MicrosoftAccountMultiFactorSessionAuthenticationStatus = enum(i32) {
 };
 pub const MicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUserAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorSessionInfo = @ptrCast(self);
         return try this.getUserAccountId();
     }
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorSessionInfo = @ptrCast(self);
         return try this.getSessionId();
     }
-    pub fn getDisplaySessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplaySessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorSessionInfo = @ptrCast(self);
         return try this.getDisplaySessionId();
     }
@@ -459,7 +459,7 @@ pub const MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = extern
         const this: *IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = @ptrCast(self);
         return try this.getSessions();
     }
-    pub fn getUnregisteredAccounts(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getUnregisteredAccounts(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = @ptrCast(self);
         return try this.getUnregisteredAccounts();
     }

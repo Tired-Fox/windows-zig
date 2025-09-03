@@ -114,26 +114,26 @@ pub const IImageFeatureValueStatics = extern struct {
 };
 pub const ILearningModel = extern struct {
     vtable: *const VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Domain(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -144,8 +144,8 @@ pub const ILearningModel = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Metadata(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -174,23 +174,23 @@ pub const ILearningModel = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Domain: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Domain: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Version: *const fn(self: *anyopaque, _r: *i64) callconv(.winapi) HRESULT,
-        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_InputFeatures: *const fn(self: *anyopaque, _r: **IVectorView(ILearningModelFeatureDescriptor)) callconv(.winapi) HRESULT,
         get_OutputFeatures: *const fn(self: *anyopaque, _r: **IVectorView(ILearningModelFeatureDescriptor)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelBinding = extern struct {
     vtable: *const VTable,
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn BindWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
+    pub fn BindWithProps(self: *@This(), name: ?HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
         const _c = self.vtable.BindWithProps(@ptrCast(self), name, value, props);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -210,8 +210,8 @@ pub const ILearningModelBinding = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        BindWithProps: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
+        Bind: *const fn(self: *anyopaque, name: ?HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
+        BindWithProps: *const fn(self: *anyopaque, name: ?HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -316,8 +316,8 @@ pub const ILearningModelDeviceStatics = extern struct {
 };
 pub const ILearningModelEvaluationResult = extern struct {
     vtable: *const VTable,
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -334,8 +334,8 @@ pub const ILearningModelEvaluationResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Outputs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -352,22 +352,22 @@ pub const ILearningModelEvaluationResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CorrelationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CorrelationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ErrorStatus: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Outputs: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Outputs: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelFeatureDescriptor = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -396,8 +396,8 @@ pub const ILearningModelFeatureDescriptor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *LearningModelFeatureKind) callconv(.winapi) HRESULT,
         get_IsRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -461,25 +461,25 @@ pub const ILearningModelSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EvaluateAsync(self: *@This(), bindings: *LearningModelBinding, correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
+    pub fn EvaluateAsync(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         var _r: *IAsyncOperation(LearningModelEvaluationResult) = undefined;
         const _c = self.vtable.EvaluateAsync(@ptrCast(self), bindings, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
+    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         var _r: *IAsyncOperation(LearningModelEvaluationResult) = undefined;
         const _c = self.vtable.EvaluateFeaturesAsync(@ptrCast(self), features, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Evaluate(self: *@This(), bindings: *LearningModelBinding, correlationId: HSTRING) core.HResult!*LearningModelEvaluationResult {
+    pub fn Evaluate(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         var _r: *LearningModelEvaluationResult = undefined;
         const _c = self.vtable.Evaluate(@ptrCast(self), bindings, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EvaluateFeatures(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*LearningModelEvaluationResult {
+    pub fn EvaluateFeatures(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         var _r: *LearningModelEvaluationResult = undefined;
         const _c = self.vtable.EvaluateFeatures(@ptrCast(self), features, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -500,10 +500,10 @@ pub const ILearningModelSession = extern struct {
         get_Model: *const fn(self: *anyopaque, _r: **LearningModel) callconv(.winapi) HRESULT,
         get_Device: *const fn(self: *anyopaque, _r: **LearningModelDevice) callconv(.winapi) HRESULT,
         get_EvaluationProperties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
-        EvaluateAsync: *const fn(self: *anyopaque, bindings: *LearningModelBinding, correlationId: HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResult)) callconv(.winapi) HRESULT,
-        EvaluateFeaturesAsync: *const fn(self: *anyopaque, features: *IMap(HSTRING,IInspectable), correlationId: HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResult)) callconv(.winapi) HRESULT,
-        Evaluate: *const fn(self: *anyopaque, bindings: *LearningModelBinding, correlationId: HSTRING, _r: **LearningModelEvaluationResult) callconv(.winapi) HRESULT,
-        EvaluateFeatures: *const fn(self: *anyopaque, features: *IMap(HSTRING,IInspectable), correlationId: HSTRING, _r: **LearningModelEvaluationResult) callconv(.winapi) HRESULT,
+        EvaluateAsync: *const fn(self: *anyopaque, bindings: *LearningModelBinding, correlationId: ?HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResult)) callconv(.winapi) HRESULT,
+        EvaluateFeaturesAsync: *const fn(self: *anyopaque, features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING, _r: **IAsyncOperation(LearningModelEvaluationResult)) callconv(.winapi) HRESULT,
+        Evaluate: *const fn(self: *anyopaque, bindings: *LearningModelBinding, correlationId: ?HSTRING, _r: **LearningModelEvaluationResult) callconv(.winapi) HRESULT,
+        EvaluateFeatures: *const fn(self: *anyopaque, features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING, _r: **LearningModelEvaluationResult) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelSessionFactory = extern struct {
@@ -617,7 +617,7 @@ pub const ILearningModelSessionOptions2 = extern struct {
 };
 pub const ILearningModelSessionOptions3 = extern struct {
     vtable: *const VTable,
-    pub fn OverrideNamedDimension(self: *@This(), name: HSTRING, dimension: u32) core.HResult!void {
+    pub fn OverrideNamedDimension(self: *@This(), name: ?HSTRING, dimension: u32) core.HResult!void {
         const _c = self.vtable.OverrideNamedDimension(@ptrCast(self), name, dimension);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -633,7 +633,7 @@ pub const ILearningModelSessionOptions3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OverrideNamedDimension: *const fn(self: *anyopaque, name: HSTRING, dimension: u32) callconv(.winapi) HRESULT,
+        OverrideNamedDimension: *const fn(self: *anyopaque, name: ?HSTRING, dimension: u32) callconv(.winapi) HRESULT,
     };
 };
 pub const ILearningModelStatics = extern struct {
@@ -650,7 +650,7 @@ pub const ILearningModelStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFilePath(self: *@This(), filePath: HSTRING) core.HResult!*LearningModel {
+    pub fn LoadFromFilePath(self: *@This(), filePath: ?HSTRING) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromFilePath(@ptrCast(self), filePath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -674,7 +674,7 @@ pub const ILearningModelStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFilePathWithOperatorProvider(self: *@This(), filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromFilePathWithOperatorProvider(self: *@This(), filePath: ?HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.LoadFromFilePathWithOperatorProvider(@ptrCast(self), filePath, operatorProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -700,11 +700,11 @@ pub const ILearningModelStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadFromStorageFileAsync: *const fn(self: *anyopaque, modelFile: *IStorageFile, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
         LoadFromStreamAsync: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
-        LoadFromFilePath: *const fn(self: *anyopaque, filePath: HSTRING, _r: **LearningModel) callconv(.winapi) HRESULT,
+        LoadFromFilePath: *const fn(self: *anyopaque, filePath: ?HSTRING, _r: **LearningModel) callconv(.winapi) HRESULT,
         LoadFromStream: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, _r: **LearningModel) callconv(.winapi) HRESULT,
         LoadFromStorageFileAsyncWithOperatorProvider: *const fn(self: *anyopaque, modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
         LoadFromStreamAsyncWithOperatorProvider: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
-        LoadFromFilePathWithOperatorProvider: *const fn(self: *anyopaque, filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
+        LoadFromFilePathWithOperatorProvider: *const fn(self: *anyopaque, filePath: ?HSTRING, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
         LoadFromStreamWithOperatorProvider: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
     };
 };
@@ -1599,8 +1599,8 @@ pub const ITensorInt8BitStatics2 = extern struct {
 };
 pub const ITensorString = extern struct {
     vtable: *const VTable,
-    pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1617,7 +1617,7 @@ pub const ITensorString = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAsVectorView: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetAsVectorView: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITensorStringStatics = extern struct {
@@ -1634,13 +1634,13 @@ pub const ITensorStringStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: [*]HSTRING) core.HResult!*TensorString {
+    pub fn CreateFromArray(self: *@This(), shape: *IIterable(i64), data: ?[*]HSTRING) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromArray(@ptrCast(self), shape, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(HSTRING)) core.HResult!*TensorString {
+    pub fn CreateFromIterable(self: *@This(), shape: *IIterable(i64), data: *IIterable(?HSTRING)) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromIterable(@ptrCast(self), shape, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1660,13 +1660,13 @@ pub const ITensorStringStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorString) callconv(.winapi) HRESULT,
         CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorString) callconv(.winapi) HRESULT,
-        CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]HSTRING, _r: **TensorString) callconv(.winapi) HRESULT,
-        CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(HSTRING), _r: **TensorString) callconv(.winapi) HRESULT,
+        CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: ?[*]HSTRING, _r: **TensorString) callconv(.winapi) HRESULT,
+        CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(?HSTRING), _r: **TensorString) callconv(.winapi) HRESULT,
     };
 };
 pub const ITensorStringStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]HSTRING) core.HResult!*TensorString {
+    pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: ?[*]HSTRING) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1684,7 +1684,7 @@ pub const ITensorStringStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromShapeArrayAndDataArray: *const fn(self: *anyopaque, shape: [*]i64, data: [*]HSTRING, _r: **TensorString) callconv(.winapi) HRESULT,
+        CreateFromShapeArrayAndDataArray: *const fn(self: *anyopaque, shape: [*]i64, data: ?[*]HSTRING, _r: **TensorString) callconv(.winapi) HRESULT,
     };
 };
 pub const ITensorUInt16Bit = extern struct {
@@ -2099,13 +2099,13 @@ pub const ImageFeatureDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPixelRange();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2157,19 +2157,19 @@ pub const ImageFeatureValue = extern struct {
 };
 pub const LearningModel = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getAuthor();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDomain(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomain(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getDomain();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getDescription();
     }
@@ -2177,7 +2177,7 @@ pub const LearningModel = extern struct {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getMetadata();
     }
@@ -2206,7 +2206,7 @@ pub const LearningModel = extern struct {
         const _f = try @This()._ILearningModelStaticsCache.get();
         return try _f.LoadFromStreamAsync(modelStream);
     }
-    pub fn LoadFromFilePath(filePath: HSTRING) core.HResult!*LearningModel {
+    pub fn LoadFromFilePath(filePath: ?HSTRING) core.HResult!*LearningModel {
         const _f = try @This()._ILearningModelStaticsCache.get();
         return try _f.LoadFromFilePath(filePath);
     }
@@ -2222,7 +2222,7 @@ pub const LearningModel = extern struct {
         const _f = try @This()._ILearningModelStaticsCache.get();
         return try _f.LoadFromStreamAsyncWithOperatorProvider(modelStream, operatorProvider);
     }
-    pub fn LoadFromFilePathWithOperatorProvider(filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromFilePathWithOperatorProvider(filePath: ?HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         const _f = try @This()._ILearningModelStaticsCache.get();
         return try _f.LoadFromFilePathWithOperatorProvider(filePath, operatorProvider);
     }
@@ -2239,11 +2239,11 @@ pub const LearningModel = extern struct {
 };
 pub const LearningModelBinding = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!void {
+    pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const this: *ILearningModelBinding = @ptrCast(self);
         return try this.Bind(name, value);
     }
-    pub fn BindWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
+    pub fn BindWithProps(self: *@This(), name: ?HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
         const this: *ILearningModelBinding = @ptrCast(self);
         return try this.BindWithProps(name, value, props);
     }
@@ -2252,19 +2252,19 @@ pub const LearningModelBinding = extern struct {
         return try this.Clear();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+    pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2321,7 +2321,7 @@ pub const LearningModelDeviceKind = enum(i32) {
 };
 pub const LearningModelEvaluationResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelEvaluationResult = @ptrCast(self);
         return try this.getCorrelationId();
     }
@@ -2333,7 +2333,7 @@ pub const LearningModelEvaluationResult = extern struct {
         const this: *ILearningModelEvaluationResult = @ptrCast(self);
         return try this.getSucceeded();
     }
-    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getOutputs(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *ILearningModelEvaluationResult = @ptrCast(self);
         return try this.getOutputs();
     }
@@ -2368,19 +2368,19 @@ pub const LearningModelSession = extern struct {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.getEvaluationProperties();
     }
-    pub fn EvaluateAsync(self: *@This(), bindings: *LearningModelBinding, correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
+    pub fn EvaluateAsync(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.EvaluateAsync(bindings, correlationId);
     }
-    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
+    pub fn EvaluateFeaturesAsync(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResult) {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.EvaluateFeaturesAsync(features, correlationId);
     }
-    pub fn Evaluate(self: *@This(), bindings: *LearningModelBinding, correlationId: HSTRING) core.HResult!*LearningModelEvaluationResult {
+    pub fn Evaluate(self: *@This(), bindings: *LearningModelBinding, correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.Evaluate(bindings, correlationId);
     }
-    pub fn EvaluateFeatures(self: *@This(), features: *IMap(HSTRING,IInspectable), correlationId: HSTRING) core.HResult!*LearningModelEvaluationResult {
+    pub fn EvaluateFeatures(self: *@This(), features: *IMap(?HSTRING,IInspectable), correlationId: ?HSTRING) core.HResult!*LearningModelEvaluationResult {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.EvaluateFeatures(features, correlationId);
     }
@@ -2435,7 +2435,7 @@ pub const LearningModelSessionOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCloseModelOnSessionCreation(value);
     }
-    pub fn OverrideNamedDimension(self: *@This(), name: HSTRING, dimension: u32) core.HResult!void {
+    pub fn OverrideNamedDimension(self: *@This(), name: ?HSTRING, dimension: u32) core.HResult!void {
         var this: ?*ILearningModelSessionOptions3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelSessionOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2465,13 +2465,13 @@ pub const MapFeatureDescriptor = extern struct {
         const this: *IMapFeatureDescriptor = @ptrCast(self);
         return try this.getValueDescriptor();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2501,13 +2501,13 @@ pub const SequenceFeatureDescriptor = extern struct {
         const this: *ISequenceFeatureDescriptor = @ptrCast(self);
         return try this.getElementDescriptor();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2683,13 +2683,13 @@ pub const TensorFeatureDescriptor = extern struct {
         const this: *ITensorFeatureDescriptor = @ptrCast(self);
         return try this.getShape();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelFeatureDescriptor = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3159,7 +3159,7 @@ pub const TensorKind = enum(i32) {
 };
 pub const TensorString = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ITensorString = @ptrCast(self);
         return try this.GetAsVectorView();
     }
@@ -3204,15 +3204,15 @@ pub const TensorString = extern struct {
         const _f = try @This()._ITensorStringStaticsCache.get();
         return try _f.CreateWithShape(shape);
     }
-    pub fn CreateFromArray(shape: *IIterable(i64), data: [*]HSTRING) core.HResult!*TensorString {
+    pub fn CreateFromArray(shape: *IIterable(i64), data: ?[*]HSTRING) core.HResult!*TensorString {
         const _f = try @This()._ITensorStringStaticsCache.get();
         return try _f.CreateFromArray(shape, data);
     }
-    pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(HSTRING)) core.HResult!*TensorString {
+    pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(?HSTRING)) core.HResult!*TensorString {
         const _f = try @This()._ITensorStringStaticsCache.get();
         return try _f.CreateFromIterable(shape, data);
     }
-    pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]HSTRING) core.HResult!*TensorString {
+    pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: ?[*]HSTRING) core.HResult!*TensorString {
         const _f = try @This()._ITensorStringStatics2Cache.get();
         return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }

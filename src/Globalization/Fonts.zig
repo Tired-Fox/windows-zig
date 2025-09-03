@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const ILanguageFont = extern struct {
     vtable: *const VTable,
-    pub fn getFontFamily(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FontFamily(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -43,7 +43,7 @@ pub const ILanguageFont = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FontFamily: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FontFamily: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FontWeight: *const fn(self: *anyopaque, _r: *FontWeight) callconv(.winapi) HRESULT,
         get_FontStretch: *const fn(self: *anyopaque, _r: *FontStretch) callconv(.winapi) HRESULT,
         get_FontStyle: *const fn(self: *anyopaque, _r: *FontStyle) callconv(.winapi) HRESULT,
@@ -145,7 +145,7 @@ pub const ILanguageFontGroup = extern struct {
 };
 pub const ILanguageFontGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateLanguageFontGroup(self: *@This(), languageTag: HSTRING) core.HResult!*LanguageFontGroup {
+    pub fn CreateLanguageFontGroup(self: *@This(), languageTag: ?HSTRING) core.HResult!*LanguageFontGroup {
         var _r: *LanguageFontGroup = undefined;
         const _c = self.vtable.CreateLanguageFontGroup(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -163,12 +163,12 @@ pub const ILanguageFontGroupFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateLanguageFontGroup: *const fn(self: *anyopaque, languageTag: HSTRING, _r: **LanguageFontGroup) callconv(.winapi) HRESULT,
+        CreateLanguageFontGroup: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: **LanguageFontGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const LanguageFont = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFontFamily(self: *@This()) core.HResult!HSTRING {
+    pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguageFont = @ptrCast(self);
         return try this.getFontFamily();
     }
@@ -243,7 +243,7 @@ pub const LanguageFontGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateLanguageFontGroup(languageTag: HSTRING) core.HResult!*LanguageFontGroup {
+    pub fn CreateLanguageFontGroup(languageTag: ?HSTRING) core.HResult!*LanguageFontGroup {
         const _f = try @This()._ILanguageFontGroupFactoryCache.get();
         return try _f.CreateLanguageFontGroup(languageTag);
     }

@@ -1,23 +1,23 @@
 // ----- This code is automatically generated -----
 pub const EnterpriseKeyCredentialRegistrationInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTenantId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTenantId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getTenantId();
     }
-    pub fn getTenantName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTenantName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getTenantName();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getKeyId(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getKeyId();
     }
-    pub fn getKeyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getKeyName();
     }
@@ -49,32 +49,32 @@ pub const EnterpriseKeyCredentialRegistrationManager = extern struct {
 };
 pub const IEnterpriseKeyCredentialRegistrationInfo = extern struct {
     vtable: *const VTable,
-    pub fn getTenantId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTenantId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TenantId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTenantName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTenantName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TenantName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -91,11 +91,11 @@ pub const IEnterpriseKeyCredentialRegistrationInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TenantId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TenantName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KeyId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KeyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TenantId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TenantName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KeyId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KeyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEnterpriseKeyCredentialRegistrationManager = extern struct {

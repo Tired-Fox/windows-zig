@@ -340,7 +340,7 @@ pub const BackgroundExecutionManager = extern struct {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
-    pub fn RequestAccessAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
+    pub fn RequestAccessAsyncWithApplicationId(applicationId: ?HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RequestAccessAsyncWithApplicationId(applicationId);
     }
@@ -348,7 +348,7 @@ pub const BackgroundExecutionManager = extern struct {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RemoveAccess();
     }
-    pub fn RemoveAccessWithApplicationId(applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveAccessWithApplicationId(applicationId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.RemoveAccessWithApplicationId(applicationId);
     }
@@ -356,15 +356,15 @@ pub const BackgroundExecutionManager = extern struct {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.GetAccessStatus();
     }
-    pub fn GetAccessStatusWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusWithApplicationId(applicationId: ?HSTRING) core.HResult!BackgroundAccessStatus {
         const _f = try @This()._IBackgroundExecutionManagerStaticsCache.get();
         return try _f.GetAccessStatusWithApplicationId(applicationId);
     }
-    pub fn RequestAccessKindAsync(requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestAccessKindAsync(requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IBackgroundExecutionManagerStatics2Cache.get();
         return try _f.RequestAccessKindAsync(requestedAccess, reason);
     }
-    pub fn RequestAccessKindForModernStandbyAsync(requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestAccessKindForModernStandbyAsync(requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.RequestAccessKindForModernStandbyAsync(requestedAccess, reason);
     }
@@ -372,7 +372,7 @@ pub const BackgroundExecutionManager = extern struct {
         const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.GetAccessStatusForModernStandby();
     }
-    pub fn GetAccessStatusForModernStandbyWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusForModernStandbyWithApplicationId(applicationId: ?HSTRING) core.HResult!BackgroundAccessStatus {
         const _f = try @This()._IBackgroundExecutionManagerStatics3Cache.get();
         return try _f.GetAccessStatusForModernStandbyWithApplicationId(applicationId);
     }
@@ -384,11 +384,11 @@ pub const BackgroundExecutionManager = extern struct {
 };
 pub const BackgroundTaskBuilder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putTaskEntryPoint(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTaskEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.putTaskEntryPoint(value);
     }
-    pub fn getTaskEntryPoint(self: *@This()) core.HResult!HSTRING {
+    pub fn getTaskEntryPoint(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.getTaskEntryPoint();
     }
@@ -400,11 +400,11 @@ pub const BackgroundTaskBuilder = extern struct {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.AddCondition(condition);
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.getName();
     }
@@ -472,7 +472,7 @@ pub const BackgroundTaskBuilder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Validate();
     }
-    pub fn RegisterWithTaskName(self: *@This(), taskName: HSTRING) core.HResult!*BackgroundTaskRegistration {
+    pub fn RegisterWithTaskName(self: *@This(), taskName: ?HSTRING) core.HResult!*BackgroundTaskRegistration {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -822,7 +822,7 @@ pub const BackgroundTaskRegistration = extern struct {
         const this: *IBackgroundTaskRegistration = @ptrCast(self);
         return try this.getTaskId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskRegistration = @ptrCast(self);
         return try this.getName();
     }
@@ -877,11 +877,11 @@ pub const BackgroundTaskRegistration = extern struct {
         const _f = try @This()._IBackgroundTaskRegistrationStaticsCache.get();
         return try _f.getAllTasks();
     }
-    pub fn getAllTaskGroups() core.HResult!*IMapView(HSTRING,BackgroundTaskRegistrationGroup) {
+    pub fn getAllTaskGroups() core.HResult!*IMapView(?HSTRING,BackgroundTaskRegistrationGroup) {
         const _f = try @This()._IBackgroundTaskRegistrationStatics2Cache.get();
         return try _f.getAllTaskGroups();
     }
-    pub fn GetTaskGroup(groupId: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn GetTaskGroup(groupId: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         const _f = try @This()._IBackgroundTaskRegistrationStatics2Cache.get();
         return try _f.GetTaskGroup(groupId);
     }
@@ -895,11 +895,11 @@ pub const BackgroundTaskRegistration = extern struct {
 };
 pub const BackgroundTaskRegistrationGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskRegistrationGroup = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskRegistrationGroup = @ptrCast(self);
         return try this.getName();
     }
@@ -918,11 +918,11 @@ pub const BackgroundTaskRegistrationGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(id: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn Create(id: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         const _f = try @This()._IBackgroundTaskRegistrationGroupFactoryCache.get();
         return try _f.Create(id);
     }
-    pub fn CreateWithName(id: HSTRING, name: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn CreateWithName(id: ?HSTRING, name: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         const _f = try @This()._IBackgroundTaskRegistrationGroupFactoryCache.get();
         return try _f.CreateWithName(id, name);
     }
@@ -1284,7 +1284,7 @@ pub const ConversationalAgentTrigger = extern struct {
 };
 pub const CustomSystemEventTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICustomSystemEventTrigger = @ptrCast(self);
         return try this.getTriggerId();
     }
@@ -1295,7 +1295,7 @@ pub const CustomSystemEventTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(triggerId: HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
+    pub fn Create(triggerId: ?HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
         const _f = try @This()._ICustomSystemEventTriggerFactoryCache.get();
         return try _f.Create(triggerId, recurrence);
     }
@@ -1312,7 +1312,7 @@ pub const CustomSystemEventTriggerRecurrence = enum(i32) {
 };
 pub const DeviceConnectionChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceConnectionChangeTrigger = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1331,7 +1331,7 @@ pub const DeviceConnectionChangeTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
         const _f = try @This()._IDeviceConnectionChangeTriggerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -1344,7 +1344,7 @@ pub const DeviceConnectionChangeTrigger = extern struct {
 };
 pub const DeviceManufacturerNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerQualifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getTriggerQualifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceManufacturerNotificationTrigger = @ptrCast(self);
         return try this.getTriggerQualifier();
     }
@@ -1355,7 +1355,7 @@ pub const DeviceManufacturerNotificationTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(triggerQualifier: HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
+    pub fn Create(triggerQualifier: ?HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
         const _f = try @This()._IDeviceManufacturerNotificationTriggerFactoryCache.get();
         return try _f.Create(triggerQualifier, oneShot);
     }
@@ -1368,11 +1368,11 @@ pub const DeviceManufacturerNotificationTrigger = extern struct {
 };
 pub const DeviceServicingTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId, expectedDuration);
     }
-    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(deviceId, expectedDuration, arguments);
     }
@@ -1398,11 +1398,11 @@ pub const DeviceTriggerResult = enum(i32) {
 };
 pub const DeviceUseTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceUseTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId);
     }
-    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceUseTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(deviceId, arguments);
     }
@@ -1483,7 +1483,7 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
 };
 pub const GattServiceProviderTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattServiceProviderTrigger = @ptrCast(self);
         return try this.getTriggerId();
     }
@@ -1502,7 +1502,7 @@ pub const GattServiceProviderTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateAsync(triggerId: HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
+    pub fn CreateAsync(triggerId: ?HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
         const _f = try @This()._IGattServiceProviderTriggerStaticsCache.get();
         return try _f.CreateAsync(triggerId, serviceUuid);
     }
@@ -1713,7 +1713,7 @@ pub const IBackgroundExecutionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
+    pub fn RequestAccessAsyncWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
         var _r: *IAsyncOperation(BackgroundAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1723,7 +1723,7 @@ pub const IBackgroundExecutionManagerStatics = extern struct {
         const _c = self.vtable.RemoveAccess(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveAccessWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveAccessWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveAccessWithApplicationId(@ptrCast(self), applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1733,7 +1733,7 @@ pub const IBackgroundExecutionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccessStatusWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!BackgroundAccessStatus {
         var _r: BackgroundAccessStatus = undefined;
         const _c = self.vtable.GetAccessStatusWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1752,16 +1752,16 @@ pub const IBackgroundExecutionManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(BackgroundAccessStatus)) callconv(.winapi) HRESULT,
-        RequestAccessAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(BackgroundAccessStatus)) callconv(.winapi) HRESULT,
+        RequestAccessAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **IAsyncOperation(BackgroundAccessStatus)) callconv(.winapi) HRESULT,
         RemoveAccess: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        RemoveAccessWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING) callconv(.winapi) HRESULT,
+        RemoveAccessWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING) callconv(.winapi) HRESULT,
         GetAccessStatus: *const fn(self: *anyopaque, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
-        GetAccessStatusWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
+        GetAccessStatusWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundExecutionManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn RequestAccessKindAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestAccessKindAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAccessKindAsync(@ptrCast(self), requestedAccess, reason, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1779,12 +1779,12 @@ pub const IBackgroundExecutionManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAccessKindAsync: *const fn(self: *anyopaque, requestedAccess: BackgroundAccessRequestKind, reason: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestAccessKindAsync: *const fn(self: *anyopaque, requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundExecutionManagerStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn RequestAccessKindForModernStandbyAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestAccessKindForModernStandbyAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAccessKindForModernStandbyAsync(@ptrCast(self), requestedAccess, reason, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1796,7 +1796,7 @@ pub const IBackgroundExecutionManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccessStatusForModernStandbyWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusForModernStandbyWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!BackgroundAccessStatus {
         var _r: BackgroundAccessStatus = undefined;
         const _c = self.vtable.GetAccessStatusForModernStandbyWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1814,9 +1814,9 @@ pub const IBackgroundExecutionManagerStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAccessKindForModernStandbyAsync: *const fn(self: *anyopaque, requestedAccess: BackgroundAccessRequestKind, reason: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestAccessKindForModernStandbyAsync: *const fn(self: *anyopaque, requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         GetAccessStatusForModernStandby: *const fn(self: *anyopaque, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
-        GetAccessStatusForModernStandbyWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
+        GetAccessStatusForModernStandbyWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: *BackgroundAccessStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTask = extern struct {
@@ -1842,12 +1842,12 @@ pub const IBackgroundTask = extern struct {
 };
 pub const IBackgroundTaskBuilder = extern struct {
     vtable: *const VTable,
-    pub fn putTaskEntryPoint(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTaskEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TaskEntryPoint(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTaskEntryPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTaskEntryPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskEntryPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1860,12 +1860,12 @@ pub const IBackgroundTaskBuilder = extern struct {
         const _c = self.vtable.AddCondition(@ptrCast(self), condition);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1888,12 +1888,12 @@ pub const IBackgroundTaskBuilder = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_TaskEntryPoint: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TaskEntryPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_TaskEntryPoint: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TaskEntryPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         SetTrigger: *const fn(self: *anyopaque, trigger: *IBackgroundTrigger) callconv(.winapi) HRESULT,
         AddCondition: *const fn(self: *anyopaque, condition: *IBackgroundCondition) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Register: *const fn(self: *anyopaque, _r: **BackgroundTaskRegistration) callconv(.winapi) HRESULT,
     };
 };
@@ -2020,7 +2020,7 @@ pub const IBackgroundTaskBuilder6 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Register(self: *@This(), taskName: HSTRING) core.HResult!*BackgroundTaskRegistration {
+    pub fn Register(self: *@This(), taskName: ?HSTRING) core.HResult!*BackgroundTaskRegistration {
         var _r: *BackgroundTaskRegistration = undefined;
         const _c = self.vtable.Register(@ptrCast(self), taskName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2041,7 +2041,7 @@ pub const IBackgroundTaskBuilder6 = extern struct {
         get_AllowRunningTaskInStandby: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowRunningTaskInStandby: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         Validate: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, taskName: HSTRING, _r: **BackgroundTaskRegistration) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, taskName: ?HSTRING, _r: **BackgroundTaskRegistration) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTaskBuilderStatics = extern struct {
@@ -2275,8 +2275,8 @@ pub const IBackgroundTaskRegistration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2318,7 +2318,7 @@ pub const IBackgroundTaskRegistration = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TaskId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_Progress: *const fn(self: *anyopaque, handler: *BackgroundTaskProgressEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Progress: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_Completed: *const fn(self: *anyopaque, handler: *BackgroundTaskCompletedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -2404,14 +2404,14 @@ pub const IBackgroundTaskRegistration4 = extern struct {
 };
 pub const IBackgroundTaskRegistrationGroup = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2444,8 +2444,8 @@ pub const IBackgroundTaskRegistrationGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_BackgroundActivated: *const fn(self: *anyopaque, handler: *TypedEventHandler(BackgroundTaskRegistrationGroup,BackgroundActivatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_BackgroundActivated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_AllTasks: *const fn(self: *anyopaque, _r: **IMapView(Guid,BackgroundTaskRegistration)) callconv(.winapi) HRESULT,
@@ -2453,13 +2453,13 @@ pub const IBackgroundTaskRegistrationGroup = extern struct {
 };
 pub const IBackgroundTaskRegistrationGroupFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), id: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn Create(self: *@This(), id: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithName(self: *@This(), id: HSTRING, name: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn CreateWithName(self: *@This(), id: ?HSTRING, name: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.CreateWithName(@ptrCast(self), id, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2477,8 +2477,8 @@ pub const IBackgroundTaskRegistrationGroupFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, id: HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
-        CreateWithName: *const fn(self: *anyopaque, id: HSTRING, name: HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, id: ?HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
+        CreateWithName: *const fn(self: *anyopaque, id: ?HSTRING, name: ?HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTaskRegistrationStatics = extern struct {
@@ -2506,13 +2506,13 @@ pub const IBackgroundTaskRegistrationStatics = extern struct {
 };
 pub const IBackgroundTaskRegistrationStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getAllTaskGroups(self: *@This()) core.HResult!*IMapView(HSTRING,BackgroundTaskRegistrationGroup) {
-        var _r: *IMapView(HSTRING,BackgroundTaskRegistrationGroup) = undefined;
+    pub fn getAllTaskGroups(self: *@This()) core.HResult!*IMapView(?HSTRING,BackgroundTaskRegistrationGroup) {
+        var _r: *IMapView(?HSTRING,BackgroundTaskRegistrationGroup) = undefined;
         const _c = self.vtable.get_AllTaskGroups(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTaskGroup(self: *@This(), groupId: HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
+    pub fn GetTaskGroup(self: *@This(), groupId: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.GetTaskGroup(@ptrCast(self), groupId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2530,8 +2530,8 @@ pub const IBackgroundTaskRegistrationStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AllTaskGroups: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,BackgroundTaskRegistrationGroup)) callconv(.winapi) HRESULT,
-        GetTaskGroup: *const fn(self: *anyopaque, groupId: HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
+        get_AllTaskGroups: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,BackgroundTaskRegistrationGroup)) callconv(.winapi) HRESULT,
+        GetTaskGroup: *const fn(self: *anyopaque, groupId: ?HSTRING, _r: **BackgroundTaskRegistrationGroup) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundTrigger = extern struct {
@@ -3034,8 +3034,8 @@ pub const IContentPrefetchTriggerFactory = extern struct {
 };
 pub const ICustomSystemEventTrigger = extern struct {
     vtable: *const VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3058,13 +3058,13 @@ pub const ICustomSystemEventTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TriggerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Recurrence: *const fn(self: *anyopaque, _r: *CustomSystemEventTriggerRecurrence) callconv(.winapi) HRESULT,
     };
 };
 pub const ICustomSystemEventTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), triggerId: HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
+    pub fn Create(self: *@This(), triggerId: ?HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
         var _r: *CustomSystemEventTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerId, recurrence, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3082,13 +3082,13 @@ pub const ICustomSystemEventTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, triggerId: HSTRING, recurrence: CustomSystemEventTriggerRecurrence, _r: **CustomSystemEventTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, triggerId: ?HSTRING, recurrence: CustomSystemEventTriggerRecurrence, _r: **CustomSystemEventTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceConnectionChangeTrigger = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3121,7 +3121,7 @@ pub const IDeviceConnectionChangeTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CanMaintainConnection: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_MaintainConnection: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_MaintainConnection: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -3129,7 +3129,7 @@ pub const IDeviceConnectionChangeTrigger = extern struct {
 };
 pub const IDeviceConnectionChangeTriggerStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
         var _r: *IAsyncOperation(DeviceConnectionChangeTrigger) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3147,13 +3147,13 @@ pub const IDeviceConnectionChangeTriggerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DeviceConnectionChangeTrigger)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(DeviceConnectionChangeTrigger)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceManufacturerNotificationTrigger = extern struct {
     vtable: *const VTable,
-    pub fn getTriggerQualifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTriggerQualifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerQualifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3176,13 +3176,13 @@ pub const IDeviceManufacturerNotificationTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerQualifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TriggerQualifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OneShot: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceManufacturerNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), triggerQualifier: HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
+    pub fn Create(self: *@This(), triggerQualifier: ?HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
         var _r: *DeviceManufacturerNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerQualifier, oneShot, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3200,18 +3200,18 @@ pub const IDeviceManufacturerNotificationTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, triggerQualifier: HSTRING, oneShot: bool, _r: **DeviceManufacturerNotificationTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, triggerQualifier: ?HSTRING, oneShot: bool, _r: **DeviceManufacturerNotificationTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceServicingTrigger = extern struct {
     vtable: *const VTable,
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, expectedDuration, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsyncWithArguments(@ptrCast(self), deviceId, expectedDuration, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3229,19 +3229,19 @@ pub const IDeviceServicingTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, expectedDuration: TimeSpan, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
-        RequestAsyncWithArguments: *const fn(self: *anyopaque, deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, expectedDuration: TimeSpan, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsyncWithArguments: *const fn(self: *anyopaque, deviceId: ?HSTRING, expectedDuration: TimeSpan, arguments: ?HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceUseTrigger = extern struct {
     vtable: *const VTable,
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsyncWithArguments(@ptrCast(self), deviceId, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3259,8 +3259,8 @@ pub const IDeviceUseTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
-        RequestAsyncWithArguments: *const fn(self: *anyopaque, deviceId: HSTRING, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsyncWithArguments: *const fn(self: *anyopaque, deviceId: ?HSTRING, arguments: ?HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceWatcherTrigger = extern struct {
@@ -3389,8 +3389,8 @@ pub const IGattCharacteristicNotificationTriggerFactory2 = extern struct {
 };
 pub const IGattServiceProviderTrigger = extern struct {
     vtable: *const VTable,
-    pub fn getTriggerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3423,7 +3423,7 @@ pub const IGattServiceProviderTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TriggerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TriggerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Service: *const fn(self: *anyopaque, _r: **GattLocalService) callconv(.winapi) HRESULT,
         put_AdvertisingParameters: *const fn(self: *anyopaque, value: *GattServiceProviderAdvertisingParameters) callconv(.winapi) HRESULT,
         get_AdvertisingParameters: *const fn(self: *anyopaque, _r: **GattServiceProviderAdvertisingParameters) callconv(.winapi) HRESULT,
@@ -3461,7 +3461,7 @@ pub const IGattServiceProviderTriggerResult = extern struct {
 };
 pub const IGattServiceProviderTriggerStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateAsync(self: *@This(), triggerId: HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
+    pub fn CreateAsync(self: *@This(), triggerId: ?HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
         var _r: *IAsyncOperation(GattServiceProviderTriggerResult) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), triggerId, serviceUuid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3479,7 +3479,7 @@ pub const IGattServiceProviderTriggerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAsync: *const fn(self: *anyopaque, triggerId: HSTRING, serviceUuid: *Guid, _r: **IAsyncOperation(GattServiceProviderTriggerResult)) callconv(.winapi) HRESULT,
+        CreateAsync: *const fn(self: *anyopaque, triggerId: ?HSTRING, serviceUuid: *Guid, _r: **IAsyncOperation(GattServiceProviderTriggerResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeovisitTrigger = extern struct {
@@ -3657,8 +3657,8 @@ pub const INetworkOperatorHotspotAuthenticationTrigger = extern struct {
 };
 pub const INetworkOperatorNotificationTrigger = extern struct {
     vtable: *const VTable,
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3675,12 +3675,12 @@ pub const INetworkOperatorNotificationTrigger = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INetworkOperatorNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), networkAccountId: HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
+    pub fn Create(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
         var _r: *NetworkOperatorNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), networkAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3698,12 +3698,12 @@ pub const INetworkOperatorNotificationTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, networkAccountId: HSTRING, _r: **NetworkOperatorNotificationTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, networkAccountId: ?HSTRING, _r: **NetworkOperatorNotificationTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IPushNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), applicationId: HSTRING) core.HResult!*PushNotificationTrigger {
+    pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*PushNotificationTrigger {
         var _r: *PushNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3721,7 +3721,7 @@ pub const IPushNotificationTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **PushNotificationTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **PushNotificationTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IRcsEndUserMessageAvailableTrigger = extern struct {
@@ -4130,7 +4130,7 @@ pub const ITimeTriggerFactory = extern struct {
 };
 pub const IToastNotificationActionTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotificationActionTrigger {
+    pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotificationActionTrigger {
         var _r: *ToastNotificationActionTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4148,12 +4148,12 @@ pub const IToastNotificationActionTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **ToastNotificationActionTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **ToastNotificationActionTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationHistoryChangedTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
+    pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
         var _r: *ToastNotificationHistoryChangedTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4171,7 +4171,7 @@ pub const IToastNotificationHistoryChangedTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **ToastNotificationHistoryChangedTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **ToastNotificationHistoryChangedTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserNotificationChangedTriggerFactory = extern struct {
@@ -4388,14 +4388,14 @@ pub const NetworkOperatorHotspotAuthenticationTrigger = extern struct {
 };
 pub const NetworkOperatorNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *INetworkOperatorNotificationTrigger = @ptrCast(self);
         return try this.getNetworkAccountId();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(networkAccountId: HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
+    pub fn Create(networkAccountId: ?HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
         const _f = try @This()._INetworkOperatorNotificationTriggerFactoryCache.get();
         return try _f.Create(networkAccountId);
     }
@@ -4431,7 +4431,7 @@ pub const PushNotificationTrigger = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
-    pub fn Create(applicationId: HSTRING) core.HResult!*PushNotificationTrigger {
+    pub fn Create(applicationId: ?HSTRING) core.HResult!*PushNotificationTrigger {
         const _f = try @This()._IPushNotificationTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
@@ -4735,7 +4735,7 @@ pub const ToastNotificationActionTrigger = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
-    pub fn Create(applicationId: HSTRING) core.HResult!*ToastNotificationActionTrigger {
+    pub fn Create(applicationId: ?HSTRING) core.HResult!*ToastNotificationActionTrigger {
         const _f = try @This()._IToastNotificationActionTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
@@ -4756,7 +4756,7 @@ pub const ToastNotificationHistoryChangedTrigger = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTrigger.IID)));
     }
-    pub fn Create(applicationId: HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
+    pub fn Create(applicationId: ?HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
         const _f = try @This()._IToastNotificationHistoryChangedTriggerFactoryCache.get();
         return try _f.Create(applicationId);
     }
@@ -4829,7 +4829,7 @@ pub const AppBroadcastTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateAppBroadcastTrigger(providerKey: HSTRING) core.HResult!*AppBroadcastTrigger {
+    pub fn CreateAppBroadcastTrigger(providerKey: ?HSTRING) core.HResult!*AppBroadcastTrigger {
         const _f = try @This()._IAppBroadcastTriggerFactoryCache.get();
         return try _f.CreateAppBroadcastTrigger(providerKey);
     }
@@ -4842,19 +4842,19 @@ pub const AppBroadcastTrigger = extern struct {
 };
 pub const AppBroadcastTriggerProviderInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastTriggerProviderInfo = @ptrCast(self);
         return try this.putDisplayNameResource(value);
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastTriggerProviderInfo = @ptrCast(self);
         return try this.getDisplayNameResource();
     }
-    pub fn putLogoResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLogoResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastTriggerProviderInfo = @ptrCast(self);
         return try this.putLogoResource(value);
     }
-    pub fn getLogoResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getLogoResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppBroadcastTriggerProviderInfo = @ptrCast(self);
         return try this.getLogoResource();
     }
@@ -4926,7 +4926,7 @@ pub const IAppBroadcastTrigger = extern struct {
 };
 pub const IAppBroadcastTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateAppBroadcastTrigger(self: *@This(), providerKey: HSTRING) core.HResult!*AppBroadcastTrigger {
+    pub fn CreateAppBroadcastTrigger(self: *@This(), providerKey: ?HSTRING) core.HResult!*AppBroadcastTrigger {
         var _r: *AppBroadcastTrigger = undefined;
         const _c = self.vtable.CreateAppBroadcastTrigger(@ptrCast(self), providerKey, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4944,27 +4944,27 @@ pub const IAppBroadcastTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAppBroadcastTrigger: *const fn(self: *anyopaque, providerKey: HSTRING, _r: **AppBroadcastTrigger) callconv(.winapi) HRESULT,
+        CreateAppBroadcastTrigger: *const fn(self: *anyopaque, providerKey: ?HSTRING, _r: **AppBroadcastTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppBroadcastTriggerProviderInfo = extern struct {
     vtable: *const VTable,
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayNameResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayNameResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLogoResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLogoResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LogoResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLogoResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLogoResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LogoResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5021,10 +5021,10 @@ pub const IAppBroadcastTriggerProviderInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DisplayNameResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LogoResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_LogoResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayNameResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LogoResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_LogoResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_VideoKeyFrameInterval: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_VideoKeyFrameInterval: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_MaxVideoBitrate: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,

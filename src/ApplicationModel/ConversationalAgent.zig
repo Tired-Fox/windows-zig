@@ -1,15 +1,15 @@
 // ----- This code is automatically generated -----
 pub const ActivationSignalDetectionConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSignalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.getSignalId();
     }
-    pub fn getModelId(self: *@This()) core.HResult!HSTRING {
+    pub fn getModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.getModelId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -37,19 +37,19 @@ pub const ActivationSignalDetectionConfiguration = extern struct {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.removeAvailabilityChanged(token);
     }
-    pub fn SetModelData(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!void {
+    pub fn SetModelData(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!void {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.SetModelData(dataType, data);
     }
-    pub fn SetModelDataAsync(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!*IAsyncAction {
+    pub fn SetModelDataAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncAction {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.SetModelDataAsync(dataType, data);
     }
-    pub fn GetModelDataType(self: *@This()) core.HResult!HSTRING {
+    pub fn GetModelDataType(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.GetModelDataType();
     }
-    pub fn GetModelDataTypeAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetModelDataTypeAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IActivationSignalDetectionConfiguration = @ptrCast(self);
         return try this.GetModelDataTypeAsync();
     }
@@ -103,13 +103,13 @@ pub const ActivationSignalDetectionConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn SetModelDataWithResult(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
+    pub fn SetModelDataWithResult(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetModelDataWithResult(dataType, data);
     }
-    pub fn SetModelDataWithResultAsync(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
+    pub fn SetModelDataWithResultAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
         var this: ?*IActivationSignalDetectionConfiguration2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetectionConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -201,7 +201,7 @@ pub const ActivationSignalDetectionTrainingDataFormat = enum(i32) {
 };
 pub const ActivationSignalDetector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.getProviderId();
     }
@@ -213,7 +213,7 @@ pub const ActivationSignalDetector = extern struct {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.getCanCreateConfigurations();
     }
-    pub fn getSupportedModelDataTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedModelDataTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.getSupportedModelDataTypes();
     }
@@ -225,19 +225,19 @@ pub const ActivationSignalDetector = extern struct {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.getSupportedPowerStates();
     }
-    pub fn GetSupportedModelIdsForSignalId(self: *@This(), signalId: HSTRING) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetSupportedModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.GetSupportedModelIdsForSignalId(signalId);
     }
-    pub fn GetSupportedModelIdsForSignalIdAsync(self: *@This(), signalId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetSupportedModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.GetSupportedModelIdsForSignalIdAsync(signalId);
     }
-    pub fn CreateConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn CreateConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.CreateConfiguration(signalId, modelId, displayName);
     }
-    pub fn CreateConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn CreateConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.CreateConfigurationAsync(signalId, modelId, displayName);
     }
@@ -249,59 +249,59 @@ pub const ActivationSignalDetector = extern struct {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.GetConfigurationsAsync();
     }
-    pub fn GetConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*ActivationSignalDetectionConfiguration {
+    pub fn GetConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*ActivationSignalDetectionConfiguration {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.GetConfiguration(signalId, modelId);
     }
-    pub fn GetConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfiguration) {
+    pub fn GetConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfiguration) {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.GetConfigurationAsync(signalId, modelId);
     }
-    pub fn RemoveConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!void {
+    pub fn RemoveConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!void {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.RemoveConfiguration(signalId, modelId);
     }
-    pub fn RemoveConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RemoveConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IActivationSignalDetector = @ptrCast(self);
         return try this.RemoveConfigurationAsync(signalId, modelId);
     }
-    pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: HSTRING) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
+    pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(?HSTRING)) {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAvailableModelIdsForSignalIdAsync(signalId);
     }
-    pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: HSTRING) core.HResult!*IVector(HSTRING) {
+    pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVector(?HSTRING) {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAvailableModelIdsForSignalId(signalId);
     }
-    pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
+    pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateConfigurationWithResultAsync(signalId, modelId, displayName);
     }
-    pub fn CreateConfigurationWithResult(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
+    pub fn CreateConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateConfigurationWithResult(signalId, modelId, displayName);
     }
-    pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
+    pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveConfigurationWithResultAsync(signalId, modelId);
     }
-    pub fn RemoveConfigurationWithResult(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
+    pub fn RemoveConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveConfigurationWithResult(signalId, modelId);
     }
-    pub fn getDetectorId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActivationSignalDetector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivationSignalDetector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -351,13 +351,13 @@ pub const ConversationalAgentDetectorManager = extern struct {
         const this: *IConversationalAgentDetectorManager = @ptrCast(self);
         return try this.GetActivationSignalDetectorsAsync(kind);
     }
-    pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: HSTRING) core.HResult!*ActivationSignalDetector {
+    pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: ?HSTRING) core.HResult!*ActivationSignalDetector {
         var this: ?*IConversationalAgentDetectorManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActivationSignalDetectorFromId(detectorId);
     }
-    pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
+    pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
         var this: ?*IConversationalAgentDetectorManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentDetectorManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -475,19 +475,19 @@ pub const ConversationalAgentSession = extern struct {
         const this: *IConversationalAgentSession = @ptrCast(self);
         return try this.CreateAudioDeviceInputNode(graph);
     }
-    pub fn GetAudioCaptureDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetAudioCaptureDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IConversationalAgentSession = @ptrCast(self);
         return try this.GetAudioCaptureDeviceIdAsync();
     }
-    pub fn GetAudioCaptureDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAudioCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IConversationalAgentSession = @ptrCast(self);
         return try this.GetAudioCaptureDeviceId();
     }
-    pub fn GetAudioRenderDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetAudioRenderDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IConversationalAgentSession = @ptrCast(self);
         return try this.GetAudioRenderDeviceIdAsync();
     }
-    pub fn GetAudioRenderDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetAudioRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IConversationalAgentSession = @ptrCast(self);
         return try this.GetAudioRenderDeviceId();
     }
@@ -597,19 +597,19 @@ pub const ConversationalAgentSignal = extern struct {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.putIsSignalVerificationRequired(value);
     }
-    pub fn getSignalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.getSignalId();
     }
-    pub fn putSignalId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSignalId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.putSignalId(value);
     }
-    pub fn getSignalName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignalName(self: *@This()) core.HResult!?HSTRING {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.getSignalName();
     }
-    pub fn putSignalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSignalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.putSignalName(value);
     }
@@ -637,7 +637,7 @@ pub const ConversationalAgentSignal = extern struct {
         const this: *IConversationalAgentSignal = @ptrCast(self);
         return try this.putSignalEnd(value);
     }
-    pub fn getDetectorId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IConversationalAgentSignal2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConversationalAgentSignal2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -758,20 +758,20 @@ pub const DetectionConfigurationTrainingStatus = enum(i32) {
 };
 pub const IActivationSignalDetectionConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getSignalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -808,24 +808,24 @@ pub const IActivationSignalDetectionConfiguration = extern struct {
         const _c = self.vtable.remove_AvailabilityChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetModelData(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!void {
+    pub fn SetModelData(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!void {
         const _c = self.vtable.SetModelData(@ptrCast(self), dataType, data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetModelDataAsync(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!*IAsyncAction {
+    pub fn SetModelDataAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetModelDataAsync(@ptrCast(self), dataType, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetModelDataType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetModelDataType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetModelDataType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetModelDataTypeAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetModelDataTypeAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetModelDataTypeAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -904,19 +904,19 @@ pub const IActivationSignalDetectionConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SignalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SignalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         SetEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         SetEnabledAsync: *const fn(self: *anyopaque, value: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_AvailabilityInfo: *const fn(self: *anyopaque, _r: **DetectionConfigurationAvailabilityInfo) callconv(.winapi) HRESULT,
         add_AvailabilityChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(ActivationSignalDetectionConfiguration,DetectionConfigurationAvailabilityChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_AvailabilityChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        SetModelData: *const fn(self: *anyopaque, dataType: HSTRING, data: *IInputStream) callconv(.winapi) HRESULT,
-        SetModelDataAsync: *const fn(self: *anyopaque, dataType: HSTRING, data: *IInputStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetModelDataType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetModelDataTypeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        SetModelData: *const fn(self: *anyopaque, dataType: ?HSTRING, data: *IInputStream) callconv(.winapi) HRESULT,
+        SetModelDataAsync: *const fn(self: *anyopaque, dataType: ?HSTRING, data: *IInputStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetModelDataType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetModelDataTypeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetModelData: *const fn(self: *anyopaque, _r: **IInputStream) callconv(.winapi) HRESULT,
         GetModelDataAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IInputStream)) callconv(.winapi) HRESULT,
         ClearModelData: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -932,13 +932,13 @@ pub const IActivationSignalDetectionConfiguration = extern struct {
 };
 pub const IActivationSignalDetectionConfiguration2 = extern struct {
     vtable: *const VTable,
-    pub fn SetModelDataWithResult(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
+    pub fn SetModelDataWithResult(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!ActivationSignalDetectionConfigurationSetModelDataResult {
         var _r: ActivationSignalDetectionConfigurationSetModelDataResult = undefined;
         const _c = self.vtable.SetModelDataWithResult(@ptrCast(self), dataType, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetModelDataWithResultAsync(self: *@This(), dataType: HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
+    pub fn SetModelDataWithResultAsync(self: *@This(), dataType: ?HSTRING, data: *IInputStream) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult) = undefined;
         const _c = self.vtable.SetModelDataWithResultAsync(@ptrCast(self), dataType, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -974,8 +974,8 @@ pub const IActivationSignalDetectionConfiguration2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetModelDataWithResult: *const fn(self: *anyopaque, dataType: HSTRING, data: *IInputStream, _r: *ActivationSignalDetectionConfigurationSetModelDataResult) callconv(.winapi) HRESULT,
-        SetModelDataWithResultAsync: *const fn(self: *anyopaque, dataType: HSTRING, data: *IInputStream, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult)) callconv(.winapi) HRESULT,
+        SetModelDataWithResult: *const fn(self: *anyopaque, dataType: ?HSTRING, data: *IInputStream, _r: *ActivationSignalDetectionConfigurationSetModelDataResult) callconv(.winapi) HRESULT,
+        SetModelDataWithResultAsync: *const fn(self: *anyopaque, dataType: ?HSTRING, data: *IInputStream, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationSetModelDataResult)) callconv(.winapi) HRESULT,
         SetEnabledWithResultAsync: *const fn(self: *anyopaque, value: bool, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationStateChangeResult)) callconv(.winapi) HRESULT,
         SetEnabledWithResult: *const fn(self: *anyopaque, value: bool, _r: *ActivationSignalDetectionConfigurationStateChangeResult) callconv(.winapi) HRESULT,
         get_TrainingStepCompletionMaxAllowedTime: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -1013,8 +1013,8 @@ pub const IActivationSignalDetectionConfigurationCreationResult = extern struct 
 };
 pub const IActivationSignalDetector = extern struct {
     vtable: *const VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1031,8 +1031,8 @@ pub const IActivationSignalDetector = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedModelDataTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedModelDataTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedModelDataTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1049,23 +1049,23 @@ pub const IActivationSignalDetector = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSupportedModelIdsForSignalId(self: *@This(), signalId: HSTRING) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetSupportedModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetSupportedModelIdsForSignalId(@ptrCast(self), signalId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSupportedModelIdsForSignalIdAsync(self: *@This(), signalId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetSupportedModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetSupportedModelIdsForSignalIdAsync(@ptrCast(self), signalId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn CreateConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.CreateConfiguration(@ptrCast(self), signalId, modelId, displayName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CreateConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn CreateConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CreateConfigurationAsync(@ptrCast(self), signalId, modelId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1083,23 +1083,23 @@ pub const IActivationSignalDetector = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*ActivationSignalDetectionConfiguration {
+    pub fn GetConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*ActivationSignalDetectionConfiguration {
         var _r: *ActivationSignalDetectionConfiguration = undefined;
         const _c = self.vtable.GetConfiguration(@ptrCast(self), signalId, modelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfiguration) {
+    pub fn GetConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfiguration) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfiguration) = undefined;
         const _c = self.vtable.GetConfigurationAsync(@ptrCast(self), signalId, modelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveConfiguration(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!void {
+    pub fn RemoveConfiguration(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveConfiguration(@ptrCast(self), signalId, modelId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveConfigurationAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RemoveConfigurationAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RemoveConfigurationAsync(@ptrCast(self), signalId, modelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1117,64 +1117,64 @@ pub const IActivationSignalDetector = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ActivationSignalDetectorKind) callconv(.winapi) HRESULT,
         get_CanCreateConfigurations: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_SupportedModelDataTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_SupportedModelDataTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_SupportedTrainingDataFormats: *const fn(self: *anyopaque, _r: **IVectorView(ActivationSignalDetectionTrainingDataFormat)) callconv(.winapi) HRESULT,
         get_SupportedPowerStates: *const fn(self: *anyopaque, _r: **IVectorView(ActivationSignalDetectorPowerState)) callconv(.winapi) HRESULT,
-        GetSupportedModelIdsForSignalId: *const fn(self: *anyopaque, signalId: HSTRING, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        GetSupportedModelIdsForSignalIdAsync: *const fn(self: *anyopaque, signalId: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        CreateConfiguration: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) callconv(.winapi) HRESULT,
-        CreateConfigurationAsync: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, displayName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetSupportedModelIdsForSignalId: *const fn(self: *anyopaque, signalId: ?HSTRING, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        GetSupportedModelIdsForSignalIdAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
+        CreateConfiguration: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) callconv(.winapi) HRESULT,
+        CreateConfigurationAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetConfigurations: *const fn(self: *anyopaque, _r: **IVectorView(ActivationSignalDetectionConfiguration)) callconv(.winapi) HRESULT,
         GetConfigurationsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ActivationSignalDetectionConfiguration))) callconv(.winapi) HRESULT,
-        GetConfiguration: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, _r: **ActivationSignalDetectionConfiguration) callconv(.winapi) HRESULT,
-        GetConfigurationAsync: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfiguration)) callconv(.winapi) HRESULT,
-        RemoveConfiguration: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING) callconv(.winapi) HRESULT,
-        RemoveConfigurationAsync: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetConfiguration: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, _r: **ActivationSignalDetectionConfiguration) callconv(.winapi) HRESULT,
+        GetConfigurationAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfiguration)) callconv(.winapi) HRESULT,
+        RemoveConfiguration: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveConfigurationAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IActivationSignalDetector2 = extern struct {
     vtable: *const VTable,
-    pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: HSTRING) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
-        var _r: *IAsyncOperation(IVector(HSTRING)) = undefined;
+    pub fn GetAvailableModelIdsForSignalIdAsync(self: *@This(), signalId: ?HSTRING) core.HResult!*IAsyncOperation(IVector(?HSTRING)) {
+        var _r: *IAsyncOperation(IVector(?HSTRING)) = undefined;
         const _c = self.vtable.GetAvailableModelIdsForSignalIdAsync(@ptrCast(self), signalId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: HSTRING) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetAvailableModelIdsForSignalId(self: *@This(), signalId: ?HSTRING) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetAvailableModelIdsForSignalId(@ptrCast(self), signalId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
+    pub fn CreateConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult) = undefined;
         const _c = self.vtable.CreateConfigurationWithResultAsync(@ptrCast(self), signalId, modelId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateConfigurationWithResult(self: *@This(), signalId: HSTRING, modelId: HSTRING, displayName: HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
+    pub fn CreateConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING) core.HResult!*ActivationSignalDetectionConfigurationCreationResult {
         var _r: *ActivationSignalDetectionConfigurationCreationResult = undefined;
         const _c = self.vtable.CreateConfigurationWithResult(@ptrCast(self), signalId, modelId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
+    pub fn RemoveConfigurationWithResultAsync(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) {
         var _r: *IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult) = undefined;
         const _c = self.vtable.RemoveConfigurationWithResultAsync(@ptrCast(self), signalId, modelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveConfigurationWithResult(self: *@This(), signalId: HSTRING, modelId: HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
+    pub fn RemoveConfigurationWithResult(self: *@This(), signalId: ?HSTRING, modelId: ?HSTRING) core.HResult!ActivationSignalDetectionConfigurationRemovalResult {
         var _r: ActivationSignalDetectionConfigurationRemovalResult = undefined;
         const _c = self.vtable.RemoveConfigurationWithResult(@ptrCast(self), signalId, modelId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDetectorId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetectorId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1191,13 +1191,13 @@ pub const IActivationSignalDetector2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAvailableModelIdsForSignalIdAsync: *const fn(self: *anyopaque, signalId: HSTRING, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
-        GetAvailableModelIdsForSignalId: *const fn(self: *anyopaque, signalId: HSTRING, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        CreateConfigurationWithResultAsync: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, displayName: HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult)) callconv(.winapi) HRESULT,
-        CreateConfigurationWithResult: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, displayName: HSTRING, _r: **ActivationSignalDetectionConfigurationCreationResult) callconv(.winapi) HRESULT,
-        RemoveConfigurationWithResultAsync: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult)) callconv(.winapi) HRESULT,
-        RemoveConfigurationWithResult: *const fn(self: *anyopaque, signalId: HSTRING, modelId: HSTRING, _r: *ActivationSignalDetectionConfigurationRemovalResult) callconv(.winapi) HRESULT,
-        get_DetectorId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAvailableModelIdsForSignalIdAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, _r: **IAsyncOperation(IVector(?HSTRING))) callconv(.winapi) HRESULT,
+        GetAvailableModelIdsForSignalId: *const fn(self: *anyopaque, signalId: ?HSTRING, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        CreateConfigurationWithResultAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationCreationResult)) callconv(.winapi) HRESULT,
+        CreateConfigurationWithResult: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, displayName: ?HSTRING, _r: **ActivationSignalDetectionConfigurationCreationResult) callconv(.winapi) HRESULT,
+        RemoveConfigurationWithResultAsync: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, _r: **IAsyncOperation(ActivationSignalDetectionConfigurationRemovalResult)) callconv(.winapi) HRESULT,
+        RemoveConfigurationWithResult: *const fn(self: *anyopaque, signalId: ?HSTRING, modelId: ?HSTRING, _r: *ActivationSignalDetectionConfigurationRemovalResult) callconv(.winapi) HRESULT,
+        get_DetectorId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IConversationalAgentDetectorManager = extern struct {
@@ -1246,13 +1246,13 @@ pub const IConversationalAgentDetectorManager = extern struct {
 };
 pub const IConversationalAgentDetectorManager2 = extern struct {
     vtable: *const VTable,
-    pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: HSTRING) core.HResult!*ActivationSignalDetector {
+    pub fn GetActivationSignalDetectorFromId(self: *@This(), detectorId: ?HSTRING) core.HResult!*ActivationSignalDetector {
         var _r: *ActivationSignalDetector = undefined;
         const _c = self.vtable.GetActivationSignalDetectorFromId(@ptrCast(self), detectorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
+    pub fn GetActivationSignalDetectorFromIdAsync(self: *@This(), detectorId: ?HSTRING) core.HResult!*IAsyncOperation(ActivationSignalDetector) {
         var _r: *IAsyncOperation(ActivationSignalDetector) = undefined;
         const _c = self.vtable.GetActivationSignalDetectorFromIdAsync(@ptrCast(self), detectorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1270,8 +1270,8 @@ pub const IConversationalAgentDetectorManager2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetActivationSignalDetectorFromId: *const fn(self: *anyopaque, detectorId: HSTRING, _r: **ActivationSignalDetector) callconv(.winapi) HRESULT,
-        GetActivationSignalDetectorFromIdAsync: *const fn(self: *anyopaque, detectorId: HSTRING, _r: **IAsyncOperation(ActivationSignalDetector)) callconv(.winapi) HRESULT,
+        GetActivationSignalDetectorFromId: *const fn(self: *anyopaque, detectorId: ?HSTRING, _r: **ActivationSignalDetector) callconv(.winapi) HRESULT,
+        GetActivationSignalDetectorFromIdAsync: *const fn(self: *anyopaque, detectorId: ?HSTRING, _r: **IAsyncOperation(ActivationSignalDetector)) callconv(.winapi) HRESULT,
     };
 };
 pub const IConversationalAgentDetectorManagerStatics = extern struct {
@@ -1437,26 +1437,26 @@ pub const IConversationalAgentSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAudioCaptureDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetAudioCaptureDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAudioCaptureDeviceIdAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAudioCaptureDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAudioCaptureDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioCaptureDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAudioRenderDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetAudioRenderDeviceIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAudioRenderDeviceIdAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAudioRenderDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAudioRenderDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioRenderDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1533,10 +1533,10 @@ pub const IConversationalAgentSession = extern struct {
         GetAudioClient: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         CreateAudioDeviceInputNodeAsync: *const fn(self: *anyopaque, graph: *AudioGraph, _r: **IAsyncOperation(AudioDeviceInputNode)) callconv(.winapi) HRESULT,
         CreateAudioDeviceInputNode: *const fn(self: *anyopaque, graph: *AudioGraph, _r: **AudioDeviceInputNode) callconv(.winapi) HRESULT,
-        GetAudioCaptureDeviceIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetAudioCaptureDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetAudioRenderDeviceIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetAudioRenderDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetAudioCaptureDeviceIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetAudioCaptureDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetAudioRenderDeviceIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetAudioRenderDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetSignalModelIdAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         GetSignalModelId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         SetSignalModelIdAsync: *const fn(self: *anyopaque, signalModelId: u32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -1659,23 +1659,23 @@ pub const IConversationalAgentSignal = extern struct {
         const _c = self.vtable.put_IsSignalVerificationRequired(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSignalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSignalId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSignalId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SignalId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSignalName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignalName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSignalName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSignalName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SignalName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1723,10 +1723,10 @@ pub const IConversationalAgentSignal = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsSignalVerificationRequired: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSignalVerificationRequired: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_SignalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SignalId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SignalName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SignalName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SignalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SignalId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SignalName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SignalName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SignalContext: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_SignalContext: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_SignalStart: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
@@ -1737,8 +1737,8 @@ pub const IConversationalAgentSignal = extern struct {
 };
 pub const IConversationalAgentSignal2 = extern struct {
     vtable: *const VTable,
-    pub fn getDetectorId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDetectorId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DetectorId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1761,7 +1761,7 @@ pub const IConversationalAgentSignal2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DetectorId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DetectorId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DetectorKind: *const fn(self: *anyopaque, _r: *ActivationSignalDetectorKind) callconv(.winapi) HRESULT,
     };
 };

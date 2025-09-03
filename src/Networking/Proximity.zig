@@ -240,13 +240,13 @@ pub const IPeerFinderStatics = extern struct {
         const _c = self.vtable.put_AllowWiFiDirect(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -256,8 +256,8 @@ pub const IPeerFinderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlternateIdentities(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getAlternateIdentities(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_AlternateIdentities(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -266,7 +266,7 @@ pub const IPeerFinderStatics = extern struct {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartWithPeerMessage(self: *@This(), peerMessage: HSTRING) core.HResult!void {
+    pub fn StartWithPeerMessage(self: *@This(), peerMessage: ?HSTRING) core.HResult!void {
         const _c = self.vtable.StartWithPeerMessage(@ptrCast(self), peerMessage);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -324,12 +324,12 @@ pub const IPeerFinderStatics = extern struct {
         put_AllowInfrastructure: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AllowWiFiDirect: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowWiFiDirect: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedDiscoveryTypes: *const fn(self: *anyopaque, _r: *PeerDiscoveryTypes) callconv(.winapi) HRESULT,
-        get_AlternateIdentities: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_AlternateIdentities: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        StartWithPeerMessage: *const fn(self: *anyopaque, peerMessage: HSTRING) callconv(.winapi) HRESULT,
+        StartWithPeerMessage: *const fn(self: *anyopaque, peerMessage: ?HSTRING) callconv(.winapi) HRESULT,
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         add_TriggeredConnectionStateChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(IInspectable,TriggeredConnectionStateChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_TriggeredConnectionStateChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -388,8 +388,8 @@ pub const IPeerFinderStatics2 = extern struct {
 };
 pub const IPeerInformation = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -406,13 +406,13 @@ pub const IPeerInformation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPeerInformation3 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -435,7 +435,7 @@ pub const IPeerInformation3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DiscoveryData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
     };
 };
@@ -447,8 +447,8 @@ pub const IPeerInformationWithHostAndService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -466,7 +466,7 @@ pub const IPeerInformationWithHostAndService = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_HostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
-        get_ServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPeerWatcher = extern struct {
@@ -564,31 +564,31 @@ pub const IPeerWatcher = extern struct {
 };
 pub const IProximityDevice = extern struct {
     vtable: *const VTable,
-    pub fn SubscribeForMessage(self: *@This(), messageType: HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
+    pub fn SubscribeForMessage(self: *@This(), messageType: ?HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.SubscribeForMessage(@ptrCast(self), messageType, messageReceivedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishMessage(self: *@This(), messageType: HSTRING, message: HSTRING) core.HResult!i64 {
+    pub fn PublishMessage(self: *@This(), messageType: ?HSTRING, message: ?HSTRING) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.PublishMessage(@ptrCast(self), messageType, message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishMessageWithMessageTransmittedHandler(self: *@This(), messageType: ?HSTRING, message: ?HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.PublishMessageWithMessageTransmittedHandler(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer) core.HResult!i64 {
+    pub fn PublishBinaryMessage(self: *@This(), messageType: ?HSTRING, message: *IBuffer) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.PublishBinaryMessage(@ptrCast(self), messageType, message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishBinaryMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishBinaryMessageWithMessageTransmittedHandler(self: *@This(), messageType: ?HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.PublishBinaryMessageWithMessageTransmittedHandler(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -646,8 +646,8 @@ pub const IProximityDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -664,11 +664,11 @@ pub const IProximityDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SubscribeForMessage: *const fn(self: *anyopaque, messageType: HSTRING, messageReceivedHandler: *MessageReceivedHandler, _r: *i64) callconv(.winapi) HRESULT,
-        PublishMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: HSTRING, _r: *i64) callconv(.winapi) HRESULT,
-        PublishMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
-        PublishBinaryMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: *IBuffer, _r: *i64) callconv(.winapi) HRESULT,
-        PublishBinaryMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        SubscribeForMessage: *const fn(self: *anyopaque, messageType: ?HSTRING, messageReceivedHandler: *MessageReceivedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        PublishMessage: *const fn(self: *anyopaque, messageType: ?HSTRING, message: ?HSTRING, _r: *i64) callconv(.winapi) HRESULT,
+        PublishMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: ?HSTRING, message: ?HSTRING, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        PublishBinaryMessage: *const fn(self: *anyopaque, messageType: ?HSTRING, message: *IBuffer, _r: *i64) callconv(.winapi) HRESULT,
+        PublishBinaryMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: ?HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
         PublishUriMessage: *const fn(self: *anyopaque, message: *Uri, _r: *i64) callconv(.winapi) HRESULT,
         PublishUriMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
         StopSubscribingForMessage: *const fn(self: *anyopaque, subscriptionId: i64) callconv(.winapi) HRESULT,
@@ -679,13 +679,13 @@ pub const IProximityDevice = extern struct {
         remove_DeviceDeparted: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_MaxMessageBytes: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_BitsPerSecond: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IProximityDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -696,7 +696,7 @@ pub const IProximityDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*ProximityDevice {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*ProximityDevice {
         var _r: *ProximityDevice = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -714,15 +714,15 @@ pub const IProximityDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, _r: **ProximityDevice) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **ProximityDevice) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **ProximityDevice) callconv(.winapi) HRESULT,
     };
 };
 pub const IProximityMessage = extern struct {
     vtable: *const VTable,
-    pub fn getMessageType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessageType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -739,8 +739,8 @@ pub const IProximityMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDataAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDataAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -757,10 +757,10 @@ pub const IProximityMessage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MessageType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MessageType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SubscriptionId: *const fn(self: *anyopaque, _r: *i64) callconv(.winapi) HRESULT,
         get_Data: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_DataAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DataAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITriggeredConnectionStateChangedEventArgs = extern struct {
@@ -1028,11 +1028,11 @@ pub const PeerFinder = extern struct {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.putAllowWiFiDirect(value);
     }
-    pub fn getDisplayName() core.HResult!HSTRING {
+    pub fn getDisplayName() core.HResult!?HSTRING {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.getDisplayName();
     }
-    pub fn putDisplayName(value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.putDisplayName(value);
     }
@@ -1040,7 +1040,7 @@ pub const PeerFinder = extern struct {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.getSupportedDiscoveryTypes();
     }
-    pub fn getAlternateIdentities() core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getAlternateIdentities() core.HResult!*IMap(?HSTRING,?HSTRING) {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.getAlternateIdentities();
     }
@@ -1048,7 +1048,7 @@ pub const PeerFinder = extern struct {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.Start();
     }
-    pub fn StartWithPeerMessage(peerMessage: HSTRING) core.HResult!void {
+    pub fn StartWithPeerMessage(peerMessage: ?HSTRING) core.HResult!void {
         const _f = try @This()._IPeerFinderStaticsCache.get();
         return try _f.StartWithPeerMessage(peerMessage);
     }
@@ -1087,11 +1087,11 @@ pub const PeerFinder = extern struct {
 };
 pub const PeerInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPeerInformation = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPeerInformation3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1109,7 +1109,7 @@ pub const PeerInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHostName();
     }
-    pub fn getServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPeerInformationWithHostAndService = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformationWithHostAndService.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1196,23 +1196,23 @@ pub const PeerWatcherStatus = enum(i32) {
 };
 pub const ProximityDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SubscribeForMessage(self: *@This(), messageType: HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
+    pub fn SubscribeForMessage(self: *@This(), messageType: ?HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.SubscribeForMessage(messageType, messageReceivedHandler);
     }
-    pub fn PublishMessage(self: *@This(), messageType: HSTRING, message: HSTRING) core.HResult!i64 {
+    pub fn PublishMessage(self: *@This(), messageType: ?HSTRING, message: ?HSTRING) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishMessage(messageType, message);
     }
-    pub fn PublishMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishMessageWithMessageTransmittedHandler(self: *@This(), messageType: ?HSTRING, message: ?HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
-    pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer) core.HResult!i64 {
+    pub fn PublishBinaryMessage(self: *@This(), messageType: ?HSTRING, message: *IBuffer) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishBinaryMessage(messageType, message);
     }
-    pub fn PublishBinaryMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishBinaryMessageWithMessageTransmittedHandler(self: *@This(), messageType: ?HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishBinaryMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
@@ -1256,14 +1256,14 @@ pub const ProximityDevice = extern struct {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.getBitsPerSecond();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IProximityDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -1271,7 +1271,7 @@ pub const ProximityDevice = extern struct {
         const _f = try @This()._IProximityDeviceStaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*ProximityDevice {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*ProximityDevice {
         const _f = try @This()._IProximityDeviceStaticsCache.get();
         return try _f.FromId(deviceId);
     }
@@ -1284,7 +1284,7 @@ pub const ProximityDevice = extern struct {
 };
 pub const ProximityMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMessageType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessageType(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximityMessage = @ptrCast(self);
         return try this.getMessageType();
     }
@@ -1296,7 +1296,7 @@ pub const ProximityMessage = extern struct {
         const this: *IProximityMessage = @ptrCast(self);
         return try this.getData();
     }
-    pub fn getDataAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn getDataAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximityMessage = @ptrCast(self);
         return try this.getDataAsString();
     }

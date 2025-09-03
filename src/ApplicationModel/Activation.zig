@@ -74,13 +74,13 @@ pub const LockScreenCallActivatedEventArgs = extern struct {
         const this: *ILockScreenCallActivatedEventArgs = @ptrCast(self);
         return try this.getCallUI();
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -248,8 +248,8 @@ pub const ICameraSettingsActivatedEventArgs = extern struct {
 };
 pub const IWalletActionActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getItemId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ItemId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -260,8 +260,8 @@ pub const IWalletActionActivatedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -278,14 +278,14 @@ pub const IWalletActionActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ItemId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ItemId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ActionKind: *const fn(self: *anyopaque, _r: *WalletActionKind) callconv(.winapi) HRESULT,
-        get_ActionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const WalletActionActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getItemId(self: *@This()) core.HResult!HSTRING {
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getItemId();
     }
@@ -293,7 +293,7 @@ pub const WalletActionActivatedEventArgs = extern struct {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getActionKind();
     }
-    pub fn getActionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getActionId();
     }
@@ -381,7 +381,7 @@ pub const AppointmentsProviderAddAppointmentActivatedEventArgs = extern struct {
         const this: *IAppointmentsProviderAddAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getAddAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -423,7 +423,7 @@ pub const AppointmentsProviderRemoveAppointmentActivatedEventArgs = extern struc
         const this: *IAppointmentsProviderRemoveAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getRemoveAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -465,7 +465,7 @@ pub const AppointmentsProviderReplaceAppointmentActivatedEventArgs = extern stru
         const this: *IAppointmentsProviderReplaceAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getReplaceAppointmentOperation();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -507,15 +507,15 @@ pub const AppointmentsProviderShowAppointmentDetailsActivatedEventArgs = extern 
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getInstanceStartDate();
     }
-    pub fn getLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getLocalId();
     }
-    pub fn getRoamingId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getRoamingId();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -561,7 +561,7 @@ pub const AppointmentsProviderShowTimeFrameActivatedEventArgs = extern struct {
         const this: *IAppointmentsProviderShowTimeFrameActivatedEventArgs = @ptrCast(self);
         return try this.getDuration();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentsProviderActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentsProviderActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -611,7 +611,7 @@ pub const BackgroundActivatedEventArgs = extern struct {
 };
 pub const BarcodeScannerPreviewActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getConnectionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerPreviewActivatedEventArgs = @ptrCast(self);
         return try this.getConnectionId();
     }
@@ -719,11 +719,11 @@ pub const CommandLineActivatedEventArgs = extern struct {
 };
 pub const CommandLineActivationOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *ICommandLineActivationOperation = @ptrCast(self);
         return try this.getArguments();
     }
-    pub fn getCurrentDirectoryPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrentDirectoryPath(self: *@This()) core.HResult!?HSTRING {
         const this: *ICommandLineActivationOperation = @ptrCast(self);
         return try this.getCurrentDirectoryPath();
     }
@@ -787,11 +787,11 @@ pub const ContactPanelActivatedEventArgs = extern struct {
 };
 pub const DeviceActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceInformationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceInformationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceActivatedEventArgs = @ptrCast(self);
         return try this.getDeviceInformationId();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceActivatedEventArgs = @ptrCast(self);
         return try this.getVerb();
     }
@@ -875,17 +875,17 @@ pub const DevicePairingActivatedEventArgs = extern struct {
 };
 pub const DialReceiverActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialReceiverActivatedEventArgs = @ptrCast(self);
         return try this.getAppName();
     }
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILaunchActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILaunchActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -939,7 +939,7 @@ pub const FileActivatedEventArgs = extern struct {
         const this: *IFileActivatedEventArgs = @ptrCast(self);
         return try this.getFiles();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileActivatedEventArgs = @ptrCast(self);
         return try this.getVerb();
     }
@@ -967,7 +967,7 @@ pub const FileActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNeighboringFilesQuery();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileActivatedEventArgsWithCallerPackageFamilyName = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileActivatedEventArgsWithCallerPackageFamilyName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1021,7 +1021,7 @@ pub const FileOpenPickerActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileOpenPickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1105,13 +1105,13 @@ pub const FileSavePickerActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCallerPackageFamilyName();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePickerActivatedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePickerActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1298,8 +1298,8 @@ pub const IApplicationViewActivatedEventArgs = extern struct {
 };
 pub const IAppointmentsProviderActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Verb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1316,7 +1316,7 @@ pub const IAppointmentsProviderActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Verb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppointmentsProviderAddAppointmentActivatedEventArgs = extern struct {
@@ -1396,14 +1396,14 @@ pub const IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = extern
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRoamingId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoamingId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1421,8 +1421,8 @@ pub const IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = extern
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_InstanceStartDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
-        get_LocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RoamingId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RoamingId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppointmentsProviderShowTimeFrameActivatedEventArgs = extern struct {
@@ -1480,8 +1480,8 @@ pub const IBackgroundActivatedEventArgs = extern struct {
 };
 pub const IBarcodeScannerPreviewActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getConnectionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConnectionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1498,7 +1498,7 @@ pub const IBarcodeScannerPreviewActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ConnectionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ConnectionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICachedFileUpdaterActivatedEventArgs = extern struct {
@@ -1549,14 +1549,14 @@ pub const ICommandLineActivatedEventArgs = extern struct {
 };
 pub const ICommandLineActivationOperation = extern struct {
     vtable: *const VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrentDirectoryPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrentDirectoryPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrentDirectoryPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1589,8 +1589,8 @@ pub const ICommandLineActivationOperation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CurrentDirectoryPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CurrentDirectoryPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_ExitCode: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_ExitCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
@@ -1651,14 +1651,14 @@ pub const IContinuationActivatedEventArgs = extern struct {
 };
 pub const IDeviceActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceInformationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceInformationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceInformationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Verb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1675,8 +1675,8 @@ pub const IDeviceActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceInformationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Verb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceInformationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDevicePairingActivatedEventArgs = extern struct {
@@ -1704,8 +1704,8 @@ pub const IDevicePairingActivatedEventArgs = extern struct {
 };
 pub const IDialReceiverActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1722,7 +1722,7 @@ pub const IDialReceiverActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileActivatedEventArgs = extern struct {
@@ -1733,8 +1733,8 @@ pub const IFileActivatedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Verb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1752,13 +1752,13 @@ pub const IFileActivatedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Files: *const fn(self: *anyopaque, _r: **IVectorView(IStorageItem)) callconv(.winapi) HRESULT,
-        get_Verb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileActivatedEventArgsWithCallerPackageFamilyName = extern struct {
     vtable: *const VTable,
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1775,7 +1775,7 @@ pub const IFileActivatedEventArgsWithCallerPackageFamilyName = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileActivatedEventArgsWithNeighboringFiles = extern struct {
@@ -1826,8 +1826,8 @@ pub const IFileOpenPickerActivatedEventArgs = extern struct {
 };
 pub const IFileOpenPickerActivatedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1844,7 +1844,7 @@ pub const IFileOpenPickerActivatedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileOpenPickerContinuationEventArgs = extern struct {
@@ -1895,14 +1895,14 @@ pub const IFileSavePickerActivatedEventArgs = extern struct {
 };
 pub const IFileSavePickerActivatedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1919,8 +1919,8 @@ pub const IFileSavePickerActivatedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileSavePickerContinuationEventArgs = extern struct {
@@ -1971,14 +1971,14 @@ pub const IFolderPickerContinuationEventArgs = extern struct {
 };
 pub const ILaunchActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1995,8 +1995,8 @@ pub const ILaunchActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILaunchActivatedEventArgs2 = extern struct {
@@ -2070,8 +2070,8 @@ pub const IPhoneCallActivatedEventArgs = extern struct {
 };
 pub const IPickerReturnedActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getPickerOperationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPickerOperationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PickerOperationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2088,7 +2088,7 @@ pub const IPickerReturnedActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PickerOperationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PickerOperationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrelaunchActivatedEventArgs = extern struct {
@@ -2139,8 +2139,8 @@ pub const IProtocolActivatedEventArgs = extern struct {
 };
 pub const IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = extern struct {
     vtable: *const VTable,
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2163,7 +2163,7 @@ pub const IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = extern
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallerPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Data: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
 };
@@ -2215,14 +2215,14 @@ pub const IRestrictedLaunchActivatedEventArgs = extern struct {
 };
 pub const ISearchActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2239,8 +2239,8 @@ pub const ISearchActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchActivatedEventArgsWithLinguisticDetails = extern struct {
@@ -2326,8 +2326,8 @@ pub const ISplashScreen = extern struct {
 };
 pub const IStartupTaskActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getTaskId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2344,7 +2344,7 @@ pub const IStartupTaskActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TaskId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TaskId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileActivatedInfo = extern struct {
@@ -2372,8 +2372,8 @@ pub const ITileActivatedInfo = extern struct {
 };
 pub const IToastNotificationActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getArgument(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Argument(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2396,7 +2396,7 @@ pub const IToastNotificationActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Argument: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Argument: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_UserInput: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
 };
@@ -2517,11 +2517,11 @@ pub const IWebAuthenticationBrokerContinuationEventArgs = extern struct {
 };
 pub const LaunchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *ILaunchActivatedEventArgs = @ptrCast(self);
         return try this.getArguments();
     }
-    pub fn getTileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTileId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILaunchActivatedEventArgs = @ptrCast(self);
         return try this.getTileId();
     }
@@ -2673,7 +2673,7 @@ pub const PhoneCallActivatedEventArgs = extern struct {
 };
 pub const PickerReturnedActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPickerOperationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPickerOperationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPickerReturnedActivatedEventArgs = @ptrCast(self);
         return try this.getPickerOperationId();
     }
@@ -2725,7 +2725,7 @@ pub const ProtocolActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2791,7 +2791,7 @@ pub const ProtocolForResultsActivatedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
-    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallerPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtocolActivatedEventArgsWithCallerPackageFamilyNameAndData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2865,11 +2865,11 @@ pub const RestrictedLaunchActivatedEventArgs = extern struct {
 };
 pub const SearchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchActivatedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchActivatedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -2979,7 +2979,7 @@ pub const SplashScreen = extern struct {
 };
 pub const StartupTaskActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTaskId(self: *@This()) core.HResult!HSTRING {
+    pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStartupTaskActivatedEventArgs = @ptrCast(self);
         return try this.getTaskId();
     }
@@ -3027,7 +3027,7 @@ pub const TileActivatedInfo = extern struct {
 };
 pub const ToastNotificationActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArgument(self: *@This()) core.HResult!HSTRING {
+    pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastNotificationActivatedEventArgs = @ptrCast(self);
         return try this.getArgument();
     }
@@ -3211,11 +3211,11 @@ pub const WebAuthenticationBrokerContinuationEventArgs = extern struct {
 };
 pub const ContactCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3223,7 +3223,7 @@ pub const ContactCallActivatedEventArgs = extern struct {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3263,7 +3263,7 @@ pub const ContactMapActivatedEventArgs = extern struct {
         const this: *IContactMapActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3295,11 +3295,11 @@ pub const ContactMapActivatedEventArgs = extern struct {
 };
 pub const ContactMessageActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3307,7 +3307,7 @@ pub const ContactMessageActivatedEventArgs = extern struct {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3369,11 +3369,11 @@ pub const ContactPickerActivatedEventArgs = extern struct {
 };
 pub const ContactPostActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3381,7 +3381,7 @@ pub const ContactPostActivatedEventArgs = extern struct {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3413,11 +3413,11 @@ pub const ContactPostActivatedEventArgs = extern struct {
 };
 pub const ContactVideoCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceUserId();
     }
@@ -3425,7 +3425,7 @@ pub const ContactVideoCallActivatedEventArgs = extern struct {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getContact();
     }
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactActivatedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3457,8 +3457,8 @@ pub const ContactVideoCallActivatedEventArgs = extern struct {
 };
 pub const IContactActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Verb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3475,19 +3475,19 @@ pub const IContactActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Verb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactCallActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceUserId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3510,8 +3510,8 @@ pub const IContactCallActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceUserId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceUserId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
     };
 };
@@ -3547,14 +3547,14 @@ pub const IContactMapActivatedEventArgs = extern struct {
 };
 pub const IContactMessageActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceUserId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3577,8 +3577,8 @@ pub const IContactMessageActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceUserId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceUserId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
     };
 };
@@ -3607,14 +3607,14 @@ pub const IContactPickerActivatedEventArgs = extern struct {
 };
 pub const IContactPostActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceUserId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3637,21 +3637,21 @@ pub const IContactPostActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceUserId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceUserId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactVideoCallActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getServiceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getServiceUserId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServiceUserId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceUserId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3674,15 +3674,15 @@ pub const IContactVideoCallActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServiceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ServiceUserId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ServiceUserId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactsProviderActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getVerb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVerb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Verb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3699,7 +3699,7 @@ pub const IContactsProviderActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Verb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Verb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

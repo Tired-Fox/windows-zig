@@ -466,7 +466,7 @@ pub const AutomationTextAttributesEnum = enum(i32) {
 };
 pub const BindingFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IBindingFailedEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -1545,13 +1545,13 @@ pub const UIElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAccessKeyScopeOwner(value);
     }
-    pub fn getAccessKey(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccessKey(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUIElement4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIElement4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAccessKey();
     }
-    pub fn putAccessKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IUIElement4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIElement4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2127,13 +2127,13 @@ pub const UIElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnBringIntoViewRequested(e);
     }
-    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IUIElementOverrides9 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIElementOverrides9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfoOverride(propertyName, animationPropertyInfo);
     }
-    pub fn PopulatePropertyInfo(self: *@This(), propertyName: HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IAnimationObject = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationObject.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2477,11 +2477,11 @@ pub const FrameworkElement = extern struct {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.putTag(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.putLanguage(value);
     }
@@ -2565,11 +2565,11 @@ pub const FrameworkElement = extern struct {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.putMargin(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.putName(value);
     }
@@ -2637,7 +2637,7 @@ pub const FrameworkElement = extern struct {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.removeLayoutUpdated(token);
     }
-    pub fn FindName(self: *@This(), name: HSTRING) core.HResult!*IInspectable {
+    pub fn FindName(self: *@This(), name: ?HSTRING) core.HResult!*IInspectable {
         const this: *IFrameworkElement = @ptrCast(self);
         return try this.FindName(name);
     }
@@ -2831,7 +2831,7 @@ pub const FrameworkElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnApplyTemplate();
     }
-    pub fn GoToElementStateCore(self: *@This(), stateName: HSTRING, useTransitions: bool) core.HResult!bool {
+    pub fn GoToElementStateCore(self: *@This(), stateName: ?HSTRING, useTransitions: bool) core.HResult!bool {
         var this: ?*IFrameworkElementOverrides2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrameworkElementOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3335,11 +3335,11 @@ pub const DependencyProperty = extern struct {
         const _f = try @This()._IDependencyPropertyStaticsCache.get();
         return try _f.getUnsetValue();
     }
-    pub fn Register(name: HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
+    pub fn Register(name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
         const _f = try @This()._IDependencyPropertyStaticsCache.get();
         return try _f.Register(name, propertyType, ownerType, typeMetadata);
     }
-    pub fn RegisterAttached(name: HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
+    pub fn RegisterAttached(name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
         const _f = try @This()._IDependencyPropertyStaticsCache.get();
         return try _f.RegisterAttached(name, propertyType, ownerType, defaultMetadata);
     }
@@ -3831,11 +3831,11 @@ pub const DragUI = extern struct {
 };
 pub const DragUIOverride = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *IDragUIOverride = @ptrCast(self);
         return try this.getCaption();
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDragUIOverride = @ptrCast(self);
         return try this.putCaption(value);
     }
@@ -4246,7 +4246,7 @@ pub const EventTrigger = extern struct {
 };
 pub const ExceptionRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IExceptionRoutedEventArgs = @ptrCast(self);
         return try this.getErrorMessage();
     }
@@ -4424,7 +4424,7 @@ pub const FrameworkView = extern struct {
         const this: *IFrameworkView = @ptrCast(self);
         return try this.SetWindow(window);
     }
-    pub fn Load(self: *@This(), entryPoint: HSTRING) core.HResult!void {
+    pub fn Load(self: *@This(), entryPoint: ?HSTRING) core.HResult!void {
         const this: *IFrameworkView = @ptrCast(self);
         return try this.Load(entryPoint);
     }
@@ -4959,8 +4959,8 @@ pub const IApplicationStatics = extern struct {
 };
 pub const IBindingFailedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4977,7 +4977,7 @@ pub const IBindingFailedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBringIntoViewOptions = extern struct {
@@ -6199,13 +6199,13 @@ pub const IDependencyPropertyStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Register(self: *@This(), name: HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
+    pub fn Register(self: *@This(), name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.Register(@ptrCast(self), name, propertyType, ownerType, typeMetadata, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterAttached(self: *@This(), name: HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
+    pub fn RegisterAttached(self: *@This(), name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.RegisterAttached(@ptrCast(self), name, propertyType, ownerType, defaultMetadata, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6224,8 +6224,8 @@ pub const IDependencyPropertyStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_UnsetValue: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, name: HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        RegisterAttached: *const fn(self: *anyopaque, name: HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata, _r: **DependencyProperty) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, typeMetadata: *PropertyMetadata, _r: **DependencyProperty) callconv(.winapi) HRESULT,
+        RegisterAttached: *const fn(self: *anyopaque, name: ?HSTRING, propertyType: TypeName, ownerType: TypeName, defaultMetadata: *PropertyMetadata, _r: **DependencyProperty) callconv(.winapi) HRESULT,
     };
 };
 pub const IDispatcherTimer = extern struct {
@@ -6582,13 +6582,13 @@ pub const IDragUI = extern struct {
 };
 pub const IDragUIOverride = extern struct {
     vtable: *const VTable,
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6654,8 +6654,8 @@ pub const IDragUIOverride = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Caption: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Caption: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsContentVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsContentVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsCaptionVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -7104,8 +7104,8 @@ pub const IEventTrigger = extern struct {
 };
 pub const IExceptionRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -7122,7 +7122,7 @@ pub const IExceptionRoutedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ErrorMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ErrorMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IExceptionRoutedEventArgsFactory = extern struct {
@@ -7169,13 +7169,13 @@ pub const IFrameworkElement = extern struct {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7281,13 +7281,13 @@ pub const IFrameworkElement = extern struct {
         const _c = self.vtable.put_Margin(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7373,7 +7373,7 @@ pub const IFrameworkElement = extern struct {
         const _c = self.vtable.remove_LayoutUpdated(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn FindName(self: *@This(), name: HSTRING) core.HResult!*IInspectable {
+    pub fn FindName(self: *@This(), name: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.FindName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7400,8 +7400,8 @@ pub const IFrameworkElement = extern struct {
         put_Resources: *const fn(self: *anyopaque, value: *ResourceDictionary) callconv(.winapi) HRESULT,
         get_Tag: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Tag: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ActualWidth: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_ActualHeight: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_Width: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -7422,8 +7422,8 @@ pub const IFrameworkElement = extern struct {
         put_VerticalAlignment: *const fn(self: *anyopaque, value: VerticalAlignment) callconv(.winapi) HRESULT,
         get_Margin: *const fn(self: *anyopaque, _r: *Thickness) callconv(.winapi) HRESULT,
         put_Margin: *const fn(self: *anyopaque, value: Thickness) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BaseUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_DataContext: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_DataContext: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
@@ -7440,7 +7440,7 @@ pub const IFrameworkElement = extern struct {
         remove_SizeChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_LayoutUpdated: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_LayoutUpdated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        FindName: *const fn(self: *anyopaque, name: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        FindName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
         SetBinding: *const fn(self: *anyopaque, dp: *DependencyProperty, binding: *BindingBase) callconv(.winapi) HRESULT,
     };
 };
@@ -7749,7 +7749,7 @@ pub const IFrameworkElementOverrides = extern struct {
 };
 pub const IFrameworkElementOverrides2 = extern struct {
     vtable: *const VTable,
-    pub fn GoToElementStateCore(self: *@This(), stateName: HSTRING, useTransitions: bool) core.HResult!bool {
+    pub fn GoToElementStateCore(self: *@This(), stateName: ?HSTRING, useTransitions: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GoToElementStateCore(@ptrCast(self), stateName, useTransitions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7767,7 +7767,7 @@ pub const IFrameworkElementOverrides2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GoToElementStateCore: *const fn(self: *anyopaque, stateName: HSTRING, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
+        GoToElementStateCore: *const fn(self: *anyopaque, stateName: ?HSTRING, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IFrameworkElementProtected7 = extern struct {
@@ -8212,8 +8212,8 @@ pub const IGridLengthHelperStatics = extern struct {
 };
 pub const IMediaFailedRoutedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getErrorTrace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorTrace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorTrace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8230,7 +8230,7 @@ pub const IMediaFailedRoutedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ErrorTrace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ErrorTrace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointHelper = extern struct {
@@ -8378,8 +8378,8 @@ pub const IPropertyMetadataStatics = extern struct {
 };
 pub const IPropertyPath = extern struct {
     vtable: *const VTable,
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -8396,12 +8396,12 @@ pub const IPropertyPath = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPropertyPathFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), path: HSTRING) core.HResult!*PropertyPath {
+    pub fn CreateInstance(self: *@This(), path: ?HSTRING) core.HResult!*PropertyPath {
         var _r: *PropertyPath = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8419,7 +8419,7 @@ pub const IPropertyPathFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, path: HSTRING, _r: **PropertyPath) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, path: ?HSTRING, _r: **PropertyPath) callconv(.winapi) HRESULT,
     };
 };
 pub const IRectHelper = extern struct {
@@ -10136,13 +10136,13 @@ pub const IUIElement4 = extern struct {
         const _c = self.vtable.put_AccessKeyScopeOwner(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAccessKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccessKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccessKey(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAccessKey(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAccessKey(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AccessKey(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -10216,8 +10216,8 @@ pub const IUIElement4 = extern struct {
         put_IsAccessKeyScope: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AccessKeyScopeOwner: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_AccessKeyScopeOwner: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_AccessKey: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AccessKey: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AccessKey: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AccessKey: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_ContextRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(UIElement,ContextRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ContextRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_ContextCanceled: *const fn(self: *anyopaque, handler: *TypedEventHandler(UIElement,RoutedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -10824,7 +10824,7 @@ pub const IUIElementOverrides8 = extern struct {
 };
 pub const IUIElementOverrides9 = extern struct {
     vtable: *const VTable,
-    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
         const _c = self.vtable.PopulatePropertyInfoOverride(@ptrCast(self), propertyName, animationPropertyInfo);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -10840,7 +10840,7 @@ pub const IUIElementOverrides9 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        PopulatePropertyInfoOverride: *const fn(self: *anyopaque, propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
+        PopulatePropertyInfoOverride: *const fn(self: *anyopaque, propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IUIElementStatics = extern struct {
@@ -11566,8 +11566,8 @@ pub const IUnhandledExceptionEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -11595,7 +11595,7 @@ pub const IUnhandledExceptionEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Exception: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Handled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Handled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
@@ -11665,8 +11665,8 @@ pub const IVector3TransitionFactory = extern struct {
 };
 pub const IVisualState = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -11693,7 +11693,7 @@ pub const IVisualState = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Storyboard: *const fn(self: *anyopaque, _r: **Storyboard) callconv(.winapi) HRESULT,
         put_Storyboard: *const fn(self: *anyopaque, value: *Storyboard) callconv(.winapi) HRESULT,
     };
@@ -11782,8 +11782,8 @@ pub const IVisualStateChangedEventArgs = extern struct {
 };
 pub const IVisualStateGroup = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -11838,7 +11838,7 @@ pub const IVisualStateGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Transitions: *const fn(self: *anyopaque, _r: **IVector(VisualTransition)) callconv(.winapi) HRESULT,
         get_States: *const fn(self: *anyopaque, _r: **IVector(VisualState)) callconv(.winapi) HRESULT,
         get_CurrentState: *const fn(self: *anyopaque, _r: **VisualState) callconv(.winapi) HRESULT,
@@ -11889,7 +11889,7 @@ pub const IVisualStateManagerFactory = extern struct {
 };
 pub const IVisualStateManagerOverrides = extern struct {
     vtable: *const VTable,
-    pub fn GoToStateCore(self: *@This(), control: *Control, templateRoot: *FrameworkElement, stateName: HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool) core.HResult!bool {
+    pub fn GoToStateCore(self: *@This(), control: *Control, templateRoot: *FrameworkElement, stateName: ?HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GoToStateCore(@ptrCast(self), control, templateRoot, stateName, group, state, useTransitions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -11907,7 +11907,7 @@ pub const IVisualStateManagerOverrides = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GoToStateCore: *const fn(self: *anyopaque, control: *Control, templateRoot: *FrameworkElement, stateName: HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
+        GoToStateCore: *const fn(self: *anyopaque, control: *Control, templateRoot: *FrameworkElement, stateName: ?HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IVisualStateManagerProtected = extern struct {
@@ -11960,7 +11960,7 @@ pub const IVisualStateManagerStatics = extern struct {
         const _c = self.vtable.SetCustomVisualStateManager(@ptrCast(self), obj, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GoToState(self: *@This(), control: *Control, stateName: HSTRING, useTransitions: bool) core.HResult!bool {
+    pub fn GoToState(self: *@This(), control: *Control, stateName: ?HSTRING, useTransitions: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GoToState(@ptrCast(self), control, stateName, useTransitions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -11982,7 +11982,7 @@ pub const IVisualStateManagerStatics = extern struct {
         get_CustomVisualStateManagerProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         GetCustomVisualStateManager: *const fn(self: *anyopaque, obj: *FrameworkElement, _r: **VisualStateManager) callconv(.winapi) HRESULT,
         SetCustomVisualStateManager: *const fn(self: *anyopaque, obj: *FrameworkElement, value: *VisualStateManager) callconv(.winapi) HRESULT,
-        GoToState: *const fn(self: *anyopaque, control: *Control, stateName: HSTRING, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
+        GoToState: *const fn(self: *anyopaque, control: *Control, stateName: ?HSTRING, useTransitions: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IVisualTransition = extern struct {
@@ -12007,23 +12007,23 @@ pub const IVisualTransition = extern struct {
         const _c = self.vtable.put_GeneratedEasingFunction(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_From(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -12053,10 +12053,10 @@ pub const IVisualTransition = extern struct {
         put_GeneratedDuration: *const fn(self: *anyopaque, value: Duration) callconv(.winapi) HRESULT,
         get_GeneratedEasingFunction: *const fn(self: *anyopaque, _r: **EasingFunctionBase) callconv(.winapi) HRESULT,
         put_GeneratedEasingFunction: *const fn(self: *anyopaque, value: *EasingFunctionBase) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_To: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_From: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_From: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Storyboard: *const fn(self: *anyopaque, _r: **Storyboard) callconv(.winapi) HRESULT,
         put_Storyboard: *const fn(self: *anyopaque, value: *Storyboard) callconv(.winapi) HRESULT,
     };
@@ -12496,7 +12496,7 @@ pub const TriggerAction = extern struct {
 };
 pub const MediaFailedRoutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getErrorTrace(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorTrace(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFailedRoutedEventArgs = @ptrCast(self);
         return try this.getErrorTrace();
     }
@@ -12660,14 +12660,14 @@ pub const PropertyMetadata = extern struct {
 };
 pub const PropertyPath = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IPropertyPath = @ptrCast(self);
         return try this.getPath();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(path: HSTRING) core.HResult!*PropertyPath {
+    pub fn CreateInstance(path: ?HSTRING) core.HResult!*PropertyPath {
         const _f = try @This()._IPropertyPathFactoryCache.get();
         return try _f.CreateInstance(path);
     }
@@ -13525,7 +13525,7 @@ pub const UnhandledExceptionEventArgs = extern struct {
         const this: *IUnhandledExceptionEventArgs = @ptrCast(self);
         return try this.getException();
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnhandledExceptionEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -13679,7 +13679,7 @@ pub const Visibility = enum(i32) {
 };
 pub const VisualState = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVisualState = @ptrCast(self);
         return try this.getName();
     }
@@ -13846,7 +13846,7 @@ pub const VisualStateChangedEventHandler = extern struct {
 };
 pub const VisualStateGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVisualStateGroup = @ptrCast(self);
         return try this.getName();
     }
@@ -13906,7 +13906,7 @@ pub const VisualStateManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RaiseCurrentStateChanged(stateGroup, oldState, newState, control);
     }
-    pub fn GoToStateCore(self: *@This(), control: *Control, templateRoot: *FrameworkElement, stateName: HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool) core.HResult!bool {
+    pub fn GoToStateCore(self: *@This(), control: *Control, templateRoot: *FrameworkElement, stateName: ?HSTRING, group: *VisualStateGroup, state: *VisualState, useTransitions: bool) core.HResult!bool {
         var this: ?*IVisualStateManagerOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualStateManagerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -13931,7 +13931,7 @@ pub const VisualStateManager = extern struct {
         const _f = try @This()._IVisualStateManagerStaticsCache.get();
         return try _f.SetCustomVisualStateManager(obj, value);
     }
-    pub fn GoToState(control: *Control, stateName: HSTRING, useTransitions: bool) core.HResult!bool {
+    pub fn GoToState(control: *Control, stateName: ?HSTRING, useTransitions: bool) core.HResult!bool {
         const _f = try @This()._IVisualStateManagerStaticsCache.get();
         return try _f.GoToState(control, stateName, useTransitions);
     }
@@ -13965,19 +13965,19 @@ pub const VisualTransition = extern struct {
         const this: *IVisualTransition = @ptrCast(self);
         return try this.putGeneratedEasingFunction(value);
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *IVisualTransition = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVisualTransition = @ptrCast(self);
         return try this.putTo(value);
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *IVisualTransition = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVisualTransition = @ptrCast(self);
         return try this.putFrom(value);
     }

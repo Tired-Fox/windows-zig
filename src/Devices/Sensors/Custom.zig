@@ -17,7 +17,7 @@ pub const CustomSensor = extern struct {
         const this: *ICustomSensor = @ptrCast(self);
         return try this.getReportInterval();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICustomSensor = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -50,11 +50,11 @@ pub const CustomSensor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(interfaceId: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(interfaceId: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._ICustomSensorStaticsCache.get();
         return try _f.GetDeviceSelector(interfaceId);
     }
-    pub fn FromIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
+    pub fn FromIdAsync(sensorId: ?HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
         const _f = try @This()._ICustomSensorStaticsCache.get();
         return try _f.FromIdAsync(sensorId);
     }
@@ -71,7 +71,7 @@ pub const CustomSensorReading = extern struct {
         const this: *ICustomSensorReading = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *ICustomSensorReading = @ptrCast(self);
         return try this.getProperties();
     }
@@ -123,8 +123,8 @@ pub const ICustomSensor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -155,7 +155,7 @@ pub const ICustomSensor = extern struct {
         get_MinimumReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ReportInterval: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_ReportInterval: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_ReadingChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(CustomSensor,CustomSensorReadingChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ReadingChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -203,8 +203,8 @@ pub const ICustomSensorReading = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -222,7 +222,7 @@ pub const ICustomSensorReading = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICustomSensorReading2 = extern struct {
@@ -273,13 +273,13 @@ pub const ICustomSensorReadingChangedEventArgs = extern struct {
 };
 pub const ICustomSensorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), interfaceId: *Guid) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), interfaceId: *Guid) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), interfaceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), sensorId: HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
+    pub fn FromIdAsync(self: *@This(), sensorId: ?HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
         var _r: *IAsyncOperation(CustomSensor) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), sensorId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -297,8 +297,8 @@ pub const ICustomSensorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, interfaceId: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, sensorId: HSTRING, _r: **IAsyncOperation(CustomSensor)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, interfaceId: *Guid, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, sensorId: ?HSTRING, _r: **IAsyncOperation(CustomSensor)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

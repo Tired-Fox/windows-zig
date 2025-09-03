@@ -1,26 +1,26 @@
 // ----- This code is automatically generated -----
 pub const IWindowsUpdate = extern struct {
     vtable: *const VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUpdateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUpdateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UpdateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -97,8 +97,8 @@ pub const IWindowsUpdate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEulaText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEulaText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EulaText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -121,8 +121,8 @@ pub const IWindowsUpdate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrentAction(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrentAction(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrentAction(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -133,7 +133,7 @@ pub const IWindowsUpdate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertyValue(self: *@This(), propertyName: HSTRING) core.HResult!*IInspectable {
+    pub fn GetPropertyValue(self: *@This(), propertyName: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetPropertyValue(@ptrCast(self), propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -155,10 +155,10 @@ pub const IWindowsUpdate = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UpdateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UpdateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsFeatureUpdate: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsMinorImpact: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsSecurity: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -171,13 +171,13 @@ pub const IWindowsUpdate = extern struct {
         get_MoreInfoUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_SupportUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_IsEulaAccepted: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_EulaText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EulaText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         get_AttentionRequiredInfo: *const fn(self: *anyopaque, _r: **WindowsUpdateAttentionRequiredInfo) callconv(.winapi) HRESULT,
         get_ActionResult: *const fn(self: *anyopaque, _r: **WindowsUpdateActionResult) callconv(.winapi) HRESULT,
-        get_CurrentAction: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CurrentAction: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ActionProgress: *const fn(self: *anyopaque, _r: **WindowsUpdateActionProgress) callconv(.winapi) HRESULT,
-        GetPropertyValue: *const fn(self: *anyopaque, propertyName: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        GetPropertyValue: *const fn(self: *anyopaque, propertyName: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
         AcceptEula: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -189,8 +189,8 @@ pub const IWindowsUpdateActionCompletedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -220,15 +220,15 @@ pub const IWindowsUpdateActionCompletedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Update: *const fn(self: *anyopaque, _r: **WindowsUpdate) callconv(.winapi) HRESULT,
-        get_Action: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Action: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateActionProgress = extern struct {
     vtable: *const VTable,
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -251,7 +251,7 @@ pub const IWindowsUpdateActionProgress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Action: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Action: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Progress: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
     };
 };
@@ -275,8 +275,8 @@ pub const IWindowsUpdateActionResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -296,7 +296,7 @@ pub const IWindowsUpdateActionResult = extern struct {
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_Action: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Action: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateAdministrator = extern struct {
@@ -305,19 +305,19 @@ pub const IWindowsUpdateAdministrator = extern struct {
         const _c = self.vtable.StartAdministratorScan(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ApproveWindowsUpdateAction(self: *@This(), updateId: HSTRING, action: HSTRING) core.HResult!void {
+    pub fn ApproveWindowsUpdateAction(self: *@This(), updateId: ?HSTRING, action: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ApproveWindowsUpdateAction(@ptrCast(self), updateId, action);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RevokeWindowsUpdateActionApproval(self: *@This(), updateId: HSTRING, action: HSTRING) core.HResult!void {
+    pub fn RevokeWindowsUpdateActionApproval(self: *@This(), updateId: ?HSTRING, action: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RevokeWindowsUpdateActionApproval(@ptrCast(self), updateId, action);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ApproveWindowsUpdate(self: *@This(), updateId: HSTRING, approvalData: *WindowsUpdateApprovalData) core.HResult!void {
+    pub fn ApproveWindowsUpdate(self: *@This(), updateId: ?HSTRING, approvalData: *WindowsUpdateApprovalData) core.HResult!void {
         const _c = self.vtable.ApproveWindowsUpdate(@ptrCast(self), updateId, approvalData);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RevokeWindowsUpdateApproval(self: *@This(), updateId: HSTRING) core.HResult!void {
+    pub fn RevokeWindowsUpdateApproval(self: *@This(), updateId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RevokeWindowsUpdateApproval(@ptrCast(self), updateId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -340,46 +340,46 @@ pub const IWindowsUpdateAdministrator = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         StartAdministratorScan: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ApproveWindowsUpdateAction: *const fn(self: *anyopaque, updateId: HSTRING, action: HSTRING) callconv(.winapi) HRESULT,
-        RevokeWindowsUpdateActionApproval: *const fn(self: *anyopaque, updateId: HSTRING, action: HSTRING) callconv(.winapi) HRESULT,
-        ApproveWindowsUpdate: *const fn(self: *anyopaque, updateId: HSTRING, approvalData: *WindowsUpdateApprovalData) callconv(.winapi) HRESULT,
-        RevokeWindowsUpdateApproval: *const fn(self: *anyopaque, updateId: HSTRING) callconv(.winapi) HRESULT,
+        ApproveWindowsUpdateAction: *const fn(self: *anyopaque, updateId: ?HSTRING, action: ?HSTRING) callconv(.winapi) HRESULT,
+        RevokeWindowsUpdateActionApproval: *const fn(self: *anyopaque, updateId: ?HSTRING, action: ?HSTRING) callconv(.winapi) HRESULT,
+        ApproveWindowsUpdate: *const fn(self: *anyopaque, updateId: ?HSTRING, approvalData: *WindowsUpdateApprovalData) callconv(.winapi) HRESULT,
+        RevokeWindowsUpdateApproval: *const fn(self: *anyopaque, updateId: ?HSTRING) callconv(.winapi) HRESULT,
         GetUpdates: *const fn(self: *anyopaque, _r: **IVectorView(WindowsUpdate)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateAdministratorStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetRegisteredAdministrator(self: *@This(), organizationName: HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
+    pub fn GetRegisteredAdministrator(self: *@This(), organizationName: ?HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
         var _r: *WindowsUpdateGetAdministratorResult = undefined;
         const _c = self.vtable.GetRegisteredAdministrator(@ptrCast(self), organizationName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterForAdministration(self: *@This(), organizationName: HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
+    pub fn RegisterForAdministration(self: *@This(), organizationName: ?HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
         var _r: WindowsUpdateAdministratorStatus = undefined;
         const _c = self.vtable.RegisterForAdministration(@ptrCast(self), organizationName, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UnregisterForAdministration(self: *@This(), organizationName: HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
+    pub fn UnregisterForAdministration(self: *@This(), organizationName: ?HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
         var _r: WindowsUpdateAdministratorStatus = undefined;
         const _c = self.vtable.UnregisterForAdministration(@ptrCast(self), organizationName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRegisteredAdministratorName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetRegisteredAdministratorName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetRegisteredAdministratorName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestRestart(self: *@This(), restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn RequestRestart(self: *@This(), restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.RequestRestart(@ptrCast(self), restartOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CancelRestartRequest(self: *@This(), requestRestartToken: HSTRING) core.HResult!void {
+    pub fn CancelRestartRequest(self: *@This(), requestRestartToken: ?HSTRING) core.HResult!void {
         const _c = self.vtable.CancelRestartRequest(@ptrCast(self), requestRestartToken);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -395,12 +395,12 @@ pub const IWindowsUpdateAdministratorStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetRegisteredAdministrator: *const fn(self: *anyopaque, organizationName: HSTRING, _r: **WindowsUpdateGetAdministratorResult) callconv(.winapi) HRESULT,
-        RegisterForAdministration: *const fn(self: *anyopaque, organizationName: HSTRING, options: WindowsUpdateAdministratorOptions, _r: *WindowsUpdateAdministratorStatus) callconv(.winapi) HRESULT,
-        UnregisterForAdministration: *const fn(self: *anyopaque, organizationName: HSTRING, _r: *WindowsUpdateAdministratorStatus) callconv(.winapi) HRESULT,
-        GetRegisteredAdministratorName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        RequestRestart: *const fn(self: *anyopaque, restartOptions: *WindowsUpdateRestartRequestOptions, _r: *HSTRING) callconv(.winapi) HRESULT,
-        CancelRestartRequest: *const fn(self: *anyopaque, requestRestartToken: HSTRING) callconv(.winapi) HRESULT,
+        GetRegisteredAdministrator: *const fn(self: *anyopaque, organizationName: ?HSTRING, _r: **WindowsUpdateGetAdministratorResult) callconv(.winapi) HRESULT,
+        RegisterForAdministration: *const fn(self: *anyopaque, organizationName: ?HSTRING, options: WindowsUpdateAdministratorOptions, _r: *WindowsUpdateAdministratorStatus) callconv(.winapi) HRESULT,
+        UnregisterForAdministration: *const fn(self: *anyopaque, organizationName: ?HSTRING, _r: *WindowsUpdateAdministratorStatus) callconv(.winapi) HRESULT,
+        GetRegisteredAdministratorName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        RequestRestart: *const fn(self: *anyopaque, restartOptions: *WindowsUpdateRestartRequestOptions, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        CancelRestartRequest: *const fn(self: *anyopaque, requestRestartToken: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateApprovalData = extern struct {
@@ -571,14 +571,14 @@ pub const IWindowsUpdateGetAdministratorResult = extern struct {
 };
 pub const IWindowsUpdateItem = extern struct {
     vtable: *const VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUpdateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUpdateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UpdateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -589,14 +589,14 @@ pub const IWindowsUpdateItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -607,14 +607,14 @@ pub const IWindowsUpdateItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOperation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOperation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Operation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -631,14 +631,14 @@ pub const IWindowsUpdateItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UpdateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UpdateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MoreInfoUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_Category: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Operation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Category: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Operation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateManager = extern struct {
@@ -778,7 +778,7 @@ pub const IWindowsUpdateManager = extern struct {
 };
 pub const IWindowsUpdateManagerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), clientId: HSTRING) core.HResult!*WindowsUpdateManager {
+    pub fn CreateInstance(self: *@This(), clientId: ?HSTRING) core.HResult!*WindowsUpdateManager {
         var _r: *WindowsUpdateManager = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -796,7 +796,7 @@ pub const IWindowsUpdateManagerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, clientId: HSTRING, _r: **WindowsUpdateManager) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, clientId: ?HSTRING, _r: **WindowsUpdateManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateProgressChangedEventArgs = extern struct {
@@ -831,23 +831,23 @@ pub const IWindowsUpdateProgressChangedEventArgs = extern struct {
 };
 pub const IWindowsUpdateRestartRequestOptions = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -881,13 +881,13 @@ pub const IWindowsUpdateRestartRequestOptions = extern struct {
         const _c = self.vtable.put_ComplianceGracePeriodInDays(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOrganizationName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOrganizationName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OrganizationName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOrganizationName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOrganizationName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OrganizationName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -913,25 +913,25 @@ pub const IWindowsUpdateRestartRequestOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_MoreInfoUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_MoreInfoUrl: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_ComplianceDeadlineInDays: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_ComplianceDeadlineInDays: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_ComplianceGracePeriodInDays: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_ComplianceGracePeriodInDays: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_OrganizationName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OrganizationName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OrganizationName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OrganizationName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_OptOutOfAutoReboot: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_OptOutOfAutoReboot: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateRestartRequestOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), title: HSTRING, description: HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
+    pub fn CreateInstance(self: *@This(), title: ?HSTRING, description: ?HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
         var _r: *WindowsUpdateRestartRequestOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -949,13 +949,13 @@ pub const IWindowsUpdateRestartRequestOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, title: HSTRING, description: HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32, _r: **WindowsUpdateRestartRequestOptions) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, title: ?HSTRING, description: ?HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32, _r: **WindowsUpdateRestartRequestOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IWindowsUpdateScanCompletedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -990,7 +990,7 @@ pub const IWindowsUpdateScanCompletedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
         get_Updates: *const fn(self: *anyopaque, _r: **IVectorView(WindowsUpdate)) callconv(.winapi) HRESULT,
@@ -998,19 +998,19 @@ pub const IWindowsUpdateScanCompletedEventArgs = extern struct {
 };
 pub const WindowsUpdate = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getProviderId();
     }
-    pub fn getUpdateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUpdateId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getUpdateId();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getDescription();
     }
@@ -1062,7 +1062,7 @@ pub const WindowsUpdate = extern struct {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getIsEulaAccepted();
     }
-    pub fn getEulaText(self: *@This()) core.HResult!HSTRING {
+    pub fn getEulaText(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getEulaText();
     }
@@ -1078,7 +1078,7 @@ pub const WindowsUpdate = extern struct {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getActionResult();
     }
-    pub fn getCurrentAction(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrentAction(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getCurrentAction();
     }
@@ -1086,7 +1086,7 @@ pub const WindowsUpdate = extern struct {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getActionProgress();
     }
-    pub fn GetPropertyValue(self: *@This(), propertyName: HSTRING) core.HResult!*IInspectable {
+    pub fn GetPropertyValue(self: *@This(), propertyName: ?HSTRING) core.HResult!*IInspectable {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.GetPropertyValue(propertyName);
     }
@@ -1106,7 +1106,7 @@ pub const WindowsUpdateActionCompletedEventArgs = extern struct {
         const this: *IWindowsUpdateActionCompletedEventArgs = @ptrCast(self);
         return try this.getUpdate();
     }
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateActionCompletedEventArgs = @ptrCast(self);
         return try this.getAction();
     }
@@ -1126,7 +1126,7 @@ pub const WindowsUpdateActionCompletedEventArgs = extern struct {
 };
 pub const WindowsUpdateActionProgress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateActionProgress = @ptrCast(self);
         return try this.getAction();
     }
@@ -1154,7 +1154,7 @@ pub const WindowsUpdateActionResult = extern struct {
         const this: *IWindowsUpdateActionResult = @ptrCast(self);
         return try this.getExtendedError();
     }
-    pub fn getAction(self: *@This()) core.HResult!HSTRING {
+    pub fn getAction(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateActionResult = @ptrCast(self);
         return try this.getAction();
     }
@@ -1170,19 +1170,19 @@ pub const WindowsUpdateAdministrator = extern struct {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.StartAdministratorScan();
     }
-    pub fn ApproveWindowsUpdateAction(self: *@This(), updateId: HSTRING, action: HSTRING) core.HResult!void {
+    pub fn ApproveWindowsUpdateAction(self: *@This(), updateId: ?HSTRING, action: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.ApproveWindowsUpdateAction(updateId, action);
     }
-    pub fn RevokeWindowsUpdateActionApproval(self: *@This(), updateId: HSTRING, action: HSTRING) core.HResult!void {
+    pub fn RevokeWindowsUpdateActionApproval(self: *@This(), updateId: ?HSTRING, action: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.RevokeWindowsUpdateActionApproval(updateId, action);
     }
-    pub fn ApproveWindowsUpdate(self: *@This(), updateId: HSTRING, approvalData: *WindowsUpdateApprovalData) core.HResult!void {
+    pub fn ApproveWindowsUpdate(self: *@This(), updateId: ?HSTRING, approvalData: *WindowsUpdateApprovalData) core.HResult!void {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.ApproveWindowsUpdate(updateId, approvalData);
     }
-    pub fn RevokeWindowsUpdateApproval(self: *@This(), updateId: HSTRING) core.HResult!void {
+    pub fn RevokeWindowsUpdateApproval(self: *@This(), updateId: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.RevokeWindowsUpdateApproval(updateId);
     }
@@ -1193,27 +1193,27 @@ pub const WindowsUpdateAdministrator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetRegisteredAdministrator(organizationName: HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
+    pub fn GetRegisteredAdministrator(organizationName: ?HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.GetRegisteredAdministrator(organizationName);
     }
-    pub fn RegisterForAdministration(organizationName: HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
+    pub fn RegisterForAdministration(organizationName: ?HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.RegisterForAdministration(organizationName, options);
     }
-    pub fn UnregisterForAdministration(organizationName: HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
+    pub fn UnregisterForAdministration(organizationName: ?HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.UnregisterForAdministration(organizationName);
     }
-    pub fn GetRegisteredAdministratorName() core.HResult!HSTRING {
+    pub fn GetRegisteredAdministratorName() core.HResult!?HSTRING {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.GetRegisteredAdministratorName();
     }
-    pub fn RequestRestart(restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!HSTRING {
+    pub fn RequestRestart(restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!?HSTRING {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.RequestRestart(restartOptions);
     }
-    pub fn CancelRestartRequest(requestRestartToken: HSTRING) core.HResult!void {
+    pub fn CancelRestartRequest(requestRestartToken: ?HSTRING) core.HResult!void {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
         return try _f.CancelRestartRequest(requestRestartToken);
     }
@@ -1376,11 +1376,11 @@ pub const WindowsUpdateGetAdministratorResult = extern struct {
 };
 pub const WindowsUpdateItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getProviderId();
     }
-    pub fn getUpdateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUpdateId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getUpdateId();
     }
@@ -1388,11 +1388,11 @@ pub const WindowsUpdateItem = extern struct {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getDescription();
     }
@@ -1400,11 +1400,11 @@ pub const WindowsUpdateItem = extern struct {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getMoreInfoUrl();
     }
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getCategory();
     }
-    pub fn getOperation(self: *@This()) core.HResult!HSTRING {
+    pub fn getOperation(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getOperation();
     }
@@ -1495,7 +1495,7 @@ pub const WindowsUpdateManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(clientId: HSTRING) core.HResult!*WindowsUpdateManager {
+    pub fn CreateInstance(clientId: ?HSTRING) core.HResult!*WindowsUpdateManager {
         const _f = try @This()._IWindowsUpdateManagerFactoryCache.get();
         return try _f.CreateInstance(clientId);
     }
@@ -1524,19 +1524,19 @@ pub const WindowsUpdateProgressChangedEventArgs = extern struct {
 };
 pub const WindowsUpdateRestartRequestOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -1564,11 +1564,11 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.putComplianceGracePeriodInDays(value);
     }
-    pub fn getOrganizationName(self: *@This()) core.HResult!HSTRING {
+    pub fn getOrganizationName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.getOrganizationName();
     }
-    pub fn putOrganizationName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOrganizationName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.putOrganizationName(value);
     }
@@ -1587,7 +1587,7 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowsUpdateRestartRequestOptions.IID)));
     }
-    pub fn CreateInstance(title: HSTRING, description: HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
+    pub fn CreateInstance(title: ?HSTRING, description: ?HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
         const _f = try @This()._IWindowsUpdateRestartRequestOptionsFactoryCache.get();
         return try _f.CreateInstance(title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays);
     }
@@ -1601,7 +1601,7 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
 };
 pub const WindowsUpdateScanCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateScanCompletedEventArgs = @ptrCast(self);
         return try this.getProviderId();
     }

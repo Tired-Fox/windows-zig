@@ -62,8 +62,8 @@ pub const ITwoPanelHingedDevicePosturePreviewReading = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPanel1Id(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPanel1Id(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Panel1Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -74,8 +74,8 @@ pub const ITwoPanelHingedDevicePosturePreviewReading = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPanel2Id(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPanel2Id(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Panel2Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -95,9 +95,9 @@ pub const ITwoPanelHingedDevicePosturePreviewReading = extern struct {
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_HingeState: *const fn(self: *anyopaque, _r: *HingeState) callconv(.winapi) HRESULT,
         get_Panel1Orientation: *const fn(self: *anyopaque, _r: *SimpleOrientation) callconv(.winapi) HRESULT,
-        get_Panel1Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Panel1Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Panel2Orientation: *const fn(self: *anyopaque, _r: *SimpleOrientation) callconv(.winapi) HRESULT,
-        get_Panel2Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Panel2Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs = extern struct {
@@ -188,7 +188,7 @@ pub const TwoPanelHingedDevicePosturePreviewReading = extern struct {
         const this: *ITwoPanelHingedDevicePosturePreviewReading = @ptrCast(self);
         return try this.getPanel1Orientation();
     }
-    pub fn getPanel1Id(self: *@This()) core.HResult!HSTRING {
+    pub fn getPanel1Id(self: *@This()) core.HResult!?HSTRING {
         const this: *ITwoPanelHingedDevicePosturePreviewReading = @ptrCast(self);
         return try this.getPanel1Id();
     }
@@ -196,7 +196,7 @@ pub const TwoPanelHingedDevicePosturePreviewReading = extern struct {
         const this: *ITwoPanelHingedDevicePosturePreviewReading = @ptrCast(self);
         return try this.getPanel2Orientation();
     }
-    pub fn getPanel2Id(self: *@This()) core.HResult!HSTRING {
+    pub fn getPanel2Id(self: *@This()) core.HResult!?HSTRING {
         const this: *ITwoPanelHingedDevicePosturePreviewReading = @ptrCast(self);
         return try this.getPanel2Id();
     }

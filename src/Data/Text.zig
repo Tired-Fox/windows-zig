@@ -12,7 +12,7 @@ pub const AlternateWordForm = extern struct {
         const this: *IAlternateWordForm = @ptrCast(self);
         return try this.getSourceTextSegment();
     }
-    pub fn getAlternateText(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlternateText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAlternateWordForm = @ptrCast(self);
         return try this.getAlternateText();
     }
@@ -34,8 +34,8 @@ pub const IAlternateWordForm = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlternateText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlternateText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlternateText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -59,14 +59,14 @@ pub const IAlternateWordForm = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SourceTextSegment: *const fn(self: *anyopaque, _r: *TextSegment) callconv(.winapi) HRESULT,
-        get_AlternateText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlternateText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_NormalizationFormat: *const fn(self: *anyopaque, _r: *AlternateNormalizationFormat) callconv(.winapi) HRESULT,
     };
 };
 pub const ISelectableWordSegment = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -89,31 +89,31 @@ pub const ISelectableWordSegment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SourceTextSegment: *const fn(self: *anyopaque, _r: *TextSegment) callconv(.winapi) HRESULT,
     };
 };
 pub const ISelectableWordsSegmenter = extern struct {
     vtable: *const VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTokenAt(self: *@This(), text: HSTRING, startIndex: u32) core.HResult!*SelectableWordSegment {
+    pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*SelectableWordSegment {
         var _r: *SelectableWordSegment = undefined;
         const _c = self.vtable.GetTokenAt(@ptrCast(self), text, startIndex, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTokens(self: *@This(), text: HSTRING) core.HResult!*IVectorView(SelectableWordSegment) {
+    pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(SelectableWordSegment) {
         var _r: *IVectorView(SelectableWordSegment) = undefined;
         const _c = self.vtable.GetTokens(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Tokenize(self: *@This(), text: HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) core.HResult!void {
+    pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) core.HResult!void {
         const _c = self.vtable.Tokenize(@ptrCast(self), text, startIndex, handler);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -129,15 +129,15 @@ pub const ISelectableWordsSegmenter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetTokenAt: *const fn(self: *anyopaque, text: HSTRING, startIndex: u32, _r: **SelectableWordSegment) callconv(.winapi) HRESULT,
-        GetTokens: *const fn(self: *anyopaque, text: HSTRING, _r: **IVectorView(SelectableWordSegment)) callconv(.winapi) HRESULT,
-        Tokenize: *const fn(self: *anyopaque, text: HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTokenAt: *const fn(self: *anyopaque, text: ?HSTRING, startIndex: u32, _r: **SelectableWordSegment) callconv(.winapi) HRESULT,
+        GetTokens: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IVectorView(SelectableWordSegment)) callconv(.winapi) HRESULT,
+        Tokenize: *const fn(self: *anyopaque, text: ?HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) callconv(.winapi) HRESULT,
     };
 };
 pub const ISelectableWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithLanguage(self: *@This(), language: HSTRING) core.HResult!*SelectableWordsSegmenter {
+    pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*SelectableWordsSegmenter {
         var _r: *SelectableWordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -155,18 +155,18 @@ pub const ISelectableWordsSegmenterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithLanguage: *const fn(self: *anyopaque, language: HSTRING, _r: **SelectableWordsSegmenter) callconv(.winapi) HRESULT,
+        CreateWithLanguage: *const fn(self: *anyopaque, language: ?HSTRING, _r: **SelectableWordsSegmenter) callconv(.winapi) HRESULT,
     };
 };
 pub const ISemanticTextQuery = extern struct {
     vtable: *const VTable,
-    pub fn Find(self: *@This(), content: HSTRING) core.HResult!*IVectorView(TextSegment) {
+    pub fn Find(self: *@This(), content: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         var _r: *IVectorView(TextSegment) = undefined;
         const _c = self.vtable.Find(@ptrCast(self), content, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindInProperty(self: *@This(), propertyContent: HSTRING, propertyName: HSTRING) core.HResult!*IVectorView(TextSegment) {
+    pub fn FindInProperty(self: *@This(), propertyContent: ?HSTRING, propertyName: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         var _r: *IVectorView(TextSegment) = undefined;
         const _c = self.vtable.FindInProperty(@ptrCast(self), propertyContent, propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -184,19 +184,19 @@ pub const ISemanticTextQuery = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Find: *const fn(self: *anyopaque, content: HSTRING, _r: **IVectorView(TextSegment)) callconv(.winapi) HRESULT,
-        FindInProperty: *const fn(self: *anyopaque, propertyContent: HSTRING, propertyName: HSTRING, _r: **IVectorView(TextSegment)) callconv(.winapi) HRESULT,
+        Find: *const fn(self: *anyopaque, content: ?HSTRING, _r: **IVectorView(TextSegment)) callconv(.winapi) HRESULT,
+        FindInProperty: *const fn(self: *anyopaque, propertyContent: ?HSTRING, propertyName: ?HSTRING, _r: **IVectorView(TextSegment)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISemanticTextQueryFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), aqsFilter: HSTRING) core.HResult!*SemanticTextQuery {
+    pub fn Create(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*SemanticTextQuery {
         var _r: *SemanticTextQuery = undefined;
         const _c = self.vtable.Create(@ptrCast(self), aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithLanguage(self: *@This(), aqsFilter: HSTRING, filterLanguage: HSTRING) core.HResult!*SemanticTextQuery {
+    pub fn CreateWithLanguage(self: *@This(), aqsFilter: ?HSTRING, filterLanguage: ?HSTRING) core.HResult!*SemanticTextQuery {
         var _r: *SemanticTextQuery = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), aqsFilter, filterLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -214,14 +214,14 @@ pub const ISemanticTextQueryFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, aqsFilter: HSTRING, _r: **SemanticTextQuery) callconv(.winapi) HRESULT,
-        CreateWithLanguage: *const fn(self: *anyopaque, aqsFilter: HSTRING, filterLanguage: HSTRING, _r: **SemanticTextQuery) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, _r: **SemanticTextQuery) callconv(.winapi) HRESULT,
+        CreateWithLanguage: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, filterLanguage: ?HSTRING, _r: **SemanticTextQuery) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextConversionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -232,14 +232,14 @@ pub const ITextConversionGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -256,15 +256,15 @@ pub const ITextConversionGenerator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LanguageAvailableButNotInstalled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsync: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: ?HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), languageTag: HSTRING) core.HResult!*TextConversionGenerator {
+    pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextConversionGenerator {
         var _r: *TextConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -282,19 +282,19 @@ pub const ITextConversionGeneratorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, languageTag: HSTRING, _r: **TextConversionGenerator) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: **TextConversionGenerator) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextPhoneme = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getReadingText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getReadingText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ReadingText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -311,14 +311,14 @@ pub const ITextPhoneme = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ReadingText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ReadingText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextPredictionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -329,14 +329,14 @@ pub const ITextPredictionGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -353,22 +353,22 @@ pub const ITextPredictionGenerator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LanguageAvailableButNotInstalled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsync: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: ?HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextPredictionGenerator2 = extern struct {
     vtable: *const VTable,
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, maxCandidates, predictionOptions, previousStrings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetNextWordCandidatesAsync(@ptrCast(self), maxCandidates, previousStrings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -395,15 +395,15 @@ pub const ITextPredictionGenerator2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING), _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        GetNextWordCandidatesAsync: *const fn(self: *anyopaque, maxCandidates: u32, previousStrings: *IIterable(HSTRING), _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsync: *const fn(self: *anyopaque, input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING), _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
+        GetNextWordCandidatesAsync: *const fn(self: *anyopaque, maxCandidates: u32, previousStrings: *IIterable(?HSTRING), _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
         get_InputScope: *const fn(self: *anyopaque, _r: *CoreTextInputScope) callconv(.winapi) HRESULT,
         put_InputScope: *const fn(self: *anyopaque, value: CoreTextInputScope) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextPredictionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), languageTag: HSTRING) core.HResult!*TextPredictionGenerator {
+    pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
         var _r: *TextPredictionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -421,13 +421,13 @@ pub const ITextPredictionGeneratorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, languageTag: HSTRING, _r: **TextPredictionGenerator) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: **TextPredictionGenerator) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextReverseConversionGenerator = extern struct {
     vtable: *const VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -438,8 +438,8 @@ pub const ITextReverseConversionGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertBackAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn ConvertBackAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ConvertBackAsync(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -456,14 +456,14 @@ pub const ITextReverseConversionGenerator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LanguageAvailableButNotInstalled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        ConvertBackAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        ConvertBackAsync: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextReverseConversionGenerator2 = extern struct {
     vtable: *const VTable,
-    pub fn GetPhonemesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
+    pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var _r: *IAsyncOperation(IVectorView(TextPhoneme)) = undefined;
         const _c = self.vtable.GetPhonemesAsync(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -481,12 +481,12 @@ pub const ITextReverseConversionGenerator2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPhonemesAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(IVectorView(TextPhoneme))) callconv(.winapi) HRESULT,
+        GetPhonemesAsync: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IAsyncOperation(IVectorView(TextPhoneme))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextReverseConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), languageTag: HSTRING) core.HResult!*TextReverseConversionGenerator {
+    pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
         var _r: *TextReverseConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -504,7 +504,7 @@ pub const ITextReverseConversionGeneratorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, languageTag: HSTRING, _r: **TextReverseConversionGenerator) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: **TextReverseConversionGenerator) callconv(.winapi) HRESULT,
     };
 };
 pub const IUnicodeCharactersStatics = extern struct {
@@ -642,8 +642,8 @@ pub const IUnicodeCharactersStatics = extern struct {
 };
 pub const IWordSegment = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -672,32 +672,32 @@ pub const IWordSegment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SourceTextSegment: *const fn(self: *anyopaque, _r: *TextSegment) callconv(.winapi) HRESULT,
         get_AlternateForms: *const fn(self: *anyopaque, _r: **IVectorView(AlternateWordForm)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWordsSegmenter = extern struct {
     vtable: *const VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTokenAt(self: *@This(), text: HSTRING, startIndex: u32) core.HResult!*WordSegment {
+    pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*WordSegment {
         var _r: *WordSegment = undefined;
         const _c = self.vtable.GetTokenAt(@ptrCast(self), text, startIndex, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTokens(self: *@This(), text: HSTRING) core.HResult!*IVectorView(WordSegment) {
+    pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(WordSegment) {
         var _r: *IVectorView(WordSegment) = undefined;
         const _c = self.vtable.GetTokens(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Tokenize(self: *@This(), text: HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
+    pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
         const _c = self.vtable.Tokenize(@ptrCast(self), text, startIndex, handler);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -713,15 +713,15 @@ pub const IWordsSegmenter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetTokenAt: *const fn(self: *anyopaque, text: HSTRING, startIndex: u32, _r: **WordSegment) callconv(.winapi) HRESULT,
-        GetTokens: *const fn(self: *anyopaque, text: HSTRING, _r: **IVectorView(WordSegment)) callconv(.winapi) HRESULT,
-        Tokenize: *const fn(self: *anyopaque, text: HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetTokenAt: *const fn(self: *anyopaque, text: ?HSTRING, startIndex: u32, _r: **WordSegment) callconv(.winapi) HRESULT,
+        GetTokens: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IVectorView(WordSegment)) callconv(.winapi) HRESULT,
+        Tokenize: *const fn(self: *anyopaque, text: ?HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) callconv(.winapi) HRESULT,
     };
 };
 pub const IWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithLanguage(self: *@This(), language: HSTRING) core.HResult!*WordsSegmenter {
+    pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*WordsSegmenter {
         var _r: *WordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -739,12 +739,12 @@ pub const IWordsSegmenterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithLanguage: *const fn(self: *anyopaque, language: HSTRING, _r: **WordsSegmenter) callconv(.winapi) HRESULT,
+        CreateWithLanguage: *const fn(self: *anyopaque, language: ?HSTRING, _r: **WordsSegmenter) callconv(.winapi) HRESULT,
     };
 };
 pub const SelectableWordSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISelectableWordSegment = @ptrCast(self);
         return try this.getText();
     }
@@ -847,26 +847,26 @@ pub const SelectableWordSegmentsTokenizingHandler = extern struct {
 };
 pub const SelectableWordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
-    pub fn GetTokenAt(self: *@This(), text: HSTRING, startIndex: u32) core.HResult!*SelectableWordSegment {
+    pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*SelectableWordSegment {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.GetTokenAt(text, startIndex);
     }
-    pub fn GetTokens(self: *@This(), text: HSTRING) core.HResult!*IVectorView(SelectableWordSegment) {
+    pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(SelectableWordSegment) {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.GetTokens(text);
     }
-    pub fn Tokenize(self: *@This(), text: HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) core.HResult!void {
+    pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *SelectableWordSegmentsTokenizingHandler) core.HResult!void {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.Tokenize(text, startIndex, handler);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWithLanguage(language: HSTRING) core.HResult!*SelectableWordsSegmenter {
+    pub fn CreateWithLanguage(language: ?HSTRING) core.HResult!*SelectableWordsSegmenter {
         const _f = try @This()._ISelectableWordsSegmenterFactoryCache.get();
         return try _f.CreateWithLanguage(language);
     }
@@ -879,22 +879,22 @@ pub const SelectableWordsSegmenter = extern struct {
 };
 pub const SemanticTextQuery = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Find(self: *@This(), content: HSTRING) core.HResult!*IVectorView(TextSegment) {
+    pub fn Find(self: *@This(), content: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         const this: *ISemanticTextQuery = @ptrCast(self);
         return try this.Find(content);
     }
-    pub fn FindInProperty(self: *@This(), propertyContent: HSTRING, propertyName: HSTRING) core.HResult!*IVectorView(TextSegment) {
+    pub fn FindInProperty(self: *@This(), propertyContent: ?HSTRING, propertyName: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         const this: *ISemanticTextQuery = @ptrCast(self);
         return try this.FindInProperty(propertyContent, propertyName);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(aqsFilter: HSTRING) core.HResult!*SemanticTextQuery {
+    pub fn Create(aqsFilter: ?HSTRING) core.HResult!*SemanticTextQuery {
         const _f = try @This()._ISemanticTextQueryFactoryCache.get();
         return try _f.Create(aqsFilter);
     }
-    pub fn CreateWithLanguage(aqsFilter: HSTRING, filterLanguage: HSTRING) core.HResult!*SemanticTextQuery {
+    pub fn CreateWithLanguage(aqsFilter: ?HSTRING, filterLanguage: ?HSTRING) core.HResult!*SemanticTextQuery {
         const _f = try @This()._ISemanticTextQueryFactoryCache.get();
         return try _f.CreateWithLanguage(aqsFilter, filterLanguage);
     }
@@ -907,7 +907,7 @@ pub const SemanticTextQuery = extern struct {
 };
 pub const TextConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
@@ -915,18 +915,18 @@ pub const TextConversionGenerator = extern struct {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.getLanguageAvailableButNotInstalled();
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsync(input);
     }
-    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(languageTag: HSTRING) core.HResult!*TextConversionGenerator {
+    pub fn Create(languageTag: ?HSTRING) core.HResult!*TextConversionGenerator {
         const _f = try @This()._ITextConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
@@ -939,11 +939,11 @@ pub const TextConversionGenerator = extern struct {
 };
 pub const TextPhoneme = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextPhoneme = @ptrCast(self);
         return try this.getDisplayText();
     }
-    pub fn getReadingText(self: *@This()) core.HResult!HSTRING {
+    pub fn getReadingText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextPhoneme = @ptrCast(self);
         return try this.getReadingText();
     }
@@ -955,7 +955,7 @@ pub const TextPhoneme = extern struct {
 };
 pub const TextPredictionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextPredictionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
@@ -963,21 +963,21 @@ pub const TextPredictionGenerator = extern struct {
         const this: *ITextPredictionGenerator = @ptrCast(self);
         return try this.getLanguageAvailableButNotInstalled();
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *ITextPredictionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsync(input);
     }
-    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: ?HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *ITextPredictionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
-    pub fn GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
     }
-    pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -998,7 +998,7 @@ pub const TextPredictionGenerator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(languageTag: HSTRING) core.HResult!*TextPredictionGenerator {
+    pub fn Create(languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
         const _f = try @This()._ITextPredictionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
@@ -1016,7 +1016,7 @@ pub const TextPredictionOptions = enum(i32) {
 };
 pub const TextReverseConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextReverseConversionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
@@ -1024,11 +1024,11 @@ pub const TextReverseConversionGenerator = extern struct {
         const this: *ITextReverseConversionGenerator = @ptrCast(self);
         return try this.getLanguageAvailableButNotInstalled();
     }
-    pub fn ConvertBackAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ConvertBackAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *ITextReverseConversionGenerator = @ptrCast(self);
         return try this.ConvertBackAsync(input);
     }
-    pub fn GetPhonemesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
+    pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var this: ?*ITextReverseConversionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextReverseConversionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1037,7 +1037,7 @@ pub const TextReverseConversionGenerator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(languageTag: HSTRING) core.HResult!*TextReverseConversionGenerator {
+    pub fn Create(languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
         const _f = try @This()._ITextReverseConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
     }
@@ -1169,7 +1169,7 @@ pub const UnicodeNumericType = enum(i32) {
 };
 pub const WordSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IWordSegment = @ptrCast(self);
         return try this.getText();
     }
@@ -1276,26 +1276,26 @@ pub const WordSegmentsTokenizingHandler = extern struct {
 };
 pub const WordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
-    pub fn GetTokenAt(self: *@This(), text: HSTRING, startIndex: u32) core.HResult!*WordSegment {
+    pub fn GetTokenAt(self: *@This(), text: ?HSTRING, startIndex: u32) core.HResult!*WordSegment {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.GetTokenAt(text, startIndex);
     }
-    pub fn GetTokens(self: *@This(), text: HSTRING) core.HResult!*IVectorView(WordSegment) {
+    pub fn GetTokens(self: *@This(), text: ?HSTRING) core.HResult!*IVectorView(WordSegment) {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.GetTokens(text);
     }
-    pub fn Tokenize(self: *@This(), text: HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
+    pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.Tokenize(text, startIndex, handler);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWithLanguage(language: HSTRING) core.HResult!*WordsSegmenter {
+    pub fn CreateWithLanguage(language: ?HSTRING) core.HResult!*WordsSegmenter {
         const _f = try @This()._IWordsSegmenterFactoryCache.get();
         return try _f.CreateWithLanguage(language);
     }

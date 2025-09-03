@@ -313,14 +313,14 @@ pub const IMediaFrameArrivedEventArgs = extern struct {
 };
 pub const IMediaFrameFormat = extern struct {
     vtable: *const VTable,
-    pub fn getMajorType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMajorType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MajorType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtype(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -355,8 +355,8 @@ pub const IMediaFrameFormat = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MajorType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subtype: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MajorType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subtype: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FrameRate: *const fn(self: *anyopaque, _r: **MediaRatio) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IMapView(Guid,IInspectable)) callconv(.winapi) HRESULT,
         get_VideoFormat: *const fn(self: *anyopaque, _r: **VideoMediaFrameFormat) callconv(.winapi) HRESULT,
@@ -629,13 +629,13 @@ pub const IMediaFrameSource = extern struct {
 };
 pub const IMediaFrameSourceController = extern struct {
     vtable: *const VTable,
-    pub fn GetPropertyAsync(self: *@This(), propertyId: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
+    pub fn GetPropertyAsync(self: *@This(), propertyId: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         var _r: *IAsyncOperation(MediaFrameSourceGetPropertyResult) = undefined;
         const _c = self.vtable.GetPropertyAsync(@ptrCast(self), propertyId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetPropertyAsync(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!*IAsyncOperation(MediaFrameSourceSetPropertyStatus) {
+    pub fn SetPropertyAsync(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!*IAsyncOperation(MediaFrameSourceSetPropertyStatus) {
         var _r: *IAsyncOperation(MediaFrameSourceSetPropertyStatus) = undefined;
         const _c = self.vtable.SetPropertyAsync(@ptrCast(self), propertyId, propertyValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -659,8 +659,8 @@ pub const IMediaFrameSourceController = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPropertyAsync: *const fn(self: *anyopaque, propertyId: HSTRING, _r: **IAsyncOperation(MediaFrameSourceGetPropertyResult)) callconv(.winapi) HRESULT,
-        SetPropertyAsync: *const fn(self: *anyopaque, propertyId: HSTRING, propertyValue: *IInspectable, _r: **IAsyncOperation(MediaFrameSourceSetPropertyStatus)) callconv(.winapi) HRESULT,
+        GetPropertyAsync: *const fn(self: *anyopaque, propertyId: ?HSTRING, _r: **IAsyncOperation(MediaFrameSourceGetPropertyResult)) callconv(.winapi) HRESULT,
+        SetPropertyAsync: *const fn(self: *anyopaque, propertyId: ?HSTRING, propertyValue: *IInspectable, _r: **IAsyncOperation(MediaFrameSourceSetPropertyStatus)) callconv(.winapi) HRESULT,
         get_VideoDeviceController: *const fn(self: *anyopaque, _r: **VideoDeviceController) callconv(.winapi) HRESULT,
     };
 };
@@ -749,14 +749,14 @@ pub const IMediaFrameSourceGetPropertyResult = extern struct {
 };
 pub const IMediaFrameSourceGroup = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -779,8 +779,8 @@ pub const IMediaFrameSourceGroup = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SourceInfos: *const fn(self: *anyopaque, _r: **IVectorView(MediaFrameSourceInfo)) callconv(.winapi) HRESULT,
     };
 };
@@ -792,14 +792,14 @@ pub const IMediaFrameSourceGroupStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
+    pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
         var _r: *IAsyncOperation(MediaFrameSourceGroup) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -817,14 +817,14 @@ pub const IMediaFrameSourceGroupStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(MediaFrameSourceGroup))) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(MediaFrameSourceGroup)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(MediaFrameSourceGroup)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaFrameSourceInfo = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -877,7 +877,7 @@ pub const IMediaFrameSourceInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MediaStreamType: *const fn(self: *anyopaque, _r: *MediaStreamType) callconv(.winapi) HRESULT,
         get_SourceKind: *const fn(self: *anyopaque, _r: *MediaFrameSourceKind) callconv(.winapi) HRESULT,
         get_SourceGroup: *const fn(self: *anyopaque, _r: **MediaFrameSourceGroup) callconv(.winapi) HRESULT,
@@ -888,8 +888,8 @@ pub const IMediaFrameSourceInfo = extern struct {
 };
 pub const IMediaFrameSourceInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn getProfileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProfileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -912,7 +912,7 @@ pub const IMediaFrameSourceInfo2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProfileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProfileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_VideoProfileMediaDescription: *const fn(self: *anyopaque, _r: **IVectorView(MediaCaptureVideoProfileMediaDescription)) callconv(.winapi) HRESULT,
     };
 };
@@ -1057,7 +1057,7 @@ pub const IMultiSourceMediaFrameReader2 = extern struct {
 };
 pub const IMultiSourceMediaFrameReference = extern struct {
     vtable: *const VTable,
-    pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: HSTRING) core.HResult!*MediaFrameReference {
+    pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: ?HSTRING) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.TryGetFrameReferenceBySourceId(@ptrCast(self), sourceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1075,7 +1075,7 @@ pub const IMultiSourceMediaFrameReference = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryGetFrameReferenceBySourceId: *const fn(self: *anyopaque, sourceId: HSTRING, _r: **MediaFrameReference) callconv(.winapi) HRESULT,
+        TryGetFrameReferenceBySourceId: *const fn(self: *anyopaque, sourceId: ?HSTRING, _r: **MediaFrameReference) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoMediaFrame = extern struct {
@@ -1224,11 +1224,11 @@ pub const MediaFrameArrivedEventArgs = extern struct {
 };
 pub const MediaFrameFormat = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMajorType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMajorType(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameFormat = @ptrCast(self);
         return try this.getMajorType();
     }
-    pub fn getSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameFormat = @ptrCast(self);
         return try this.getSubtype();
     }
@@ -1407,11 +1407,11 @@ pub const MediaFrameSource = extern struct {
 };
 pub const MediaFrameSourceController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetPropertyAsync(self: *@This(), propertyId: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
+    pub fn GetPropertyAsync(self: *@This(), propertyId: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         const this: *IMediaFrameSourceController = @ptrCast(self);
         return try this.GetPropertyAsync(propertyId);
     }
-    pub fn SetPropertyAsync(self: *@This(), propertyId: HSTRING, propertyValue: *IInspectable) core.HResult!*IAsyncOperation(MediaFrameSourceSetPropertyStatus) {
+    pub fn SetPropertyAsync(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!*IAsyncOperation(MediaFrameSourceSetPropertyStatus) {
         const this: *IMediaFrameSourceController = @ptrCast(self);
         return try this.SetPropertyAsync(propertyId, propertyValue);
     }
@@ -1469,11 +1469,11 @@ pub const MediaFrameSourceGetPropertyStatus = enum(i32) {
 };
 pub const MediaFrameSourceGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameSourceGroup = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameSourceGroup = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -1488,11 +1488,11 @@ pub const MediaFrameSourceGroup = extern struct {
         const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
+    pub fn FromIdAsync(id: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
         const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -1505,7 +1505,7 @@ pub const MediaFrameSourceGroup = extern struct {
 };
 pub const MediaFrameSourceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameSourceInfo = @ptrCast(self);
         return try this.getId();
     }
@@ -1533,7 +1533,7 @@ pub const MediaFrameSourceInfo = extern struct {
         const this: *IMediaFrameSourceInfo = @ptrCast(self);
         return try this.getCoordinateSystem();
     }
-    pub fn getProfileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrameSourceInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1643,7 +1643,7 @@ pub const MultiSourceMediaFrameReaderStartStatus = enum(i32) {
 };
 pub const MultiSourceMediaFrameReference = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: HSTRING) core.HResult!*MediaFrameReference {
+    pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: ?HSTRING) core.HResult!*MediaFrameReference {
         const this: *IMultiSourceMediaFrameReference = @ptrCast(self);
         return try this.TryGetFrameReferenceBySourceId(sourceId);
     }

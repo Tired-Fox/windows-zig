@@ -65,7 +65,7 @@ pub const ContactDataProviderTriggerDetails = extern struct {
 };
 pub const ContactListCreateOrUpdateContactRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListCreateOrUpdateContactRequest = @ptrCast(self);
         return try this.getContactListId();
     }
@@ -105,11 +105,11 @@ pub const ContactListCreateOrUpdateContactRequestEventArgs = extern struct {
 };
 pub const ContactListDeleteContactRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListDeleteContactRequest = @ptrCast(self);
         return try this.getContactListId();
     }
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListDeleteContactRequest = @ptrCast(self);
         return try this.getContactId();
     }
@@ -145,11 +145,11 @@ pub const ContactListDeleteContactRequestEventArgs = extern struct {
 };
 pub const ContactListServerSearchReadBatchRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListServerSearchReadBatchRequest = @ptrCast(self);
         return try this.getSessionId();
     }
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListServerSearchReadBatchRequest = @ptrCast(self);
         return try this.getContactListId();
     }
@@ -197,7 +197,7 @@ pub const ContactListServerSearchReadBatchRequestEventArgs = extern struct {
 };
 pub const ContactListSyncManagerSyncRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListSyncManagerSyncRequest = @ptrCast(self);
         return try this.getContactListId();
     }
@@ -341,8 +341,8 @@ pub const IContactDataProviderTriggerDetails = extern struct {
 };
 pub const IContactListCreateOrUpdateContactRequest = extern struct {
     vtable: *const VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -377,7 +377,7 @@ pub const IContactListCreateOrUpdateContactRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Contact: *const fn(self: *anyopaque, _r: **Contact) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, createdOrUpdatedContact: *Contact, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -415,14 +415,14 @@ pub const IContactListCreateOrUpdateContactRequestEventArgs = extern struct {
 };
 pub const IContactListDeleteContactRequest = extern struct {
     vtable: *const VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContactId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -451,8 +451,8 @@ pub const IContactListDeleteContactRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContactId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -489,14 +489,14 @@ pub const IContactListDeleteContactRequestEventArgs = extern struct {
 };
 pub const IContactListServerSearchReadBatchRequest = extern struct {
     vtable: *const VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -543,8 +543,8 @@ pub const IContactListServerSearchReadBatchRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Options: *const fn(self: *anyopaque, _r: **ContactQueryOptions) callconv(.winapi) HRESULT,
         get_SuggestedBatchSize: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         SaveContactAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -584,8 +584,8 @@ pub const IContactListServerSearchReadBatchRequestEventArgs = extern struct {
 };
 pub const IContactListSyncManagerSyncRequest = extern struct {
     vtable: *const VTable,
-    pub fn getContactListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -614,7 +614,7 @@ pub const IContactListSyncManagerSyncRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContactListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContactListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };

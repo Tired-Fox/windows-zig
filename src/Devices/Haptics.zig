@@ -138,8 +138,8 @@ pub const IKnownSimpleHapticsControllerWaveformsStatics2 = extern struct {
 };
 pub const ISimpleHapticsController = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -206,7 +206,7 @@ pub const ISimpleHapticsController = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedFeedback: *const fn(self: *anyopaque, _r: **IVectorView(SimpleHapticsControllerFeedback)) callconv(.winapi) HRESULT,
         get_IsIntensitySupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsPlayCountSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -251,8 +251,8 @@ pub const ISimpleHapticsControllerFeedback = extern struct {
 };
 pub const IVibrationDevice = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -275,7 +275,7 @@ pub const IVibrationDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SimpleHapticsController: *const fn(self: *anyopaque, _r: **SimpleHapticsController) callconv(.winapi) HRESULT,
     };
 };
@@ -287,13 +287,13 @@ pub const IVibrationDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(VibrationDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(VibrationDevice) {
         var _r: *IAsyncOperation(VibrationDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -324,8 +324,8 @@ pub const IVibrationDeviceStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(VibrationAccessStatus)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(VibrationDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(VibrationDevice)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(VibrationDevice)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(VibrationDevice))) callconv(.winapi) HRESULT,
     };
@@ -402,7 +402,7 @@ pub const KnownSimpleHapticsControllerWaveforms = extern struct {
 };
 pub const SimpleHapticsController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISimpleHapticsController = @ptrCast(self);
         return try this.getId();
     }
@@ -476,7 +476,7 @@ pub const VibrationAccessStatus = enum(i32) {
 };
 pub const VibrationDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVibrationDevice = @ptrCast(self);
         return try this.getId();
     }
@@ -491,11 +491,11 @@ pub const VibrationDevice = extern struct {
         const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.RequestAccessAsync();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(VibrationDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(VibrationDevice) {
         const _f = try @This()._IVibrationDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }

@@ -3058,8 +3058,8 @@ pub const IRadialControllerMenu = extern struct {
 };
 pub const IRadialControllerMenuItem = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3096,7 +3096,7 @@ pub const IRadialControllerMenuItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Tag: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Tag: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         add_Invoked: *const fn(self: *anyopaque, handler: *TypedEventHandler(RadialControllerMenuItem,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -3105,13 +3105,13 @@ pub const IRadialControllerMenuItem = extern struct {
 };
 pub const IRadialControllerMenuItemStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromIcon(self: *@This(), displayText: HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromIcon(self: *@This(), displayText: ?HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromIcon(@ptrCast(self), displayText, icon, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromKnownIcon(self: *@This(), displayText: HSTRING, value: RadialControllerMenuKnownIcon) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromKnownIcon(self: *@This(), displayText: ?HSTRING, value: RadialControllerMenuKnownIcon) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromKnownIcon(@ptrCast(self), displayText, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3129,19 +3129,19 @@ pub const IRadialControllerMenuItemStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromIcon: *const fn(self: *anyopaque, displayText: HSTRING, icon: *RandomAccessStreamReference, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
-        CreateFromKnownIcon: *const fn(self: *anyopaque, displayText: HSTRING, value: RadialControllerMenuKnownIcon, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
+        CreateFromIcon: *const fn(self: *anyopaque, displayText: ?HSTRING, icon: *RandomAccessStreamReference, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
+        CreateFromKnownIcon: *const fn(self: *anyopaque, displayText: ?HSTRING, value: RadialControllerMenuKnownIcon, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
     };
 };
 pub const IRadialControllerMenuItemStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromFontGlyph(self: *@This(), displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyph(self: *@This(), displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), displayText, glyph, fontFamily, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromFontGlyphWithFontUri(self: *@This(), displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyphWithFontUri(self: *@This(), displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromFontGlyphWithFontUri(@ptrCast(self), displayText, glyph, fontFamily, fontUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3159,8 +3159,8 @@ pub const IRadialControllerMenuItemStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromFontGlyph: *const fn(self: *anyopaque, displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
-        CreateFromFontGlyphWithFontUri: *const fn(self: *anyopaque, displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
+        CreateFromFontGlyph: *const fn(self: *anyopaque, displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
+        CreateFromFontGlyphWithFontUri: *const fn(self: *anyopaque, displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
     };
 };
 pub const IRadialControllerRotationChangedEventArgs = extern struct {
@@ -4851,7 +4851,7 @@ pub const RadialControllerMenu = extern struct {
 };
 pub const RadialControllerMenuItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IRadialControllerMenuItem = @ptrCast(self);
         return try this.getDisplayText();
     }
@@ -4874,19 +4874,19 @@ pub const RadialControllerMenuItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromIcon(displayText: HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromIcon(displayText: ?HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
         const _f = try @This()._IRadialControllerMenuItemStaticsCache.get();
         return try _f.CreateFromIcon(displayText, icon);
     }
-    pub fn CreateFromKnownIcon(displayText: HSTRING, value: RadialControllerMenuKnownIcon) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromKnownIcon(displayText: ?HSTRING, value: RadialControllerMenuKnownIcon) core.HResult!*RadialControllerMenuItem {
         const _f = try @This()._IRadialControllerMenuItemStaticsCache.get();
         return try _f.CreateFromKnownIcon(displayText, value);
     }
-    pub fn CreateFromFontGlyph(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyph(displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*RadialControllerMenuItem {
         const _f = try @This()._IRadialControllerMenuItemStatics2Cache.get();
         return try _f.CreateFromFontGlyph(displayText, glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyphWithFontUri(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyphWithFontUri(displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
         const _f = try @This()._IRadialControllerMenuItemStatics2Cache.get();
         return try _f.CreateFromFontGlyphWithFontUri(displayText, glyph, fontFamily, fontUri);
     }

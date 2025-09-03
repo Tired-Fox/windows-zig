@@ -75,8 +75,8 @@ pub const ILockScreenBadge = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAutomationName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAutomationName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AutomationName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -100,7 +100,7 @@ pub const ILockScreenBadge = extern struct {
         get_Logo: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
         get_Glyph: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
         get_Number: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
-        get_AutomationName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AutomationName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         LaunchApp: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -148,8 +148,8 @@ pub const ILockScreenInfo = extern struct {
         const _c = self.vtable.remove_DetailTextChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDetailText(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getDetailText(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DetailText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -190,7 +190,7 @@ pub const ILockScreenInfo = extern struct {
         get_Badges: *const fn(self: *anyopaque, _r: **IVectorView(LockScreenBadge)) callconv(.winapi) HRESULT,
         add_DetailTextChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenInfo,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DetailTextChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_DetailText: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_DetailText: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         add_AlarmIconChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(LockScreenInfo,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_AlarmIconChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         get_AlarmIcon: *const fn(self: *anyopaque, _r: **IRandomAccessStream) callconv(.winapi) HRESULT,
@@ -289,7 +289,7 @@ pub const LockScreenBadge = extern struct {
         const this: *ILockScreenBadge = @ptrCast(self);
         return try this.getNumber();
     }
-    pub fn getAutomationName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAutomationName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILockScreenBadge = @ptrCast(self);
         return try this.getAutomationName();
     }
@@ -337,7 +337,7 @@ pub const LockScreenInfo = extern struct {
         const this: *ILockScreenInfo = @ptrCast(self);
         return try this.removeDetailTextChanged(token);
     }
-    pub fn getDetailText(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getDetailText(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ILockScreenInfo = @ptrCast(self);
         return try this.getDetailText();
     }

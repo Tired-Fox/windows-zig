@@ -77,8 +77,8 @@ pub const ITargetedContentChangedEventArgs = extern struct {
 };
 pub const ITargetedContentCollection = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -87,18 +87,18 @@ pub const ITargetedContentCollection = extern struct {
         const _c = self.vtable.ReportInteraction(@ptrCast(self), interaction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: HSTRING) core.HResult!void {
+    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReportCustomInteraction(@ptrCast(self), customInteractionName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,TargetedContentValue) {
-        var _r: *IMapView(HSTRING,TargetedContentValue) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,TargetedContentValue) {
+        var _r: *IMapView(?HSTRING,TargetedContentValue) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -127,19 +127,19 @@ pub const ITargetedContentCollection = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportInteraction: *const fn(self: *anyopaque, interaction: TargetedContentInteraction) callconv(.winapi) HRESULT,
-        ReportCustomInteraction: *const fn(self: *anyopaque, customInteractionName: HSTRING) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,TargetedContentValue)) callconv(.winapi) HRESULT,
+        ReportCustomInteraction: *const fn(self: *anyopaque, customInteractionName: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,TargetedContentValue)) callconv(.winapi) HRESULT,
         get_Collections: *const fn(self: *anyopaque, _r: **IVectorView(TargetedContentCollection)) callconv(.winapi) HRESULT,
         get_Items: *const fn(self: *anyopaque, _r: **IVectorView(TargetedContentItem)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetedContentContainer = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -162,7 +162,7 @@ pub const ITargetedContentContainer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SelectSingleObject(self: *@This(), path: HSTRING) core.HResult!*TargetedContentObject {
+    pub fn SelectSingleObject(self: *@This(), path: ?HSTRING) core.HResult!*TargetedContentObject {
         var _r: *TargetedContentObject = undefined;
         const _c = self.vtable.SelectSingleObject(@ptrCast(self), path, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -180,16 +180,16 @@ pub const ITargetedContentContainer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Availability: *const fn(self: *anyopaque, _r: *TargetedContentAvailability) callconv(.winapi) HRESULT,
         get_Content: *const fn(self: *anyopaque, _r: **TargetedContentCollection) callconv(.winapi) HRESULT,
-        SelectSingleObject: *const fn(self: *anyopaque, path: HSTRING, _r: **TargetedContentObject) callconv(.winapi) HRESULT,
+        SelectSingleObject: *const fn(self: *anyopaque, path: ?HSTRING, _r: **TargetedContentObject) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetedContentContainerStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetAsync(self: *@This(), contentId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
+    pub fn GetAsync(self: *@This(), contentId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
         var _r: *IAsyncOperation(TargetedContentContainer) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), contentId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -207,7 +207,7 @@ pub const ITargetedContentContainerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, contentId: HSTRING, _r: **IAsyncOperation(TargetedContentContainer)) callconv(.winapi) HRESULT,
+        GetAsync: *const fn(self: *anyopaque, contentId: ?HSTRING, _r: **IAsyncOperation(TargetedContentContainer)) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetedContentImage = extern struct {
@@ -242,8 +242,8 @@ pub const ITargetedContentImage = extern struct {
 };
 pub const ITargetedContentItem = extern struct {
     vtable: *const VTable,
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -252,7 +252,7 @@ pub const ITargetedContentItem = extern struct {
         const _c = self.vtable.ReportInteraction(@ptrCast(self), interaction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: HSTRING) core.HResult!void {
+    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReportCustomInteraction(@ptrCast(self), customInteractionName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -262,8 +262,8 @@ pub const ITargetedContentItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,TargetedContentValue) {
-        var _r: *IMapView(HSTRING,TargetedContentValue) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,TargetedContentValue) {
+        var _r: *IMapView(?HSTRING,TargetedContentValue) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -286,11 +286,11 @@ pub const ITargetedContentItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportInteraction: *const fn(self: *anyopaque, interaction: TargetedContentInteraction) callconv(.winapi) HRESULT,
-        ReportCustomInteraction: *const fn(self: *anyopaque, customInteractionName: HSTRING) callconv(.winapi) HRESULT,
+        ReportCustomInteraction: *const fn(self: *anyopaque, customInteractionName: ?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: **TargetedContentItemState) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,TargetedContentValue)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,TargetedContentValue)) callconv(.winapi) HRESULT,
         get_Collections: *const fn(self: *anyopaque, _r: **IVectorView(TargetedContentCollection)) callconv(.winapi) HRESULT,
     };
 };
@@ -393,8 +393,8 @@ pub const ITargetedContentStateChangedEventArgs = extern struct {
 };
 pub const ITargetedContentSubscription = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -447,7 +447,7 @@ pub const ITargetedContentSubscription = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetContentContainerAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(TargetedContentContainer)) callconv(.winapi) HRESULT,
         add_ContentChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(TargetedContentSubscription,TargetedContentChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ContentChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -459,8 +459,8 @@ pub const ITargetedContentSubscription = extern struct {
 };
 pub const ITargetedContentSubscriptionOptions = extern struct {
     vtable: *const VTable,
-    pub fn getSubscriptionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubscriptionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubscriptionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -475,14 +475,14 @@ pub const ITargetedContentSubscriptionOptions = extern struct {
         const _c = self.vtable.put_AllowPartialContentAvailability(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCloudQueryParameters(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getCloudQueryParameters(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_CloudQueryParameters(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLocalFilters(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getLocalFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_LocalFilters(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -503,23 +503,23 @@ pub const ITargetedContentSubscriptionOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SubscriptionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SubscriptionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AllowPartialContentAvailability: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowPartialContentAvailability: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_CloudQueryParameters: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
-        get_LocalFilters: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_CloudQueryParameters: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
+        get_LocalFilters: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         Update: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetedContentSubscriptionStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetAsync(self: *@This(), subscriptionId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
+    pub fn GetAsync(self: *@This(), subscriptionId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
         var _r: *IAsyncOperation(TargetedContentSubscription) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), subscriptionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetOptions(self: *@This(), subscriptionId: HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
+    pub fn GetOptions(self: *@This(), subscriptionId: ?HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
         var _r: *TargetedContentSubscriptionOptions = undefined;
         const _c = self.vtable.GetOptions(@ptrCast(self), subscriptionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -537,8 +537,8 @@ pub const ITargetedContentSubscriptionStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, subscriptionId: HSTRING, _r: **IAsyncOperation(TargetedContentSubscription)) callconv(.winapi) HRESULT,
-        GetOptions: *const fn(self: *anyopaque, subscriptionId: HSTRING, _r: **TargetedContentSubscriptionOptions) callconv(.winapi) HRESULT,
+        GetAsync: *const fn(self: *anyopaque, subscriptionId: ?HSTRING, _r: **IAsyncOperation(TargetedContentSubscription)) callconv(.winapi) HRESULT,
+        GetOptions: *const fn(self: *anyopaque, subscriptionId: ?HSTRING, _r: **TargetedContentSubscriptionOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const ITargetedContentValue = extern struct {
@@ -549,14 +549,14 @@ pub const ITargetedContentValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_String(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -597,8 +597,8 @@ pub const ITargetedContentValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStrings(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getStrings(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Strings(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -652,15 +652,15 @@ pub const ITargetedContentValue = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ValueKind: *const fn(self: *anyopaque, _r: *TargetedContentValueKind) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_String: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_String: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_Number: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_Boolean: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_File: *const fn(self: *anyopaque, _r: **TargetedContentFile) callconv(.winapi) HRESULT,
         get_ImageFile: *const fn(self: *anyopaque, _r: **TargetedContentImage) callconv(.winapi) HRESULT,
         get_Action: *const fn(self: *anyopaque, _r: **TargetedContentAction) callconv(.winapi) HRESULT,
-        get_Strings: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Strings: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Uris: *const fn(self: *anyopaque, _r: **IVectorView(Uri)) callconv(.winapi) HRESULT,
         get_Numbers: *const fn(self: *anyopaque, _r: **IVectorView(f64)) callconv(.winapi) HRESULT,
         get_Booleans: *const fn(self: *anyopaque, _r: **IVectorView(bool)) callconv(.winapi) HRESULT,
@@ -721,7 +721,7 @@ pub const TargetedContentChangedEventArgs = extern struct {
 };
 pub const TargetedContentCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.getId();
     }
@@ -729,15 +729,15 @@ pub const TargetedContentCollection = extern struct {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.ReportInteraction(interaction);
     }
-    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: HSTRING) core.HResult!void {
+    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: ?HSTRING) core.HResult!void {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.ReportCustomInteraction(customInteractionName);
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.getPath();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,TargetedContentValue) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,TargetedContentValue) {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.getProperties();
     }
@@ -757,7 +757,7 @@ pub const TargetedContentCollection = extern struct {
 };
 pub const TargetedContentContainer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentContainer = @ptrCast(self);
         return try this.getId();
     }
@@ -773,14 +773,14 @@ pub const TargetedContentContainer = extern struct {
         const this: *ITargetedContentContainer = @ptrCast(self);
         return try this.getContent();
     }
-    pub fn SelectSingleObject(self: *@This(), path: HSTRING) core.HResult!*TargetedContentObject {
+    pub fn SelectSingleObject(self: *@This(), path: ?HSTRING) core.HResult!*TargetedContentObject {
         const this: *ITargetedContentContainer = @ptrCast(self);
         return try this.SelectSingleObject(path);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetAsync(contentId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
+    pub fn GetAsync(contentId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
         const _f = try @This()._ITargetedContentContainerStaticsCache.get();
         return try _f.GetAsync(contentId);
     }
@@ -842,7 +842,7 @@ pub const TargetedContentInteraction = enum(i32) {
 };
 pub const TargetedContentItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.getPath();
     }
@@ -850,7 +850,7 @@ pub const TargetedContentItem = extern struct {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.ReportInteraction(interaction);
     }
-    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: HSTRING) core.HResult!void {
+    pub fn ReportCustomInteraction(self: *@This(), customInteractionName: ?HSTRING) core.HResult!void {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.ReportCustomInteraction(customInteractionName);
     }
@@ -858,7 +858,7 @@ pub const TargetedContentItem = extern struct {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,TargetedContentValue) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,TargetedContentValue) {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.getProperties();
     }
@@ -931,7 +931,7 @@ pub const TargetedContentStateChangedEventArgs = extern struct {
 };
 pub const TargetedContentSubscription = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentSubscription = @ptrCast(self);
         return try this.getId();
     }
@@ -966,11 +966,11 @@ pub const TargetedContentSubscription = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetAsync(subscriptionId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
+    pub fn GetAsync(subscriptionId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
         const _f = try @This()._ITargetedContentSubscriptionStaticsCache.get();
         return try _f.GetAsync(subscriptionId);
     }
-    pub fn GetOptions(subscriptionId: HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
+    pub fn GetOptions(subscriptionId: ?HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
         const _f = try @This()._ITargetedContentSubscriptionStaticsCache.get();
         return try _f.GetOptions(subscriptionId);
     }
@@ -983,7 +983,7 @@ pub const TargetedContentSubscription = extern struct {
 };
 pub const TargetedContentSubscriptionOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSubscriptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubscriptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentSubscriptionOptions = @ptrCast(self);
         return try this.getSubscriptionId();
     }
@@ -995,11 +995,11 @@ pub const TargetedContentSubscriptionOptions = extern struct {
         const this: *ITargetedContentSubscriptionOptions = @ptrCast(self);
         return try this.putAllowPartialContentAvailability(value);
     }
-    pub fn getCloudQueryParameters(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getCloudQueryParameters(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *ITargetedContentSubscriptionOptions = @ptrCast(self);
         return try this.getCloudQueryParameters();
     }
-    pub fn getLocalFilters(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getLocalFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ITargetedContentSubscriptionOptions = @ptrCast(self);
         return try this.getLocalFilters();
     }
@@ -1019,11 +1019,11 @@ pub const TargetedContentValue = extern struct {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getValueKind();
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getPath();
     }
-    pub fn getString(self: *@This()) core.HResult!HSTRING {
+    pub fn getString(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getString();
     }
@@ -1051,7 +1051,7 @@ pub const TargetedContentValue = extern struct {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getAction();
     }
-    pub fn getStrings(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getStrings(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getStrings();
     }

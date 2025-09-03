@@ -1,134 +1,134 @@
 // ----- This code is automatically generated -----
 pub const IKnownRetailInfoPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getRetailAccessCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRetailAccessCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RetailAccessCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getManufacturerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManufacturerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayModelName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayModelName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrice(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrice(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Price(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIsFeatured(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIsFeatured(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsFeatured(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFormFactor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormFactor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormFactor(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getScreenSize(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getScreenSize(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ScreenSize(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeight(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeight(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Weight(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBatteryLifeDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBatteryLifeDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BatteryLifeDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProcessorDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProcessorDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProcessorDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMemory(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMemory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Memory(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStorageDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStorageDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StorageDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGraphicsDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGraphicsDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GraphicsDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrontCameraDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrontCameraDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrontCameraDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRearCameraDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRearCameraDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RearCameraDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHasNfc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHasNfc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HasNfc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHasSdSlot(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHasSdSlot(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HasSdSlot(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHasOpticalDrive(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHasOpticalDrive(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HasOpticalDrive(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIsOfficeInstalled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIsOfficeInstalled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsOfficeInstalled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWindowsEdition(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWindowsEdition(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WindowsEdition(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -145,28 +145,28 @@ pub const IKnownRetailInfoPropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RetailAccessCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ManufacturerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayModelName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Price: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IsFeatured: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FormFactor: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ScreenSize: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Weight: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BatteryLifeDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ProcessorDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Memory: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_StorageDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GraphicsDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FrontCameraDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RearCameraDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HasNfc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HasSdSlot: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HasOpticalDrive: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IsOfficeInstalled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WindowsEdition: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RetailAccessCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ManufacturerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Price: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsFeatured: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FormFactor: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ScreenSize: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Weight: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BatteryLifeDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ProcessorDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Memory: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StorageDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GraphicsDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FrontCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RearCameraDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasNfc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasSdSlot: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HasOpticalDrive: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsOfficeInstalled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WindowsEdition: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRetailInfoStatics = extern struct {
@@ -177,8 +177,8 @@ pub const IRetailInfoStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -196,7 +196,7 @@ pub const IRetailInfoStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsDemoModeEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const KnownRetailInfoProperties = extern struct {
@@ -204,91 +204,91 @@ pub const KnownRetailInfoProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRetailAccessCode() core.HResult!HSTRING {
+    pub fn getRetailAccessCode() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getRetailAccessCode();
     }
-    pub fn getManufacturerName() core.HResult!HSTRING {
+    pub fn getManufacturerName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getManufacturerName();
     }
-    pub fn getModelName() core.HResult!HSTRING {
+    pub fn getModelName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getModelName();
     }
-    pub fn getDisplayModelName() core.HResult!HSTRING {
+    pub fn getDisplayModelName() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getDisplayModelName();
     }
-    pub fn getPrice() core.HResult!HSTRING {
+    pub fn getPrice() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getPrice();
     }
-    pub fn getIsFeatured() core.HResult!HSTRING {
+    pub fn getIsFeatured() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getIsFeatured();
     }
-    pub fn getFormFactor() core.HResult!HSTRING {
+    pub fn getFormFactor() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getFormFactor();
     }
-    pub fn getScreenSize() core.HResult!HSTRING {
+    pub fn getScreenSize() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getScreenSize();
     }
-    pub fn getWeight() core.HResult!HSTRING {
+    pub fn getWeight() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getWeight();
     }
-    pub fn getDisplayDescription() core.HResult!HSTRING {
+    pub fn getDisplayDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getDisplayDescription();
     }
-    pub fn getBatteryLifeDescription() core.HResult!HSTRING {
+    pub fn getBatteryLifeDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getBatteryLifeDescription();
     }
-    pub fn getProcessorDescription() core.HResult!HSTRING {
+    pub fn getProcessorDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getProcessorDescription();
     }
-    pub fn getMemory() core.HResult!HSTRING {
+    pub fn getMemory() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getMemory();
     }
-    pub fn getStorageDescription() core.HResult!HSTRING {
+    pub fn getStorageDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getStorageDescription();
     }
-    pub fn getGraphicsDescription() core.HResult!HSTRING {
+    pub fn getGraphicsDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getGraphicsDescription();
     }
-    pub fn getFrontCameraDescription() core.HResult!HSTRING {
+    pub fn getFrontCameraDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getFrontCameraDescription();
     }
-    pub fn getRearCameraDescription() core.HResult!HSTRING {
+    pub fn getRearCameraDescription() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getRearCameraDescription();
     }
-    pub fn getHasNfc() core.HResult!HSTRING {
+    pub fn getHasNfc() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasNfc();
     }
-    pub fn getHasSdSlot() core.HResult!HSTRING {
+    pub fn getHasSdSlot() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasSdSlot();
     }
-    pub fn getHasOpticalDrive() core.HResult!HSTRING {
+    pub fn getHasOpticalDrive() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getHasOpticalDrive();
     }
-    pub fn getIsOfficeInstalled() core.HResult!HSTRING {
+    pub fn getIsOfficeInstalled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getIsOfficeInstalled();
     }
-    pub fn getWindowsEdition() core.HResult!HSTRING {
+    pub fn getWindowsEdition() core.HResult!?HSTRING {
         const _f = try @This()._IKnownRetailInfoPropertiesStaticsCache.get();
         return try _f.getWindowsEdition();
     }
@@ -305,7 +305,7 @@ pub const RetailInfo = extern struct {
         const _f = try @This()._IRetailInfoStaticsCache.get();
         return try _f.getIsDemoModeEnabled();
     }
-    pub fn getProperties() core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties() core.HResult!*IMapView(?HSTRING,IInspectable) {
         const _f = try @This()._IRetailInfoStaticsCache.get();
         return try _f.getProperties();
     }
@@ -516,7 +516,7 @@ pub const AnalyticsInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetSystemPropertiesAsync(attributeNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,HSTRING)) {
+    pub fn GetSystemPropertiesAsync(attributeNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,?HSTRING)) {
         const _f = try @This()._IAnalyticsInfoStatics2Cache.get();
         return try _f.GetSystemPropertiesAsync(attributeNames);
     }
@@ -524,7 +524,7 @@ pub const AnalyticsInfo = extern struct {
         const _f = try @This()._IAnalyticsInfoStaticsCache.get();
         return try _f.getVersionInfo();
     }
-    pub fn getDeviceForm() core.HResult!HSTRING {
+    pub fn getDeviceForm() core.HResult!?HSTRING {
         const _f = try @This()._IAnalyticsInfoStaticsCache.get();
         return try _f.getDeviceForm();
     }
@@ -535,15 +535,15 @@ pub const AnalyticsInfo = extern struct {
 };
 pub const AnalyticsVersionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceFamily(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceFamily(self: *@This()) core.HResult!?HSTRING {
         const this: *IAnalyticsVersionInfo = @ptrCast(self);
         return try this.getDeviceFamily();
     }
-    pub fn getDeviceFamilyVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceFamilyVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IAnalyticsVersionInfo = @ptrCast(self);
         return try this.getDeviceFamilyVersion();
     }
-    pub fn getProductName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProductName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAnalyticsVersionInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnalyticsVersionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -560,7 +560,7 @@ pub const AppApplicability = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetUnsupportedAppRequirements(capabilities: *IIterable(HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
+    pub fn GetUnsupportedAppRequirements(capabilities: *IIterable(?HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
         const _f = try @This()._IAppApplicabilityStaticsCache.get();
         return try _f.GetUnsupportedAppRequirements(capabilities);
     }
@@ -589,8 +589,8 @@ pub const IAnalyticsInfoStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceForm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceForm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceForm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -608,13 +608,13 @@ pub const IAnalyticsInfoStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_VersionInfo: *const fn(self: *anyopaque, _r: **AnalyticsVersionInfo) callconv(.winapi) HRESULT,
-        get_DeviceForm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceForm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAnalyticsInfoStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetSystemPropertiesAsync(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,HSTRING)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,HSTRING)) = undefined;
+    pub fn GetSystemPropertiesAsync(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,?HSTRING)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,?HSTRING)) = undefined;
         const _c = self.vtable.GetSystemPropertiesAsync(@ptrCast(self), attributeNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -631,19 +631,19 @@ pub const IAnalyticsInfoStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetSystemPropertiesAsync: *const fn(self: *anyopaque, attributeNames: *IIterable(HSTRING), _r: **IAsyncOperation(IMapView(HSTRING,HSTRING))) callconv(.winapi) HRESULT,
+        GetSystemPropertiesAsync: *const fn(self: *anyopaque, attributeNames: *IIterable(?HSTRING), _r: **IAsyncOperation(IMapView(?HSTRING,?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const IAnalyticsVersionInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceFamily(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceFamily(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceFamily(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceFamilyVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceFamilyVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceFamilyVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -660,14 +660,14 @@ pub const IAnalyticsVersionInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceFamily: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceFamilyVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceFamily: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceFamilyVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAnalyticsVersionInfo2 = extern struct {
     vtable: *const VTable,
-    pub fn getProductName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProductName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -684,12 +684,12 @@ pub const IAnalyticsVersionInfo2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProductName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProductName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppApplicabilityStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetUnsupportedAppRequirements(self: *@This(), capabilities: *IIterable(HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
+    pub fn GetUnsupportedAppRequirements(self: *@This(), capabilities: *IIterable(?HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
         var _r: *IVectorView(UnsupportedAppRequirement) = undefined;
         const _c = self.vtable.GetUnsupportedAppRequirements(@ptrCast(self), capabilities, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -707,7 +707,7 @@ pub const IAppApplicabilityStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetUnsupportedAppRequirements: *const fn(self: *anyopaque, capabilities: *IIterable(HSTRING), _r: **IVectorView(UnsupportedAppRequirement)) callconv(.winapi) HRESULT,
+        GetUnsupportedAppRequirements: *const fn(self: *anyopaque, capabilities: *IIterable(?HSTRING), _r: **IVectorView(UnsupportedAppRequirement)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEducationSettingsStatics = extern struct {
@@ -907,8 +907,8 @@ pub const ISystemSetupInfoStatics = extern struct {
 };
 pub const IUnsupportedAppRequirement = extern struct {
     vtable: *const VTable,
-    pub fn getRequirement(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRequirement(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Requirement(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -931,7 +931,7 @@ pub const IUnsupportedAppRequirement = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Requirement: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Requirement: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Reasons: *const fn(self: *anyopaque, _r: *UnsupportedAppRequirementReasons) callconv(.winapi) HRESULT,
     };
 };
@@ -1110,7 +1110,7 @@ pub const SystemSetupInfo = extern struct {
 };
 pub const UnsupportedAppRequirement = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRequirement(self: *@This()) core.HResult!HSTRING {
+    pub fn getRequirement(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnsupportedAppRequirement = @ptrCast(self);
         return try this.getRequirement();
     }

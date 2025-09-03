@@ -443,7 +443,7 @@ pub const IMediaProtectionServiceRequest = extern struct {
 };
 pub const IProtectionCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn IsTypeSupported(self: *@This(), ty: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
+    pub fn IsTypeSupported(self: *@This(), ty: ?HSTRING, keySystem: ?HSTRING) core.HResult!ProtectionCapabilityResult {
         var _r: ProtectionCapabilityResult = undefined;
         const _c = self.vtable.IsTypeSupported(@ptrCast(self), ty, keySystem, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -461,7 +461,7 @@ pub const IProtectionCapabilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsTypeSupported: *const fn(self: *anyopaque, ty: HSTRING, keySystem: HSTRING, _r: *ProtectionCapabilityResult) callconv(.winapi) HRESULT,
+        IsTypeSupported: *const fn(self: *anyopaque, ty: ?HSTRING, keySystem: ?HSTRING, _r: *ProtectionCapabilityResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IRevocationAndRenewalInformation = extern struct {
@@ -495,26 +495,26 @@ pub const IRevocationAndRenewalItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderHash(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderHash(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderHash(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublicKeyHash(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublicKeyHash(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PublicKeyHash(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRenewalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRenewalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RenewalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -532,10 +532,10 @@ pub const IRevocationAndRenewalItem = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Reasons: *const fn(self: *anyopaque, _r: *RevocationAndRenewalReasons) callconv(.winapi) HRESULT,
-        get_HeaderHash: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PublicKeyHash: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RenewalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderHash: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PublicKeyHash: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RenewalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IServiceRequestedEventArgs = extern struct {
@@ -669,7 +669,7 @@ pub const MediaProtectionServiceCompletion = extern struct {
 };
 pub const ProtectionCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn IsTypeSupported(self: *@This(), ty: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
+    pub fn IsTypeSupported(self: *@This(), ty: ?HSTRING, keySystem: ?HSTRING) core.HResult!ProtectionCapabilityResult {
         const this: *IProtectionCapabilities = @ptrCast(self);
         return try this.IsTypeSupported(ty, keySystem);
     }
@@ -797,19 +797,19 @@ pub const RevocationAndRenewalItem = extern struct {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getReasons();
     }
-    pub fn getHeaderHash(self: *@This()) core.HResult!HSTRING {
+    pub fn getHeaderHash(self: *@This()) core.HResult!?HSTRING {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getHeaderHash();
     }
-    pub fn getPublicKeyHash(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublicKeyHash(self: *@This()) core.HResult!?HSTRING {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getPublicKeyHash();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getRenewalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRenewalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getRenewalId();
     }

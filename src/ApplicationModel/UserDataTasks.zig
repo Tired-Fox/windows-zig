@@ -1,25 +1,25 @@
 // ----- This code is automatically generated -----
 pub const IUserDataTask = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getListId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getListId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ListId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -33,13 +33,13 @@ pub const IUserDataTask = extern struct {
         const _c = self.vtable.put_CompletedDate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDetails(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDetails(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Details(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Details(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -119,13 +119,13 @@ pub const IUserDataTask = extern struct {
         const _c = self.vtable.put_Sensitivity(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -151,14 +151,14 @@ pub const IUserDataTask = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ListId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ListId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_CompletedDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_CompletedDate: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
-        get_Details: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Details: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Details: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Details: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_DetailsKind: *const fn(self: *anyopaque, _r: *UserDataTaskDetailsKind) callconv(.winapi) HRESULT,
         put_DetailsKind: *const fn(self: *anyopaque, value: UserDataTaskDetailsKind) callconv(.winapi) HRESULT,
         get_DueDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
@@ -174,8 +174,8 @@ pub const IUserDataTask = extern struct {
         put_Reminder: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Sensitivity: *const fn(self: *anyopaque, _r: *UserDataTaskSensitivity) callconv(.winapi) HRESULT,
         put_Sensitivity: *const fn(self: *anyopaque, value: UserDataTaskSensitivity) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subject: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subject: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_StartDate: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_StartDate: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
     };
@@ -205,30 +205,30 @@ pub const IUserDataTaskBatch = extern struct {
 };
 pub const IUserDataTaskList = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -283,7 +283,7 @@ pub const IUserDataTaskList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTaskAsync(self: *@This(), userDataTask: HSTRING) core.HResult!*IAsyncOperation(UserDataTask) {
+    pub fn GetTaskAsync(self: *@This(), userDataTask: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTask) {
         var _r: *IAsyncOperation(UserDataTask) = undefined;
         const _c = self.vtable.GetTaskAsync(@ptrCast(self), userDataTask, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -295,7 +295,7 @@ pub const IUserDataTaskList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteTaskAsync(@ptrCast(self), userDataTaskId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -325,11 +325,11 @@ pub const IUserDataTaskList = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *UserDataTaskListOtherAppReadAccess) callconv(.winapi) HRESULT,
         put_OtherAppReadAccess: *const fn(self: *anyopaque, value: UserDataTaskListOtherAppReadAccess) callconv(.winapi) HRESULT,
         get_OtherAppWriteAccess: *const fn(self: *anyopaque, _r: *UserDataTaskListOtherAppWriteAccess) callconv(.winapi) HRESULT,
@@ -339,17 +339,17 @@ pub const IUserDataTaskList = extern struct {
         RegisterSyncManagerAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetTaskReader: *const fn(self: *anyopaque, _r: **UserDataTaskReader) callconv(.winapi) HRESULT,
         GetTaskReaderWithOptions: *const fn(self: *anyopaque, options: *UserDataTaskQueryOptions, _r: **UserDataTaskReader) callconv(.winapi) HRESULT,
-        GetTaskAsync: *const fn(self: *anyopaque, userDataTask: HSTRING, _r: **IAsyncOperation(UserDataTask)) callconv(.winapi) HRESULT,
+        GetTaskAsync: *const fn(self: *anyopaque, userDataTask: ?HSTRING, _r: **IAsyncOperation(UserDataTask)) callconv(.winapi) HRESULT,
         SaveTaskAsync: *const fn(self: *anyopaque, userDataTask: *UserDataTask, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DeleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DeleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataTaskListLimitedWriteOperations = extern struct {
     vtable: *const VTable,
-    pub fn TryCompleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn TryCompleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.TryCompleteTaskAsync(@ptrCast(self), userDataTaskId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -360,13 +360,13 @@ pub const IUserDataTaskListLimitedWriteOperations = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDeleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDeleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryDeleteTaskAsync(@ptrCast(self), userDataTaskId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySkipOccurrenceAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySkipOccurrenceAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySkipOccurrenceAsync(@ptrCast(self), userDataTaskId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -384,10 +384,10 @@ pub const IUserDataTaskListLimitedWriteOperations = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryCompleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        TryCompleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: ?HSTRING, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         TryCreateOrUpdateTaskAsync: *const fn(self: *anyopaque, userDataTask: *UserDataTask, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDeleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySkipOccurrenceAsync: *const fn(self: *anyopaque, userDataTaskId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDeleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySkipOccurrenceAsync: *const fn(self: *anyopaque, userDataTaskId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataTaskListSyncManager = extern struct {
@@ -762,13 +762,13 @@ pub const IUserDataTaskRegenerationProperties = extern struct {
 };
 pub const IUserDataTaskStore = extern struct {
     vtable: *const VTable,
-    pub fn CreateListAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         var _r: *IAsyncOperation(UserDataTaskList) = undefined;
         const _c = self.vtable.CreateListAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         var _r: *IAsyncOperation(UserDataTaskList) = undefined;
         const _c = self.vtable.CreateListAsyncWithUserDataAccountId(@ptrCast(self), name, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -780,7 +780,7 @@ pub const IUserDataTaskStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetListAsync(self: *@This(), taskListId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn GetListAsync(self: *@This(), taskListId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         var _r: *IAsyncOperation(UserDataTaskList) = undefined;
         const _c = self.vtable.GetListAsync(@ptrCast(self), taskListId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -798,27 +798,27 @@ pub const IUserDataTaskStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateListAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
-        CreateListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, name: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
+        CreateListAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
+        CreateListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, name: ?HSTRING, userDataAccountId: ?HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
         FindListsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UserDataTaskList))) callconv(.winapi) HRESULT,
-        GetListAsync: *const fn(self: *anyopaque, taskListId: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
+        GetListAsync: *const fn(self: *anyopaque, taskListId: ?HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
     };
 };
 pub const UserDataTask = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getListId(self: *@This()) core.HResult!HSTRING {
+    pub fn getListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.getListId();
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.putRemoteId(value);
     }
@@ -830,11 +830,11 @@ pub const UserDataTask = extern struct {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.putCompletedDate(value);
     }
-    pub fn getDetails(self: *@This()) core.HResult!HSTRING {
+    pub fn getDetails(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.getDetails();
     }
-    pub fn putDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.putDetails(value);
     }
@@ -898,11 +898,11 @@ pub const UserDataTask = extern struct {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.putSensitivity(value);
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserDataTask = @ptrCast(self);
         return try this.putSubject(value);
     }
@@ -961,23 +961,23 @@ pub const UserDataTaskKind = enum(i32) {
 };
 pub const UserDataTaskList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.getUserDataAccountId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.getSourceDisplayName();
     }
@@ -1017,7 +1017,7 @@ pub const UserDataTaskList = extern struct {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.GetTaskReaderWithOptions(options);
     }
-    pub fn GetTaskAsync(self: *@This(), userDataTask: HSTRING) core.HResult!*IAsyncOperation(UserDataTask) {
+    pub fn GetTaskAsync(self: *@This(), userDataTask: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTask) {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.GetTaskAsync(userDataTask);
     }
@@ -1025,7 +1025,7 @@ pub const UserDataTaskList = extern struct {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.SaveTaskAsync(userDataTask);
     }
-    pub fn DeleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.DeleteTaskAsync(userDataTaskId);
     }
@@ -1045,7 +1045,7 @@ pub const UserDataTaskList = extern struct {
 };
 pub const UserDataTaskListLimitedWriteOperations = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn TryCompleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn TryCompleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IUserDataTaskListLimitedWriteOperations = @ptrCast(self);
         return try this.TryCompleteTaskAsync(userDataTaskId);
     }
@@ -1053,11 +1053,11 @@ pub const UserDataTaskListLimitedWriteOperations = extern struct {
         const this: *IUserDataTaskListLimitedWriteOperations = @ptrCast(self);
         return try this.TryCreateOrUpdateTaskAsync(userDataTask);
     }
-    pub fn TryDeleteTaskAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDeleteTaskAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IUserDataTaskListLimitedWriteOperations = @ptrCast(self);
         return try this.TryDeleteTaskAsync(userDataTaskId);
     }
-    pub fn TrySkipOccurrenceAsync(self: *@This(), userDataTaskId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySkipOccurrenceAsync(self: *@This(), userDataTaskId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IUserDataTaskListLimitedWriteOperations = @ptrCast(self);
         return try this.TrySkipOccurrenceAsync(userDataTaskId);
     }
@@ -1361,11 +1361,11 @@ pub const UserDataTaskSensitivity = enum(i32) {
 };
 pub const UserDataTaskStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateListAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         const this: *IUserDataTaskStore = @ptrCast(self);
         return try this.CreateListAsync(name);
     }
-    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         const this: *IUserDataTaskStore = @ptrCast(self);
         return try this.CreateListAsyncWithUserDataAccountId(name, userDataAccountId);
     }
@@ -1373,7 +1373,7 @@ pub const UserDataTaskStore = extern struct {
         const this: *IUserDataTaskStore = @ptrCast(self);
         return try this.FindListsAsync();
     }
-    pub fn GetListAsync(self: *@This(), taskListId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn GetListAsync(self: *@This(), taskListId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         const this: *IUserDataTaskStore = @ptrCast(self);
         return try this.GetListAsync(taskListId);
     }

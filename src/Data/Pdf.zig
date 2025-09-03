@@ -44,7 +44,7 @@ pub const IPdfDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFileAsyncWithPassword(self: *@This(), file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromFileAsyncWithPassword(self: *@This(), file: *IStorageFile, password: ?HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         var _r: *IAsyncOperation(PdfDocument) = undefined;
         const _c = self.vtable.LoadFromFileAsyncWithPassword(@ptrCast(self), file, password, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -56,7 +56,7 @@ pub const IPdfDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromStreamAsyncWithPassword(self: *@This(), inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromStreamAsyncWithPassword(self: *@This(), inputStream: *IRandomAccessStream, password: ?HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         var _r: *IAsyncOperation(PdfDocument) = undefined;
         const _c = self.vtable.LoadFromStreamAsyncWithPassword(@ptrCast(self), inputStream, password, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -75,9 +75,9 @@ pub const IPdfDocumentStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadFromFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
-        LoadFromFileAsyncWithPassword: *const fn(self: *anyopaque, file: *IStorageFile, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
+        LoadFromFileAsyncWithPassword: *const fn(self: *anyopaque, file: *IStorageFile, password: ?HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
         LoadFromStreamAsync: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
-        LoadFromStreamAsyncWithPassword: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
+        LoadFromStreamAsyncWithPassword: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, password: ?HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPdfPage = extern struct {
@@ -312,7 +312,7 @@ pub const PdfDocument = extern struct {
         const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromFileAsync(file);
     }
-    pub fn LoadFromFileAsyncWithPassword(file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromFileAsyncWithPassword(file: *IStorageFile, password: ?HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromFileAsyncWithPassword(file, password);
     }
@@ -320,7 +320,7 @@ pub const PdfDocument = extern struct {
         const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromStreamAsync(inputStream);
     }
-    pub fn LoadFromStreamAsyncWithPassword(inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromStreamAsyncWithPassword(inputStream: *IRandomAccessStream, password: ?HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         const _f = try @This()._IPdfDocumentStaticsCache.get();
         return try _f.LoadFromStreamAsyncWithPassword(inputStream, password);
     }

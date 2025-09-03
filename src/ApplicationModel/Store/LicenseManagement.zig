@@ -7,7 +7,7 @@ pub const ILicenseManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSatisfactionInfosAsync(self: *@This(), contentIds: *IIterable(HSTRING), keyIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
+    pub fn GetSatisfactionInfosAsync(self: *@This(), contentIds: *IIterable(?HSTRING), keyIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
         var _r: *IAsyncOperation(LicenseSatisfactionResult) = undefined;
         const _c = self.vtable.GetSatisfactionInfosAsync(@ptrCast(self), contentIds, keyIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -26,7 +26,7 @@ pub const ILicenseManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AddLicenseAsync: *const fn(self: *anyopaque, license: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetSatisfactionInfosAsync: *const fn(self: *anyopaque, contentIds: *IIterable(HSTRING), keyIds: *IIterable(HSTRING), _r: **IAsyncOperation(LicenseSatisfactionResult)) callconv(.winapi) HRESULT,
+        GetSatisfactionInfosAsync: *const fn(self: *anyopaque, contentIds: *IIterable(?HSTRING), keyIds: *IIterable(?HSTRING), _r: **IAsyncOperation(LicenseSatisfactionResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILicenseManagerStatics2 = extern struct {
@@ -119,8 +119,8 @@ pub const ILicenseSatisfactionInfo = extern struct {
 };
 pub const ILicenseSatisfactionResult = extern struct {
     vtable: *const VTable,
-    pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(HSTRING,LicenseSatisfactionInfo) {
-        var _r: *IMapView(HSTRING,LicenseSatisfactionInfo) = undefined;
+    pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(?HSTRING,LicenseSatisfactionInfo) {
+        var _r: *IMapView(?HSTRING,LicenseSatisfactionInfo) = undefined;
         const _c = self.vtable.get_LicenseSatisfactionInfos(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -143,7 +143,7 @@ pub const ILicenseSatisfactionResult = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LicenseSatisfactionInfos: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,LicenseSatisfactionInfo)) callconv(.winapi) HRESULT,
+        get_LicenseSatisfactionInfos: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,LicenseSatisfactionInfo)) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
     };
 };
@@ -160,7 +160,7 @@ pub const LicenseManager = extern struct {
         const _f = try @This()._ILicenseManagerStaticsCache.get();
         return try _f.AddLicenseAsync(license);
     }
-    pub fn GetSatisfactionInfosAsync(contentIds: *IIterable(HSTRING), keyIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
+    pub fn GetSatisfactionInfosAsync(contentIds: *IIterable(?HSTRING), keyIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
         const _f = try @This()._ILicenseManagerStaticsCache.get();
         return try _f.GetSatisfactionInfosAsync(contentIds, keyIds);
     }
@@ -211,7 +211,7 @@ pub const LicenseSatisfactionInfo = extern struct {
 };
 pub const LicenseSatisfactionResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(HSTRING,LicenseSatisfactionInfo) {
+    pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(?HSTRING,LicenseSatisfactionInfo) {
         const this: *ILicenseSatisfactionResult = @ptrCast(self);
         return try this.getLicenseSatisfactionInfos();
     }

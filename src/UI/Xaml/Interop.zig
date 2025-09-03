@@ -523,7 +523,7 @@ pub const TypeKind = enum(i32) {
     Custom = 2,
 };
 pub const TypeName = extern struct {
-    Name: HSTRING,
+    Name: ?HSTRING,
     Kind: TypeKind,
 };
 const IUnknown = @import("../../root.zig").IUnknown;

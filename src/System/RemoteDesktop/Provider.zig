@@ -169,14 +169,14 @@ pub const IRemoteDesktopConnectionRemoteInfoStatics = extern struct {
 };
 pub const IRemoteDesktopInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -193,13 +193,13 @@ pub const IRemoteDesktopInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteDesktopInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), id: HSTRING, displayName: HSTRING) core.HResult!*RemoteDesktopInfo {
+    pub fn CreateInstance(self: *@This(), id: ?HSTRING, displayName: ?HSTRING) core.HResult!*RemoteDesktopInfo {
         var _r: *RemoteDesktopInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), id, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -217,7 +217,7 @@ pub const IRemoteDesktopInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, id: HSTRING, displayName: HSTRING, _r: **RemoteDesktopInfo) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, id: ?HSTRING, displayName: ?HSTRING, _r: **RemoteDesktopInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteDesktopRegistrarStatics = extern struct {
@@ -346,18 +346,18 @@ pub const RemoteDesktopConnectionStatus = enum(i32) {
 };
 pub const RemoteDesktopInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteDesktopInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteDesktopInfo = @ptrCast(self);
         return try this.getId();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(id: HSTRING, displayName: HSTRING) core.HResult!*RemoteDesktopInfo {
+    pub fn CreateInstance(id: ?HSTRING, displayName: ?HSTRING) core.HResult!*RemoteDesktopInfo {
         const _f = try @This()._IRemoteDesktopInfoFactoryCache.get();
         return try _f.CreateInstance(id, displayName);
     }

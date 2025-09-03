@@ -1,13 +1,13 @@
 // ----- This code is automatically generated -----
 pub const IPlatformTelemetryClientStatics = extern struct {
     vtable: *const VTable,
-    pub fn Register(self: *@This(), id: HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn Register(self: *@This(), id: ?HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
         var _r: *PlatformTelemetryRegistrationResult = undefined;
         const _c = self.vtable.Register(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterWithSettings(self: *@This(), id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn RegisterWithSettings(self: *@This(), id: ?HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
         var _r: *PlatformTelemetryRegistrationResult = undefined;
         const _c = self.vtable.RegisterWithSettings(@ptrCast(self), id, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -25,8 +25,8 @@ pub const IPlatformTelemetryClientStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, id: HSTRING, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
-        RegisterWithSettings: *const fn(self: *anyopaque, id: HSTRING, settings: *PlatformTelemetryRegistrationSettings, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, id: ?HSTRING, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
+        RegisterWithSettings: *const fn(self: *anyopaque, id: ?HSTRING, settings: *PlatformTelemetryRegistrationSettings, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlatformTelemetryRegistrationResult = extern struct {
@@ -97,11 +97,11 @@ pub const PlatformTelemetryClient = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Register(id: HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn Register(id: ?HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
         const _f = try @This()._IPlatformTelemetryClientStaticsCache.get();
         return try _f.Register(id);
     }
-    pub fn RegisterWithSettings(id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn RegisterWithSettings(id: ?HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
         const _f = try @This()._IPlatformTelemetryClientStaticsCache.get();
         return try _f.RegisterWithSettings(id, settings);
     }

@@ -39,7 +39,7 @@ pub const IXamlDirect = extern struct {
         const _c = self.vtable.SetInt32Property(@ptrCast(self), xamlDirectObject, propertyIndex, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: HSTRING) core.HResult!void {
+    pub fn SetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetStringProperty(@ptrCast(self), xamlDirectObject, propertyIndex, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -125,8 +125,8 @@ pub const IXamlDirect = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringProperty(@ptrCast(self), xamlDirectObject, propertyIndex, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -279,7 +279,7 @@ pub const IXamlDirect = extern struct {
         SetBooleanProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: bool) callconv(.winapi) HRESULT,
         SetDoubleProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: f64) callconv(.winapi) HRESULT,
         SetInt32Property: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: i32) callconv(.winapi) HRESULT,
-        SetStringProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: HSTRING) callconv(.winapi) HRESULT,
+        SetStringProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: ?HSTRING) callconv(.winapi) HRESULT,
         SetDateTimeProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: DateTime) callconv(.winapi) HRESULT,
         SetPointProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Point) callconv(.winapi) HRESULT,
         SetRectProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: Rect) callconv(.winapi) HRESULT,
@@ -298,7 +298,7 @@ pub const IXamlDirect = extern struct {
         GetBooleanProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *bool) callconv(.winapi) HRESULT,
         GetDoubleProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *f64) callconv(.winapi) HRESULT,
         GetInt32Property: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *i32) callconv(.winapi) HRESULT,
-        GetStringProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStringProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetDateTimeProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *DateTime) callconv(.winapi) HRESULT,
         GetPointProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *Point) callconv(.winapi) HRESULT,
         GetRectProperty: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, _r: *Rect) callconv(.winapi) HRESULT,
@@ -398,7 +398,7 @@ pub const XamlDirect = extern struct {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.SetInt32Property(xamlDirectObject, propertyIndex, value);
     }
-    pub fn SetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: HSTRING) core.HResult!void {
+    pub fn SetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex, value: ?HSTRING) core.HResult!void {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.SetStringProperty(xamlDirectObject, propertyIndex, value);
     }
@@ -474,7 +474,7 @@ pub const XamlDirect = extern struct {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.GetInt32Property(xamlDirectObject, propertyIndex);
     }
-    pub fn GetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!HSTRING {
+    pub fn GetStringProperty(self: *@This(), xamlDirectObject: *IXamlDirectObject, propertyIndex: XamlPropertyIndex) core.HResult!?HSTRING {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.GetStringProperty(xamlDirectObject, propertyIndex);
     }

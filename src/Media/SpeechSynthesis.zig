@@ -77,13 +77,13 @@ pub const ISpeechSynthesisStream = extern struct {
 };
 pub const ISpeechSynthesizer = extern struct {
     vtable: *const VTable,
-    pub fn SynthesizeTextToStreamAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
+    pub fn SynthesizeTextToStreamAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         var _r: *IAsyncOperation(SpeechSynthesisStream) = undefined;
         const _c = self.vtable.SynthesizeTextToStreamAsync(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SynthesizeSsmlToStreamAsync(self: *@This(), Ssml: HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
+    pub fn SynthesizeSsmlToStreamAsync(self: *@This(), Ssml: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         var _r: *IAsyncOperation(SpeechSynthesisStream) = undefined;
         const _c = self.vtable.SynthesizeSsmlToStreamAsync(@ptrCast(self), Ssml, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -111,8 +111,8 @@ pub const ISpeechSynthesizer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SynthesizeTextToStreamAsync: *const fn(self: *anyopaque, text: HSTRING, _r: **IAsyncOperation(SpeechSynthesisStream)) callconv(.winapi) HRESULT,
-        SynthesizeSsmlToStreamAsync: *const fn(self: *anyopaque, Ssml: HSTRING, _r: **IAsyncOperation(SpeechSynthesisStream)) callconv(.winapi) HRESULT,
+        SynthesizeTextToStreamAsync: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IAsyncOperation(SpeechSynthesisStream)) callconv(.winapi) HRESULT,
+        SynthesizeSsmlToStreamAsync: *const fn(self: *anyopaque, Ssml: ?HSTRING, _r: **IAsyncOperation(SpeechSynthesisStream)) callconv(.winapi) HRESULT,
         put_Voice: *const fn(self: *anyopaque, value: *VoiceInformation) callconv(.winapi) HRESULT,
         get_Voice: *const fn(self: *anyopaque, _r: **VoiceInformation) callconv(.winapi) HRESULT,
     };
@@ -274,26 +274,26 @@ pub const ISpeechSynthesizerOptions3 = extern struct {
 };
 pub const IVoiceInformation = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -316,10 +316,10 @@ pub const IVoiceInformation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Gender: *const fn(self: *anyopaque, _r: *VoiceGender) callconv(.winapi) HRESULT,
     };
 };
@@ -415,7 +415,7 @@ pub const SpeechSynthesisStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -435,11 +435,11 @@ pub const SpeechSynthesisStream = extern struct {
 };
 pub const SpeechSynthesizer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SynthesizeTextToStreamAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
+    pub fn SynthesizeTextToStreamAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         const this: *ISpeechSynthesizer = @ptrCast(self);
         return try this.SynthesizeTextToStreamAsync(text);
     }
-    pub fn SynthesizeSsmlToStreamAsync(self: *@This(), Ssml: HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
+    pub fn SynthesizeSsmlToStreamAsync(self: *@This(), Ssml: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         const this: *ISpeechSynthesizer = @ptrCast(self);
         return try this.SynthesizeSsmlToStreamAsync(Ssml);
     }
@@ -581,19 +581,19 @@ pub const VoiceGender = enum(i32) {
 };
 pub const VoiceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceInformation = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceInformation = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceInformation = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceInformation = @ptrCast(self);
         return try this.getDescription();
     }

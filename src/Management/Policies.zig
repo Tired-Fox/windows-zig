@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const INamedPolicyData = extern struct {
     vtable: *const VTable,
-    pub fn getArea(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArea(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Area(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -61,8 +61,8 @@ pub const INamedPolicyData = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -89,8 +89,8 @@ pub const INamedPolicyData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Area: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Area: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *NamedPolicyKind) callconv(.winapi) HRESULT,
         get_IsManaged: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsUserPolicy: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -99,20 +99,20 @@ pub const INamedPolicyData = extern struct {
         GetBinary: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         GetInt32: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         GetInt64: *const fn(self: *anyopaque, _r: *i64) callconv(.winapi) HRESULT,
-        GetString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_Changed: *const fn(self: *anyopaque, changedHandler: *TypedEventHandler(NamedPolicyData,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Changed: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
 };
 pub const INamedPolicyStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetPolicyFromPath(self: *@This(), area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
+    pub fn GetPolicyFromPath(self: *@This(), area: ?HSTRING, name: ?HSTRING) core.HResult!*NamedPolicyData {
         var _r: *NamedPolicyData = undefined;
         const _c = self.vtable.GetPolicyFromPath(@ptrCast(self), area, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPolicyFromPathForUser(self: *@This(), user: *User, area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
+    pub fn GetPolicyFromPathForUser(self: *@This(), user: *User, area: ?HSTRING, name: ?HSTRING) core.HResult!*NamedPolicyData {
         var _r: *NamedPolicyData = undefined;
         const _c = self.vtable.GetPolicyFromPathForUser(@ptrCast(self), user, area, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -130,8 +130,8 @@ pub const INamedPolicyStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPolicyFromPath: *const fn(self: *anyopaque, area: HSTRING, name: HSTRING, _r: **NamedPolicyData) callconv(.winapi) HRESULT,
-        GetPolicyFromPathForUser: *const fn(self: *anyopaque, user: *User, area: HSTRING, name: HSTRING, _r: **NamedPolicyData) callconv(.winapi) HRESULT,
+        GetPolicyFromPath: *const fn(self: *anyopaque, area: ?HSTRING, name: ?HSTRING, _r: **NamedPolicyData) callconv(.winapi) HRESULT,
+        GetPolicyFromPathForUser: *const fn(self: *anyopaque, user: *User, area: ?HSTRING, name: ?HSTRING, _r: **NamedPolicyData) callconv(.winapi) HRESULT,
     };
 };
 pub const NamedPolicy = extern struct {
@@ -139,11 +139,11 @@ pub const NamedPolicy = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetPolicyFromPath(area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
+    pub fn GetPolicyFromPath(area: ?HSTRING, name: ?HSTRING) core.HResult!*NamedPolicyData {
         const _f = try @This()._INamedPolicyStaticsCache.get();
         return try _f.GetPolicyFromPath(area, name);
     }
-    pub fn GetPolicyFromPathForUser(user: *User, area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
+    pub fn GetPolicyFromPathForUser(user: *User, area: ?HSTRING, name: ?HSTRING) core.HResult!*NamedPolicyData {
         const _f = try @This()._INamedPolicyStaticsCache.get();
         return try _f.GetPolicyFromPathForUser(user, area, name);
     }
@@ -153,11 +153,11 @@ pub const NamedPolicy = extern struct {
 };
 pub const NamedPolicyData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArea(self: *@This()) core.HResult!HSTRING {
+    pub fn getArea(self: *@This()) core.HResult!?HSTRING {
         const this: *INamedPolicyData = @ptrCast(self);
         return try this.getArea();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *INamedPolicyData = @ptrCast(self);
         return try this.getName();
     }
@@ -193,7 +193,7 @@ pub const NamedPolicyData = extern struct {
         const this: *INamedPolicyData = @ptrCast(self);
         return try this.GetInt64();
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         const this: *INamedPolicyData = @ptrCast(self);
         return try this.GetString();
     }

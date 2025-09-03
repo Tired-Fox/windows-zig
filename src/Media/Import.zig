@@ -480,8 +480,8 @@ pub const IPhotoImportImportItemsResult = extern struct {
 };
 pub const IPhotoImportItem = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -544,14 +544,14 @@ pub const IPhotoImportItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getImportedFileNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getImportedFileNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ImportedFileNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeletedFileNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getDeletedFileNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DeletedFileNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -568,7 +568,7 @@ pub const IPhotoImportItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ItemKey: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_ContentType: *const fn(self: *anyopaque, _r: *PhotoImportContentType) callconv(.winapi) HRESULT,
         get_SizeInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
@@ -579,14 +579,14 @@ pub const IPhotoImportItem = extern struct {
         get_IsSelected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSelected: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Thumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        get_ImportedFileNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_DeletedFileNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_ImportedFileNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DeletedFileNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhotoImportItem2 = extern struct {
     vtable: *const VTable,
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -603,7 +603,7 @@ pub const IPhotoImportItem2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhotoImportItemImportedEventArgs = extern struct {
@@ -784,12 +784,12 @@ pub const IPhotoImportSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDestinationFileNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDestinationFileNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DestinationFileNamePrefix(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDestinationFileNamePrefix(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDestinationFileNamePrefix(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DestinationFileNamePrefix(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -820,8 +820,8 @@ pub const IPhotoImportSession = extern struct {
         get_AppendSessionDateToDestinationFolder: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_SubfolderCreationMode: *const fn(self: *anyopaque, value: PhotoImportSubfolderCreationMode) callconv(.winapi) HRESULT,
         get_SubfolderCreationMode: *const fn(self: *anyopaque, _r: *PhotoImportSubfolderCreationMode) callconv(.winapi) HRESULT,
-        put_DestinationFileNamePrefix: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DestinationFileNamePrefix: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DestinationFileNamePrefix: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DestinationFileNamePrefix: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         FindItemsAsync: *const fn(self: *anyopaque, contentTypeFilter: PhotoImportContentTypeFilter, itemSelectionMode: PhotoImportItemSelectionMode, _r: **IAsyncOperationWithProgress(PhotoImportFindItemsResult,u32)) callconv(.winapi) HRESULT,
     };
 };
@@ -867,8 +867,8 @@ pub const IPhotoImportSession2 = extern struct {
 };
 pub const IPhotoImportSidecar = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -897,51 +897,51 @@ pub const IPhotoImportSidecar = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SizeInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_Date: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhotoImportSource = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getManufacturer(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getManufacturer(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Manufacturer(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Model(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSerialNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SerialNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getConnectionProtocol(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConnectionProtocol(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionProtocol(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1018,13 +1018,13 @@ pub const IPhotoImportSource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Manufacturer: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Model: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SerialNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ConnectionProtocol: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Manufacturer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Model: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SerialNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ConnectionProtocol: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ConnectionTransport: *const fn(self: *anyopaque, _r: *PhotoImportConnectionTransport) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *PhotoImportSourceType) callconv(.winapi) HRESULT,
         get_PowerSource: *const fn(self: *anyopaque, _r: *PhotoImportPowerSource) callconv(.winapi) HRESULT,
@@ -1039,7 +1039,7 @@ pub const IPhotoImportSource = extern struct {
 };
 pub const IPhotoImportSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), sourceId: HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
+    pub fn FromIdAsync(self: *@This(), sourceId: ?HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
         var _r: *IAsyncOperation(PhotoImportSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), sourceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1063,26 +1063,26 @@ pub const IPhotoImportSourceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, sourceId: HSTRING, _r: **IAsyncOperation(PhotoImportSource)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, sourceId: ?HSTRING, _r: **IAsyncOperation(PhotoImportSource)) callconv(.winapi) HRESULT,
         FromFolderAsync: *const fn(self: *anyopaque, sourceRootFolder: *IStorageFolder, _r: **IAsyncOperation(PhotoImportSource)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhotoImportStorageMedium = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSerialNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SerialNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1127,9 +1127,9 @@ pub const IPhotoImportStorageMedium = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SerialNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SerialNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_StorageMediumType: *const fn(self: *anyopaque, _r: *PhotoImportStorageMediumType) callconv(.winapi) HRESULT,
         get_SupportedAccessMode: *const fn(self: *anyopaque, _r: *PhotoImportAccessMode) callconv(.winapi) HRESULT,
         get_CapacityInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
@@ -1139,8 +1139,8 @@ pub const IPhotoImportStorageMedium = extern struct {
 };
 pub const IPhotoImportVideoSegment = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1181,7 +1181,7 @@ pub const IPhotoImportVideoSegment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SizeInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_Date: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_Sibling: *const fn(self: *anyopaque, _r: **PhotoImportSidecar) callconv(.winapi) HRESULT,
@@ -1488,7 +1488,7 @@ pub const PhotoImportImportMode = enum(i32) {
 };
 pub const PhotoImportItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportItem = @ptrCast(self);
         return try this.getName();
     }
@@ -1532,15 +1532,15 @@ pub const PhotoImportItem = extern struct {
         const this: *IPhotoImportItem = @ptrCast(self);
         return try this.getThumbnail();
     }
-    pub fn getImportedFileNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getImportedFileNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPhotoImportItem = @ptrCast(self);
         return try this.getImportedFileNames();
     }
-    pub fn getDeletedFileNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getDeletedFileNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPhotoImportItem = @ptrCast(self);
         return try this.getDeletedFileNames();
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhotoImportItem2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1676,11 +1676,11 @@ pub const PhotoImportSession = extern struct {
         const this: *IPhotoImportSession = @ptrCast(self);
         return try this.getSubfolderCreationMode();
     }
-    pub fn putDestinationFileNamePrefix(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDestinationFileNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhotoImportSession = @ptrCast(self);
         return try this.putDestinationFileNamePrefix(value);
     }
-    pub fn getDestinationFileNamePrefix(self: *@This()) core.HResult!HSTRING {
+    pub fn getDestinationFileNamePrefix(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSession = @ptrCast(self);
         return try this.getDestinationFileNamePrefix();
     }
@@ -1726,7 +1726,7 @@ pub const PhotoImportSession = extern struct {
 };
 pub const PhotoImportSidecar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSidecar = @ptrCast(self);
         return try this.getName();
     }
@@ -1746,31 +1746,31 @@ pub const PhotoImportSidecar = extern struct {
 };
 pub const PhotoImportSource = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getManufacturer(self: *@This()) core.HResult!HSTRING {
+    pub fn getManufacturer(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getManufacturer();
     }
-    pub fn getModel(self: *@This()) core.HResult!HSTRING {
+    pub fn getModel(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getModel();
     }
-    pub fn getSerialNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getSerialNumber();
     }
-    pub fn getConnectionProtocol(self: *@This()) core.HResult!HSTRING {
+    pub fn getConnectionProtocol(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getConnectionProtocol();
     }
@@ -1817,7 +1817,7 @@ pub const PhotoImportSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(sourceId: HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
+    pub fn FromIdAsync(sourceId: ?HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
         const _f = try @This()._IPhotoImportSourceStaticsCache.get();
         return try _f.FromIdAsync(sourceId);
     }
@@ -1849,15 +1849,15 @@ pub const PhotoImportStage = enum(i32) {
 };
 pub const PhotoImportStorageMedium = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportStorageMedium = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportStorageMedium = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getSerialNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportStorageMedium = @ptrCast(self);
         return try this.getSerialNumber();
     }
@@ -1905,7 +1905,7 @@ pub const PhotoImportSubfolderDateFormat = enum(i32) {
 };
 pub const PhotoImportVideoSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportVideoSegment = @ptrCast(self);
         return try this.getName();
     }

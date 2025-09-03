@@ -597,8 +597,8 @@ pub const INDStartResult = extern struct {
 };
 pub const INDStorageFileHelper = extern struct {
     vtable: *const VTable,
-    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetFileURLs(@ptrCast(self), file, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -615,7 +615,7 @@ pub const INDStorageFileHelper = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetFileURLs: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        GetFileURLs: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const INDStreamParser = extern struct {
@@ -701,7 +701,7 @@ pub const INDStreamParserNotifier = extern struct {
 };
 pub const INDTCPMessengerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), remoteHostName: HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
+    pub fn CreateInstance(self: *@This(), remoteHostName: ?HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
         var _r: *NDTCPMessenger = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), remoteHostName, remoteHostPort, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -719,7 +719,7 @@ pub const INDTCPMessengerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, remoteHostName: HSTRING, remoteHostPort: u32, _r: **NDTCPMessenger) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, remoteHostName: ?HSTRING, remoteHostPort: u32, _r: **NDTCPMessenger) callconv(.winapi) HRESULT,
     };
 };
 pub const INDTransmitterProperties = extern struct {
@@ -772,20 +772,20 @@ pub const INDTransmitterProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelManufacturerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelManufacturerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelManufacturerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getModelNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getModelNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ModelNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -810,9 +810,9 @@ pub const INDTransmitterProperties = extern struct {
         get_ExpirationDate: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_ClientID: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         get_ModelDigest: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
-        get_ModelManufacturerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ModelNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ModelManufacturerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ModelNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlayReadyContentHeader = extern struct {
@@ -823,8 +823,8 @@ pub const IPlayReadyContentHeader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyIdString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKeyIdString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KeyIdString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -853,8 +853,8 @@ pub const IPlayReadyContentHeader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCustomAttributes(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomAttributes(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomAttributes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -890,12 +890,12 @@ pub const IPlayReadyContentHeader = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_KeyId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_KeyIdString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_KeyIdString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LicenseAcquisitionUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_LicenseAcquisitionUserInterfaceUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_DomainServiceId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_EncryptionType: *const fn(self: *anyopaque, _r: *PlayReadyEncryptionAlgorithm) callconv(.winapi) HRESULT,
-        get_CustomAttributes: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CustomAttributes: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DecryptorSetup: *const fn(self: *anyopaque, _r: *PlayReadyDecryptorSetup) callconv(.winapi) HRESULT,
         GetSerializedHeader: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         get_HeaderWithEmbeddedUpdates: *const fn(self: *anyopaque, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
@@ -909,8 +909,8 @@ pub const IPlayReadyContentHeader2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKeyIdStrings(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn getKeyIdStrings(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_KeyIdStrings(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -928,18 +928,18 @@ pub const IPlayReadyContentHeader2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_KeyIds: *const fn(self: *anyopaque, _r: *[*]Guid) callconv(.winapi) HRESULT,
-        get_KeyIdStrings: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        get_KeyIdStrings: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlayReadyContentHeaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstanceFromWindowsMediaDrmHeader(self: *@This(), headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromWindowsMediaDrmHeader(self: *@This(), headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromWindowsMediaDrmHeader(@ptrCast(self), headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstanceFromComponents(self: *@This(), contentKeyId: *Guid, contentKeyIdString: HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromComponents(self: *@This(), contentKeyId: *Guid, contentKeyIdString: ?HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromComponents(@ptrCast(self), contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -963,14 +963,14 @@ pub const IPlayReadyContentHeaderFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstanceFromWindowsMediaDrmHeader: *const fn(self: *anyopaque, headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
-        CreateInstanceFromComponents: *const fn(self: *anyopaque, contentKeyId: *Guid, contentKeyIdString: HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
+        CreateInstanceFromWindowsMediaDrmHeader: *const fn(self: *anyopaque, headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
+        CreateInstanceFromComponents: *const fn(self: *anyopaque, contentKeyId: *Guid, contentKeyIdString: ?HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
         CreateInstanceFromPlayReadyHeader: *const fn(self: *anyopaque, headerBytes: [*]u8, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlayReadyContentHeaderFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstanceFromComponents2(self: *@This(), dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: [*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromComponents2(self: *@This(), dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: ?[*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromComponents2(@ptrCast(self), dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -988,7 +988,7 @@ pub const IPlayReadyContentHeaderFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstanceFromComponents2: *const fn(self: *anyopaque, dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: [*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
+        CreateInstanceFromComponents2: *const fn(self: *anyopaque, dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: ?[*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid, _r: **PlayReadyContentHeader) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlayReadyContentResolver = extern struct {
@@ -1034,8 +1034,8 @@ pub const IPlayReadyDomain = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1061,7 +1061,7 @@ pub const IPlayReadyDomain = extern struct {
         get_AccountId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_ServiceId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_Revision: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_FriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DomainJoinUrl: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
@@ -1100,13 +1100,13 @@ pub const IPlayReadyDomainJoinServiceRequest = extern struct {
         const _c = self.vtable.put_DomainAccountId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDomainFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDomainFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DomainFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDomainFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDomainFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DomainFriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1134,8 +1134,8 @@ pub const IPlayReadyDomainJoinServiceRequest = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_DomainAccountId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         put_DomainAccountId: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
-        get_DomainFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DomainFriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DomainFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DomainFriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_DomainServiceId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         put_DomainServiceId: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
     };
@@ -1694,19 +1694,19 @@ pub const IPlayReadyServiceRequest = extern struct {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChallengeCustomData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ChallengeCustomData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1748,9 +1748,9 @@ pub const IPlayReadyServiceRequest = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Uri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_ResponseCustomData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ChallengeCustomData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ChallengeCustomData: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ResponseCustomData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ChallengeCustomData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ChallengeCustomData: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         BeginServiceRequest: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         NextServiceRequest: *const fn(self: *anyopaque, _r: **IPlayReadyServiceRequest) callconv(.winapi) HRESULT,
         GenerateManualEnablingChallenge: *const fn(self: *anyopaque, _r: **PlayReadySoapMessage) callconv(.winapi) HRESULT,
@@ -1921,8 +1921,8 @@ pub const IPlayReadyStatics3 = extern struct {
 };
 pub const IPlayReadyStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn getInputTrustAuthorityToCreate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInputTrustAuthorityToCreate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputTrustAuthorityToCreate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1945,7 +1945,7 @@ pub const IPlayReadyStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_InputTrustAuthorityToCreate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InputTrustAuthorityToCreate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ProtectionSystemId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
     };
 };
@@ -2215,7 +2215,7 @@ pub const NDStartAsyncOptions = enum(i32) {
 };
 pub const NDStorageFileHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(HSTRING) {
+    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
         const this: *INDStorageFileHelper = @ptrCast(self);
         return try this.GetFileURLs(file);
     }
@@ -2286,7 +2286,7 @@ pub const NDTCPMessenger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(remoteHostName: HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
+    pub fn CreateInstance(remoteHostName: ?HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
         const _f = try @This()._INDTCPMessengerFactoryCache.get();
         return try _f.CreateInstance(remoteHostName, remoteHostPort);
     }
@@ -2303,7 +2303,7 @@ pub const PlayReadyContentHeader = extern struct {
         const this: *IPlayReadyContentHeader = @ptrCast(self);
         return try this.getKeyId();
     }
-    pub fn getKeyIdString(self: *@This()) core.HResult!HSTRING {
+    pub fn getKeyIdString(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayReadyContentHeader = @ptrCast(self);
         return try this.getKeyIdString();
     }
@@ -2323,7 +2323,7 @@ pub const PlayReadyContentHeader = extern struct {
         const this: *IPlayReadyContentHeader = @ptrCast(self);
         return try this.getEncryptionType();
     }
-    pub fn getCustomAttributes(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomAttributes(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayReadyContentHeader = @ptrCast(self);
         return try this.getCustomAttributes();
     }
@@ -2345,7 +2345,7 @@ pub const PlayReadyContentHeader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyIds();
     }
-    pub fn getKeyIdStrings(self: *@This()) core.HResult![*]HSTRING {
+    pub fn getKeyIdStrings(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IPlayReadyContentHeader2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2354,11 +2354,11 @@ pub const PlayReadyContentHeader = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromWindowsMediaDrmHeader(headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
-    pub fn CreateInstanceFromComponents(contentKeyId: *Guid, contentKeyIdString: HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromComponents(contentKeyId: *Guid, contentKeyIdString: ?HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromComponents(contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
@@ -2366,7 +2366,7 @@ pub const PlayReadyContentHeader = extern struct {
         const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromPlayReadyHeader(headerBytes);
     }
-    pub fn CreateInstanceFromComponents2(dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: [*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
+    pub fn CreateInstanceFromComponents2(dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: ?[*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         const _f = try @This()._IPlayReadyContentHeaderFactory2Cache.get();
         return try _f.CreateInstanceFromComponents2(dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
@@ -2409,7 +2409,7 @@ pub const PlayReadyDomain = extern struct {
         const this: *IPlayReadyDomain = @ptrCast(self);
         return try this.getRevision();
     }
-    pub fn getFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayReadyDomain = @ptrCast(self);
         return try this.getFriendlyName();
     }
@@ -2469,11 +2469,11 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
         const this: *IPlayReadyDomainJoinServiceRequest = @ptrCast(self);
         return try this.putDomainAccountId(value);
     }
-    pub fn getDomainFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDomainFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayReadyDomainJoinServiceRequest = @ptrCast(self);
         return try this.getDomainFriendlyName();
     }
-    pub fn putDomainFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDomainFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPlayReadyDomainJoinServiceRequest = @ptrCast(self);
         return try this.putDomainFriendlyName(value);
     }
@@ -2497,19 +2497,19 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2595,19 +2595,19 @@ pub const PlayReadyDomainLeaveServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2714,19 +2714,19 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2872,19 +2872,19 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3058,19 +3058,19 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3140,19 +3140,19 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3278,19 +3278,19 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
-    pub fn getResponseCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
-    pub fn getChallengeCustomData(self: *@This()) core.HResult!HSTRING {
+    pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
-    pub fn putChallengeCustomData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3387,7 +3387,7 @@ pub const PlayReadyStatics = extern struct {
         const _f = try @This()._IPlayReadyStatics2Cache.get();
         return try _f.getPlayReadyCertificateSecurityLevel();
     }
-    pub fn getInputTrustAuthorityToCreate() core.HResult!HSTRING {
+    pub fn getInputTrustAuthorityToCreate() core.HResult!?HSTRING {
         const _f = try @This()._IPlayReadyStatics4Cache.get();
         return try _f.getInputTrustAuthorityToCreate();
     }

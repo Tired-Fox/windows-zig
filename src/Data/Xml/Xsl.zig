@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const IXsltProcessor = extern struct {
     vtable: *const VTable,
-    pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.TransformToString(@ptrCast(self), inputNode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -19,7 +19,7 @@ pub const IXsltProcessor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TransformToString: *const fn(self: *anyopaque, inputNode: *IXmlNode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        TransformToString: *const fn(self: *anyopaque, inputNode: *IXmlNode, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IXsltProcessor2 = extern struct {
@@ -70,7 +70,7 @@ pub const IXsltProcessorFactory = extern struct {
 };
 pub const XsltProcessor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!HSTRING {
+    pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!?HSTRING {
         const this: *IXsltProcessor = @ptrCast(self);
         return try this.TransformToString(inputNode);
     }

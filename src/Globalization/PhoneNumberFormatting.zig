@@ -1,32 +1,32 @@
 // ----- This code is automatically generated -----
 pub const IPhoneNumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Format(self: *@This(), number: *PhoneNumberInfo) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn Format(self: *@This(), number: *PhoneNumberInfo) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatWithNumberFormat(self: *@This(), number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatWithNumberFormat(self: *@This(), number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithNumberFormat(@ptrCast(self), number, numberFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatPartialString(self: *@This(), number: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatPartialString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatPartialString(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatString(self: *@This(), number: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatString(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatStringWithLeftToRightMarkers(self: *@This(), number: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatStringWithLeftToRightMarkers(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatStringWithLeftToRightMarkers(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -43,33 +43,33 @@ pub const IPhoneNumberFormatter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Format: *const fn(self: *anyopaque, number: *PhoneNumberInfo, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatWithNumberFormat: *const fn(self: *anyopaque, number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatPartialString: *const fn(self: *anyopaque, number: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatString: *const fn(self: *anyopaque, number: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatStringWithLeftToRightMarkers: *const fn(self: *anyopaque, number: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        Format: *const fn(self: *anyopaque, number: *PhoneNumberInfo, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatWithNumberFormat: *const fn(self: *anyopaque, number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatPartialString: *const fn(self: *anyopaque, number: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatString: *const fn(self: *anyopaque, number: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatStringWithLeftToRightMarkers: *const fn(self: *anyopaque, number: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneNumberFormatterStatics = extern struct {
     vtable: *const VTable,
-    pub fn TryCreate(self: *@This(), regionCode: HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
+    pub fn TryCreate(self: *@This(), regionCode: ?HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
         const _c = self.vtable.TryCreate(@ptrCast(self), regionCode, phoneNumber);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetCountryCodeForRegion(self: *@This(), regionCode: HSTRING) core.HResult!i32 {
+    pub fn GetCountryCodeForRegion(self: *@This(), regionCode: ?HSTRING) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCountryCodeForRegion(@ptrCast(self), regionCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNationalDirectDialingPrefixForRegion(self: *@This(), regionCode: HSTRING, stripNonDigit: bool) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNationalDirectDialingPrefixForRegion(self: *@This(), regionCode: ?HSTRING, stripNonDigit: bool) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNationalDirectDialingPrefixForRegion(@ptrCast(self), regionCode, stripNonDigit, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WrapWithLeftToRightMarkers(self: *@This(), number: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn WrapWithLeftToRightMarkers(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.WrapWithLeftToRightMarkers(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -86,10 +86,10 @@ pub const IPhoneNumberFormatterStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryCreate: *const fn(self: *anyopaque, regionCode: HSTRING, phoneNumber: *PhoneNumberFormatter) callconv(.winapi) HRESULT,
-        GetCountryCodeForRegion: *const fn(self: *anyopaque, regionCode: HSTRING, _r: *i32) callconv(.winapi) HRESULT,
-        GetNationalDirectDialingPrefixForRegion: *const fn(self: *anyopaque, regionCode: HSTRING, stripNonDigit: bool, _r: *HSTRING) callconv(.winapi) HRESULT,
-        WrapWithLeftToRightMarkers: *const fn(self: *anyopaque, number: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        TryCreate: *const fn(self: *anyopaque, regionCode: ?HSTRING, phoneNumber: *PhoneNumberFormatter) callconv(.winapi) HRESULT,
+        GetCountryCodeForRegion: *const fn(self: *anyopaque, regionCode: ?HSTRING, _r: *i32) callconv(.winapi) HRESULT,
+        GetNationalDirectDialingPrefixForRegion: *const fn(self: *anyopaque, regionCode: ?HSTRING, stripNonDigit: bool, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        WrapWithLeftToRightMarkers: *const fn(self: *anyopaque, number: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneNumberInfo = extern struct {
@@ -100,8 +100,8 @@ pub const IPhoneNumberInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -112,8 +112,8 @@ pub const IPhoneNumberInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNationalSignificantNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNationalSignificantNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNationalSignificantNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -130,8 +130,8 @@ pub const IPhoneNumberInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetGeographicRegionCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetGeographicRegionCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetGeographicRegionCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -155,18 +155,18 @@ pub const IPhoneNumberInfo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CountryCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLengthOfGeographicalAreaCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        GetNationalSignificantNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetNationalSignificantNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetLengthOfNationalDestinationCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         PredictNumberKind: *const fn(self: *anyopaque, _r: *PredictedPhoneNumberKind) callconv(.winapi) HRESULT,
-        GetGeographicRegionCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetGeographicRegionCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         CheckNumberMatch: *const fn(self: *anyopaque, otherNumber: *PhoneNumberInfo, _r: *PhoneNumberMatchResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneNumberInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), number: HSTRING) core.HResult!*PhoneNumberInfo {
+    pub fn Create(self: *@This(), number: ?HSTRING) core.HResult!*PhoneNumberInfo {
         var _r: *PhoneNumberInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), number, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -184,18 +184,18 @@ pub const IPhoneNumberInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, number: HSTRING, _r: **PhoneNumberInfo) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, number: ?HSTRING, _r: **PhoneNumberInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneNumberInfoStatics = extern struct {
     vtable: *const VTable,
-    pub fn TryParse(self: *@This(), input: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+    pub fn TryParse(self: *@This(), input: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         var _r: PhoneNumberParseResult = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, phoneNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParseWithRegionCodeAndPhoneNumber(self: *@This(), input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+    pub fn TryParseWithRegionCodeAndPhoneNumber(self: *@This(), input: ?HSTRING, regionCode: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         var _r: PhoneNumberParseResult = undefined;
         const _c = self.vtable.TryParseWithRegionCodeAndPhoneNumber(@ptrCast(self), input, regionCode, phoneNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -213,8 +213,8 @@ pub const IPhoneNumberInfoStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryParse: *const fn(self: *anyopaque, input: HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
-        TryParseWithRegionCodeAndPhoneNumber: *const fn(self: *anyopaque, input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
+        TryParse: *const fn(self: *anyopaque, input: ?HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
+        TryParseWithRegionCodeAndPhoneNumber: *const fn(self: *anyopaque, input: ?HSTRING, regionCode: ?HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
     };
 };
 pub const PhoneNumberFormat = enum(i32) {
@@ -225,23 +225,23 @@ pub const PhoneNumberFormat = enum(i32) {
 };
 pub const PhoneNumberFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Format(self: *@This(), number: *PhoneNumberInfo) core.HResult!HSTRING {
+    pub fn Format(self: *@This(), number: *PhoneNumberInfo) core.HResult!?HSTRING {
         const this: *IPhoneNumberFormatter = @ptrCast(self);
         return try this.Format(number);
     }
-    pub fn FormatWithNumberFormat(self: *@This(), number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat) core.HResult!HSTRING {
+    pub fn FormatWithNumberFormat(self: *@This(), number: *PhoneNumberInfo, numberFormat: PhoneNumberFormat) core.HResult!?HSTRING {
         const this: *IPhoneNumberFormatter = @ptrCast(self);
         return try this.FormatWithNumberFormat(number, numberFormat);
     }
-    pub fn FormatPartialString(self: *@This(), number: HSTRING) core.HResult!HSTRING {
+    pub fn FormatPartialString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         const this: *IPhoneNumberFormatter = @ptrCast(self);
         return try this.FormatPartialString(number);
     }
-    pub fn FormatString(self: *@This(), number: HSTRING) core.HResult!HSTRING {
+    pub fn FormatString(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         const this: *IPhoneNumberFormatter = @ptrCast(self);
         return try this.FormatString(number);
     }
-    pub fn FormatStringWithLeftToRightMarkers(self: *@This(), number: HSTRING) core.HResult!HSTRING {
+    pub fn FormatStringWithLeftToRightMarkers(self: *@This(), number: ?HSTRING) core.HResult!?HSTRING {
         const this: *IPhoneNumberFormatter = @ptrCast(self);
         return try this.FormatStringWithLeftToRightMarkers(number);
     }
@@ -252,19 +252,19 @@ pub const PhoneNumberFormatter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneNumberFormatter.IID)));
     }
-    pub fn TryCreate(regionCode: HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
+    pub fn TryCreate(regionCode: ?HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
         const _f = try @This()._IPhoneNumberFormatterStaticsCache.get();
         return try _f.TryCreate(regionCode, phoneNumber);
     }
-    pub fn GetCountryCodeForRegion(regionCode: HSTRING) core.HResult!i32 {
+    pub fn GetCountryCodeForRegion(regionCode: ?HSTRING) core.HResult!i32 {
         const _f = try @This()._IPhoneNumberFormatterStaticsCache.get();
         return try _f.GetCountryCodeForRegion(regionCode);
     }
-    pub fn GetNationalDirectDialingPrefixForRegion(regionCode: HSTRING, stripNonDigit: bool) core.HResult!HSTRING {
+    pub fn GetNationalDirectDialingPrefixForRegion(regionCode: ?HSTRING, stripNonDigit: bool) core.HResult!?HSTRING {
         const _f = try @This()._IPhoneNumberFormatterStaticsCache.get();
         return try _f.GetNationalDirectDialingPrefixForRegion(regionCode, stripNonDigit);
     }
-    pub fn WrapWithLeftToRightMarkers(number: HSTRING) core.HResult!HSTRING {
+    pub fn WrapWithLeftToRightMarkers(number: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IPhoneNumberFormatterStaticsCache.get();
         return try _f.WrapWithLeftToRightMarkers(number);
     }
@@ -282,7 +282,7 @@ pub const PhoneNumberInfo = extern struct {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.getCountryCode();
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.getPhoneNumber();
     }
@@ -290,7 +290,7 @@ pub const PhoneNumberInfo = extern struct {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.GetLengthOfGeographicalAreaCode();
     }
-    pub fn GetNationalSignificantNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn GetNationalSignificantNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.GetNationalSignificantNumber();
     }
@@ -302,7 +302,7 @@ pub const PhoneNumberInfo = extern struct {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.PredictNumberKind();
     }
-    pub fn GetGeographicRegionCode(self: *@This()) core.HResult!HSTRING {
+    pub fn GetGeographicRegionCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.GetGeographicRegionCode();
     }
@@ -310,7 +310,7 @@ pub const PhoneNumberInfo = extern struct {
         const this: *IPhoneNumberInfo = @ptrCast(self);
         return try this.CheckNumberMatch(otherNumber);
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -319,15 +319,15 @@ pub const PhoneNumberInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(number: HSTRING) core.HResult!*PhoneNumberInfo {
+    pub fn Create(number: ?HSTRING) core.HResult!*PhoneNumberInfo {
         const _f = try @This()._IPhoneNumberInfoFactoryCache.get();
         return try _f.Create(number);
     }
-    pub fn TryParse(input: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+    pub fn TryParse(input: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         const _f = try @This()._IPhoneNumberInfoStaticsCache.get();
         return try _f.TryParse(input, phoneNumber);
     }
-    pub fn TryParseWithRegionCodeAndPhoneNumber(input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+    pub fn TryParseWithRegionCodeAndPhoneNumber(input: ?HSTRING, regionCode: ?HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         const _f = try @This()._IPhoneNumberInfoStaticsCache.get();
         return try _f.TryParseWithRegionCodeAndPhoneNumber(input, regionCode, phoneNumber);
     }

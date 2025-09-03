@@ -414,13 +414,13 @@ pub const IRemoteAutomationClientSession = extern struct {
 };
 pub const IRemoteAutomationClientSessionFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), name: HSTRING) core.HResult!*RemoteAutomationClientSession {
+    pub fn CreateInstance(self: *@This(), name: ?HSTRING) core.HResult!*RemoteAutomationClientSession {
         var _r: *RemoteAutomationClientSession = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstance2(self: *@This(), name: HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
+    pub fn CreateInstance2(self: *@This(), name: ?HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
         var _r: *RemoteAutomationClientSession = undefined;
         const _c = self.vtable.CreateInstance2(@ptrCast(self), name, sessionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -438,14 +438,14 @@ pub const IRemoteAutomationClientSessionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, name: HSTRING, _r: **RemoteAutomationClientSession) callconv(.winapi) HRESULT,
-        CreateInstance2: *const fn(self: *anyopaque, name: HSTRING, sessionId: *Guid, _r: **RemoteAutomationClientSession) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, name: ?HSTRING, _r: **RemoteAutomationClientSession) callconv(.winapi) HRESULT,
+        CreateInstance2: *const fn(self: *anyopaque, name: ?HSTRING, sessionId: *Guid, _r: **RemoteAutomationClientSession) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteAutomationConnectionRequestedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getLocalPipeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalPipeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -468,14 +468,14 @@ pub const IRemoteAutomationConnectionRequestedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalPipeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LocalPipeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_RemoteProcessId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteAutomationDisconnectedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getLocalPipeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalPipeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -492,7 +492,7 @@ pub const IRemoteAutomationDisconnectedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LocalPipeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LocalPipeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteAutomationServerStatics = extern struct {
@@ -583,11 +583,11 @@ pub const RemoteAutomationClientSession = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(name: HSTRING) core.HResult!*RemoteAutomationClientSession {
+    pub fn CreateInstance(name: ?HSTRING) core.HResult!*RemoteAutomationClientSession {
         const _f = try @This()._IRemoteAutomationClientSessionFactoryCache.get();
         return try _f.CreateInstance(name);
     }
-    pub fn CreateInstance2(name: HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
+    pub fn CreateInstance2(name: ?HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
         const _f = try @This()._IRemoteAutomationClientSessionFactoryCache.get();
         return try _f.CreateInstance2(name, sessionId);
     }
@@ -600,7 +600,7 @@ pub const RemoteAutomationClientSession = extern struct {
 };
 pub const RemoteAutomationConnectionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalPipeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteAutomationConnectionRequestedEventArgs = @ptrCast(self);
         return try this.getLocalPipeName();
     }
@@ -616,7 +616,7 @@ pub const RemoteAutomationConnectionRequestedEventArgs = extern struct {
 };
 pub const RemoteAutomationDisconnectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalPipeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteAutomationDisconnectedEventArgs = @ptrCast(self);
         return try this.getLocalPipeName();
     }

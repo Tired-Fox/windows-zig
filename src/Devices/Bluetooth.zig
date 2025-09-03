@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const BluetoothAdapter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothAdapter = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -72,11 +72,11 @@ pub const BluetoothAdapter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothAdapterStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
         const _f = try @This()._IBluetoothAdapterStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -142,7 +142,7 @@ pub const BluetoothConnectionStatus = enum(i32) {
 };
 pub const BluetoothDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -150,7 +150,7 @@ pub const BluetoothDevice = extern struct {
         const this: *IBluetoothDevice = @ptrCast(self);
         return try this.getHostName();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothDevice = @ptrCast(self);
         return try this.getName();
     }
@@ -261,7 +261,7 @@ pub const BluetoothDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
         const _f = try @This()._IBluetoothDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -273,27 +273,27 @@ pub const BluetoothDevice = extern struct {
         const _f = try @This()._IBluetoothDeviceStaticsCache.get();
         return try _f.FromBluetoothAddressAsync(address);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromPairingState(pairingState);
     }
-    pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromConnectionStatus(connectionStatus);
     }
-    pub fn GetDeviceSelectorFromDeviceName(deviceName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromDeviceName(deviceName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromDeviceName(deviceName);
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
     }
-    pub fn GetDeviceSelectorFromClassOfDevice(classOfDevice: *BluetoothClassOfDevice) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromClassOfDevice(classOfDevice: *BluetoothClassOfDevice) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromClassOfDevice(classOfDevice);
     }
@@ -307,7 +307,7 @@ pub const BluetoothDevice = extern struct {
 };
 pub const BluetoothDeviceId = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothDeviceId = @ptrCast(self);
         return try this.getId();
     }
@@ -322,7 +322,7 @@ pub const BluetoothDeviceId = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*BluetoothDeviceId {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*BluetoothDeviceId {
         const _f = try @This()._IBluetoothDeviceIdStaticsCache.get();
         return try _f.FromId(deviceId);
     }
@@ -653,11 +653,11 @@ pub const BluetoothLEConnectionPhyInfo = extern struct {
 };
 pub const BluetoothLEDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothLEDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBluetoothLEDevice = @ptrCast(self);
         return try this.getName();
     }
@@ -818,27 +818,27 @@ pub const BluetoothLEDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromPairingState(pairingState);
     }
-    pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromConnectionStatus(connectionStatus);
     }
-    pub fn GetDeviceSelectorFromDeviceName(deviceName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromDeviceName(deviceName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromDeviceName(deviceName);
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
     }
-    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress, bluetoothAddressType);
     }
-    pub fn GetDeviceSelectorFromAppearance(appearance: *BluetoothLEAppearance) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromAppearance(appearance: *BluetoothLEAppearance) core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.GetDeviceSelectorFromAppearance(appearance);
     }
@@ -846,7 +846,7 @@ pub const BluetoothLEDevice = extern struct {
         const _f = try @This()._IBluetoothLEDeviceStatics2Cache.get();
         return try _f.FromBluetoothAddressAsync(bluetoothAddress, bluetoothAddressType);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         const _f = try @This()._IBluetoothLEDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -854,7 +854,7 @@ pub const BluetoothLEDevice = extern struct {
         const _f = try @This()._IBluetoothLEDeviceStaticsCache.get();
         return try _f.FromBluetoothAddressAsync(bluetoothAddress);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IBluetoothLEDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -1094,8 +1094,8 @@ pub const BluetoothUuidHelper = extern struct {
 };
 pub const IBluetoothAdapter = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1154,7 +1154,7 @@ pub const IBluetoothAdapter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_BluetoothAddress: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         get_IsClassicSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsLowEnergySupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1256,13 +1256,13 @@ pub const IBluetoothAdapter4 = extern struct {
 };
 pub const IBluetoothAdapterStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
         var _r: *IAsyncOperation(BluetoothAdapter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1286,8 +1286,8 @@ pub const IBluetoothAdapterStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(BluetoothAdapter)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(BluetoothAdapter)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(BluetoothAdapter)) callconv(.winapi) HRESULT,
     };
 };
@@ -1367,8 +1367,8 @@ pub const IBluetoothClassOfDeviceStatics = extern struct {
 };
 pub const IBluetoothDevice = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1379,8 +1379,8 @@ pub const IBluetoothDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1457,9 +1457,9 @@ pub const IBluetoothDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_HostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ClassOfDevice: *const fn(self: *anyopaque, _r: **BluetoothClassOfDevice) callconv(.winapi) HRESULT,
         get_SdpRecords: *const fn(self: *anyopaque, _r: **IVectorView(IBuffer)) callconv(.winapi) HRESULT,
         get_RfcommServices: *const fn(self: *anyopaque, _r: **IVectorView(RfcommDeviceService)) callconv(.winapi) HRESULT,
@@ -1602,8 +1602,8 @@ pub const IBluetoothDevice5 = extern struct {
 };
 pub const IBluetoothDeviceId = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1632,14 +1632,14 @@ pub const IBluetoothDeviceId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsClassicDevice: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsLowEnergyDevice: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothDeviceIdStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*BluetoothDeviceId {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*BluetoothDeviceId {
         var _r: *BluetoothDeviceId = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1657,12 +1657,12 @@ pub const IBluetoothDeviceIdStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **BluetoothDeviceId) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **BluetoothDeviceId) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
         var _r: *IAsyncOperation(BluetoothDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1680,8 +1680,8 @@ pub const IBluetoothDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1698,40 +1698,40 @@ pub const IBluetoothDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(BluetoothDevice)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(BluetoothDevice)) callconv(.winapi) HRESULT,
         FromHostNameAsync: *const fn(self: *anyopaque, hostName: *HostName, _r: **IAsyncOperation(BluetoothDevice)) callconv(.winapi) HRESULT,
         FromBluetoothAddressAsync: *const fn(self: *anyopaque, address: u64, _r: **IAsyncOperation(BluetoothDevice)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromPairingState(@ptrCast(self), pairingState, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromConnectionStatus(@ptrCast(self), connectionStatus, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromDeviceName(@ptrCast(self), deviceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddress(@ptrCast(self), bluetoothAddress, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromClassOfDevice(self: *@This(), classOfDevice: *BluetoothClassOfDevice) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromClassOfDevice(self: *@This(), classOfDevice: *BluetoothClassOfDevice) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromClassOfDevice(@ptrCast(self), classOfDevice, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1748,11 +1748,11 @@ pub const IBluetoothDeviceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromPairingState: *const fn(self: *anyopaque, pairingState: bool, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromConnectionStatus: *const fn(self: *anyopaque, connectionStatus: BluetoothConnectionStatus, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromDeviceName: *const fn(self: *anyopaque, deviceName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromClassOfDevice: *const fn(self: *anyopaque, classOfDevice: *BluetoothClassOfDevice, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromPairingState: *const fn(self: *anyopaque, pairingState: bool, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromConnectionStatus: *const fn(self: *anyopaque, connectionStatus: BluetoothConnectionStatus, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromDeviceName: *const fn(self: *anyopaque, deviceName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromClassOfDevice: *const fn(self: *anyopaque, classOfDevice: *BluetoothClassOfDevice, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothLEAppearance = extern struct {
@@ -2310,14 +2310,14 @@ pub const IBluetoothLEConnectionPhyInfo = extern struct {
 };
 pub const IBluetoothLEDevice = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2388,8 +2388,8 @@ pub const IBluetoothLEDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_GattServices: *const fn(self: *anyopaque, _r: **IVectorView(GattDeviceService)) callconv(.winapi) HRESULT,
         get_ConnectionStatus: *const fn(self: *anyopaque, _r: *BluetoothConnectionStatus) callconv(.winapi) HRESULT,
         get_BluetoothAddress: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
@@ -2606,7 +2606,7 @@ pub const IBluetoothLEDevice6 = extern struct {
 };
 pub const IBluetoothLEDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         var _r: *IAsyncOperation(BluetoothLEDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2618,8 +2618,8 @@ pub const IBluetoothLEDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2636,45 +2636,45 @@ pub const IBluetoothLEDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(BluetoothLEDevice)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(BluetoothLEDevice)) callconv(.winapi) HRESULT,
         FromBluetoothAddressAsync: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: **IAsyncOperation(BluetoothLEDevice)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothLEDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromPairingState(self: *@This(), pairingState: bool) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromPairingState(@ptrCast(self), pairingState, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromConnectionStatus(self: *@This(), connectionStatus: BluetoothConnectionStatus) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromConnectionStatus(@ptrCast(self), connectionStatus, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromDeviceName(self: *@This(), deviceName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromDeviceName(@ptrCast(self), deviceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddress(@ptrCast(self), bluetoothAddress, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(@ptrCast(self), bluetoothAddress, bluetoothAddressType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromAppearance(self: *@This(), appearance: *BluetoothLEAppearance) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromAppearance(self: *@This(), appearance: *BluetoothLEAppearance) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromAppearance(@ptrCast(self), appearance, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2697,12 +2697,12 @@ pub const IBluetoothLEDeviceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromPairingState: *const fn(self: *anyopaque, pairingState: bool, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromConnectionStatus: *const fn(self: *anyopaque, connectionStatus: BluetoothConnectionStatus, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromDeviceName: *const fn(self: *anyopaque, deviceName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromAppearance: *const fn(self: *anyopaque, appearance: *BluetoothLEAppearance, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromPairingState: *const fn(self: *anyopaque, pairingState: bool, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromConnectionStatus: *const fn(self: *anyopaque, connectionStatus: BluetoothConnectionStatus, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromDeviceName: *const fn(self: *anyopaque, deviceName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromAppearance: *const fn(self: *anyopaque, appearance: *BluetoothLEAppearance, _r: *?HSTRING) callconv(.winapi) HRESULT,
         FromBluetoothAddressAsync: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: **IAsyncOperation(BluetoothLEDevice)) callconv(.winapi) HRESULT,
     };
 };

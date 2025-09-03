@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const IVoiceCommand = extern struct {
     vtable: *const VTable,
-    pub fn getCommandName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommandName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommandName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IVectorView(HSTRING)) {
-        var _r: *IMapView(HSTRING,IVectorView(HSTRING)) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IVectorView(?HSTRING)) {
+        var _r: *IMapView(?HSTRING,IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31,8 +31,8 @@ pub const IVoiceCommand = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CommandName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        get_CommandName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
         get_SpeechRecognitionResult: *const fn(self: *anyopaque, _r: **SpeechRecognitionResult) callconv(.winapi) HRESULT,
     };
 };
@@ -84,43 +84,43 @@ pub const IVoiceCommandConfirmationResult = extern struct {
 };
 pub const IVoiceCommandContentTile = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextLine1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextLine1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextLine1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTextLine1(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine1(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TextLine1(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextLine2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextLine2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextLine2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTextLine2(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine2(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TextLine2(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextLine3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextLine3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextLine3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTextLine3(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine3(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TextLine3(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -144,13 +144,13 @@ pub const IVoiceCommandContentTile = extern struct {
         const _c = self.vtable.put_AppContext(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAppLaunchArgument(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppLaunchArgument(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppLaunchArgument(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAppLaunchArgument(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppLaunchArgument(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AppLaunchArgument(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -176,39 +176,39 @@ pub const IVoiceCommandContentTile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TextLine1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TextLine1: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TextLine2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TextLine2: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_TextLine3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TextLine3: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TextLine1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TextLine1: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TextLine2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TextLine2: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_TextLine3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TextLine3: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Image: *const fn(self: *anyopaque, _r: **IStorageFile) callconv(.winapi) HRESULT,
         put_Image: *const fn(self: *anyopaque, value: *IStorageFile) callconv(.winapi) HRESULT,
         get_AppContext: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_AppContext: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_AppLaunchArgument: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AppLaunchArgument: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AppLaunchArgument: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AppLaunchArgument: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ContentTileType: *const fn(self: *anyopaque, _r: *VoiceCommandContentTileType) callconv(.winapi) HRESULT,
         put_ContentTileType: *const fn(self: *anyopaque, value: VoiceCommandContentTileType) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoiceCommandDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetPhraseListAsync(self: *@This(), phraseListName: HSTRING, phraseList: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn SetPhraseListAsync(self: *@This(), phraseListName: ?HSTRING, phraseList: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetPhraseListAsync(@ptrCast(self), phraseListName, phraseList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -226,9 +226,9 @@ pub const IVoiceCommandDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetPhraseListAsync: *const fn(self: *anyopaque, phraseListName: HSTRING, phraseList: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetPhraseListAsync: *const fn(self: *anyopaque, phraseListName: ?HSTRING, phraseList: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoiceCommandDefinitionManagerStatics = extern struct {
@@ -239,8 +239,8 @@ pub const IVoiceCommandDefinitionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInstalledCommandDefinitions(self: *@This()) core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
-        var _r: *IMapView(HSTRING,VoiceCommandDefinition) = undefined;
+    pub fn getInstalledCommandDefinitions(self: *@This()) core.HResult!*IMapView(?HSTRING,VoiceCommandDefinition) {
+        var _r: *IMapView(?HSTRING,VoiceCommandDefinition) = undefined;
         const _c = self.vtable.get_InstalledCommandDefinitions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -258,7 +258,7 @@ pub const IVoiceCommandDefinitionManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InstallCommandDefinitionsFromStorageFileAsync: *const fn(self: *anyopaque, file: *StorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        get_InstalledCommandDefinitions: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,VoiceCommandDefinition)) callconv(.winapi) HRESULT,
+        get_InstalledCommandDefinitions: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,VoiceCommandDefinition)) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoiceCommandDisambiguationResult = extern struct {
@@ -306,13 +306,13 @@ pub const IVoiceCommandResponse = extern struct {
         const _c = self.vtable.put_RepeatMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAppLaunchArgument(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppLaunchArgument(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppLaunchArgument(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAppLaunchArgument(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppLaunchArgument(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AppLaunchArgument(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -338,8 +338,8 @@ pub const IVoiceCommandResponse = extern struct {
         put_Message: *const fn(self: *anyopaque, value: *VoiceCommandUserMessage) callconv(.winapi) HRESULT,
         get_RepeatMessage: *const fn(self: *anyopaque, _r: **VoiceCommandUserMessage) callconv(.winapi) HRESULT,
         put_RepeatMessage: *const fn(self: *anyopaque, value: *VoiceCommandUserMessage) callconv(.winapi) HRESULT,
-        get_AppLaunchArgument: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AppLaunchArgument: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AppLaunchArgument: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AppLaunchArgument: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_VoiceCommandContentTiles: *const fn(self: *anyopaque, _r: **IVector(VoiceCommandContentTile)) callconv(.winapi) HRESULT,
     };
 };
@@ -503,23 +503,23 @@ pub const IVoiceCommandServiceConnectionStatics = extern struct {
 };
 pub const IVoiceCommandUserMessage = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSpokenMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSpokenMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SpokenMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSpokenMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSpokenMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SpokenMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -535,19 +535,19 @@ pub const IVoiceCommandUserMessage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SpokenMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SpokenMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SpokenMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SpokenMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const VoiceCommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCommandName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommandName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommand = @ptrCast(self);
         return try this.getCommandName();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IVectorView(HSTRING)) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IVectorView(?HSTRING)) {
         const this: *IVoiceCommand = @ptrCast(self);
         return try this.getProperties();
     }
@@ -596,35 +596,35 @@ pub const VoiceCommandConfirmationResult = extern struct {
 };
 pub const VoiceCommandContentTile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getTextLine1(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextLine1(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getTextLine1();
     }
-    pub fn putTextLine1(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine1(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putTextLine1(value);
     }
-    pub fn getTextLine2(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextLine2(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getTextLine2();
     }
-    pub fn putTextLine2(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine2(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putTextLine2(value);
     }
-    pub fn getTextLine3(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextLine3(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getTextLine3();
     }
-    pub fn putTextLine3(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTextLine3(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putTextLine3(value);
     }
@@ -644,11 +644,11 @@ pub const VoiceCommandContentTile = extern struct {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putAppContext(value);
     }
-    pub fn getAppLaunchArgument(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppLaunchArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getAppLaunchArgument();
     }
-    pub fn putAppLaunchArgument(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppLaunchArgument(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putAppLaunchArgument(value);
     }
@@ -686,15 +686,15 @@ pub const VoiceCommandContentTileType = enum(i32) {
 };
 pub const VoiceCommandDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandDefinition = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandDefinition = @ptrCast(self);
         return try this.getName();
     }
-    pub fn SetPhraseListAsync(self: *@This(), phraseListName: HSTRING, phraseList: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn SetPhraseListAsync(self: *@This(), phraseListName: ?HSTRING, phraseList: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IVoiceCommandDefinition = @ptrCast(self);
         return try this.SetPhraseListAsync(phraseListName, phraseList);
     }
@@ -713,7 +713,7 @@ pub const VoiceCommandDefinitionManager = extern struct {
         const _f = try @This()._IVoiceCommandDefinitionManagerStaticsCache.get();
         return try _f.InstallCommandDefinitionsFromStorageFileAsync(file);
     }
-    pub fn getInstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
+    pub fn getInstalledCommandDefinitions() core.HResult!*IMapView(?HSTRING,VoiceCommandDefinition) {
         const _f = try @This()._IVoiceCommandDefinitionManagerStaticsCache.get();
         return try _f.getInstalledCommandDefinitions();
     }
@@ -751,11 +751,11 @@ pub const VoiceCommandResponse = extern struct {
         const this: *IVoiceCommandResponse = @ptrCast(self);
         return try this.putRepeatMessage(value);
     }
-    pub fn getAppLaunchArgument(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppLaunchArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandResponse = @ptrCast(self);
         return try this.getAppLaunchArgument();
     }
-    pub fn putAppLaunchArgument(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppLaunchArgument(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandResponse = @ptrCast(self);
         return try this.putAppLaunchArgument(value);
     }
@@ -851,19 +851,19 @@ pub const VoiceCommandServiceConnection = extern struct {
 };
 pub const VoiceCommandUserMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.getDisplayMessage();
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.putDisplayMessage(value);
     }
-    pub fn getSpokenMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getSpokenMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.getSpokenMessage();
     }
-    pub fn putSpokenMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSpokenMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.putSpokenMessage(value);
     }

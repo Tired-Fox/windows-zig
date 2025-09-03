@@ -218,11 +218,11 @@ pub const AudioDeviceOutputNode = extern struct {
 };
 pub const AudioEffectsPackConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioEffectsPackConfiguration = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getEffectsPackId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEffectsPackId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioEffectsPackConfiguration = @ptrCast(self);
         return try this.getEffectsPackId();
     }
@@ -241,11 +241,11 @@ pub const AudioEffectsPackConfiguration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetForDeviceId(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!*AudioEffectsPackConfiguration {
+    pub fn GetForDeviceId(effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!*AudioEffectsPackConfiguration {
         const _f = try @This()._IAudioEffectsPackConfigurationStaticsCache.get();
         return try _f.GetForDeviceId(effectsPackId, deviceId);
     }
-    pub fn IsDeviceIdSupported(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!bool {
+    pub fn IsDeviceIdSupported(effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IAudioEffectsPackConfigurationStaticsCache.get();
         return try _f.IsDeviceIdSupported(effectsPackId, deviceId);
     }
@@ -1339,7 +1339,7 @@ pub const AudioPlaybackConnection = extern struct {
         const this: *IAudioPlaybackConnection = @ptrCast(self);
         return try this.StartAsync();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioPlaybackConnection = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1372,11 +1372,11 @@ pub const AudioPlaybackConnection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IAudioPlaybackConnectionStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn TryCreateFromId(id: HSTRING) core.HResult!*AudioPlaybackConnection {
+    pub fn TryCreateFromId(id: ?HSTRING) core.HResult!*AudioPlaybackConnection {
         const _f = try @This()._IAudioPlaybackConnectionStaticsCache.get();
         return try _f.TryCreateFromId(id);
     }
@@ -1442,7 +1442,7 @@ pub const AudioStateMonitor = extern struct {
         const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoringWithCategoryAndRole(category, role);
     }
-    pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(category: AudioRenderCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(category: AudioRenderCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForRenderMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
@@ -1458,7 +1458,7 @@ pub const AudioStateMonitor = extern struct {
         const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoringWithCategoryAndRole(category, role);
     }
-    pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(category: MediaCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(category: MediaCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         const _f = try @This()._IAudioStateMonitorStaticsCache.get();
         return try _f.CreateForCaptureMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
@@ -1729,7 +1729,7 @@ pub const EchoEffectDefinition = extern struct {
         const this: *IEchoEffectDefinition = @ptrCast(self);
         return try this.getDelay();
     }
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1793,7 +1793,7 @@ pub const EqualizerEffectDefinition = extern struct {
         const this: *IEqualizerEffectDefinition = @ptrCast(self);
         return try this.getBands();
     }
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1879,14 +1879,14 @@ pub const IAudioDeviceOutputNode = extern struct {
 };
 pub const IAudioEffectsPackConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEffectsPackId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEffectsPackId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EffectsPackId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1919,8 +1919,8 @@ pub const IAudioEffectsPackConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EffectsPackId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EffectsPackId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *AudioEffectsPackStatus) callconv(.winapi) HRESULT,
         add_StatusChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AudioEffectsPackConfiguration,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StatusChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1928,13 +1928,13 @@ pub const IAudioEffectsPackConfiguration = extern struct {
 };
 pub const IAudioEffectsPackConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetForDeviceId(self: *@This(), effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!*AudioEffectsPackConfiguration {
+    pub fn GetForDeviceId(self: *@This(), effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!*AudioEffectsPackConfiguration {
         var _r: *AudioEffectsPackConfiguration = undefined;
         const _c = self.vtable.GetForDeviceId(@ptrCast(self), effectsPackId, deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsDeviceIdSupported(self: *@This(), effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!bool {
+    pub fn IsDeviceIdSupported(self: *@This(), effectsPackId: ?HSTRING, deviceId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDeviceIdSupported(@ptrCast(self), effectsPackId, deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1952,8 +1952,8 @@ pub const IAudioEffectsPackConfigurationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForDeviceId: *const fn(self: *anyopaque, effectsPackId: HSTRING, deviceId: HSTRING, _r: **AudioEffectsPackConfiguration) callconv(.winapi) HRESULT,
-        IsDeviceIdSupported: *const fn(self: *anyopaque, effectsPackId: HSTRING, deviceId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetForDeviceId: *const fn(self: *anyopaque, effectsPackId: ?HSTRING, deviceId: ?HSTRING, _r: **AudioEffectsPackConfiguration) callconv(.winapi) HRESULT,
+        IsDeviceIdSupported: *const fn(self: *anyopaque, effectsPackId: ?HSTRING, deviceId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioFileInputNode = extern struct {
@@ -3316,8 +3316,8 @@ pub const IAudioPlaybackConnection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3364,7 +3364,7 @@ pub const IAudioPlaybackConnection = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *AudioPlaybackConnectionState) callconv(.winapi) HRESULT,
         Open: *const fn(self: *anyopaque, _r: **AudioPlaybackConnectionOpenResult) callconv(.winapi) HRESULT,
         OpenAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AudioPlaybackConnectionOpenResult)) callconv(.winapi) HRESULT,
@@ -3404,13 +3404,13 @@ pub const IAudioPlaybackConnectionOpenResult = extern struct {
 };
 pub const IAudioPlaybackConnectionStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateFromId(self: *@This(), id: HSTRING) core.HResult!*AudioPlaybackConnection {
+    pub fn TryCreateFromId(self: *@This(), id: ?HSTRING) core.HResult!*AudioPlaybackConnection {
         var _r: *AudioPlaybackConnection = undefined;
         const _c = self.vtable.TryCreateFromId(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3428,8 +3428,8 @@ pub const IAudioPlaybackConnectionStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        TryCreateFromId: *const fn(self: *anyopaque, id: HSTRING, _r: **AudioPlaybackConnection) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        TryCreateFromId: *const fn(self: *anyopaque, id: ?HSTRING, _r: **AudioPlaybackConnection) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioStateMonitor = extern struct {
@@ -3487,7 +3487,7 @@ pub const IAudioStateMonitorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(self: *@This(), category: AudioRenderCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(self: *@This(), category: AudioRenderCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForRenderMonitoringWithCategoryAndDeviceId(@ptrCast(self), category, deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3511,7 +3511,7 @@ pub const IAudioStateMonitorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(self: *@This(), category: MediaCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(self: *@This(), category: MediaCategory, deviceId: ?HSTRING) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
         const _c = self.vtable.CreateForCaptureMonitoringWithCategoryAndDeviceId(@ptrCast(self), category, deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3532,11 +3532,11 @@ pub const IAudioStateMonitorStatics = extern struct {
         CreateForRenderMonitoring: *const fn(self: *anyopaque, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForRenderMonitoringWithCategory: *const fn(self: *anyopaque, category: AudioRenderCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForRenderMonitoringWithCategoryAndRole: *const fn(self: *anyopaque, category: AudioRenderCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForRenderMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: AudioRenderCategory, deviceId: HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForRenderMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: AudioRenderCategory, deviceId: ?HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForCaptureMonitoring: *const fn(self: *anyopaque, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForCaptureMonitoringWithCategory: *const fn(self: *anyopaque, category: MediaCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForCaptureMonitoringWithCategoryAndRole: *const fn(self: *anyopaque, category: MediaCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForCaptureMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: MediaCategory, deviceId: HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForCaptureMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: MediaCategory, deviceId: ?HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
     };
 };
 pub const ICreateAudioDeviceInputNodeResult = extern struct {
@@ -4558,8 +4558,8 @@ pub const ISetDefaultSpatialAudioFormatResult = extern struct {
 };
 pub const ISpatialAudioDeviceConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4570,25 +4570,25 @@ pub const ISpatialAudioDeviceConfiguration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsSpatialAudioFormatSupported(self: *@This(), subtype: HSTRING) core.HResult!bool {
+    pub fn IsSpatialAudioFormatSupported(self: *@This(), subtype: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSpatialAudioFormatSupported(@ptrCast(self), subtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActiveSpatialAudioFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActiveSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActiveSpatialAudioFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDefaultSpatialAudioFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDefaultSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultSpatialAudioFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetDefaultSpatialAudioFormatAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncOperation(SetDefaultSpatialAudioFormatResult) {
+    pub fn SetDefaultSpatialAudioFormatAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncOperation(SetDefaultSpatialAudioFormatResult) {
         var _r: *IAsyncOperation(SetDefaultSpatialAudioFormatResult) = undefined;
         const _c = self.vtable.SetDefaultSpatialAudioFormatAsync(@ptrCast(self), subtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4616,19 +4616,19 @@ pub const ISpatialAudioDeviceConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsSpatialAudioSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        IsSpatialAudioFormatSupported: *const fn(self: *anyopaque, subtype: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        get_ActiveSpatialAudioFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DefaultSpatialAudioFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetDefaultSpatialAudioFormatAsync: *const fn(self: *anyopaque, subtype: HSTRING, _r: **IAsyncOperation(SetDefaultSpatialAudioFormatResult)) callconv(.winapi) HRESULT,
+        IsSpatialAudioFormatSupported: *const fn(self: *anyopaque, subtype: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        get_ActiveSpatialAudioFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DefaultSpatialAudioFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetDefaultSpatialAudioFormatAsync: *const fn(self: *anyopaque, subtype: ?HSTRING, _r: **IAsyncOperation(SetDefaultSpatialAudioFormatResult)) callconv(.winapi) HRESULT,
         add_ConfigurationChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(SpatialAudioDeviceConfiguration,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ConfigurationChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAudioDeviceConfigurationStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetForDeviceId(self: *@This(), deviceId: HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
+    pub fn GetForDeviceId(self: *@This(), deviceId: ?HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
         var _r: *SpatialAudioDeviceConfiguration = undefined;
         const _c = self.vtable.GetForDeviceId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4646,18 +4646,18 @@ pub const ISpatialAudioDeviceConfigurationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForDeviceId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **SpatialAudioDeviceConfiguration) callconv(.winapi) HRESULT,
+        GetForDeviceId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **SpatialAudioDeviceConfiguration) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAudioFormatConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn ReportLicenseChangedAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportLicenseChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportLicenseChangedAsync(@ptrCast(self), subtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportConfigurationChangedAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportConfigurationChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportConfigurationChangedAsync(@ptrCast(self), subtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4685,8 +4685,8 @@ pub const ISpatialAudioFormatConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ReportLicenseChangedAsync: *const fn(self: *anyopaque, subtype: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportConfigurationChangedAsync: *const fn(self: *anyopaque, subtype: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportLicenseChangedAsync: *const fn(self: *anyopaque, subtype: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportConfigurationChangedAsync: *const fn(self: *anyopaque, subtype: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_MixedRealityExclusiveModePolicy: *const fn(self: *anyopaque, _r: *MixedRealitySpatialAudioFormatPolicy) callconv(.winapi) HRESULT,
         put_MixedRealityExclusiveModePolicy: *const fn(self: *anyopaque, value: MixedRealitySpatialAudioFormatPolicy) callconv(.winapi) HRESULT,
     };
@@ -4716,38 +4716,38 @@ pub const ISpatialAudioFormatConfigurationStatics = extern struct {
 };
 pub const ISpatialAudioFormatSubtypeStatics = extern struct {
     vtable: *const VTable,
-    pub fn getWindowsSonic(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWindowsSonic(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WindowsSonic(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDolbyAtmosForHeadphones(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDolbyAtmosForHeadphones(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForHeadphones(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDolbyAtmosForHomeTheater(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDolbyAtmosForHomeTheater(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForHomeTheater(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDolbyAtmosForSpeakers(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDolbyAtmosForSpeakers(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DolbyAtmosForSpeakers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDTSHeadphoneX(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDTSHeadphoneX(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSHeadphoneX(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDTSXUltra(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDTSXUltra(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSXUltra(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4764,18 +4764,18 @@ pub const ISpatialAudioFormatSubtypeStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_WindowsSonic: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DolbyAtmosForHeadphones: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DolbyAtmosForHomeTheater: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DolbyAtmosForSpeakers: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DTSHeadphoneX: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DTSXUltra: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_WindowsSonic: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DolbyAtmosForHeadphones: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DolbyAtmosForHomeTheater: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DolbyAtmosForSpeakers: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DTSHeadphoneX: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DTSXUltra: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAudioFormatSubtypeStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getDTSXForHomeTheater(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDTSXForHomeTheater(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DTSXForHomeTheater(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4792,7 +4792,7 @@ pub const ISpatialAudioFormatSubtypeStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DTSXForHomeTheater: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DTSXForHomeTheater: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const LimiterEffectDefinition = extern struct {
@@ -4813,7 +4813,7 @@ pub const LimiterEffectDefinition = extern struct {
         const this: *ILimiterEffectDefinition = @ptrCast(self);
         return try this.getLoudness();
     }
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5206,7 +5206,7 @@ pub const ReverbEffectDefinition = extern struct {
         const this: *IReverbEffectDefinition = @ptrCast(self);
         return try this.getDisableLateField();
     }
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -5254,7 +5254,7 @@ pub const SetDefaultSpatialAudioFormatStatus = enum(i32) {
 };
 pub const SpatialAudioDeviceConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -5262,19 +5262,19 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.getIsSpatialAudioSupported();
     }
-    pub fn IsSpatialAudioFormatSupported(self: *@This(), subtype: HSTRING) core.HResult!bool {
+    pub fn IsSpatialAudioFormatSupported(self: *@This(), subtype: ?HSTRING) core.HResult!bool {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.IsSpatialAudioFormatSupported(subtype);
     }
-    pub fn getActiveSpatialAudioFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getActiveSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.getActiveSpatialAudioFormat();
     }
-    pub fn getDefaultSpatialAudioFormat(self: *@This()) core.HResult!HSTRING {
+    pub fn getDefaultSpatialAudioFormat(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.getDefaultSpatialAudioFormat();
     }
-    pub fn SetDefaultSpatialAudioFormatAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncOperation(SetDefaultSpatialAudioFormatResult) {
+    pub fn SetDefaultSpatialAudioFormatAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncOperation(SetDefaultSpatialAudioFormatResult) {
         const this: *ISpatialAudioDeviceConfiguration = @ptrCast(self);
         return try this.SetDefaultSpatialAudioFormatAsync(subtype);
     }
@@ -5289,7 +5289,7 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetForDeviceId(deviceId: HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
+    pub fn GetForDeviceId(deviceId: ?HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
         const _f = try @This()._ISpatialAudioDeviceConfigurationStaticsCache.get();
         return try _f.GetForDeviceId(deviceId);
     }
@@ -5302,11 +5302,11 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
 };
 pub const SpatialAudioFormatConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn ReportLicenseChangedAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportLicenseChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISpatialAudioFormatConfiguration = @ptrCast(self);
         return try this.ReportLicenseChangedAsync(subtype);
     }
-    pub fn ReportConfigurationChangedAsync(self: *@This(), subtype: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportConfigurationChangedAsync(self: *@This(), subtype: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISpatialAudioFormatConfiguration = @ptrCast(self);
         return try this.ReportConfigurationChangedAsync(subtype);
     }
@@ -5337,31 +5337,31 @@ pub const SpatialAudioFormatSubtype = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDTSXForHomeTheater() core.HResult!HSTRING {
+    pub fn getDTSXForHomeTheater() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStatics2Cache.get();
         return try _f.getDTSXForHomeTheater();
     }
-    pub fn getWindowsSonic() core.HResult!HSTRING {
+    pub fn getWindowsSonic() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getWindowsSonic();
     }
-    pub fn getDolbyAtmosForHeadphones() core.HResult!HSTRING {
+    pub fn getDolbyAtmosForHeadphones() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForHeadphones();
     }
-    pub fn getDolbyAtmosForHomeTheater() core.HResult!HSTRING {
+    pub fn getDolbyAtmosForHomeTheater() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForHomeTheater();
     }
-    pub fn getDolbyAtmosForSpeakers() core.HResult!HSTRING {
+    pub fn getDolbyAtmosForSpeakers() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDolbyAtmosForSpeakers();
     }
-    pub fn getDTSHeadphoneX() core.HResult!HSTRING {
+    pub fn getDTSHeadphoneX() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDTSHeadphoneX();
     }
-    pub fn getDTSXUltra() core.HResult!HSTRING {
+    pub fn getDTSXUltra() core.HResult!?HSTRING {
         const _f = try @This()._ISpatialAudioFormatSubtypeStaticsCache.get();
         return try _f.getDTSXUltra();
     }

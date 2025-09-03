@@ -25,7 +25,7 @@ pub const BackgroundAudioTrack = extern struct {
         const this: *IBackgroundAudioTrack = @ptrCast(self);
         return try this.getTrimmedDuration();
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IBackgroundAudioTrack = @ptrCast(self);
         return try this.getUserData();
     }
@@ -121,8 +121,8 @@ pub const IBackgroundAudioTrack = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_UserData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -183,7 +183,7 @@ pub const IBackgroundAudioTrack = extern struct {
         put_TrimTimeFromEnd: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_OriginalDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_TrimmedDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_UserData: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_UserData: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         put_Delay: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_Delay: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_Volume: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
@@ -280,8 +280,8 @@ pub const IMediaClip = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_UserData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -366,7 +366,7 @@ pub const IMediaClip = extern struct {
         put_TrimTimeFromEnd: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_OriginalDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_TrimmedDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_UserData: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_UserData: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         Clone: *const fn(self: *anyopaque, _r: **MediaClip) callconv(.winapi) HRESULT,
         get_StartTimeInComposition: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_EndTimeInComposition: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
@@ -460,8 +460,8 @@ pub const IMediaComposition = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_UserData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -547,7 +547,7 @@ pub const IMediaComposition = extern struct {
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_Clips: *const fn(self: *anyopaque, _r: **IVector(MediaClip)) callconv(.winapi) HRESULT,
         get_BackgroundAudioTracks: *const fn(self: *anyopaque, _r: **IVector(BackgroundAudioTrack)) callconv(.winapi) HRESULT,
-        get_UserData: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_UserData: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         Clone: *const fn(self: *anyopaque, _r: **MediaComposition) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetThumbnailAsync: *const fn(self: *anyopaque, timeFromStart: TimeSpan, scaledWidth: i32, scaledHeight: i32, framePrecision: VideoFramePrecision, _r: **IAsyncOperation(ImageStream)) callconv(.winapi) HRESULT,
@@ -801,7 +801,7 @@ pub const MediaClip = extern struct {
         const this: *IMediaClip = @ptrCast(self);
         return try this.getTrimmedDuration();
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IMediaClip = @ptrCast(self);
         return try this.getUserData();
     }
@@ -890,7 +890,7 @@ pub const MediaComposition = extern struct {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.getBackgroundAudioTracks();
     }
-    pub fn getUserData(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getUserData(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.getUserData();
     }

@@ -166,26 +166,26 @@ pub const IUserInformationStatics = extern struct {
         const _c = self.vtable.remove_AccountPictureChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetDisplayNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetDisplayNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetDisplayNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFirstNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetFirstNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetFirstNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLastNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetLastNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetLastNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPrincipalNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetPrincipalNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetPrincipalNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -196,8 +196,8 @@ pub const IUserInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDomainNameAsync(self: *@This()) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetDomainNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetDomainNameAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -223,12 +223,12 @@ pub const IUserInformationStatics = extern struct {
         SetAccountPicturesFromStreamsAsync: *const fn(self: *anyopaque, smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream, _r: **IAsyncOperation(SetAccountPictureResult)) callconv(.winapi) HRESULT,
         add_AccountPictureChanged: *const fn(self: *anyopaque, changeHandler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_AccountPictureChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        GetDisplayNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetFirstNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetLastNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetPrincipalNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetDisplayNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetFirstNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetLastNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
+        GetPrincipalNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetSessionInitiationProtocolUriAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
-        GetDomainNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetDomainNameAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const SetAccountPictureResult = enum(i32) {
@@ -285,19 +285,19 @@ pub const UserInformation = extern struct {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.removeAccountPictureChanged(token);
     }
-    pub fn GetDisplayNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetDisplayNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetDisplayNameAsync();
     }
-    pub fn GetFirstNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetFirstNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetFirstNameAsync();
     }
-    pub fn GetLastNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetLastNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetLastNameAsync();
     }
-    pub fn GetPrincipalNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetPrincipalNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetPrincipalNameAsync();
     }
@@ -305,7 +305,7 @@ pub const UserInformation = extern struct {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetSessionInitiationProtocolUriAsync();
     }
-    pub fn GetDomainNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetDomainNameAsync() core.HResult!*IAsyncOperation(?HSTRING) {
         const _f = try @This()._IUserInformationStaticsCache.get();
         return try _f.GetDomainNameAsync();
     }
@@ -318,7 +318,7 @@ pub const AdvertisingManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAdvertisingId() core.HResult!HSTRING {
+    pub fn getAdvertisingId() core.HResult!?HSTRING {
         const _f = try @This()._IAdvertisingManagerStaticsCache.get();
         return try _f.getAdvertisingId();
     }
@@ -333,7 +333,7 @@ pub const AdvertisingManager = extern struct {
 };
 pub const AdvertisingManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAdvertisingId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAdvertisingManagerForUser = @ptrCast(self);
         return try this.getAdvertisingId();
     }
@@ -410,19 +410,19 @@ pub const DiagnosticsSettings = extern struct {
 pub const FirstSignInSettings = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
+    pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
+        var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -446,23 +446,23 @@ pub const GlobalizationPreferences = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCalendars() core.HResult!*IVectorView(HSTRING) {
+    pub fn getCalendars() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getCalendars();
     }
-    pub fn getClocks() core.HResult!*IVectorView(HSTRING) {
+    pub fn getClocks() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getClocks();
     }
-    pub fn getCurrencies() core.HResult!*IVectorView(HSTRING) {
+    pub fn getCurrencies() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getCurrencies();
     }
-    pub fn getLanguages() core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getLanguages();
     }
-    pub fn getHomeGeographicRegion() core.HResult!HSTRING {
+    pub fn getHomeGeographicRegion() core.HResult!?HSTRING {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getHomeGeographicRegion();
     }
@@ -470,11 +470,11 @@ pub const GlobalizationPreferences = extern struct {
         const _f = try @This()._IGlobalizationPreferencesStaticsCache.get();
         return try _f.getWeekStartsOn();
     }
-    pub fn TrySetHomeGeographicRegion(region: HSTRING) core.HResult!bool {
+    pub fn TrySetHomeGeographicRegion(region: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IGlobalizationPreferencesStatics2Cache.get();
         return try _f.TrySetHomeGeographicRegion(region);
     }
-    pub fn TrySetLanguages(languageTags: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn TrySetLanguages(languageTags: *IIterable(?HSTRING)) core.HResult!bool {
         const _f = try @This()._IGlobalizationPreferencesStatics2Cache.get();
         return try _f.TrySetLanguages(languageTags);
     }
@@ -494,23 +494,23 @@ pub const GlobalizationPreferencesForUser = extern struct {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getCalendars();
     }
-    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getClocks();
     }
-    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getCurrencies();
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getLanguages();
     }
-    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getHomeGeographicRegion();
     }
@@ -526,8 +526,8 @@ pub const GlobalizationPreferencesForUser = extern struct {
 };
 pub const IAdvertisingManagerForUser = extern struct {
     vtable: *const VTable,
-    pub fn getAdvertisingId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdvertisingId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -550,14 +550,14 @@ pub const IAdvertisingManagerForUser = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AdvertisingId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AdvertisingId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdvertisingManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAdvertisingId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdvertisingId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -574,7 +574,7 @@ pub const IAdvertisingManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AdvertisingId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AdvertisingId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdvertisingManagerStatics2 = extern struct {
@@ -774,32 +774,32 @@ pub const IGlobalizationPreferencesForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Calendars(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Clocks(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Currencies(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeGeographicRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -823,42 +823,42 @@ pub const IGlobalizationPreferencesForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        get_Calendars: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Clocks: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Currencies: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_HomeGeographicRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Calendars: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Clocks: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Currencies: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_HomeGeographicRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_WeekStartsOn: *const fn(self: *anyopaque, _r: *DayOfWeek) callconv(.winapi) HRESULT,
     };
 };
 pub const IGlobalizationPreferencesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Calendars(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getClocks(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Clocks(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getCurrencies(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Currencies(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHomeGeographicRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HomeGeographicRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -881,23 +881,23 @@ pub const IGlobalizationPreferencesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Calendars: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Clocks: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Currencies: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_HomeGeographicRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Calendars: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Clocks: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Currencies: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_HomeGeographicRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_WeekStartsOn: *const fn(self: *anyopaque, _r: *DayOfWeek) callconv(.winapi) HRESULT,
     };
 };
 pub const IGlobalizationPreferencesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn TrySetHomeGeographicRegion(self: *@This(), region: HSTRING) core.HResult!bool {
+    pub fn TrySetHomeGeographicRegion(self: *@This(), region: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetHomeGeographicRegion(@ptrCast(self), region, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetLanguages(self: *@This(), languageTags: *IIterable(HSTRING)) core.HResult!bool {
+    pub fn TrySetLanguages(self: *@This(), languageTags: *IIterable(?HSTRING)) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetLanguages(@ptrCast(self), languageTags, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -915,8 +915,8 @@ pub const IGlobalizationPreferencesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TrySetHomeGeographicRegion: *const fn(self: *anyopaque, region: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        TrySetLanguages: *const fn(self: *anyopaque, languageTags: *IIterable(HSTRING), _r: *bool) callconv(.winapi) HRESULT,
+        TrySetHomeGeographicRegion: *const fn(self: *anyopaque, region: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TrySetLanguages: *const fn(self: *anyopaque, languageTags: *IIterable(?HSTRING), _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IGlobalizationPreferencesStatics3 = extern struct {

@@ -13,11 +13,11 @@ pub const AppRecordingManager = extern struct {
         const this: *IAppRecordingManager = @ptrCast(self);
         return try this.RecordTimeSpanToFileAsync(startTime, duration, file);
     }
-    pub fn getSupportedScreenshotMediaEncodingSubtypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedScreenshotMediaEncodingSubtypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IAppRecordingManager = @ptrCast(self);
         return try this.getSupportedScreenshotMediaEncodingSubtypes();
     }
-    pub fn SaveScreenshotToFilesAsync(self: *@This(), folder: *StorageFolder, filenamePrefix: HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(AppRecordingSaveScreenshotResult) {
+    pub fn SaveScreenshotToFilesAsync(self: *@This(), folder: *StorageFolder, filenamePrefix: ?HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(AppRecordingSaveScreenshotResult) {
         const this: *IAppRecordingManager = @ptrCast(self);
         return try this.SaveScreenshotToFilesAsync(folder, filenamePrefix, option, requestedFormats);
     }
@@ -89,7 +89,7 @@ pub const AppRecordingSavedScreenshotInfo = extern struct {
         const this: *IAppRecordingSavedScreenshotInfo = @ptrCast(self);
         return try this.getFile();
     }
-    pub fn getMediaEncodingSubtype(self: *@This()) core.HResult!HSTRING {
+    pub fn getMediaEncodingSubtype(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppRecordingSavedScreenshotInfo = @ptrCast(self);
         return try this.getMediaEncodingSubtype();
     }
@@ -187,13 +187,13 @@ pub const IAppRecordingManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedScreenshotMediaEncodingSubtypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedScreenshotMediaEncodingSubtypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedScreenshotMediaEncodingSubtypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SaveScreenshotToFilesAsync(self: *@This(), folder: *StorageFolder, filenamePrefix: HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(AppRecordingSaveScreenshotResult) {
+    pub fn SaveScreenshotToFilesAsync(self: *@This(), folder: *StorageFolder, filenamePrefix: ?HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(AppRecordingSaveScreenshotResult) {
         var _r: *IAsyncOperation(AppRecordingSaveScreenshotResult) = undefined;
         const _c = self.vtable.SaveScreenshotToFilesAsync(@ptrCast(self), folder, filenamePrefix, option, requestedFormats, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -214,8 +214,8 @@ pub const IAppRecordingManager = extern struct {
         GetStatus: *const fn(self: *anyopaque, _r: **AppRecordingStatus) callconv(.winapi) HRESULT,
         StartRecordingToFileAsync: *const fn(self: *anyopaque, file: *StorageFile, _r: **IAsyncOperation(AppRecordingResult)) callconv(.winapi) HRESULT,
         RecordTimeSpanToFileAsync: *const fn(self: *anyopaque, startTime: DateTime, duration: TimeSpan, file: *StorageFile, _r: **IAsyncOperation(AppRecordingResult)) callconv(.winapi) HRESULT,
-        get_SupportedScreenshotMediaEncodingSubtypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        SaveScreenshotToFilesAsync: *const fn(self: *anyopaque, folder: *StorageFolder, filenamePrefix: HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(HSTRING), _r: **IAsyncOperation(AppRecordingSaveScreenshotResult)) callconv(.winapi) HRESULT,
+        get_SupportedScreenshotMediaEncodingSubtypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        SaveScreenshotToFilesAsync: *const fn(self: *anyopaque, folder: *StorageFolder, filenamePrefix: ?HSTRING, option: AppRecordingSaveScreenshotOption, requestedFormats: *IIterable(?HSTRING), _r: **IAsyncOperation(AppRecordingSaveScreenshotResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppRecordingManagerStatics = extern struct {
@@ -330,8 +330,8 @@ pub const IAppRecordingSavedScreenshotInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMediaEncodingSubtype(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaEncodingSubtype(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaEncodingSubtype(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -349,7 +349,7 @@ pub const IAppRecordingSavedScreenshotInfo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_File: *const fn(self: *anyopaque, _r: **StorageFile) callconv(.winapi) HRESULT,
-        get_MediaEncodingSubtype: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MediaEncodingSubtype: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppRecordingStatus = extern struct {

@@ -29,7 +29,7 @@ pub const IPaymentAppCanMakePaymentTriggerDetails = extern struct {
 };
 pub const IPaymentAppManager = extern struct {
     vtable: *const VTable,
-    pub fn RegisterAsync(self: *@This(), supportedPaymentMethodIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn RegisterAsync(self: *@This(), supportedPaymentMethodIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterAsync(@ptrCast(self), supportedPaymentMethodIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -53,7 +53,7 @@ pub const IPaymentAppManager = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RegisterAsync: *const fn(self: *anyopaque, supportedPaymentMethodIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RegisterAsync: *const fn(self: *anyopaque, supportedPaymentMethodIds: *IIterable(?HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UnregisterAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -88,33 +88,33 @@ pub const IPaymentTransaction = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPayerEmail(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerEmail(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerEmail(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPayerEmail(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerEmail(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPayerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPayerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerPhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPayerPhoneNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerPhoneNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PayerPhoneNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -153,12 +153,12 @@ pub const IPaymentTransaction = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PaymentRequest: *const fn(self: *anyopaque, _r: **PaymentRequest) callconv(.winapi) HRESULT,
-        get_PayerEmail: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PayerEmail: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PayerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PayerName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PayerPhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PayerPhoneNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PayerEmail: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PayerEmail: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PayerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PayerName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PayerPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PayerPhoneNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         UpdateShippingAddressAsync: *const fn(self: *anyopaque, shippingAddress: *PaymentAddress, _r: **IAsyncOperation(PaymentRequestChangedResult)) callconv(.winapi) HRESULT,
         UpdateSelectedShippingOptionAsync: *const fn(self: *anyopaque, selectedShippingOption: *PaymentShippingOption, _r: **IAsyncOperation(PaymentRequestChangedResult)) callconv(.winapi) HRESULT,
         AcceptAsync: *const fn(self: *anyopaque, paymentToken: *PaymentToken, _r: **IAsyncOperation(PaymentTransactionAcceptResult)) callconv(.winapi) HRESULT,
@@ -190,7 +190,7 @@ pub const IPaymentTransactionAcceptResult = extern struct {
 };
 pub const IPaymentTransactionStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
+    pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
         var _r: *IAsyncOperation(PaymentTransaction) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -208,7 +208,7 @@ pub const IPaymentTransactionStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(PaymentTransaction)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(PaymentTransaction)) callconv(.winapi) HRESULT,
     };
 };
 pub const PaymentAppCanMakePaymentTriggerDetails = extern struct {
@@ -229,7 +229,7 @@ pub const PaymentAppCanMakePaymentTriggerDetails = extern struct {
 };
 pub const PaymentAppManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn RegisterAsync(self: *@This(), supportedPaymentMethodIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn RegisterAsync(self: *@This(), supportedPaymentMethodIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         const this: *IPaymentAppManager = @ptrCast(self);
         return try this.RegisterAsync(supportedPaymentMethodIds);
     }
@@ -257,27 +257,27 @@ pub const PaymentTransaction = extern struct {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.getPaymentRequest();
     }
-    pub fn getPayerEmail(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerEmail(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.getPayerEmail();
     }
-    pub fn putPayerEmail(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerEmail(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.putPayerEmail(value);
     }
-    pub fn getPayerName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.getPayerName();
     }
-    pub fn putPayerName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.putPayerName(value);
     }
-    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.getPayerPhoneNumber();
     }
-    pub fn putPayerPhoneNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPayerPhoneNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentTransaction = @ptrCast(self);
         return try this.putPayerPhoneNumber(value);
     }
@@ -300,7 +300,7 @@ pub const PaymentTransaction = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
+    pub fn FromIdAsync(id: ?HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
         const _f = try @This()._IPaymentTransactionStaticsCache.get();
         return try _f.FromIdAsync(id);
     }

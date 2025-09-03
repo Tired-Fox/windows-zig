@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const IPrintExtensionContextStatic = extern struct {
     vtable: *const VTable,
-    pub fn FromDeviceId(self: *@This(), deviceId: HSTRING) core.HResult!*IInspectable {
+    pub fn FromDeviceId(self: *@This(), deviceId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.FromDeviceId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -19,24 +19,24 @@ pub const IPrintExtensionContextStatic = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromDeviceId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
+        FromDeviceId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IInspectable) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintNotificationEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEventData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEventData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EventData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEventData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEventData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EventData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -52,9 +52,9 @@ pub const IPrintNotificationEventDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrinterName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EventData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EventData: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PrinterName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EventData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EventData: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTaskConfiguration = extern struct {
@@ -181,7 +181,7 @@ pub const PrintExtensionContext = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromDeviceId(deviceId: HSTRING) core.HResult!*IInspectable {
+    pub fn FromDeviceId(deviceId: ?HSTRING) core.HResult!*IInspectable {
         const _f = try @This()._IPrintExtensionContextStaticCache.get();
         return try _f.FromDeviceId(deviceId);
     }
@@ -191,15 +191,15 @@ pub const PrintExtensionContext = extern struct {
 };
 pub const PrintNotificationEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintNotificationEventDetails = @ptrCast(self);
         return try this.getPrinterName();
     }
-    pub fn getEventData(self: *@This()) core.HResult!HSTRING {
+    pub fn getEventData(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintNotificationEventDetails = @ptrCast(self);
         return try this.getEventData();
     }
-    pub fn putEventData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEventData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintNotificationEventDetails = @ptrCast(self);
         return try this.putEventData(value);
     }
@@ -279,8 +279,8 @@ pub const PrintTaskConfigurationSaveRequestedEventArgs = extern struct {
 };
 pub const IPrint3DWorkflow = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceID(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceID(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceID(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -323,7 +323,7 @@ pub const IPrint3DWorkflow = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceID: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceID: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetPrintModelPackage: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         get_IsPrintReady: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsPrintReady: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -399,8 +399,8 @@ pub const IPrint3DWorkflowPrintRequestedEventArgs = extern struct {
 };
 pub const IPrint3DWorkflowPrinterChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getNewDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNewDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NewDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -417,12 +417,12 @@ pub const IPrint3DWorkflowPrinterChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_NewDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NewDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const Print3DWorkflow = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceID(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceID(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrint3DWorkflow = @ptrCast(self);
         return try this.getDeviceID();
     }
@@ -499,7 +499,7 @@ pub const Print3DWorkflowPrintRequestedEventArgs = extern struct {
 };
 pub const Print3DWorkflowPrinterChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNewDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNewDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrint3DWorkflowPrinterChangedEventArgs = @ptrCast(self);
         return try this.getNewDeviceId();
     }

@@ -11,13 +11,13 @@ pub const IVpnAppId = extern struct {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -35,13 +35,13 @@ pub const IVpnAppId = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *VpnAppIdType) callconv(.winapi) HRESULT,
         put_Type: *const fn(self: *anyopaque, value: VpnAppIdType) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnAppIdFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), ty: VpnAppIdType, value: HSTRING) core.HResult!*VpnAppId {
+    pub fn Create(self: *@This(), ty: VpnAppIdType, value: ?HSTRING) core.HResult!*VpnAppId {
         var _r: *VpnAppId = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ty, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -59,7 +59,7 @@ pub const IVpnAppIdFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, ty: VpnAppIdType, value: HSTRING, _r: **VpnAppId) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, ty: VpnAppIdType, value: ?HSTRING, _r: **VpnAppId) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnChannel = extern struct {
@@ -86,7 +86,7 @@ pub const IVpnChannel = extern struct {
         const _c = self.vtable.RequestVpnPacketBuffer(@ptrCast(self), ty, vpnPacketBuffer);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn LogDiagnosticMessage(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn LogDiagnosticMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LogDiagnosticMessage(@ptrCast(self), message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -132,7 +132,7 @@ pub const IVpnChannel = extern struct {
         const _c = self.vtable.RequestCustomPrompt(@ptrCast(self), customPrompt);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetErrorMessage(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn SetErrorMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetErrorMessage(@ptrCast(self), message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -157,7 +157,7 @@ pub const IVpnChannel = extern struct {
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         RequestCredentials: *const fn(self: *anyopaque, credType: VpnCredentialType, isRetry: bool, isSingleSignOnCredential: bool, certificate: *Certificate, _r: **VpnPickedCredential) callconv(.winapi) HRESULT,
         RequestVpnPacketBuffer: *const fn(self: *anyopaque, ty: VpnDataPathType, vpnPacketBuffer: *VpnPacketBuffer) callconv(.winapi) HRESULT,
-        LogDiagnosticMessage: *const fn(self: *anyopaque, message: HSTRING) callconv(.winapi) HRESULT,
+        LogDiagnosticMessage: *const fn(self: *anyopaque, message: ?HSTRING) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Configuration: *const fn(self: *anyopaque, _r: **VpnChannelConfiguration) callconv(.winapi) HRESULT,
         add_ActivityChange: *const fn(self: *anyopaque, handler: *TypedEventHandler(VpnChannel,VpnChannelActivityEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -166,7 +166,7 @@ pub const IVpnChannel = extern struct {
         get_PlugInContext: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         get_SystemHealth: *const fn(self: *anyopaque, _r: **VpnSystemHealth) callconv(.winapi) HRESULT,
         RequestCustomPrompt: *const fn(self: *anyopaque, customPrompt: *IVectorView(IVpnCustomPrompt)) callconv(.winapi) HRESULT,
-        SetErrorMessage: *const fn(self: *anyopaque, message: HSTRING) callconv(.winapi) HRESULT,
+        SetErrorMessage: *const fn(self: *anyopaque, message: ?HSTRING) callconv(.winapi) HRESULT,
         SetAllowedSslTlsVersions: *const fn(self: *anyopaque, tunnelTransport: *IInspectable, useTls12: bool) callconv(.winapi) HRESULT,
     };
 };
@@ -226,7 +226,7 @@ pub const IVpnChannel2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TerminateConnection(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn TerminateConnection(self: *@This(), message: ?HSTRING) core.HResult!void {
         const _c = self.vtable.TerminateConnection(@ptrCast(self), message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -256,7 +256,7 @@ pub const IVpnChannel2 = extern struct {
         RequestCredentialsAsyncWithCredOptionsAndCertificate: *const fn(self: *anyopaque, credType: VpnCredentialType, credOptions: u32, certificate: *Certificate, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
         RequestCredentialsAsyncWithCredOptions: *const fn(self: *anyopaque, credType: VpnCredentialType, credOptions: u32, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
         RequestCredentialsAsync: *const fn(self: *anyopaque, credType: VpnCredentialType, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
-        TerminateConnection: *const fn(self: *anyopaque, message: HSTRING) callconv(.winapi) HRESULT,
+        TerminateConnection: *const fn(self: *anyopaque, message: ?HSTRING) callconv(.winapi) HRESULT,
         StartWithTrafficFilter: *const fn(self: *anyopaque, assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) callconv(.winapi) HRESULT,
     };
 };
@@ -348,7 +348,7 @@ pub const IVpnChannel5 = extern struct {
 };
 pub const IVpnChannel6 = extern struct {
     vtable: *const VTable,
-    pub fn ActivateForeground(self: *@This(), packageRelativeAppId: HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
+    pub fn ActivateForeground(self: *@This(), packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.ActivateForeground(@ptrCast(self), packageRelativeAppId, sharedContext, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -366,7 +366,7 @@ pub const IVpnChannel6 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ActivateForeground: *const fn(self: *anyopaque, packageRelativeAppId: HSTRING, sharedContext: *ValueSet, _r: **ValueSet) callconv(.winapi) HRESULT,
+        ActivateForeground: *const fn(self: *anyopaque, packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnChannelActivityEventArgs = extern struct {
@@ -417,8 +417,8 @@ pub const IVpnChannelActivityStateChangedArgs = extern struct {
 };
 pub const IVpnChannelConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getServerServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getServerServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServerServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -429,8 +429,8 @@ pub const IVpnChannelConfiguration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCustomField(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomField(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomField(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -447,9 +447,9 @@ pub const IVpnChannelConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ServerServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ServerServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ServerHostNameList: *const fn(self: *anyopaque, _r: **IVectorView(HostName)) callconv(.winapi) HRESULT,
-        get_CustomField: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CustomField: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnChannelConfiguration2 = extern struct {
@@ -510,8 +510,8 @@ pub const IVpnCredential = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAdditionalPin(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdditionalPin(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -536,7 +536,7 @@ pub const IVpnCredential = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PasskeyCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         get_CertificateCredential: *const fn(self: *anyopaque, _r: **Certificate) callconv(.winapi) HRESULT,
-        get_AdditionalPin: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AdditionalPin: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OldPasswordCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
     };
 };
@@ -577,12 +577,12 @@ pub const IVpnCustomCheckBox = extern struct {
 };
 pub const IVpnCustomComboBox = extern struct {
     vtable: *const VTable,
-    pub fn putOptionsText(self: *@This(), value: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn putOptionsText(self: *@This(), value: *IVectorView(?HSTRING)) core.HResult!void {
         const _c = self.vtable.put_OptionsText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOptionsText(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getOptionsText(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_OptionsText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -605,19 +605,19 @@ pub const IVpnCustomComboBox = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_OptionsText: *const fn(self: *anyopaque, value: *IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_OptionsText: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        put_OptionsText: *const fn(self: *anyopaque, value: *IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_OptionsText: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Selected: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnCustomEditBox = extern struct {
     vtable: *const VTable,
-    pub fn putDefaultText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDefaultText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDefaultText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -632,8 +632,8 @@ pub const IVpnCustomEditBox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -650,11 +650,11 @@ pub const IVpnCustomEditBox = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DefaultText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DefaultText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DefaultText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DefaultText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_NoEcho: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_NoEcho: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnCustomErrorBox = extern struct {
@@ -675,12 +675,12 @@ pub const IVpnCustomErrorBox = extern struct {
 };
 pub const IVpnCustomPrompt = extern struct {
     vtable: *const VTable,
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -717,8 +717,8 @@ pub const IVpnCustomPrompt = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_Compulsory: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Compulsory: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Bordered: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -762,12 +762,12 @@ pub const IVpnCustomPromptBooleanInput = extern struct {
 };
 pub const IVpnCustomPromptElement = extern struct {
     vtable: *const VTable,
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -804,8 +804,8 @@ pub const IVpnCustomPromptElement = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_Compulsory: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Compulsory: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Emphasized: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
@@ -814,8 +814,8 @@ pub const IVpnCustomPromptElement = extern struct {
 };
 pub const IVpnCustomPromptOptionSelector = extern struct {
     vtable: *const VTable,
-    pub fn getOptions(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -838,18 +838,18 @@ pub const IVpnCustomPromptOptionSelector = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Options: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Options: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_SelectedIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnCustomPromptText = extern struct {
     vtable: *const VTable,
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -866,18 +866,18 @@ pub const IVpnCustomPromptText = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnCustomPromptTextInput = extern struct {
     vtable: *const VTable,
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -892,8 +892,8 @@ pub const IVpnCustomPromptTextInput = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -910,21 +910,21 @@ pub const IVpnCustomPromptTextInput = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_IsTextHidden: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsTextHidden: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnCustomTextBox = extern struct {
     vtable: *const VTable,
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -941,8 +941,8 @@ pub const IVpnCustomTextBox = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DisplayText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnDomainNameAssignment = extern struct {
@@ -1059,7 +1059,7 @@ pub const IVpnDomainNameInfo2 = extern struct {
 };
 pub const IVpnDomainNameInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateVpnDomainNameInfo(self: *@This(), name: HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
+    pub fn CreateVpnDomainNameInfo(self: *@This(), name: ?HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
         var _r: *VpnDomainNameInfo = undefined;
         const _c = self.vtable.CreateVpnDomainNameInfo(@ptrCast(self), name, nameType, dnsServerList, proxyServerList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1077,13 +1077,13 @@ pub const IVpnDomainNameInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateVpnDomainNameInfo: *const fn(self: *anyopaque, name: HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName), _r: **VpnDomainNameInfo) callconv(.winapi) HRESULT,
+        CreateVpnDomainNameInfo: *const fn(self: *anyopaque, name: ?HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName), _r: **VpnDomainNameInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnForegroundActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1112,7 +1112,7 @@ pub const IVpnForegroundActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProfileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProfileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SharedContext: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
         get_ActivationOperation: *const fn(self: *anyopaque, _r: **VpnForegroundActivationOperation) callconv(.winapi) HRESULT,
     };
@@ -1184,7 +1184,7 @@ pub const IVpnInterfaceIdFactory = extern struct {
 };
 pub const IVpnManagementAgent = extern struct {
     vtable: *const VTable,
-    pub fn AddProfileFromXmlAsync(self: *@This(), xml: HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
+    pub fn AddProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.AddProfileFromXmlAsync(@ptrCast(self), xml, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1196,7 +1196,7 @@ pub const IVpnManagementAgent = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateProfileFromXmlAsync(self: *@This(), xml: HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
+    pub fn UpdateProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         var _r: *IAsyncOperation(VpnManagementErrorStatus) = undefined;
         const _c = self.vtable.UpdateProfileFromXmlAsync(@ptrCast(self), xml, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1250,9 +1250,9 @@ pub const IVpnManagementAgent = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddProfileFromXmlAsync: *const fn(self: *anyopaque, xml: HSTRING, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
+        AddProfileFromXmlAsync: *const fn(self: *anyopaque, xml: ?HSTRING, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
         AddProfileFromObjectAsync: *const fn(self: *anyopaque, profile: *IVpnProfile, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
-        UpdateProfileFromXmlAsync: *const fn(self: *anyopaque, xml: HSTRING, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
+        UpdateProfileFromXmlAsync: *const fn(self: *anyopaque, xml: ?HSTRING, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
         UpdateProfileFromObjectAsync: *const fn(self: *anyopaque, profile: *IVpnProfile, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
         GetProfilesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IVpnProfile))) callconv(.winapi) HRESULT,
         DeleteProfileAsync: *const fn(self: *anyopaque, profile: *IVpnProfile, _r: **IAsyncOperation(VpnManagementErrorStatus)) callconv(.winapi) HRESULT,
@@ -1303,12 +1303,12 @@ pub const IVpnNamespaceAssignment = extern struct {
 };
 pub const IVpnNamespaceInfo = extern struct {
     vtable: *const VTable,
-    pub fn putNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Namespace(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Namespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1345,8 +1345,8 @@ pub const IVpnNamespaceInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Namespace: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Namespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Namespace: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Namespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_DnsServers: *const fn(self: *anyopaque, value: *IVector(HostName)) callconv(.winapi) HRESULT,
         get_DnsServers: *const fn(self: *anyopaque, _r: **IVector(HostName)) callconv(.winapi) HRESULT,
         put_WebProxyServers: *const fn(self: *anyopaque, value: *IVector(HostName)) callconv(.winapi) HRESULT,
@@ -1355,7 +1355,7 @@ pub const IVpnNamespaceInfo = extern struct {
 };
 pub const IVpnNamespaceInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateVpnNamespaceInfo(self: *@This(), name: HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
+    pub fn CreateVpnNamespaceInfo(self: *@This(), name: ?HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
         var _r: *VpnNamespaceInfo = undefined;
         const _c = self.vtable.CreateVpnNamespaceInfo(@ptrCast(self), name, dnsServerList, proxyServerList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1373,13 +1373,13 @@ pub const IVpnNamespaceInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateVpnNamespaceInfo: *const fn(self: *anyopaque, name: HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName), _r: **VpnNamespaceInfo) callconv(.winapi) HRESULT,
+        CreateVpnNamespaceInfo: *const fn(self: *anyopaque, name: ?HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName), _r: **VpnNamespaceInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnNativeProfile = extern struct {
     vtable: *const VTable,
-    pub fn getServers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getServers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Servers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1424,13 +1424,13 @@ pub const IVpnNativeProfile = extern struct {
         const _c = self.vtable.put_TunnelAuthenticationMethod(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getEapConfiguration(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEapConfiguration(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EapConfiguration(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEapConfiguration(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEapConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EapConfiguration(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1446,7 +1446,7 @@ pub const IVpnNativeProfile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Servers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Servers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_RoutingPolicyType: *const fn(self: *anyopaque, _r: *VpnRoutingPolicyType) callconv(.winapi) HRESULT,
         put_RoutingPolicyType: *const fn(self: *anyopaque, value: VpnRoutingPolicyType) callconv(.winapi) HRESULT,
         get_NativeProtocolType: *const fn(self: *anyopaque, _r: *VpnNativeProtocolType) callconv(.winapi) HRESULT,
@@ -1455,8 +1455,8 @@ pub const IVpnNativeProfile = extern struct {
         put_UserAuthenticationMethod: *const fn(self: *anyopaque, value: VpnAuthenticationMethod) callconv(.winapi) HRESULT,
         get_TunnelAuthenticationMethod: *const fn(self: *anyopaque, _r: *VpnAuthenticationMethod) callconv(.winapi) HRESULT,
         put_TunnelAuthenticationMethod: *const fn(self: *anyopaque, value: VpnAuthenticationMethod) callconv(.winapi) HRESULT,
-        get_EapConfiguration: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EapConfiguration: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EapConfiguration: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EapConfiguration: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnNativeProfile2 = extern struct {
@@ -1727,8 +1727,8 @@ pub const IVpnPickedCredential = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAdditionalPin(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdditionalPin(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1752,7 +1752,7 @@ pub const IVpnPickedCredential = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PasskeyCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
-        get_AdditionalPin: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AdditionalPin: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OldPasswordCredential: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
     };
 };
@@ -1805,23 +1805,23 @@ pub const IVpnPlugInProfile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCustomConfiguration(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomConfiguration(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomConfiguration(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCustomConfiguration(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustomConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CustomConfiguration(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVpnPluginPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVpnPluginPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VpnPluginPackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVpnPluginPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVpnPluginPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_VpnPluginPackageFamilyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1838,10 +1838,10 @@ pub const IVpnPlugInProfile = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ServerUris: *const fn(self: *anyopaque, _r: **IVector(Uri)) callconv(.winapi) HRESULT,
-        get_CustomConfiguration: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CustomConfiguration: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_VpnPluginPackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_VpnPluginPackageFamilyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CustomConfiguration: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CustomConfiguration: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_VpnPluginPackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_VpnPluginPackageFamilyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVpnPlugInProfile2 = extern struct {
@@ -1902,13 +1902,13 @@ pub const IVpnPlugInReconnectTransport = extern struct {
 };
 pub const IVpnProfile = extern struct {
     vtable: *const VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putProfileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProfileName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1968,8 +1968,8 @@ pub const IVpnProfile = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProfileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ProfileName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ProfileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ProfileName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AppTriggers: *const fn(self: *anyopaque, _r: **IVector(VpnAppId)) callconv(.winapi) HRESULT,
         get_Routes: *const fn(self: *anyopaque, _r: **IVector(VpnRoute)) callconv(.winapi) HRESULT,
         get_DomainNameInfoList: *const fn(self: *anyopaque, _r: **IVector(VpnDomainNameInfo)) callconv(.winapi) HRESULT,
@@ -2154,8 +2154,8 @@ pub const IVpnTrafficFilter = extern struct {
         const _c = self.vtable.put_AppId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAppClaims(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAppClaims(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_AppClaims(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2170,26 +2170,26 @@ pub const IVpnTrafficFilter = extern struct {
         const _c = self.vtable.put_Protocol(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocalPortRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getLocalPortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_LocalPortRanges(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemotePortRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRemotePortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RemotePortRanges(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLocalAddressRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getLocalAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_LocalAddressRanges(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteAddressRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRemoteAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RemoteAddressRanges(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2218,13 +2218,13 @@ pub const IVpnTrafficFilter = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AppId: *const fn(self: *anyopaque, _r: **VpnAppId) callconv(.winapi) HRESULT,
         put_AppId: *const fn(self: *anyopaque, value: *VpnAppId) callconv(.winapi) HRESULT,
-        get_AppClaims: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AppClaims: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Protocol: *const fn(self: *anyopaque, _r: *VpnIPProtocol) callconv(.winapi) HRESULT,
         put_Protocol: *const fn(self: *anyopaque, value: VpnIPProtocol) callconv(.winapi) HRESULT,
-        get_LocalPortRanges: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_RemotePortRanges: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_LocalAddressRanges: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_RemoteAddressRanges: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_LocalPortRanges: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_RemotePortRanges: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_LocalAddressRanges: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_RemoteAddressRanges: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_RoutingPolicyType: *const fn(self: *anyopaque, _r: *VpnRoutingPolicyType) callconv(.winapi) HRESULT,
         put_RoutingPolicyType: *const fn(self: *anyopaque, value: VpnRoutingPolicyType) callconv(.winapi) HRESULT,
     };
@@ -2309,18 +2309,18 @@ pub const VpnAppId = extern struct {
         const this: *IVpnAppId = @ptrCast(self);
         return try this.putType(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnAppId = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnAppId = @ptrCast(self);
         return try this.putValue(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(ty: VpnAppIdType, value: HSTRING) core.HResult!*VpnAppId {
+    pub fn Create(ty: VpnAppIdType, value: ?HSTRING) core.HResult!*VpnAppId {
         const _f = try @This()._IVpnAppIdFactoryCache.get();
         return try _f.Create(ty, value);
     }
@@ -2364,7 +2364,7 @@ pub const VpnChannel = extern struct {
         const this: *IVpnChannel = @ptrCast(self);
         return try this.RequestVpnPacketBuffer(ty, vpnPacketBuffer);
     }
-    pub fn LogDiagnosticMessage(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn LogDiagnosticMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const this: *IVpnChannel = @ptrCast(self);
         return try this.LogDiagnosticMessage(message);
     }
@@ -2400,7 +2400,7 @@ pub const VpnChannel = extern struct {
         const this: *IVpnChannel = @ptrCast(self);
         return try this.RequestCustomPrompt(customPrompt);
     }
-    pub fn SetErrorMessage(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn SetErrorMessage(self: *@This(), message: ?HSTRING) core.HResult!void {
         const this: *IVpnChannel = @ptrCast(self);
         return try this.SetErrorMessage(message);
     }
@@ -2468,7 +2468,7 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCredentialsAsync(credType);
     }
-    pub fn TerminateConnection(self: *@This(), message: HSTRING) core.HResult!void {
+    pub fn TerminateConnection(self: *@This(), message: ?HSTRING) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2540,7 +2540,7 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushVpnSendPacketBuffers();
     }
-    pub fn ActivateForeground(self: *@This(), packageRelativeAppId: HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
+    pub fn ActivateForeground(self: *@This(), packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
         var this: ?*IVpnChannel6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2590,7 +2590,7 @@ pub const VpnChannelActivityStateChangedArgs = extern struct {
 };
 pub const VpnChannelConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServerServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getServerServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnChannelConfiguration = @ptrCast(self);
         return try this.getServerServiceName();
     }
@@ -2598,7 +2598,7 @@ pub const VpnChannelConfiguration = extern struct {
         const this: *IVpnChannelConfiguration = @ptrCast(self);
         return try this.getServerHostNameList();
     }
-    pub fn getCustomField(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomField(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnChannelConfiguration = @ptrCast(self);
         return try this.getCustomField();
     }
@@ -2629,7 +2629,7 @@ pub const VpnCredential = extern struct {
         const this: *IVpnCredential = @ptrCast(self);
         return try this.getCertificateCredential();
     }
-    pub fn getAdditionalPin(self: *@This()) core.HResult!HSTRING {
+    pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCredential = @ptrCast(self);
         return try this.getAdditionalPin();
     }
@@ -2666,13 +2666,13 @@ pub const VpnCustomCheckBox = extern struct {
         const this: *IVpnCustomCheckBox = @ptrCast(self);
         return try this.getChecked();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2718,11 +2718,11 @@ pub const VpnCustomCheckBox = extern struct {
 };
 pub const VpnCustomComboBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putOptionsText(self: *@This(), value: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn putOptionsText(self: *@This(), value: *IVectorView(?HSTRING)) core.HResult!void {
         const this: *IVpnCustomComboBox = @ptrCast(self);
         return try this.putOptionsText(value);
     }
-    pub fn getOptionsText(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getOptionsText(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IVpnCustomComboBox = @ptrCast(self);
         return try this.getOptionsText();
     }
@@ -2730,13 +2730,13 @@ pub const VpnCustomComboBox = extern struct {
         const this: *IVpnCustomComboBox = @ptrCast(self);
         return try this.getSelected();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2782,11 +2782,11 @@ pub const VpnCustomComboBox = extern struct {
 };
 pub const VpnCustomEditBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putDefaultText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnCustomEditBox = @ptrCast(self);
         return try this.putDefaultText(value);
     }
-    pub fn getDefaultText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDefaultText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomEditBox = @ptrCast(self);
         return try this.getDefaultText();
     }
@@ -2798,17 +2798,17 @@ pub const VpnCustomEditBox = extern struct {
         const this: *IVpnCustomEditBox = @ptrCast(self);
         return try this.getNoEcho();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomEditBox = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2854,13 +2854,13 @@ pub const VpnCustomEditBox = extern struct {
 };
 pub const VpnCustomErrorBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2918,13 +2918,13 @@ pub const VpnCustomPromptBooleanInput = extern struct {
         const this: *IVpnCustomPromptBooleanInput = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2970,7 +2970,7 @@ pub const VpnCustomPromptBooleanInput = extern struct {
 };
 pub const VpnCustomPromptOptionSelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnCustomPromptOptionSelector = @ptrCast(self);
         return try this.getOptions();
     }
@@ -2978,13 +2978,13 @@ pub const VpnCustomPromptOptionSelector = extern struct {
         const this: *IVpnCustomPromptOptionSelector = @ptrCast(self);
         return try this.getSelectedIndex();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3030,21 +3030,21 @@ pub const VpnCustomPromptOptionSelector = extern struct {
 };
 pub const VpnCustomPromptText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnCustomPromptText = @ptrCast(self);
         return try this.putText(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomPromptText = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3090,11 +3090,11 @@ pub const VpnCustomPromptText = extern struct {
 };
 pub const VpnCustomPromptTextInput = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnCustomPromptTextInput = @ptrCast(self);
         return try this.putPlaceholderText(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomPromptTextInput = @ptrCast(self);
         return try this.getPlaceholderText();
     }
@@ -3106,17 +3106,17 @@ pub const VpnCustomPromptTextInput = extern struct {
         const this: *IVpnCustomPromptTextInput = @ptrCast(self);
         return try this.getIsTextHidden();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomPromptTextInput = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3162,21 +3162,21 @@ pub const VpnCustomPromptTextInput = extern struct {
 };
 pub const VpnCustomTextBox = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putDisplayText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnCustomTextBox = @ptrCast(self);
         return try this.putDisplayText(value);
     }
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnCustomTextBox = @ptrCast(self);
         return try this.getDisplayText();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3287,7 +3287,7 @@ pub const VpnDomainNameInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateVpnDomainNameInfo(name: HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
+    pub fn CreateVpnDomainNameInfo(name: ?HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
         const _f = try @This()._IVpnDomainNameInfoFactoryCache.get();
         return try _f.CreateVpnDomainNameInfo(name, nameType, dnsServerList, proxyServerList);
     }
@@ -3305,7 +3305,7 @@ pub const VpnDomainNameType = enum(i32) {
 };
 pub const VpnForegroundActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnForegroundActivatedEventArgs = @ptrCast(self);
         return try this.getProfileName();
     }
@@ -3390,7 +3390,7 @@ pub const VpnInterfaceId = extern struct {
 };
 pub const VpnManagementAgent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddProfileFromXmlAsync(self: *@This(), xml: HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
+    pub fn AddProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         const this: *IVpnManagementAgent = @ptrCast(self);
         return try this.AddProfileFromXmlAsync(xml);
     }
@@ -3398,7 +3398,7 @@ pub const VpnManagementAgent = extern struct {
         const this: *IVpnManagementAgent = @ptrCast(self);
         return try this.AddProfileFromObjectAsync(profile);
     }
-    pub fn UpdateProfileFromXmlAsync(self: *@This(), xml: HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
+    pub fn UpdateProfileFromXmlAsync(self: *@This(), xml: ?HSTRING) core.HResult!*IAsyncOperation(VpnManagementErrorStatus) {
         const this: *IVpnManagementAgent = @ptrCast(self);
         return try this.UpdateProfileFromXmlAsync(xml);
     }
@@ -3501,11 +3501,11 @@ pub const VpnNamespaceAssignment = extern struct {
 };
 pub const VpnNamespaceInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putNamespace(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnNamespaceInfo = @ptrCast(self);
         return try this.putNamespace(value);
     }
-    pub fn getNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnNamespaceInfo = @ptrCast(self);
         return try this.getNamespace();
     }
@@ -3528,7 +3528,7 @@ pub const VpnNamespaceInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateVpnNamespaceInfo(name: HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
+    pub fn CreateVpnNamespaceInfo(name: ?HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
         const _f = try @This()._IVpnNamespaceInfoFactoryCache.get();
         return try _f.CreateVpnNamespaceInfo(name, dnsServerList, proxyServerList);
     }
@@ -3541,7 +3541,7 @@ pub const VpnNamespaceInfo = extern struct {
 };
 pub const VpnNativeProfile = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getServers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getServers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnNativeProfile = @ptrCast(self);
         return try this.getServers();
     }
@@ -3577,21 +3577,21 @@ pub const VpnNativeProfile = extern struct {
         const this: *IVpnNativeProfile = @ptrCast(self);
         return try this.putTunnelAuthenticationMethod(value);
     }
-    pub fn getEapConfiguration(self: *@This()) core.HResult!HSTRING {
+    pub fn getEapConfiguration(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnNativeProfile = @ptrCast(self);
         return try this.getEapConfiguration();
     }
-    pub fn putEapConfiguration(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEapConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnNativeProfile = @ptrCast(self);
         return try this.putEapConfiguration(value);
     }
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
-    pub fn putProfileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3792,7 +3792,7 @@ pub const VpnPickedCredential = extern struct {
         const this: *IVpnPickedCredential = @ptrCast(self);
         return try this.getPasskeyCredential();
     }
-    pub fn getAdditionalPin(self: *@This()) core.HResult!HSTRING {
+    pub fn getAdditionalPin(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnPickedCredential = @ptrCast(self);
         return try this.getAdditionalPin();
     }
@@ -3812,29 +3812,29 @@ pub const VpnPlugInProfile = extern struct {
         const this: *IVpnPlugInProfile = @ptrCast(self);
         return try this.getServerUris();
     }
-    pub fn getCustomConfiguration(self: *@This()) core.HResult!HSTRING {
+    pub fn getCustomConfiguration(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnPlugInProfile = @ptrCast(self);
         return try this.getCustomConfiguration();
     }
-    pub fn putCustomConfiguration(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCustomConfiguration(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnPlugInProfile = @ptrCast(self);
         return try this.putCustomConfiguration(value);
     }
-    pub fn getVpnPluginPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getVpnPluginPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVpnPlugInProfile = @ptrCast(self);
         return try this.getVpnPluginPackageFamilyName();
     }
-    pub fn putVpnPluginPackageFamilyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVpnPluginPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVpnPlugInProfile = @ptrCast(self);
         return try this.putVpnPluginPackageFamilyName(value);
     }
-    pub fn getProfileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
-    pub fn putProfileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4034,7 +4034,7 @@ pub const VpnTrafficFilter = extern struct {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.putAppId(value);
     }
-    pub fn getAppClaims(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAppClaims(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.getAppClaims();
     }
@@ -4046,19 +4046,19 @@ pub const VpnTrafficFilter = extern struct {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.putProtocol(value);
     }
-    pub fn getLocalPortRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getLocalPortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.getLocalPortRanges();
     }
-    pub fn getRemotePortRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRemotePortRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.getRemotePortRanges();
     }
-    pub fn getLocalAddressRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getLocalAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.getLocalAddressRanges();
     }
-    pub fn getRemoteAddressRanges(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRemoteAddressRanges(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVpnTrafficFilter = @ptrCast(self);
         return try this.getRemoteAddressRanges();
     }

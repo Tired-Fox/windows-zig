@@ -14,7 +14,7 @@ pub const CachedFileUpdater = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn SetUpdateInformation(file: *IStorageFile, contentId: HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
+    pub fn SetUpdateInformation(file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
         const _f = try @This()._ICachedFileUpdaterStaticsCache.get();
         return try _f.SetUpdateInformation(file, contentId, readMode, writeMode, options);
     }
@@ -24,11 +24,11 @@ pub const CachedFileUpdater = extern struct {
 };
 pub const CachedFileUpdaterUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ICachedFileUpdaterUI = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICachedFileUpdaterUI = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -76,7 +76,7 @@ pub const CachedFileUpdaterUI = extern struct {
 };
 pub const FileUpdateRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileUpdateRequest = @ptrCast(self);
         return try this.getContentId();
     }
@@ -100,13 +100,13 @@ pub const FileUpdateRequest = extern struct {
         const this: *IFileUpdateRequest = @ptrCast(self);
         return try this.UpdateLocalFile(value);
     }
-    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileUpdateRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserInputNeededMessage();
     }
-    pub fn putUserInputNeededMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IFileUpdateRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -152,7 +152,7 @@ pub const FileUpdateStatus = enum(i32) {
 };
 pub const ICachedFileUpdaterStatics = extern struct {
     vtable: *const VTable,
-    pub fn SetUpdateInformation(self: *@This(), file: *IStorageFile, contentId: HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
+    pub fn SetUpdateInformation(self: *@This(), file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
         const _c = self.vtable.SetUpdateInformation(@ptrCast(self), file, contentId, readMode, writeMode, options);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -168,18 +168,18 @@ pub const ICachedFileUpdaterStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetUpdateInformation: *const fn(self: *anyopaque, file: *IStorageFile, contentId: HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) callconv(.winapi) HRESULT,
+        SetUpdateInformation: *const fn(self: *anyopaque, file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const ICachedFileUpdaterUI = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -227,8 +227,8 @@ pub const ICachedFileUpdaterUI = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_UpdateTarget: *const fn(self: *anyopaque, _r: *CachedFileTarget) callconv(.winapi) HRESULT,
         add_FileUpdateRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(CachedFileUpdaterUI,FileUpdateRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_FileUpdateRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -269,8 +269,8 @@ pub const ICachedFileUpdaterUI2 = extern struct {
 };
 pub const IFileUpdateRequest = extern struct {
     vtable: *const VTable,
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -313,7 +313,7 @@ pub const IFileUpdateRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ContentId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_File: *const fn(self: *anyopaque, _r: **StorageFile) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *FileUpdateStatus) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: FileUpdateStatus) callconv(.winapi) HRESULT,
@@ -323,13 +323,13 @@ pub const IFileUpdateRequest = extern struct {
 };
 pub const IFileUpdateRequest2 = extern struct {
     vtable: *const VTable,
-    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserInputNeededMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserInputNeededMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserInputNeededMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -345,8 +345,8 @@ pub const IFileUpdateRequest2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserInputNeededMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserInputNeededMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_UserInputNeededMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserInputNeededMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileUpdateRequestDeferral = extern struct {
@@ -410,14 +410,14 @@ pub const WriteActivationMode = enum(i32) {
 };
 pub const IStorageProviderFileTypeInfo = extern struct {
     vtable: *const VTable,
-    pub fn getFileExtension(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileExtension(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileExtension(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IconResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -434,13 +434,13 @@ pub const IStorageProviderFileTypeInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FileExtension: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IconResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FileExtension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IconResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderFileTypeInfoFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), fileExtension: HSTRING, iconResource: HSTRING) core.HResult!*StorageProviderFileTypeInfo {
+    pub fn CreateInstance(self: *@This(), fileExtension: ?HSTRING, iconResource: ?HSTRING) core.HResult!*StorageProviderFileTypeInfo {
         var _r: *StorageProviderFileTypeInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), fileExtension, iconResource, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -458,7 +458,7 @@ pub const IStorageProviderFileTypeInfoFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, fileExtension: HSTRING, iconResource: HSTRING, _r: **StorageProviderFileTypeInfo) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, fileExtension: ?HSTRING, iconResource: ?HSTRING, _r: **StorageProviderFileTypeInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderGetContentInfoForPathResult = extern struct {
@@ -473,23 +473,23 @@ pub const IStorageProviderGetContentInfoForPathResult = extern struct {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentUri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentUri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentUri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentUri(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentUri(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -507,10 +507,10 @@ pub const IStorageProviderGetContentInfoForPathResult = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *StorageProviderUriSourceStatus) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: StorageProviderUriSourceStatus) callconv(.winapi) HRESULT,
-        get_ContentUri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentUri: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContentId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentUri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentUri: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContentId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderGetPathForContentUriResult = extern struct {
@@ -525,13 +525,13 @@ pub const IStorageProviderGetPathForContentUriResult = extern struct {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Path(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -549,8 +549,8 @@ pub const IStorageProviderGetPathForContentUriResult = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *StorageProviderUriSourceStatus) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: StorageProviderUriSourceStatus) callconv(.winapi) HRESULT,
-        get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Path: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Path: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Path: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderItemPropertiesStatics = extern struct {
@@ -588,22 +588,22 @@ pub const IStorageProviderItemProperty = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIconResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIconResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IconResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IconResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -622,10 +622,10 @@ pub const IStorageProviderItemProperty = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         put_Id: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IconResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_IconResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IconResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_IconResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderItemPropertyDefinition = extern struct {
@@ -640,13 +640,13 @@ pub const IStorageProviderItemPropertyDefinition = extern struct {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayNameResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayNameResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -664,13 +664,13 @@ pub const IStorageProviderItemPropertyDefinition = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Id: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayNameResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayNameResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderItemPropertySource = extern struct {
     vtable: *const VTable,
-    pub fn GetItemProperties(self: *@This(), itemPath: HSTRING) core.HResult!*IIterable(StorageProviderItemProperty) {
+    pub fn GetItemProperties(self: *@This(), itemPath: ?HSTRING) core.HResult!*IIterable(StorageProviderItemProperty) {
         var _r: *IIterable(StorageProviderItemProperty) = undefined;
         const _c = self.vtable.GetItemProperties(@ptrCast(self), itemPath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -688,7 +688,7 @@ pub const IStorageProviderItemPropertySource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetItemProperties: *const fn(self: *anyopaque, itemPath: HSTRING, _r: **IIterable(StorageProviderItemProperty)) callconv(.winapi) HRESULT,
+        GetItemProperties: *const fn(self: *anyopaque, itemPath: ?HSTRING, _r: **IIterable(StorageProviderItemProperty)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderKnownFolderEntry = extern struct {
@@ -733,13 +733,13 @@ pub const IStorageProviderKnownFolderEntry = extern struct {
 };
 pub const IStorageProviderKnownFolderSyncInfo = extern struct {
     vtable: *const VTable,
-    pub fn getProviderDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putProviderDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProviderDisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -771,8 +771,8 @@ pub const IStorageProviderKnownFolderSyncInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ProviderDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ProviderDisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ProviderDisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_KnownFolderEntries: *const fn(self: *anyopaque, _r: **IVector(StorageProviderKnownFolderEntry)) callconv(.winapi) HRESULT,
         get_SyncRequested: *const fn(self: *anyopaque, _r: **StorageProviderKnownFolderSyncRequestedHandler) callconv(.winapi) HRESULT,
         put_SyncRequested: *const fn(self: *anyopaque, value: *StorageProviderKnownFolderSyncRequestedHandler) callconv(.winapi) HRESULT,
@@ -868,13 +868,13 @@ pub const IStorageProviderKnownFolderSyncRequestArgs = extern struct {
 };
 pub const IStorageProviderMoreInfoUI = extern struct {
     vtable: *const VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Message(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -900,15 +900,15 @@ pub const IStorageProviderMoreInfoUI = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Message: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Message: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Command: *const fn(self: *anyopaque, _r: **IStorageProviderUICommand) callconv(.winapi) HRESULT,
         put_Command: *const fn(self: *anyopaque, value: *IStorageProviderUICommand) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderPropertyCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn IsPropertySupported(self: *@This(), propertyCanonicalName: HSTRING) core.HResult!bool {
+    pub fn IsPropertySupported(self: *@This(), propertyCanonicalName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPropertySupported(@ptrCast(self), propertyCanonicalName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -926,7 +926,7 @@ pub const IStorageProviderPropertyCapabilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsPropertySupported: *const fn(self: *anyopaque, propertyCanonicalName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsPropertySupported: *const fn(self: *anyopaque, propertyCanonicalName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderQueryResult = extern struct {
@@ -941,33 +941,33 @@ pub const IStorageProviderQueryResult = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResultId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResultId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResultId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putResultId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ResultId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteFileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteFileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteFileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteFileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteFileId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFilePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFilePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FilePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FilePath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -991,12 +991,12 @@ pub const IStorageProviderQueryResult = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *StorageProviderResultKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: StorageProviderResultKind) callconv(.winapi) HRESULT,
-        get_ResultId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ResultId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteFileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteFileId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FilePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FilePath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ResultId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ResultId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteFileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteFileId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FilePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FilePath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_RequestedProperties: *const fn(self: *anyopaque, _r: **PropertySet) callconv(.winapi) HRESULT,
     };
 };
@@ -1008,13 +1008,13 @@ pub const IStorageProviderQueryResultSet = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQueryResultId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryResultId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryResultId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putQueryResultId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQueryResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_QueryResultId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1041,8 +1041,8 @@ pub const IStorageProviderQueryResultSet = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetResults: *const fn(self: *anyopaque, _r: *[*]IStorageProviderQueryResult) callconv(.winapi) HRESULT,
-        get_QueryResultId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_QueryResultId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_QueryResultId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_QueryResultId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *StorageProviderSearchQueryStatus) callconv(.winapi) HRESULT,
         put_Status: *const fn(self: *anyopaque, value: StorageProviderSearchQueryStatus) callconv(.winapi) HRESULT,
     };
@@ -1092,13 +1092,13 @@ pub const IStorageProviderQuotaUI = extern struct {
         const _c = self.vtable.put_QuotaUsedInBytes(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getQuotaUsedLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQuotaUsedLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QuotaUsedLabel(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putQuotaUsedLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQuotaUsedLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_QuotaUsedLabel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1128,8 +1128,8 @@ pub const IStorageProviderQuotaUI = extern struct {
         put_QuotaTotalInBytes: *const fn(self: *anyopaque, value: u64) callconv(.winapi) HRESULT,
         get_QuotaUsedInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
         put_QuotaUsedInBytes: *const fn(self: *anyopaque, value: u64) callconv(.winapi) HRESULT,
-        get_QuotaUsedLabel: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_QuotaUsedLabel: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_QuotaUsedLabel: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_QuotaUsedLabel: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_QuotaUsedColor: *const fn(self: *anyopaque, _r: **IReference(Color)) callconv(.winapi) HRESULT,
         put_QuotaUsedColor: *const fn(self: *anyopaque, value: *IReference(Color)) callconv(.winapi) HRESULT,
     };
@@ -1142,7 +1142,7 @@ pub const IStorageProviderSearchHandler = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportUsage(self: *@This(), resultUsageKind: StorageProviderResultUsageKind, remoteFileId: HSTRING, resultId: HSTRING, latency: TimeSpan) core.HResult!void {
+    pub fn ReportUsage(self: *@This(), resultUsageKind: StorageProviderResultUsageKind, remoteFileId: ?HSTRING, resultId: ?HSTRING, latency: TimeSpan) core.HResult!void {
         const _c = self.vtable.ReportUsage(@ptrCast(self), resultUsageKind, remoteFileId, resultId, latency);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1159,12 +1159,12 @@ pub const IStorageProviderSearchHandler = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Find: *const fn(self: *anyopaque, options: *StorageProviderSearchQueryOptions, _r: **StorageProviderQueryResultSet) callconv(.winapi) HRESULT,
-        ReportUsage: *const fn(self: *anyopaque, resultUsageKind: StorageProviderResultUsageKind, remoteFileId: HSTRING, resultId: HSTRING, latency: TimeSpan) callconv(.winapi) HRESULT,
+        ReportUsage: *const fn(self: *anyopaque, resultUsageKind: StorageProviderResultUsageKind, remoteFileId: ?HSTRING, resultId: ?HSTRING, latency: TimeSpan) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSearchHandlerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSearchHandler(self: *@This(), cloudProviderId: HSTRING) core.HResult!*IStorageProviderSearchHandler {
+    pub fn CreateSearchHandler(self: *@This(), cloudProviderId: ?HSTRING) core.HResult!*IStorageProviderSearchHandler {
         var _r: *IStorageProviderSearchHandler = undefined;
         const _c = self.vtable.CreateSearchHandler(@ptrCast(self), cloudProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1182,19 +1182,19 @@ pub const IStorageProviderSearchHandlerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSearchHandler: *const fn(self: *anyopaque, cloudProviderId: HSTRING, _r: **IStorageProviderSearchHandler) callconv(.winapi) HRESULT,
+        CreateSearchHandler: *const fn(self: *anyopaque, cloudProviderId: ?HSTRING, _r: **IStorageProviderSearchHandler) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSearchQueryOptions = extern struct {
     vtable: *const VTable,
-    pub fn getUserQuery(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserQuery(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserQuery(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1205,8 +1205,8 @@ pub const IStorageProviderSearchQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProgrammaticQuery(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProgrammaticQuery(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProgrammaticQuery(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1217,20 +1217,20 @@ pub const IStorageProviderSearchQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFolderScope(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFolderScope(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FolderScope(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQueryId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PropertiesToFetch(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1247,14 +1247,14 @@ pub const IStorageProviderSearchQueryOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserQuery: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserQuery: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SortOrder: *const fn(self: *anyopaque, _r: **IVectorView(SortEntry)) callconv(.winapi) HRESULT,
-        get_ProgrammaticQuery: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ProgrammaticQuery: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MaxResults: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_FolderScope: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_QueryId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PropertiesToFetch: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_FolderScope: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_QueryId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PropertiesToFetch: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSearchResult = extern struct {
@@ -1279,13 +1279,13 @@ pub const IStorageProviderSearchResult = extern struct {
         const _c = self.vtable.put_MatchKind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMatchedPropertyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMatchedPropertyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MatchedPropertyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMatchedPropertyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMatchedPropertyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MatchedPropertyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1305,8 +1305,8 @@ pub const IStorageProviderSearchResult = extern struct {
         put_MatchScore: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_MatchKind: *const fn(self: *anyopaque, _r: *StorageProviderSearchMatchKind) callconv(.winapi) HRESULT,
         put_MatchKind: *const fn(self: *anyopaque, value: StorageProviderSearchMatchKind) callconv(.winapi) HRESULT,
-        get_MatchedPropertyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MatchedPropertyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MatchedPropertyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MatchedPropertyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderShareLinkSource = extern struct {
@@ -1317,8 +1317,8 @@ pub const IStorageProviderShareLinkSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDefaultAccessControlStringAsync(self: *@This(), storageItemList: *IVectorView(IStorageItem)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn GetDefaultAccessControlStringAsync(self: *@This(), storageItemList: *IVectorView(IStorageItem)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetDefaultAccessControlStringAsync(@ptrCast(self), storageItemList, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1342,7 +1342,7 @@ pub const IStorageProviderShareLinkSource = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateLinkAsync: *const fn(self: *anyopaque, storageItemList: *IVectorView(IStorageItem), _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
-        GetDefaultAccessControlStringAsync: *const fn(self: *anyopaque, storageItemList: *IVectorView(IStorageItem), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetDefaultAccessControlStringAsync: *const fn(self: *anyopaque, storageItemList: *IVectorView(IStorageItem), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         GetState: *const fn(self: *anyopaque, storageItemList: *IVectorView(IStorageItem), _r: **IAsyncOperation(StorageProviderShareLinkState)) callconv(.winapi) HRESULT,
     };
 };
@@ -1358,13 +1358,13 @@ pub const IStorageProviderStatusUI = extern struct {
         const _c = self.vtable.put_ProviderState(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProviderStateLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getProviderStateLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderStateLabel(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putProviderStateLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderStateLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ProviderStateLabel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1442,8 +1442,8 @@ pub const IStorageProviderStatusUI = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ProviderState: *const fn(self: *anyopaque, _r: *StorageProviderState) callconv(.winapi) HRESULT,
         put_ProviderState: *const fn(self: *anyopaque, value: StorageProviderState) callconv(.winapi) HRESULT,
-        get_ProviderStateLabel: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ProviderStateLabel: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ProviderStateLabel: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ProviderStateLabel: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ProviderStateIcon: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_ProviderStateIcon: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
         get_SyncStatusCommand: *const fn(self: *anyopaque, _r: **IStorageProviderUICommand) callconv(.winapi) HRESULT,
@@ -1495,7 +1495,7 @@ pub const IStorageProviderStatusUISource = extern struct {
 };
 pub const IStorageProviderStatusUISourceFactory = extern struct {
     vtable: *const VTable,
-    pub fn GetStatusUISource(self: *@This(), syncRootId: HSTRING) core.HResult!*IStorageProviderStatusUISource {
+    pub fn GetStatusUISource(self: *@This(), syncRootId: ?HSTRING) core.HResult!*IStorageProviderStatusUISource {
         var _r: *IStorageProviderStatusUISource = undefined;
         const _c = self.vtable.GetStatusUISource(@ptrCast(self), syncRootId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1513,7 +1513,7 @@ pub const IStorageProviderStatusUISourceFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStatusUISource: *const fn(self: *anyopaque, syncRootId: HSTRING, _r: **IStorageProviderStatusUISource) callconv(.winapi) HRESULT,
+        GetStatusUISource: *const fn(self: *anyopaque, syncRootId: ?HSTRING, _r: **IStorageProviderStatusUISource) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSuggestionsHandler = extern struct {
@@ -1524,21 +1524,21 @@ pub const IStorageProviderSuggestionsHandler = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Add(self: *@This(), kind: StorageProviderResultKind, remoteFileId: HSTRING) core.HResult!void {
+    pub fn Add(self: *@This(), kind: StorageProviderResultKind, remoteFileId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), kind, remoteFileId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Remove(self: *@This(), kind: StorageProviderResultKind, remoteFileId: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), kind: StorageProviderResultKind, remoteFileId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Remove(@ptrCast(self), kind, remoteFileId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetDetails(self: *@This(), remoteFileId: HSTRING, propertiesToFetch: [*]HSTRING, queryId: HSTRING) core.HResult!*StorageProviderSuggestionResult {
+    pub fn GetDetails(self: *@This(), remoteFileId: ?HSTRING, propertiesToFetch: ?[*]HSTRING, queryId: ?HSTRING) core.HResult!*StorageProviderSuggestionResult {
         var _r: *StorageProviderSuggestionResult = undefined;
         const _c = self.vtable.GetDetails(@ptrCast(self), remoteFileId, propertiesToFetch, queryId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportUsage(self: *@This(), resultUsageKind: StorageProviderResultUsageKind, remoteFileId: HSTRING, resultId: HSTRING, latency: TimeSpan) core.HResult!void {
+    pub fn ReportUsage(self: *@This(), resultUsageKind: StorageProviderResultUsageKind, remoteFileId: ?HSTRING, resultId: ?HSTRING, latency: TimeSpan) core.HResult!void {
         const _c = self.vtable.ReportUsage(@ptrCast(self), resultUsageKind, remoteFileId, resultId, latency);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1555,15 +1555,15 @@ pub const IStorageProviderSuggestionsHandler = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetSuggestions: *const fn(self: *anyopaque, options: *StorageProviderSuggestionsQueryOptions, _r: **StorageProviderQueryResultSet) callconv(.winapi) HRESULT,
-        Add: *const fn(self: *anyopaque, kind: StorageProviderResultKind, remoteFileId: HSTRING) callconv(.winapi) HRESULT,
-        Remove: *const fn(self: *anyopaque, kind: StorageProviderResultKind, remoteFileId: HSTRING) callconv(.winapi) HRESULT,
-        GetDetails: *const fn(self: *anyopaque, remoteFileId: HSTRING, propertiesToFetch: [*]HSTRING, queryId: HSTRING, _r: **StorageProviderSuggestionResult) callconv(.winapi) HRESULT,
-        ReportUsage: *const fn(self: *anyopaque, resultUsageKind: StorageProviderResultUsageKind, remoteFileId: HSTRING, resultId: HSTRING, latency: TimeSpan) callconv(.winapi) HRESULT,
+        Add: *const fn(self: *anyopaque, kind: StorageProviderResultKind, remoteFileId: ?HSTRING) callconv(.winapi) HRESULT,
+        Remove: *const fn(self: *anyopaque, kind: StorageProviderResultKind, remoteFileId: ?HSTRING) callconv(.winapi) HRESULT,
+        GetDetails: *const fn(self: *anyopaque, remoteFileId: ?HSTRING, propertiesToFetch: ?[*]HSTRING, queryId: ?HSTRING, _r: **StorageProviderSuggestionResult) callconv(.winapi) HRESULT,
+        ReportUsage: *const fn(self: *anyopaque, resultUsageKind: StorageProviderResultUsageKind, remoteFileId: ?HSTRING, resultId: ?HSTRING, latency: TimeSpan) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSuggestionsHandlerFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSuggestionsHandler(self: *@This(), cloudProviderId: HSTRING) core.HResult!*IStorageProviderSuggestionsHandler {
+    pub fn CreateSuggestionsHandler(self: *@This(), cloudProviderId: ?HSTRING) core.HResult!*IStorageProviderSuggestionsHandler {
         var _r: *IStorageProviderSuggestionsHandler = undefined;
         const _c = self.vtable.CreateSuggestionsHandler(@ptrCast(self), cloudProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1581,7 +1581,7 @@ pub const IStorageProviderSuggestionsHandlerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSuggestionsHandler: *const fn(self: *anyopaque, cloudProviderId: HSTRING, _r: **IStorageProviderSuggestionsHandler) callconv(.winapi) HRESULT,
+        CreateSuggestionsHandler: *const fn(self: *anyopaque, cloudProviderId: ?HSTRING, _r: **IStorageProviderSuggestionsHandler) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSuggestionsQueryOptions = extern struct {
@@ -1592,8 +1592,8 @@ pub const IStorageProviderSuggestionsQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteFileId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteFileId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1604,14 +1604,14 @@ pub const IStorageProviderSuggestionsQueryOptions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQueryId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PropertiesToFetch(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1629,21 +1629,21 @@ pub const IStorageProviderSuggestionsQueryOptions = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SuggestionsKind: *const fn(self: *anyopaque, _r: *StorageProviderResultKind) callconv(.winapi) HRESULT,
-        get_RemoteFileId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteFileId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MaxResults: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_QueryId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PropertiesToFetch: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_QueryId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PropertiesToFetch: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageProviderSyncRootInfo = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1667,23 +1667,23 @@ pub const IStorageProviderSyncRootInfo = extern struct {
         const _c = self.vtable.put_Path(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayNameResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayNameResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IconResource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putIconResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIconResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_IconResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1747,13 +1747,13 @@ pub const IStorageProviderSyncRootInfo = extern struct {
         const _c = self.vtable.put_ShowSiblingsAsGroup(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1805,16 +1805,16 @@ pub const IStorageProviderSyncRootInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Context: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         put_Context: *const fn(self: *anyopaque, value: *IBuffer) callconv(.winapi) HRESULT,
         get_Path: *const fn(self: *anyopaque, _r: **IStorageFolder) callconv(.winapi) HRESULT,
         put_Path: *const fn(self: *anyopaque, value: *IStorageFolder) callconv(.winapi) HRESULT,
-        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayNameResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_IconResource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_IconResource: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayNameResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayNameResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_IconResource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_IconResource: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HydrationPolicy: *const fn(self: *anyopaque, _r: *StorageProviderHydrationPolicy) callconv(.winapi) HRESULT,
         put_HydrationPolicy: *const fn(self: *anyopaque, value: StorageProviderHydrationPolicy) callconv(.winapi) HRESULT,
         get_HydrationPolicyModifier: *const fn(self: *anyopaque, _r: *StorageProviderHydrationPolicyModifier) callconv(.winapi) HRESULT,
@@ -1827,8 +1827,8 @@ pub const IStorageProviderSyncRootInfo = extern struct {
         put_HardlinkPolicy: *const fn(self: *anyopaque, value: StorageProviderHardlinkPolicy) callconv(.winapi) HRESULT,
         get_ShowSiblingsAsGroup: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_ShowSiblingsAsGroup: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Version: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Version: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Version: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Version: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ProtectionMode: *const fn(self: *anyopaque, _r: *StorageProviderProtectionMode) callconv(.winapi) HRESULT,
         put_ProtectionMode: *const fn(self: *anyopaque, value: StorageProviderProtectionMode) callconv(.winapi) HRESULT,
         get_AllowPinning: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1895,7 +1895,7 @@ pub const IStorageProviderSyncRootManagerStatics = extern struct {
         const _c = self.vtable.Register(@ptrCast(self), syncRootInformation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Unregister(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn Unregister(self: *@This(), id: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Unregister(@ptrCast(self), id);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1905,7 +1905,7 @@ pub const IStorageProviderSyncRootManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSyncRootInformationForId(self: *@This(), id: HSTRING) core.HResult!*StorageProviderSyncRootInfo {
+    pub fn GetSyncRootInformationForId(self: *@This(), id: ?HSTRING) core.HResult!*StorageProviderSyncRootInfo {
         var _r: *StorageProviderSyncRootInfo = undefined;
         const _c = self.vtable.GetSyncRootInformationForId(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1930,9 +1930,9 @@ pub const IStorageProviderSyncRootManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Register: *const fn(self: *anyopaque, syncRootInformation: *StorageProviderSyncRootInfo) callconv(.winapi) HRESULT,
-        Unregister: *const fn(self: *anyopaque, id: HSTRING) callconv(.winapi) HRESULT,
+        Unregister: *const fn(self: *anyopaque, id: ?HSTRING) callconv(.winapi) HRESULT,
         GetSyncRootInformationForFolder: *const fn(self: *anyopaque, folder: *IStorageFolder, _r: **StorageProviderSyncRootInfo) callconv(.winapi) HRESULT,
-        GetSyncRootInformationForId: *const fn(self: *anyopaque, id: HSTRING, _r: **StorageProviderSyncRootInfo) callconv(.winapi) HRESULT,
+        GetSyncRootInformationForId: *const fn(self: *anyopaque, id: ?HSTRING, _r: **StorageProviderSyncRootInfo) callconv(.winapi) HRESULT,
         GetCurrentSyncRoots: *const fn(self: *anyopaque, _r: **IVectorView(StorageProviderSyncRootInfo)) callconv(.winapi) HRESULT,
     };
 };
@@ -1961,14 +1961,14 @@ pub const IStorageProviderSyncRootManagerStatics2 = extern struct {
 };
 pub const IStorageProviderUICommand = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2001,8 +2001,8 @@ pub const IStorageProviderUICommand = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *StorageProviderUICommandState) callconv(.winapi) HRESULT,
         Invoke: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -2010,11 +2010,11 @@ pub const IStorageProviderUICommand = extern struct {
 };
 pub const IStorageProviderUriSource = extern struct {
     vtable: *const VTable,
-    pub fn GetPathForContentUri(self: *@This(), contentUri: HSTRING, result: *StorageProviderGetPathForContentUriResult) core.HResult!void {
+    pub fn GetPathForContentUri(self: *@This(), contentUri: ?HSTRING, result: *StorageProviderGetPathForContentUriResult) core.HResult!void {
         const _c = self.vtable.GetPathForContentUri(@ptrCast(self), contentUri, result);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetContentInfoForPath(self: *@This(), path: HSTRING, result: *StorageProviderGetContentInfoForPathResult) core.HResult!void {
+    pub fn GetContentInfoForPath(self: *@This(), path: ?HSTRING, result: *StorageProviderGetContentInfoForPathResult) core.HResult!void {
         const _c = self.vtable.GetContentInfoForPath(@ptrCast(self), path, result);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2030,24 +2030,24 @@ pub const IStorageProviderUriSource = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetPathForContentUri: *const fn(self: *anyopaque, contentUri: HSTRING, result: *StorageProviderGetPathForContentUriResult) callconv(.winapi) HRESULT,
-        GetContentInfoForPath: *const fn(self: *anyopaque, path: HSTRING, result: *StorageProviderGetContentInfoForPathResult) callconv(.winapi) HRESULT,
+        GetPathForContentUri: *const fn(self: *anyopaque, contentUri: ?HSTRING, result: *StorageProviderGetPathForContentUriResult) callconv(.winapi) HRESULT,
+        GetContentInfoForPath: *const fn(self: *anyopaque, path: ?HSTRING, result: *StorageProviderGetContentInfoForPathResult) callconv(.winapi) HRESULT,
     };
 };
 pub const StorageProviderFileTypeInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFileExtension(self: *@This()) core.HResult!HSTRING {
+    pub fn getFileExtension(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderFileTypeInfo = @ptrCast(self);
         return try this.getFileExtension();
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderFileTypeInfo = @ptrCast(self);
         return try this.getIconResource();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(fileExtension: HSTRING, iconResource: HSTRING) core.HResult!*StorageProviderFileTypeInfo {
+    pub fn CreateInstance(fileExtension: ?HSTRING, iconResource: ?HSTRING) core.HResult!*StorageProviderFileTypeInfo {
         const _f = try @This()._IStorageProviderFileTypeInfoFactoryCache.get();
         return try _f.CreateInstance(fileExtension, iconResource);
     }
@@ -2068,19 +2068,19 @@ pub const StorageProviderGetContentInfoForPathResult = extern struct {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.putStatus(value);
     }
-    pub fn getContentUri(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.getContentUri();
     }
-    pub fn putContentUri(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentUri(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.putContentUri(value);
     }
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.getContentId();
     }
-    pub fn putContentId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.putContentId(value);
     }
@@ -2108,11 +2108,11 @@ pub const StorageProviderGetPathForContentUriResult = extern struct {
         const this: *IStorageProviderGetPathForContentUriResult = @ptrCast(self);
         return try this.putStatus(value);
     }
-    pub fn getPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderGetPathForContentUriResult = @ptrCast(self);
         return try this.getPath();
     }
-    pub fn putPath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderGetPathForContentUriResult = @ptrCast(self);
         return try this.putPath(value);
     }
@@ -2184,19 +2184,19 @@ pub const StorageProviderItemProperty = extern struct {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.putValue(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putIconResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIconResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.putIconResource(value);
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.getIconResource();
     }
@@ -2224,11 +2224,11 @@ pub const StorageProviderItemPropertyDefinition = extern struct {
         const this: *IStorageProviderItemPropertyDefinition = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderItemPropertyDefinition = @ptrCast(self);
         return try this.getDisplayNameResource();
     }
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderItemPropertyDefinition = @ptrCast(self);
         return try this.putDisplayNameResource(value);
     }
@@ -2280,11 +2280,11 @@ pub const StorageProviderKnownFolderEntry = extern struct {
 };
 pub const StorageProviderKnownFolderSyncInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProviderDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderKnownFolderSyncInfo = @ptrCast(self);
         return try this.getProviderDisplayName();
     }
-    pub fn putProviderDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderKnownFolderSyncInfo = @ptrCast(self);
         return try this.putProviderDisplayName(value);
     }
@@ -2424,11 +2424,11 @@ pub const StorageProviderKnownFolderSyncStatus = enum(i32) {
 };
 pub const StorageProviderMoreInfoUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderMoreInfoUI = @ptrCast(self);
         return try this.getMessage();
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderMoreInfoUI = @ptrCast(self);
         return try this.putMessage(value);
     }
@@ -2468,11 +2468,11 @@ pub const StorageProviderQueryResultSet = extern struct {
         const this: *IStorageProviderQueryResultSet = @ptrCast(self);
         return try this.GetResults();
     }
-    pub fn getQueryResultId(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryResultId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderQueryResultSet = @ptrCast(self);
         return try this.getQueryResultId();
     }
-    pub fn putQueryResultId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQueryResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderQueryResultSet = @ptrCast(self);
         return try this.putQueryResultId(value);
     }
@@ -2516,11 +2516,11 @@ pub const StorageProviderQuotaUI = extern struct {
         const this: *IStorageProviderQuotaUI = @ptrCast(self);
         return try this.putQuotaUsedInBytes(value);
     }
-    pub fn getQuotaUsedLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getQuotaUsedLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderQuotaUI = @ptrCast(self);
         return try this.getQuotaUsedLabel();
     }
-    pub fn putQuotaUsedLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putQuotaUsedLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderQuotaUI = @ptrCast(self);
         return try this.putQuotaUsedLabel(value);
     }
@@ -2566,11 +2566,11 @@ pub const StorageProviderSearchMatchKind = enum(i32) {
 };
 pub const StorageProviderSearchQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUserQuery(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserQuery(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getUserQuery();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -2578,7 +2578,7 @@ pub const StorageProviderSearchQueryOptions = extern struct {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getSortOrder();
     }
-    pub fn getProgrammaticQuery(self: *@This()) core.HResult!HSTRING {
+    pub fn getProgrammaticQuery(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getProgrammaticQuery();
     }
@@ -2586,15 +2586,15 @@ pub const StorageProviderSearchQueryOptions = extern struct {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getMaxResults();
     }
-    pub fn getFolderScope(self: *@This()) core.HResult!HSTRING {
+    pub fn getFolderScope(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getFolderScope();
     }
-    pub fn getQueryId(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getQueryId();
     }
-    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getPropertiesToFetch();
     }
@@ -2632,11 +2632,11 @@ pub const StorageProviderSearchResult = extern struct {
         const this: *IStorageProviderSearchResult = @ptrCast(self);
         return try this.putMatchKind(value);
     }
-    pub fn getMatchedPropertyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getMatchedPropertyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchResult = @ptrCast(self);
         return try this.getMatchedPropertyName();
     }
-    pub fn putMatchedPropertyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMatchedPropertyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderSearchResult = @ptrCast(self);
         return try this.putMatchedPropertyName(value);
     }
@@ -2652,37 +2652,37 @@ pub const StorageProviderSearchResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKind(value);
     }
-    pub fn getResultId(self: *@This()) core.HResult!HSTRING {
+    pub fn getResultId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResultId();
     }
-    pub fn putResultId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putResultId(value);
     }
-    pub fn getRemoteFileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteFileId();
     }
-    pub fn putRemoteFileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteFileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteFileId(value);
     }
-    pub fn getFilePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getFilePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFilePath();
     }
-    pub fn putFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2730,11 +2730,11 @@ pub const StorageProviderStatusUI = extern struct {
         const this: *IStorageProviderStatusUI = @ptrCast(self);
         return try this.putProviderState(value);
     }
-    pub fn getProviderStateLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getProviderStateLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderStatusUI = @ptrCast(self);
         return try this.getProviderStateLabel();
     }
-    pub fn putProviderStateLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putProviderStateLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderStatusUI = @ptrCast(self);
         return try this.putProviderStateLabel(value);
     }
@@ -2810,27 +2810,27 @@ pub const StorageProviderSuggestionResult = extern struct {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getResultId(self: *@This()) core.HResult!HSTRING {
+    pub fn getResultId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.getResultId();
     }
-    pub fn putResultId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.putResultId(value);
     }
-    pub fn getRemoteFileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.getRemoteFileId();
     }
-    pub fn putRemoteFileId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteFileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.putRemoteFileId(value);
     }
-    pub fn getFilePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getFilePath(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.getFilePath();
     }
-    pub fn putFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.putFilePath(value);
     }
@@ -2858,7 +2858,7 @@ pub const StorageProviderSuggestionsQueryOptions = extern struct {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getSuggestionsKind();
     }
-    pub fn getRemoteFileId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getRemoteFileId();
     }
@@ -2866,11 +2866,11 @@ pub const StorageProviderSuggestionsQueryOptions = extern struct {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getMaxResults();
     }
-    pub fn getQueryId(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getQueryId();
     }
-    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getPropertiesToFetch(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getPropertiesToFetch();
     }
@@ -2882,11 +2882,11 @@ pub const StorageProviderSuggestionsQueryOptions = extern struct {
 };
 pub const StorageProviderSyncRootInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putId(value);
     }
@@ -2906,19 +2906,19 @@ pub const StorageProviderSyncRootInfo = extern struct {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putPath(value);
     }
-    pub fn getDisplayNameResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayNameResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.getDisplayNameResource();
     }
-    pub fn putDisplayNameResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putDisplayNameResource(value);
     }
-    pub fn getIconResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.getIconResource();
     }
-    pub fn putIconResource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putIconResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putIconResource(value);
     }
@@ -2970,11 +2970,11 @@ pub const StorageProviderSyncRootInfo = extern struct {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putShowSiblingsAsGroup(value);
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.putVersion(value);
     }
@@ -3047,7 +3047,7 @@ pub const StorageProviderSyncRootManager = extern struct {
         const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.Register(syncRootInformation);
     }
-    pub fn Unregister(id: HSTRING) core.HResult!void {
+    pub fn Unregister(id: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.Unregister(id);
     }
@@ -3055,7 +3055,7 @@ pub const StorageProviderSyncRootManager = extern struct {
         const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.GetSyncRootInformationForFolder(folder);
     }
-    pub fn GetSyncRootInformationForId(id: HSTRING) core.HResult!*StorageProviderSyncRootInfo {
+    pub fn GetSyncRootInformationForId(id: ?HSTRING) core.HResult!*StorageProviderSyncRootInfo {
         const _f = try @This()._IStorageProviderSyncRootManagerStaticsCache.get();
         return try _f.GetSyncRootInformationForId(id);
     }

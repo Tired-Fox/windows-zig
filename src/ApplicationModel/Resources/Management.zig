@@ -13,8 +13,8 @@ pub const IIndexedResourceCandidate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Metadata(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -25,14 +25,14 @@ pub const IIndexedResourceCandidate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValueAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValueAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ValueAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetQualifierValue(self: *@This(), qualifierName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetQualifierValue(self: *@This(), qualifierName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetQualifierValue(@ptrCast(self), qualifierName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -51,22 +51,22 @@ pub const IIndexedResourceCandidate = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *IndexedResourceType) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Metadata: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_Qualifiers: *const fn(self: *anyopaque, _r: **IVectorView(IndexedResourceQualifier)) callconv(.winapi) HRESULT,
-        get_ValueAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetQualifierValue: *const fn(self: *anyopaque, qualifierName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ValueAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetQualifierValue: *const fn(self: *anyopaque, qualifierName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IIndexedResourceQualifier = extern struct {
     vtable: *const VTable,
-    pub fn getQualifierName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QualifierName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQualifierValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQualifierValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QualifierValue(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -83,8 +83,8 @@ pub const IIndexedResourceQualifier = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QualifierName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_QualifierValue: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QualifierName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_QualifierValue: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceIndexer = extern struct {
@@ -173,7 +173,7 @@ pub const IndexedResourceCandidate = extern struct {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.getUri();
     }
-    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getMetadata(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.getMetadata();
     }
@@ -181,11 +181,11 @@ pub const IndexedResourceCandidate = extern struct {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.getQualifiers();
     }
-    pub fn getValueAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn getValueAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.getValueAsString();
     }
-    pub fn GetQualifierValue(self: *@This(), qualifierName: HSTRING) core.HResult!HSTRING {
+    pub fn GetQualifierValue(self: *@This(), qualifierName: ?HSTRING) core.HResult!?HSTRING {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.GetQualifierValue(qualifierName);
     }
@@ -197,11 +197,11 @@ pub const IndexedResourceCandidate = extern struct {
 };
 pub const IndexedResourceQualifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQualifierName(self: *@This()) core.HResult!HSTRING {
+    pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexedResourceQualifier = @ptrCast(self);
         return try this.getQualifierName();
     }
-    pub fn getQualifierValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getQualifierValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexedResourceQualifier = @ptrCast(self);
         return try this.getQualifierValue();
     }

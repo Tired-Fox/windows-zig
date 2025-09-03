@@ -7,7 +7,7 @@ pub const ContentAccessRestrictionLevel = enum(i32) {
 };
 pub const ContentRestrictionsBrowsePolicy = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentRestrictionsBrowsePolicy = @ptrCast(self);
         return try this.getGeographicRegion();
     }
@@ -27,8 +27,8 @@ pub const ContentRestrictionsBrowsePolicy = extern struct {
 };
 pub const IContentRestrictionsBrowsePolicy = extern struct {
     vtable: *const VTable,
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GeographicRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -57,30 +57,30 @@ pub const IContentRestrictionsBrowsePolicy = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_GeographicRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_GeographicRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MaxBrowsableAgeRating: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
         get_PreferredAgeRating: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRatedContentDescription = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -104,13 +104,13 @@ pub const IRatedContentDescription = extern struct {
         const _c = self.vtable.put_Category(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRatings(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRatings(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Ratings(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRatings(self: *@This(), value: *IVector(HSTRING)) core.HResult!void {
+    pub fn putRatings(self: *@This(), value: *IVector(?HSTRING)) core.HResult!void {
         const _c = self.vtable.put_Ratings(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -126,21 +126,21 @@ pub const IRatedContentDescription = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Image: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Image: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         get_Category: *const fn(self: *anyopaque, _r: *RatedContentCategory) callconv(.winapi) HRESULT,
         put_Category: *const fn(self: *anyopaque, value: RatedContentCategory) callconv(.winapi) HRESULT,
-        get_Ratings: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        put_Ratings: *const fn(self: *anyopaque, value: *IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Ratings: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        put_Ratings: *const fn(self: *anyopaque, value: *IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IRatedContentDescriptionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), id: HSTRING, title: HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
+    pub fn Create(self: *@This(), id: ?HSTRING, title: ?HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
         var _r: *RatedContentDescription = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, title, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -158,7 +158,7 @@ pub const IRatedContentDescriptionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, id: HSTRING, title: HSTRING, category: RatedContentCategory, _r: **RatedContentDescription) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, id: ?HSTRING, title: ?HSTRING, category: RatedContentCategory, _r: **RatedContentDescription) callconv(.winapi) HRESULT,
     };
 };
 pub const IRatedContentRestrictions = extern struct {
@@ -243,19 +243,19 @@ pub const RatedContentCategory = enum(i32) {
 };
 pub const RatedContentDescription = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -275,18 +275,18 @@ pub const RatedContentDescription = extern struct {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.putCategory(value);
     }
-    pub fn getRatings(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRatings(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.getRatings();
     }
-    pub fn putRatings(self: *@This(), value: *IVector(HSTRING)) core.HResult!void {
+    pub fn putRatings(self: *@This(), value: *IVector(?HSTRING)) core.HResult!void {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.putRatings(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(id: HSTRING, title: HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
+    pub fn Create(id: ?HSTRING, title: ?HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
         const _f = try @This()._IRatedContentDescriptionFactoryCache.get();
         return try _f.Create(id, title, category);
     }

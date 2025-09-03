@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAccountPartnerAccountInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31,7 +31,7 @@ pub const IUserDataAccountPartnerAccountInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Priority: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_AccountKind: *const fn(self: *anyopaque, _r: *UserDataAccountProviderPartnerAccountKind) callconv(.winapi) HRESULT,
     };
@@ -50,7 +50,7 @@ pub const IUserDataAccountProviderAddAccountOperation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportCompleted(self: *@This(), userDataAccountId: HSTRING) core.HResult!void {
+    pub fn ReportCompleted(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ReportCompleted(@ptrCast(self), userDataAccountId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -68,7 +68,7 @@ pub const IUserDataAccountProviderAddAccountOperation = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ContentKinds: *const fn(self: *anyopaque, _r: *UserDataAccountContentKinds) callconv(.winapi) HRESULT,
         get_PartnerAccountInfos: *const fn(self: *anyopaque, _r: **IVectorView(UserDataAccountPartnerAccountInfo)) callconv(.winapi) HRESULT,
-        ReportCompleted: *const fn(self: *anyopaque, userDataAccountId: HSTRING) callconv(.winapi) HRESULT,
+        ReportCompleted: *const fn(self: *anyopaque, userDataAccountId: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountProviderOperation = extern struct {
@@ -96,8 +96,8 @@ pub const IUserDataAccountProviderOperation = extern struct {
 };
 pub const IUserDataAccountProviderResolveErrorsOperation = extern struct {
     vtable: *const VTable,
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -118,14 +118,14 @@ pub const IUserDataAccountProviderResolveErrorsOperation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompleted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserDataAccountProviderSettingsOperation = extern struct {
     vtable: *const VTable,
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -146,13 +146,13 @@ pub const IUserDataAccountProviderSettingsOperation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompleted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const UserDataAccountPartnerAccountInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountPartnerAccountInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -180,7 +180,7 @@ pub const UserDataAccountProviderAddAccountOperation = extern struct {
         const this: *IUserDataAccountProviderAddAccountOperation = @ptrCast(self);
         return try this.getPartnerAccountInfos();
     }
-    pub fn ReportCompleted(self: *@This(), userDataAccountId: HSTRING) core.HResult!void {
+    pub fn ReportCompleted(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!void {
         const this: *IUserDataAccountProviderAddAccountOperation = @ptrCast(self);
         return try this.ReportCompleted(userDataAccountId);
     }
@@ -207,7 +207,7 @@ pub const UserDataAccountProviderPartnerAccountKind = enum(i32) {
 };
 pub const UserDataAccountProviderResolveErrorsOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountProviderResolveErrorsOperation = @ptrCast(self);
         return try this.getUserDataAccountId();
     }
@@ -229,7 +229,7 @@ pub const UserDataAccountProviderResolveErrorsOperation = extern struct {
 };
 pub const UserDataAccountProviderSettingsOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountProviderSettingsOperation = @ptrCast(self);
         return try this.getUserDataAccountId();
     }

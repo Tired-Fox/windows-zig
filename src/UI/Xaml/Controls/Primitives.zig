@@ -173,11 +173,11 @@ pub const Selector = extern struct {
         const this: *ISelector = @ptrCast(self);
         return try this.putSelectedValue(value);
     }
-    pub fn getSelectedValuePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getSelectedValuePath(self: *@This()) core.HResult!?HSTRING {
         const this: *ISelector = @ptrCast(self);
         return try this.getSelectedValuePath();
     }
-    pub fn putSelectedValuePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedValuePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISelector = @ptrCast(self);
         return try this.putSelectedValuePath(value);
     }
@@ -575,11 +575,11 @@ pub const PickerFlyoutBase = extern struct {
         const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.getTitleProperty();
     }
-    pub fn GetTitle(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetTitle(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.GetTitle(element);
     }
-    pub fn SetTitle(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetTitle(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
         return try _f.SetTitle(element, value);
     }
@@ -701,35 +701,35 @@ pub const CalendarViewTemplateSettings = extern struct {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getMinViewWidth();
     }
-    pub fn getHeaderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getHeaderText(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getHeaderText();
     }
-    pub fn getWeekDay1(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay1(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay1();
     }
-    pub fn getWeekDay2(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay2(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay2();
     }
-    pub fn getWeekDay3(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay3(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay3();
     }
-    pub fn getWeekDay4(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay4(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay4();
     }
-    pub fn getWeekDay5(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay5(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay5();
     }
-    pub fn getWeekDay6(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay6(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay6();
     }
-    pub fn getWeekDay7(self: *@This()) core.HResult!HSTRING {
+    pub fn getWeekDay7(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getWeekDay7();
     }
@@ -2494,50 +2494,50 @@ pub const ICalendarViewTemplateSettings = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay4(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay4(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay4(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay6(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay6(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay6(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWeekDay7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWeekDay7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WeekDay7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2591,14 +2591,14 @@ pub const ICalendarViewTemplateSettings = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_MinViewWidth: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
-        get_HeaderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay4: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay6: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WeekDay7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay4: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay6: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WeekDay7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_HasMoreContentAfter: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_HasMoreContentBefore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_HasMoreViews: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -7078,13 +7078,13 @@ pub const IPickerFlyoutBaseStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTitle(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetTitle(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTitle(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetTitle(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetTitle(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetTitle(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -7101,8 +7101,8 @@ pub const IPickerFlyoutBaseStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TitleProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetTitle: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetTitle: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetTitle: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetTitle: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPivotHeaderItem = extern struct {
@@ -8170,13 +8170,13 @@ pub const ISelector = extern struct {
         const _c = self.vtable.put_SelectedValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSelectedValuePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSelectedValuePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SelectedValuePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSelectedValuePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSelectedValuePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SelectedValuePath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -8218,8 +8218,8 @@ pub const ISelector = extern struct {
         put_SelectedItem: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_SelectedValue: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_SelectedValue: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
-        get_SelectedValuePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SelectedValuePath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SelectedValuePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SelectedValuePath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsSynchronizedWithCurrentItem: *const fn(self: *anyopaque, _r: **IReference(bool)) callconv(.winapi) HRESULT,
         put_IsSynchronizedWithCurrentItem: *const fn(self: *anyopaque, value: *IReference(bool)) callconv(.winapi) HRESULT,
         add_SelectionChanged: *const fn(self: *anyopaque, handler: *SelectionChangedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -9013,13 +9013,13 @@ pub const JumpListItemBackgroundConverter = extern struct {
         const this: *IJumpListItemBackgroundConverter = @ptrCast(self);
         return try this.putDisabled(value);
     }
-    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Convert(value, targetType, parameter, language);
     }
-    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -9066,13 +9066,13 @@ pub const JumpListItemForegroundConverter = extern struct {
         const this: *IJumpListItemForegroundConverter = @ptrCast(self);
         return try this.putDisabled(value);
     }
-    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Convert(value, targetType, parameter, language);
     }
-    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: HSTRING) core.HResult!*IInspectable {
+    pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

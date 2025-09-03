@@ -5,7 +5,7 @@ pub const GameSaveBlobGetResult = extern struct {
         const this: *IGameSaveBlobGetResult = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getValue(self: *@This()) core.HResult!*IMapView(HSTRING,IBuffer) {
+    pub fn getValue(self: *@This()) core.HResult!*IMapView(?HSTRING,IBuffer) {
         const this: *IGameSaveBlobGetResult = @ptrCast(self);
         return try this.getValue();
     }
@@ -17,7 +17,7 @@ pub const GameSaveBlobGetResult = extern struct {
 };
 pub const GameSaveBlobInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameSaveBlobInfo = @ptrCast(self);
         return try this.getName();
     }
@@ -69,7 +69,7 @@ pub const GameSaveBlobInfoQuery = extern struct {
 };
 pub const GameSaveContainer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.getName();
     }
@@ -77,23 +77,23 @@ pub const GameSaveContainer = extern struct {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.getProvider();
     }
-    pub fn SubmitUpdatesAsync(self: *@This(), blobsToWrite: *IMapView(HSTRING,IBuffer), blobsToDelete: *IIterable(HSTRING), displayName: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn SubmitUpdatesAsync(self: *@This(), blobsToWrite: *IMapView(?HSTRING,IBuffer), blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.SubmitUpdatesAsync(blobsToWrite, blobsToDelete, displayName);
     }
-    pub fn ReadAsync(self: *@This(), blobsToRead: *IMapView(HSTRING,IBuffer)) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn ReadAsync(self: *@This(), blobsToRead: *IMapView(?HSTRING,IBuffer)) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.ReadAsync(blobsToRead);
     }
-    pub fn GetAsync(self: *@This(), blobsToRead: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(GameSaveBlobGetResult) {
+    pub fn GetAsync(self: *@This(), blobsToRead: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(GameSaveBlobGetResult) {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.GetAsync(blobsToRead);
     }
-    pub fn SubmitPropertySetUpdatesAsync(self: *@This(), blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(HSTRING), displayName: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn SubmitPropertySetUpdatesAsync(self: *@This(), blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.SubmitPropertySetUpdatesAsync(blobsToWrite, blobsToDelete, displayName);
     }
-    pub fn CreateBlobInfoQuery(self: *@This(), blobNamePrefix: HSTRING) core.HResult!*GameSaveBlobInfoQuery {
+    pub fn CreateBlobInfoQuery(self: *@This(), blobNamePrefix: ?HSTRING) core.HResult!*GameSaveBlobInfoQuery {
         const this: *IGameSaveContainer = @ptrCast(self);
         return try this.CreateBlobInfoQuery(blobNamePrefix);
     }
@@ -105,7 +105,7 @@ pub const GameSaveContainer = extern struct {
 };
 pub const GameSaveContainerInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameSaveContainerInfo = @ptrCast(self);
         return try this.getName();
     }
@@ -113,7 +113,7 @@ pub const GameSaveContainerInfo = extern struct {
         const this: *IGameSaveContainerInfo = @ptrCast(self);
         return try this.getTotalSize();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameSaveContainerInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -202,11 +202,11 @@ pub const GameSaveProvider = extern struct {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn CreateContainer(self: *@This(), name: HSTRING) core.HResult!*GameSaveContainer {
+    pub fn CreateContainer(self: *@This(), name: ?HSTRING) core.HResult!*GameSaveContainer {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.CreateContainer(name);
     }
-    pub fn DeleteContainerAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn DeleteContainerAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.DeleteContainerAsync(name);
     }
@@ -214,7 +214,7 @@ pub const GameSaveProvider = extern struct {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.CreateContainerInfoQuery();
     }
-    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
+    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: ?HSTRING) core.HResult!*GameSaveContainerInfoQuery {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.CreateContainerInfoQueryWithContainerNamePrefix(containerNamePrefix);
     }
@@ -222,18 +222,18 @@ pub const GameSaveProvider = extern struct {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.GetRemainingBytesInQuotaAsync();
     }
-    pub fn getContainersChangedSinceLastSync(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getContainersChangedSinceLastSync(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.getContainersChangedSinceLastSync();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
+    pub fn GetForUserAsync(user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         const _f = try @This()._IGameSaveProviderStaticsCache.get();
         return try _f.GetForUserAsync(user, serviceConfigId);
     }
-    pub fn GetSyncOnDemandForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
+    pub fn GetSyncOnDemandForUserAsync(user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         const _f = try @This()._IGameSaveProviderStaticsCache.get();
         return try _f.GetSyncOnDemandForUserAsync(user, serviceConfigId);
     }
@@ -268,8 +268,8 @@ pub const IGameSaveBlobGetResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!*IMapView(HSTRING,IBuffer) {
-        var _r: *IMapView(HSTRING,IBuffer) = undefined;
+    pub fn getValue(self: *@This()) core.HResult!*IMapView(?HSTRING,IBuffer) {
+        var _r: *IMapView(?HSTRING,IBuffer) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -287,13 +287,13 @@ pub const IGameSaveBlobGetResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *GameSaveErrorStatus) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IBuffer)) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IBuffer)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGameSaveBlobInfo = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -316,7 +316,7 @@ pub const IGameSaveBlobInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
@@ -389,8 +389,8 @@ pub const IGameSaveBlobInfoQuery = extern struct {
 };
 pub const IGameSaveContainer = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -401,31 +401,31 @@ pub const IGameSaveContainer = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SubmitUpdatesAsync(self: *@This(), blobsToWrite: *IMapView(HSTRING,IBuffer), blobsToDelete: *IIterable(HSTRING), displayName: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn SubmitUpdatesAsync(self: *@This(), blobsToWrite: *IMapView(?HSTRING,IBuffer), blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.SubmitUpdatesAsync(@ptrCast(self), blobsToWrite, blobsToDelete, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadAsync(self: *@This(), blobsToRead: *IMapView(HSTRING,IBuffer)) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn ReadAsync(self: *@This(), blobsToRead: *IMapView(?HSTRING,IBuffer)) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.ReadAsync(@ptrCast(self), blobsToRead, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAsync(self: *@This(), blobsToRead: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(GameSaveBlobGetResult) {
+    pub fn GetAsync(self: *@This(), blobsToRead: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(GameSaveBlobGetResult) {
         var _r: *IAsyncOperation(GameSaveBlobGetResult) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), blobsToRead, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SubmitPropertySetUpdatesAsync(self: *@This(), blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(HSTRING), displayName: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn SubmitPropertySetUpdatesAsync(self: *@This(), blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.SubmitPropertySetUpdatesAsync(@ptrCast(self), blobsToWrite, blobsToDelete, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateBlobInfoQuery(self: *@This(), blobNamePrefix: HSTRING) core.HResult!*GameSaveBlobInfoQuery {
+    pub fn CreateBlobInfoQuery(self: *@This(), blobNamePrefix: ?HSTRING) core.HResult!*GameSaveBlobInfoQuery {
         var _r: *GameSaveBlobInfoQuery = undefined;
         const _c = self.vtable.CreateBlobInfoQuery(@ptrCast(self), blobNamePrefix, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -443,19 +443,19 @@ pub const IGameSaveContainer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Provider: *const fn(self: *anyopaque, _r: **GameSaveProvider) callconv(.winapi) HRESULT,
-        SubmitUpdatesAsync: *const fn(self: *anyopaque, blobsToWrite: *IMapView(HSTRING,IBuffer), blobsToDelete: *IIterable(HSTRING), displayName: HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
-        ReadAsync: *const fn(self: *anyopaque, blobsToRead: *IMapView(HSTRING,IBuffer), _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, blobsToRead: *IIterable(HSTRING), _r: **IAsyncOperation(GameSaveBlobGetResult)) callconv(.winapi) HRESULT,
-        SubmitPropertySetUpdatesAsync: *const fn(self: *anyopaque, blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(HSTRING), displayName: HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
-        CreateBlobInfoQuery: *const fn(self: *anyopaque, blobNamePrefix: HSTRING, _r: **GameSaveBlobInfoQuery) callconv(.winapi) HRESULT,
+        SubmitUpdatesAsync: *const fn(self: *anyopaque, blobsToWrite: *IMapView(?HSTRING,IBuffer), blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
+        ReadAsync: *const fn(self: *anyopaque, blobsToRead: *IMapView(?HSTRING,IBuffer), _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
+        GetAsync: *const fn(self: *anyopaque, blobsToRead: *IIterable(?HSTRING), _r: **IAsyncOperation(GameSaveBlobGetResult)) callconv(.winapi) HRESULT,
+        SubmitPropertySetUpdatesAsync: *const fn(self: *anyopaque, blobsToWrite: *IPropertySet, blobsToDelete: *IIterable(?HSTRING), displayName: ?HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
+        CreateBlobInfoQuery: *const fn(self: *anyopaque, blobNamePrefix: ?HSTRING, _r: **GameSaveBlobInfoQuery) callconv(.winapi) HRESULT,
     };
 };
 pub const IGameSaveContainerInfo = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -466,8 +466,8 @@ pub const IGameSaveContainerInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -496,9 +496,9 @@ pub const IGameSaveContainerInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_TotalSize: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LastModifiedTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_NeedsSync: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -601,13 +601,13 @@ pub const IGameSaveProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContainer(self: *@This(), name: HSTRING) core.HResult!*GameSaveContainer {
+    pub fn CreateContainer(self: *@This(), name: ?HSTRING) core.HResult!*GameSaveContainer {
         var _r: *GameSaveContainer = undefined;
         const _c = self.vtable.CreateContainer(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteContainerAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
+    pub fn DeleteContainerAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveOperationResult) {
         var _r: *IAsyncOperation(GameSaveOperationResult) = undefined;
         const _c = self.vtable.DeleteContainerAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -619,7 +619,7 @@ pub const IGameSaveProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
+    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: ?HSTRING) core.HResult!*GameSaveContainerInfoQuery {
         var _r: *GameSaveContainerInfoQuery = undefined;
         const _c = self.vtable.CreateContainerInfoQueryWithContainerNamePrefix(@ptrCast(self), containerNamePrefix, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -631,8 +631,8 @@ pub const IGameSaveProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContainersChangedSinceLastSync(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getContainersChangedSinceLastSync(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ContainersChangedSinceLastSync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -650,12 +650,12 @@ pub const IGameSaveProvider = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        CreateContainer: *const fn(self: *anyopaque, name: HSTRING, _r: **GameSaveContainer) callconv(.winapi) HRESULT,
-        DeleteContainerAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
+        CreateContainer: *const fn(self: *anyopaque, name: ?HSTRING, _r: **GameSaveContainer) callconv(.winapi) HRESULT,
+        DeleteContainerAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
         CreateContainerInfoQuery: *const fn(self: *anyopaque, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
-        CreateContainerInfoQueryWithContainerNamePrefix: *const fn(self: *anyopaque, containerNamePrefix: HSTRING, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
+        CreateContainerInfoQueryWithContainerNamePrefix: *const fn(self: *anyopaque, containerNamePrefix: ?HSTRING, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
         GetRemainingBytesInQuotaAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(i64)) callconv(.winapi) HRESULT,
-        get_ContainersChangedSinceLastSync: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_ContainersChangedSinceLastSync: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGameSaveProviderGetResult = extern struct {
@@ -690,13 +690,13 @@ pub const IGameSaveProviderGetResult = extern struct {
 };
 pub const IGameSaveProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetForUserAsync(self: *@This(), user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
+    pub fn GetForUserAsync(self: *@This(), user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         var _r: *IAsyncOperation(GameSaveProviderGetResult) = undefined;
         const _c = self.vtable.GetForUserAsync(@ptrCast(self), user, serviceConfigId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSyncOnDemandForUserAsync(self: *@This(), user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
+    pub fn GetSyncOnDemandForUserAsync(self: *@This(), user: *User, serviceConfigId: ?HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
         var _r: *IAsyncOperation(GameSaveProviderGetResult) = undefined;
         const _c = self.vtable.GetSyncOnDemandForUserAsync(@ptrCast(self), user, serviceConfigId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -714,8 +714,8 @@ pub const IGameSaveProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetForUserAsync: *const fn(self: *anyopaque, user: *User, serviceConfigId: HSTRING, _r: **IAsyncOperation(GameSaveProviderGetResult)) callconv(.winapi) HRESULT,
-        GetSyncOnDemandForUserAsync: *const fn(self: *anyopaque, user: *User, serviceConfigId: HSTRING, _r: **IAsyncOperation(GameSaveProviderGetResult)) callconv(.winapi) HRESULT,
+        GetForUserAsync: *const fn(self: *anyopaque, user: *User, serviceConfigId: ?HSTRING, _r: **IAsyncOperation(GameSaveProviderGetResult)) callconv(.winapi) HRESULT,
+        GetSyncOnDemandForUserAsync: *const fn(self: *anyopaque, user: *User, serviceConfigId: ?HSTRING, _r: **IAsyncOperation(GameSaveProviderGetResult)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

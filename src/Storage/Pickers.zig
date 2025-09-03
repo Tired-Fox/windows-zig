@@ -2,27 +2,27 @@
 pub const FileExtensionVector = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector(HSTRING) = @ptrCast(self);
+        const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        const this: *IVector(HSTRING) = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector(HSTRING) = @ptrCast(self);
+        const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector(HSTRING) = @ptrCast(self);
+        const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector(HSTRING) = @ptrCast(self);
+        const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HSTRING) {
-        var this: ?*IIterable(HSTRING) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(?HSTRING) {
+        var this: ?*IIterable(?HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -53,7 +53,7 @@ pub const FileOpenPicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PickMultipleFilesAndContinue();
     }
-    pub fn PickSingleFileAsyncWithPickerOperationId(self: *@This(), pickerOperationId: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn PickSingleFileAsyncWithPickerOperationId(self: *@This(), pickerOperationId: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IFileOpenPickerWithOperationId = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerWithOperationId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -67,11 +67,11 @@ pub const FileOpenPicker = extern struct {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.putViewMode(value);
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.getSettingsIdentifier();
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.putSettingsIdentifier(value);
     }
@@ -83,15 +83,15 @@ pub const FileOpenPicker = extern struct {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.putSuggestedStartLocation(value);
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.getCommitButtonText();
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.putCommitButtonText(value);
     }
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IFileOpenPicker = @ptrCast(self);
         return try this.getFileTypeFilter();
     }
@@ -136,19 +136,19 @@ pub const FileOpenPicker = extern struct {
 pub const FilePickerFileTypesOrderedMap = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
+        const this: *IMap(?HSTRING,IVector(?HSTRING)) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IVector(HSTRING)) {
-        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IVector(?HSTRING)) {
+        const this: *IMap(?HSTRING,IVector(?HSTRING)) = @ptrCast(self);
         return try this.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
+        const this: *IMap(?HSTRING,IVector(?HSTRING)) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IVector(HSTRING))) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IVector(HSTRING))) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IVector(?HSTRING))) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -191,23 +191,23 @@ pub const FileSavePicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PickSaveFileAndContinue();
     }
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileSavePicker3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IFileSavePicker3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileSavePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEnterpriseId(value);
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.getSettingsIdentifier();
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putSettingsIdentifier(value);
     }
@@ -219,23 +219,23 @@ pub const FileSavePicker = extern struct {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putSuggestedStartLocation(value);
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.getCommitButtonText();
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putCommitButtonText(value);
     }
-    pub fn getFileTypeChoices(self: *@This()) core.HResult!*IMap(HSTRING,IVector(HSTRING)) {
+    pub fn getFileTypeChoices(self: *@This()) core.HResult!*IMap(?HSTRING,IVector(?HSTRING)) {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.getFileTypeChoices();
     }
-    pub fn getDefaultFileExtension(self: *@This()) core.HResult!HSTRING {
+    pub fn getDefaultFileExtension(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.getDefaultFileExtension();
     }
-    pub fn putDefaultFileExtension(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultFileExtension(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putDefaultFileExtension(value);
     }
@@ -247,11 +247,11 @@ pub const FileSavePicker = extern struct {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putSuggestedSaveFile(value);
     }
-    pub fn getSuggestedFileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSuggestedFileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.getSuggestedFileName();
     }
-    pub fn putSuggestedFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSuggestedFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFileSavePicker = @ptrCast(self);
         return try this.putSuggestedFileName(value);
     }
@@ -306,11 +306,11 @@ pub const FolderPicker = extern struct {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.putViewMode(value);
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.getSettingsIdentifier();
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.putSettingsIdentifier(value);
     }
@@ -322,15 +322,15 @@ pub const FolderPicker = extern struct {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.putSuggestedStartLocation(value);
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.getCommitButtonText();
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.putCommitButtonText(value);
     }
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IFolderPicker = @ptrCast(self);
         return try this.getFileTypeFilter();
     }
@@ -375,13 +375,13 @@ pub const IFileOpenPicker = extern struct {
         const _c = self.vtable.put_ViewMode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -395,18 +395,18 @@ pub const IFileOpenPicker = extern struct {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypeFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -437,13 +437,13 @@ pub const IFileOpenPicker = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ViewMode: *const fn(self: *anyopaque, _r: *PickerViewMode) callconv(.winapi) HRESULT,
         put_ViewMode: *const fn(self: *anyopaque, value: PickerViewMode) callconv(.winapi) HRESULT,
-        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SettingsIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SettingsIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SuggestedStartLocation: *const fn(self: *anyopaque, _r: *PickerLocationId) callconv(.winapi) HRESULT,
         put_SuggestedStartLocation: *const fn(self: *anyopaque, value: PickerLocationId) callconv(.winapi) HRESULT,
-        get_CommitButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CommitButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_CommitButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CommitButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         PickSingleFileAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         PickMultipleFilesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StorageFile))) callconv(.winapi) HRESULT,
     };
@@ -552,7 +552,7 @@ pub const IFileOpenPickerStatics2 = extern struct {
 };
 pub const IFileOpenPickerWithOperationId = extern struct {
     vtable: *const VTable,
-    pub fn PickSingleFileAsync(self: *@This(), pickerOperationId: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn PickSingleFileAsync(self: *@This(), pickerOperationId: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.PickSingleFileAsync(@ptrCast(self), pickerOperationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -570,18 +570,18 @@ pub const IFileOpenPickerWithOperationId = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        PickSingleFileAsync: *const fn(self: *anyopaque, pickerOperationId: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        PickSingleFileAsync: *const fn(self: *anyopaque, pickerOperationId: ?HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileSavePicker = extern struct {
     vtable: *const VTable,
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -595,29 +595,29 @@ pub const IFileSavePicker = extern struct {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFileTypeChoices(self: *@This()) core.HResult!*IMap(HSTRING,IVector(HSTRING)) {
-        var _r: *IMap(HSTRING,IVector(HSTRING)) = undefined;
+    pub fn getFileTypeChoices(self: *@This()) core.HResult!*IMap(?HSTRING,IVector(?HSTRING)) {
+        var _r: *IMap(?HSTRING,IVector(?HSTRING)) = undefined;
         const _c = self.vtable.get_FileTypeChoices(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDefaultFileExtension(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDefaultFileExtension(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultFileExtension(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDefaultFileExtension(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDefaultFileExtension(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DefaultFileExtension(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -631,13 +631,13 @@ pub const IFileSavePicker = extern struct {
         const _c = self.vtable.put_SuggestedSaveFile(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSuggestedFileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSuggestedFileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SuggestedFileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSuggestedFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSuggestedFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SuggestedFileName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -659,19 +659,19 @@ pub const IFileSavePicker = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SettingsIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SettingsIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SuggestedStartLocation: *const fn(self: *anyopaque, _r: *PickerLocationId) callconv(.winapi) HRESULT,
         put_SuggestedStartLocation: *const fn(self: *anyopaque, value: PickerLocationId) callconv(.winapi) HRESULT,
-        get_CommitButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CommitButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FileTypeChoices: *const fn(self: *anyopaque, _r: **IMap(HSTRING,IVector(HSTRING))) callconv(.winapi) HRESULT,
-        get_DefaultFileExtension: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DefaultFileExtension: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CommitButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CommitButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FileTypeChoices: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,IVector(?HSTRING))) callconv(.winapi) HRESULT,
+        get_DefaultFileExtension: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DefaultFileExtension: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SuggestedSaveFile: *const fn(self: *anyopaque, _r: **StorageFile) callconv(.winapi) HRESULT,
         put_SuggestedSaveFile: *const fn(self: *anyopaque, value: *StorageFile) callconv(.winapi) HRESULT,
-        get_SuggestedFileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SuggestedFileName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SuggestedFileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SuggestedFileName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         PickSaveFileAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
     };
 };
@@ -705,13 +705,13 @@ pub const IFileSavePicker2 = extern struct {
 };
 pub const IFileSavePicker3 = extern struct {
     vtable: *const VTable,
-    pub fn getEnterpriseId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEnterpriseId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnterpriseId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -727,8 +727,8 @@ pub const IFileSavePicker3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnterpriseId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EnterpriseId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EnterpriseId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EnterpriseId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileSavePicker4 = extern struct {
@@ -789,13 +789,13 @@ pub const IFolderPicker = extern struct {
         const _c = self.vtable.put_ViewMode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSettingsIdentifier(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSettingsIdentifier(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSettingsIdentifier(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SettingsIdentifier(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -809,18 +809,18 @@ pub const IFolderPicker = extern struct {
         const _c = self.vtable.put_SuggestedStartLocation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCommitButtonText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCommitButtonText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCommitButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CommitButtonText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getFileTypeFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FileTypeFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -845,13 +845,13 @@ pub const IFolderPicker = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ViewMode: *const fn(self: *anyopaque, _r: *PickerViewMode) callconv(.winapi) HRESULT,
         put_ViewMode: *const fn(self: *anyopaque, value: PickerViewMode) callconv(.winapi) HRESULT,
-        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SettingsIdentifier: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_SettingsIdentifier: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SettingsIdentifier: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_SuggestedStartLocation: *const fn(self: *anyopaque, _r: *PickerLocationId) callconv(.winapi) HRESULT,
         put_SuggestedStartLocation: *const fn(self: *anyopaque, value: PickerLocationId) callconv(.winapi) HRESULT,
-        get_CommitButtonText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CommitButtonText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_CommitButtonText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CommitButtonText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_FileTypeFilter: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         PickSingleFolderAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
     };
 };

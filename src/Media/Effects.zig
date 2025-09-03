@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const AcousticEchoCancellationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const this: *IAcousticEchoCancellationConfiguration = @ptrCast(self);
         return try this.SetEchoCancellationRenderEndpoint(deviceId);
     }
@@ -69,7 +69,7 @@ pub const AudioEffect = extern struct {
 };
 pub const AudioEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -80,11 +80,11 @@ pub const AudioEffectDefinition = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(activatableClassId: HSTRING) core.HResult!*AudioEffectDefinition {
+    pub fn Create(activatableClassId: ?HSTRING) core.HResult!*AudioEffectDefinition {
         const _f = try @This()._IAudioEffectDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
-    pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*AudioEffectDefinition {
+    pub fn CreateWithProperties(activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*AudioEffectDefinition {
         const _f = try @This()._IAudioEffectDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
@@ -126,19 +126,19 @@ pub const AudioEffectsManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateAudioRenderEffectsManager(deviceId: HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManager(deviceId: ?HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
         const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioRenderEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioRenderEffectsManagerWithMode(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManagerWithMode(deviceId: ?HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
         const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioRenderEffectsManagerWithMode(deviceId, category, mode);
     }
-    pub fn CreateAudioCaptureEffectsManager(deviceId: HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManager(deviceId: ?HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
         const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioCaptureEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioCaptureEffectsManagerWithMode(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManagerWithMode(deviceId: ?HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
         const _f = try @This()._IAudioEffectsManagerStaticsCache.get();
         return try _f.CreateAudioCaptureEffectsManagerWithMode(deviceId, category, mode);
     }
@@ -166,7 +166,7 @@ pub const AudioRenderEffectsManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectsProviderThumbnail();
     }
-    pub fn getEffectsProviderSettingsLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getEffectsProviderSettingsLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioRenderEffectsManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioRenderEffectsManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -210,7 +210,7 @@ pub const CompositeVideoFrameContext = extern struct {
 };
 pub const IAcousticEchoCancellationConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: HSTRING) core.HResult!void {
+    pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetEchoCancellationRenderEndpoint(@ptrCast(self), deviceId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -226,7 +226,7 @@ pub const IAcousticEchoCancellationConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetEchoCancellationRenderEndpoint: *const fn(self: *anyopaque, deviceId: HSTRING) callconv(.winapi) HRESULT,
+        SetEchoCancellationRenderEndpoint: *const fn(self: *anyopaque, deviceId: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioCaptureEffectsManager = extern struct {
@@ -331,8 +331,8 @@ pub const IAudioEffect2 = extern struct {
 };
 pub const IAudioEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -355,19 +355,19 @@ pub const IAudioEffectDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), activatableClassId: HSTRING) core.HResult!*AudioEffectDefinition {
+    pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*AudioEffectDefinition {
         var _r: *AudioEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithProperties(self: *@This(), activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*AudioEffectDefinition {
+    pub fn CreateWithProperties(self: *@This(), activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*AudioEffectDefinition {
         var _r: *AudioEffectDefinition = undefined;
         const _c = self.vtable.CreateWithProperties(@ptrCast(self), activatableClassId, props, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -385,31 +385,31 @@ pub const IAudioEffectDefinitionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, activatableClassId: HSTRING, _r: **AudioEffectDefinition) callconv(.winapi) HRESULT,
-        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: HSTRING, props: *IPropertySet, _r: **AudioEffectDefinition) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **AudioEffectDefinition) callconv(.winapi) HRESULT,
+        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, props: *IPropertySet, _r: **AudioEffectDefinition) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioEffectsManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateAudioRenderEffectsManager(self: *@This(), deviceId: HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManager(self: *@This(), deviceId: ?HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
         var _r: *AudioRenderEffectsManager = undefined;
         const _c = self.vtable.CreateAudioRenderEffectsManager(@ptrCast(self), deviceId, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAudioRenderEffectsManagerWithMode(self: *@This(), deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManagerWithMode(self: *@This(), deviceId: ?HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
         var _r: *AudioRenderEffectsManager = undefined;
         const _c = self.vtable.CreateAudioRenderEffectsManagerWithMode(@ptrCast(self), deviceId, category, mode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAudioCaptureEffectsManager(self: *@This(), deviceId: HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManager(self: *@This(), deviceId: ?HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
         var _r: *AudioCaptureEffectsManager = undefined;
         const _c = self.vtable.CreateAudioCaptureEffectsManager(@ptrCast(self), deviceId, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAudioCaptureEffectsManagerWithMode(self: *@This(), deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManagerWithMode(self: *@This(), deviceId: ?HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
         var _r: *AudioCaptureEffectsManager = undefined;
         const _c = self.vtable.CreateAudioCaptureEffectsManagerWithMode(@ptrCast(self), deviceId, category, mode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -427,10 +427,10 @@ pub const IAudioEffectsManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateAudioRenderEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: AudioRenderCategory, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
-        CreateAudioRenderEffectsManagerWithMode: *const fn(self: *anyopaque, deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
-        CreateAudioCaptureEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: MediaCategory, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
-        CreateAudioCaptureEffectsManagerWithMode: *const fn(self: *anyopaque, deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioRenderEffectsManager: *const fn(self: *anyopaque, deviceId: ?HSTRING, category: AudioRenderCategory, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioRenderEffectsManagerWithMode: *const fn(self: *anyopaque, deviceId: ?HSTRING, category: AudioRenderCategory, mode: AudioProcessing, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioCaptureEffectsManager: *const fn(self: *anyopaque, deviceId: ?HSTRING, category: MediaCategory, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioCaptureEffectsManagerWithMode: *const fn(self: *anyopaque, deviceId: ?HSTRING, category: MediaCategory, mode: AudioProcessing, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioRenderEffectsManager = extern struct {
@@ -476,8 +476,8 @@ pub const IAudioRenderEffectsManager2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEffectsProviderSettingsLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEffectsProviderSettingsLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EffectsProviderSettingsLabel(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -499,7 +499,7 @@ pub const IAudioRenderEffectsManager2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_EffectsProviderThumbnail: *const fn(self: *anyopaque, _r: **IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
-        get_EffectsProviderSettingsLabel: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EffectsProviderSettingsLabel: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ShowSettingsUI: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -766,8 +766,8 @@ pub const IVideoCompositor = extern struct {
 };
 pub const IVideoCompositorDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -790,19 +790,19 @@ pub const IVideoCompositorDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoCompositorDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), activatableClassId: HSTRING) core.HResult!*VideoCompositorDefinition {
+    pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*VideoCompositorDefinition {
         var _r: *VideoCompositorDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithProperties(self: *@This(), activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoCompositorDefinition {
+    pub fn CreateWithProperties(self: *@This(), activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*VideoCompositorDefinition {
         var _r: *VideoCompositorDefinition = undefined;
         const _c = self.vtable.CreateWithProperties(@ptrCast(self), activatableClassId, props, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -820,14 +820,14 @@ pub const IVideoCompositorDefinitionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, activatableClassId: HSTRING, _r: **VideoCompositorDefinition) callconv(.winapi) HRESULT,
-        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: HSTRING, props: *IPropertySet, _r: **VideoCompositorDefinition) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **VideoCompositorDefinition) callconv(.winapi) HRESULT,
+        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, props: *IPropertySet, _r: **VideoCompositorDefinition) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoEffectDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -850,19 +850,19 @@ pub const IVideoEffectDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ActivatableClassId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), activatableClassId: HSTRING) core.HResult!*VideoEffectDefinition {
+    pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*VideoEffectDefinition {
         var _r: *VideoEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithProperties(self: *@This(), activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoEffectDefinition {
+    pub fn CreateWithProperties(self: *@This(), activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*VideoEffectDefinition {
         var _r: *VideoEffectDefinition = undefined;
         const _c = self.vtable.CreateWithProperties(@ptrCast(self), activatableClassId, props, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -880,8 +880,8 @@ pub const IVideoEffectDefinitionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, activatableClassId: HSTRING, _r: **VideoEffectDefinition) callconv(.winapi) HRESULT,
-        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: HSTRING, props: *IPropertySet, _r: **VideoEffectDefinition) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, _r: **VideoEffectDefinition) callconv(.winapi) HRESULT,
+        CreateWithProperties: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, props: *IPropertySet, _r: **VideoEffectDefinition) callconv(.winapi) HRESULT,
     };
 };
 pub const IVideoTransformEffectDefinition = extern struct {
@@ -1116,7 +1116,7 @@ pub const ProcessVideoFrameContext = extern struct {
 };
 pub const VideoCompositorDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoCompositorDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -1127,11 +1127,11 @@ pub const VideoCompositorDefinition = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(activatableClassId: HSTRING) core.HResult!*VideoCompositorDefinition {
+    pub fn Create(activatableClassId: ?HSTRING) core.HResult!*VideoCompositorDefinition {
         const _f = try @This()._IVideoCompositorDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
-    pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoCompositorDefinition {
+    pub fn CreateWithProperties(activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*VideoCompositorDefinition {
         const _f = try @This()._IVideoCompositorDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
@@ -1144,7 +1144,7 @@ pub const VideoCompositorDefinition = extern struct {
 };
 pub const VideoEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }
@@ -1155,11 +1155,11 @@ pub const VideoEffectDefinition = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(activatableClassId: HSTRING) core.HResult!*VideoEffectDefinition {
+    pub fn Create(activatableClassId: ?HSTRING) core.HResult!*VideoEffectDefinition {
         const _f = try @This()._IVideoEffectDefinitionFactoryCache.get();
         return try _f.Create(activatableClassId);
     }
-    pub fn CreateWithProperties(activatableClassId: HSTRING, props: *IPropertySet) core.HResult!*VideoEffectDefinition {
+    pub fn CreateWithProperties(activatableClassId: ?HSTRING, props: *IPropertySet) core.HResult!*VideoEffectDefinition {
         const _f = try @This()._IVideoEffectDefinitionFactoryCache.get();
         return try _f.CreateWithProperties(activatableClassId, props);
     }
@@ -1172,7 +1172,7 @@ pub const VideoEffectDefinition = extern struct {
 };
 pub const VideoTransformEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActivatableClassId(self: *@This()) core.HResult!HSTRING {
+    pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
     }

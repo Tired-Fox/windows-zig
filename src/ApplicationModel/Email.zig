@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
 pub const EmailAttachment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailAttachment = @ptrCast(self);
         return try this.getFileName();
     }
-    pub fn putFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailAttachment = @ptrCast(self);
         return try this.putFileName(value);
     }
@@ -17,31 +17,31 @@ pub const EmailAttachment = extern struct {
         const this: *IEmailAttachment = @ptrCast(self);
         return try this.putData(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentId();
     }
-    pub fn putContentId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentId(value);
     }
-    pub fn getContentLocation(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentLocation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentLocation();
     }
-    pub fn putContentLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -89,13 +89,13 @@ pub const EmailAttachment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsInline(value);
     }
-    pub fn getMimeType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMimeType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMimeType();
     }
-    pub fn putMimeType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMimeType(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailAttachment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -108,11 +108,11 @@ pub const EmailAttachment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailAttachment.IID)));
     }
-    pub fn Create(fileName: HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
+    pub fn Create(fileName: ?HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
         const _f = try @This()._IEmailAttachmentFactoryCache.get();
         return try _f.Create(fileName, data);
     }
-    pub fn CreateWithMimeType(fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
+    pub fn CreateWithMimeType(fileName: ?HSTRING, data: *IRandomAccessStreamReference, mimeType: ?HSTRING) core.HResult!*EmailAttachment {
         const _f = try @This()._IEmailAttachmentFactory2Cache.get();
         return try _f.Create(fileName, data, mimeType);
     }
@@ -151,11 +151,11 @@ pub const EmailCertificateValidationStatus = enum(i32) {
 };
 pub const EmailConversation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getMailboxId();
     }
@@ -179,7 +179,7 @@ pub const EmailConversation = extern struct {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getMessageCount();
     }
-    pub fn getMostRecentMessageId(self: *@This()) core.HResult!HSTRING {
+    pub fn getMostRecentMessageId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getMostRecentMessageId();
     }
@@ -187,7 +187,7 @@ pub const EmailConversation = extern struct {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getMostRecentMessageTime();
     }
-    pub fn getPreview(self: *@This()) core.HResult!HSTRING {
+    pub fn getPreview(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getPreview();
     }
@@ -195,7 +195,7 @@ pub const EmailConversation = extern struct {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getLatestSender();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getSubject();
     }
@@ -253,31 +253,31 @@ pub const EmailFlagState = enum(i32) {
 };
 pub const EmailFolder = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.putRemoteId(value);
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getMailboxId();
     }
-    pub fn getParentFolderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getParentFolderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getParentFolderId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.putDisplayName(value);
     }
@@ -301,7 +301,7 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getKind();
     }
-    pub fn CreateFolderAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn CreateFolderAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.CreateFolderAsync(name);
     }
@@ -321,7 +321,7 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.GetConversationReaderWithOptions(options);
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.GetMessageAsync(id);
     }
@@ -341,7 +341,7 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.TryMoveAsync(newParentFolder);
     }
-    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.TryMoveAsyncWithNewFolderName(newParentFolder, newFolderName);
     }
@@ -483,27 +483,27 @@ pub const EmailIrmInfo = extern struct {
 };
 pub const EmailIrmTemplate = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.putName(value);
     }
@@ -514,7 +514,7 @@ pub const EmailIrmTemplate = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmTemplate.IID)));
     }
-    pub fn Create(id: HSTRING, name: HSTRING, description: HSTRING) core.HResult!*EmailIrmTemplate {
+    pub fn Create(id: ?HSTRING, name: ?HSTRING, description: ?HSTRING) core.HResult!*EmailIrmTemplate {
         const _f = try @This()._IEmailIrmTemplateFactoryCache.get();
         return try _f.Create(id, name, description);
     }
@@ -560,15 +560,15 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getChangeTracker();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getId();
     }
@@ -580,15 +580,15 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getIsDataEncryptedUnderLock();
     }
-    pub fn getMailAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getMailAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getMailAddress();
     }
-    pub fn putMailAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMailAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.putMailAddress(value);
     }
-    pub fn getMailAddressAliases(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getMailAddressAliases(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getMailAddressAliases();
     }
@@ -612,7 +612,7 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getPolicies();
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getSourceDisplayName();
     }
@@ -620,7 +620,7 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getSyncManager();
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getUserDataAccountId();
     }
@@ -644,15 +644,15 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.DeleteAsync();
     }
-    pub fn GetConversationAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
+    pub fn GetConversationAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.GetConversationAsync(id);
     }
-    pub fn GetFolderAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn GetFolderAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.GetFolderAsync(id);
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.GetMessageAsync(id);
     }
@@ -664,39 +664,39 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.SaveAsync();
     }
-    pub fn MarkMessageAsSeenAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkMessageAsSeenAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.MarkMessageAsSeenAsync(messageId);
     }
-    pub fn MarkFolderAsSeenAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkFolderAsSeenAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.MarkFolderAsSeenAsync(folderId);
     }
-    pub fn MarkMessageReadAsync(self: *@This(), messageId: HSTRING, isRead: bool) core.HResult!*IAsyncAction {
+    pub fn MarkMessageReadAsync(self: *@This(), messageId: ?HSTRING, isRead: bool) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.MarkMessageReadAsync(messageId, isRead);
     }
-    pub fn ChangeMessageFlagStateAsync(self: *@This(), messageId: HSTRING, flagState: EmailFlagState) core.HResult!*IAsyncAction {
+    pub fn ChangeMessageFlagStateAsync(self: *@This(), messageId: ?HSTRING, flagState: EmailFlagState) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.ChangeMessageFlagStateAsync(messageId, flagState);
     }
-    pub fn TryMoveMessageAsync(self: *@This(), messageId: HSTRING, newParentFolderId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveMessageAsync(self: *@This(), messageId: ?HSTRING, newParentFolderId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryMoveMessageAsync(messageId, newParentFolderId);
     }
-    pub fn TryMoveFolderAsync(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsync(self: *@This(), folderId: ?HSTRING, newParentFolderId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryMoveFolderAsync(folderId, newParentFolderId);
     }
-    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: ?HSTRING, newParentFolderId: ?HSTRING, newFolderName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryMoveFolderAsyncWithNewFolderName(folderId, newParentFolderId, newFolderName);
     }
-    pub fn DeleteMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteMessageAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.DeleteMessageAsync(messageId);
     }
-    pub fn MarkFolderSyncEnabledAsync(self: *@This(), folderId: HSTRING, isSyncEnabled: bool) core.HResult!*IAsyncAction {
+    pub fn MarkFolderSyncEnabledAsync(self: *@This(), folderId: ?HSTRING, isSyncEnabled: bool) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.MarkFolderSyncEnabledAsync(folderId, isSyncEnabled);
     }
@@ -708,27 +708,27 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.SaveDraftAsync(message);
     }
-    pub fn DownloadMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadMessageAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.DownloadMessageAsync(messageId);
     }
-    pub fn DownloadAttachmentAsync(self: *@This(), attachmentId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadAttachmentAsync(self: *@This(), attachmentId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.DownloadAttachmentAsync(attachmentId);
     }
-    pub fn CreateResponseMessageAsync(self: *@This(), messageId: HSTRING, responseType: EmailMessageResponseKind, subject: HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn CreateResponseMessageAsync(self: *@This(), messageId: ?HSTRING, responseType: EmailMessageResponseKind, subject: ?HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.CreateResponseMessageAsync(messageId, responseType, subject, responseHeaderType, responseHeader);
     }
-    pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *EmailMessage, response: EmailMeetingResponseType, subject: HSTRING, comment: HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *EmailMessage, response: EmailMeetingResponseType, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryUpdateMeetingResponseAsync(meeting, response, subject, comment, sendUpdate);
     }
-    pub fn TryForwardMeetingAsync(self: *@This(), meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: HSTRING, comment: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryForwardMeetingAsync(self: *@This(), meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: ?HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryForwardMeetingAsync(meeting, recipients, subject, forwardHeaderType, forwardHeader, comment);
     }
-    pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: HSTRING, comment: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryProposeNewTimeForMeetingAsync(meeting, newStartTime, newDuration, subject, comment);
     }
@@ -752,25 +752,25 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryGetAutoReplySettingsAsync(requestedFormat);
     }
-    pub fn getLinkedMailboxId(self: *@This()) core.HResult!HSTRING {
+    pub fn getLinkedMailboxId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMailbox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLinkedMailboxId();
     }
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMailbox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNetworkAccountId();
     }
-    pub fn getNetworkId(self: *@This()) core.HResult!HSTRING {
+    pub fn getNetworkId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMailbox2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNetworkId();
     }
-    pub fn ResolveRecipientsAsync(self: *@This(), recipients: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) {
+    pub fn ResolveRecipientsAsync(self: *@This(), recipients: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) {
         var this: ?*IEmailMailbox3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -782,19 +782,19 @@ pub const EmailMailbox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ValidateCertificatesAsync(certificates);
     }
-    pub fn TryEmptyFolderAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxEmptyFolderStatus) {
+    pub fn TryEmptyFolderAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxEmptyFolderStatus) {
         var this: ?*IEmailMailbox3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryEmptyFolderAsync(folderId);
     }
-    pub fn TryCreateFolderAsync(self: *@This(), parentFolderId: HSTRING, name: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxCreateFolderResult) {
+    pub fn TryCreateFolderAsync(self: *@This(), parentFolderId: ?HSTRING, name: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxCreateFolderResult) {
         var this: ?*IEmailMailbox3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateFolderAsync(parentFolderId, name);
     }
-    pub fn TryDeleteFolderAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxDeleteFolderStatus) {
+    pub fn TryDeleteFolderAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxDeleteFolderStatus) {
         var this: ?*IEmailMailbox3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -806,7 +806,7 @@ pub const EmailMailbox = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterSyncManagerAsync();
     }
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*EmailMailboxChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*EmailMailboxChangeTracker {
         var this: ?*IEmailMailbox5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMailbox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -862,11 +862,11 @@ pub const EmailMailboxAutoReply = extern struct {
         const this: *IEmailMailboxAutoReply = @ptrCast(self);
         return try this.putIsEnabled(value);
     }
-    pub fn getResponse(self: *@This()) core.HResult!HSTRING {
+    pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMailboxAutoReply = @ptrCast(self);
         return try this.getResponse();
     }
-    pub fn putResponse(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResponse(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMailboxAutoReply = @ptrCast(self);
         return try this.putResponse(value);
     }
@@ -1448,11 +1448,11 @@ pub const EmailMeetingInfo = extern struct {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.putAllowNewTimeProposal(value);
     }
-    pub fn getAppointmentRoamingId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentRoamingId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.getAppointmentRoamingId();
     }
-    pub fn putAppointmentRoamingId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppointmentRoamingId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.putAppointmentRoamingId(value);
     }
@@ -1488,11 +1488,11 @@ pub const EmailMeetingInfo = extern struct {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.putIsResponseRequested(value);
     }
-    pub fn getLocation(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn putLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.putLocation(value);
     }
@@ -1571,19 +1571,19 @@ pub const EmailMeetingResponseType = enum(i32) {
 };
 pub const EmailMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.putSubject(value);
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.getBody();
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.putBody(value);
     }
@@ -1603,37 +1603,37 @@ pub const EmailMessage = extern struct {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.getAttachments();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMailboxId();
     }
-    pub fn getConversationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getConversationId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConversationId();
     }
-    pub fn getFolderId(self: *@This()) core.HResult!HSTRING {
+    pub fn getFolderId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1711,7 +1711,7 @@ pub const EmailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putImportance(value);
     }
-    pub fn getInResponseToMessageId(self: *@This()) core.HResult!HSTRING {
+    pub fn getInResponseToMessageId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1771,19 +1771,19 @@ pub const EmailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSmartSendable();
     }
-    pub fn getMessageClass(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessageClass(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn putMessageClass(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessageClass(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMessageClass(value);
     }
-    pub fn getNormalizedSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getNormalizedSubject(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1801,13 +1801,13 @@ pub const EmailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOriginalCodePage(value);
     }
-    pub fn getPreview(self: *@This()) core.HResult!HSTRING {
+    pub fn getPreview(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreview();
     }
-    pub fn putPreview(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreview(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2017,7 +2017,7 @@ pub const EmailQueryOptions = extern struct {
         const this: *IEmailQueryOptions = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn getFolderIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getFolderIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IEmailQueryOptions = @ptrCast(self);
         return try this.getFolderIds();
     }
@@ -2028,11 +2028,11 @@ pub const EmailQueryOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailQueryOptions.IID)));
     }
-    pub fn CreateWithText(text: HSTRING) core.HResult!*EmailQueryOptions {
+    pub fn CreateWithText(text: ?HSTRING) core.HResult!*EmailQueryOptions {
         const _f = try @This()._IEmailQueryOptionsFactoryCache.get();
         return try _f.CreateWithText(text);
     }
-    pub fn CreateWithTextAndFields(text: HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
+    pub fn CreateWithTextAndFields(text: ?HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
         const _f = try @This()._IEmailQueryOptionsFactoryCache.get();
         return try _f.CreateWithTextAndFields(text, fields);
     }
@@ -2081,11 +2081,11 @@ pub const EmailQueryTextSearch = extern struct {
         const this: *IEmailQueryTextSearch = @ptrCast(self);
         return try this.putSearchScope(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailQueryTextSearch = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailQueryTextSearch = @ptrCast(self);
         return try this.putText(value);
     }
@@ -2097,19 +2097,19 @@ pub const EmailQueryTextSearch = extern struct {
 };
 pub const EmailRecipient = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.getAddress();
     }
-    pub fn putAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.putAddress(value);
     }
@@ -2120,11 +2120,11 @@ pub const EmailRecipient = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailRecipient.IID)));
     }
-    pub fn Create(address: HSTRING) core.HResult!*EmailRecipient {
+    pub fn Create(address: ?HSTRING) core.HResult!*EmailRecipient {
         const _f = try @This()._IEmailRecipientFactoryCache.get();
         return try _f.Create(address);
     }
-    pub fn CreateWithName(address: HSTRING, name: HSTRING) core.HResult!*EmailRecipient {
+    pub fn CreateWithName(address: ?HSTRING, name: ?HSTRING) core.HResult!*EmailRecipient {
         const _f = try @This()._IEmailRecipientFactoryCache.get();
         return try _f.CreateWithName(address, name);
     }
@@ -2213,27 +2213,27 @@ pub const EmailStore = extern struct {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetMessageReaderWithOptions(options);
     }
-    pub fn GetMailboxAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn GetMailboxAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetMailboxAsync(id);
     }
-    pub fn GetConversationAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
+    pub fn GetConversationAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetConversationAsync(id);
     }
-    pub fn GetFolderAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn GetFolderAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetFolderAsync(id);
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetMessageAsync(id);
     }
-    pub fn CreateMailboxAsync(self: *@This(), accountName: HSTRING, accountAddress: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsync(self: *@This(), accountName: ?HSTRING, accountAddress: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.CreateMailboxAsync(accountName, accountAddress);
     }
-    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: ?HSTRING, accountAddress: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.CreateMailboxAsyncWithUserDataAccountId(accountName, accountAddress, userDataAccountId);
     }
@@ -2257,13 +2257,13 @@ pub const EmailStoreNotificationTriggerDetails = extern struct {
 };
 pub const IEmailAttachment = extern struct {
     vtable: *const VTable,
-    pub fn getFileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFileName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_FileName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2289,37 +2289,37 @@ pub const IEmailAttachment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_FileName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_FileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_FileName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Data: *const fn(self: *anyopaque, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
         put_Data: *const fn(self: *anyopaque, value: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailAttachment2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContentId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentLocation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentLocation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2359,13 +2359,13 @@ pub const IEmailAttachment2 = extern struct {
         const _c = self.vtable.put_IsInline(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMimeType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMimeType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MimeType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMimeType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMimeType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MimeType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2381,11 +2381,11 @@ pub const IEmailAttachment2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContentId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ContentLocation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentLocation: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContentId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ContentLocation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentLocation: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_DownloadState: *const fn(self: *anyopaque, _r: *EmailAttachmentDownloadState) callconv(.winapi) HRESULT,
         put_DownloadState: *const fn(self: *anyopaque, value: EmailAttachmentDownloadState) callconv(.winapi) HRESULT,
         get_EstimatedDownloadSizeInBytes: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
@@ -2393,13 +2393,13 @@ pub const IEmailAttachment2 = extern struct {
         get_IsFromBaseMessage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsInline: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsInline: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_MimeType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MimeType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_MimeType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MimeType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailAttachmentFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), fileName: HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
+    pub fn Create(self: *@This(), fileName: ?HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
         var _r: *EmailAttachment = undefined;
         const _c = self.vtable.Create(@ptrCast(self), fileName, data, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2417,12 +2417,12 @@ pub const IEmailAttachmentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, fileName: HSTRING, data: *IRandomAccessStreamReference, _r: **EmailAttachment) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, fileName: ?HSTRING, data: *IRandomAccessStreamReference, _r: **EmailAttachment) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailAttachmentFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
+    pub fn Create(self: *@This(), fileName: ?HSTRING, data: *IRandomAccessStreamReference, mimeType: ?HSTRING) core.HResult!*EmailAttachment {
         var _r: *EmailAttachment = undefined;
         const _c = self.vtable.Create(@ptrCast(self), fileName, data, mimeType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2440,19 +2440,19 @@ pub const IEmailAttachmentFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING, _r: **EmailAttachment) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, fileName: ?HSTRING, data: *IRandomAccessStreamReference, mimeType: ?HSTRING, _r: **EmailAttachment) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailConversation = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MailboxId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2487,8 +2487,8 @@ pub const IEmailConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMostRecentMessageId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMostRecentMessageId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MostRecentMessageId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2499,8 +2499,8 @@ pub const IEmailConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPreview(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPreview(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Preview(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2511,8 +2511,8 @@ pub const IEmailConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2547,18 +2547,18 @@ pub const IEmailConversation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MailboxId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MailboxId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FlagState: *const fn(self: *anyopaque, _r: *EmailFlagState) callconv(.winapi) HRESULT,
         get_HasAttachment: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Importance: *const fn(self: *anyopaque, _r: *EmailImportance) callconv(.winapi) HRESULT,
         get_LastEmailResponseKind: *const fn(self: *anyopaque, _r: *EmailMessageResponseKind) callconv(.winapi) HRESULT,
         get_MessageCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_MostRecentMessageId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MostRecentMessageId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MostRecentMessageTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_Preview: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Preview: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LatestSender: *const fn(self: *anyopaque, _r: **EmailRecipient) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_UnreadMessageCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         FindMessagesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(EmailMessage))) callconv(.winapi) HRESULT,
         FindMessagesAsyncWithCount: *const fn(self: *anyopaque, count: u32, _r: **IAsyncOperation(IVectorView(EmailMessage))) callconv(.winapi) HRESULT,
@@ -2619,41 +2619,41 @@ pub const IEmailConversationReader = extern struct {
 };
 pub const IEmailFolder = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MailboxId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getParentFolderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getParentFolderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ParentFolderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2683,7 +2683,7 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFolderAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn CreateFolderAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         var _r: *IAsyncOperation(EmailFolder) = undefined;
         const _c = self.vtable.CreateFolderAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2713,7 +2713,7 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         var _r: *IAsyncOperation(EmailMessage) = undefined;
         const _c = self.vtable.GetMessageAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2743,7 +2743,7 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryMoveAsyncWithNewFolderName(@ptrCast(self), newParentFolder, newFolderName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2773,29 +2773,29 @@ pub const IEmailFolder = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MailboxId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ParentFolderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MailboxId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ParentFolderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsSyncEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSyncEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_LastSuccessfulSyncTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_LastSuccessfulSyncTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *EmailSpecialFolderKind) callconv(.winapi) HRESULT,
-        CreateFolderAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
+        CreateFolderAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FindChildFoldersAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(EmailFolder))) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
-        GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
+        GetMessageAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageCountsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(EmailItemCounts)) callconv(.winapi) HRESULT,
         TryMoveAsync: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveAsyncWithNewFolderName: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveAsyncWithNewFolderName: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, newFolderName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySaveAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         SaveMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -2985,33 +2985,33 @@ pub const IEmailIrmInfoFactory = extern struct {
 };
 pub const IEmailIrmTemplate = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3027,17 +3027,17 @@ pub const IEmailIrmTemplate = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailIrmTemplateFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), id: HSTRING, name: HSTRING, description: HSTRING) core.HResult!*EmailIrmTemplate {
+    pub fn Create(self: *@This(), id: ?HSTRING, name: ?HSTRING, description: ?HSTRING) core.HResult!*EmailIrmTemplate {
         var _r: *EmailIrmTemplate = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, name, description, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3055,7 +3055,7 @@ pub const IEmailIrmTemplateFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, id: HSTRING, name: HSTRING, description: HSTRING, _r: **EmailIrmTemplate) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, id: ?HSTRING, name: ?HSTRING, description: ?HSTRING, _r: **EmailIrmTemplate) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailItemCounts = extern struct {
@@ -3116,18 +3116,18 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3144,18 +3144,18 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMailAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMailAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MailAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMailAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMailAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MailAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMailAddressAliases(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getMailAddressAliases(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_MailAddressAliases(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3186,8 +3186,8 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSourceDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSourceDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3198,8 +3198,8 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserDataAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3234,19 +3234,19 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
+    pub fn GetConversationAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
         var _r: *IAsyncOperation(EmailConversation) = undefined;
         const _c = self.vtable.GetConversationAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFolderAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn GetFolderAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         var _r: *IAsyncOperation(EmailFolder) = undefined;
         const _c = self.vtable.GetFolderAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         var _r: *IAsyncOperation(EmailMessage) = undefined;
         const _c = self.vtable.GetMessageAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3264,55 +3264,55 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkMessageAsSeenAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkMessageAsSeenAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkMessageAsSeenAsync(@ptrCast(self), messageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkFolderAsSeenAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MarkFolderAsSeenAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkFolderAsSeenAsync(@ptrCast(self), folderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkMessageReadAsync(self: *@This(), messageId: HSTRING, isRead: bool) core.HResult!*IAsyncAction {
+    pub fn MarkMessageReadAsync(self: *@This(), messageId: ?HSTRING, isRead: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkMessageReadAsync(@ptrCast(self), messageId, isRead, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeMessageFlagStateAsync(self: *@This(), messageId: HSTRING, flagState: EmailFlagState) core.HResult!*IAsyncAction {
+    pub fn ChangeMessageFlagStateAsync(self: *@This(), messageId: ?HSTRING, flagState: EmailFlagState) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ChangeMessageFlagStateAsync(@ptrCast(self), messageId, flagState, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveMessageAsync(self: *@This(), messageId: HSTRING, newParentFolderId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveMessageAsync(self: *@This(), messageId: ?HSTRING, newParentFolderId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryMoveMessageAsync(@ptrCast(self), messageId, newParentFolderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveFolderAsync(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsync(self: *@This(), folderId: ?HSTRING, newParentFolderId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryMoveFolderAsync(@ptrCast(self), folderId, newParentFolderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: ?HSTRING, newParentFolderId: ?HSTRING, newFolderName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryMoveFolderAsyncWithNewFolderName(@ptrCast(self), folderId, newParentFolderId, newFolderName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteMessageAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), messageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkFolderSyncEnabledAsync(self: *@This(), folderId: HSTRING, isSyncEnabled: bool) core.HResult!*IAsyncAction {
+    pub fn MarkFolderSyncEnabledAsync(self: *@This(), folderId: ?HSTRING, isSyncEnabled: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkFolderSyncEnabledAsync(@ptrCast(self), folderId, isSyncEnabled, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3330,37 +3330,37 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DownloadMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadMessageAsync(self: *@This(), messageId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DownloadMessageAsync(@ptrCast(self), messageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DownloadAttachmentAsync(self: *@This(), attachmentId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DownloadAttachmentAsync(self: *@This(), attachmentId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DownloadAttachmentAsync(@ptrCast(self), attachmentId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateResponseMessageAsync(self: *@This(), messageId: HSTRING, responseType: EmailMessageResponseKind, subject: HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn CreateResponseMessageAsync(self: *@This(), messageId: ?HSTRING, responseType: EmailMessageResponseKind, subject: ?HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         var _r: *IAsyncOperation(EmailMessage) = undefined;
         const _c = self.vtable.CreateResponseMessageAsync(@ptrCast(self), messageId, responseType, subject, responseHeaderType, responseHeader, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *EmailMessage, response: EmailMeetingResponseType, subject: HSTRING, comment: HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *EmailMessage, response: EmailMeetingResponseType, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryUpdateMeetingResponseAsync(@ptrCast(self), meeting, response, subject, comment, sendUpdate, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryForwardMeetingAsync(self: *@This(), meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: HSTRING, comment: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryForwardMeetingAsync(self: *@This(), meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: ?HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryForwardMeetingAsync(@ptrCast(self), meeting, recipients, subject, forwardHeaderType, forwardHeader, comment, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: HSTRING, comment: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryProposeNewTimeForMeetingAsync(@ptrCast(self), meeting, newStartTime, newDuration, subject, comment, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3408,49 +3408,49 @@ pub const IEmailMailbox = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Capabilities: *const fn(self: *anyopaque, _r: **EmailMailboxCapabilities) callconv(.winapi) HRESULT,
         get_ChangeTracker: *const fn(self: *anyopaque, _r: **EmailMailboxChangeTracker) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsOwnedByCurrentApp: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsDataEncryptedUnderLock: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_MailAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MailAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MailAddressAliases: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_MailAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MailAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MailAddressAliases: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_OtherAppReadAccess: *const fn(self: *anyopaque, _r: *EmailMailboxOtherAppReadAccess) callconv(.winapi) HRESULT,
         put_OtherAppReadAccess: *const fn(self: *anyopaque, value: EmailMailboxOtherAppReadAccess) callconv(.winapi) HRESULT,
         get_OtherAppWriteAccess: *const fn(self: *anyopaque, _r: *EmailMailboxOtherAppWriteAccess) callconv(.winapi) HRESULT,
         put_OtherAppWriteAccess: *const fn(self: *anyopaque, value: EmailMailboxOtherAppWriteAccess) callconv(.winapi) HRESULT,
         get_Policies: *const fn(self: *anyopaque, _r: **EmailMailboxPolicies) callconv(.winapi) HRESULT,
-        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SourceDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SyncManager: *const fn(self: *anyopaque, _r: **EmailMailboxSyncManager) callconv(.winapi) HRESULT,
-        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserDataAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetConversationAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
-        GetFolderAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
-        GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
+        GetConversationAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
+        GetFolderAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
+        GetMessageAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
         GetSpecialFolderAsync: *const fn(self: *anyopaque, folderType: EmailSpecialFolderKind, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkMessageAsSeenAsync: *const fn(self: *anyopaque, messageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkFolderAsSeenAsync: *const fn(self: *anyopaque, folderId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkMessageReadAsync: *const fn(self: *anyopaque, messageId: HSTRING, isRead: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ChangeMessageFlagStateAsync: *const fn(self: *anyopaque, messageId: HSTRING, flagState: EmailFlagState, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        TryMoveMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveFolderAsyncWithNewFolderName: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        DeleteMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkFolderSyncEnabledAsync: *const fn(self: *anyopaque, folderId: HSTRING, isSyncEnabled: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkMessageAsSeenAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkFolderAsSeenAsync: *const fn(self: *anyopaque, folderId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkMessageReadAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, isRead: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ChangeMessageFlagStateAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, flagState: EmailFlagState, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        TryMoveMessageAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, newParentFolderId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveFolderAsync: *const fn(self: *anyopaque, folderId: ?HSTRING, newParentFolderId: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveFolderAsyncWithNewFolderName: *const fn(self: *anyopaque, folderId: ?HSTRING, newParentFolderId: ?HSTRING, newFolderName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        DeleteMessageAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkFolderSyncEnabledAsync: *const fn(self: *anyopaque, folderId: ?HSTRING, isSyncEnabled: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveDraftAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DownloadMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        DownloadAttachmentAsync: *const fn(self: *anyopaque, attachmentId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        CreateResponseMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, responseType: EmailMessageResponseKind, subject: HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
-        TryUpdateMeetingResponseAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, response: EmailMeetingResponseType, subject: HSTRING, comment: HSTRING, sendUpdate: bool, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryForwardMeetingAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: HSTRING, comment: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryProposeNewTimeForMeetingAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: HSTRING, comment: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        DownloadMessageAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        DownloadAttachmentAsync: *const fn(self: *anyopaque, attachmentId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CreateResponseMessageAsync: *const fn(self: *anyopaque, messageId: ?HSTRING, responseType: EmailMessageResponseKind, subject: ?HSTRING, responseHeaderType: EmailMessageBodyKind, responseHeader: ?HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
+        TryUpdateMeetingResponseAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, response: EmailMeetingResponseType, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryForwardMeetingAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, recipients: *IIterable(EmailRecipient), subject: ?HSTRING, forwardHeaderType: EmailMessageBodyKind, forwardHeader: ?HSTRING, comment: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryProposeNewTimeForMeetingAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_MailboxChanged: *const fn(self: *anyopaque, pHandler: *TypedEventHandler(EmailMailbox,EmailMailboxChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_MailboxChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         SendMessageAsyncWithSmartSend: *const fn(self: *anyopaque, message: *EmailMessage, smartSend: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -3460,20 +3460,20 @@ pub const IEmailMailbox = extern struct {
 };
 pub const IEmailMailbox2 = extern struct {
     vtable: *const VTable,
-    pub fn getLinkedMailboxId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLinkedMailboxId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LinkedMailboxId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNetworkId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNetworkId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3490,14 +3490,14 @@ pub const IEmailMailbox2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LinkedMailboxId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NetworkId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LinkedMailboxId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NetworkAccountId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NetworkId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailMailbox3 = extern struct {
     vtable: *const VTable,
-    pub fn ResolveRecipientsAsync(self: *@This(), recipients: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) {
+    pub fn ResolveRecipientsAsync(self: *@This(), recipients: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) {
         var _r: *IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) = undefined;
         const _c = self.vtable.ResolveRecipientsAsync(@ptrCast(self), recipients, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3509,19 +3509,19 @@ pub const IEmailMailbox3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryEmptyFolderAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxEmptyFolderStatus) {
+    pub fn TryEmptyFolderAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxEmptyFolderStatus) {
         var _r: *IAsyncOperation(EmailMailboxEmptyFolderStatus) = undefined;
         const _c = self.vtable.TryEmptyFolderAsync(@ptrCast(self), folderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateFolderAsync(self: *@This(), parentFolderId: HSTRING, name: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxCreateFolderResult) {
+    pub fn TryCreateFolderAsync(self: *@This(), parentFolderId: ?HSTRING, name: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxCreateFolderResult) {
         var _r: *IAsyncOperation(EmailMailboxCreateFolderResult) = undefined;
         const _c = self.vtable.TryCreateFolderAsync(@ptrCast(self), parentFolderId, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDeleteFolderAsync(self: *@This(), folderId: HSTRING) core.HResult!*IAsyncOperation(EmailMailboxDeleteFolderStatus) {
+    pub fn TryDeleteFolderAsync(self: *@This(), folderId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailboxDeleteFolderStatus) {
         var _r: *IAsyncOperation(EmailMailboxDeleteFolderStatus) = undefined;
         const _c = self.vtable.TryDeleteFolderAsync(@ptrCast(self), folderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3539,11 +3539,11 @@ pub const IEmailMailbox3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ResolveRecipientsAsync: *const fn(self: *anyopaque, recipients: *IIterable(HSTRING), _r: **IAsyncOperation(IVectorView(EmailRecipientResolutionResult))) callconv(.winapi) HRESULT,
+        ResolveRecipientsAsync: *const fn(self: *anyopaque, recipients: *IIterable(?HSTRING), _r: **IAsyncOperation(IVectorView(EmailRecipientResolutionResult))) callconv(.winapi) HRESULT,
         ValidateCertificatesAsync: *const fn(self: *anyopaque, certificates: *IIterable(Certificate), _r: **IAsyncOperation(IVectorView(EmailCertificateValidationStatus))) callconv(.winapi) HRESULT,
-        TryEmptyFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, _r: **IAsyncOperation(EmailMailboxEmptyFolderStatus)) callconv(.winapi) HRESULT,
-        TryCreateFolderAsync: *const fn(self: *anyopaque, parentFolderId: HSTRING, name: HSTRING, _r: **IAsyncOperation(EmailMailboxCreateFolderResult)) callconv(.winapi) HRESULT,
-        TryDeleteFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, _r: **IAsyncOperation(EmailMailboxDeleteFolderStatus)) callconv(.winapi) HRESULT,
+        TryEmptyFolderAsync: *const fn(self: *anyopaque, folderId: ?HSTRING, _r: **IAsyncOperation(EmailMailboxEmptyFolderStatus)) callconv(.winapi) HRESULT,
+        TryCreateFolderAsync: *const fn(self: *anyopaque, parentFolderId: ?HSTRING, name: ?HSTRING, _r: **IAsyncOperation(EmailMailboxCreateFolderResult)) callconv(.winapi) HRESULT,
+        TryDeleteFolderAsync: *const fn(self: *anyopaque, folderId: ?HSTRING, _r: **IAsyncOperation(EmailMailboxDeleteFolderStatus)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailMailbox4 = extern struct {
@@ -3571,7 +3571,7 @@ pub const IEmailMailbox4 = extern struct {
 };
 pub const IEmailMailbox5 = extern struct {
     vtable: *const VTable,
-    pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*EmailMailboxChangeTracker {
+    pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*EmailMailboxChangeTracker {
         var _r: *EmailMailboxChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3589,7 +3589,7 @@ pub const IEmailMailbox5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetChangeTracker: *const fn(self: *anyopaque, identity: HSTRING, _r: **EmailMailboxChangeTracker) callconv(.winapi) HRESULT,
+        GetChangeTracker: *const fn(self: *anyopaque, identity: ?HSTRING, _r: **EmailMailboxChangeTracker) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailMailboxAction = extern struct {
@@ -3634,13 +3634,13 @@ pub const IEmailMailboxAutoReply = extern struct {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResponse(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putResponse(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putResponse(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Response(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3658,8 +3658,8 @@ pub const IEmailMailboxAutoReply = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Response: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Response: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Response: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Response: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailMailboxAutoReplySettings = extern struct {
@@ -4479,13 +4479,13 @@ pub const IEmailMeetingInfo = extern struct {
         const _c = self.vtable.put_AllowNewTimeProposal(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAppointmentRoamingId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentRoamingId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentRoamingId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAppointmentRoamingId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAppointmentRoamingId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AppointmentRoamingId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4529,13 +4529,13 @@ pub const IEmailMeetingInfo = extern struct {
         const _c = self.vtable.put_IsResponseRequested(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4613,8 +4613,8 @@ pub const IEmailMeetingInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AllowNewTimeProposal: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowNewTimeProposal: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_AppointmentRoamingId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AppointmentRoamingId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentRoamingId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AppointmentRoamingId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AppointmentOriginalStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_AppointmentOriginalStartTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
@@ -4623,8 +4623,8 @@ pub const IEmailMeetingInfo = extern struct {
         put_IsAllDay: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsResponseRequested: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsResponseRequested: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Location: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Location: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ProposedStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_ProposedStartTime: *const fn(self: *anyopaque, proposedStartTime: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_ProposedDuration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
@@ -4664,23 +4664,23 @@ pub const IEmailMeetingInfo2 = extern struct {
 };
 pub const IEmailMessage = extern struct {
     vtable: *const VTable,
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubject(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subject(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4720,10 +4720,10 @@ pub const IEmailMessage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subject: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subject: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_To: *const fn(self: *anyopaque, _r: **IVector(EmailRecipient)) callconv(.winapi) HRESULT,
         get_CC: *const fn(self: *anyopaque, _r: **IVector(EmailRecipient)) callconv(.winapi) HRESULT,
         get_Bcc: *const fn(self: *anyopaque, _r: **IVector(EmailRecipient)) callconv(.winapi) HRESULT,
@@ -4732,36 +4732,36 @@ pub const IEmailMessage = extern struct {
 };
 pub const IEmailMessage2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMailboxId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMailboxId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MailboxId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getConversationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConversationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConversationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFolderId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFolderId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FolderId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4828,8 +4828,8 @@ pub const IEmailMessage2 = extern struct {
         const _c = self.vtable.put_Importance(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getInResponseToMessageId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInResponseToMessageId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InResponseToMessageId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4882,18 +4882,18 @@ pub const IEmailMessage2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessageClass(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessageClass(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMessageClass(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessageClass(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MessageClass(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNormalizedSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNormalizedSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NormalizedSubject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4908,13 +4908,13 @@ pub const IEmailMessage2 = extern struct {
         const _c = self.vtable.put_OriginalCodePage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPreview(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPreview(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Preview(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPreview(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPreview(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Preview(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4980,12 +4980,12 @@ pub const IEmailMessage2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MailboxId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ConversationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FolderId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MailboxId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ConversationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FolderId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AllowInternetImages: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_AllowInternetImages: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ChangeNumber: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
@@ -4998,7 +4998,7 @@ pub const IEmailMessage2 = extern struct {
         get_HasPartialBodies: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Importance: *const fn(self: *anyopaque, _r: *EmailImportance) callconv(.winapi) HRESULT,
         put_Importance: *const fn(self: *anyopaque, value: EmailImportance) callconv(.winapi) HRESULT,
-        get_InResponseToMessageId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InResponseToMessageId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IrmInfo: *const fn(self: *anyopaque, _r: **EmailIrmInfo) callconv(.winapi) HRESULT,
         put_IrmInfo: *const fn(self: *anyopaque, value: *EmailIrmInfo) callconv(.winapi) HRESULT,
         get_IsDraftMessage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -5008,13 +5008,13 @@ pub const IEmailMessage2 = extern struct {
         put_IsSeen: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsServerSearchMessage: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsSmartSendable: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_MessageClass: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MessageClass: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_NormalizedSubject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MessageClass: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MessageClass: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_NormalizedSubject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OriginalCodePage: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_OriginalCodePage: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
-        get_Preview: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Preview: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Preview: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Preview: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LastResponseKind: *const fn(self: *anyopaque, _r: *EmailMessageResponseKind) callconv(.winapi) HRESULT,
         put_LastResponseKind: *const fn(self: *anyopaque, value: EmailMessageResponseKind) callconv(.winapi) HRESULT,
         get_Sender: *const fn(self: *anyopaque, _r: **EmailRecipient) callconv(.winapi) HRESULT,
@@ -5193,8 +5193,8 @@ pub const IEmailQueryOptions = extern struct {
         const _c = self.vtable.put_Kind(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFolderIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getFolderIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_FolderIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5218,18 +5218,18 @@ pub const IEmailQueryOptions = extern struct {
         put_SortProperty: *const fn(self: *anyopaque, value: EmailQuerySortProperty) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *EmailQueryKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: EmailQueryKind) callconv(.winapi) HRESULT,
-        get_FolderIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_FolderIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailQueryOptionsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithText(self: *@This(), text: HSTRING) core.HResult!*EmailQueryOptions {
+    pub fn CreateWithText(self: *@This(), text: ?HSTRING) core.HResult!*EmailQueryOptions {
         var _r: *EmailQueryOptions = undefined;
         const _c = self.vtable.CreateWithText(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTextAndFields(self: *@This(), text: HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
+    pub fn CreateWithTextAndFields(self: *@This(), text: ?HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
         var _r: *EmailQueryOptions = undefined;
         const _c = self.vtable.CreateWithTextAndFields(@ptrCast(self), text, fields, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5247,8 +5247,8 @@ pub const IEmailQueryOptionsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithText: *const fn(self: *anyopaque, text: HSTRING, _r: **EmailQueryOptions) callconv(.winapi) HRESULT,
-        CreateWithTextAndFields: *const fn(self: *anyopaque, text: HSTRING, fields: EmailQuerySearchFields, _r: **EmailQueryOptions) callconv(.winapi) HRESULT,
+        CreateWithText: *const fn(self: *anyopaque, text: ?HSTRING, _r: **EmailQueryOptions) callconv(.winapi) HRESULT,
+        CreateWithTextAndFields: *const fn(self: *anyopaque, text: ?HSTRING, fields: EmailQuerySearchFields, _r: **EmailQueryOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailQueryTextSearch = extern struct {
@@ -5273,13 +5273,13 @@ pub const IEmailQueryTextSearch = extern struct {
         const _c = self.vtable.put_SearchScope(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5299,29 +5299,29 @@ pub const IEmailQueryTextSearch = extern struct {
         put_Fields: *const fn(self: *anyopaque, value: EmailQuerySearchFields) callconv(.winapi) HRESULT,
         get_SearchScope: *const fn(self: *anyopaque, _r: *EmailQuerySearchScope) callconv(.winapi) HRESULT,
         put_SearchScope: *const fn(self: *anyopaque, value: EmailQuerySearchScope) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailRecipient = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Address(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5337,21 +5337,21 @@ pub const IEmailRecipient = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Address: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Address: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Address: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Address: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailRecipientFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), address: HSTRING) core.HResult!*EmailRecipient {
+    pub fn Create(self: *@This(), address: ?HSTRING) core.HResult!*EmailRecipient {
         var _r: *EmailRecipient = undefined;
         const _c = self.vtable.Create(@ptrCast(self), address, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithName(self: *@This(), address: HSTRING, name: HSTRING) core.HResult!*EmailRecipient {
+    pub fn CreateWithName(self: *@This(), address: ?HSTRING, name: ?HSTRING) core.HResult!*EmailRecipient {
         var _r: *EmailRecipient = undefined;
         const _c = self.vtable.CreateWithName(@ptrCast(self), address, name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5369,8 +5369,8 @@ pub const IEmailRecipientFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, address: HSTRING, _r: **EmailRecipient) callconv(.winapi) HRESULT,
-        CreateWithName: *const fn(self: *anyopaque, address: HSTRING, name: HSTRING, _r: **EmailRecipient) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, address: ?HSTRING, _r: **EmailRecipient) callconv(.winapi) HRESULT,
+        CreateWithName: *const fn(self: *anyopaque, address: ?HSTRING, name: ?HSTRING, _r: **EmailRecipient) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailRecipientResolutionResult = extern struct {
@@ -5461,37 +5461,37 @@ pub const IEmailStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMailboxAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn GetMailboxAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         var _r: *IAsyncOperation(EmailMailbox) = undefined;
         const _c = self.vtable.GetMailboxAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
+    pub fn GetConversationAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailConversation) {
         var _r: *IAsyncOperation(EmailConversation) = undefined;
         const _c = self.vtable.GetConversationAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFolderAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
+    pub fn GetFolderAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailFolder) {
         var _r: *IAsyncOperation(EmailFolder) = undefined;
         const _c = self.vtable.GetFolderAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
+    pub fn GetMessageAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         var _r: *IAsyncOperation(EmailMessage) = undefined;
         const _c = self.vtable.GetMessageAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMailboxAsync(self: *@This(), accountName: HSTRING, accountAddress: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsync(self: *@This(), accountName: ?HSTRING, accountAddress: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         var _r: *IAsyncOperation(EmailMailbox) = undefined;
         const _c = self.vtable.CreateMailboxAsync(@ptrCast(self), accountName, accountAddress, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: ?HSTRING, accountAddress: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         var _r: *IAsyncOperation(EmailMailbox) = undefined;
         const _c = self.vtable.CreateMailboxAsyncWithUserDataAccountId(@ptrCast(self), accountName, accountAddress, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5514,12 +5514,12 @@ pub const IEmailStore = extern struct {
         GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
-        GetMailboxAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
-        GetConversationAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
-        GetFolderAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
-        GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
-        CreateMailboxAsync: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
-        CreateMailboxAsyncWithUserDataAccountId: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
+        GetMailboxAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
+        GetConversationAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
+        GetFolderAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
+        GetMessageAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
+        CreateMailboxAsync: *const fn(self: *anyopaque, accountName: ?HSTRING, accountAddress: ?HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
+        CreateMailboxAsyncWithUserDataAccountId: *const fn(self: *anyopaque, accountName: ?HSTRING, accountAddress: ?HSTRING, userDataAccountId: ?HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailStoreNotificationTriggerDetails = extern struct {

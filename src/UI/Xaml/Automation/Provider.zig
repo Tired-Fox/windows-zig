@@ -7,20 +7,20 @@ pub const IAnnotationProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAnnotationTypeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAnnotationTypeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AnnotationTypeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAuthor(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDateTime(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDateTime(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DateTime(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -44,9 +44,9 @@ pub const IAnnotationProvider = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AnnotationTypeId: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_AnnotationTypeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DateTime: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AnnotationTypeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DateTime: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Target: *const fn(self: *anyopaque, _r: **IRawElementProviderSimple) callconv(.winapi) HRESULT,
     };
 };
@@ -109,14 +109,14 @@ pub const IDragProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDropEffect(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DropEffect(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDropEffects(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn getDropEffects(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_DropEffects(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -140,21 +140,21 @@ pub const IDragProvider = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsGrabbed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_DropEffect: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DropEffects: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        get_DropEffect: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DropEffects: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
         GetGrabbedItems: *const fn(self: *anyopaque, _r: *[*]IRawElementProviderSimple) callconv(.winapi) HRESULT,
     };
 };
 pub const IDropTargetProvider = extern struct {
     vtable: *const VTable,
-    pub fn getDropEffect(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DropEffect(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDropEffects(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn getDropEffects(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_DropEffects(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -171,8 +171,8 @@ pub const IDropTargetProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DropEffect: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DropEffects: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        get_DropEffect: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DropEffects: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IExpandCollapseProvider = extern struct {
@@ -370,8 +370,8 @@ pub const IMultipleViewProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetViewName(self: *@This(), viewId: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetViewName(self: *@This(), viewId: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetViewName(@ptrCast(self), viewId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -394,7 +394,7 @@ pub const IMultipleViewProvider = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CurrentView: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         GetSupportedViews: *const fn(self: *anyopaque, _r: *[*]i32) callconv(.winapi) HRESULT,
-        GetViewName: *const fn(self: *anyopaque, viewId: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetViewName: *const fn(self: *anyopaque, viewId: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         SetCurrentView: *const fn(self: *anyopaque, viewId: i32) callconv(.winapi) HRESULT,
     };
 };
@@ -665,8 +665,8 @@ pub const ISelectionProvider = extern struct {
 };
 pub const ISpreadsheetItemProvider = extern struct {
     vtable: *const VTable,
-    pub fn getFormula(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFormula(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Formula(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -695,14 +695,14 @@ pub const ISpreadsheetItemProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Formula: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Formula: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetAnnotationObjects: *const fn(self: *anyopaque, _r: *[*]IRawElementProviderSimple) callconv(.winapi) HRESULT,
         GetAnnotationTypes: *const fn(self: *anyopaque, _r: *[*]AnnotationType) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpreadsheetProvider = extern struct {
     vtable: *const VTable,
-    pub fn GetItemByName(self: *@This(), name: HSTRING) core.HResult!*IRawElementProviderSimple {
+    pub fn GetItemByName(self: *@This(), name: ?HSTRING) core.HResult!*IRawElementProviderSimple {
         var _r: *IRawElementProviderSimple = undefined;
         const _c = self.vtable.GetItemByName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -720,13 +720,13 @@ pub const ISpreadsheetProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetItemByName: *const fn(self: *anyopaque, name: HSTRING, _r: **IRawElementProviderSimple) callconv(.winapi) HRESULT,
+        GetItemByName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IRawElementProviderSimple) callconv(.winapi) HRESULT,
     };
 };
 pub const IStylesProvider = extern struct {
     vtable: *const VTable,
-    pub fn getExtendedProperties(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExtendedProperties(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -743,14 +743,14 @@ pub const IStylesProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFillPatternStyle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFillPatternStyle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FillPatternStyle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getShape(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getShape(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Shape(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -761,8 +761,8 @@ pub const IStylesProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStyleName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStyleName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StyleName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -779,13 +779,13 @@ pub const IStylesProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ExtendedProperties: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExtendedProperties: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FillColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         get_FillPatternColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
-        get_FillPatternStyle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Shape: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FillPatternStyle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Shape: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_StyleId: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_StyleName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_StyleName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISynchronizedInputProvider = extern struct {
@@ -1059,7 +1059,7 @@ pub const ITextRangeProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindText(self: *@This(), text: HSTRING, backward: bool, ignoreCase: bool) core.HResult!*ITextRangeProvider {
+    pub fn FindText(self: *@This(), text: ?HSTRING, backward: bool, ignoreCase: bool) core.HResult!*ITextRangeProvider {
         var _r: *ITextRangeProvider = undefined;
         const _c = self.vtable.FindText(@ptrCast(self), text, backward, ignoreCase, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1081,8 +1081,8 @@ pub const ITextRangeProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetText(self: *@This(), maxLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetText(self: *@This(), maxLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetText(@ptrCast(self), maxLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1142,11 +1142,11 @@ pub const ITextRangeProvider = extern struct {
         CompareEndpoints: *const fn(self: *anyopaque, endpoint: TextPatternRangeEndpoint, textRangeProvider: *ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint, _r: *i32) callconv(.winapi) HRESULT,
         ExpandToEnclosingUnit: *const fn(self: *anyopaque, unit: TextUnit) callconv(.winapi) HRESULT,
         FindAttribute: *const fn(self: *anyopaque, attributeId: i32, value: *IInspectable, backward: bool, _r: **ITextRangeProvider) callconv(.winapi) HRESULT,
-        FindText: *const fn(self: *anyopaque, text: HSTRING, backward: bool, ignoreCase: bool, _r: **ITextRangeProvider) callconv(.winapi) HRESULT,
+        FindText: *const fn(self: *anyopaque, text: ?HSTRING, backward: bool, ignoreCase: bool, _r: **ITextRangeProvider) callconv(.winapi) HRESULT,
         GetAttributeValue: *const fn(self: *anyopaque, attributeId: i32, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetBoundingRectangles: *const fn(self: *anyopaque, returnValue: f64) callconv(.winapi) HRESULT,
         GetEnclosingElement: *const fn(self: *anyopaque, _r: **IRawElementProviderSimple) callconv(.winapi) HRESULT,
-        GetText: *const fn(self: *anyopaque, maxLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetText: *const fn(self: *anyopaque, maxLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Move: *const fn(self: *anyopaque, unit: TextUnit, count: i32, _r: *i32) callconv(.winapi) HRESULT,
         MoveEndpointByUnit: *const fn(self: *anyopaque, endpoint: TextPatternRangeEndpoint, unit: TextUnit, count: i32, _r: *i32) callconv(.winapi) HRESULT,
         MoveEndpointByRange: *const fn(self: *anyopaque, endpoint: TextPatternRangeEndpoint, textRangeProvider: *ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint) callconv(.winapi) HRESULT,
@@ -1320,13 +1320,13 @@ pub const IValueProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1343,8 +1343,8 @@ pub const IValueProvider = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsReadOnly: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetValue: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetValue: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVirtualizedItemProvider = extern struct {

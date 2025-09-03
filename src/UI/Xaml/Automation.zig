@@ -384,11 +384,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStatics4Cache.get();
         return try _f.getLocalizedLandmarkTypeProperty();
     }
-    pub fn GetLocalizedLandmarkType(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetLocalizedLandmarkType(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStatics4Cache.get();
         return try _f.GetLocalizedLandmarkType(element);
     }
-    pub fn SetLocalizedLandmarkType(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetLocalizedLandmarkType(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStatics4Cache.get();
         return try _f.SetLocalizedLandmarkType(element, value);
     }
@@ -396,11 +396,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getAcceleratorKeyProperty();
     }
-    pub fn GetAcceleratorKey(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetAcceleratorKey(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetAcceleratorKey(element);
     }
-    pub fn SetAcceleratorKey(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAcceleratorKey(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetAcceleratorKey(element, value);
     }
@@ -408,11 +408,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getAccessKeyProperty();
     }
-    pub fn GetAccessKey(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetAccessKey(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetAccessKey(element);
     }
-    pub fn SetAccessKey(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAccessKey(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetAccessKey(element, value);
     }
@@ -420,11 +420,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getAutomationIdProperty();
     }
-    pub fn GetAutomationId(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetAutomationId(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetAutomationId(element);
     }
-    pub fn SetAutomationId(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAutomationId(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetAutomationId(element, value);
     }
@@ -432,11 +432,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getHelpTextProperty();
     }
-    pub fn GetHelpText(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetHelpText(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetHelpText(element);
     }
-    pub fn SetHelpText(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetHelpText(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetHelpText(element, value);
     }
@@ -456,11 +456,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getItemStatusProperty();
     }
-    pub fn GetItemStatus(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetItemStatus(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetItemStatus(element);
     }
-    pub fn SetItemStatus(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetItemStatus(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetItemStatus(element, value);
     }
@@ -468,11 +468,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getItemTypeProperty();
     }
-    pub fn GetItemType(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetItemType(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetItemType(element);
     }
-    pub fn SetItemType(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetItemType(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetItemType(element, value);
     }
@@ -492,11 +492,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.getNameProperty();
     }
-    pub fn GetName(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetName(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.GetName(element);
     }
-    pub fn SetName(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetName(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStaticsCache.get();
         return try _f.SetName(element, value);
     }
@@ -540,11 +540,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.getFullDescriptionProperty();
     }
-    pub fn GetFullDescription(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetFullDescription(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.GetFullDescription(element);
     }
-    pub fn SetFullDescription(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetFullDescription(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.SetFullDescription(element, value);
     }
@@ -552,11 +552,11 @@ pub const AutomationProperties = extern struct {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.getLocalizedControlTypeProperty();
     }
-    pub fn GetLocalizedControlType(element: *DependencyObject) core.HResult!HSTRING {
+    pub fn GetLocalizedControlType(element: *DependencyObject) core.HResult!?HSTRING {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.GetLocalizedControlType(element);
     }
-    pub fn SetLocalizedControlType(element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetLocalizedControlType(element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IAutomationPropertiesStatics5Cache.get();
         return try _f.SetLocalizedControlType(element, value);
     }
@@ -1481,13 +1481,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAcceleratorKey(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAcceleratorKey(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAcceleratorKey(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAcceleratorKey(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAcceleratorKey(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAcceleratorKey(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1497,13 +1497,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAccessKey(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAccessKey(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAccessKey(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAccessKey(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAccessKey(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAccessKey(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1513,13 +1513,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAutomationId(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAutomationId(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAutomationId(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetAutomationId(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetAutomationId(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetAutomationId(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1529,13 +1529,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHelpText(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetHelpText(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetHelpText(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetHelpText(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetHelpText(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHelpText(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1561,13 +1561,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemStatus(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemStatus(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemStatus(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetItemStatus(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetItemStatus(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetItemStatus(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1577,13 +1577,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemType(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetItemType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetItemType(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetItemType(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetItemType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetItemType(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1609,13 +1609,13 @@ pub const IAutomationPropertiesStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetName(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetName(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetName(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetName(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetName(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetName(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1648,32 +1648,32 @@ pub const IAutomationPropertiesStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AcceleratorKeyProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetAcceleratorKey: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetAcceleratorKey: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetAcceleratorKey: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetAcceleratorKey: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AccessKeyProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetAccessKey: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetAccessKey: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetAccessKey: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetAccessKey: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AutomationIdProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetAutomationId: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetAutomationId: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetAutomationId: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetAutomationId: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HelpTextProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetHelpText: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetHelpText: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetHelpText: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetHelpText: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsRequiredForFormProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         GetIsRequiredForForm: *const fn(self: *anyopaque, element: *DependencyObject, _r: *bool) callconv(.winapi) HRESULT,
         SetIsRequiredForForm: *const fn(self: *anyopaque, element: *DependencyObject, value: bool) callconv(.winapi) HRESULT,
         get_ItemStatusProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetItemStatus: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetItemStatus: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetItemStatus: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetItemStatus: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ItemTypeProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetItemType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetItemType: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetItemType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetItemType: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LabeledByProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         GetLabeledBy: *const fn(self: *anyopaque, element: *DependencyObject, _r: **UIElement) callconv(.winapi) HRESULT,
         SetLabeledBy: *const fn(self: *anyopaque, element: *DependencyObject, value: *UIElement) callconv(.winapi) HRESULT,
         get_NameProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetName: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetName: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetName: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetName: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LiveSettingProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         GetLiveSetting: *const fn(self: *anyopaque, element: *DependencyObject, _r: *AutomationLiveSetting) callconv(.winapi) HRESULT,
         SetLiveSetting: *const fn(self: *anyopaque, element: *DependencyObject, value: AutomationLiveSetting) callconv(.winapi) HRESULT,
@@ -1839,13 +1839,13 @@ pub const IAutomationPropertiesStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedLandmarkType(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedLandmarkType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedLandmarkType(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetLocalizedLandmarkType(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetLocalizedLandmarkType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetLocalizedLandmarkType(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1865,8 +1865,8 @@ pub const IAutomationPropertiesStatics4 = extern struct {
         GetLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *AutomationLandmarkType) callconv(.winapi) HRESULT,
         SetLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, value: AutomationLandmarkType) callconv(.winapi) HRESULT,
         get_LocalizedLandmarkTypeProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetLocalizedLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetLocalizedLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetLocalizedLandmarkType: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPropertiesStatics5 = extern struct {
@@ -1909,13 +1909,13 @@ pub const IAutomationPropertiesStatics5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFullDescription(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetFullDescription(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFullDescription(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetFullDescription(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetFullDescription(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetFullDescription(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1925,13 +1925,13 @@ pub const IAutomationPropertiesStatics5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalizedControlType(self: *@This(), element: *DependencyObject) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetLocalizedControlType(self: *@This(), element: *DependencyObject) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetLocalizedControlType(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetLocalizedControlType(self: *@This(), element: *DependencyObject, value: HSTRING) core.HResult!void {
+    pub fn SetLocalizedControlType(self: *@This(), element: *DependencyObject, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetLocalizedControlType(@ptrCast(self), element, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1990,11 +1990,11 @@ pub const IAutomationPropertiesStatics5 = extern struct {
         GetIsDataValidForForm: *const fn(self: *anyopaque, element: *DependencyObject, _r: *bool) callconv(.winapi) HRESULT,
         SetIsDataValidForForm: *const fn(self: *anyopaque, element: *DependencyObject, value: bool) callconv(.winapi) HRESULT,
         get_FullDescriptionProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetFullDescription: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetFullDescription: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetFullDescription: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetFullDescription: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_LocalizedControlTypeProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetLocalizedControlType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetLocalizedControlType: *const fn(self: *anyopaque, element: *DependencyObject, value: HSTRING) callconv(.winapi) HRESULT,
+        GetLocalizedControlType: *const fn(self: *anyopaque, element: *DependencyObject, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetLocalizedControlType: *const fn(self: *anyopaque, element: *DependencyObject, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_DescribedByProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         GetDescribedBy: *const fn(self: *anyopaque, element: *DependencyObject, _r: **IVector(DependencyObject)) callconv(.winapi) HRESULT,
         get_FlowsToProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,

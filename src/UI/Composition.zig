@@ -13,21 +13,21 @@ pub const CompositionObject = extern struct {
         const this: *ICompositionObject = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn StartAnimation(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
+    pub fn StartAnimation(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const this: *ICompositionObject = @ptrCast(self);
         return try this.StartAnimation(propertyName, animation);
     }
-    pub fn StopAnimation(self: *@This(), propertyName: HSTRING) core.HResult!void {
+    pub fn StopAnimation(self: *@This(), propertyName: ?HSTRING) core.HResult!void {
         const this: *ICompositionObject = @ptrCast(self);
         return try this.StopAnimation(propertyName);
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositionObject2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getComment();
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositionObject2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -63,13 +63,13 @@ pub const CompositionObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
-    pub fn TryGetAnimationController(self: *@This(), propertyName: HSTRING) core.HResult!*AnimationController {
+    pub fn TryGetAnimationController(self: *@This(), propertyName: ?HSTRING) core.HResult!*AnimationController {
         var this: ?*ICompositionObject4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetAnimationController(propertyName);
     }
-    pub fn StartAnimationWithAnimationController(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
+    pub fn StartAnimationWithAnimationController(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         var this: ?*ICompositionObject5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -81,7 +81,7 @@ pub const CompositionObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn PopulatePropertyInfo(self: *@This(), propertyName: HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IAnimationObject = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationObject.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -90,7 +90,7 @@ pub const CompositionObject = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn StartAnimationWithIAnimationObject(target: *IAnimationObject, propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
+    pub fn StartAnimationWithIAnimationObject(target: *IAnimationObject, propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const _f = try @This()._ICompositionObjectStaticsCache.get();
         return try _f.StartAnimationWithIAnimationObject(target, propertyName, animation);
     }
@@ -260,7 +260,7 @@ pub const AnimationPropertyInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResolvedCompositionObject();
     }
-    pub fn GetResolvedCompositionObjectProperty(self: *@This()) core.HResult!HSTRING {
+    pub fn GetResolvedCompositionObjectProperty(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAnimationPropertyInfo2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationPropertyInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -356,59 +356,59 @@ pub const CompositionAnimation = extern struct {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.ClearAllParameters();
     }
-    pub fn ClearParameter(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn ClearParameter(self: *@This(), key: ?HSTRING) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.ClearParameter(key);
     }
-    pub fn SetColorParameter(self: *@This(), key: HSTRING, value: Color) core.HResult!void {
+    pub fn SetColorParameter(self: *@This(), key: ?HSTRING, value: Color) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetColorParameter(key, value);
     }
-    pub fn SetMatrix3x2Parameter(self: *@This(), key: HSTRING, value: Matrix3x2) core.HResult!void {
+    pub fn SetMatrix3x2Parameter(self: *@This(), key: ?HSTRING, value: Matrix3x2) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetMatrix3x2Parameter(key, value);
     }
-    pub fn SetMatrix4x4Parameter(self: *@This(), key: HSTRING, value: Matrix4x4) core.HResult!void {
+    pub fn SetMatrix4x4Parameter(self: *@This(), key: ?HSTRING, value: Matrix4x4) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetMatrix4x4Parameter(key, value);
     }
-    pub fn SetQuaternionParameter(self: *@This(), key: HSTRING, value: Quaternion) core.HResult!void {
+    pub fn SetQuaternionParameter(self: *@This(), key: ?HSTRING, value: Quaternion) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetQuaternionParameter(key, value);
     }
-    pub fn SetReferenceParameter(self: *@This(), key: HSTRING, compositionObject: *CompositionObject) core.HResult!void {
+    pub fn SetReferenceParameter(self: *@This(), key: ?HSTRING, compositionObject: *CompositionObject) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetReferenceParameter(key, compositionObject);
     }
-    pub fn SetScalarParameter(self: *@This(), key: HSTRING, value: f32) core.HResult!void {
+    pub fn SetScalarParameter(self: *@This(), key: ?HSTRING, value: f32) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetScalarParameter(key, value);
     }
-    pub fn SetVector2Parameter(self: *@This(), key: HSTRING, value: Vector2) core.HResult!void {
+    pub fn SetVector2Parameter(self: *@This(), key: ?HSTRING, value: Vector2) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetVector2Parameter(key, value);
     }
-    pub fn SetVector3Parameter(self: *@This(), key: HSTRING, value: Vector3) core.HResult!void {
+    pub fn SetVector3Parameter(self: *@This(), key: ?HSTRING, value: Vector3) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetVector3Parameter(key, value);
     }
-    pub fn SetVector4Parameter(self: *@This(), key: HSTRING, value: Vector4) core.HResult!void {
+    pub fn SetVector4Parameter(self: *@This(), key: ?HSTRING, value: Vector4) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.SetVector4Parameter(key, value);
     }
-    pub fn SetBooleanParameter(self: *@This(), key: HSTRING, value: bool) core.HResult!void {
+    pub fn SetBooleanParameter(self: *@This(), key: ?HSTRING, value: bool) core.HResult!void {
         var this: ?*ICompositionAnimation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBooleanParameter(key, value);
     }
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositionAnimation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTarget();
     }
-    pub fn putTarget(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTarget(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositionAnimation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -420,7 +420,7 @@ pub const CompositionAnimation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInitialValueExpressions();
     }
-    pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: HSTRING, source: *IAnimationObject) core.HResult!void {
+    pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: ?HSTRING, source: *IAnimationObject) core.HResult!void {
         var this: ?*ICompositionAnimation4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -482,11 +482,11 @@ pub const KeyFrameAnimation = extern struct {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.putStopBehavior(value);
     }
-    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: HSTRING) core.HResult!void {
+    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: ?HSTRING) core.HResult!void {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.InsertExpressionKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertExpressionKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertExpressionKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: ?HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.InsertExpressionKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
@@ -1287,11 +1287,11 @@ pub const CompositionEasingFunctionMode = enum(i32) {
 };
 pub const CompositionEffectBrush = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetSourceParameter(self: *@This(), name: HSTRING) core.HResult!*CompositionBrush {
+    pub fn GetSourceParameter(self: *@This(), name: ?HSTRING) core.HResult!*CompositionBrush {
         const this: *ICompositionEffectBrush = @ptrCast(self);
         return try this.GetSourceParameter(name);
     }
-    pub fn SetSourceParameter(self: *@This(), name: HSTRING, source: *CompositionBrush) core.HResult!void {
+    pub fn SetSourceParameter(self: *@This(), name: ?HSTRING, source: *CompositionBrush) core.HResult!void {
         const this: *ICompositionEffectBrush = @ptrCast(self);
         return try this.SetSourceParameter(name, source);
     }
@@ -1329,14 +1329,14 @@ pub const CompositionEffectFactoryLoadStatus = enum(i32) {
 };
 pub const CompositionEffectSourceParameter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICompositionEffectSourceParameter = @ptrCast(self);
         return try this.getName();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(name: HSTRING) core.HResult!*CompositionEffectSourceParameter {
+    pub fn Create(name: ?HSTRING) core.HResult!*CompositionEffectSourceParameter {
         const _f = try @This()._ICompositionEffectSourceParameterFactoryCache.get();
         return try _f.Create(name);
     }
@@ -2001,77 +2001,77 @@ pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct 
 };
 pub const CompositionPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn InsertColor(self: *@This(), propertyName: HSTRING, value: Color) core.HResult!void {
+    pub fn InsertColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertColor(propertyName, value);
     }
-    pub fn InsertMatrix3x2(self: *@This(), propertyName: HSTRING, value: Matrix3x2) core.HResult!void {
+    pub fn InsertMatrix3x2(self: *@This(), propertyName: ?HSTRING, value: Matrix3x2) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertMatrix3x2(propertyName, value);
     }
-    pub fn InsertMatrix4x4(self: *@This(), propertyName: HSTRING, value: Matrix4x4) core.HResult!void {
+    pub fn InsertMatrix4x4(self: *@This(), propertyName: ?HSTRING, value: Matrix4x4) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertMatrix4x4(propertyName, value);
     }
-    pub fn InsertQuaternion(self: *@This(), propertyName: HSTRING, value: Quaternion) core.HResult!void {
+    pub fn InsertQuaternion(self: *@This(), propertyName: ?HSTRING, value: Quaternion) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertQuaternion(propertyName, value);
     }
-    pub fn InsertScalar(self: *@This(), propertyName: HSTRING, value: f32) core.HResult!void {
+    pub fn InsertScalar(self: *@This(), propertyName: ?HSTRING, value: f32) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertScalar(propertyName, value);
     }
-    pub fn InsertVector2(self: *@This(), propertyName: HSTRING, value: Vector2) core.HResult!void {
+    pub fn InsertVector2(self: *@This(), propertyName: ?HSTRING, value: Vector2) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertVector2(propertyName, value);
     }
-    pub fn InsertVector3(self: *@This(), propertyName: HSTRING, value: Vector3) core.HResult!void {
+    pub fn InsertVector3(self: *@This(), propertyName: ?HSTRING, value: Vector3) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertVector3(propertyName, value);
     }
-    pub fn InsertVector4(self: *@This(), propertyName: HSTRING, value: Vector4) core.HResult!void {
+    pub fn InsertVector4(self: *@This(), propertyName: ?HSTRING, value: Vector4) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertVector4(propertyName, value);
     }
-    pub fn TryGetColor(self: *@This(), propertyName: HSTRING, value: Color) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetColor(propertyName, value);
     }
-    pub fn TryGetMatrix3x2(self: *@This(), propertyName: HSTRING, value: Matrix3x2) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetMatrix3x2(self: *@This(), propertyName: ?HSTRING, value: Matrix3x2) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetMatrix3x2(propertyName, value);
     }
-    pub fn TryGetMatrix4x4(self: *@This(), propertyName: HSTRING, value: Matrix4x4) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetMatrix4x4(self: *@This(), propertyName: ?HSTRING, value: Matrix4x4) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetMatrix4x4(propertyName, value);
     }
-    pub fn TryGetQuaternion(self: *@This(), propertyName: HSTRING, value: Quaternion) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetQuaternion(self: *@This(), propertyName: ?HSTRING, value: Quaternion) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetQuaternion(propertyName, value);
     }
-    pub fn TryGetScalar(self: *@This(), propertyName: HSTRING, value: f32) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetScalar(self: *@This(), propertyName: ?HSTRING, value: f32) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetScalar(propertyName, value);
     }
-    pub fn TryGetVector2(self: *@This(), propertyName: HSTRING, value: Vector2) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector2(self: *@This(), propertyName: ?HSTRING, value: Vector2) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetVector2(propertyName, value);
     }
-    pub fn TryGetVector3(self: *@This(), propertyName: HSTRING, value: Vector3) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector3(self: *@This(), propertyName: ?HSTRING, value: Vector3) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetVector3(propertyName, value);
     }
-    pub fn TryGetVector4(self: *@This(), propertyName: HSTRING, value: Vector4) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector4(self: *@This(), propertyName: ?HSTRING, value: Vector4) core.HResult!CompositionGetValueStatus {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.TryGetVector4(propertyName, value);
     }
-    pub fn InsertBoolean(self: *@This(), propertyName: HSTRING, value: bool) core.HResult!void {
+    pub fn InsertBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!void {
         var this: ?*ICompositionPropertySet2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionPropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertBoolean(propertyName, value);
     }
-    pub fn TryGetBoolean(self: *@This(), propertyName: HSTRING, value: bool) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!CompositionGetValueStatus {
         var this: ?*ICompositionPropertySet2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionPropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2739,7 +2739,7 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateEffectFactory(graphicsEffect);
     }
-    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
+    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(?HSTRING)) core.HResult!*CompositionEffectFactory {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateEffectFactoryWithAnimatableProperties(graphicsEffect, animatableProperties);
     }
@@ -2747,7 +2747,7 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateExpressionAnimation();
     }
-    pub fn CreateExpressionAnimationWithExpression(self: *@This(), expression: HSTRING) core.HResult!*ExpressionAnimation {
+    pub fn CreateExpressionAnimationWithExpression(self: *@This(), expression: ?HSTRING) core.HResult!*ExpressionAnimation {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateExpressionAnimationWithExpression(expression);
     }
@@ -2931,13 +2931,13 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpringVector3Animation();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositor5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getComment();
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositor5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3596,11 +3596,11 @@ pub const ExponentialEasingFunction = extern struct {
 };
 pub const ExpressionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getExpression(self: *@This()) core.HResult!HSTRING {
+    pub fn getExpression(self: *@This()) core.HResult!?HSTRING {
         const this: *IExpressionAnimation = @ptrCast(self);
         return try this.getExpression();
     }
-    pub fn putExpression(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExpression(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IExpressionAnimation = @ptrCast(self);
         return try this.putExpression(value);
     }
@@ -3760,7 +3760,7 @@ pub const IAnimationControllerStatics = extern struct {
 };
 pub const IAnimationObject = extern struct {
     vtable: *const VTable,
-    pub fn PopulatePropertyInfo(self: *@This(), propertyName: HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         const _c = self.vtable.PopulatePropertyInfo(@ptrCast(self), propertyName, propertyInfo);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3776,7 +3776,7 @@ pub const IAnimationObject = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        PopulatePropertyInfo: *const fn(self: *anyopaque, propertyName: HSTRING, propertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
+        PopulatePropertyInfo: *const fn(self: *anyopaque, propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IAnimationPropertyInfo = extern struct {
@@ -3815,8 +3815,8 @@ pub const IAnimationPropertyInfo2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetResolvedCompositionObjectProperty(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetResolvedCompositionObjectProperty(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetResolvedCompositionObjectProperty(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3834,7 +3834,7 @@ pub const IAnimationPropertyInfo2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetResolvedCompositionObject: *const fn(self: *anyopaque, _r: **CompositionObject) callconv(.winapi) HRESULT,
-        GetResolvedCompositionObjectProperty: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetResolvedCompositionObjectProperty: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackEasingFunction = extern struct {
@@ -4112,43 +4112,43 @@ pub const ICompositionAnimation = extern struct {
         const _c = self.vtable.ClearAllParameters(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ClearParameter(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn ClearParameter(self: *@This(), key: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearParameter(@ptrCast(self), key);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetColorParameter(self: *@This(), key: HSTRING, value: Color) core.HResult!void {
+    pub fn SetColorParameter(self: *@This(), key: ?HSTRING, value: Color) core.HResult!void {
         const _c = self.vtable.SetColorParameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetMatrix3x2Parameter(self: *@This(), key: HSTRING, value: Matrix3x2) core.HResult!void {
+    pub fn SetMatrix3x2Parameter(self: *@This(), key: ?HSTRING, value: Matrix3x2) core.HResult!void {
         const _c = self.vtable.SetMatrix3x2Parameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetMatrix4x4Parameter(self: *@This(), key: HSTRING, value: Matrix4x4) core.HResult!void {
+    pub fn SetMatrix4x4Parameter(self: *@This(), key: ?HSTRING, value: Matrix4x4) core.HResult!void {
         const _c = self.vtable.SetMatrix4x4Parameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetQuaternionParameter(self: *@This(), key: HSTRING, value: Quaternion) core.HResult!void {
+    pub fn SetQuaternionParameter(self: *@This(), key: ?HSTRING, value: Quaternion) core.HResult!void {
         const _c = self.vtable.SetQuaternionParameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetReferenceParameter(self: *@This(), key: HSTRING, compositionObject: *CompositionObject) core.HResult!void {
+    pub fn SetReferenceParameter(self: *@This(), key: ?HSTRING, compositionObject: *CompositionObject) core.HResult!void {
         const _c = self.vtable.SetReferenceParameter(@ptrCast(self), key, compositionObject);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetScalarParameter(self: *@This(), key: HSTRING, value: f32) core.HResult!void {
+    pub fn SetScalarParameter(self: *@This(), key: ?HSTRING, value: f32) core.HResult!void {
         const _c = self.vtable.SetScalarParameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetVector2Parameter(self: *@This(), key: HSTRING, value: Vector2) core.HResult!void {
+    pub fn SetVector2Parameter(self: *@This(), key: ?HSTRING, value: Vector2) core.HResult!void {
         const _c = self.vtable.SetVector2Parameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetVector3Parameter(self: *@This(), key: HSTRING, value: Vector3) core.HResult!void {
+    pub fn SetVector3Parameter(self: *@This(), key: ?HSTRING, value: Vector3) core.HResult!void {
         const _c = self.vtable.SetVector3Parameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetVector4Parameter(self: *@This(), key: HSTRING, value: Vector4) core.HResult!void {
+    pub fn SetVector4Parameter(self: *@This(), key: ?HSTRING, value: Vector4) core.HResult!void {
         const _c = self.vtable.SetVector4Parameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4165,31 +4165,31 @@ pub const ICompositionAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ClearAllParameters: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ClearParameter: *const fn(self: *anyopaque, key: HSTRING) callconv(.winapi) HRESULT,
-        SetColorParameter: *const fn(self: *anyopaque, key: HSTRING, value: Color) callconv(.winapi) HRESULT,
-        SetMatrix3x2Parameter: *const fn(self: *anyopaque, key: HSTRING, value: Matrix3x2) callconv(.winapi) HRESULT,
-        SetMatrix4x4Parameter: *const fn(self: *anyopaque, key: HSTRING, value: Matrix4x4) callconv(.winapi) HRESULT,
-        SetQuaternionParameter: *const fn(self: *anyopaque, key: HSTRING, value: Quaternion) callconv(.winapi) HRESULT,
-        SetReferenceParameter: *const fn(self: *anyopaque, key: HSTRING, compositionObject: *CompositionObject) callconv(.winapi) HRESULT,
-        SetScalarParameter: *const fn(self: *anyopaque, key: HSTRING, value: f32) callconv(.winapi) HRESULT,
-        SetVector2Parameter: *const fn(self: *anyopaque, key: HSTRING, value: Vector2) callconv(.winapi) HRESULT,
-        SetVector3Parameter: *const fn(self: *anyopaque, key: HSTRING, value: Vector3) callconv(.winapi) HRESULT,
-        SetVector4Parameter: *const fn(self: *anyopaque, key: HSTRING, value: Vector4) callconv(.winapi) HRESULT,
+        ClearParameter: *const fn(self: *anyopaque, key: ?HSTRING) callconv(.winapi) HRESULT,
+        SetColorParameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Color) callconv(.winapi) HRESULT,
+        SetMatrix3x2Parameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Matrix3x2) callconv(.winapi) HRESULT,
+        SetMatrix4x4Parameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Matrix4x4) callconv(.winapi) HRESULT,
+        SetQuaternionParameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Quaternion) callconv(.winapi) HRESULT,
+        SetReferenceParameter: *const fn(self: *anyopaque, key: ?HSTRING, compositionObject: *CompositionObject) callconv(.winapi) HRESULT,
+        SetScalarParameter: *const fn(self: *anyopaque, key: ?HSTRING, value: f32) callconv(.winapi) HRESULT,
+        SetVector2Parameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Vector2) callconv(.winapi) HRESULT,
+        SetVector3Parameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Vector3) callconv(.winapi) HRESULT,
+        SetVector4Parameter: *const fn(self: *anyopaque, key: ?HSTRING, value: Vector4) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionAnimation2 = extern struct {
     vtable: *const VTable,
-    pub fn SetBooleanParameter(self: *@This(), key: HSTRING, value: bool) core.HResult!void {
+    pub fn SetBooleanParameter(self: *@This(), key: ?HSTRING, value: bool) core.HResult!void {
         const _c = self.vtable.SetBooleanParameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTarget(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTarget(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Target(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4205,9 +4205,9 @@ pub const ICompositionAnimation2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetBooleanParameter: *const fn(self: *anyopaque, key: HSTRING, value: bool) callconv(.winapi) HRESULT,
-        get_Target: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Target: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        SetBooleanParameter: *const fn(self: *anyopaque, key: ?HSTRING, value: bool) callconv(.winapi) HRESULT,
+        get_Target: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Target: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionAnimation3 = extern struct {
@@ -4235,7 +4235,7 @@ pub const ICompositionAnimation3 = extern struct {
 };
 pub const ICompositionAnimation4 = extern struct {
     vtable: *const VTable,
-    pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: HSTRING, source: *IAnimationObject) core.HResult!void {
+    pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: ?HSTRING, source: *IAnimationObject) core.HResult!void {
         const _c = self.vtable.SetExpressionReferenceParameter(@ptrCast(self), parameterName, source);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4251,7 +4251,7 @@ pub const ICompositionAnimation4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SetExpressionReferenceParameter: *const fn(self: *anyopaque, parameterName: HSTRING, source: *IAnimationObject) callconv(.winapi) HRESULT,
+        SetExpressionReferenceParameter: *const fn(self: *anyopaque, parameterName: ?HSTRING, source: *IAnimationObject) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionAnimationBase = extern struct {
@@ -4962,13 +4962,13 @@ pub const ICompositionEasingFunctionStatics = extern struct {
 };
 pub const ICompositionEffectBrush = extern struct {
     vtable: *const VTable,
-    pub fn GetSourceParameter(self: *@This(), name: HSTRING) core.HResult!*CompositionBrush {
+    pub fn GetSourceParameter(self: *@This(), name: ?HSTRING) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.GetSourceParameter(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetSourceParameter(self: *@This(), name: HSTRING, source: *CompositionBrush) core.HResult!void {
+    pub fn SetSourceParameter(self: *@This(), name: ?HSTRING, source: *CompositionBrush) core.HResult!void {
         const _c = self.vtable.SetSourceParameter(@ptrCast(self), name, source);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4984,8 +4984,8 @@ pub const ICompositionEffectBrush = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetSourceParameter: *const fn(self: *anyopaque, name: HSTRING, _r: **CompositionBrush) callconv(.winapi) HRESULT,
-        SetSourceParameter: *const fn(self: *anyopaque, name: HSTRING, source: *CompositionBrush) callconv(.winapi) HRESULT,
+        GetSourceParameter: *const fn(self: *anyopaque, name: ?HSTRING, _r: **CompositionBrush) callconv(.winapi) HRESULT,
+        SetSourceParameter: *const fn(self: *anyopaque, name: ?HSTRING, source: *CompositionBrush) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionEffectFactory = extern struct {
@@ -5027,8 +5027,8 @@ pub const ICompositionEffectFactory = extern struct {
 };
 pub const ICompositionEffectSourceParameter = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5045,12 +5045,12 @@ pub const ICompositionEffectSourceParameter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionEffectSourceParameterFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), name: HSTRING) core.HResult!*CompositionEffectSourceParameter {
+    pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*CompositionEffectSourceParameter {
         var _r: *CompositionEffectSourceParameter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5068,7 +5068,7 @@ pub const ICompositionEffectSourceParameterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, name: HSTRING, _r: **CompositionEffectSourceParameter) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, name: ?HSTRING, _r: **CompositionEffectSourceParameter) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionEllipseGeometry = extern struct {
@@ -5947,11 +5947,11 @@ pub const ICompositionObject = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartAnimation(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
+    pub fn StartAnimation(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const _c = self.vtable.StartAnimation(@ptrCast(self), propertyName, animation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StopAnimation(self: *@This(), propertyName: HSTRING) core.HResult!void {
+    pub fn StopAnimation(self: *@This(), propertyName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.StopAnimation(@ptrCast(self), propertyName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5970,19 +5970,19 @@ pub const ICompositionObject = extern struct {
         get_Compositor: *const fn(self: *anyopaque, _r: **Compositor) callconv(.winapi) HRESULT,
         get_Dispatcher: *const fn(self: *anyopaque, _r: **CoreDispatcher) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **CompositionPropertySet) callconv(.winapi) HRESULT,
-        StartAnimation: *const fn(self: *anyopaque, propertyName: HSTRING, animation: *CompositionAnimation) callconv(.winapi) HRESULT,
-        StopAnimation: *const fn(self: *anyopaque, propertyName: HSTRING) callconv(.winapi) HRESULT,
+        StartAnimation: *const fn(self: *anyopaque, propertyName: ?HSTRING, animation: *CompositionAnimation) callconv(.winapi) HRESULT,
+        StopAnimation: *const fn(self: *anyopaque, propertyName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionObject2 = extern struct {
     vtable: *const VTable,
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Comment(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6016,8 +6016,8 @@ pub const ICompositionObject2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Comment: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Comment: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ImplicitAnimations: *const fn(self: *anyopaque, _r: **ImplicitAnimationCollection) callconv(.winapi) HRESULT,
         put_ImplicitAnimations: *const fn(self: *anyopaque, value: *ImplicitAnimationCollection) callconv(.winapi) HRESULT,
         StartAnimationGroup: *const fn(self: *anyopaque, value: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
@@ -6049,7 +6049,7 @@ pub const ICompositionObject3 = extern struct {
 };
 pub const ICompositionObject4 = extern struct {
     vtable: *const VTable,
-    pub fn TryGetAnimationController(self: *@This(), propertyName: HSTRING) core.HResult!*AnimationController {
+    pub fn TryGetAnimationController(self: *@This(), propertyName: ?HSTRING) core.HResult!*AnimationController {
         var _r: *AnimationController = undefined;
         const _c = self.vtable.TryGetAnimationController(@ptrCast(self), propertyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6067,12 +6067,12 @@ pub const ICompositionObject4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryGetAnimationController: *const fn(self: *anyopaque, propertyName: HSTRING, _r: **AnimationController) callconv(.winapi) HRESULT,
+        TryGetAnimationController: *const fn(self: *anyopaque, propertyName: ?HSTRING, _r: **AnimationController) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionObject5 = extern struct {
     vtable: *const VTable,
-    pub fn StartAnimation(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
+    pub fn StartAnimation(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         const _c = self.vtable.StartAnimation(@ptrCast(self), propertyName, animation, animationController);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6088,7 +6088,7 @@ pub const ICompositionObject5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        StartAnimation: *const fn(self: *anyopaque, propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) callconv(.winapi) HRESULT,
+        StartAnimation: *const fn(self: *anyopaque, propertyName: ?HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionObjectFactory = extern struct {
@@ -6109,7 +6109,7 @@ pub const ICompositionObjectFactory = extern struct {
 };
 pub const ICompositionObjectStatics = extern struct {
     vtable: *const VTable,
-    pub fn StartAnimationWithIAnimationObject(self: *@This(), target: *IAnimationObject, propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
+    pub fn StartAnimationWithIAnimationObject(self: *@This(), target: *IAnimationObject, propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const _c = self.vtable.StartAnimationWithIAnimationObject(@ptrCast(self), target, propertyName, animation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6129,7 +6129,7 @@ pub const ICompositionObjectStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        StartAnimationWithIAnimationObject: *const fn(self: *anyopaque, target: *IAnimationObject, propertyName: HSTRING, animation: *CompositionAnimation) callconv(.winapi) HRESULT,
+        StartAnimationWithIAnimationObject: *const fn(self: *anyopaque, target: *IAnimationObject, propertyName: ?HSTRING, animation: *CompositionAnimation) callconv(.winapi) HRESULT,
         StartAnimationGroupWithIAnimationObject: *const fn(self: *anyopaque, target: *IAnimationObject, animation: *ICompositionAnimationBase) callconv(.winapi) HRESULT,
     };
 };
@@ -6462,81 +6462,81 @@ pub const ICompositionProjectedShadowReceiverUnorderedCollection = extern struct
 };
 pub const ICompositionPropertySet = extern struct {
     vtable: *const VTable,
-    pub fn InsertColor(self: *@This(), propertyName: HSTRING, value: Color) core.HResult!void {
+    pub fn InsertColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!void {
         const _c = self.vtable.InsertColor(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertMatrix3x2(self: *@This(), propertyName: HSTRING, value: Matrix3x2) core.HResult!void {
+    pub fn InsertMatrix3x2(self: *@This(), propertyName: ?HSTRING, value: Matrix3x2) core.HResult!void {
         const _c = self.vtable.InsertMatrix3x2(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertMatrix4x4(self: *@This(), propertyName: HSTRING, value: Matrix4x4) core.HResult!void {
+    pub fn InsertMatrix4x4(self: *@This(), propertyName: ?HSTRING, value: Matrix4x4) core.HResult!void {
         const _c = self.vtable.InsertMatrix4x4(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertQuaternion(self: *@This(), propertyName: HSTRING, value: Quaternion) core.HResult!void {
+    pub fn InsertQuaternion(self: *@This(), propertyName: ?HSTRING, value: Quaternion) core.HResult!void {
         const _c = self.vtable.InsertQuaternion(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertScalar(self: *@This(), propertyName: HSTRING, value: f32) core.HResult!void {
+    pub fn InsertScalar(self: *@This(), propertyName: ?HSTRING, value: f32) core.HResult!void {
         const _c = self.vtable.InsertScalar(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertVector2(self: *@This(), propertyName: HSTRING, value: Vector2) core.HResult!void {
+    pub fn InsertVector2(self: *@This(), propertyName: ?HSTRING, value: Vector2) core.HResult!void {
         const _c = self.vtable.InsertVector2(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertVector3(self: *@This(), propertyName: HSTRING, value: Vector3) core.HResult!void {
+    pub fn InsertVector3(self: *@This(), propertyName: ?HSTRING, value: Vector3) core.HResult!void {
         const _c = self.vtable.InsertVector3(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertVector4(self: *@This(), propertyName: HSTRING, value: Vector4) core.HResult!void {
+    pub fn InsertVector4(self: *@This(), propertyName: ?HSTRING, value: Vector4) core.HResult!void {
         const _c = self.vtable.InsertVector4(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TryGetColor(self: *@This(), propertyName: HSTRING, value: Color) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetColor(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetMatrix3x2(self: *@This(), propertyName: HSTRING, value: Matrix3x2) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetMatrix3x2(self: *@This(), propertyName: ?HSTRING, value: Matrix3x2) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetMatrix3x2(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetMatrix4x4(self: *@This(), propertyName: HSTRING, value: Matrix4x4) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetMatrix4x4(self: *@This(), propertyName: ?HSTRING, value: Matrix4x4) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetMatrix4x4(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetQuaternion(self: *@This(), propertyName: HSTRING, value: Quaternion) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetQuaternion(self: *@This(), propertyName: ?HSTRING, value: Quaternion) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetQuaternion(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetScalar(self: *@This(), propertyName: HSTRING, value: f32) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetScalar(self: *@This(), propertyName: ?HSTRING, value: f32) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetScalar(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetVector2(self: *@This(), propertyName: HSTRING, value: Vector2) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector2(self: *@This(), propertyName: ?HSTRING, value: Vector2) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetVector2(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetVector3(self: *@This(), propertyName: HSTRING, value: Vector3) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector3(self: *@This(), propertyName: ?HSTRING, value: Vector3) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetVector3(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetVector4(self: *@This(), propertyName: HSTRING, value: Vector4) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetVector4(self: *@This(), propertyName: ?HSTRING, value: Vector4) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetVector4(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6554,31 +6554,31 @@ pub const ICompositionPropertySet = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        InsertColor: *const fn(self: *anyopaque, propertyName: HSTRING, value: Color) callconv(.winapi) HRESULT,
-        InsertMatrix3x2: *const fn(self: *anyopaque, propertyName: HSTRING, value: Matrix3x2) callconv(.winapi) HRESULT,
-        InsertMatrix4x4: *const fn(self: *anyopaque, propertyName: HSTRING, value: Matrix4x4) callconv(.winapi) HRESULT,
-        InsertQuaternion: *const fn(self: *anyopaque, propertyName: HSTRING, value: Quaternion) callconv(.winapi) HRESULT,
-        InsertScalar: *const fn(self: *anyopaque, propertyName: HSTRING, value: f32) callconv(.winapi) HRESULT,
-        InsertVector2: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector2) callconv(.winapi) HRESULT,
-        InsertVector3: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector3) callconv(.winapi) HRESULT,
-        InsertVector4: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector4) callconv(.winapi) HRESULT,
-        TryGetColor: *const fn(self: *anyopaque, propertyName: HSTRING, value: Color, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetMatrix3x2: *const fn(self: *anyopaque, propertyName: HSTRING, value: Matrix3x2, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetMatrix4x4: *const fn(self: *anyopaque, propertyName: HSTRING, value: Matrix4x4, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetQuaternion: *const fn(self: *anyopaque, propertyName: HSTRING, value: Quaternion, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetScalar: *const fn(self: *anyopaque, propertyName: HSTRING, value: f32, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetVector2: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector2, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetVector3: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector3, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
-        TryGetVector4: *const fn(self: *anyopaque, propertyName: HSTRING, value: Vector4, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        InsertColor: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Color) callconv(.winapi) HRESULT,
+        InsertMatrix3x2: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Matrix3x2) callconv(.winapi) HRESULT,
+        InsertMatrix4x4: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Matrix4x4) callconv(.winapi) HRESULT,
+        InsertQuaternion: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Quaternion) callconv(.winapi) HRESULT,
+        InsertScalar: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: f32) callconv(.winapi) HRESULT,
+        InsertVector2: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector2) callconv(.winapi) HRESULT,
+        InsertVector3: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector3) callconv(.winapi) HRESULT,
+        InsertVector4: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector4) callconv(.winapi) HRESULT,
+        TryGetColor: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Color, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetMatrix3x2: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Matrix3x2, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetMatrix4x4: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Matrix4x4, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetQuaternion: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Quaternion, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetScalar: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: f32, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetVector2: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector2, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetVector3: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector3, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        TryGetVector4: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: Vector4, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionPropertySet2 = extern struct {
     vtable: *const VTable,
-    pub fn InsertBoolean(self: *@This(), propertyName: HSTRING, value: bool) core.HResult!void {
+    pub fn InsertBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!void {
         const _c = self.vtable.InsertBoolean(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TryGetBoolean(self: *@This(), propertyName: HSTRING, value: bool) core.HResult!CompositionGetValueStatus {
+    pub fn TryGetBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!CompositionGetValueStatus {
         var _r: CompositionGetValueStatus = undefined;
         const _c = self.vtable.TryGetBoolean(@ptrCast(self), propertyName, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6596,8 +6596,8 @@ pub const ICompositionPropertySet2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        InsertBoolean: *const fn(self: *anyopaque, propertyName: HSTRING, value: bool) callconv(.winapi) HRESULT,
-        TryGetBoolean: *const fn(self: *anyopaque, propertyName: HSTRING, value: bool, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
+        InsertBoolean: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: bool) callconv(.winapi) HRESULT,
+        TryGetBoolean: *const fn(self: *anyopaque, propertyName: ?HSTRING, value: bool, _r: *CompositionGetValueStatus) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionRadialGradientBrush = extern struct {
@@ -7710,7 +7710,7 @@ pub const ICompositor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
+    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(?HSTRING)) core.HResult!*CompositionEffectFactory {
         var _r: *CompositionEffectFactory = undefined;
         const _c = self.vtable.CreateEffectFactoryWithAnimatableProperties(@ptrCast(self), graphicsEffect, animatableProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7722,7 +7722,7 @@ pub const ICompositor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateExpressionAnimationWithExpression(self: *@This(), expression: HSTRING) core.HResult!*ExpressionAnimation {
+    pub fn CreateExpressionAnimationWithExpression(self: *@This(), expression: ?HSTRING) core.HResult!*ExpressionAnimation {
         var _r: *ExpressionAnimation = undefined;
         const _c = self.vtable.CreateExpressionAnimationWithExpression(@ptrCast(self), expression, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7836,9 +7836,9 @@ pub const ICompositor = extern struct {
         CreateContainerVisual: *const fn(self: *anyopaque, _r: **ContainerVisual) callconv(.winapi) HRESULT,
         CreateCubicBezierEasingFunction: *const fn(self: *anyopaque, controlPoint1: Vector2, controlPoint2: Vector2, _r: **CubicBezierEasingFunction) callconv(.winapi) HRESULT,
         CreateEffectFactory: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
-        CreateEffectFactoryWithAnimatableProperties: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING), _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
+        CreateEffectFactoryWithAnimatableProperties: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(?HSTRING), _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
         CreateExpressionAnimation: *const fn(self: *anyopaque, _r: **ExpressionAnimation) callconv(.winapi) HRESULT,
-        CreateExpressionAnimationWithExpression: *const fn(self: *anyopaque, expression: HSTRING, _r: **ExpressionAnimation) callconv(.winapi) HRESULT,
+        CreateExpressionAnimationWithExpression: *const fn(self: *anyopaque, expression: ?HSTRING, _r: **ExpressionAnimation) callconv(.winapi) HRESULT,
         CreateInsetClip: *const fn(self: *anyopaque, _r: **InsetClip) callconv(.winapi) HRESULT,
         CreateInsetClipWithLeftInsetAndTopInsetAndRightInsetAndBottomInset: *const fn(self: *anyopaque, leftInset: f32, topInset: f32, rightInset: f32, bottomInset: f32, _r: **InsetClip) callconv(.winapi) HRESULT,
         CreateLinearEasingFunction: *const fn(self: *anyopaque, _r: **LinearEasingFunction) callconv(.winapi) HRESULT,
@@ -8046,13 +8046,13 @@ pub const ICompositor4 = extern struct {
 };
 pub const ICompositor5 = extern struct {
     vtable: *const VTable,
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Comment(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -8174,8 +8174,8 @@ pub const ICompositor5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Comment: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Comment: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_GlobalPlaybackRate: *const fn(self: *anyopaque, _r: *f32) callconv(.winapi) HRESULT,
         put_GlobalPlaybackRate: *const fn(self: *anyopaque, value: f32) callconv(.winapi) HRESULT,
         CreateBounceScalarAnimation: *const fn(self: *anyopaque, _r: **BounceScalarNaturalMotionAnimation) callconv(.winapi) HRESULT,
@@ -8849,13 +8849,13 @@ pub const IExponentialEasingFunction = extern struct {
 };
 pub const IExpressionAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getExpression(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExpression(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Expression(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExpression(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExpression(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Expression(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -8871,8 +8871,8 @@ pub const IExpressionAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Expression: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Expression: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Expression: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Expression: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IImplicitAnimationCollection = extern struct {
@@ -9013,11 +9013,11 @@ pub const IKeyFrameAnimation = extern struct {
         const _c = self.vtable.put_StopBehavior(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: HSTRING) core.HResult!void {
+    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.InsertExpressionKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertExpressionKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertExpressionKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: ?HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const _c = self.vtable.InsertExpressionKeyFrameWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -9044,8 +9044,8 @@ pub const IKeyFrameAnimation = extern struct {
         get_KeyFrameCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_StopBehavior: *const fn(self: *anyopaque, _r: *AnimationStopBehavior) callconv(.winapi) HRESULT,
         put_StopBehavior: *const fn(self: *anyopaque, value: AnimationStopBehavior) callconv(.winapi) HRESULT,
-        InsertExpressionKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: HSTRING) callconv(.winapi) HRESULT,
-        InsertExpressionKeyFrameWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertExpressionKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: ?HSTRING) callconv(.winapi) HRESULT,
+        InsertExpressionKeyFrameWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: ?HSTRING, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyFrameAnimation2 = extern struct {
@@ -10990,26 +10990,26 @@ pub const IVisualUnorderedCollection = extern struct {
 };
 pub const ImplicitAnimationCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,ICompositionAnimationBase)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,ICompositionAnimationBase)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
+        var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,ICompositionAnimationBase) {
-        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,ICompositionAnimationBase) {
+        var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
+        var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
@@ -11023,19 +11023,19 @@ pub const ImplicitAnimationCollection = extern struct {
 pub const InitialValueExpressionCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap(HSTRING,HSTRING) = @ptrCast(self);
+        const this: *IMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        const this: *IMap(HSTRING,HSTRING) = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        const this: *IMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap(HSTRING,HSTRING) = @ptrCast(self);
+        const this: *IMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,?HSTRING)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,?HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

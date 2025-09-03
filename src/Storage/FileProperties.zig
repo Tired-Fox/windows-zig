@@ -13,13 +13,13 @@ pub const BasicProperties = extern struct {
         const this: *IBasicProperties = @ptrCast(self);
         return try this.getItemDate();
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -39,37 +39,37 @@ pub const BasicProperties = extern struct {
 };
 pub const DocumentProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getAuthor(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.getAuthor();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.getKeywords();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.getComment();
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.putComment(value);
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -147,35 +147,35 @@ pub const IBasicProperties = extern struct {
 };
 pub const IDocumentProperties = extern struct {
     vtable: *const VTable,
-    pub fn getAuthor(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getAuthor(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putComment(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Comment(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -191,12 +191,12 @@ pub const IDocumentProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Author: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Comment: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Author: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Comment: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeotagHelperStatics = extern struct {
@@ -248,8 +248,8 @@ pub const IImageProperties = extern struct {
         const _c = self.vtable.put_Rating(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -276,13 +276,13 @@ pub const IImageProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -298,23 +298,23 @@ pub const IImageProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCameraManufacturer(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCameraManufacturer(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CameraManufacturer(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCameraManufacturer(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCameraManufacturer(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CameraManufacturer(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCameraModel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCameraModel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CameraModel(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCameraModel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCameraModel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CameraModel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -324,8 +324,8 @@ pub const IImageProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPeopleNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getPeopleNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_PeopleNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -344,47 +344,47 @@ pub const IImageProperties = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Rating: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Rating: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_DateTaken: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_DateTaken: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         get_Width: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Height: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Latitude: *const fn(self: *anyopaque, _r: **IReference(f64)) callconv(.winapi) HRESULT,
         get_Longitude: *const fn(self: *anyopaque, _r: **IReference(f64)) callconv(.winapi) HRESULT,
-        get_CameraManufacturer: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CameraManufacturer: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CameraModel: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CameraModel: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CameraManufacturer: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CameraManufacturer: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CameraModel: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CameraModel: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Orientation: *const fn(self: *anyopaque, _r: *PhotoOrientation) callconv(.winapi) HRESULT,
-        get_PeopleNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_PeopleNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMusicProperties = extern struct {
     vtable: *const VTable,
-    pub fn getAlbum(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Album(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAlbum(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlbum(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Album(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getArtist(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArtist(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Artist(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putArtist(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putArtist(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Artist(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGenre(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getGenre(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Genre(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -399,13 +399,13 @@ pub const IMusicProperties = extern struct {
         const _c = self.vtable.put_TrackNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -431,56 +431,56 @@ pub const IMusicProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlbumArtist(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlbumArtist(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlbumArtist(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAlbumArtist(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlbumArtist(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AlbumArtist(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getComposers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getComposers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Composers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getConductors(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getConductors(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Conductors(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubtitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subtitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProducers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getProducers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Producers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Publisher(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPublisher(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPublisher(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Publisher(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWriters(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getWriters(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Writers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -507,29 +507,29 @@ pub const IMusicProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Album: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Album: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Artist: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Artist: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Genre: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Album: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Album: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Artist: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Artist: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Genre: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_TrackNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_TrackNumber: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Rating: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Rating: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_Bitrate: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_AlbumArtist: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AlbumArtist: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Composers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Conductors: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Subtitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subtitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Producers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Publisher: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Publisher: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Writers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_AlbumArtist: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AlbumArtist: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Composers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Conductors: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Subtitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subtitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Producers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Publisher: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Publisher: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Writers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Year: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Year: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
     };
@@ -580,13 +580,13 @@ pub const IStorageItemContentProperties = extern struct {
 };
 pub const IStorageItemExtraProperties = extern struct {
     vtable: *const VTable,
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
-        var _r: *IAsyncOperation(IMap(HSTRING,IInspectable)) = undefined;
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
+        var _r: *IAsyncOperation(IMap(?HSTRING,IInspectable)) = undefined;
         const _c = self.vtable.RetrievePropertiesAsync(@ptrCast(self), propertiesToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SavePropertiesAsyncWithPropertiesToSave(@ptrCast(self), propertiesToSave, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -610,8 +610,8 @@ pub const IStorageItemExtraProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RetrievePropertiesAsync: *const fn(self: *anyopaque, propertiesToRetrieve: *IIterable(HSTRING), _r: **IAsyncOperation(IMap(HSTRING,IInspectable))) callconv(.winapi) HRESULT,
-        SavePropertiesAsyncWithPropertiesToSave: *const fn(self: *anyopaque, propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RetrievePropertiesAsync: *const fn(self: *anyopaque, propertiesToRetrieve: *IIterable(?HSTRING), _r: **IAsyncOperation(IMap(?HSTRING,IInspectable))) callconv(.winapi) HRESULT,
+        SavePropertiesAsyncWithPropertiesToSave: *const fn(self: *anyopaque, propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SavePropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -671,8 +671,8 @@ pub const IVideoProperties = extern struct {
         const _c = self.vtable.put_Rating(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -707,44 +707,44 @@ pub const IVideoProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSubtitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Subtitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProducers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getProducers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Producers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Publisher(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPublisher(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPublisher(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Publisher(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWriters(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getWriters(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Writers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -765,8 +765,8 @@ pub const IVideoProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDirectors(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDirectors(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Directors(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -791,24 +791,24 @@ pub const IVideoProperties = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Rating: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Rating: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Keywords: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Width: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Height: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Duration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         get_Latitude: *const fn(self: *anyopaque, _r: **IReference(f64)) callconv(.winapi) HRESULT,
         get_Longitude: *const fn(self: *anyopaque, _r: **IReference(f64)) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Subtitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Subtitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Producers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_Publisher: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Publisher: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Writers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Subtitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Subtitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Producers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Publisher: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Publisher: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Writers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Year: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_Year: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_Bitrate: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Directors: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Directors: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_Orientation: *const fn(self: *anyopaque, _r: *VideoOrientation) callconv(.winapi) HRESULT,
     };
 };
@@ -822,7 +822,7 @@ pub const ImageProperties = extern struct {
         const this: *IImageProperties = @ptrCast(self);
         return try this.putRating(value);
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getKeywords();
     }
@@ -842,11 +842,11 @@ pub const ImageProperties = extern struct {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getHeight();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IImageProperties = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -858,19 +858,19 @@ pub const ImageProperties = extern struct {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getLongitude();
     }
-    pub fn getCameraManufacturer(self: *@This()) core.HResult!HSTRING {
+    pub fn getCameraManufacturer(self: *@This()) core.HResult!?HSTRING {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getCameraManufacturer();
     }
-    pub fn putCameraManufacturer(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCameraManufacturer(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IImageProperties = @ptrCast(self);
         return try this.putCameraManufacturer(value);
     }
-    pub fn getCameraModel(self: *@This()) core.HResult!HSTRING {
+    pub fn getCameraModel(self: *@This()) core.HResult!?HSTRING {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getCameraModel();
     }
-    pub fn putCameraModel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCameraModel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IImageProperties = @ptrCast(self);
         return try this.putCameraModel(value);
     }
@@ -878,17 +878,17 @@ pub const ImageProperties = extern struct {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getOrientation();
     }
-    pub fn getPeopleNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getPeopleNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getPeopleNames();
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -908,23 +908,23 @@ pub const ImageProperties = extern struct {
 };
 pub const MusicProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlbum(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getAlbum();
     }
-    pub fn putAlbum(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlbum(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putAlbum(value);
     }
-    pub fn getArtist(self: *@This()) core.HResult!HSTRING {
+    pub fn getArtist(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getArtist();
     }
-    pub fn putArtist(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putArtist(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putArtist(value);
     }
-    pub fn getGenre(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getGenre(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getGenre();
     }
@@ -936,11 +936,11 @@ pub const MusicProperties = extern struct {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putTrackNumber(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -960,43 +960,43 @@ pub const MusicProperties = extern struct {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getBitrate();
     }
-    pub fn getAlbumArtist(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlbumArtist(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getAlbumArtist();
     }
-    pub fn putAlbumArtist(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAlbumArtist(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putAlbumArtist(value);
     }
-    pub fn getComposers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getComposers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getComposers();
     }
-    pub fn getConductors(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getConductors(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getConductors();
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getSubtitle();
     }
-    pub fn putSubtitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putSubtitle(value);
     }
-    pub fn getProducers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getProducers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getProducers();
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getPublisher();
     }
-    pub fn putPublisher(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPublisher(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putPublisher(value);
     }
-    pub fn getWriters(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getWriters(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getWriters();
     }
@@ -1008,13 +1008,13 @@ pub const MusicProperties = extern struct {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.putYear(value);
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1069,13 +1069,13 @@ pub const StorageItemContentProperties = extern struct {
         const this: *IStorageItemContentProperties = @ptrCast(self);
         return try this.GetDocumentPropertiesAsync();
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1173,7 +1173,7 @@ pub const StorageItemThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1243,7 +1243,7 @@ pub const VideoProperties = extern struct {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.putRating(value);
     }
-    pub fn getKeywords(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getKeywords(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getKeywords();
     }
@@ -1267,35 +1267,35 @@ pub const VideoProperties = extern struct {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getLongitude();
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getSubtitle();
     }
-    pub fn putSubtitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSubtitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.putSubtitle(value);
     }
-    pub fn getProducers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getProducers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getProducers();
     }
-    pub fn getPublisher(self: *@This()) core.HResult!HSTRING {
+    pub fn getPublisher(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getPublisher();
     }
-    pub fn putPublisher(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPublisher(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.putPublisher(value);
     }
-    pub fn getWriters(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getWriters(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getWriters();
     }
@@ -1311,7 +1311,7 @@ pub const VideoProperties = extern struct {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getBitrate();
     }
-    pub fn getDirectors(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDirectors(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getDirectors();
     }
@@ -1319,13 +1319,13 @@ pub const VideoProperties = extern struct {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getOrientation();
     }
-    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMap(HSTRING,IInspectable)) {
+    pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

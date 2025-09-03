@@ -13,7 +13,7 @@ pub const DnssdRegistrationResult = extern struct {
         const this: *IDnssdRegistrationResult = @ptrCast(self);
         return try this.getHasInstanceNameChanged();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -41,11 +41,11 @@ pub const DnssdRegistrationStatus = enum(i32) {
 };
 pub const DnssdServiceInstance = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.getDnssdServiceInstanceName();
     }
-    pub fn putDnssdServiceInstanceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDnssdServiceInstanceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.putDnssdServiceInstanceName(value);
     }
@@ -81,7 +81,7 @@ pub const DnssdServiceInstance = extern struct {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.putWeight(value);
     }
-    pub fn getTextAttributes(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getTextAttributes(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.getTextAttributes();
     }
@@ -101,7 +101,7 @@ pub const DnssdServiceInstance = extern struct {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.RegisterDatagramSocketAsyncWithAdapter(socket, adapter);
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -110,7 +110,7 @@ pub const DnssdServiceInstance = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(dnssdServiceInstanceName: HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
+    pub fn Create(dnssdServiceInstanceName: ?HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
         const _f = try @This()._IDnssdServiceInstanceFactoryCache.get();
         return try _f.Create(dnssdServiceInstanceName, hostName, port);
     }
@@ -230,13 +230,13 @@ pub const IDnssdRegistrationResult = extern struct {
 };
 pub const IDnssdServiceInstance = extern struct {
     vtable: *const VTable,
-    pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DnssdServiceInstanceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDnssdServiceInstanceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDnssdServiceInstanceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DnssdServiceInstanceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -280,8 +280,8 @@ pub const IDnssdServiceInstance = extern struct {
         const _c = self.vtable.put_Weight(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTextAttributes(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getTextAttributes(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_TextAttributes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -322,8 +322,8 @@ pub const IDnssdServiceInstance = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DnssdServiceInstanceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DnssdServiceInstanceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DnssdServiceInstanceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DnssdServiceInstanceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_HostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
         put_HostName: *const fn(self: *anyopaque, value: *HostName) callconv(.winapi) HRESULT,
         get_Port: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
@@ -332,7 +332,7 @@ pub const IDnssdServiceInstance = extern struct {
         put_Priority: *const fn(self: *anyopaque, value: u16) callconv(.winapi) HRESULT,
         get_Weight: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
         put_Weight: *const fn(self: *anyopaque, value: u16) callconv(.winapi) HRESULT,
-        get_TextAttributes: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_TextAttributes: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         RegisterStreamSocketListenerAsync: *const fn(self: *anyopaque, socket: *StreamSocketListener, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
         RegisterStreamSocketListenerAsyncWithAdapter: *const fn(self: *anyopaque, socket: *StreamSocketListener, adapter: *NetworkAdapter, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
         RegisterDatagramSocketAsync: *const fn(self: *anyopaque, socket: *DatagramSocket, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
@@ -341,7 +341,7 @@ pub const IDnssdServiceInstance = extern struct {
 };
 pub const IDnssdServiceInstanceFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), dnssdServiceInstanceName: HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
+    pub fn Create(self: *@This(), dnssdServiceInstanceName: ?HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
         var _r: *DnssdServiceInstance = undefined;
         const _c = self.vtable.Create(@ptrCast(self), dnssdServiceInstanceName, hostName, port, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -359,7 +359,7 @@ pub const IDnssdServiceInstanceFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, dnssdServiceInstanceName: HSTRING, hostName: *HostName, port: u16, _r: **DnssdServiceInstance) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, dnssdServiceInstanceName: ?HSTRING, hostName: *HostName, port: u16, _r: **DnssdServiceInstance) callconv(.winapi) HRESULT,
     };
 };
 pub const IDnssdServiceWatcher = extern struct {

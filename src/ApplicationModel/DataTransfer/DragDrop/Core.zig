@@ -135,11 +135,11 @@ pub const CoreDragUIOverride = extern struct {
         const this: *ICoreDragUIOverride = @ptrCast(self);
         return try this.putIsContentVisible(value);
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
         const this: *ICoreDragUIOverride = @ptrCast(self);
         return try this.getCaption();
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICoreDragUIOverride = @ptrCast(self);
         return try this.putCaption(value);
     }
@@ -409,13 +409,13 @@ pub const ICoreDragUIOverride = extern struct {
         const _c = self.vtable.put_IsContentVisible(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCaption(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -459,8 +459,8 @@ pub const ICoreDragUIOverride = extern struct {
         SetContentFromSoftwareBitmapWithAnchorPoint: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
         get_IsContentVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsContentVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Caption: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Caption: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsCaptionVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsCaptionVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsGlyphVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,

@@ -41,7 +41,7 @@ pub const IWiFiAdapter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithPasswordCredentialAndSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+    pub fn ConnectAsyncWithPasswordCredentialAndSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsyncWithPasswordCredentialAndSsid(@ptrCast(self), availableNetwork, reconnectionKind, passwordCredential, ssid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -70,7 +70,7 @@ pub const IWiFiAdapter = extern struct {
         remove_AvailableNetworksChanged: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         ConnectAsync: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
         ConnectAsyncWithPasswordCredential: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
-        ConnectAsyncWithPasswordCredentialAndSsid: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
+        ConnectAsyncWithPasswordCredentialAndSsid: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
         Disconnect: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -82,7 +82,7 @@ pub const IWiFiAdapter2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+    pub fn ConnectAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var _r: *IAsyncOperation(WiFiConnectionResult) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -101,7 +101,7 @@ pub const IWiFiAdapter2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetWpsConfigurationAsync: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, _r: **IAsyncOperation(WiFiWpsConfigurationResult)) callconv(.winapi) HRESULT,
-        ConnectAsync: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, connectionMethod: WiFiConnectionMethod, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
+        ConnectAsync: *const fn(self: *anyopaque, availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod, _r: **IAsyncOperation(WiFiConnectionResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiAdapterStatics = extern struct {
@@ -112,13 +112,13 @@ pub const IWiFiAdapterStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
         var _r: *IAsyncOperation(WiFiAdapter) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -143,8 +143,8 @@ pub const IWiFiAdapterStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAdaptersAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(WiFiAdapter))) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(WiFiAdapter)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(WiFiAdapter)) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(WiFiAccessStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -156,14 +156,14 @@ pub const IWiFiAvailableNetwork = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBssid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBssid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bssid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -229,8 +229,8 @@ pub const IWiFiAvailableNetwork = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uptime: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_Ssid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Bssid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Ssid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Bssid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ChannelCenterFrequencyInKilohertz: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NetworkRssiInDecibelMilliwatts: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         get_SignalBars: *const fn(self: *anyopaque, _r: *u8) callconv(.winapi) HRESULT,
@@ -396,13 +396,13 @@ pub const IWiFiOnDemandHotspotNetwork = extern struct {
 };
 pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -446,13 +446,13 @@ pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
         const _c = self.vtable.put_IsMetered(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSsid(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Ssid(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -478,8 +478,8 @@ pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Availability: *const fn(self: *anyopaque, _r: *WiFiOnDemandHotspotAvailability) callconv(.winapi) HRESULT,
         put_Availability: *const fn(self: *anyopaque, value: WiFiOnDemandHotspotAvailability) callconv(.winapi) HRESULT,
         get_RemainingBatteryPercent: *const fn(self: *anyopaque, _r: **IReference(u32)) callconv(.winapi) HRESULT,
@@ -488,8 +488,8 @@ pub const IWiFiOnDemandHotspotNetworkProperties = extern struct {
         put_CellularBars: *const fn(self: *anyopaque, value: *IReference(WiFiOnDemandHotspotCellularBars)) callconv(.winapi) HRESULT,
         get_IsMetered: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsMetered: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Ssid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Ssid: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Ssid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Ssid: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Password: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         put_Password: *const fn(self: *anyopaque, value: *PasswordCredential) callconv(.winapi) HRESULT,
     };
@@ -583,7 +583,7 @@ pub const WiFiAdapter = extern struct {
         const this: *IWiFiAdapter = @ptrCast(self);
         return try this.ConnectAsyncWithPasswordCredential(availableNetwork, reconnectionKind, passwordCredential);
     }
-    pub fn ConnectAsyncWithPasswordCredentialAndSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+    pub fn ConnectAsyncWithPasswordCredentialAndSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         const this: *IWiFiAdapter = @ptrCast(self);
         return try this.ConnectAsyncWithPasswordCredentialAndSsid(availableNetwork, reconnectionKind, passwordCredential, ssid);
     }
@@ -597,7 +597,7 @@ pub const WiFiAdapter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetWpsConfigurationAsync(availableNetwork);
     }
-    pub fn ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+    pub fn ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var this: ?*IWiFiAdapter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -610,11 +610,11 @@ pub const WiFiAdapter = extern struct {
         const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.FindAllAdaptersAsync();
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiAdapter) {
         const _f = try @This()._IWiFiAdapterStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -635,11 +635,11 @@ pub const WiFiAvailableNetwork = extern struct {
         const this: *IWiFiAvailableNetwork = @ptrCast(self);
         return try this.getUptime();
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiAvailableNetwork = @ptrCast(self);
         return try this.getSsid();
     }
-    pub fn getBssid(self: *@This()) core.HResult!HSTRING {
+    pub fn getBssid(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiAvailableNetwork = @ptrCast(self);
         return try this.getBssid();
     }
@@ -827,11 +827,11 @@ pub const WiFiOnDemandHotspotNetwork = extern struct {
 };
 pub const WiFiOnDemandHotspotNetworkProperties = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiOnDemandHotspotNetworkProperties = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWiFiOnDemandHotspotNetworkProperties = @ptrCast(self);
         return try this.putDisplayName(value);
     }
@@ -867,11 +867,11 @@ pub const WiFiOnDemandHotspotNetworkProperties = extern struct {
         const this: *IWiFiOnDemandHotspotNetworkProperties = @ptrCast(self);
         return try this.putIsMetered(value);
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiOnDemandHotspotNetworkProperties = @ptrCast(self);
         return try this.getSsid();
     }
-    pub fn putSsid(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWiFiOnDemandHotspotNetworkProperties = @ptrCast(self);
         return try this.putSsid(value);
     }

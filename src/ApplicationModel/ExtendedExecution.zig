@@ -34,11 +34,11 @@ pub const ExtendedExecutionSession = extern struct {
         const this: *IExtendedExecutionSession = @ptrCast(self);
         return try this.putReason(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IExtendedExecutionSession = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IExtendedExecutionSession = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -117,13 +117,13 @@ pub const IExtendedExecutionSession = extern struct {
         const _c = self.vtable.put_Reason(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -167,8 +167,8 @@ pub const IExtendedExecutionSession = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Reason: *const fn(self: *anyopaque, _r: *ExtendedExecutionReason) callconv(.winapi) HRESULT,
         put_Reason: *const fn(self: *anyopaque, value: ExtendedExecutionReason) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_PercentProgress: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_PercentProgress: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         add_Revoked: *const fn(self: *anyopaque, handler: *TypedEventHandler(IInspectable,ExtendedExecutionRevokedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,

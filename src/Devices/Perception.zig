@@ -1,26 +1,26 @@
 // ----- This code is automatically generated -----
 pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getFocalLength(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFocalLength(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FocalLength(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrincipalPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrincipalPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrincipalPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRadialDistortion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRadialDistortion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RadialDistortion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTangentialDistortion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTangentialDistortion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TangentialDistortion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -37,28 +37,28 @@ pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_FocalLength: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PrincipalPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RadialDistortion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TangentialDistortion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_FocalLength: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PrincipalPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RadialDistortion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TangentialDistortion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getExposure(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAutoExposureEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAutoExposureEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AutoExposureEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExposureCompensation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExposureCompensation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExposureCompensation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -75,21 +75,21 @@ pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Exposure: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AutoExposureEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ExposureCompensation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Exposure: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AutoExposureEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ExposureCompensation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getMinDepth(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMinDepth(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MinDepth(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMaxDepth(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMaxDepth(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaxDepth(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -106,38 +106,38 @@ pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MinDepth: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MaxDepth: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MinDepth: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MaxDepth: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhysicalDeviceIds(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhysicalDeviceIds(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhysicalDeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrameKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrameKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrameKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceModelVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceModelVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceModelVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEnclosureLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnclosureLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnclosureLocation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -154,17 +154,17 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PhysicalDeviceIds: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FrameKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceModelVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EnclosureLocation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PhysicalDeviceIds: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FrameKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceModelVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EnclosureLocation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -181,49 +181,49 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getExposure(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAutoExposureEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAutoExposureEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AutoExposureEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExposureCompensation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExposureCompensation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExposureCompensation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActiveIlluminationEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getActiveIlluminationEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActiveIlluminationEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAmbientSubtractionEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAmbientSubtractionEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AmbientSubtractionEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStructureLightPatternEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStructureLightPatternEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StructureLightPatternEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInterleavedIlluminationEnabled(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInterleavedIlluminationEnabled(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InterleavedIlluminationEnabled(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -240,43 +240,43 @@ pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Exposure: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AutoExposureEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ExposureCompensation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ActiveIlluminationEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AmbientSubtractionEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_StructureLightPatternEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InterleavedIlluminationEnabled: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Exposure: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AutoExposureEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ExposureCompensation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ActiveIlluminationEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AmbientSubtractionEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_StructureLightPatternEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InterleavedIlluminationEnabled: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getVideoProfile(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoProfile(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSupportedVideoProfiles(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SupportedVideoProfiles(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAvailableVideoProfiles(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AvailableVideoProfiles(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIsMirrored(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIsMirrored(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IsMirrored(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCameraIntrinsics(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCameraIntrinsics(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CameraIntrinsics(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -293,41 +293,41 @@ pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_VideoProfile: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SupportedVideoProfiles: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AvailableVideoProfiles: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IsMirrored: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CameraIntrinsics: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_VideoProfile: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedVideoProfiles: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AvailableVideoProfiles: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IsMirrored: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CameraIntrinsics: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getBitmapPixelFormat(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBitmapPixelFormat(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBitmapAlphaMode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBitmapAlphaMode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BitmapAlphaMode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWidth(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWidth(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeight(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeight(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrameDuration(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrameDuration(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FrameDuration(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -344,11 +344,11 @@ pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_BitmapPixelFormat: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BitmapAlphaMode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Width: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Height: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FrameDuration: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_BitmapPixelFormat: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BitmapAlphaMode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Width: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Height: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FrameDuration: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionColorFrame = extern struct {
@@ -510,20 +510,20 @@ pub const IPerceptionColorFrameSource = extern struct {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -546,8 +546,8 @@ pub const IPerceptionColorFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -582,19 +582,19 @@ pub const IPerceptionColorFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -606,7 +606,7 @@ pub const IPerceptionColorFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetSourceId: HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetSourceId: ?HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetSourceId, correlatedDepthFrameSource, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -646,31 +646,31 @@ pub const IPerceptionColorFrameSource = extern struct {
         remove_VideoProfileChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_CameraIntrinsicsChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_CameraIntrinsicsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Available: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Active: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsControlled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_SupportedVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_AvailableVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_VideoProfile: *const fn(self: *anyopaque, _r: **PerceptionVideoProfile) callconv(.winapi) HRESULT,
         get_CameraIntrinsics: *const fn(self: *anyopaque, _r: **CameraIntrinsics) callconv(.winapi) HRESULT,
         AcquireControlSession: *const fn(self: *anyopaque, _r: **PerceptionControlSession) callconv(.winapi) HRESULT,
-        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        TryGetTransformTo: *const fn(self: *anyopaque, targetId: HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
+        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TryGetTransformTo: *const fn(self: *anyopaque, targetId: ?HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
         TryGetDepthCorrelatedCameraIntrinsicsAsync: *const fn(self: *anyopaque, correlatedDepthFrameSource: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics)) callconv(.winapi) HRESULT,
-        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetSourceId: HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
+        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetSourceId: ?HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
         TrySetVideoProfileAsync: *const fn(self: *anyopaque, controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile, _r: **IAsyncOperation(PerceptionFrameSourcePropertyChangeResult)) callconv(.winapi) HRESULT,
         OpenReader: *const fn(self: *anyopaque, _r: **PerceptionColorFrameReader) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionColorFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -687,7 +687,7 @@ pub const IPerceptionColorFrameSource2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
@@ -750,7 +750,7 @@ pub const IPerceptionColorFrameSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
+    pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
         var _r: *IAsyncOperation(PerceptionColorFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -776,7 +776,7 @@ pub const IPerceptionColorFrameSourceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, _r: **PerceptionColorFrameSourceWatcher) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PerceptionColorFrameSource))) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(PerceptionColorFrameSource)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(PerceptionColorFrameSource)) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PerceptionFrameSourceAccessStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -873,7 +873,7 @@ pub const IPerceptionControlSession = extern struct {
         const _c = self.vtable.remove_ControlLost(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TrySetPropertyAsync(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
+    pub fn TrySetPropertyAsync(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         var _r: *IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) = undefined;
         const _c = self.vtable.TrySetPropertyAsync(@ptrCast(self), name, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -893,7 +893,7 @@ pub const IPerceptionControlSession = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         add_ControlLost: *const fn(self: *anyopaque, handler: *TypedEventHandler(PerceptionControlSession,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ControlLost: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        TrySetPropertyAsync: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, _r: **IAsyncOperation(PerceptionFrameSourcePropertyChangeResult)) callconv(.winapi) HRESULT,
+        TrySetPropertyAsync: *const fn(self: *anyopaque, name: ?HSTRING, value: *IInspectable, _r: **IAsyncOperation(PerceptionFrameSourcePropertyChangeResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
@@ -1139,20 +1139,20 @@ pub const IPerceptionDepthFrameSource = extern struct {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1175,8 +1175,8 @@ pub const IPerceptionDepthFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1211,19 +1211,19 @@ pub const IPerceptionDepthFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1235,7 +1235,7 @@ pub const IPerceptionDepthFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetId, depthFrameSourceToMapWith, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1275,31 +1275,31 @@ pub const IPerceptionDepthFrameSource = extern struct {
         remove_VideoProfileChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_CameraIntrinsicsChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_CameraIntrinsicsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Available: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Active: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsControlled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_SupportedVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_AvailableVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_VideoProfile: *const fn(self: *anyopaque, _r: **PerceptionVideoProfile) callconv(.winapi) HRESULT,
         get_CameraIntrinsics: *const fn(self: *anyopaque, _r: **CameraIntrinsics) callconv(.winapi) HRESULT,
         AcquireControlSession: *const fn(self: *anyopaque, _r: **PerceptionControlSession) callconv(.winapi) HRESULT,
-        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        TryGetTransformTo: *const fn(self: *anyopaque, targetId: HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
+        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TryGetTransformTo: *const fn(self: *anyopaque, targetId: ?HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
         TryGetDepthCorrelatedCameraIntrinsicsAsync: *const fn(self: *anyopaque, target: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics)) callconv(.winapi) HRESULT,
-        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
+        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
         TrySetVideoProfileAsync: *const fn(self: *anyopaque, controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile, _r: **IAsyncOperation(PerceptionFrameSourcePropertyChangeResult)) callconv(.winapi) HRESULT,
         OpenReader: *const fn(self: *anyopaque, _r: **PerceptionDepthFrameReader) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionDepthFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1316,7 +1316,7 @@ pub const IPerceptionDepthFrameSource2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
@@ -1379,7 +1379,7 @@ pub const IPerceptionDepthFrameSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
+    pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
         var _r: *IAsyncOperation(PerceptionDepthFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1405,7 +1405,7 @@ pub const IPerceptionDepthFrameSourceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, _r: **PerceptionDepthFrameSourceWatcher) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PerceptionDepthFrameSource))) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(PerceptionDepthFrameSource)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(PerceptionDepthFrameSource)) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PerceptionFrameSourceAccessStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -1498,8 +1498,8 @@ pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKey(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKey(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1517,7 +1517,7 @@ pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_CollectionChange: *const fn(self: *anyopaque, _r: *CollectionChange) callconv(.winapi) HRESULT,
-        get_Key: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Key: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
@@ -1709,20 +1709,20 @@ pub const IPerceptionInfraredFrameSource = extern struct {
         const _c = self.vtable.remove_CameraIntrinsicsChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1745,8 +1745,8 @@ pub const IPerceptionInfraredFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1781,19 +1781,19 @@ pub const IPerceptionInfraredFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanControlIndependentlyFrom(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCorrelatedWith(@ptrCast(self), targetId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), targetId, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1805,7 +1805,7 @@ pub const IPerceptionInfraredFrameSource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         var _r: *IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) = undefined;
         const _c = self.vtable.TryGetDepthCorrelatedCoordinateMapperAsync(@ptrCast(self), targetId, depthFrameSourceToMapWith, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1845,31 +1845,31 @@ pub const IPerceptionInfraredFrameSource = extern struct {
         remove_VideoProfileChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_CameraIntrinsicsChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_CameraIntrinsicsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceKind: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceKind: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Available: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Active: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsControlled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         get_SupportedVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_AvailableVideoProfiles: *const fn(self: *anyopaque, _r: **IVectorView(PerceptionVideoProfile)) callconv(.winapi) HRESULT,
         get_VideoProfile: *const fn(self: *anyopaque, _r: **PerceptionVideoProfile) callconv(.winapi) HRESULT,
         get_CameraIntrinsics: *const fn(self: *anyopaque, _r: **CameraIntrinsics) callconv(.winapi) HRESULT,
         AcquireControlSession: *const fn(self: *anyopaque, _r: **PerceptionControlSession) callconv(.winapi) HRESULT,
-        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        TryGetTransformTo: *const fn(self: *anyopaque, targetId: HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
+        CanControlIndependentlyFrom: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsCorrelatedWith: *const fn(self: *anyopaque, targetId: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TryGetTransformTo: *const fn(self: *anyopaque, targetId: ?HSTRING, result: Matrix4x4, _r: *bool) callconv(.winapi) HRESULT,
         TryGetDepthCorrelatedCameraIntrinsicsAsync: *const fn(self: *anyopaque, target: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCameraIntrinsics)) callconv(.winapi) HRESULT,
-        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
+        TryGetDepthCorrelatedCoordinateMapperAsync: *const fn(self: *anyopaque, targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource, _r: **IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper)) callconv(.winapi) HRESULT,
         TrySetVideoProfileAsync: *const fn(self: *anyopaque, controlSession: *PerceptionControlSession, profile: *PerceptionVideoProfile, _r: **IAsyncOperation(PerceptionFrameSourcePropertyChangeResult)) callconv(.winapi) HRESULT,
         OpenReader: *const fn(self: *anyopaque, _r: **PerceptionInfraredFrameReader) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionInfraredFrameSource2 = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1886,7 +1886,7 @@ pub const IPerceptionInfraredFrameSource2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
@@ -1949,7 +1949,7 @@ pub const IPerceptionInfraredFrameSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
+    pub fn FromIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
         var _r: *IAsyncOperation(PerceptionInfraredFrameSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1975,7 +1975,7 @@ pub const IPerceptionInfraredFrameSourceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, _r: **PerceptionInfraredFrameSourceWatcher) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(PerceptionInfraredFrameSource))) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(PerceptionInfraredFrameSource)) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, id: ?HSTRING, _r: **IAsyncOperation(PerceptionInfraredFrameSource)) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PerceptionFrameSourceAccessStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -2123,19 +2123,19 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFocalLength() core.HResult!HSTRING {
+    pub fn getFocalLength() core.HResult!?HSTRING {
         const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getFocalLength();
     }
-    pub fn getPrincipalPoint() core.HResult!HSTRING {
+    pub fn getPrincipalPoint() core.HResult!?HSTRING {
         const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getPrincipalPoint();
     }
-    pub fn getRadialDistortion() core.HResult!HSTRING {
+    pub fn getRadialDistortion() core.HResult!?HSTRING {
         const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getRadialDistortion();
     }
-    pub fn getTangentialDistortion() core.HResult!HSTRING {
+    pub fn getTangentialDistortion() core.HResult!?HSTRING {
         const _f = try @This()._IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try _f.getTangentialDistortion();
     }
@@ -2148,15 +2148,15 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExposure() core.HResult!HSTRING {
+    pub fn getExposure() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposure();
     }
-    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+    pub fn getAutoExposureEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getAutoExposureEnabled();
     }
-    pub fn getExposureCompensation() core.HResult!HSTRING {
+    pub fn getExposureCompensation() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposureCompensation();
     }
@@ -2169,11 +2169,11 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMinDepth() core.HResult!HSTRING {
+    pub fn getMinDepth() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try _f.getMinDepth();
     }
-    pub fn getMaxDepth() core.HResult!HSTRING {
+    pub fn getMaxDepth() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try _f.getMaxDepth();
     }
@@ -2186,27 +2186,27 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDeviceId() core.HResult!HSTRING {
+    pub fn getDeviceId() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
         return try _f.getDeviceId();
     }
-    pub fn getId() core.HResult!HSTRING {
+    pub fn getId() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getId();
     }
-    pub fn getPhysicalDeviceIds() core.HResult!HSTRING {
+    pub fn getPhysicalDeviceIds() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getPhysicalDeviceIds();
     }
-    pub fn getFrameKind() core.HResult!HSTRING {
+    pub fn getFrameKind() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getFrameKind();
     }
-    pub fn getDeviceModelVersion() core.HResult!HSTRING {
+    pub fn getDeviceModelVersion() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getDeviceModelVersion();
     }
-    pub fn getEnclosureLocation() core.HResult!HSTRING {
+    pub fn getEnclosureLocation() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try _f.getEnclosureLocation();
     }
@@ -2220,31 +2220,31 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExposure() core.HResult!HSTRING {
+    pub fn getExposure() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposure();
     }
-    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+    pub fn getAutoExposureEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getAutoExposureEnabled();
     }
-    pub fn getExposureCompensation() core.HResult!HSTRING {
+    pub fn getExposureCompensation() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getExposureCompensation();
     }
-    pub fn getActiveIlluminationEnabled() core.HResult!HSTRING {
+    pub fn getActiveIlluminationEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getActiveIlluminationEnabled();
     }
-    pub fn getAmbientSubtractionEnabled() core.HResult!HSTRING {
+    pub fn getAmbientSubtractionEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getAmbientSubtractionEnabled();
     }
-    pub fn getStructureLightPatternEnabled() core.HResult!HSTRING {
+    pub fn getStructureLightPatternEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getStructureLightPatternEnabled();
     }
-    pub fn getInterleavedIlluminationEnabled() core.HResult!HSTRING {
+    pub fn getInterleavedIlluminationEnabled() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try _f.getInterleavedIlluminationEnabled();
     }
@@ -2257,23 +2257,23 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getVideoProfile() core.HResult!HSTRING {
+    pub fn getVideoProfile() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getVideoProfile();
     }
-    pub fn getSupportedVideoProfiles() core.HResult!HSTRING {
+    pub fn getSupportedVideoProfiles() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getSupportedVideoProfiles();
     }
-    pub fn getAvailableVideoProfiles() core.HResult!HSTRING {
+    pub fn getAvailableVideoProfiles() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getAvailableVideoProfiles();
     }
-    pub fn getIsMirrored() core.HResult!HSTRING {
+    pub fn getIsMirrored() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getIsMirrored();
     }
-    pub fn getCameraIntrinsics() core.HResult!HSTRING {
+    pub fn getCameraIntrinsics() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try _f.getCameraIntrinsics();
     }
@@ -2286,23 +2286,23 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBitmapPixelFormat() core.HResult!HSTRING {
+    pub fn getBitmapPixelFormat() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getBitmapPixelFormat();
     }
-    pub fn getBitmapAlphaMode() core.HResult!HSTRING {
+    pub fn getBitmapAlphaMode() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getBitmapAlphaMode();
     }
-    pub fn getWidth() core.HResult!HSTRING {
+    pub fn getWidth() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getWidth();
     }
-    pub fn getHeight() core.HResult!HSTRING {
+    pub fn getHeight() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getHeight();
     }
-    pub fn getFrameDuration() core.HResult!HSTRING {
+    pub fn getFrameDuration() core.HResult!?HSTRING {
         const _f = try @This()._IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try _f.getFrameDuration();
     }
@@ -2424,15 +2424,15 @@ pub const PerceptionColorFrameSource = extern struct {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.removeCameraIntrinsicsChanged(token);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.getDeviceKind();
     }
@@ -2448,7 +2448,7 @@ pub const PerceptionColorFrameSource = extern struct {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.getIsControlled();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.getProperties();
     }
@@ -2472,15 +2472,15 @@ pub const PerceptionColorFrameSource = extern struct {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.AcquireControlSession();
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.CanControlIndependentlyFrom(targetId);
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.IsCorrelatedWith(targetId);
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.TryGetTransformTo(targetId, result);
     }
@@ -2488,7 +2488,7 @@ pub const PerceptionColorFrameSource = extern struct {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCameraIntrinsicsAsync(correlatedDepthFrameSource);
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetSourceId: HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetSourceId: ?HSTRING, correlatedDepthFrameSource: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCoordinateMapperAsync(targetSourceId, correlatedDepthFrameSource);
     }
@@ -2500,7 +2500,7 @@ pub const PerceptionColorFrameSource = extern struct {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.OpenReader();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionColorFrameSource2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionColorFrameSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2517,7 +2517,7 @@ pub const PerceptionColorFrameSource = extern struct {
         const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
+    pub fn FromIdAsync(id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
         const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
@@ -2618,7 +2618,7 @@ pub const PerceptionControlSession = extern struct {
         const this: *IPerceptionControlSession = @ptrCast(self);
         return try this.removeControlLost(token);
     }
-    pub fn TrySetPropertyAsync(self: *@This(), name: HSTRING, value: *IInspectable) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
+    pub fn TrySetPropertyAsync(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!*IAsyncOperation(PerceptionFrameSourcePropertyChangeResult) {
         const this: *IPerceptionControlSession = @ptrCast(self);
         return try this.TrySetPropertyAsync(name, value);
     }
@@ -2796,15 +2796,15 @@ pub const PerceptionDepthFrameSource = extern struct {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.removeCameraIntrinsicsChanged(token);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.getDeviceKind();
     }
@@ -2820,7 +2820,7 @@ pub const PerceptionDepthFrameSource = extern struct {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.getIsControlled();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.getProperties();
     }
@@ -2844,15 +2844,15 @@ pub const PerceptionDepthFrameSource = extern struct {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.AcquireControlSession();
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.CanControlIndependentlyFrom(targetId);
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.IsCorrelatedWith(targetId);
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.TryGetTransformTo(targetId, result);
     }
@@ -2860,7 +2860,7 @@ pub const PerceptionDepthFrameSource = extern struct {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCameraIntrinsicsAsync(target);
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCoordinateMapperAsync(targetId, depthFrameSourceToMapWith);
     }
@@ -2872,7 +2872,7 @@ pub const PerceptionDepthFrameSource = extern struct {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.OpenReader();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionDepthFrameSource2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionDepthFrameSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2889,7 +2889,7 @@ pub const PerceptionDepthFrameSource = extern struct {
         const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
+    pub fn FromIdAsync(id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
         const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }
@@ -2992,7 +2992,7 @@ pub const PerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
         const this: *IPerceptionFrameSourcePropertiesChangedEventArgs = @ptrCast(self);
         return try this.getCollectionChange();
     }
-    pub fn getKey(self: *@This()) core.HResult!HSTRING {
+    pub fn getKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameSourcePropertiesChangedEventArgs = @ptrCast(self);
         return try this.getKey();
     }
@@ -3140,15 +3140,15 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.removeCameraIntrinsicsChanged(token);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDeviceKind(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceKind(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.getDeviceKind();
     }
@@ -3164,7 +3164,7 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.getIsControlled();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.getProperties();
     }
@@ -3188,15 +3188,15 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.AcquireControlSession();
     }
-    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn CanControlIndependentlyFrom(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.CanControlIndependentlyFrom(targetId);
     }
-    pub fn IsCorrelatedWith(self: *@This(), targetId: HSTRING) core.HResult!bool {
+    pub fn IsCorrelatedWith(self: *@This(), targetId: ?HSTRING) core.HResult!bool {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.IsCorrelatedWith(targetId);
     }
-    pub fn TryGetTransformTo(self: *@This(), targetId: HSTRING, result: Matrix4x4) core.HResult!bool {
+    pub fn TryGetTransformTo(self: *@This(), targetId: ?HSTRING, result: Matrix4x4) core.HResult!bool {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.TryGetTransformTo(targetId, result);
     }
@@ -3204,7 +3204,7 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCameraIntrinsicsAsync(target);
     }
-    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
+    pub fn TryGetDepthCorrelatedCoordinateMapperAsync(self: *@This(), targetId: ?HSTRING, depthFrameSourceToMapWith: *PerceptionDepthFrameSource) core.HResult!*IAsyncOperation(PerceptionDepthCorrelatedCoordinateMapper) {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.TryGetDepthCorrelatedCoordinateMapperAsync(targetId, depthFrameSourceToMapWith);
     }
@@ -3216,7 +3216,7 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.OpenReader();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPerceptionInfraredFrameSource2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionInfraredFrameSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3233,7 +3233,7 @@ pub const PerceptionInfraredFrameSource = extern struct {
         const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.FindAllAsync();
     }
-    pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
+    pub fn FromIdAsync(id: ?HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
         const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.FromIdAsync(id);
     }

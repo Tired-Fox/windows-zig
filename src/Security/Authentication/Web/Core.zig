@@ -173,8 +173,8 @@ pub const IWebAuthenticationAddAccountResponse = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -192,7 +192,7 @@ pub const IWebAuthenticationAddAccountResponse = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_WebAccount: *const fn(self: *anyopaque, _r: **WebAccount) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationAddAccountResponseFactory = extern struct {
@@ -281,19 +281,19 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAccountAsync(self: *@This(), provider: *WebAccountProvider, webAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn FindAccountAsync(self: *@This(), provider: *WebAccountProvider, webAccountId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
         const _c = self.vtable.FindAccountAsync(@ptrCast(self), provider, webAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindAccountProviderAsync(@ptrCast(self), webAccountProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: ?HSTRING, authority: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindAccountProviderAsyncWithAuthority(@ptrCast(self), webAccountProviderId, authority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -315,14 +315,14 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         GetTokenSilentlyAsyncWithWebAccount: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
         RequestTokenAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
         RequestTokenAsyncWithWebAccount: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
-        FindAccountAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, webAccountId: HSTRING, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
-        FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindAccountAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, webAccountId: ?HSTRING, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
+        FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, authority: ?HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindAccountProviderAsync(@ptrCast(self), webAccountProviderId, authority, user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -340,7 +340,7 @@ pub const IWebAuthenticationCoreManagerStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerStatics3 = extern struct {
@@ -374,25 +374,25 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAccountsAsyncWithClientId(self: *@This(), provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
+    pub fn FindAllAccountsAsyncWithClientId(self: *@This(), provider: *WebAccountProvider, clientId: ?HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
         var _r: *IAsyncOperation(FindAllAccountsResult) = undefined;
         const _c = self.vtable.FindAllAccountsAsyncWithClientId(@ptrCast(self), provider, clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindSystemAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsync(self: *@This(), webAccountProviderId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindSystemAccountProviderAsync(@ptrCast(self), webAccountProviderId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindSystemAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: ?HSTRING, authority: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindSystemAccountProviderAsyncWithAuthority(@ptrCast(self), webAccountProviderId, authority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindSystemAccountProviderAsyncWithAuthorityAndUser(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthorityAndUser(self: *@This(), webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindSystemAccountProviderAsyncWithAuthorityAndUser(@ptrCast(self), webAccountProviderId, authority, user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -411,10 +411,10 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAccountsAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
-        FindAllAccountsAsyncWithClientId: *const fn(self: *anyopaque, provider: *WebAccountProvider, clientId: HSTRING, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
-        FindSystemAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindSystemAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindSystemAccountProviderAsyncWithAuthorityAndUser: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindAllAccountsAsyncWithClientId: *const fn(self: *anyopaque, provider: *WebAccountProvider, clientId: ?HSTRING, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
+        FindSystemAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindSystemAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, authority: ?HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindSystemAccountProviderAsyncWithAuthorityAndUser: *const fn(self: *anyopaque, webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerStatics5 = extern struct {
@@ -448,29 +448,29 @@ pub const IWebAuthenticationTransferTokenRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTransferToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTransferToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransferToken(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTransferToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransferToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TransferToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCorrelationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCorrelationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CorrelationId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -487,22 +487,22 @@ pub const IWebAuthenticationTransferTokenRequest = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_WebAccountProvider: *const fn(self: *anyopaque, _r: **WebAccountProvider) callconv(.winapi) HRESULT,
-        get_TransferToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TransferToken: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
-        get_CorrelationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CorrelationId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TransferToken: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TransferToken: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
+        get_CorrelationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CorrelationId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationTransferTokenRequestFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), provider: *WebAccountProvider, transferToken: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
+    pub fn Create(self: *@This(), provider: *WebAccountProvider, transferToken: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         var _r: *WebAuthenticationTransferTokenRequest = undefined;
         const _c = self.vtable.Create(@ptrCast(self), provider, transferToken, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithCorrelationId(self: *@This(), provider: *WebAccountProvider, transferToken: HSTRING, correlationId: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
+    pub fn CreateWithCorrelationId(self: *@This(), provider: *WebAccountProvider, transferToken: ?HSTRING, correlationId: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         var _r: *WebAuthenticationTransferTokenRequest = undefined;
         const _c = self.vtable.CreateWithCorrelationId(@ptrCast(self), provider, transferToken, correlationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -520,8 +520,8 @@ pub const IWebAuthenticationTransferTokenRequestFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, provider: *WebAccountProvider, transferToken: HSTRING, _r: **WebAuthenticationTransferTokenRequest) callconv(.winapi) HRESULT,
-        CreateWithCorrelationId: *const fn(self: *anyopaque, provider: *WebAccountProvider, transferToken: HSTRING, correlationId: HSTRING, _r: **WebAuthenticationTransferTokenRequest) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, provider: *WebAccountProvider, transferToken: ?HSTRING, _r: **WebAuthenticationTransferTokenRequest) callconv(.winapi) HRESULT,
+        CreateWithCorrelationId: *const fn(self: *anyopaque, provider: *WebAccountProvider, transferToken: ?HSTRING, correlationId: ?HSTRING, _r: **WebAuthenticationTransferTokenRequest) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebProviderError = extern struct {
@@ -532,14 +532,14 @@ pub const IWebProviderError = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -557,13 +557,13 @@ pub const IWebProviderError = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ErrorCode: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_ErrorMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_ErrorMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebProviderErrorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), errorCode: u32, errorMessage: HSTRING) core.HResult!*WebProviderError {
+    pub fn Create(self: *@This(), errorCode: u32, errorMessage: ?HSTRING) core.HResult!*WebProviderError {
         var _r: *WebProviderError = undefined;
         const _c = self.vtable.Create(@ptrCast(self), errorCode, errorMessage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -581,7 +581,7 @@ pub const IWebProviderErrorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, errorCode: u32, errorMessage: HSTRING, _r: **WebProviderError) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, errorCode: u32, errorMessage: ?HSTRING, _r: **WebProviderError) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenRequest = extern struct {
@@ -592,14 +592,14 @@ pub const IWebTokenRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getScope(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getScope(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Scope(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getClientId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClientId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClientId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -610,8 +610,8 @@ pub const IWebTokenRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -629,16 +629,16 @@ pub const IWebTokenRequest = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_WebAccountProvider: *const fn(self: *anyopaque, _r: **WebAccountProvider) callconv(.winapi) HRESULT,
-        get_Scope: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ClientId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Scope: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ClientId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PromptType: *const fn(self: *anyopaque, _r: *WebTokenRequestPromptType) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenRequest2 = extern struct {
     vtable: *const VTable,
-    pub fn getAppProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getAppProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_AppProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -655,18 +655,18 @@ pub const IWebTokenRequest2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppProperties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_AppProperties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenRequest3 = extern struct {
     vtable: *const VTable,
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCorrelationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCorrelationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CorrelationId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -682,19 +682,19 @@ pub const IWebTokenRequest3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CorrelationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CorrelationId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CorrelationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CorrelationId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenRequestFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING) core.HResult!*WebTokenRequest {
+    pub fn Create(self: *@This(), provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING) core.HResult!*WebTokenRequest {
         var _r: *WebTokenRequest = undefined;
         const _c = self.vtable.Create(@ptrCast(self), provider, scope, clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithPromptType(self: *@This(), provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING, promptType: WebTokenRequestPromptType) core.HResult!*WebTokenRequest {
+    pub fn CreateWithPromptType(self: *@This(), provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING, promptType: WebTokenRequestPromptType) core.HResult!*WebTokenRequest {
         var _r: *WebTokenRequest = undefined;
         const _c = self.vtable.CreateWithPromptType(@ptrCast(self), provider, scope, clientId, promptType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -706,7 +706,7 @@ pub const IWebTokenRequestFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithScope(self: *@This(), provider: *WebAccountProvider, scope: HSTRING) core.HResult!*WebTokenRequest {
+    pub fn CreateWithScope(self: *@This(), provider: *WebAccountProvider, scope: ?HSTRING) core.HResult!*WebTokenRequest {
         var _r: *WebTokenRequest = undefined;
         const _c = self.vtable.CreateWithScope(@ptrCast(self), provider, scope, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -724,10 +724,10 @@ pub const IWebTokenRequestFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
-        CreateWithPromptType: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING, promptType: WebTokenRequestPromptType, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
+        CreateWithPromptType: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING, promptType: WebTokenRequestPromptType, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
         CreateWithProvider: *const fn(self: *anyopaque, provider: *WebAccountProvider, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
-        CreateWithScope: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: HSTRING, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
+        CreateWithScope: *const fn(self: *anyopaque, provider: *WebAccountProvider, scope: ?HSTRING, _r: **WebTokenRequest) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenRequestResult = extern struct {
@@ -776,8 +776,8 @@ pub const IWebTokenRequestResult = extern struct {
 };
 pub const IWebTokenResponse = extern struct {
     vtable: *const VTable,
-    pub fn getToken(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getToken(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Token(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -794,8 +794,8 @@ pub const IWebTokenResponse = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -812,27 +812,27 @@ pub const IWebTokenResponse = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Token: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Token: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ProviderError: *const fn(self: *anyopaque, _r: **WebProviderError) callconv(.winapi) HRESULT,
         get_WebAccount: *const fn(self: *anyopaque, _r: **WebAccount) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebTokenResponseFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithToken(self: *@This(), token: HSTRING) core.HResult!*WebTokenResponse {
+    pub fn CreateWithToken(self: *@This(), token: ?HSTRING) core.HResult!*WebTokenResponse {
         var _r: *WebTokenResponse = undefined;
         const _c = self.vtable.CreateWithToken(@ptrCast(self), token, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTokenAndAccount(self: *@This(), token: HSTRING, webAccount: *WebAccount) core.HResult!*WebTokenResponse {
+    pub fn CreateWithTokenAndAccount(self: *@This(), token: ?HSTRING, webAccount: *WebAccount) core.HResult!*WebTokenResponse {
         var _r: *WebTokenResponse = undefined;
         const _c = self.vtable.CreateWithTokenAndAccount(@ptrCast(self), token, webAccount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTokenAccountAndError(self: *@This(), token: HSTRING, webAccount: *WebAccount, err: *WebProviderError) core.HResult!*WebTokenResponse {
+    pub fn CreateWithTokenAccountAndError(self: *@This(), token: ?HSTRING, webAccount: *WebAccount, err: *WebProviderError) core.HResult!*WebTokenResponse {
         var _r: *WebTokenResponse = undefined;
         const _c = self.vtable.CreateWithTokenAccountAndError(@ptrCast(self), token, webAccount, err, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -850,9 +850,9 @@ pub const IWebTokenResponseFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithToken: *const fn(self: *anyopaque, token: HSTRING, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
-        CreateWithTokenAndAccount: *const fn(self: *anyopaque, token: HSTRING, webAccount: *WebAccount, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
-        CreateWithTokenAccountAndError: *const fn(self: *anyopaque, token: HSTRING, webAccount: *WebAccount, err: *WebProviderError, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
+        CreateWithToken: *const fn(self: *anyopaque, token: ?HSTRING, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
+        CreateWithTokenAndAccount: *const fn(self: *anyopaque, token: ?HSTRING, webAccount: *WebAccount, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
+        CreateWithTokenAccountAndError: *const fn(self: *anyopaque, token: ?HSTRING, webAccount: *WebAccount, err: *WebProviderError, _r: **WebTokenResponse) callconv(.winapi) HRESULT,
     };
 };
 pub const WebAccountEventArgs = extern struct {
@@ -917,7 +917,7 @@ pub const WebAuthenticationAddAccountResponse = extern struct {
         const this: *IWebAuthenticationAddAccountResponse = @ptrCast(self);
         return try this.getWebAccount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebAuthenticationAddAccountResponse = @ptrCast(self);
         return try this.getProperties();
     }
@@ -975,23 +975,23 @@ pub const WebAuthenticationCoreManager = extern struct {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindAllAccountsAsync(provider);
     }
-    pub fn FindAllAccountsAsyncWithClientId(provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
+    pub fn FindAllAccountsAsyncWithClientId(provider: *WebAccountProvider, clientId: ?HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindAllAccountsAsyncWithClientId(provider, clientId);
     }
-    pub fn FindSystemAccountProviderAsync(webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsync(webAccountProviderId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsync(webAccountProviderId);
     }
-    pub fn FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId: ?HSTRING, authority: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
-    pub fn FindSystemAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics4Cache.get();
         return try _f.FindSystemAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId, authority, user);
     }
-    pub fn FindAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthorityAndUser(webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStatics2Cache.get();
         return try _f.FindAccountProviderAsync(webAccountProviderId, authority, user);
     }
@@ -1011,15 +1011,15 @@ pub const WebAuthenticationCoreManager = extern struct {
         const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.RequestTokenAsyncWithWebAccount(request, webAccount);
     }
-    pub fn FindAccountAsync(provider: *WebAccountProvider, webAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn FindAccountAsync(provider: *WebAccountProvider, webAccountId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountAsync(provider, webAccountId);
     }
-    pub fn FindAccountProviderAsync(webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsync(webAccountProviderId: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountProviderAsync(webAccountProviderId);
     }
-    pub fn FindAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthority(webAccountProviderId: ?HSTRING, authority: ?HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const _f = try @This()._IWebAuthenticationCoreManagerStaticsCache.get();
         return try _f.FindAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
@@ -1041,34 +1041,34 @@ pub const WebAuthenticationTransferTokenRequest = extern struct {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.getWebAccountProvider();
     }
-    pub fn getTransferToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getTransferToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.getTransferToken();
     }
-    pub fn putTransferToken(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTransferToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.putTransferToken(value);
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.getCorrelationId();
     }
-    pub fn putCorrelationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCorrelationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.putCorrelationId(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(provider: *WebAccountProvider, transferToken: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
+    pub fn Create(provider: *WebAccountProvider, transferToken: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         const _f = try @This()._IWebAuthenticationTransferTokenRequestFactoryCache.get();
         return try _f.Create(provider, transferToken);
     }
-    pub fn CreateWithCorrelationId(provider: *WebAccountProvider, transferToken: HSTRING, correlationId: HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
+    pub fn CreateWithCorrelationId(provider: *WebAccountProvider, transferToken: ?HSTRING, correlationId: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         const _f = try @This()._IWebAuthenticationTransferTokenRequestFactoryCache.get();
         return try _f.CreateWithCorrelationId(provider, transferToken, correlationId);
     }
@@ -1085,18 +1085,18 @@ pub const WebProviderError = extern struct {
         const this: *IWebProviderError = @ptrCast(self);
         return try this.getErrorCode();
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebProviderError = @ptrCast(self);
         return try this.getErrorMessage();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebProviderError = @ptrCast(self);
         return try this.getProperties();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(errorCode: u32, errorMessage: HSTRING) core.HResult!*WebProviderError {
+    pub fn Create(errorCode: u32, errorMessage: ?HSTRING) core.HResult!*WebProviderError {
         const _f = try @This()._IWebProviderErrorFactoryCache.get();
         return try _f.Create(errorCode, errorMessage);
     }
@@ -1113,11 +1113,11 @@ pub const WebTokenRequest = extern struct {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getWebAccountProvider();
     }
-    pub fn getScope(self: *@This()) core.HResult!HSTRING {
+    pub fn getScope(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getScope();
     }
-    pub fn getClientId(self: *@This()) core.HResult!HSTRING {
+    pub fn getClientId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getClientId();
     }
@@ -1125,23 +1125,23 @@ pub const WebTokenRequest = extern struct {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getPromptType();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn getAppProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getAppProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var this: ?*IWebTokenRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppProperties();
     }
-    pub fn getCorrelationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebTokenRequest3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCorrelationId();
     }
-    pub fn putCorrelationId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCorrelationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IWebTokenRequest3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1150,11 +1150,11 @@ pub const WebTokenRequest = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING) core.HResult!*WebTokenRequest {
+    pub fn Create(provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING) core.HResult!*WebTokenRequest {
         const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.Create(provider, scope, clientId);
     }
-    pub fn CreateWithPromptType(provider: *WebAccountProvider, scope: HSTRING, clientId: HSTRING, promptType: WebTokenRequestPromptType) core.HResult!*WebTokenRequest {
+    pub fn CreateWithPromptType(provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING, promptType: WebTokenRequestPromptType) core.HResult!*WebTokenRequest {
         const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithPromptType(provider, scope, clientId, promptType);
     }
@@ -1162,7 +1162,7 @@ pub const WebTokenRequest = extern struct {
         const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithProvider(provider);
     }
-    pub fn CreateWithScope(provider: *WebAccountProvider, scope: HSTRING) core.HResult!*WebTokenRequest {
+    pub fn CreateWithScope(provider: *WebAccountProvider, scope: ?HSTRING) core.HResult!*WebTokenRequest {
         const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.CreateWithScope(provider, scope);
     }
@@ -1211,7 +1211,7 @@ pub const WebTokenRequestStatus = enum(i32) {
 };
 pub const WebTokenResponse = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getToken(self: *@This()) core.HResult!HSTRING {
+    pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebTokenResponse = @ptrCast(self);
         return try this.getToken();
     }
@@ -1223,7 +1223,7 @@ pub const WebTokenResponse = extern struct {
         const this: *IWebTokenResponse = @ptrCast(self);
         return try this.getWebAccount();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebTokenResponse = @ptrCast(self);
         return try this.getProperties();
     }
@@ -1234,15 +1234,15 @@ pub const WebTokenResponse = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWebTokenResponse.IID)));
     }
-    pub fn CreateWithToken(token: HSTRING) core.HResult!*WebTokenResponse {
+    pub fn CreateWithToken(token: ?HSTRING) core.HResult!*WebTokenResponse {
         const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithToken(token);
     }
-    pub fn CreateWithTokenAndAccount(token: HSTRING, webAccount: *WebAccount) core.HResult!*WebTokenResponse {
+    pub fn CreateWithTokenAndAccount(token: ?HSTRING, webAccount: *WebAccount) core.HResult!*WebTokenResponse {
         const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithTokenAndAccount(token, webAccount);
     }
-    pub fn CreateWithTokenAccountAndError(token: HSTRING, webAccount: *WebAccount, err: *WebProviderError) core.HResult!*WebTokenResponse {
+    pub fn CreateWithTokenAccountAndError(token: ?HSTRING, webAccount: *WebAccount, err: *WebProviderError) core.HResult!*WebTokenResponse {
         const _f = try @This()._IWebTokenResponseFactoryCache.get();
         return try _f.CreateWithTokenAccountAndError(token, webAccount, err);
     }

@@ -10,7 +10,7 @@ pub const ColorHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ToDisplayName(color: Color) core.HResult!HSTRING {
+    pub fn ToDisplayName(color: Color) core.HResult!?HSTRING {
         const _f = try @This()._IColorHelperStatics2Cache.get();
         return try _f.ToDisplayName(color);
     }
@@ -643,8 +643,8 @@ pub const IColorHelperStatics = extern struct {
 };
 pub const IColorHelperStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn ToDisplayName(self: *@This(), color: Color) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ToDisplayName(self: *@This(), color: Color) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToDisplayName(@ptrCast(self), color, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -661,7 +661,7 @@ pub const IColorHelperStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ToDisplayName: *const fn(self: *anyopaque, color: Color, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ToDisplayName: *const fn(self: *anyopaque, color: Color, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IColors = extern struct {

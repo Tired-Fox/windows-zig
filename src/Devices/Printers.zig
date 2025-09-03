@@ -24,14 +24,14 @@ pub const IPrint3DDevice = extern struct {
 };
 pub const IPrint3DDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
         var _r: *IAsyncOperation(Print3DDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -48,8 +48,8 @@ pub const IPrint3DDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(Print3DDevice)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(Print3DDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintSchema = extern struct {
@@ -98,11 +98,11 @@ pub const Print3DDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
         const _f = try @This()._IPrint3DDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IPrint3DDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
@@ -220,8 +220,8 @@ pub const IIppAttributeValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCollectionArray(self: *@This()) core.HResult!*IVector(IMapView(HSTRING,IppAttributeValue)) {
-        var _r: *IVector(IMapView(HSTRING,IppAttributeValue)) = undefined;
+    pub fn GetCollectionArray(self: *@This()) core.HResult!*IVector(IMapView(?HSTRING,IppAttributeValue)) {
+        var _r: *IVector(IMapView(?HSTRING,IppAttributeValue)) = undefined;
         const _c = self.vtable.GetCollectionArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -238,20 +238,20 @@ pub const IIppAttributeValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTextWithoutLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetTextWithoutLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetTextWithoutLanguageArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNameWithoutLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetNameWithoutLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetNameWithoutLanguageArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetKeywordArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetKeywordArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetKeywordArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -262,26 +262,26 @@ pub const IIppAttributeValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetUriSchemaArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetUriSchemaArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetUriSchemaArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCharsetArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetCharsetArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetCharsetArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNaturalLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetNaturalLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetNaturalLanguageArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMimeMediaTypeArray(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetMimeMediaTypeArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetMimeMediaTypeArray(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -306,17 +306,17 @@ pub const IIppAttributeValue = extern struct {
         GetDateTimeArray: *const fn(self: *anyopaque, _r: **IVector(DateTime)) callconv(.winapi) HRESULT,
         GetResolutionArray: *const fn(self: *anyopaque, _r: **IVector(IppResolution)) callconv(.winapi) HRESULT,
         GetRangeOfIntegerArray: *const fn(self: *anyopaque, _r: **IVector(IppIntegerRange)) callconv(.winapi) HRESULT,
-        GetCollectionArray: *const fn(self: *anyopaque, _r: **IVector(IMapView(HSTRING,IppAttributeValue))) callconv(.winapi) HRESULT,
+        GetCollectionArray: *const fn(self: *anyopaque, _r: **IVector(IMapView(?HSTRING,IppAttributeValue))) callconv(.winapi) HRESULT,
         GetTextWithLanguageArray: *const fn(self: *anyopaque, _r: **IVector(IppTextWithLanguage)) callconv(.winapi) HRESULT,
         GetNameWithLanguageArray: *const fn(self: *anyopaque, _r: **IVector(IppTextWithLanguage)) callconv(.winapi) HRESULT,
-        GetTextWithoutLanguageArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        GetNameWithoutLanguageArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        GetKeywordArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        GetTextWithoutLanguageArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        GetNameWithoutLanguageArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        GetKeywordArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         GetUriArray: *const fn(self: *anyopaque, _r: **IVector(Uri)) callconv(.winapi) HRESULT,
-        GetUriSchemaArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        GetCharsetArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        GetNaturalLanguageArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        GetMimeMediaTypeArray: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        GetUriSchemaArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        GetCharsetArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        GetNaturalLanguageArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        GetMimeMediaTypeArray: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppAttributeValueStatics = extern struct {
@@ -423,13 +423,13 @@ pub const IIppAttributeValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCollection(self: *@This(), memberAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppAttributeValue {
+    pub fn CreateCollection(self: *@This(), memberAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateCollection(@ptrCast(self), memberAttributes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCollectionArray(self: *@This(), memberAttributesArray: *IIterable(IIterable(IKeyValuePair(HSTRING,IppAttributeValue)))) core.HResult!*IppAttributeValue {
+    pub fn CreateCollectionArray(self: *@This(), memberAttributesArray: *IIterable(IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)))) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateCollectionArray(@ptrCast(self), memberAttributesArray, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -459,37 +459,37 @@ pub const IIppAttributeValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextWithoutLanguage(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateTextWithoutLanguage(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateTextWithoutLanguage(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextWithoutLanguageArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateTextWithoutLanguageArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateTextWithoutLanguageArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNameWithoutLanguage(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateNameWithoutLanguage(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateNameWithoutLanguage(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNameWithoutLanguageArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateNameWithoutLanguageArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateNameWithoutLanguageArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateKeyword(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateKeyword(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateKeyword(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateKeywordArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateKeywordArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateKeywordArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -507,49 +507,49 @@ pub const IIppAttributeValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUriSchema(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateUriSchema(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateUriSchema(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUriSchemaArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateUriSchemaArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateUriSchemaArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCharset(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateCharset(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateCharset(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCharsetArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateCharsetArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateCharsetArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNaturalLanguage(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateNaturalLanguage(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateNaturalLanguage(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNaturalLanguageArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateNaturalLanguageArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateNaturalLanguageArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMimeMedia(self: *@This(), value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateMimeMedia(self: *@This(), value: ?HSTRING) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateMimeMedia(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMimeMediaArray(self: *@This(), values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateMimeMediaArray(self: *@This(), values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateMimeMediaArray(@ptrCast(self), values, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -584,28 +584,28 @@ pub const IIppAttributeValueStatics = extern struct {
         CreateResolutionArray: *const fn(self: *anyopaque, values: *IIterable(IppResolution), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateRangeOfInteger: *const fn(self: *anyopaque, value: *IppIntegerRange, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateRangeOfIntegerArray: *const fn(self: *anyopaque, values: *IIterable(IppIntegerRange), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateCollection: *const fn(self: *anyopaque, memberAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateCollectionArray: *const fn(self: *anyopaque, memberAttributesArray: *IIterable(IIterable(IKeyValuePair(HSTRING,IppAttributeValue))), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateCollection: *const fn(self: *anyopaque, memberAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateCollectionArray: *const fn(self: *anyopaque, memberAttributesArray: *IIterable(IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateTextWithLanguage: *const fn(self: *anyopaque, value: *IppTextWithLanguage, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateTextWithLanguageArray: *const fn(self: *anyopaque, values: *IIterable(IppTextWithLanguage), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateNameWithLanguage: *const fn(self: *anyopaque, value: *IppTextWithLanguage, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateNameWithLanguageArray: *const fn(self: *anyopaque, values: *IIterable(IppTextWithLanguage), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateTextWithoutLanguage: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateTextWithoutLanguageArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateNameWithoutLanguage: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateNameWithoutLanguageArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateKeyword: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateKeywordArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateTextWithoutLanguage: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateTextWithoutLanguageArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateNameWithoutLanguage: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateNameWithoutLanguageArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateKeyword: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateKeywordArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateUri: *const fn(self: *anyopaque, value: *Uri, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
         CreateUriArray: *const fn(self: *anyopaque, values: *IIterable(Uri), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateUriSchema: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateUriSchemaArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateCharset: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateCharsetArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateNaturalLanguage: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateNaturalLanguageArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateMimeMedia: *const fn(self: *anyopaque, value: HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
-        CreateMimeMediaArray: *const fn(self: *anyopaque, values: *IIterable(HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateUriSchema: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateUriSchemaArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateCharset: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateCharsetArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateNaturalLanguage: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateNaturalLanguageArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateMimeMedia: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IppAttributeValue) callconv(.winapi) HRESULT,
+        CreateMimeMediaArray: *const fn(self: *anyopaque, values: *IIterable(?HSTRING), _r: **IppAttributeValue) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppIntegerRange = extern struct {
@@ -663,8 +663,8 @@ pub const IIppIntegerRangeFactory = extern struct {
 };
 pub const IIppPrintDevice = extern struct {
     vtable: *const VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -675,14 +675,14 @@ pub const IIppPrintDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPrinterAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IBuffer {
+    pub fn GetPrinterAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.GetPrinterAttributesAsBuffer(@ptrCast(self), attributeNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPrinterAttributes(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IMap(HSTRING,IppAttributeValue) {
-        var _r: *IMap(HSTRING,IppAttributeValue) = undefined;
+    pub fn GetPrinterAttributes(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
+        var _r: *IMap(?HSTRING,IppAttributeValue) = undefined;
         const _c = self.vtable.GetPrinterAttributes(@ptrCast(self), attributeNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -693,7 +693,7 @@ pub const IIppPrintDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetPrinterAttributes(self: *@This(), printerAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
+    pub fn SetPrinterAttributes(self: *@This(), printerAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
         var _r: *IppSetAttributesResult = undefined;
         const _c = self.vtable.SetPrinterAttributes(@ptrCast(self), printerAttributes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -711,12 +711,12 @@ pub const IIppPrintDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrinterName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PrinterName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_PrinterUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        GetPrinterAttributesAsBuffer: *const fn(self: *anyopaque, attributeNames: *IIterable(HSTRING), _r: **IBuffer) callconv(.winapi) HRESULT,
-        GetPrinterAttributes: *const fn(self: *anyopaque, attributeNames: *IIterable(HSTRING), _r: **IMap(HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
+        GetPrinterAttributesAsBuffer: *const fn(self: *anyopaque, attributeNames: *IIterable(?HSTRING), _r: **IBuffer) callconv(.winapi) HRESULT,
+        GetPrinterAttributes: *const fn(self: *anyopaque, attributeNames: *IIterable(?HSTRING), _r: **IMap(?HSTRING,IppAttributeValue)) callconv(.winapi) HRESULT,
         SetPrinterAttributesFromBuffer: *const fn(self: *anyopaque, printerAttributesBuffer: *IBuffer, _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
-        SetPrinterAttributes: *const fn(self: *anyopaque, printerAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
+        SetPrinterAttributes: *const fn(self: *anyopaque, printerAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), _r: **IppSetAttributesResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppPrintDevice2 = extern struct {
@@ -727,13 +727,13 @@ pub const IIppPrintDevice2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMaxSupportedPdfVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetMaxSupportedPdfVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetMaxSupportedPdfVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsPdlPassthroughSupported(self: *@This(), pdlContentType: HSTRING) core.HResult!bool {
+    pub fn IsPdlPassthroughSupported(self: *@This(), pdlContentType: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPdlPassthroughSupported(@ptrCast(self), pdlContentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -758,8 +758,8 @@ pub const IIppPrintDevice2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetMaxSupportedPdfSize: *const fn(self: *anyopaque, _r: *u64) callconv(.winapi) HRESULT,
-        GetMaxSupportedPdfVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        IsPdlPassthroughSupported: *const fn(self: *anyopaque, pdlContentType: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetMaxSupportedPdfVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        IsPdlPassthroughSupported: *const fn(self: *anyopaque, pdlContentType: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         GetPdlPassthroughProvider: *const fn(self: *anyopaque, _r: **PdlPassthroughProvider) callconv(.winapi) HRESULT,
     };
 };
@@ -814,8 +814,8 @@ pub const IIppPrintDevice4 = extern struct {
         const _c = self.vtable.RefreshPrintDeviceCapabilities(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetMaxSupportedPdlVersion(self: *@This(), pdlContentType: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetMaxSupportedPdlVersion(self: *@This(), pdlContentType: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetMaxSupportedPdlVersion(@ptrCast(self), pdlContentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -837,7 +837,7 @@ pub const IIppPrintDevice4 = extern struct {
         get_UserDefaultPrintTicket: *const fn(self: *anyopaque, _r: **WorkflowPrintTicket) callconv(.winapi) HRESULT,
         put_UserDefaultPrintTicket: *const fn(self: *anyopaque, value: *WorkflowPrintTicket) callconv(.winapi) HRESULT,
         RefreshPrintDeviceCapabilities: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        GetMaxSupportedPdlVersion: *const fn(self: *anyopaque, pdlContentType: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetMaxSupportedPdlVersion: *const fn(self: *anyopaque, pdlContentType: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppPrintDevice5 = extern struct {
@@ -848,7 +848,7 @@ pub const IIppPrintDevice5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReplaceDeviceProperties(self: *@This(), deviceProperties: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*ReplaceDevicePropertiesResult {
+    pub fn ReplaceDeviceProperties(self: *@This(), deviceProperties: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*ReplaceDevicePropertiesResult {
         var _r: *ReplaceDevicePropertiesResult = undefined;
         const _c = self.vtable.ReplaceDeviceProperties(@ptrCast(self), deviceProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -867,30 +867,30 @@ pub const IIppPrintDevice5 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceProperties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
-        ReplaceDeviceProperties: *const fn(self: *anyopaque, deviceProperties: *IIterable(IKeyValuePair(HSTRING,IInspectable)), _r: **ReplaceDevicePropertiesResult) callconv(.winapi) HRESULT,
+        ReplaceDeviceProperties: *const fn(self: *anyopaque, deviceProperties: *IIterable(IKeyValuePair(?HSTRING,IInspectable)), _r: **ReplaceDevicePropertiesResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppPrintDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*IppPrintDevice {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*IppPrintDevice {
         var _r: *IppPrintDevice = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromPrinterName(self: *@This(), printerName: HSTRING) core.HResult!*IppPrintDevice {
+    pub fn FromPrinterName(self: *@This(), printerName: ?HSTRING) core.HResult!*IppPrintDevice {
         var _r: *IppPrintDevice = undefined;
         const _c = self.vtable.FromPrinterName(@ptrCast(self), printerName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsIppPrinter(self: *@This(), printerName: HSTRING) core.HResult!bool {
+    pub fn IsIppPrinter(self: *@This(), printerName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsIppPrinter(@ptrCast(self), printerName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -908,10 +908,10 @@ pub const IIppPrintDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IppPrintDevice) callconv(.winapi) HRESULT,
-        FromPrinterName: *const fn(self: *anyopaque, printerName: HSTRING, _r: **IppPrintDevice) callconv(.winapi) HRESULT,
-        IsIppPrinter: *const fn(self: *anyopaque, printerName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IppPrintDevice) callconv(.winapi) HRESULT,
+        FromPrinterName: *const fn(self: *anyopaque, printerName: ?HSTRING, _r: **IppPrintDevice) callconv(.winapi) HRESULT,
+        IsIppPrinter: *const fn(self: *anyopaque, printerName: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppResolution = extern struct {
@@ -982,8 +982,8 @@ pub const IIppSetAttributesResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAttributeErrors(self: *@This()) core.HResult!*IMapView(HSTRING,IppAttributeError) {
-        var _r: *IMapView(HSTRING,IppAttributeError) = undefined;
+    pub fn getAttributeErrors(self: *@This()) core.HResult!*IMapView(?HSTRING,IppAttributeError) {
+        var _r: *IMapView(?HSTRING,IppAttributeError) = undefined;
         const _c = self.vtable.get_AttributeErrors(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1001,19 +1001,19 @@ pub const IIppSetAttributesResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Succeeded: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_AttributeErrors: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IppAttributeError)) callconv(.winapi) HRESULT,
+        get_AttributeErrors: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IppAttributeError)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppTextWithLanguage = extern struct {
     vtable: *const VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1030,13 +1030,13 @@ pub const IIppTextWithLanguage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IIppTextWithLanguageFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), language: HSTRING, text: HSTRING) core.HResult!*IppTextWithLanguage {
+    pub fn CreateInstance(self: *@This(), language: ?HSTRING, text: ?HSTRING) core.HResult!*IppTextWithLanguage {
         var _r: *IppTextWithLanguage = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), language, text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1054,7 +1054,7 @@ pub const IIppTextWithLanguageFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, language: HSTRING, text: HSTRING, _r: **IppTextWithLanguage) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, language: ?HSTRING, text: ?HSTRING, _r: **IppTextWithLanguage) callconv(.winapi) HRESULT,
     };
 };
 pub const IPageConfigurationSettings = extern struct {
@@ -1099,19 +1099,19 @@ pub const IPageConfigurationSettings = extern struct {
 };
 pub const IPdlPassthroughProvider = extern struct {
     vtable: *const VTable,
-    pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedPdlContentTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartPrintJobWithTaskOptions(self: *@This(), jobName: HSTRING, pdlContentType: HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
+    pub fn StartPrintJobWithTaskOptions(self: *@This(), jobName: ?HSTRING, pdlContentType: ?HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
         var _r: *PdlPassthroughTarget = undefined;
         const _c = self.vtable.StartPrintJobWithTaskOptions(@ptrCast(self), jobName, pdlContentType, taskOptions, pageConfigurationSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartPrintJobWithPrintTicket(self: *@This(), jobName: HSTRING, pdlContentType: HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
+    pub fn StartPrintJobWithPrintTicket(self: *@This(), jobName: ?HSTRING, pdlContentType: ?HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
         var _r: *PdlPassthroughTarget = undefined;
         const _c = self.vtable.StartPrintJobWithPrintTicket(@ptrCast(self), jobName, pdlContentType, printTicket, pageConfigurationSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1129,9 +1129,9 @@ pub const IPdlPassthroughProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SupportedPdlContentTypes: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        StartPrintJobWithTaskOptions: *const fn(self: *anyopaque, jobName: HSTRING, pdlContentType: HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings, _r: **PdlPassthroughTarget) callconv(.winapi) HRESULT,
-        StartPrintJobWithPrintTicket: *const fn(self: *anyopaque, jobName: HSTRING, pdlContentType: HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings, _r: **PdlPassthroughTarget) callconv(.winapi) HRESULT,
+        get_SupportedPdlContentTypes: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        StartPrintJobWithTaskOptions: *const fn(self: *anyopaque, jobName: ?HSTRING, pdlContentType: ?HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings, _r: **PdlPassthroughTarget) callconv(.winapi) HRESULT,
+        StartPrintJobWithPrintTicket: *const fn(self: *anyopaque, jobName: ?HSTRING, pdlContentType: ?HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings, _r: **PdlPassthroughTarget) callconv(.winapi) HRESULT,
     };
 };
 pub const IPdlPassthroughTarget = extern struct {
@@ -1201,18 +1201,18 @@ pub const IReplaceDevicePropertiesResult = extern struct {
 };
 pub const IVirtualPrinterInstallationParameters = extern struct {
     vtable: *const VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrinterName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrinterName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrinterName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOutputFileExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getOutputFileExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_OutputFileExtensions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1223,23 +1223,23 @@ pub const IVirtualPrinterInstallationParameters = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrintDeviceCapabilitiesPackageRelativeFilePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrintDeviceCapabilitiesPackageRelativeFilePath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPrintDeviceResourcesPackageRelativeFilePath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrintDeviceResourcesPackageRelativeFilePath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrintDeviceResourcesPackageRelativeFilePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrintDeviceResourcesPackageRelativeFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrintDeviceResourcesPackageRelativeFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrintDeviceResourcesPackageRelativeFilePath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1263,13 +1263,13 @@ pub const IVirtualPrinterInstallationParameters = extern struct {
         const _c = self.vtable.put_PrinterUri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getEntryPoint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEntryPoint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntryPoint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEntryPoint(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EntryPoint(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1285,20 +1285,20 @@ pub const IVirtualPrinterInstallationParameters = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrinterName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrinterName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_OutputFileExtensions: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_PrinterName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrinterName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_OutputFileExtensions: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_SupportedInputFormats: *const fn(self: *anyopaque, _r: **IVector(VirtualPrinterSupportedFormat)) callconv(.winapi) HRESULT,
-        get_PrintDeviceCapabilitiesPackageRelativeFilePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrintDeviceCapabilitiesPackageRelativeFilePath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PrintDeviceResourcesPackageRelativeFilePath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrintDeviceResourcesPackageRelativeFilePath: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PrintDeviceCapabilitiesPackageRelativeFilePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrintDeviceCapabilitiesPackageRelativeFilePath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PrintDeviceResourcesPackageRelativeFilePath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrintDeviceResourcesPackageRelativeFilePath: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_PreferredInputFormat: *const fn(self: *anyopaque, _r: *VirtualPrinterPreferredInputFormat) callconv(.winapi) HRESULT,
         put_PreferredInputFormat: *const fn(self: *anyopaque, value: VirtualPrinterPreferredInputFormat) callconv(.winapi) HRESULT,
         get_PrinterUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_PrinterUri: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
-        get_EntryPoint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EntryPoint: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EntryPoint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EntryPoint: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVirtualPrinterInstallationResult = extern struct {
@@ -1339,7 +1339,7 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         var _r: *IAsyncOperation(VirtualPrinterInstallationResult) = undefined;
         const _c = self.vtable.InstallVirtualPrinterAsyncWithAppPackageFamilyName(@ptrCast(self), parameters, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1351,31 +1351,31 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         var _r: *IAsyncOperation(VirtualPrinterInstallationResult) = undefined;
         const _c = self.vtable.InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(@ptrCast(self), parameters, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllVirtualPrinters(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn FindAllVirtualPrinters(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.FindAllVirtualPrinters(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllVirtualPrintersWithAppPackageFamilyName(self: *@This(), appPackageFamilyName: HSTRING) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn FindAllVirtualPrintersWithAppPackageFamilyName(self: *@This(), appPackageFamilyName: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.FindAllVirtualPrintersWithAppPackageFamilyName(@ptrCast(self), appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveVirtualPrinterAsync(self: *@This(), printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RemoveVirtualPrinterAsync(self: *@This(), printerName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RemoveVirtualPrinterAsync(@ptrCast(self), printerName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveVirtualPrinterForAllUsersAsync(self: *@This(), printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RemoveVirtualPrinterForAllUsersAsync(self: *@This(), printerName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RemoveVirtualPrinterForAllUsersAsync(@ptrCast(self), printerName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1394,34 +1394,34 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InstallVirtualPrinterAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
-        InstallVirtualPrinterAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
+        InstallVirtualPrinterAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
         InstallVirtualPrinterForAllUsersAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
-        InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
-        FindAllVirtualPrinters: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        FindAllVirtualPrintersWithAppPackageFamilyName: *const fn(self: *anyopaque, appPackageFamilyName: HSTRING, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        RemoveVirtualPrinterAsync: *const fn(self: *anyopaque, printerName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RemoveVirtualPrinterForAllUsersAsync: *const fn(self: *anyopaque, printerName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
+        FindAllVirtualPrinters: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        FindAllVirtualPrintersWithAppPackageFamilyName: *const fn(self: *anyopaque, appPackageFamilyName: ?HSTRING, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        RemoveVirtualPrinterAsync: *const fn(self: *anyopaque, printerName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RemoveVirtualPrinterForAllUsersAsync: *const fn(self: *anyopaque, printerName: ?HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IVirtualPrinterSupportedFormat = extern struct {
     vtable: *const VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMaxSupportedVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMaxSupportedVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaxSupportedVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMaxSupportedVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMaxSupportedVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_MaxSupportedVersion(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1437,15 +1437,15 @@ pub const IVirtualPrinterSupportedFormat = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_MaxSupportedVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_MaxSupportedVersion: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_MaxSupportedVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_MaxSupportedVersion: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IVirtualPrinterSupportedFormatFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), contentType: HSTRING, maxSupportedVersion: HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
+    pub fn CreateInstance(self: *@This(), contentType: ?HSTRING, maxSupportedVersion: ?HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
         var _r: *VirtualPrinterSupportedFormat = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentType, maxSupportedVersion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1463,7 +1463,7 @@ pub const IVirtualPrinterSupportedFormatFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, contentType: HSTRING, maxSupportedVersion: HSTRING, _r: **VirtualPrinterSupportedFormat) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, contentType: ?HSTRING, maxSupportedVersion: ?HSTRING, _r: **VirtualPrinterSupportedFormat) callconv(.winapi) HRESULT,
     };
 };
 pub const IppAttributeError = extern struct {
@@ -1527,7 +1527,7 @@ pub const IppAttributeValue = extern struct {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetRangeOfIntegerArray();
     }
-    pub fn GetCollectionArray(self: *@This()) core.HResult!*IVector(IMapView(HSTRING,IppAttributeValue)) {
+    pub fn GetCollectionArray(self: *@This()) core.HResult!*IVector(IMapView(?HSTRING,IppAttributeValue)) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetCollectionArray();
     }
@@ -1539,15 +1539,15 @@ pub const IppAttributeValue = extern struct {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetNameWithLanguageArray();
     }
-    pub fn GetTextWithoutLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetTextWithoutLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetTextWithoutLanguageArray();
     }
-    pub fn GetNameWithoutLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetNameWithoutLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetNameWithoutLanguageArray();
     }
-    pub fn GetKeywordArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetKeywordArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetKeywordArray();
     }
@@ -1555,19 +1555,19 @@ pub const IppAttributeValue = extern struct {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetUriArray();
     }
-    pub fn GetUriSchemaArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetUriSchemaArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetUriSchemaArray();
     }
-    pub fn GetCharsetArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetCharsetArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetCharsetArray();
     }
-    pub fn GetNaturalLanguageArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetNaturalLanguageArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetNaturalLanguageArray();
     }
-    pub fn GetMimeMediaTypeArray(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn GetMimeMediaTypeArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetMimeMediaTypeArray();
     }
@@ -1642,11 +1642,11 @@ pub const IppAttributeValue = extern struct {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateRangeOfIntegerArray(values);
     }
-    pub fn CreateCollection(memberAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppAttributeValue {
+    pub fn CreateCollection(memberAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCollection(memberAttributes);
     }
-    pub fn CreateCollectionArray(memberAttributesArray: *IIterable(IIterable(IKeyValuePair(HSTRING,IppAttributeValue)))) core.HResult!*IppAttributeValue {
+    pub fn CreateCollectionArray(memberAttributesArray: *IIterable(IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)))) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCollectionArray(memberAttributesArray);
     }
@@ -1666,27 +1666,27 @@ pub const IppAttributeValue = extern struct {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithLanguageArray(values);
     }
-    pub fn CreateTextWithoutLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateTextWithoutLanguage(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithoutLanguage(value);
     }
-    pub fn CreateTextWithoutLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateTextWithoutLanguageArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateTextWithoutLanguageArray(values);
     }
-    pub fn CreateNameWithoutLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateNameWithoutLanguage(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithoutLanguage(value);
     }
-    pub fn CreateNameWithoutLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateNameWithoutLanguageArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNameWithoutLanguageArray(values);
     }
-    pub fn CreateKeyword(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateKeyword(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateKeyword(value);
     }
-    pub fn CreateKeywordArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateKeywordArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateKeywordArray(values);
     }
@@ -1698,35 +1698,35 @@ pub const IppAttributeValue = extern struct {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriArray(values);
     }
-    pub fn CreateUriSchema(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateUriSchema(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriSchema(value);
     }
-    pub fn CreateUriSchemaArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateUriSchemaArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateUriSchemaArray(values);
     }
-    pub fn CreateCharset(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateCharset(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCharset(value);
     }
-    pub fn CreateCharsetArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateCharsetArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateCharsetArray(values);
     }
-    pub fn CreateNaturalLanguage(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateNaturalLanguage(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNaturalLanguage(value);
     }
-    pub fn CreateNaturalLanguageArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateNaturalLanguageArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateNaturalLanguageArray(values);
     }
-    pub fn CreateMimeMedia(value: HSTRING) core.HResult!*IppAttributeValue {
+    pub fn CreateMimeMedia(value: ?HSTRING) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateMimeMedia(value);
     }
-    pub fn CreateMimeMediaArray(values: *IIterable(HSTRING)) core.HResult!*IppAttributeValue {
+    pub fn CreateMimeMediaArray(values: *IIterable(?HSTRING)) core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
         return try _f.CreateMimeMediaArray(values);
     }
@@ -1786,7 +1786,7 @@ pub const IppIntegerRange = extern struct {
 };
 pub const IppPrintDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.getPrinterName();
     }
@@ -1794,11 +1794,11 @@ pub const IppPrintDevice = extern struct {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.getPrinterUri();
     }
-    pub fn GetPrinterAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IBuffer {
+    pub fn GetPrinterAttributesAsBuffer(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IBuffer {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.GetPrinterAttributesAsBuffer(attributeNames);
     }
-    pub fn GetPrinterAttributes(self: *@This(), attributeNames: *IIterable(HSTRING)) core.HResult!*IMap(HSTRING,IppAttributeValue) {
+    pub fn GetPrinterAttributes(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.GetPrinterAttributes(attributeNames);
     }
@@ -1806,7 +1806,7 @@ pub const IppPrintDevice = extern struct {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.SetPrinterAttributesFromBuffer(printerAttributesBuffer);
     }
-    pub fn SetPrinterAttributes(self: *@This(), printerAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
+    pub fn SetPrinterAttributes(self: *@This(), printerAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue))) core.HResult!*IppSetAttributesResult {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.SetPrinterAttributes(printerAttributes);
     }
@@ -1816,13 +1816,13 @@ pub const IppPrintDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMaxSupportedPdfSize();
     }
-    pub fn GetMaxSupportedPdfVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn GetMaxSupportedPdfVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIppPrintDevice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMaxSupportedPdfVersion();
     }
-    pub fn IsPdlPassthroughSupported(self: *@This(), pdlContentType: HSTRING) core.HResult!bool {
+    pub fn IsPdlPassthroughSupported(self: *@This(), pdlContentType: ?HSTRING) core.HResult!bool {
         var this: ?*IIppPrintDevice2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1870,7 +1870,7 @@ pub const IppPrintDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RefreshPrintDeviceCapabilities();
     }
-    pub fn GetMaxSupportedPdlVersion(self: *@This(), pdlContentType: HSTRING) core.HResult!HSTRING {
+    pub fn GetMaxSupportedPdlVersion(self: *@This(), pdlContentType: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IIppPrintDevice4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1882,7 +1882,7 @@ pub const IppPrintDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDeviceProperties();
     }
-    pub fn ReplaceDeviceProperties(self: *@This(), deviceProperties: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*ReplaceDevicePropertiesResult {
+    pub fn ReplaceDeviceProperties(self: *@This(), deviceProperties: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*ReplaceDevicePropertiesResult {
         var this: ?*IIppPrintDevice5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1891,19 +1891,19 @@ pub const IppPrintDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*IppPrintDevice {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*IppPrintDevice {
         const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.FromId(deviceId);
     }
-    pub fn FromPrinterName(printerName: HSTRING) core.HResult!*IppPrintDevice {
+    pub fn FromPrinterName(printerName: ?HSTRING) core.HResult!*IppPrintDevice {
         const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.FromPrinterName(printerName);
     }
-    pub fn IsIppPrinter(printerName: HSTRING) core.HResult!bool {
+    pub fn IsIppPrinter(printerName: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.IsIppPrinter(printerName);
     }
@@ -1957,7 +1957,7 @@ pub const IppSetAttributesResult = extern struct {
         const this: *IIppSetAttributesResult = @ptrCast(self);
         return try this.getSucceeded();
     }
-    pub fn getAttributeErrors(self: *@This()) core.HResult!*IMapView(HSTRING,IppAttributeError) {
+    pub fn getAttributeErrors(self: *@This()) core.HResult!*IMapView(?HSTRING,IppAttributeError) {
         const this: *IIppSetAttributesResult = @ptrCast(self);
         return try this.getAttributeErrors();
     }
@@ -1969,18 +1969,18 @@ pub const IppSetAttributesResult = extern struct {
 };
 pub const IppTextWithLanguage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppTextWithLanguage = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppTextWithLanguage = @ptrCast(self);
         return try this.getValue();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(language: HSTRING, text: HSTRING) core.HResult!*IppTextWithLanguage {
+    pub fn CreateInstance(language: ?HSTRING, text: ?HSTRING) core.HResult!*IppTextWithLanguage {
         const _f = try @This()._IIppTextWithLanguageFactoryCache.get();
         return try _f.CreateInstance(language, text);
     }
@@ -2029,15 +2029,15 @@ pub const PageConfigurationSource = enum(i32) {
 };
 pub const PdlPassthroughProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPdlPassthroughProvider = @ptrCast(self);
         return try this.getSupportedPdlContentTypes();
     }
-    pub fn StartPrintJobWithTaskOptions(self: *@This(), jobName: HSTRING, pdlContentType: HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
+    pub fn StartPrintJobWithTaskOptions(self: *@This(), jobName: ?HSTRING, pdlContentType: ?HSTRING, taskOptions: *PrintTaskOptions, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
         const this: *IPdlPassthroughProvider = @ptrCast(self);
         return try this.StartPrintJobWithTaskOptions(jobName, pdlContentType, taskOptions, pageConfigurationSettings);
     }
-    pub fn StartPrintJobWithPrintTicket(self: *@This(), jobName: HSTRING, pdlContentType: HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
+    pub fn StartPrintJobWithPrintTicket(self: *@This(), jobName: ?HSTRING, pdlContentType: ?HSTRING, printTicket: *IInputStream, pageConfigurationSettings: *PageConfigurationSettings) core.HResult!*PdlPassthroughTarget {
         const this: *IPdlPassthroughProvider = @ptrCast(self);
         return try this.StartPrintJobWithPrintTicket(jobName, pdlContentType, printTicket, pageConfigurationSettings);
     }
@@ -2096,15 +2096,15 @@ pub const ReplaceDevicePropertiesStatus = enum(i32) {
 };
 pub const VirtualPrinterInstallationParameters = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrinterName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getPrinterName();
     }
-    pub fn putPrinterName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrinterName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putPrinterName(value);
     }
-    pub fn getOutputFileExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getOutputFileExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getOutputFileExtensions();
     }
@@ -2112,19 +2112,19 @@ pub const VirtualPrinterInstallationParameters = extern struct {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getSupportedInputFormats();
     }
-    pub fn getPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getPrintDeviceCapabilitiesPackageRelativeFilePath();
     }
-    pub fn putPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrintDeviceCapabilitiesPackageRelativeFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putPrintDeviceCapabilitiesPackageRelativeFilePath(value);
     }
-    pub fn getPrintDeviceResourcesPackageRelativeFilePath(self: *@This()) core.HResult!HSTRING {
+    pub fn getPrintDeviceResourcesPackageRelativeFilePath(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getPrintDeviceResourcesPackageRelativeFilePath();
     }
-    pub fn putPrintDeviceResourcesPackageRelativeFilePath(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrintDeviceResourcesPackageRelativeFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putPrintDeviceResourcesPackageRelativeFilePath(value);
     }
@@ -2144,11 +2144,11 @@ pub const VirtualPrinterInstallationParameters = extern struct {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putPrinterUri(value);
     }
-    pub fn getEntryPoint(self: *@This()) core.HResult!HSTRING {
+    pub fn getEntryPoint(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getEntryPoint();
     }
-    pub fn putEntryPoint(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putEntryPoint(value);
     }
@@ -2197,7 +2197,7 @@ pub const VirtualPrinterManager = extern struct {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterAsync(parameters);
     }
-    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
@@ -2205,23 +2205,23 @@ pub const VirtualPrinterManager = extern struct {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterForAllUsersAsync(parameters);
     }
-    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
-    pub fn FindAllVirtualPrinters() core.HResult!*IVectorView(HSTRING) {
+    pub fn FindAllVirtualPrinters() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.FindAllVirtualPrinters();
     }
-    pub fn FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName: HSTRING) core.HResult!*IVectorView(HSTRING) {
+    pub fn FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName);
     }
-    pub fn RemoveVirtualPrinterAsync(printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RemoveVirtualPrinterAsync(printerName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.RemoveVirtualPrinterAsync(printerName);
     }
-    pub fn RemoveVirtualPrinterForAllUsersAsync(printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn RemoveVirtualPrinterForAllUsersAsync(printerName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._IVirtualPrinterManagerStaticsCache.get();
         return try _f.RemoveVirtualPrinterForAllUsersAsync(printerName);
     }
@@ -2235,26 +2235,26 @@ pub const VirtualPrinterPreferredInputFormat = enum(i32) {
 };
 pub const VirtualPrinterSupportedFormat = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.getContentType();
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.putContentType(value);
     }
-    pub fn getMaxSupportedVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getMaxSupportedVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.getMaxSupportedVersion();
     }
-    pub fn putMaxSupportedVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMaxSupportedVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.putMaxSupportedVersion(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(contentType: HSTRING, maxSupportedVersion: HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
+    pub fn CreateInstance(contentType: ?HSTRING, maxSupportedVersion: ?HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
         const _f = try @This()._IVirtualPrinterSupportedFormatFactoryCache.get();
         return try _f.CreateInstance(contentType, maxSupportedVersion);
     }

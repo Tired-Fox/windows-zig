@@ -1,11 +1,11 @@
 // ----- This code is automatically generated -----
 pub const AppointmentCalendarCancelMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getAppointmentLocalId();
     }
@@ -13,11 +13,11 @@ pub const AppointmentCalendarCancelMeetingRequest = extern struct {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getAppointmentOriginalStartTime();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getComment();
     }
@@ -57,7 +57,7 @@ pub const AppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCreateOrUpdateAppointmentRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
@@ -69,7 +69,7 @@ pub const AppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
         const this: *IAppointmentCalendarCreateOrUpdateAppointmentRequest = @ptrCast(self);
         return try this.getNotifyInvitees();
     }
-    pub fn getChangedProperties(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getChangedProperties(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IAppointmentCalendarCreateOrUpdateAppointmentRequest = @ptrCast(self);
         return try this.getChangedProperties();
     }
@@ -105,11 +105,11 @@ pub const AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern 
 };
 pub const AppointmentCalendarForwardMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getAppointmentLocalId();
     }
@@ -121,15 +121,15 @@ pub const AppointmentCalendarForwardMeetingRequest = extern struct {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getInvitees();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getForwardHeader(self: *@This()) core.HResult!HSTRING {
+    pub fn getForwardHeader(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getForwardHeader();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getComment();
     }
@@ -165,11 +165,11 @@ pub const AppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getAppointmentLocalId();
     }
@@ -185,11 +185,11 @@ pub const AppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getNewDuration();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getComment();
     }
@@ -225,7 +225,7 @@ pub const AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern s
 };
 pub const AppointmentCalendarSyncManagerSyncRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarSyncManagerSyncRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
@@ -261,11 +261,11 @@ pub const AppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarUpdateMeetingResponseRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getAppointmentLocalId();
     }
@@ -277,11 +277,11 @@ pub const AppointmentCalendarUpdateMeetingResponseRequest = extern struct {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getResponse();
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getSubject();
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getComment();
     }
@@ -393,14 +393,14 @@ pub const AppointmentDataProviderTriggerDetails = extern struct {
 };
 pub const IAppointmentCalendarCancelMeetingRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -411,14 +411,14 @@ pub const IAppointmentCalendarCancelMeetingRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -453,11 +453,11 @@ pub const IAppointmentCalendarCancelMeetingRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppointmentOriginalStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_NotifyInvitees: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -495,8 +495,8 @@ pub const IAppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -513,8 +513,8 @@ pub const IAppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getChangedProperties(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getChangedProperties(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ChangedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -543,10 +543,10 @@ pub const IAppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Appointment: *const fn(self: *anyopaque, _r: **Appointment) callconv(.winapi) HRESULT,
         get_NotifyInvitees: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_ChangedProperties: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_ChangedProperties: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, createdOrUpdatedAppointment: *Appointment, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -583,14 +583,14 @@ pub const IAppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern
 };
 pub const IAppointmentCalendarForwardMeetingRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -607,20 +607,20 @@ pub const IAppointmentCalendarForwardMeetingRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getForwardHeader(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getForwardHeader(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ForwardHeader(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -649,13 +649,13 @@ pub const IAppointmentCalendarForwardMeetingRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppointmentOriginalStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Invitees: *const fn(self: *anyopaque, _r: **IVectorView(AppointmentInvitee)) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ForwardHeader: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ForwardHeader: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -692,14 +692,14 @@ pub const IAppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -722,14 +722,14 @@ pub const IAppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -758,13 +758,13 @@ pub const IAppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppointmentOriginalStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         get_NewStartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_NewDuration: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -801,8 +801,8 @@ pub const IAppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern 
 };
 pub const IAppointmentCalendarSyncManagerSyncRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -831,7 +831,7 @@ pub const IAppointmentCalendarSyncManagerSyncRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -868,14 +868,14 @@ pub const IAppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarUpdateMeetingResponseRequest = extern struct {
     vtable: *const VTable,
-    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppointmentLocalId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppointmentLocalId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentLocalId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -892,14 +892,14 @@ pub const IAppointmentCalendarUpdateMeetingResponseRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubject(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getComment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getComment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -934,12 +934,12 @@ pub const IAppointmentCalendarUpdateMeetingResponseRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentCalendarLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppointmentLocalId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_AppointmentOriginalStartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         get_Response: *const fn(self: *anyopaque, _r: *AppointmentParticipantResponse) callconv(.winapi) HRESULT,
-        get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Comment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Subject: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Comment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SendUpdate: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         ReportCompletedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,

@@ -25,13 +25,13 @@ pub const Brush = extern struct {
         const this: *IBrush = @ptrCast(self);
         return try this.putRelativeTransform(value);
     }
-    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IBrushOverrides2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBrushOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfoOverride(propertyName, animationPropertyInfo);
     }
-    pub fn PopulatePropertyInfo(self: *@This(), propertyName: HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IAnimationObject = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationObject.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -893,7 +893,7 @@ pub const FillRule = enum(i32) {
 };
 pub const FontFamily = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSource(self: *@This()) core.HResult!HSTRING {
+    pub fn getSource(self: *@This()) core.HResult!?HSTRING {
         const this: *IFontFamily = @ptrCast(self);
         return try this.getSource();
     }
@@ -904,7 +904,7 @@ pub const FontFamily = extern struct {
         const _f = try @This()._IFontFamilyStatics2Cache.get();
         return try _f.getXamlAutoFontFamily();
     }
-    pub fn CreateInstanceWithName(familyName: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontFamily {
+    pub fn CreateInstanceWithName(familyName: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontFamily {
         const _f = try @This()._IFontFamilyFactoryCache.get();
         return try _f.CreateInstanceWithName(familyName, baseInterface, innerInterface);
     }
@@ -1662,7 +1662,7 @@ pub const IBrushFactory = extern struct {
 };
 pub const IBrushOverrides2 = extern struct {
     vtable: *const VTable,
-    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
+    pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
         const _c = self.vtable.PopulatePropertyInfoOverride(@ptrCast(self), propertyName, animationPropertyInfo);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1678,7 +1678,7 @@ pub const IBrushOverrides2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        PopulatePropertyInfoOverride: *const fn(self: *anyopaque, propertyName: HSTRING, animationPropertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
+        PopulatePropertyInfoOverride: *const fn(self: *anyopaque, propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IBrushStatics = extern struct {
@@ -2135,8 +2135,8 @@ pub const IEllipseGeometryStatics = extern struct {
 };
 pub const IFontFamily = extern struct {
     vtable: *const VTable,
-    pub fn getSource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2153,12 +2153,12 @@ pub const IFontFamily = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Source: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Source: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFontFamilyFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstanceWithName(self: *@This(), familyName: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontFamily {
+    pub fn CreateInstanceWithName(self: *@This(), familyName: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontFamily {
         var _r: *FontFamily = undefined;
         const _c = self.vtable.CreateInstanceWithName(@ptrCast(self), familyName, baseInterface, innerInterface, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2176,7 +2176,7 @@ pub const IFontFamilyFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstanceWithName: *const fn(self: *anyopaque, familyName: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FontFamily) callconv(.winapi) HRESULT,
+        CreateInstanceWithName: *const fn(self: *anyopaque, familyName: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FontFamily) callconv(.winapi) HRESULT,
     };
 };
 pub const IFontFamilyStatics2 = extern struct {
@@ -4987,23 +4987,23 @@ pub const ITimelineMarker = extern struct {
         const _c = self.vtable.put_Time(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5021,10 +5021,10 @@ pub const ITimelineMarker = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Time: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_Time: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
-        get_Type: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Type: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Type: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Type: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimelineMarkerRoutedEventArgs = extern struct {
@@ -5553,8 +5553,8 @@ pub const IXamlLightFactory = extern struct {
 };
 pub const IXamlLightOverrides = extern struct {
     vtable: *const VTable,
-    pub fn GetId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -5579,7 +5579,7 @@ pub const IXamlLightOverrides = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         OnConnected: *const fn(self: *anyopaque, newElement: *UIElement) callconv(.winapi) HRESULT,
         OnDisconnected: *const fn(self: *anyopaque, oldElement: *UIElement) callconv(.winapi) HRESULT,
     };
@@ -5614,19 +5614,19 @@ pub const IXamlLightProtected = extern struct {
 };
 pub const IXamlLightStatics = extern struct {
     vtable: *const VTable,
-    pub fn AddTargetElement(self: *@This(), lightId: HSTRING, element: *UIElement) core.HResult!void {
+    pub fn AddTargetElement(self: *@This(), lightId: ?HSTRING, element: *UIElement) core.HResult!void {
         const _c = self.vtable.AddTargetElement(@ptrCast(self), lightId, element);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveTargetElement(self: *@This(), lightId: HSTRING, element: *UIElement) core.HResult!void {
+    pub fn RemoveTargetElement(self: *@This(), lightId: ?HSTRING, element: *UIElement) core.HResult!void {
         const _c = self.vtable.RemoveTargetElement(@ptrCast(self), lightId, element);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddTargetBrush(self: *@This(), lightId: HSTRING, brush: *Brush) core.HResult!void {
+    pub fn AddTargetBrush(self: *@This(), lightId: ?HSTRING, brush: *Brush) core.HResult!void {
         const _c = self.vtable.AddTargetBrush(@ptrCast(self), lightId, brush);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveTargetBrush(self: *@This(), lightId: HSTRING, brush: *Brush) core.HResult!void {
+    pub fn RemoveTargetBrush(self: *@This(), lightId: ?HSTRING, brush: *Brush) core.HResult!void {
         const _c = self.vtable.RemoveTargetBrush(@ptrCast(self), lightId, brush);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5642,10 +5642,10 @@ pub const IXamlLightStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddTargetElement: *const fn(self: *anyopaque, lightId: HSTRING, element: *UIElement) callconv(.winapi) HRESULT,
-        RemoveTargetElement: *const fn(self: *anyopaque, lightId: HSTRING, element: *UIElement) callconv(.winapi) HRESULT,
-        AddTargetBrush: *const fn(self: *anyopaque, lightId: HSTRING, brush: *Brush) callconv(.winapi) HRESULT,
-        RemoveTargetBrush: *const fn(self: *anyopaque, lightId: HSTRING, brush: *Brush) callconv(.winapi) HRESULT,
+        AddTargetElement: *const fn(self: *anyopaque, lightId: ?HSTRING, element: *UIElement) callconv(.winapi) HRESULT,
+        RemoveTargetElement: *const fn(self: *anyopaque, lightId: ?HSTRING, element: *UIElement) callconv(.winapi) HRESULT,
+        AddTargetBrush: *const fn(self: *anyopaque, lightId: ?HSTRING, brush: *Brush) callconv(.winapi) HRESULT,
+        RemoveTargetBrush: *const fn(self: *anyopaque, lightId: ?HSTRING, brush: *Brush) callconv(.winapi) HRESULT,
     };
 };
 pub const ImageBrush = extern struct {
@@ -7140,19 +7140,19 @@ pub const TimelineMarker = extern struct {
         const this: *ITimelineMarker = @ptrCast(self);
         return try this.putTime(value);
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimelineMarker = @ptrCast(self);
         return try this.getType();
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimelineMarker = @ptrCast(self);
         return try this.putType(value);
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITimelineMarker = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITimelineMarker = @ptrCast(self);
         return try this.putText(value);
     }
@@ -7520,7 +7520,7 @@ pub const XamlLight = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompositionLight(value);
     }
-    pub fn GetId(self: *@This()) core.HResult!HSTRING {
+    pub fn GetId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXamlLightOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7541,19 +7541,19 @@ pub const XamlLight = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn AddTargetElement(lightId: HSTRING, element: *UIElement) core.HResult!void {
+    pub fn AddTargetElement(lightId: ?HSTRING, element: *UIElement) core.HResult!void {
         const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.AddTargetElement(lightId, element);
     }
-    pub fn RemoveTargetElement(lightId: HSTRING, element: *UIElement) core.HResult!void {
+    pub fn RemoveTargetElement(lightId: ?HSTRING, element: *UIElement) core.HResult!void {
         const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.RemoveTargetElement(lightId, element);
     }
-    pub fn AddTargetBrush(lightId: HSTRING, brush: *Brush) core.HResult!void {
+    pub fn AddTargetBrush(lightId: ?HSTRING, brush: *Brush) core.HResult!void {
         const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.AddTargetBrush(lightId, brush);
     }
-    pub fn RemoveTargetBrush(lightId: HSTRING, brush: *Brush) core.HResult!void {
+    pub fn RemoveTargetBrush(lightId: ?HSTRING, brush: *Brush) core.HResult!void {
         const _f = try @This()._IXamlLightStaticsCache.get();
         return try _f.RemoveTargetBrush(lightId, brush);
     }

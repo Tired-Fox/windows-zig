@@ -4,7 +4,7 @@ pub const ClassicAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FindInstalledApp(appUninstallKey: HSTRING) core.HResult!*InstalledClassicAppInfo {
+    pub fn FindInstalledApp(appUninstallKey: ?HSTRING) core.HResult!*InstalledClassicAppInfo {
         const _f = try @This()._IClassicAppManagerStaticsCache.get();
         return try _f.FindInstalledApp(appUninstallKey);
     }
@@ -14,7 +14,7 @@ pub const ClassicAppManager = extern struct {
 };
 pub const IClassicAppManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn FindInstalledApp(self: *@This(), appUninstallKey: HSTRING) core.HResult!*InstalledClassicAppInfo {
+    pub fn FindInstalledApp(self: *@This(), appUninstallKey: ?HSTRING) core.HResult!*InstalledClassicAppInfo {
         var _r: *InstalledClassicAppInfo = undefined;
         const _c = self.vtable.FindInstalledApp(@ptrCast(self), appUninstallKey, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -32,19 +32,19 @@ pub const IClassicAppManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FindInstalledApp: *const fn(self: *anyopaque, appUninstallKey: HSTRING, _r: **InstalledClassicAppInfo) callconv(.winapi) HRESULT,
+        FindInstalledApp: *const fn(self: *anyopaque, appUninstallKey: ?HSTRING, _r: **InstalledClassicAppInfo) callconv(.winapi) HRESULT,
     };
 };
 pub const IInstalledClassicAppInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayVersion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -61,17 +61,17 @@ pub const IInstalledClassicAppInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayVersion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayVersion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const InstalledClassicAppInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IInstalledClassicAppInfo = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getDisplayVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IInstalledClassicAppInfo = @ptrCast(self);
         return try this.getDisplayVersion();
     }

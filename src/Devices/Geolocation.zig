@@ -13,19 +13,19 @@ pub const BasicGeoposition = extern struct {
 };
 pub const CivicAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
         const this: *ICivicAddress = @ptrCast(self);
         return try this.getCountry();
     }
-    pub fn getState(self: *@This()) core.HResult!HSTRING {
+    pub fn getState(self: *@This()) core.HResult!?HSTRING {
         const this: *ICivicAddress = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         const this: *ICivicAddress = @ptrCast(self);
         return try this.getCity();
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         const this: *ICivicAddress = @ptrCast(self);
         return try this.getPostalCode();
     }
@@ -590,26 +590,26 @@ pub const GeovisitTriggerDetails = extern struct {
 };
 pub const ICivicAddress = extern struct {
     vtable: *const VTable,
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Country(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getState(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getState(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -632,10 +632,10 @@ pub const ICivicAddress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Country: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_State: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_City: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PostalCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Country: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_State: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_City: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PostalCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
     };
 };
@@ -1696,14 +1696,14 @@ pub const IStatusChangedEventArgs = extern struct {
 };
 pub const IVenueData = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLevel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLevel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Level(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1720,8 +1720,8 @@ pub const IVenueData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Level: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Level: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const PositionAccuracy = enum(i32) {
@@ -1771,11 +1771,11 @@ pub const StatusChangedEventArgs = extern struct {
 };
 pub const VenueData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVenueData = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getLevel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLevel(self: *@This()) core.HResult!?HSTRING {
         const this: *IVenueData = @ptrCast(self);
         return try this.getLevel();
     }

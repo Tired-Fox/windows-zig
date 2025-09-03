@@ -45,19 +45,19 @@ pub const ActionCatalog = extern struct {
 };
 pub const ActionDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionDefinition = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionDefinition = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn getIconFullPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getIconFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionDefinition = @ptrCast(self);
         return try this.getIconFullPath();
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionDefinition = @ptrCast(self);
         return try this.getPackageFamilyName();
     }
@@ -91,7 +91,7 @@ pub const ActionDefinition = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSchemaVersion();
     }
-    pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionDefinition3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -117,11 +117,11 @@ pub const ActionDefinition = extern struct {
 };
 pub const ActionEntityRegistrationInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionEntityRegistrationInfo = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IActionEntityRegistrationInfo = @ptrCast(self);
         return try this.putName(value);
     }
@@ -171,7 +171,7 @@ pub const ActionInstance = extern struct {
 };
 pub const ActionInstanceDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionInstanceDisplayInfo = @ptrCast(self);
         return try this.getDescription();
     }
@@ -183,7 +183,7 @@ pub const ActionInstanceDisplayInfo = extern struct {
 };
 pub const ActionOverload = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDescriptionTemplate(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescriptionTemplate(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionOverload = @ptrCast(self);
         return try this.getDescriptionTemplate();
     }
@@ -309,26 +309,26 @@ pub const IActionCatalog3 = extern struct {
 };
 pub const IActionDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIconFullPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIconFullPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IconFullPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPackageFamilyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFamilyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -363,10 +363,10 @@ pub const IActionDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IconFullPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IconFullPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFamilyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetInputs: *const fn(self: *anyopaque, _r: *[*]ActionEntityRegistrationInfo) callconv(.winapi) HRESULT,
         GetOutputs: *const fn(self: *anyopaque, _r: *[*]ActionEntityRegistrationInfo) callconv(.winapi) HRESULT,
         GetOverloads: *const fn(self: *anyopaque, _r: *[*]ActionOverload) callconv(.winapi) HRESULT,
@@ -411,8 +411,8 @@ pub const IActionDefinition2 = extern struct {
 };
 pub const IActionDefinition3 = extern struct {
     vtable: *const VTable,
-    pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageRelativeApplicationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -429,7 +429,7 @@ pub const IActionDefinition3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageRelativeApplicationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageRelativeApplicationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionDefinition4 = extern struct {
@@ -457,13 +457,13 @@ pub const IActionDefinition4 = extern struct {
 };
 pub const IActionEntityRegistrationInfo = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -489,8 +489,8 @@ pub const IActionEntityRegistrationInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *ActionEntityKind) callconv(.winapi) HRESULT,
         put_Kind: *const fn(self: *anyopaque, value: ActionEntityKind) callconv(.winapi) HRESULT,
     };
@@ -541,8 +541,8 @@ pub const IActionInstance = extern struct {
 };
 pub const IActionInstanceDisplayInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -559,13 +559,13 @@ pub const IActionInstanceDisplayInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionOverload = extern struct {
     vtable: *const VTable,
-    pub fn getDescriptionTemplate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescriptionTemplate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DescriptionTemplate(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -594,7 +594,7 @@ pub const IActionOverload = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DescriptionTemplate: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DescriptionTemplate: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetInputs: *const fn(self: *anyopaque, _r: *[*]ActionEntityRegistrationInfo) callconv(.winapi) HRESULT,
         InvokeAsync: *const fn(self: *anyopaque, context: *ActionInvocationContext, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };

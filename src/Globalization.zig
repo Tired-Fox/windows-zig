@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const IJapanesePhoneme = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getYomiText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YomiText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31,20 +31,20 @@ pub const IJapanesePhoneme = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_YomiText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_YomiText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsPhraseStart: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJapanesePhoneticAnalyzerStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetWords(self: *@This(), input: HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWords(self: *@This(), input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
         var _r: *IVectorView(JapanesePhoneme) = undefined;
         const _c = self.vtable.GetWords(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetWordsWithMonoRuby(self: *@This(), input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWordsWithMonoRuby(self: *@This(), input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
         var _r: *IVectorView(JapanesePhoneme) = undefined;
         const _c = self.vtable.GetWordsWithMonoRuby(@ptrCast(self), input, monoRuby, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -62,17 +62,17 @@ pub const IJapanesePhoneticAnalyzerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetWords: *const fn(self: *anyopaque, input: HSTRING, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
-        GetWordsWithMonoRuby: *const fn(self: *anyopaque, input: HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
+        GetWords: *const fn(self: *anyopaque, input: ?HSTRING, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
+        GetWordsWithMonoRuby: *const fn(self: *anyopaque, input: ?HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
     };
 };
 pub const JapanesePhoneme = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDisplayText(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IJapanesePhoneme = @ptrCast(self);
         return try this.getDisplayText();
     }
-    pub fn getYomiText(self: *@This()) core.HResult!HSTRING {
+    pub fn getYomiText(self: *@This()) core.HResult!?HSTRING {
         const this: *IJapanesePhoneme = @ptrCast(self);
         return try this.getYomiText();
     }
@@ -91,11 +91,11 @@ pub const JapanesePhoneticAnalyzer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetWords(input: HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWords(input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
         const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
         return try _f.GetWords(input);
     }
-    pub fn GetWordsWithMonoRuby(input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWordsWithMonoRuby(input: ?HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
         const _f = try @This()._IJapanesePhoneticAnalyzerStaticsCache.get();
         return try _f.GetWordsWithMonoRuby(input, monoRuby);
     }
@@ -108,23 +108,23 @@ pub const ApplicationLanguages = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetLanguagesForUser(user: *User) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetLanguagesForUser(user: *User) core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IApplicationLanguagesStatics2Cache.get();
         return try _f.GetLanguagesForUser(user);
     }
-    pub fn getPrimaryLanguageOverride() core.HResult!HSTRING {
+    pub fn getPrimaryLanguageOverride() core.HResult!?HSTRING {
         const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getPrimaryLanguageOverride();
     }
-    pub fn putPrimaryLanguageOverride(value: HSTRING) core.HResult!void {
+    pub fn putPrimaryLanguageOverride(value: ?HSTRING) core.HResult!void {
         const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.putPrimaryLanguageOverride(value);
     }
-    pub fn getLanguages() core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getLanguages();
     }
-    pub fn getManifestLanguages() core.HResult!*IVectorView(HSTRING) {
+    pub fn getManifestLanguages() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IApplicationLanguagesStaticsCache.get();
         return try _f.getManifestLanguages();
     }
@@ -147,31 +147,31 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.SetToMax();
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ICalendar = @ptrCast(self);
         return try this.getLanguages();
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendar = @ptrCast(self);
         return try this.putNumeralSystem(value);
     }
-    pub fn GetCalendarSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn GetCalendarSystem(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.GetCalendarSystem();
     }
-    pub fn ChangeCalendarSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ChangeCalendarSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendar = @ptrCast(self);
         return try this.ChangeCalendarSystem(value);
     }
-    pub fn GetClock(self: *@This()) core.HResult!HSTRING {
+    pub fn GetClock(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.GetClock();
     }
-    pub fn ChangeClock(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ChangeClock(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICalendar = @ptrCast(self);
         return try this.ChangeClock(value);
     }
@@ -211,11 +211,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddEras(eras);
     }
-    pub fn EraAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn EraAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.EraAsString();
     }
-    pub fn EraAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn EraAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.EraAsStringWithIdealLength(idealLength);
     }
@@ -243,15 +243,15 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddYears(years);
     }
-    pub fn YearAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn YearAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.YearAsString();
     }
-    pub fn YearAsTruncatedString(self: *@This(), remainingDigits: i32) core.HResult!HSTRING {
+    pub fn YearAsTruncatedString(self: *@This(), remainingDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.YearAsTruncatedString(remainingDigits);
     }
-    pub fn YearAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn YearAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.YearAsPaddedString(minDigits);
     }
@@ -279,27 +279,27 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddMonths(months);
     }
-    pub fn MonthAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn MonthAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsString();
     }
-    pub fn MonthAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn MonthAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsStringWithIdealLength(idealLength);
     }
-    pub fn MonthAsSoloString(self: *@This()) core.HResult!HSTRING {
+    pub fn MonthAsSoloString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsSoloString();
     }
-    pub fn MonthAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn MonthAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsSoloStringWithIdealLength(idealLength);
     }
-    pub fn MonthAsNumericString(self: *@This()) core.HResult!HSTRING {
+    pub fn MonthAsNumericString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsNumericString();
     }
-    pub fn MonthAsPaddedNumericString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn MonthAsPaddedNumericString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsPaddedNumericString(minDigits);
     }
@@ -331,11 +331,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddDays(days);
     }
-    pub fn DayAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn DayAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayAsString();
     }
-    pub fn DayAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn DayAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayAsPaddedString(minDigits);
     }
@@ -343,19 +343,19 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.getDayOfWeek();
     }
-    pub fn DayOfWeekAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn DayOfWeekAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsString();
     }
-    pub fn DayOfWeekAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn DayOfWeekAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsStringWithIdealLength(idealLength);
     }
-    pub fn DayOfWeekAsSoloString(self: *@This()) core.HResult!HSTRING {
+    pub fn DayOfWeekAsSoloString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsSoloString();
     }
-    pub fn DayOfWeekAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn DayOfWeekAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsSoloStringWithIdealLength(idealLength);
     }
@@ -383,11 +383,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddPeriods(periods);
     }
-    pub fn PeriodAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn PeriodAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.PeriodAsString();
     }
-    pub fn PeriodAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn PeriodAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.PeriodAsStringWithIdealLength(idealLength);
     }
@@ -415,11 +415,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddHours(hours);
     }
-    pub fn HourAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn HourAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.HourAsString();
     }
-    pub fn HourAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn HourAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.HourAsPaddedString(minDigits);
     }
@@ -435,11 +435,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddMinutes(minutes);
     }
-    pub fn MinuteAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn MinuteAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MinuteAsString();
     }
-    pub fn MinuteAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn MinuteAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MinuteAsPaddedString(minDigits);
     }
@@ -455,11 +455,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddSeconds(seconds);
     }
-    pub fn SecondAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn SecondAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.SecondAsString();
     }
-    pub fn SecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn SecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.SecondAsPaddedString(minDigits);
     }
@@ -475,11 +475,11 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.AddNanoseconds(nanoseconds);
     }
-    pub fn NanosecondAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn NanosecondAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.NanosecondAsString();
     }
-    pub fn NanosecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
+    pub fn NanosecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.NanosecondAsPaddedString(minDigits);
     }
@@ -519,7 +519,7 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.getNumberOfSecondsInThisMinute();
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
@@ -527,25 +527,25 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.getIsDaylightSavingTime();
     }
-    pub fn GetTimeZone(self: *@This()) core.HResult!HSTRING {
+    pub fn GetTimeZone(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTimeZone();
     }
-    pub fn ChangeTimeZone(self: *@This(), timeZoneId: HSTRING) core.HResult!void {
+    pub fn ChangeTimeZone(self: *@This(), timeZoneId: ?HSTRING) core.HResult!void {
         var this: ?*ITimeZoneOnCalendar = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeTimeZone(timeZoneId);
     }
-    pub fn TimeZoneAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn TimeZoneAsString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TimeZoneAsString();
     }
-    pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -558,15 +558,15 @@ pub const Calendar = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICalendar.IID)));
     }
-    pub fn CreateCalendarDefaultCalendarAndClock(languages: *IIterable(HSTRING)) core.HResult!*Calendar {
+    pub fn CreateCalendarDefaultCalendarAndClock(languages: *IIterable(?HSTRING)) core.HResult!*Calendar {
         const _f = try @This()._ICalendarFactoryCache.get();
         return try _f.CreateCalendarDefaultCalendarAndClock(languages);
     }
-    pub fn CreateCalendar(languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING) core.HResult!*Calendar {
+    pub fn CreateCalendar(languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING) core.HResult!*Calendar {
         const _f = try @This()._ICalendarFactoryCache.get();
         return try _f.CreateCalendar(languages, calendar, clock);
     }
-    pub fn CreateCalendarWithTimeZone(languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING, timeZoneId: HSTRING) core.HResult!*Calendar {
+    pub fn CreateCalendarWithTimeZone(languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING, timeZoneId: ?HSTRING) core.HResult!*Calendar {
         const _f = try @This()._ICalendarFactory2Cache.get();
         return try _f.CreateCalendarWithTimeZone(languages, calendar, clock, timeZoneId);
     }
@@ -584,63 +584,63 @@ pub const CalendarIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getChineseLunar() core.HResult!HSTRING {
+    pub fn getChineseLunar() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getChineseLunar();
     }
-    pub fn getJapaneseLunar() core.HResult!HSTRING {
+    pub fn getJapaneseLunar() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getJapaneseLunar();
     }
-    pub fn getKoreanLunar() core.HResult!HSTRING {
+    pub fn getKoreanLunar() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getKoreanLunar();
     }
-    pub fn getTaiwanLunar() core.HResult!HSTRING {
+    pub fn getTaiwanLunar() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getTaiwanLunar();
     }
-    pub fn getVietnameseLunar() core.HResult!HSTRING {
+    pub fn getVietnameseLunar() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics3Cache.get();
         return try _f.getVietnameseLunar();
     }
-    pub fn getPersian() core.HResult!HSTRING {
+    pub fn getPersian() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStatics2Cache.get();
         return try _f.getPersian();
     }
-    pub fn getGregorian() core.HResult!HSTRING {
+    pub fn getGregorian() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getGregorian();
     }
-    pub fn getHebrew() core.HResult!HSTRING {
+    pub fn getHebrew() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getHebrew();
     }
-    pub fn getHijri() core.HResult!HSTRING {
+    pub fn getHijri() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getHijri();
     }
-    pub fn getJapanese() core.HResult!HSTRING {
+    pub fn getJapanese() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getJapanese();
     }
-    pub fn getJulian() core.HResult!HSTRING {
+    pub fn getJulian() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getJulian();
     }
-    pub fn getKorean() core.HResult!HSTRING {
+    pub fn getKorean() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getKorean();
     }
-    pub fn getTaiwan() core.HResult!HSTRING {
+    pub fn getTaiwan() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getTaiwan();
     }
-    pub fn getThai() core.HResult!HSTRING {
+    pub fn getThai() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getThai();
     }
-    pub fn getUmAlQura() core.HResult!HSTRING {
+    pub fn getUmAlQura() core.HResult!?HSTRING {
         const _f = try @This()._ICalendarIdentifiersStaticsCache.get();
         return try _f.getUmAlQura();
     }
@@ -655,11 +655,11 @@ pub const ClockIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getTwelveHour() core.HResult!HSTRING {
+    pub fn getTwelveHour() core.HResult!?HSTRING {
         const _f = try @This()._IClockIdentifiersStaticsCache.get();
         return try _f.getTwelveHour();
     }
-    pub fn getTwentyFourHour() core.HResult!HSTRING {
+    pub fn getTwentyFourHour() core.HResult!?HSTRING {
         const _f = try @This()._IClockIdentifiersStaticsCache.get();
         return try _f.getTwentyFourHour();
     }
@@ -669,18 +669,18 @@ pub const ClockIdentifiers = extern struct {
 };
 pub const CurrencyAmount = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAmount(self: *@This()) core.HResult!HSTRING {
+    pub fn getAmount(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyAmount = @ptrCast(self);
         return try this.getAmount();
     }
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyAmount = @ptrCast(self);
         return try this.getCurrency();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(amount: HSTRING, currency: HSTRING) core.HResult!*CurrencyAmount {
+    pub fn Create(amount: ?HSTRING, currency: ?HSTRING) core.HResult!*CurrencyAmount {
         const _f = try @This()._ICurrencyAmountFactoryCache.get();
         return try _f.Create(amount, currency);
     }
@@ -696,651 +696,651 @@ pub const CurrencyIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBYN() core.HResult!HSTRING {
+    pub fn getBYN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStatics2Cache.get();
         return try _f.getBYN();
     }
-    pub fn getMRU() core.HResult!HSTRING {
+    pub fn getMRU() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getMRU();
     }
-    pub fn getSSP() core.HResult!HSTRING {
+    pub fn getSSP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getSSP();
     }
-    pub fn getSTN() core.HResult!HSTRING {
+    pub fn getSTN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getSTN();
     }
-    pub fn getVES() core.HResult!HSTRING {
+    pub fn getVES() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStatics3Cache.get();
         return try _f.getVES();
     }
-    pub fn getAED() core.HResult!HSTRING {
+    pub fn getAED() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAED();
     }
-    pub fn getAFN() core.HResult!HSTRING {
+    pub fn getAFN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAFN();
     }
-    pub fn getALL() core.HResult!HSTRING {
+    pub fn getALL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getALL();
     }
-    pub fn getAMD() core.HResult!HSTRING {
+    pub fn getAMD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAMD();
     }
-    pub fn getANG() core.HResult!HSTRING {
+    pub fn getANG() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getANG();
     }
-    pub fn getAOA() core.HResult!HSTRING {
+    pub fn getAOA() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAOA();
     }
-    pub fn getARS() core.HResult!HSTRING {
+    pub fn getARS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getARS();
     }
-    pub fn getAUD() core.HResult!HSTRING {
+    pub fn getAUD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAUD();
     }
-    pub fn getAWG() core.HResult!HSTRING {
+    pub fn getAWG() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAWG();
     }
-    pub fn getAZN() core.HResult!HSTRING {
+    pub fn getAZN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getAZN();
     }
-    pub fn getBAM() core.HResult!HSTRING {
+    pub fn getBAM() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBAM();
     }
-    pub fn getBBD() core.HResult!HSTRING {
+    pub fn getBBD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBBD();
     }
-    pub fn getBDT() core.HResult!HSTRING {
+    pub fn getBDT() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBDT();
     }
-    pub fn getBGN() core.HResult!HSTRING {
+    pub fn getBGN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBGN();
     }
-    pub fn getBHD() core.HResult!HSTRING {
+    pub fn getBHD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBHD();
     }
-    pub fn getBIF() core.HResult!HSTRING {
+    pub fn getBIF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBIF();
     }
-    pub fn getBMD() core.HResult!HSTRING {
+    pub fn getBMD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBMD();
     }
-    pub fn getBND() core.HResult!HSTRING {
+    pub fn getBND() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBND();
     }
-    pub fn getBOB() core.HResult!HSTRING {
+    pub fn getBOB() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBOB();
     }
-    pub fn getBRL() core.HResult!HSTRING {
+    pub fn getBRL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBRL();
     }
-    pub fn getBSD() core.HResult!HSTRING {
+    pub fn getBSD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBSD();
     }
-    pub fn getBTN() core.HResult!HSTRING {
+    pub fn getBTN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBTN();
     }
-    pub fn getBWP() core.HResult!HSTRING {
+    pub fn getBWP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBWP();
     }
-    pub fn getBYR() core.HResult!HSTRING {
+    pub fn getBYR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBYR();
     }
-    pub fn getBZD() core.HResult!HSTRING {
+    pub fn getBZD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getBZD();
     }
-    pub fn getCAD() core.HResult!HSTRING {
+    pub fn getCAD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCAD();
     }
-    pub fn getCDF() core.HResult!HSTRING {
+    pub fn getCDF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCDF();
     }
-    pub fn getCHF() core.HResult!HSTRING {
+    pub fn getCHF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCHF();
     }
-    pub fn getCLP() core.HResult!HSTRING {
+    pub fn getCLP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCLP();
     }
-    pub fn getCNY() core.HResult!HSTRING {
+    pub fn getCNY() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCNY();
     }
-    pub fn getCOP() core.HResult!HSTRING {
+    pub fn getCOP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCOP();
     }
-    pub fn getCRC() core.HResult!HSTRING {
+    pub fn getCRC() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCRC();
     }
-    pub fn getCUP() core.HResult!HSTRING {
+    pub fn getCUP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCUP();
     }
-    pub fn getCVE() core.HResult!HSTRING {
+    pub fn getCVE() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCVE();
     }
-    pub fn getCZK() core.HResult!HSTRING {
+    pub fn getCZK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getCZK();
     }
-    pub fn getDJF() core.HResult!HSTRING {
+    pub fn getDJF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDJF();
     }
-    pub fn getDKK() core.HResult!HSTRING {
+    pub fn getDKK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDKK();
     }
-    pub fn getDOP() core.HResult!HSTRING {
+    pub fn getDOP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDOP();
     }
-    pub fn getDZD() core.HResult!HSTRING {
+    pub fn getDZD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getDZD();
     }
-    pub fn getEGP() core.HResult!HSTRING {
+    pub fn getEGP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getEGP();
     }
-    pub fn getERN() core.HResult!HSTRING {
+    pub fn getERN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getERN();
     }
-    pub fn getETB() core.HResult!HSTRING {
+    pub fn getETB() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getETB();
     }
-    pub fn getEUR() core.HResult!HSTRING {
+    pub fn getEUR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getEUR();
     }
-    pub fn getFJD() core.HResult!HSTRING {
+    pub fn getFJD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getFJD();
     }
-    pub fn getFKP() core.HResult!HSTRING {
+    pub fn getFKP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getFKP();
     }
-    pub fn getGBP() core.HResult!HSTRING {
+    pub fn getGBP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGBP();
     }
-    pub fn getGEL() core.HResult!HSTRING {
+    pub fn getGEL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGEL();
     }
-    pub fn getGHS() core.HResult!HSTRING {
+    pub fn getGHS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGHS();
     }
-    pub fn getGIP() core.HResult!HSTRING {
+    pub fn getGIP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGIP();
     }
-    pub fn getGMD() core.HResult!HSTRING {
+    pub fn getGMD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGMD();
     }
-    pub fn getGNF() core.HResult!HSTRING {
+    pub fn getGNF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGNF();
     }
-    pub fn getGTQ() core.HResult!HSTRING {
+    pub fn getGTQ() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGTQ();
     }
-    pub fn getGYD() core.HResult!HSTRING {
+    pub fn getGYD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getGYD();
     }
-    pub fn getHKD() core.HResult!HSTRING {
+    pub fn getHKD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHKD();
     }
-    pub fn getHNL() core.HResult!HSTRING {
+    pub fn getHNL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHNL();
     }
-    pub fn getHRK() core.HResult!HSTRING {
+    pub fn getHRK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHRK();
     }
-    pub fn getHTG() core.HResult!HSTRING {
+    pub fn getHTG() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHTG();
     }
-    pub fn getHUF() core.HResult!HSTRING {
+    pub fn getHUF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getHUF();
     }
-    pub fn getIDR() core.HResult!HSTRING {
+    pub fn getIDR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIDR();
     }
-    pub fn getILS() core.HResult!HSTRING {
+    pub fn getILS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getILS();
     }
-    pub fn getINR() core.HResult!HSTRING {
+    pub fn getINR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getINR();
     }
-    pub fn getIQD() core.HResult!HSTRING {
+    pub fn getIQD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIQD();
     }
-    pub fn getIRR() core.HResult!HSTRING {
+    pub fn getIRR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getIRR();
     }
-    pub fn getISK() core.HResult!HSTRING {
+    pub fn getISK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getISK();
     }
-    pub fn getJMD() core.HResult!HSTRING {
+    pub fn getJMD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJMD();
     }
-    pub fn getJOD() core.HResult!HSTRING {
+    pub fn getJOD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJOD();
     }
-    pub fn getJPY() core.HResult!HSTRING {
+    pub fn getJPY() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getJPY();
     }
-    pub fn getKES() core.HResult!HSTRING {
+    pub fn getKES() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKES();
     }
-    pub fn getKGS() core.HResult!HSTRING {
+    pub fn getKGS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKGS();
     }
-    pub fn getKHR() core.HResult!HSTRING {
+    pub fn getKHR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKHR();
     }
-    pub fn getKMF() core.HResult!HSTRING {
+    pub fn getKMF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKMF();
     }
-    pub fn getKPW() core.HResult!HSTRING {
+    pub fn getKPW() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKPW();
     }
-    pub fn getKRW() core.HResult!HSTRING {
+    pub fn getKRW() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKRW();
     }
-    pub fn getKWD() core.HResult!HSTRING {
+    pub fn getKWD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKWD();
     }
-    pub fn getKYD() core.HResult!HSTRING {
+    pub fn getKYD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKYD();
     }
-    pub fn getKZT() core.HResult!HSTRING {
+    pub fn getKZT() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getKZT();
     }
-    pub fn getLAK() core.HResult!HSTRING {
+    pub fn getLAK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLAK();
     }
-    pub fn getLBP() core.HResult!HSTRING {
+    pub fn getLBP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLBP();
     }
-    pub fn getLKR() core.HResult!HSTRING {
+    pub fn getLKR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLKR();
     }
-    pub fn getLRD() core.HResult!HSTRING {
+    pub fn getLRD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLRD();
     }
-    pub fn getLSL() core.HResult!HSTRING {
+    pub fn getLSL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLSL();
     }
-    pub fn getLTL() core.HResult!HSTRING {
+    pub fn getLTL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLTL();
     }
-    pub fn getLVL() core.HResult!HSTRING {
+    pub fn getLVL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLVL();
     }
-    pub fn getLYD() core.HResult!HSTRING {
+    pub fn getLYD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getLYD();
     }
-    pub fn getMAD() core.HResult!HSTRING {
+    pub fn getMAD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMAD();
     }
-    pub fn getMDL() core.HResult!HSTRING {
+    pub fn getMDL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMDL();
     }
-    pub fn getMGA() core.HResult!HSTRING {
+    pub fn getMGA() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMGA();
     }
-    pub fn getMKD() core.HResult!HSTRING {
+    pub fn getMKD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMKD();
     }
-    pub fn getMMK() core.HResult!HSTRING {
+    pub fn getMMK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMMK();
     }
-    pub fn getMNT() core.HResult!HSTRING {
+    pub fn getMNT() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMNT();
     }
-    pub fn getMOP() core.HResult!HSTRING {
+    pub fn getMOP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMOP();
     }
-    pub fn getMRO() core.HResult!HSTRING {
+    pub fn getMRO() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMRO();
     }
-    pub fn getMUR() core.HResult!HSTRING {
+    pub fn getMUR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMUR();
     }
-    pub fn getMVR() core.HResult!HSTRING {
+    pub fn getMVR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMVR();
     }
-    pub fn getMWK() core.HResult!HSTRING {
+    pub fn getMWK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMWK();
     }
-    pub fn getMXN() core.HResult!HSTRING {
+    pub fn getMXN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMXN();
     }
-    pub fn getMYR() core.HResult!HSTRING {
+    pub fn getMYR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMYR();
     }
-    pub fn getMZN() core.HResult!HSTRING {
+    pub fn getMZN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getMZN();
     }
-    pub fn getNAD() core.HResult!HSTRING {
+    pub fn getNAD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNAD();
     }
-    pub fn getNGN() core.HResult!HSTRING {
+    pub fn getNGN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNGN();
     }
-    pub fn getNIO() core.HResult!HSTRING {
+    pub fn getNIO() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNIO();
     }
-    pub fn getNOK() core.HResult!HSTRING {
+    pub fn getNOK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNOK();
     }
-    pub fn getNPR() core.HResult!HSTRING {
+    pub fn getNPR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNPR();
     }
-    pub fn getNZD() core.HResult!HSTRING {
+    pub fn getNZD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getNZD();
     }
-    pub fn getOMR() core.HResult!HSTRING {
+    pub fn getOMR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getOMR();
     }
-    pub fn getPAB() core.HResult!HSTRING {
+    pub fn getPAB() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPAB();
     }
-    pub fn getPEN() core.HResult!HSTRING {
+    pub fn getPEN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPEN();
     }
-    pub fn getPGK() core.HResult!HSTRING {
+    pub fn getPGK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPGK();
     }
-    pub fn getPHP() core.HResult!HSTRING {
+    pub fn getPHP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPHP();
     }
-    pub fn getPKR() core.HResult!HSTRING {
+    pub fn getPKR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPKR();
     }
-    pub fn getPLN() core.HResult!HSTRING {
+    pub fn getPLN() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPLN();
     }
-    pub fn getPYG() core.HResult!HSTRING {
+    pub fn getPYG() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getPYG();
     }
-    pub fn getQAR() core.HResult!HSTRING {
+    pub fn getQAR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getQAR();
     }
-    pub fn getRON() core.HResult!HSTRING {
+    pub fn getRON() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRON();
     }
-    pub fn getRSD() core.HResult!HSTRING {
+    pub fn getRSD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRSD();
     }
-    pub fn getRUB() core.HResult!HSTRING {
+    pub fn getRUB() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRUB();
     }
-    pub fn getRWF() core.HResult!HSTRING {
+    pub fn getRWF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getRWF();
     }
-    pub fn getSAR() core.HResult!HSTRING {
+    pub fn getSAR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSAR();
     }
-    pub fn getSBD() core.HResult!HSTRING {
+    pub fn getSBD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSBD();
     }
-    pub fn getSCR() core.HResult!HSTRING {
+    pub fn getSCR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSCR();
     }
-    pub fn getSDG() core.HResult!HSTRING {
+    pub fn getSDG() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSDG();
     }
-    pub fn getSEK() core.HResult!HSTRING {
+    pub fn getSEK() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSEK();
     }
-    pub fn getSGD() core.HResult!HSTRING {
+    pub fn getSGD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSGD();
     }
-    pub fn getSHP() core.HResult!HSTRING {
+    pub fn getSHP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSHP();
     }
-    pub fn getSLL() core.HResult!HSTRING {
+    pub fn getSLL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSLL();
     }
-    pub fn getSOS() core.HResult!HSTRING {
+    pub fn getSOS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSOS();
     }
-    pub fn getSRD() core.HResult!HSTRING {
+    pub fn getSRD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSRD();
     }
-    pub fn getSTD() core.HResult!HSTRING {
+    pub fn getSTD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSTD();
     }
-    pub fn getSYP() core.HResult!HSTRING {
+    pub fn getSYP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSYP();
     }
-    pub fn getSZL() core.HResult!HSTRING {
+    pub fn getSZL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getSZL();
     }
-    pub fn getTHB() core.HResult!HSTRING {
+    pub fn getTHB() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTHB();
     }
-    pub fn getTJS() core.HResult!HSTRING {
+    pub fn getTJS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTJS();
     }
-    pub fn getTMT() core.HResult!HSTRING {
+    pub fn getTMT() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTMT();
     }
-    pub fn getTND() core.HResult!HSTRING {
+    pub fn getTND() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTND();
     }
-    pub fn getTOP() core.HResult!HSTRING {
+    pub fn getTOP() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTOP();
     }
-    pub fn getTRY() core.HResult!HSTRING {
+    pub fn getTRY() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTRY();
     }
-    pub fn getTTD() core.HResult!HSTRING {
+    pub fn getTTD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTTD();
     }
-    pub fn getTWD() core.HResult!HSTRING {
+    pub fn getTWD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTWD();
     }
-    pub fn getTZS() core.HResult!HSTRING {
+    pub fn getTZS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getTZS();
     }
-    pub fn getUAH() core.HResult!HSTRING {
+    pub fn getUAH() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUAH();
     }
-    pub fn getUGX() core.HResult!HSTRING {
+    pub fn getUGX() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUGX();
     }
-    pub fn getUSD() core.HResult!HSTRING {
+    pub fn getUSD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUSD();
     }
-    pub fn getUYU() core.HResult!HSTRING {
+    pub fn getUYU() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUYU();
     }
-    pub fn getUZS() core.HResult!HSTRING {
+    pub fn getUZS() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getUZS();
     }
-    pub fn getVEF() core.HResult!HSTRING {
+    pub fn getVEF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVEF();
     }
-    pub fn getVND() core.HResult!HSTRING {
+    pub fn getVND() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVND();
     }
-    pub fn getVUV() core.HResult!HSTRING {
+    pub fn getVUV() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getVUV();
     }
-    pub fn getWST() core.HResult!HSTRING {
+    pub fn getWST() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getWST();
     }
-    pub fn getXAF() core.HResult!HSTRING {
+    pub fn getXAF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXAF();
     }
-    pub fn getXCD() core.HResult!HSTRING {
+    pub fn getXCD() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXCD();
     }
-    pub fn getXOF() core.HResult!HSTRING {
+    pub fn getXOF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXOF();
     }
-    pub fn getXPF() core.HResult!HSTRING {
+    pub fn getXPF() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXPF();
     }
-    pub fn getXXX() core.HResult!HSTRING {
+    pub fn getXXX() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getXXX();
     }
-    pub fn getYER() core.HResult!HSTRING {
+    pub fn getYER() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getYER();
     }
-    pub fn getZAR() core.HResult!HSTRING {
+    pub fn getZAR() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZAR();
     }
-    pub fn getZMW() core.HResult!HSTRING {
+    pub fn getZMW() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZMW();
     }
-    pub fn getZWL() core.HResult!HSTRING {
+    pub fn getZWL() core.HResult!?HSTRING {
         const _f = try @This()._ICurrencyIdentifiersStaticsCache.get();
         return try _f.getZWL();
     }
@@ -1361,31 +1361,31 @@ pub const DayOfWeek = enum(i32) {
 };
 pub const GeographicRegion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCode();
     }
-    pub fn getCodeTwoLetter(self: *@This()) core.HResult!HSTRING {
+    pub fn getCodeTwoLetter(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCodeTwoLetter();
     }
-    pub fn getCodeThreeLetter(self: *@This()) core.HResult!HSTRING {
+    pub fn getCodeThreeLetter(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCodeThreeLetter();
     }
-    pub fn getCodeThreeDigit(self: *@This()) core.HResult!HSTRING {
+    pub fn getCodeThreeDigit(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCodeThreeDigit();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getNativeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNativeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getNativeName();
     }
-    pub fn getCurrenciesInUse(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getCurrenciesInUse(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCurrenciesInUse();
     }
@@ -1396,11 +1396,11 @@ pub const GeographicRegion = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeographicRegion.IID)));
     }
-    pub fn CreateGeographicRegion(geographicRegionCode: HSTRING) core.HResult!*GeographicRegion {
+    pub fn CreateGeographicRegion(geographicRegionCode: ?HSTRING) core.HResult!*GeographicRegion {
         const _f = try @This()._IGeographicRegionFactoryCache.get();
         return try _f.CreateGeographicRegion(geographicRegionCode);
     }
-    pub fn IsSupported(geographicRegionCode: HSTRING) core.HResult!bool {
+    pub fn IsSupported(geographicRegionCode: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IGeographicRegionStaticsCache.get();
         return try _f.IsSupported(geographicRegionCode);
     }
@@ -1415,24 +1415,24 @@ pub const GeographicRegion = extern struct {
 };
 pub const IApplicationLanguagesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getPrimaryLanguageOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrimaryLanguageOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrimaryLanguageOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPrimaryLanguageOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPrimaryLanguageOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PrimaryLanguageOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getManifestLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getManifestLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_ManifestLanguages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1449,16 +1449,16 @@ pub const IApplicationLanguagesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PrimaryLanguageOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PrimaryLanguageOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_ManifestLanguages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_PrimaryLanguageOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PrimaryLanguageOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ManifestLanguages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IApplicationLanguagesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetLanguagesForUser(self: *@This(), user: *User) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetLanguagesForUser(self: *@This(), user: *User) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetLanguagesForUser(@ptrCast(self), user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1475,7 +1475,7 @@ pub const IApplicationLanguagesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetLanguagesForUser: *const fn(self: *anyopaque, user: *User, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetLanguagesForUser: *const fn(self: *anyopaque, user: *User, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendar = extern struct {
@@ -1494,39 +1494,39 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.SetToMax(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetCalendarSystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetCalendarSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetCalendarSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeCalendarSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ChangeCalendarSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ChangeCalendarSystem(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetClock(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetClock(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetClock(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeClock(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn ChangeClock(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ChangeClock(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1576,14 +1576,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddEras(@ptrCast(self), eras);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn EraAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn EraAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.EraAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EraAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn EraAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.EraAsStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1620,20 +1620,20 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddYears(@ptrCast(self), years);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn YearAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn YearAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.YearAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn YearAsTruncatedString(self: *@This(), remainingDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn YearAsTruncatedString(self: *@This(), remainingDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.YearAsTruncatedString(@ptrCast(self), remainingDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn YearAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn YearAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.YearAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1670,38 +1670,38 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddMonths(@ptrCast(self), months);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn MonthAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MonthAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MonthAsSoloString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsSoloString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsSoloString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MonthAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsSoloStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MonthAsNumericString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsNumericString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsNumericString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MonthAsPaddedNumericString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MonthAsPaddedNumericString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MonthAsPaddedNumericString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1742,14 +1742,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddDays(@ptrCast(self), days);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn DayAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DayAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1760,26 +1760,26 @@ pub const ICalendar = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DayOfWeekAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayOfWeekAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayOfWeekAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DayOfWeekAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayOfWeekAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayOfWeekAsStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DayOfWeekAsSoloString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayOfWeekAsSoloString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayOfWeekAsSoloString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DayOfWeekAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn DayOfWeekAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.DayOfWeekAsSoloStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1816,14 +1816,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddPeriods(@ptrCast(self), periods);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PeriodAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn PeriodAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.PeriodAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PeriodAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn PeriodAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.PeriodAsStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1860,14 +1860,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddHours(@ptrCast(self), hours);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn HourAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn HourAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.HourAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn HourAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn HourAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.HourAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1886,14 +1886,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddMinutes(@ptrCast(self), minutes);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn MinuteAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MinuteAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MinuteAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MinuteAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn MinuteAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.MinuteAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1912,14 +1912,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddSeconds(@ptrCast(self), seconds);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SecondAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn SecondAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.SecondAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn SecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.SecondAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1938,14 +1938,14 @@ pub const ICalendar = extern struct {
         const _c = self.vtable.AddNanoseconds(@ptrCast(self), nanoseconds);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn NanosecondAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn NanosecondAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.NanosecondAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn NanosecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn NanosecondAsPaddedString(self: *@This(), minDigits: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.NanosecondAsPaddedString(@ptrCast(self), minDigits, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2002,8 +2002,8 @@ pub const ICalendar = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2029,13 +2029,13 @@ pub const ICalendar = extern struct {
         Clone: *const fn(self: *anyopaque, _r: **Calendar) callconv(.winapi) HRESULT,
         SetToMin: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetToMax: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_NumeralSystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NumeralSystem: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        GetCalendarSystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ChangeCalendarSystem: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        GetClock: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ChangeClock: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_NumeralSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NumeralSystem: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        GetCalendarSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ChangeCalendarSystem: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        GetClock: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ChangeClock: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         GetDateTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         SetDateTime: *const fn(self: *anyopaque, value: DateTime) callconv(.winapi) HRESULT,
         SetToNow: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -2045,29 +2045,29 @@ pub const ICalendar = extern struct {
         get_Era: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Era: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddEras: *const fn(self: *anyopaque, eras: i32) callconv(.winapi) HRESULT,
-        EraAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        EraAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        EraAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        EraAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FirstYearInThisEra: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastYearInThisEra: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NumberOfYearsInThisEra: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Year: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Year: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddYears: *const fn(self: *anyopaque, years: i32) callconv(.winapi) HRESULT,
-        YearAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        YearAsTruncatedString: *const fn(self: *anyopaque, remainingDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
-        YearAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        YearAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        YearAsTruncatedString: *const fn(self: *anyopaque, remainingDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        YearAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FirstMonthInThisYear: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastMonthInThisYear: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NumberOfMonthsInThisYear: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Month: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Month: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddMonths: *const fn(self: *anyopaque, months: i32) callconv(.winapi) HRESULT,
-        MonthAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MonthAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MonthAsSoloString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MonthAsSoloStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MonthAsNumericString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MonthAsPaddedNumericString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        MonthAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MonthAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MonthAsSoloString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MonthAsSoloStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MonthAsNumericString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MonthAsPaddedNumericString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         AddWeeks: *const fn(self: *anyopaque, weeks: i32) callconv(.winapi) HRESULT,
         get_FirstDayInThisMonth: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastDayInThisMonth: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -2075,44 +2075,44 @@ pub const ICalendar = extern struct {
         get_Day: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Day: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddDays: *const fn(self: *anyopaque, days: i32) callconv(.winapi) HRESULT,
-        DayAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        DayAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        DayAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        DayAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DayOfWeek: *const fn(self: *anyopaque, _r: *DayOfWeek) callconv(.winapi) HRESULT,
-        DayOfWeekAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        DayOfWeekAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
-        DayOfWeekAsSoloString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        DayOfWeekAsSoloStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        DayOfWeekAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        DayOfWeekAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        DayOfWeekAsSoloString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        DayOfWeekAsSoloStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FirstPeriodInThisDay: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastPeriodInThisDay: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NumberOfPeriodsInThisDay: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Period: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Period: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddPeriods: *const fn(self: *anyopaque, periods: i32) callconv(.winapi) HRESULT,
-        PeriodAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        PeriodAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        PeriodAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        PeriodAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FirstHourInThisPeriod: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastHourInThisPeriod: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NumberOfHoursInThisPeriod: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_Hour: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Hour: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddHours: *const fn(self: *anyopaque, hours: i32) callconv(.winapi) HRESULT,
-        HourAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        HourAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        HourAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        HourAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Minute: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Minute: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddMinutes: *const fn(self: *anyopaque, minutes: i32) callconv(.winapi) HRESULT,
-        MinuteAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        MinuteAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        MinuteAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        MinuteAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Second: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Second: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddSeconds: *const fn(self: *anyopaque, seconds: i32) callconv(.winapi) HRESULT,
-        SecondAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SecondAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        SecondAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SecondAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Nanosecond: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_Nanosecond: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         AddNanoseconds: *const fn(self: *anyopaque, nanoseconds: i32) callconv(.winapi) HRESULT,
-        NanosecondAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        NanosecondAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        NanosecondAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        NanosecondAsPaddedString: *const fn(self: *anyopaque, minDigits: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Compare: *const fn(self: *anyopaque, other: *Calendar, _r: *i32) callconv(.winapi) HRESULT,
         CompareDateTime: *const fn(self: *anyopaque, other: DateTime, _r: *i32) callconv(.winapi) HRESULT,
         CopyTo: *const fn(self: *anyopaque, other: *Calendar) callconv(.winapi) HRESULT,
@@ -2122,19 +2122,19 @@ pub const ICalendar = extern struct {
         get_FirstSecondInThisMinute: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_LastSecondInThisMinute: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_NumberOfSecondsInThisMinute: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsDaylightSavingTime: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateCalendarDefaultCalendarAndClock(self: *@This(), languages: *IIterable(HSTRING)) core.HResult!*Calendar {
+    pub fn CreateCalendarDefaultCalendarAndClock(self: *@This(), languages: *IIterable(?HSTRING)) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.CreateCalendarDefaultCalendarAndClock(@ptrCast(self), languages, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCalendar(self: *@This(), languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING) core.HResult!*Calendar {
+    pub fn CreateCalendar(self: *@This(), languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.CreateCalendar(@ptrCast(self), languages, calendar, clock, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2152,13 +2152,13 @@ pub const ICalendarFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateCalendarDefaultCalendarAndClock: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), _r: **Calendar) callconv(.winapi) HRESULT,
-        CreateCalendar: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING, _r: **Calendar) callconv(.winapi) HRESULT,
+        CreateCalendarDefaultCalendarAndClock: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), _r: **Calendar) callconv(.winapi) HRESULT,
+        CreateCalendar: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING, _r: **Calendar) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateCalendarWithTimeZone(self: *@This(), languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING, timeZoneId: HSTRING) core.HResult!*Calendar {
+    pub fn CreateCalendarWithTimeZone(self: *@This(), languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING, timeZoneId: ?HSTRING) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.CreateCalendarWithTimeZone(@ptrCast(self), languages, calendar, clock, timeZoneId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2176,61 +2176,61 @@ pub const ICalendarFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateCalendarWithTimeZone: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), calendar: HSTRING, clock: HSTRING, timeZoneId: HSTRING, _r: **Calendar) callconv(.winapi) HRESULT,
+        CreateCalendarWithTimeZone: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING, timeZoneId: ?HSTRING, _r: **Calendar) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn getGregorian(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGregorian(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gregorian(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHebrew(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHebrew(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hebrew(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHijri(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHijri(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Hijri(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJapanese(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJapanese(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Japanese(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJulian(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJulian(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Julian(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKorean(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKorean(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Korean(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTaiwan(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTaiwan(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Taiwan(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getThai(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getThai(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Thai(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUmAlQura(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUmAlQura(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UmAlQura(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2247,21 +2247,21 @@ pub const ICalendarIdentifiersStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Gregorian: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hebrew: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Hijri: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Japanese: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Julian: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Korean: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Taiwan: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Thai: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UmAlQura: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Gregorian: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hebrew: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Hijri: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Japanese: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Julian: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Korean: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Taiwan: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Thai: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UmAlQura: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getPersian(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPersian(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Persian(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2278,37 +2278,37 @@ pub const ICalendarIdentifiersStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Persian: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Persian: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn getChineseLunar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getChineseLunar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChineseLunar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJapaneseLunar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJapaneseLunar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JapaneseLunar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKoreanLunar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKoreanLunar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KoreanLunar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTaiwanLunar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTaiwanLunar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaiwanLunar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVietnameseLunar(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVietnameseLunar(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VietnameseLunar(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2325,23 +2325,23 @@ pub const ICalendarIdentifiersStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ChineseLunar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JapaneseLunar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KoreanLunar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TaiwanLunar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VietnameseLunar: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ChineseLunar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JapaneseLunar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KoreanLunar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TaiwanLunar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VietnameseLunar: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IClockIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn getTwelveHour(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTwelveHour(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TwelveHour(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTwentyFourHour(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTwentyFourHour(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TwentyFourHour(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2358,20 +2358,20 @@ pub const IClockIdentifiersStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TwelveHour: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TwentyFourHour: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TwelveHour: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TwentyFourHour: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyAmount = extern struct {
     vtable: *const VTable,
-    pub fn getAmount(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAmount(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Amount(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Currency(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2388,13 +2388,13 @@ pub const ICurrencyAmount = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Amount: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Currency: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Amount: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Currency: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyAmountFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), amount: HSTRING, currency: HSTRING) core.HResult!*CurrencyAmount {
+    pub fn Create(self: *@This(), amount: ?HSTRING, currency: ?HSTRING) core.HResult!*CurrencyAmount {
         var _r: *CurrencyAmount = undefined;
         const _c = self.vtable.Create(@ptrCast(self), amount, currency, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2412,949 +2412,949 @@ pub const ICurrencyAmountFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, amount: HSTRING, currency: HSTRING, _r: **CurrencyAmount) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, amount: ?HSTRING, currency: ?HSTRING, _r: **CurrencyAmount) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn getAED(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAED(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AED(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAFN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAFN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AFN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getALL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getALL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ALL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAMD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAMD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AMD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getANG(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getANG(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ANG(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAOA(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAOA(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AOA(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getARS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getARS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ARS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAUD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAUD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AUD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAWG(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAWG(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AWG(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAZN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAZN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AZN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBAM(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBAM(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BAM(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBBD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBBD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BBD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBDT(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBDT(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BDT(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBGN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBGN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BGN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBHD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBHD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BHD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBIF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBIF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BIF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBMD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBMD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BMD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBND(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBND(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BND(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBOB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBOB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BOB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBRL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBRL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BRL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBSD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBSD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BSD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBTN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBTN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BTN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBWP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBWP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BWP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBYR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBYR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BYR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBZD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBZD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BZD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCAD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCAD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CAD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCDF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCDF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CDF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCHF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCHF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CHF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCLP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCLP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CLP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCNY(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCNY(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CNY(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCOP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCOP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_COP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCRC(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCRC(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CRC(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCUP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCUP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CUP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCVE(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCVE(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CVE(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCZK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCZK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CZK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDJF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDJF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DJF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDKK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDKK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DKK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDOP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDOP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DOP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDZD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDZD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DZD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEGP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEGP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EGP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getERN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getERN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ERN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getETB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getETB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ETB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEUR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEUR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EUR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFJD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFJD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FJD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFKP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFKP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FKP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGBP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGBP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GBP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGEL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGEL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GEL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGHS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGHS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GHS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGIP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGIP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GIP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGMD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGMD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GMD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGNF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGNF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GNF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGTQ(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGTQ(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GTQ(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGYD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGYD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GYD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHKD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHKD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HKD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHNL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHNL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HNL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHRK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHRK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HRK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHTG(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHTG(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HTG(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHUF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHUF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HUF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIDR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIDR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IDR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getILS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getILS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ILS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getINR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getINR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_INR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIQD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIQD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IQD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getIRR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getIRR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_IRR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getISK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getISK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ISK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJMD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJMD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JMD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJOD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJOD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JOD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJPY(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJPY(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JPY(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKES(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKES(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KES(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKGS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKGS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KGS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKHR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKHR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KHR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKMF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKMF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KMF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKPW(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKPW(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KPW(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKRW(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKRW(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KRW(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKWD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKWD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KWD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKYD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKYD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KYD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKZT(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKZT(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_KZT(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLAK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLAK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LAK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLBP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLBP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LBP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLKR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLKR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LKR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLRD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLRD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LRD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLSL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLSL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LSL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLTL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLTL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LTL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLVL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLVL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LVL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLYD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLYD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LYD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMAD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMAD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MAD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMDL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMDL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MDL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMGA(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMGA(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MGA(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMKD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMKD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MKD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMMK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMMK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MMK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMNT(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMNT(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MNT(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMOP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMOP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MOP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMRO(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMRO(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MRO(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMUR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMUR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MUR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMVR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMVR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MVR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMWK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMWK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MWK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMXN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMXN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MXN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMYR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMYR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MYR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMZN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMZN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MZN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNAD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNAD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NAD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNGN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNGN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NGN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNIO(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNIO(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NIO(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNOK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNOK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NOK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNPR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNPR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NPR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNZD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNZD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NZD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOMR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOMR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OMR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPAB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPAB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PAB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPEN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPEN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PEN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPGK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPGK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PGK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPHP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPHP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PHP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPKR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPKR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PKR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPLN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPLN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PLN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPYG(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPYG(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PYG(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQAR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQAR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QAR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRON(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRON(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RON(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRSD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRSD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RSD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRUB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRUB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RUB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRWF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRWF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RWF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSAR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSAR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SAR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSBD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSBD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SBD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSCR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSCR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SCR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSDG(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSDG(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SDG(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSEK(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSEK(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SEK(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSGD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSGD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SGD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSHP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSHP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SHP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSLL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSLL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SLL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSOS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSOS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SOS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSRD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSRD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SRD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSTD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSTD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_STD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSYP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSYP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SYP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSZL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSZL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SZL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTHB(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTHB(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_THB(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTJS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTJS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TJS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTMT(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTMT(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TMT(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTND(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTND(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TND(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTOP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTOP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TOP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTRY(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTRY(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TRY(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTTD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTTD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TTD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTWD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTWD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TWD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTZS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTZS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TZS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUAH(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUAH(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UAH(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUGX(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUGX(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UGX(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUSD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUSD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_USD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUYU(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUYU(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UYU(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUZS(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUZS(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UZS(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVEF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVEF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VEF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVND(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVND(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VND(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVUV(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVUV(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VUV(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWST(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWST(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WST(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXAF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXAF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XAF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXCD(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXCD(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XCD(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXOF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXOF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XOF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXPF(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXPF(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XPF(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXXX(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXXX(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XXX(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getYER(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getYER(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_YER(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZAR(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZAR(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZAR(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZMW(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZMW(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZMW(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZWL(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZWL(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZWL(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3371,169 +3371,169 @@ pub const ICurrencyIdentifiersStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AED: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AFN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ALL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AMD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ANG: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AOA: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ARS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AUD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AWG: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AZN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BAM: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BBD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BDT: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BGN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BHD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BIF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BMD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BND: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BOB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BRL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BSD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BTN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BWP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BYR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BZD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CAD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CDF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CHF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CLP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CNY: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_COP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CRC: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CUP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CVE: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CZK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DJF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DKK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DOP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DZD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EGP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ERN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ETB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EUR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FJD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FKP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GBP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GEL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GHS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GIP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GMD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GNF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GTQ: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_GYD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HKD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HNL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HRK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HTG: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HUF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IDR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ILS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_INR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IQD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_IRR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ISK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JMD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JOD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JPY: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KES: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KGS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KHR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KMF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KPW: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KRW: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KWD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KYD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_KZT: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LAK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LBP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LKR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LRD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LSL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LTL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LVL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LYD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MAD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MDL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MGA: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MKD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MMK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MNT: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MOP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MRO: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MUR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MVR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MWK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MXN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MYR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MZN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NAD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NGN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NIO: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NOK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NPR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NZD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_OMR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PAB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PEN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PGK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PHP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PKR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PLN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PYG: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_QAR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RON: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RSD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RUB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RWF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SAR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SBD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SCR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SDG: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SEK: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SGD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SHP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SLL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SOS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SRD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_STD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SYP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SZL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_THB: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TJS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TMT: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TND: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TOP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TRY: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TTD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TWD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TZS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UAH: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UGX: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_USD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UYU: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_UZS: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VEF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VND: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VUV: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_WST: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XAF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XCD: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XOF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XPF: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XXX: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_YER: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZAR: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZMW: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZWL: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AED: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AFN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ALL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AMD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ANG: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AOA: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ARS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AUD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AWG: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AZN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BAM: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BBD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BDT: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BGN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BHD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BIF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BMD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BND: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BOB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BRL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BSD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BTN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BWP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BYR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BZD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CAD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CDF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CHF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CLP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CNY: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_COP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CRC: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CUP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CVE: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CZK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DJF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DKK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DOP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DZD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EGP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ERN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ETB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EUR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FJD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FKP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GBP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GEL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GHS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GIP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GMD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GNF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GTQ: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_GYD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HKD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HNL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HRK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HTG: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HUF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IDR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ILS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_INR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IQD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_IRR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ISK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JMD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JOD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JPY: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KES: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KGS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KHR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KMF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KPW: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KRW: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KWD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KYD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_KZT: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LAK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LBP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LKR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LRD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LSL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LTL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LVL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LYD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MAD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MDL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MGA: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MKD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MMK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MNT: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MOP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MRO: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MUR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MVR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MWK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MXN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MYR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MZN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NAD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NGN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NIO: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NOK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NPR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NZD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_OMR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PAB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PEN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PGK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PHP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PKR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PLN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PYG: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_QAR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RON: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RSD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RUB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RWF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SAR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SBD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SCR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SDG: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SEK: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SGD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SHP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SLL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SOS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SRD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_STD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SYP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SZL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_THB: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TJS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TMT: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TND: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TOP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TRY: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TTD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TWD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TZS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UAH: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UGX: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_USD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UYU: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_UZS: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VEF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VND: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VUV: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_WST: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XAF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XCD: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XOF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XPF: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XXX: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_YER: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZAR: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZMW: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZWL: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getBYN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBYN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BYN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3550,31 +3550,31 @@ pub const ICurrencyIdentifiersStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_BYN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_BYN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn getMRU(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMRU(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MRU(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSSP(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSSP(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SSP(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSTN(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSTN(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_STN(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVES(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVES(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VES(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3591,52 +3591,52 @@ pub const ICurrencyIdentifiersStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MRU: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SSP: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_STN: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VES: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MRU: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SSP: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_STN: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VES: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeographicRegion = extern struct {
     vtable: *const VTable,
-    pub fn getCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCodeTwoLetter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCodeTwoLetter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CodeTwoLetter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCodeThreeLetter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCodeThreeLetter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CodeThreeLetter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCodeThreeDigit(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCodeThreeDigit(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CodeThreeDigit(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNativeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNativeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NativeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrenciesInUse(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getCurrenciesInUse(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_CurrenciesInUse(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3653,18 +3653,18 @@ pub const IGeographicRegion = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Code: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CodeTwoLetter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CodeThreeLetter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CodeThreeDigit: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NativeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CurrenciesInUse: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_Code: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CodeTwoLetter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CodeThreeLetter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CodeThreeDigit: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NativeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CurrenciesInUse: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeographicRegionFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateGeographicRegion(self: *@This(), geographicRegionCode: HSTRING) core.HResult!*GeographicRegion {
+    pub fn CreateGeographicRegion(self: *@This(), geographicRegionCode: ?HSTRING) core.HResult!*GeographicRegion {
         var _r: *GeographicRegion = undefined;
         const _c = self.vtable.CreateGeographicRegion(@ptrCast(self), geographicRegionCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3682,12 +3682,12 @@ pub const IGeographicRegionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateGeographicRegion: *const fn(self: *anyopaque, geographicRegionCode: HSTRING, _r: **GeographicRegion) callconv(.winapi) HRESULT,
+        CreateGeographicRegion: *const fn(self: *anyopaque, geographicRegionCode: ?HSTRING, _r: **GeographicRegion) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeographicRegionStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsSupported(self: *@This(), geographicRegionCode: HSTRING) core.HResult!bool {
+    pub fn IsSupported(self: *@This(), geographicRegionCode: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), geographicRegionCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3705,31 +3705,31 @@ pub const IGeographicRegionStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsSupported: *const fn(self: *anyopaque, geographicRegionCode: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsSupported: *const fn(self: *anyopaque, geographicRegionCode: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguage = extern struct {
     vtable: *const VTable,
-    pub fn getLanguageTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageTag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNativeName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNativeName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NativeName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getScript(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getScript(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Script(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3746,10 +3746,10 @@ pub const ILanguage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_LanguageTag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NativeName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Script: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_LanguageTag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NativeName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Script: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguage2 = extern struct {
@@ -3777,8 +3777,8 @@ pub const ILanguage2 = extern struct {
 };
 pub const ILanguage3 = extern struct {
     vtable: *const VTable,
-    pub fn getAbbreviatedName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAbbreviatedName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbbreviatedName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3795,13 +3795,13 @@ pub const ILanguage3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AbbreviatedName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AbbreviatedName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguageExtensionSubtags = extern struct {
     vtable: *const VTable,
-    pub fn GetExtensionSubtags(self: *@This(), singleton: HSTRING) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn GetExtensionSubtags(self: *@This(), singleton: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetExtensionSubtags(@ptrCast(self), singleton, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3818,12 +3818,12 @@ pub const ILanguageExtensionSubtags = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetExtensionSubtags: *const fn(self: *anyopaque, singleton: HSTRING, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        GetExtensionSubtags: *const fn(self: *anyopaque, singleton: ?HSTRING, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguageFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateLanguage(self: *@This(), languageTag: HSTRING) core.HResult!*Language {
+    pub fn CreateLanguage(self: *@This(), languageTag: ?HSTRING) core.HResult!*Language {
         var _r: *Language = undefined;
         const _c = self.vtable.CreateLanguage(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3841,19 +3841,19 @@ pub const ILanguageFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateLanguage: *const fn(self: *anyopaque, languageTag: HSTRING, _r: **Language) callconv(.winapi) HRESULT,
+        CreateLanguage: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: **Language) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguageStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsWellFormed(self: *@This(), languageTag: HSTRING) core.HResult!bool {
+    pub fn IsWellFormed(self: *@This(), languageTag: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsWellFormed(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurrentInputMethodLanguageTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrentInputMethodLanguageTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrentInputMethodLanguageTag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3870,13 +3870,13 @@ pub const ILanguageStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsWellFormed: *const fn(self: *anyopaque, languageTag: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        get_CurrentInputMethodLanguageTag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        IsWellFormed: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        get_CurrentInputMethodLanguageTag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguageStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn TrySetInputMethodLanguageTag(self: *@This(), languageTag: HSTRING) core.HResult!bool {
+    pub fn TrySetInputMethodLanguageTag(self: *@This(), languageTag: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetInputMethodLanguageTag(@ptrCast(self), languageTag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3894,13 +3894,13 @@ pub const ILanguageStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TrySetInputMethodLanguageTag: *const fn(self: *anyopaque, languageTag: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TrySetInputMethodLanguageTag: *const fn(self: *anyopaque, languageTag: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ILanguageStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn GetMuiCompatibleLanguageListFromLanguageTags(self: *@This(), languageTags: *IIterable(HSTRING)) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn GetMuiCompatibleLanguageListFromLanguageTags(self: *@This(), languageTags: *IIterable(?HSTRING)) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetMuiCompatibleLanguageListFromLanguageTags(@ptrCast(self), languageTags, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -3917,223 +3917,223 @@ pub const ILanguageStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetMuiCompatibleLanguageListFromLanguageTags: *const fn(self: *anyopaque, languageTags: *IIterable(HSTRING), _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        GetMuiCompatibleLanguageListFromLanguageTags: *const fn(self: *anyopaque, languageTags: *IIterable(?HSTRING), _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const INumeralSystemIdentifiersStatics = extern struct {
     vtable: *const VTable,
-    pub fn getArab(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArab(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arab(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getArabExt(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArabExt(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ArabExt(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBali(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBali(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bali(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBeng(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBeng(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Beng(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCham(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCham(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Cham(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeva(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeva(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Deva(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFullWide(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFullWide(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullWide(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGujr(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGujr(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gujr(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGuru(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGuru(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Guru(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHaniDec(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHaniDec(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HaniDec(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJava(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJava(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Java(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKali(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKali(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Kali(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKhmr(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKhmr(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Khmr(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getKnda(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getKnda(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Knda(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLana(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLana(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Lana(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanaTham(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanaTham(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanaTham(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLaoo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLaoo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Laoo(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLatn(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLatn(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Latn(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLepc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLepc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Lepc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLimb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLimb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Limb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMlym(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMlym(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mlym(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMong(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMong(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mong(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMtei(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMtei(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mtei(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMymr(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMymr(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Mymr(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMymrShan(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMymrShan(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MymrShan(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNkoo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNkoo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Nkoo(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOlck(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOlck(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Olck(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOrya(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOrya(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Orya(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSaur(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSaur(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Saur(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSund(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSund(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sund(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTalu(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTalu(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Talu(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTamlDec(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTamlDec(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TamlDec(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTelu(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTelu(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Telu(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getThai(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getThai(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Thai(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTibt(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTibt(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tibt(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVaii(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVaii(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Vaii(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4150,114 +4150,114 @@ pub const INumeralSystemIdentifiersStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Arab: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ArabExt: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Bali: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Beng: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Cham: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Deva: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FullWide: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Gujr: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Guru: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HaniDec: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Java: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Kali: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Khmr: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Knda: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Lana: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LanaTham: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Laoo: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Latn: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Lepc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Limb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mlym: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mong: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mtei: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Mymr: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MymrShan: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Nkoo: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Olck: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Orya: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Saur: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sund: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Talu: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TamlDec: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Telu: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Thai: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Tibt: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Vaii: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arab: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ArabExt: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Bali: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Beng: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Cham: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Deva: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FullWide: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Gujr: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Guru: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HaniDec: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Java: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Kali: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Khmr: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Knda: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Lana: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LanaTham: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Laoo: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Latn: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Lepc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Limb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mlym: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mong: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mtei: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Mymr: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MymrShan: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Nkoo: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Olck: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Orya: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Saur: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sund: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Talu: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TamlDec: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Telu: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Thai: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Tibt: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Vaii: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INumeralSystemIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getBrah(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrah(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Brah(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOsma(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOsma(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Osma(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMathBold(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMathBold(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MathBold(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMathDbl(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMathDbl(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MathDbl(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMathSans(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMathSans(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MathSans(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMathSanb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMathSanb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MathSanb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMathMono(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMathMono(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MathMono(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZmthBold(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZmthBold(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZmthBold(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZmthDbl(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZmthDbl(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZmthDbl(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZmthSans(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZmthSans(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZmthSans(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZmthSanb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZmthSanb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZmthSanb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getZmthMono(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getZmthMono(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ZmthMono(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4274,40 +4274,40 @@ pub const INumeralSystemIdentifiersStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Brah: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Osma: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MathBold: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MathDbl: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MathSans: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MathSanb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MathMono: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZmthBold: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZmthDbl: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZmthSans: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZmthSanb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ZmthMono: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Brah: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Osma: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MathBold: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MathDbl: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MathSans: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MathSanb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MathMono: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZmthBold: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZmthDbl: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZmthSans: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZmthSanb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ZmthMono: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimeZoneOnCalendar = extern struct {
     vtable: *const VTable,
-    pub fn GetTimeZone(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetTimeZone(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTimeZone(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeTimeZone(self: *@This(), timeZoneId: HSTRING) core.HResult!void {
+    pub fn ChangeTimeZone(self: *@This(), timeZoneId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ChangeTimeZone(@ptrCast(self), timeZoneId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TimeZoneAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn TimeZoneAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.TimeZoneAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.TimeZoneAsStringWithIdealLength(@ptrCast(self), idealLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -4324,31 +4324,31 @@ pub const ITimeZoneOnCalendar = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetTimeZone: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ChangeTimeZone: *const fn(self: *anyopaque, timeZoneId: HSTRING) callconv(.winapi) HRESULT,
-        TimeZoneAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        TimeZoneAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetTimeZone: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ChangeTimeZone: *const fn(self: *anyopaque, timeZoneId: ?HSTRING) callconv(.winapi) HRESULT,
+        TimeZoneAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        TimeZoneAsStringWithIdealLength: *const fn(self: *anyopaque, idealLength: i32, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const Language = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguageTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguage = @ptrCast(self);
         return try this.getLanguageTag();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguage = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getNativeName(self: *@This()) core.HResult!HSTRING {
+    pub fn getNativeName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguage = @ptrCast(self);
         return try this.getNativeName();
     }
-    pub fn getScript(self: *@This()) core.HResult!HSTRING {
+    pub fn getScript(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguage = @ptrCast(self);
         return try this.getScript();
     }
-    pub fn GetExtensionSubtags(self: *@This(), singleton: HSTRING) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetExtensionSubtags(self: *@This(), singleton: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*ILanguageExtensionSubtags = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguageExtensionSubtags.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4360,7 +4360,7 @@ pub const Language = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLayoutDirection();
     }
-    pub fn getAbbreviatedName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAbbreviatedName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILanguage3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4369,23 +4369,23 @@ pub const Language = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateLanguage(languageTag: HSTRING) core.HResult!*Language {
+    pub fn CreateLanguage(languageTag: ?HSTRING) core.HResult!*Language {
         const _f = try @This()._ILanguageFactoryCache.get();
         return try _f.CreateLanguage(languageTag);
     }
-    pub fn IsWellFormed(languageTag: HSTRING) core.HResult!bool {
+    pub fn IsWellFormed(languageTag: ?HSTRING) core.HResult!bool {
         const _f = try @This()._ILanguageStaticsCache.get();
         return try _f.IsWellFormed(languageTag);
     }
-    pub fn getCurrentInputMethodLanguageTag() core.HResult!HSTRING {
+    pub fn getCurrentInputMethodLanguageTag() core.HResult!?HSTRING {
         const _f = try @This()._ILanguageStaticsCache.get();
         return try _f.getCurrentInputMethodLanguageTag();
     }
-    pub fn TrySetInputMethodLanguageTag(languageTag: HSTRING) core.HResult!bool {
+    pub fn TrySetInputMethodLanguageTag(languageTag: ?HSTRING) core.HResult!bool {
         const _f = try @This()._ILanguageStatics2Cache.get();
         return try _f.TrySetInputMethodLanguageTag(languageTag);
     }
-    pub fn GetMuiCompatibleLanguageListFromLanguageTags(languageTags: *IIterable(HSTRING)) core.HResult!*IVector(HSTRING) {
+    pub fn GetMuiCompatibleLanguageListFromLanguageTags(languageTags: *IIterable(?HSTRING)) core.HResult!*IVector(?HSTRING) {
         const _f = try @This()._ILanguageStatics3Cache.get();
         return try _f.GetMuiCompatibleLanguageListFromLanguageTags(languageTags);
     }
@@ -4410,195 +4410,195 @@ pub const NumeralSystemIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBrah() core.HResult!HSTRING {
+    pub fn getBrah() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getBrah();
     }
-    pub fn getOsma() core.HResult!HSTRING {
+    pub fn getOsma() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getOsma();
     }
-    pub fn getMathBold() core.HResult!HSTRING {
+    pub fn getMathBold() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathBold();
     }
-    pub fn getMathDbl() core.HResult!HSTRING {
+    pub fn getMathDbl() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathDbl();
     }
-    pub fn getMathSans() core.HResult!HSTRING {
+    pub fn getMathSans() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathSans();
     }
-    pub fn getMathSanb() core.HResult!HSTRING {
+    pub fn getMathSanb() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathSanb();
     }
-    pub fn getMathMono() core.HResult!HSTRING {
+    pub fn getMathMono() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getMathMono();
     }
-    pub fn getZmthBold() core.HResult!HSTRING {
+    pub fn getZmthBold() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthBold();
     }
-    pub fn getZmthDbl() core.HResult!HSTRING {
+    pub fn getZmthDbl() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthDbl();
     }
-    pub fn getZmthSans() core.HResult!HSTRING {
+    pub fn getZmthSans() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthSans();
     }
-    pub fn getZmthSanb() core.HResult!HSTRING {
+    pub fn getZmthSanb() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthSanb();
     }
-    pub fn getZmthMono() core.HResult!HSTRING {
+    pub fn getZmthMono() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStatics2Cache.get();
         return try _f.getZmthMono();
     }
-    pub fn getArab() core.HResult!HSTRING {
+    pub fn getArab() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getArab();
     }
-    pub fn getArabExt() core.HResult!HSTRING {
+    pub fn getArabExt() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getArabExt();
     }
-    pub fn getBali() core.HResult!HSTRING {
+    pub fn getBali() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getBali();
     }
-    pub fn getBeng() core.HResult!HSTRING {
+    pub fn getBeng() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getBeng();
     }
-    pub fn getCham() core.HResult!HSTRING {
+    pub fn getCham() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getCham();
     }
-    pub fn getDeva() core.HResult!HSTRING {
+    pub fn getDeva() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getDeva();
     }
-    pub fn getFullWide() core.HResult!HSTRING {
+    pub fn getFullWide() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getFullWide();
     }
-    pub fn getGujr() core.HResult!HSTRING {
+    pub fn getGujr() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getGujr();
     }
-    pub fn getGuru() core.HResult!HSTRING {
+    pub fn getGuru() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getGuru();
     }
-    pub fn getHaniDec() core.HResult!HSTRING {
+    pub fn getHaniDec() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getHaniDec();
     }
-    pub fn getJava() core.HResult!HSTRING {
+    pub fn getJava() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getJava();
     }
-    pub fn getKali() core.HResult!HSTRING {
+    pub fn getKali() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKali();
     }
-    pub fn getKhmr() core.HResult!HSTRING {
+    pub fn getKhmr() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKhmr();
     }
-    pub fn getKnda() core.HResult!HSTRING {
+    pub fn getKnda() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getKnda();
     }
-    pub fn getLana() core.HResult!HSTRING {
+    pub fn getLana() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLana();
     }
-    pub fn getLanaTham() core.HResult!HSTRING {
+    pub fn getLanaTham() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLanaTham();
     }
-    pub fn getLaoo() core.HResult!HSTRING {
+    pub fn getLaoo() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLaoo();
     }
-    pub fn getLatn() core.HResult!HSTRING {
+    pub fn getLatn() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLatn();
     }
-    pub fn getLepc() core.HResult!HSTRING {
+    pub fn getLepc() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLepc();
     }
-    pub fn getLimb() core.HResult!HSTRING {
+    pub fn getLimb() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getLimb();
     }
-    pub fn getMlym() core.HResult!HSTRING {
+    pub fn getMlym() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMlym();
     }
-    pub fn getMong() core.HResult!HSTRING {
+    pub fn getMong() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMong();
     }
-    pub fn getMtei() core.HResult!HSTRING {
+    pub fn getMtei() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMtei();
     }
-    pub fn getMymr() core.HResult!HSTRING {
+    pub fn getMymr() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMymr();
     }
-    pub fn getMymrShan() core.HResult!HSTRING {
+    pub fn getMymrShan() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getMymrShan();
     }
-    pub fn getNkoo() core.HResult!HSTRING {
+    pub fn getNkoo() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getNkoo();
     }
-    pub fn getOlck() core.HResult!HSTRING {
+    pub fn getOlck() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getOlck();
     }
-    pub fn getOrya() core.HResult!HSTRING {
+    pub fn getOrya() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getOrya();
     }
-    pub fn getSaur() core.HResult!HSTRING {
+    pub fn getSaur() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getSaur();
     }
-    pub fn getSund() core.HResult!HSTRING {
+    pub fn getSund() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getSund();
     }
-    pub fn getTalu() core.HResult!HSTRING {
+    pub fn getTalu() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTalu();
     }
-    pub fn getTamlDec() core.HResult!HSTRING {
+    pub fn getTamlDec() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTamlDec();
     }
-    pub fn getTelu() core.HResult!HSTRING {
+    pub fn getTelu() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTelu();
     }
-    pub fn getThai() core.HResult!HSTRING {
+    pub fn getThai() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getThai();
     }
-    pub fn getTibt() core.HResult!HSTRING {
+    pub fn getTibt() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getTibt();
     }
-    pub fn getVaii() core.HResult!HSTRING {
+    pub fn getVaii() core.HResult!?HSTRING {
         const _f = try @This()._INumeralSystemIdentifiersStaticsCache.get();
         return try _f.getVaii();
     }

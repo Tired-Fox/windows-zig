@@ -504,13 +504,13 @@ pub const ColorKeyFrameCollection = extern struct {
 };
 pub const NavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetNavigationStateCore(self: *@This()) core.HResult!HSTRING {
+    pub fn GetNavigationStateCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INavigationTransitionInfoOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationTransitionInfoOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNavigationStateCore();
     }
-    pub fn SetNavigationStateCore(self: *@This(), navigationState: HSTRING) core.HResult!void {
+    pub fn SetNavigationStateCore(self: *@This(), navigationState: ?HSTRING) core.HResult!void {
         var this: ?*INavigationTransitionInfoOverrides = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationTransitionInfoOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -660,11 +660,11 @@ pub const ConnectedAnimationService = extern struct {
         const this: *IConnectedAnimationService = @ptrCast(self);
         return try this.putDefaultEasingFunction(value);
     }
-    pub fn PrepareToAnimate(self: *@This(), key: HSTRING, source: *UIElement) core.HResult!*ConnectedAnimation {
+    pub fn PrepareToAnimate(self: *@This(), key: ?HSTRING, source: *UIElement) core.HResult!*ConnectedAnimation {
         const this: *IConnectedAnimationService = @ptrCast(self);
         return try this.PrepareToAnimate(key, source);
     }
-    pub fn GetAnimation(self: *@This(), key: HSTRING) core.HResult!*ConnectedAnimation {
+    pub fn GetAnimation(self: *@This(), key: ?HSTRING) core.HResult!*ConnectedAnimation {
         const this: *IConnectedAnimationService = @ptrCast(self);
         return try this.GetAnimation(key);
     }
@@ -1161,11 +1161,11 @@ pub const DoubleKeyFrameCollection = extern struct {
 };
 pub const DragItemThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDragItemThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDragItemThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -1190,11 +1190,11 @@ pub const DragItemThemeAnimation = extern struct {
 };
 pub const DragOverThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDragOverThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDragOverThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -1259,11 +1259,11 @@ pub const DrillInNavigationTransitionInfo = extern struct {
 };
 pub const DrillInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEntranceTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.getEntranceTargetName();
     }
-    pub fn putEntranceTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntranceTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.putEntranceTargetName(value);
     }
@@ -1275,11 +1275,11 @@ pub const DrillInThemeAnimation = extern struct {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.putEntranceTarget(value);
     }
-    pub fn getExitTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getExitTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.getExitTargetName();
     }
-    pub fn putExitTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExitTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.putExitTargetName(value);
     }
@@ -1324,11 +1324,11 @@ pub const DrillInThemeAnimation = extern struct {
 };
 pub const DrillOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEntranceTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.getEntranceTargetName();
     }
-    pub fn putEntranceTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntranceTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.putEntranceTargetName(value);
     }
@@ -1340,11 +1340,11 @@ pub const DrillOutThemeAnimation = extern struct {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.putEntranceTarget(value);
     }
-    pub fn getExitTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getExitTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.getExitTargetName();
     }
-    pub fn putExitTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExitTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.putExitTargetName(value);
     }
@@ -1389,11 +1389,11 @@ pub const DrillOutThemeAnimation = extern struct {
 };
 pub const DropTargetItemThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDropTargetItemThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDropTargetItemThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -1691,11 +1691,11 @@ pub const ExponentialEase = extern struct {
 };
 pub const FadeInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFadeInThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFadeInThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -1720,11 +1720,11 @@ pub const FadeInThemeAnimation = extern struct {
 };
 pub const FadeOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFadeOutThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFadeOutThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -2532,13 +2532,13 @@ pub const IConnectedAnimationService = extern struct {
         const _c = self.vtable.put_DefaultEasingFunction(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrepareToAnimate(self: *@This(), key: HSTRING, source: *UIElement) core.HResult!*ConnectedAnimation {
+    pub fn PrepareToAnimate(self: *@This(), key: ?HSTRING, source: *UIElement) core.HResult!*ConnectedAnimation {
         var _r: *ConnectedAnimation = undefined;
         const _c = self.vtable.PrepareToAnimate(@ptrCast(self), key, source, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAnimation(self: *@This(), key: HSTRING) core.HResult!*ConnectedAnimation {
+    pub fn GetAnimation(self: *@This(), key: ?HSTRING) core.HResult!*ConnectedAnimation {
         var _r: *ConnectedAnimation = undefined;
         const _c = self.vtable.GetAnimation(@ptrCast(self), key, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2560,8 +2560,8 @@ pub const IConnectedAnimationService = extern struct {
         put_DefaultDuration: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_DefaultEasingFunction: *const fn(self: *anyopaque, _r: **CompositionEasingFunction) callconv(.winapi) HRESULT,
         put_DefaultEasingFunction: *const fn(self: *anyopaque, value: *CompositionEasingFunction) callconv(.winapi) HRESULT,
-        PrepareToAnimate: *const fn(self: *anyopaque, key: HSTRING, source: *UIElement, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
-        GetAnimation: *const fn(self: *anyopaque, key: HSTRING, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
+        PrepareToAnimate: *const fn(self: *anyopaque, key: ?HSTRING, source: *UIElement, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
+        GetAnimation: *const fn(self: *anyopaque, key: ?HSTRING, _r: **ConnectedAnimation) callconv(.winapi) HRESULT,
     };
 };
 pub const IConnectedAnimationServiceStatics = extern struct {
@@ -3164,13 +3164,13 @@ pub const IDoubleKeyFrameStatics = extern struct {
 };
 pub const IDragItemThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3186,8 +3186,8 @@ pub const IDragItemThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDragItemThemeAnimationStatics = extern struct {
@@ -3215,13 +3215,13 @@ pub const IDragItemThemeAnimationStatics = extern struct {
 };
 pub const IDragOverThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3257,8 +3257,8 @@ pub const IDragOverThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ToOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_ToOffset: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_Direction: *const fn(self: *anyopaque, _r: *AnimationDirection) callconv(.winapi) HRESULT,
@@ -3320,13 +3320,13 @@ pub const IDrillInNavigationTransitionInfo = extern struct {
 };
 pub const IDrillInThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getEntranceTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntranceTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEntranceTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntranceTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EntranceTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3340,13 +3340,13 @@ pub const IDrillInThemeAnimation = extern struct {
         const _c = self.vtable.put_EntranceTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getExitTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExitTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExitTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExitTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExitTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExitTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3372,12 +3372,12 @@ pub const IDrillInThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EntranceTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EntranceTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EntranceTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EntranceTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_EntranceTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_EntranceTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ExitTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ExitTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ExitTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ExitTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ExitTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ExitTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
     };
@@ -3428,13 +3428,13 @@ pub const IDrillInThemeAnimationStatics = extern struct {
 };
 pub const IDrillOutThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getEntranceTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntranceTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEntranceTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEntranceTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EntranceTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3448,13 +3448,13 @@ pub const IDrillOutThemeAnimation = extern struct {
         const _c = self.vtable.put_EntranceTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getExitTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExitTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExitTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExitTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExitTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExitTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3480,12 +3480,12 @@ pub const IDrillOutThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EntranceTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EntranceTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EntranceTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EntranceTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_EntranceTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_EntranceTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ExitTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ExitTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ExitTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ExitTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ExitTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ExitTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
     };
@@ -3536,13 +3536,13 @@ pub const IDrillOutThemeAnimationStatics = extern struct {
 };
 pub const IDropTargetItemThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -3558,8 +3558,8 @@ pub const IDropTargetItemThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDropTargetItemThemeAnimationStatics = extern struct {
@@ -4126,13 +4126,13 @@ pub const IExponentialEaseStatics = extern struct {
 };
 pub const IFadeInThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4148,8 +4148,8 @@ pub const IFadeInThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFadeInThemeAnimationStatics = extern struct {
@@ -4177,13 +4177,13 @@ pub const IFadeInThemeAnimationStatics = extern struct {
 };
 pub const IFadeOutThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4199,8 +4199,8 @@ pub const IFadeOutThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IFadeOutThemeAnimationStatics = extern struct {
@@ -4512,13 +4512,13 @@ pub const INavigationTransitionInfoFactory = extern struct {
 };
 pub const INavigationTransitionInfoOverrides = extern struct {
     vtable: *const VTable,
-    pub fn GetNavigationStateCore(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNavigationStateCore(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNavigationStateCore(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetNavigationStateCore(self: *@This(), navigationState: HSTRING) core.HResult!void {
+    pub fn SetNavigationStateCore(self: *@This(), navigationState: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetNavigationStateCore(@ptrCast(self), navigationState);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -4534,8 +4534,8 @@ pub const INavigationTransitionInfoOverrides = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetNavigationStateCore: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetNavigationStateCore: *const fn(self: *anyopaque, navigationState: HSTRING) callconv(.winapi) HRESULT,
+        GetNavigationStateCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetNavigationStateCore: *const fn(self: *anyopaque, navigationState: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IObjectAnimationUsingKeyFrames = extern struct {
@@ -5020,13 +5020,13 @@ pub const IPointKeyFrameStatics = extern struct {
 };
 pub const IPointerDownThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5042,8 +5042,8 @@ pub const IPointerDownThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointerDownThemeAnimationStatics = extern struct {
@@ -5071,13 +5071,13 @@ pub const IPointerDownThemeAnimationStatics = extern struct {
 };
 pub const IPointerUpThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5093,8 +5093,8 @@ pub const IPointerUpThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointerUpThemeAnimationStatics = extern struct {
@@ -5122,13 +5122,13 @@ pub const IPointerUpThemeAnimationStatics = extern struct {
 };
 pub const IPopInThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5164,8 +5164,8 @@ pub const IPopInThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FromHorizontalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_FromHorizontalOffset: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_FromVerticalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -5211,13 +5211,13 @@ pub const IPopInThemeAnimationStatics = extern struct {
 };
 pub const IPopOutThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5233,8 +5233,8 @@ pub const IPopOutThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPopOutThemeAnimationStatics = extern struct {
@@ -5521,13 +5521,13 @@ pub const IRepeatBehaviorHelperStatics = extern struct {
 };
 pub const IRepositionThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5563,8 +5563,8 @@ pub const IRepositionThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FromHorizontalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_FromHorizontalOffset: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_FromVerticalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -5913,13 +5913,13 @@ pub const ISplinePointKeyFrameStatics = extern struct {
 };
 pub const ISplitCloseThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getOpenedTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OpenedTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOpenedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOpenedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OpenedTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5933,13 +5933,13 @@ pub const ISplitCloseThemeAnimation = extern struct {
         const _c = self.vtable.put_OpenedTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getClosedTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClosedTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClosedTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putClosedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClosedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ClosedTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -5953,13 +5953,13 @@ pub const ISplitCloseThemeAnimation = extern struct {
         const _c = self.vtable.put_ClosedTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6035,16 +6035,16 @@ pub const ISplitCloseThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OpenedTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OpenedTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OpenedTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OpenedTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_OpenedTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_OpenedTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ClosedTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ClosedTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ClosedTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ClosedTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ClosedTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ClosedTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ContentTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ContentTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ContentTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
         get_OpenedLength: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -6154,13 +6154,13 @@ pub const ISplitCloseThemeAnimationStatics = extern struct {
 };
 pub const ISplitOpenThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getOpenedTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OpenedTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOpenedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOpenedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_OpenedTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6174,13 +6174,13 @@ pub const ISplitOpenThemeAnimation = extern struct {
         const _c = self.vtable.put_OpenedTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getClosedTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getClosedTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClosedTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putClosedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClosedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ClosedTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6194,13 +6194,13 @@ pub const ISplitOpenThemeAnimation = extern struct {
         const _c = self.vtable.put_ClosedTarget(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentTargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentTargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6276,16 +6276,16 @@ pub const ISplitOpenThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OpenedTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_OpenedTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_OpenedTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_OpenedTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_OpenedTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_OpenedTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ClosedTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ClosedTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ClosedTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ClosedTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ClosedTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ClosedTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
-        get_ContentTargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentTargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentTargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentTargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ContentTarget: *const fn(self: *anyopaque, _r: **DependencyObject) callconv(.winapi) HRESULT,
         put_ContentTarget: *const fn(self: *anyopaque, value: *DependencyObject) callconv(.winapi) HRESULT,
         get_OpenedLength: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -6473,13 +6473,13 @@ pub const IStoryboardStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTargetProperty(self: *@This(), element: *Timeline) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetTargetProperty(self: *@This(), element: *Timeline) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTargetProperty(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetTargetProperty(self: *@This(), element: *Timeline, path: HSTRING) core.HResult!void {
+    pub fn SetTargetProperty(self: *@This(), element: *Timeline, path: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetTargetProperty(@ptrCast(self), element, path);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6489,13 +6489,13 @@ pub const IStoryboardStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTargetName(self: *@This(), element: *Timeline) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetTargetName(self: *@This(), element: *Timeline) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTargetName(@ptrCast(self), element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetTargetName(self: *@This(), element: *Timeline, name: HSTRING) core.HResult!void {
+    pub fn SetTargetName(self: *@This(), element: *Timeline, name: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetTargetName(@ptrCast(self), element, name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6516,11 +6516,11 @@ pub const IStoryboardStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TargetPropertyProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetTargetProperty: *const fn(self: *anyopaque, element: *Timeline, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetTargetProperty: *const fn(self: *anyopaque, element: *Timeline, path: HSTRING) callconv(.winapi) HRESULT,
+        GetTargetProperty: *const fn(self: *anyopaque, element: *Timeline, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetTargetProperty: *const fn(self: *anyopaque, element: *Timeline, path: ?HSTRING) callconv(.winapi) HRESULT,
         get_TargetNameProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
-        GetTargetName: *const fn(self: *anyopaque, element: *Timeline, _r: *HSTRING) callconv(.winapi) HRESULT,
-        SetTargetName: *const fn(self: *anyopaque, element: *Timeline, name: HSTRING) callconv(.winapi) HRESULT,
+        GetTargetName: *const fn(self: *anyopaque, element: *Timeline, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        SetTargetName: *const fn(self: *anyopaque, element: *Timeline, name: ?HSTRING) callconv(.winapi) HRESULT,
         SetTarget: *const fn(self: *anyopaque, timeline: *Timeline, target: *DependencyObject) callconv(.winapi) HRESULT,
     };
 };
@@ -6542,13 +6542,13 @@ pub const ISuppressNavigationTransitionInfo = extern struct {
 };
 pub const ISwipeBackThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6584,8 +6584,8 @@ pub const ISwipeBackThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_FromHorizontalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_FromHorizontalOffset: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_FromVerticalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -6631,13 +6631,13 @@ pub const ISwipeBackThemeAnimationStatics = extern struct {
 };
 pub const ISwipeHintThemeAnimation = extern struct {
     vtable: *const VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TargetName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -6673,8 +6673,8 @@ pub const ISwipeHintThemeAnimation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_TargetName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_TargetName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_TargetName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_TargetName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ToHorizontalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         put_ToHorizontalOffset: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_ToVerticalOffset: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
@@ -7334,11 +7334,11 @@ pub const PointKeyFrameCollection = extern struct {
 };
 pub const PointerDownThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPointerDownThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPointerDownThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -7363,11 +7363,11 @@ pub const PointerDownThemeAnimation = extern struct {
 };
 pub const PointerUpThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPointerUpThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPointerUpThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -7392,11 +7392,11 @@ pub const PointerUpThemeAnimation = extern struct {
 };
 pub const PopInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPopInThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPopInThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -7445,11 +7445,11 @@ pub const PopInThemeAnimation = extern struct {
 };
 pub const PopOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPopOutThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPopOutThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -7654,11 +7654,11 @@ pub const RepeatBehaviorType = enum(i32) {
 };
 pub const RepositionThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRepositionThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IRepositionThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -7881,11 +7881,11 @@ pub const SplinePointKeyFrame = extern struct {
 };
 pub const SplitCloseThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOpenedTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.getOpenedTargetName();
     }
-    pub fn putOpenedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOpenedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putOpenedTargetName(value);
     }
@@ -7897,11 +7897,11 @@ pub const SplitCloseThemeAnimation = extern struct {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putOpenedTarget(value);
     }
-    pub fn getClosedTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getClosedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.getClosedTargetName();
     }
-    pub fn putClosedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClosedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putClosedTargetName(value);
     }
@@ -7913,11 +7913,11 @@ pub const SplitCloseThemeAnimation = extern struct {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putClosedTarget(value);
     }
-    pub fn getContentTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.getContentTargetName();
     }
-    pub fn putContentTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putContentTargetName(value);
     }
@@ -8030,11 +8030,11 @@ pub const SplitCloseThemeAnimation = extern struct {
 };
 pub const SplitOpenThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOpenedTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.getOpenedTargetName();
     }
-    pub fn putOpenedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOpenedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putOpenedTargetName(value);
     }
@@ -8046,11 +8046,11 @@ pub const SplitOpenThemeAnimation = extern struct {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putOpenedTarget(value);
     }
-    pub fn getClosedTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getClosedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.getClosedTargetName();
     }
-    pub fn putClosedTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putClosedTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putClosedTargetName(value);
     }
@@ -8062,11 +8062,11 @@ pub const SplitOpenThemeAnimation = extern struct {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putClosedTarget(value);
     }
-    pub fn getContentTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.getContentTargetName();
     }
-    pub fn putContentTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putContentTargetName(value);
     }
@@ -8230,11 +8230,11 @@ pub const Storyboard = extern struct {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.getTargetPropertyProperty();
     }
-    pub fn GetTargetProperty(element: *Timeline) core.HResult!HSTRING {
+    pub fn GetTargetProperty(element: *Timeline) core.HResult!?HSTRING {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.GetTargetProperty(element);
     }
-    pub fn SetTargetProperty(element: *Timeline, path: HSTRING) core.HResult!void {
+    pub fn SetTargetProperty(element: *Timeline, path: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.SetTargetProperty(element, path);
     }
@@ -8242,11 +8242,11 @@ pub const Storyboard = extern struct {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.getTargetNameProperty();
     }
-    pub fn GetTargetName(element: *Timeline) core.HResult!HSTRING {
+    pub fn GetTargetName(element: *Timeline) core.HResult!?HSTRING {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.GetTargetName(element);
     }
-    pub fn SetTargetName(element: *Timeline, name: HSTRING) core.HResult!void {
+    pub fn SetTargetName(element: *Timeline, name: ?HSTRING) core.HResult!void {
         const _f = try @This()._IStoryboardStaticsCache.get();
         return try _f.SetTargetName(element, name);
     }
@@ -8280,11 +8280,11 @@ pub const SuppressNavigationTransitionInfo = extern struct {
 };
 pub const SwipeBackThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISwipeBackThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISwipeBackThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }
@@ -8333,11 +8333,11 @@ pub const SwipeBackThemeAnimation = extern struct {
 };
 pub const SwipeHintThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTargetName(self: *@This()) core.HResult!HSTRING {
+    pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISwipeHintThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
     }
-    pub fn putTargetName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISwipeHintThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
     }

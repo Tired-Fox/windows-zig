@@ -31,7 +31,7 @@ pub const ISecondaryAuthenticationFactorAuthentication = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AbortAuthenticationAsync(self: *@This(), errorLogMessage: HSTRING) core.HResult!*IAsyncAction {
+    pub fn AbortAuthenticationAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AbortAuthenticationAsync(@ptrCast(self), errorLogMessage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -54,7 +54,7 @@ pub const ISecondaryAuthenticationFactorAuthentication = extern struct {
         get_DeviceNonce: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         get_DeviceConfigurationData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         FinishAuthenticationAsync: *const fn(self: *anyopaque, deviceHmac: *IBuffer, sessionHmac: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorFinishAuthenticationStatus)) callconv(.winapi) HRESULT,
-        AbortAuthenticationAsync: *const fn(self: *anyopaque, errorLogMessage: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AbortAuthenticationAsync: *const fn(self: *anyopaque, errorLogMessage: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryAuthenticationFactorAuthenticationResult = extern struct {
@@ -124,8 +124,8 @@ pub const ISecondaryAuthenticationFactorAuthenticationStageInfo = extern struct 
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -144,18 +144,18 @@ pub const ISecondaryAuthenticationFactorAuthenticationStageInfo = extern struct 
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Stage: *const fn(self: *anyopaque, _r: *SecondaryAuthenticationFactorAuthenticationStage) callconv(.winapi) HRESULT,
         get_Scenario: *const fn(self: *anyopaque, _r: *SecondaryAuthenticationFactorAuthenticationScenario) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryAuthenticationFactorAuthenticationStatics = extern struct {
     vtable: *const VTable,
-    pub fn ShowNotificationMessageAsync(self: *@This(), deviceName: HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
+    pub fn ShowNotificationMessageAsync(self: *@This(), deviceName: ?HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowNotificationMessageAsync(@ptrCast(self), deviceName, message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartAuthenticationAsync(self: *@This(), deviceId: HSTRING, serviceAuthenticationNonce: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) {
+    pub fn StartAuthenticationAsync(self: *@This(), deviceId: ?HSTRING, serviceAuthenticationNonce: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) = undefined;
         const _c = self.vtable.StartAuthenticationAsync(@ptrCast(self), deviceId, serviceAuthenticationNonce, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -189,8 +189,8 @@ pub const ISecondaryAuthenticationFactorAuthenticationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ShowNotificationMessageAsync: *const fn(self: *anyopaque, deviceName: HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartAuthenticationAsync: *const fn(self: *anyopaque, deviceId: HSTRING, serviceAuthenticationNonce: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult)) callconv(.winapi) HRESULT,
+        ShowNotificationMessageAsync: *const fn(self: *anyopaque, deviceName: ?HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartAuthenticationAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, serviceAuthenticationNonce: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult)) callconv(.winapi) HRESULT,
         add_AuthenticationStageChanged: *const fn(self: *anyopaque, handler: *EventHandler(SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_AuthenticationStageChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         GetAuthenticationStageInfoAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SecondaryAuthenticationFactorAuthenticationStageInfo)) callconv(.winapi) HRESULT,
@@ -198,19 +198,19 @@ pub const ISecondaryAuthenticationFactorAuthenticationStatics = extern struct {
 };
 pub const ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatics = extern struct {
     vtable: *const VTable,
-    pub fn RegisterDevicePresenceMonitoringAsync(self: *@This(), deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
+    pub fn RegisterDevicePresenceMonitoringAsync(self: *@This(), deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) = undefined;
         const _c = self.vtable.RegisterDevicePresenceMonitoringAsync(@ptrCast(self), deviceId, deviceInstancePath, monitoringMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(self: *@This(), deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
+    pub fn RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(self: *@This(), deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) = undefined;
         const _c = self.vtable.RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(@ptrCast(self), deviceId, deviceInstancePath, monitoringMode, deviceFriendlyName, deviceModelNumber, deviceConfigurationData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UnregisterDevicePresenceMonitoringAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UnregisterDevicePresenceMonitoringAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UnregisterDevicePresenceMonitoringAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -234,28 +234,28 @@ pub const ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStat
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RegisterDevicePresenceMonitoringAsync: *const fn(self: *anyopaque, deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, _r: **IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus)) callconv(.winapi) HRESULT,
-        RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData: *const fn(self: *anyopaque, deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceConfigurationData: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus)) callconv(.winapi) HRESULT,
-        UnregisterDevicePresenceMonitoringAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RegisterDevicePresenceMonitoringAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, _r: **IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus)) callconv(.winapi) HRESULT,
+        RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData: *const fn(self: *anyopaque, deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceConfigurationData: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus)) callconv(.winapi) HRESULT,
+        UnregisterDevicePresenceMonitoringAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         IsDevicePresenceMonitoringSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryAuthenticationFactorInfo = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceModelNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceModelNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceModelNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -278,9 +278,9 @@ pub const ISecondaryAuthenticationFactorInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceModelNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceModelNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DeviceConfigurationData: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
     };
 };
@@ -329,7 +329,7 @@ pub const ISecondaryAuthenticationFactorRegistration = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AbortRegisteringDeviceAsync(self: *@This(), errorLogMessage: HSTRING) core.HResult!*IAsyncAction {
+    pub fn AbortRegisteringDeviceAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AbortRegisteringDeviceAsync(@ptrCast(self), errorLogMessage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -348,7 +348,7 @@ pub const ISecondaryAuthenticationFactorRegistration = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FinishRegisteringDeviceAsync: *const fn(self: *anyopaque, deviceConfigurationData: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AbortRegisteringDeviceAsync: *const fn(self: *anyopaque, errorLogMessage: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AbortRegisteringDeviceAsync: *const fn(self: *anyopaque, errorLogMessage: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ISecondaryAuthenticationFactorRegistrationResult = extern struct {
@@ -383,7 +383,7 @@ pub const ISecondaryAuthenticationFactorRegistrationResult = extern struct {
 };
 pub const ISecondaryAuthenticationFactorRegistrationStatics = extern struct {
     vtable: *const VTable,
-    pub fn RequestStartRegisteringDeviceAsync(self: *@This(), deviceId: HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
+    pub fn RequestStartRegisteringDeviceAsync(self: *@This(), deviceId: ?HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) = undefined;
         const _c = self.vtable.RequestStartRegisteringDeviceAsync(@ptrCast(self), deviceId, capabilities, deviceFriendlyName, deviceModelNumber, deviceKey, mutualAuthenticationKey, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -395,13 +395,13 @@ pub const ISecondaryAuthenticationFactorRegistrationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UnregisterDeviceAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UnregisterDeviceAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UnregisterDeviceAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn UpdateDeviceConfigurationDataAsync(self: *@This(), deviceId: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
+    pub fn UpdateDeviceConfigurationDataAsync(self: *@This(), deviceId: ?HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateDeviceConfigurationDataAsync(@ptrCast(self), deviceId, deviceConfigurationData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -419,10 +419,10 @@ pub const ISecondaryAuthenticationFactorRegistrationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestStartRegisteringDeviceAsync: *const fn(self: *anyopaque, deviceId: HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult)) callconv(.winapi) HRESULT,
+        RequestStartRegisteringDeviceAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer, _r: **IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult)) callconv(.winapi) HRESULT,
         FindAllRegisteredDeviceInfoAsync: *const fn(self: *anyopaque, queryType: SecondaryAuthenticationFactorDeviceFindScope, _r: **IAsyncOperation(IVectorView(SecondaryAuthenticationFactorInfo))) callconv(.winapi) HRESULT,
-        UnregisterDeviceAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        UpdateDeviceConfigurationDataAsync: *const fn(self: *anyopaque, deviceId: HSTRING, deviceConfigurationData: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        UnregisterDeviceAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        UpdateDeviceConfigurationDataAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, deviceConfigurationData: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const SecondaryAuthenticationFactorAuthentication = extern struct {
@@ -447,18 +447,18 @@ pub const SecondaryAuthenticationFactorAuthentication = extern struct {
         const this: *ISecondaryAuthenticationFactorAuthentication = @ptrCast(self);
         return try this.FinishAuthenticationAsync(deviceHmac, sessionHmac);
     }
-    pub fn AbortAuthenticationAsync(self: *@This(), errorLogMessage: HSTRING) core.HResult!*IAsyncAction {
+    pub fn AbortAuthenticationAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISecondaryAuthenticationFactorAuthentication = @ptrCast(self);
         return try this.AbortAuthenticationAsync(errorLogMessage);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ShowNotificationMessageAsync(deviceName: HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
+    pub fn ShowNotificationMessageAsync(deviceName: ?HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
         const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.ShowNotificationMessageAsync(deviceName, message);
     }
-    pub fn StartAuthenticationAsync(deviceId: HSTRING, serviceAuthenticationNonce: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) {
+    pub fn StartAuthenticationAsync(deviceId: ?HSTRING, serviceAuthenticationNonce: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorAuthenticationResult) {
         const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try _f.StartAuthenticationAsync(deviceId, serviceAuthenticationNonce);
     }
@@ -565,7 +565,7 @@ pub const SecondaryAuthenticationFactorAuthenticationStageInfo = extern struct {
         const this: *ISecondaryAuthenticationFactorAuthenticationStageInfo = @ptrCast(self);
         return try this.getScenario();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryAuthenticationFactorAuthenticationStageInfo = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -617,15 +617,15 @@ pub const SecondaryAuthenticationFactorFinishAuthenticationStatus = enum(i32) {
 };
 pub const SecondaryAuthenticationFactorInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryAuthenticationFactorInfo = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getDeviceFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryAuthenticationFactorInfo = @ptrCast(self);
         return try this.getDeviceFriendlyName();
     }
-    pub fn getDeviceModelNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceModelNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryAuthenticationFactorInfo = @ptrCast(self);
         return try this.getDeviceModelNumber();
     }
@@ -663,22 +663,22 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
         const this: *ISecondaryAuthenticationFactorRegistration = @ptrCast(self);
         return try this.FinishRegisteringDeviceAsync(deviceConfigurationData);
     }
-    pub fn AbortRegisteringDeviceAsync(self: *@This(), errorLogMessage: HSTRING) core.HResult!*IAsyncAction {
+    pub fn AbortRegisteringDeviceAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISecondaryAuthenticationFactorRegistration = @ptrCast(self);
         return try this.AbortRegisteringDeviceAsync(errorLogMessage);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn RegisterDevicePresenceMonitoringAsync(deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
+    pub fn RegisterDevicePresenceMonitoringAsync(deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.RegisterDevicePresenceMonitoringAsync(deviceId, deviceInstancePath, monitoringMode);
     }
-    pub fn RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(deviceId: HSTRING, deviceInstancePath: HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
+    pub fn RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.RegisterDevicePresenceMonitoringAsyncWithDeviceFriendlyNameAndDeviceModelNumberAndDeviceConfigurationData(deviceId, deviceInstancePath, monitoringMode, deviceFriendlyName, deviceModelNumber, deviceConfigurationData);
     }
-    pub fn UnregisterDevicePresenceMonitoringAsync(deviceId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UnregisterDevicePresenceMonitoringAsync(deviceId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.UnregisterDevicePresenceMonitoringAsync(deviceId);
     }
@@ -686,7 +686,7 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
         const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
         return try _f.IsDevicePresenceMonitoringSupported();
     }
-    pub fn RequestStartRegisteringDeviceAsync(deviceId: HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: HSTRING, deviceModelNumber: HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
+    pub fn RequestStartRegisteringDeviceAsync(deviceId: ?HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
         const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.RequestStartRegisteringDeviceAsync(deviceId, capabilities, deviceFriendlyName, deviceModelNumber, deviceKey, mutualAuthenticationKey);
     }
@@ -694,11 +694,11 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
         const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.FindAllRegisteredDeviceInfoAsync(queryType);
     }
-    pub fn UnregisterDeviceAsync(deviceId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn UnregisterDeviceAsync(deviceId: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.UnregisterDeviceAsync(deviceId);
     }
-    pub fn UpdateDeviceConfigurationDataAsync(deviceId: HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
+    pub fn UpdateDeviceConfigurationDataAsync(deviceId: ?HSTRING, deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
         const _f = try @This()._ISecondaryAuthenticationFactorRegistrationStaticsCache.get();
         return try _f.UpdateDeviceConfigurationDataAsync(deviceId, deviceConfigurationData);
     }

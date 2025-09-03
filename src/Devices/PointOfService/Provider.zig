@@ -15,7 +15,7 @@ pub const BarcodeScannerDisableScannerRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -59,7 +59,7 @@ pub const BarcodeScannerEnableScannerRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -157,7 +157,7 @@ pub const BarcodeScannerGetSymbologyAttributesRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -201,7 +201,7 @@ pub const BarcodeScannerHideVideoPreviewRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -231,11 +231,11 @@ pub const BarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getVideoDeviceId();
     }
@@ -243,27 +243,27 @@ pub const BarcodeScannerProviderConnection = extern struct {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getSupportedSymbologies();
     }
-    pub fn getCompanyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getCompanyName();
     }
-    pub fn putCompanyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.putCompanyName(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getName();
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getVersion();
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.putVersion(value);
     }
@@ -413,7 +413,7 @@ pub const BarcodeScannerSetActiveSymbologiesRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -465,7 +465,7 @@ pub const BarcodeScannerSetSymbologyAttributesRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -509,7 +509,7 @@ pub const BarcodeScannerStartSoftwareTriggerRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -553,7 +553,7 @@ pub const BarcodeScannerStopSoftwareTriggerRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -697,7 +697,7 @@ pub const IBarcodeScannerDisableScannerRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -716,7 +716,7 @@ pub const IBarcodeScannerDisableScannerRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerDisableScannerRequestEventArgs = extern struct {
@@ -787,7 +787,7 @@ pub const IBarcodeScannerEnableScannerRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -806,7 +806,7 @@ pub const IBarcodeScannerEnableScannerRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerEnableScannerRequestEventArgs = extern struct {
@@ -963,7 +963,7 @@ pub const IBarcodeScannerGetSymbologyAttributesRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -982,7 +982,7 @@ pub const IBarcodeScannerGetSymbologyAttributesRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerGetSymbologyAttributesRequestEventArgs = extern struct {
@@ -1053,7 +1053,7 @@ pub const IBarcodeScannerHideVideoPreviewRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1072,7 +1072,7 @@ pub const IBarcodeScannerHideVideoPreviewRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
@@ -1107,14 +1107,14 @@ pub const IBarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerProviderConnection = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getVideoDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1125,33 +1125,33 @@ pub const IBarcodeScannerProviderConnection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCompanyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CompanyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCompanyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCompanyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CompanyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Name(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getVersion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getVersion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Version(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putVersion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Version(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1275,15 +1275,15 @@ pub const IBarcodeScannerProviderConnection = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_VideoDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_SupportedSymbologies: *const fn(self: *anyopaque, _r: **IVector(u32)) callconv(.winapi) HRESULT,
-        get_CompanyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CompanyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Name: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Version: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Version: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CompanyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CompanyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Name: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Version: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Version: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportScannedDataAsync: *const fn(self: *anyopaque, report: *BarcodeScannerReport, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReportTriggerStateAsync: *const fn(self: *anyopaque, state: BarcodeScannerTriggerState, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1412,7 +1412,7 @@ pub const IBarcodeScannerSetActiveSymbologiesRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1431,7 +1431,7 @@ pub const IBarcodeScannerSetActiveSymbologiesRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerSetActiveSymbologiesRequestEventArgs = extern struct {
@@ -1516,7 +1516,7 @@ pub const IBarcodeScannerSetSymbologyAttributesRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1535,7 +1535,7 @@ pub const IBarcodeScannerSetSymbologyAttributesRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerSetSymbologyAttributesRequestEventArgs = extern struct {
@@ -1606,7 +1606,7 @@ pub const IBarcodeScannerStartSoftwareTriggerRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1625,7 +1625,7 @@ pub const IBarcodeScannerStartSoftwareTriggerRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerStartSoftwareTriggerRequestEventArgs = extern struct {
@@ -1696,7 +1696,7 @@ pub const IBarcodeScannerStopSoftwareTriggerRequest2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsyncWithFailedReasonDescription(@ptrCast(self), reason, failedReasonDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1715,7 +1715,7 @@ pub const IBarcodeScannerStopSoftwareTriggerRequest2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportFailedAsync: *const fn(self: *anyopaque, reason: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ReportFailedAsyncWithFailedReasonDescription: *const fn(self: *anyopaque, reason: i32, failedReasonDescription: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IBarcodeScannerStopSoftwareTriggerRequestEventArgs = extern struct {

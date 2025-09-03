@@ -331,8 +331,8 @@ pub const IWiFiDirectDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -366,7 +366,7 @@ pub const IWiFiDirectDevice = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ConnectionStatus: *const fn(self: *anyopaque, _r: *WiFiDirectConnectionStatus) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_ConnectionStatusChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(WiFiDirectDevice,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ConnectionStatusChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         GetConnectionEndpointPairs: *const fn(self: *anyopaque, _r: **IVectorView(EndpointPair)) callconv(.winapi) HRESULT,
@@ -374,13 +374,13 @@ pub const IWiFiDirectDevice = extern struct {
 };
 pub const IWiFiDirectDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         var _r: *IAsyncOperation(WiFiDirectDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -398,19 +398,19 @@ pub const IWiFiDirectDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(WiFiDirectDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(WiFiDirectDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiDirectDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), ty: WiFiDirectDeviceSelectorType) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         var _r: *IAsyncOperation(WiFiDirectDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, connectionParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -428,8 +428,8 @@ pub const IWiFiDirectDeviceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, ty: WiFiDirectDeviceSelectorType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters, _r: **IAsyncOperation(WiFiDirectDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, ty: WiFiDirectDeviceSelectorType, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, connectionParameters: *WiFiDirectConnectionParameters, _r: **IAsyncOperation(WiFiDirectDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWiFiDirectInformationElement = extern struct {
@@ -526,13 +526,13 @@ pub const IWiFiDirectLegacySettings = extern struct {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ssid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSsid(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Ssid(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -560,8 +560,8 @@ pub const IWiFiDirectLegacySettings = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Ssid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Ssid: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Ssid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Ssid: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Passphrase: *const fn(self: *anyopaque, _r: **PasswordCredential) callconv(.winapi) HRESULT,
         put_Passphrase: *const fn(self: *anyopaque, value: *PasswordCredential) callconv(.winapi) HRESULT,
     };
@@ -791,7 +791,7 @@ pub const WiFiDirectDevice = extern struct {
         const this: *IWiFiDirectDevice = @ptrCast(self);
         return try this.getConnectionStatus();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -816,19 +816,19 @@ pub const WiFiDirectDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IWiFiDirectDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         const _f = try @This()._IWiFiDirectDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelectorWithTy(ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithTy(ty: WiFiDirectDeviceSelectorType) core.HResult!?HSTRING {
         const _f = try @This()._IWiFiDirectDeviceStatics2Cache.get();
         return try _f.GetDeviceSelector(ty);
     }
-    pub fn FromIdAsyncWithConnectionParameters(deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
+    pub fn FromIdAsyncWithConnectionParameters(deviceId: ?HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         const _f = try @This()._IWiFiDirectDeviceStatics2Cache.get();
         return try _f.FromIdAsync(deviceId, connectionParameters);
     }
@@ -908,11 +908,11 @@ pub const WiFiDirectLegacySettings = extern struct {
         const this: *IWiFiDirectLegacySettings = @ptrCast(self);
         return try this.putIsEnabled(value);
     }
-    pub fn getSsid(self: *@This()) core.HResult!HSTRING {
+    pub fn getSsid(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectLegacySettings = @ptrCast(self);
         return try this.getSsid();
     }
-    pub fn putSsid(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSsid(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWiFiDirectLegacySettings = @ptrCast(self);
         return try this.putSsid(value);
     }

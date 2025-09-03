@@ -5,7 +5,7 @@ pub const DeviceAccessChangedEventArgs = extern struct {
         const this: *IDeviceAccessChangedEventArgs = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDeviceAccessChangedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -46,7 +46,7 @@ pub const DeviceAccessInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromId(deviceId: HSTRING) core.HResult!*DeviceAccessInformation {
+    pub fn CreateFromId(deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
         const _f = try @This()._IDeviceAccessInformationStaticsCache.get();
         return try _f.CreateFromId(deviceId);
     }
@@ -82,7 +82,7 @@ pub const DeviceClass = enum(i32) {
 };
 pub const DeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceConnectionChangeTriggerDetails = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -106,11 +106,11 @@ pub const DeviceDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const DeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceInformation = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceInformation = @ptrCast(self);
         return try this.getName();
     }
@@ -126,7 +126,7 @@ pub const DeviceInformation = extern struct {
         const this: *IDeviceInformation = @ptrCast(self);
         return try this.getEnclosureLocation();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IDeviceInformation = @ptrCast(self);
         return try this.getProperties();
     }
@@ -157,11 +157,11 @@ pub const DeviceInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateFromIdAsync(deviceId);
     }
-    pub fn CreateFromIdAsyncWithAdditionalProperties(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalProperties(deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateFromIdAsyncWithAdditionalProperties(deviceId, additionalProperties);
     }
@@ -173,11 +173,11 @@ pub const DeviceInformation = extern struct {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithDeviceClass(deviceClass);
     }
-    pub fn FindAllAsyncWithAqsFilter(aqsFilter: HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilter(aqsFilter: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithAqsFilter(aqsFilter);
     }
-    pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.FindAllAsyncWithAqsFilterAndAdditionalProperties(aqsFilter, additionalProperties);
     }
@@ -189,39 +189,39 @@ pub const DeviceInformation = extern struct {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithDeviceClass(deviceClass);
     }
-    pub fn CreateWatcherWithAqsFilter(aqsFilter: HSTRING) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilter(aqsFilter: ?HSTRING) core.HResult!*DeviceWatcher {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithAqsFilter(aqsFilter);
     }
-    pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*DeviceWatcher {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
         return try _f.CreateWatcherWithAqsFilterAndAdditionalProperties(aqsFilter, additionalProperties);
     }
-    pub fn GetAqsFilterFromDeviceClass(deviceClass: DeviceClass) core.HResult!HSTRING {
+    pub fn GetAqsFilterFromDeviceClass(deviceClass: DeviceClass) core.HResult!?HSTRING {
         const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.GetAqsFilterFromDeviceClass(deviceClass);
     }
-    pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKind(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKind(deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
         const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.CreateFromIdAsync(deviceId, additionalProperties, kind);
     }
-    pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.FindAllAsync(aqsFilter, additionalProperties, kind);
     }
-    pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKind(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
         const _f = try @This()._IDeviceInformationStatics2Cache.get();
         return try _f.CreateWatcher(aqsFilter, additionalProperties, kind);
     }
-    pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKindAndSettings(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalPropertiesAndKindAndSettings(deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
         const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.CreateFromIdAsync(deviceId, additionalProperties, kind, settings);
     }
-    pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.FindAllAsync(aqsFilter, additionalProperties, kind, settings);
     }
-    pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterAndAdditionalPropertiesAndKindAndSettings(aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
         const _f = try @This()._IDeviceInformationStatics3Cache.get();
         return try _f.CreateWatcher(aqsFilter, additionalProperties, kind, settings);
     }
@@ -373,11 +373,11 @@ pub const DeviceInformationPairing = extern struct {
 };
 pub const DeviceInformationUpdate = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceInformationUpdate = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IDeviceInformationUpdate = @ptrCast(self);
         return try this.getProperties();
     }
@@ -426,7 +426,7 @@ pub const DevicePairingRequestedEventArgs = extern struct {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.getPairingKind();
     }
-    pub fn getPin(self: *@This()) core.HResult!HSTRING {
+    pub fn getPin(self: *@This()) core.HResult!?HSTRING {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.getPin();
     }
@@ -434,7 +434,7 @@ pub const DevicePairingRequestedEventArgs = extern struct {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.Accept();
     }
-    pub fn AcceptWithPin(self: *@This(), pin: HSTRING) core.HResult!void {
+    pub fn AcceptWithPin(self: *@This(), pin: ?HSTRING) core.HResult!void {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.AcceptWithPin(pin);
     }
@@ -448,7 +448,7 @@ pub const DevicePairingRequestedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AcceptWithPasswordCredential(passwordCredential);
     }
-    pub fn AcceptWithAddress(self: *@This(), address: HSTRING) core.HResult!void {
+    pub fn AcceptWithAddress(self: *@This(), address: ?HSTRING) core.HResult!void {
         var this: ?*IDevicePairingRequestedEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePairingRequestedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -528,7 +528,7 @@ pub const DevicePicker = extern struct {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.getAppearance();
     }
-    pub fn getRequestedProperties(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getRequestedProperties(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.getRequestedProperties();
     }
@@ -576,7 +576,7 @@ pub const DevicePicker = extern struct {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.Hide();
     }
-    pub fn SetDisplayStatus(self: *@This(), device: *DeviceInformation, status: HSTRING, options: DevicePickerDisplayStatusOptions) core.HResult!void {
+    pub fn SetDisplayStatus(self: *@This(), device: *DeviceInformation, status: ?HSTRING, options: DevicePickerDisplayStatusOptions) core.HResult!void {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.SetDisplayStatus(device, status, options);
     }
@@ -596,11 +596,11 @@ pub const DevicePicker = extern struct {
 };
 pub const DevicePickerAppearance = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDevicePickerAppearance = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDevicePickerAppearance = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -670,7 +670,7 @@ pub const DevicePickerFilter = extern struct {
         const this: *IDevicePickerFilter = @ptrCast(self);
         return try this.getSupportedDeviceClasses();
     }
-    pub fn getSupportedDeviceSelectors(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSupportedDeviceSelectors(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDevicePickerFilter = @ptrCast(self);
         return try this.getSupportedDeviceSelectors();
     }
@@ -772,7 +772,7 @@ pub const DeviceThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentTypeProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -965,8 +965,8 @@ pub const IDeviceAccessChangedEventArgs = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -983,7 +983,7 @@ pub const IDeviceAccessChangedEventArgs2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceAccessChangedEventArgs3 = extern struct {
@@ -1069,7 +1069,7 @@ pub const IDeviceAccessInformation2 = extern struct {
 };
 pub const IDeviceAccessInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromId(self: *@This(), deviceId: HSTRING) core.HResult!*DeviceAccessInformation {
+    pub fn CreateFromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.CreateFromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1099,15 +1099,15 @@ pub const IDeviceAccessInformationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
+        CreateFromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
         CreateFromDeviceClassId: *const fn(self: *anyopaque, deviceClassId: *Guid, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
         CreateFromDeviceClass: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1124,7 +1124,7 @@ pub const IDeviceConnectionChangeTriggerDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
@@ -1168,14 +1168,14 @@ pub const IDeviceEnumerationSettings = extern struct {
 };
 pub const IDeviceInformation = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1198,8 +1198,8 @@ pub const IDeviceInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1232,12 +1232,12 @@ pub const IDeviceInformation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsDefault: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_EnclosureLocation: *const fn(self: *anyopaque, _r: **EnclosureLocation) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
         Update: *const fn(self: *anyopaque, updateInfo: *DeviceInformationUpdate) callconv(.winapi) HRESULT,
         GetThumbnailAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceThumbnail)) callconv(.winapi) HRESULT,
         GetGlyphThumbnailAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceThumbnail)) callconv(.winapi) HRESULT,
@@ -1491,13 +1491,13 @@ pub const IDeviceInformationPairingStatics2 = extern struct {
 };
 pub const IDeviceInformationStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromIdAsyncWithAdditionalProperties(self: *@This(), deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalProperties(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsyncWithAdditionalProperties(@ptrCast(self), deviceId, additionalProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1515,13 +1515,13 @@ pub const IDeviceInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithAqsFilter(self: *@This(), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilter(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithAqsFilter(@ptrCast(self), aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsyncWithAqsFilterAndAdditionalProperties(@ptrCast(self), aqsFilter, additionalProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1539,13 +1539,13 @@ pub const IDeviceInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcherWithAqsFilter(self: *@This(), aqsFilter: HSTRING) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilter(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithAqsFilter(@ptrCast(self), aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterAndAdditionalProperties(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING)) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcherWithAqsFilterAndAdditionalProperties(@ptrCast(self), aqsFilter, additionalProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1563,39 +1563,39 @@ pub const IDeviceInformationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
-        CreateFromIdAsyncWithAdditionalProperties: *const fn(self: *anyopaque, deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        CreateFromIdAsyncWithAdditionalProperties: *const fn(self: *anyopaque, deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
         FindAllAsyncWithDeviceClass: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
-        FindAllAsyncWithAqsFilter: *const fn(self: *anyopaque, aqsFilter: HSTRING, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
-        FindAllAsyncWithAqsFilterAndAdditionalProperties: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
+        FindAllAsyncWithAqsFilter: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
+        FindAllAsyncWithAqsFilterAndAdditionalProperties: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
         CreateWatcherWithDeviceClass: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
-        CreateWatcherWithAqsFilter: *const fn(self: *anyopaque, aqsFilter: HSTRING, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
-        CreateWatcherWithAqsFilterAndAdditionalProperties: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), _r: **DeviceWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherWithAqsFilter: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherWithAqsFilterAndAdditionalProperties: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), _r: **DeviceWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceInformationStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetAqsFilterFromDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetAqsFilterFromDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAqsFilterFromDeviceClass(@ptrCast(self), deviceClass, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromIdAsync(self: *@This(), deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsync(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), aqsFilter, additionalProperties, kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcher(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcher(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), aqsFilter, additionalProperties, kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1613,27 +1613,27 @@ pub const IDeviceInformationStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAqsFilterFromDeviceClass: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: *HSTRING) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
-        CreateWatcher: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
+        GetAqsFilterFromDeviceClass: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        FindAllAsync: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
+        CreateWatcher: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceInformationStatics3 = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromIdAsync(self: *@This(), deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, kind, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsync(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         var _r: *IAsyncOperation(DeviceInformationCollection) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), aqsFilter, additionalProperties, kind, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcher(self: *@This(), aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcher(self: *@This(), aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
         var _r: *DeviceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), aqsFilter, additionalProperties, kind, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1651,21 +1651,21 @@ pub const IDeviceInformationStatics3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
-        CreateWatcher: *const fn(self: *anyopaque, aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
+        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        FindAllAsync: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
+        CreateWatcher: *const fn(self: *anyopaque, aqsFilter: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings, _r: **DeviceWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceInformationUpdate = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var _r: *IMapView(HSTRING,IInspectable) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1682,8 +1682,8 @@ pub const IDeviceInformationUpdate = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IInspectable)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IInspectable)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceInformationUpdate2 = extern struct {
@@ -1723,8 +1723,8 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPin(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPin(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pin(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1733,7 +1733,7 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
         const _c = self.vtable.Accept(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AcceptWithPin(self: *@This(), pin: HSTRING) core.HResult!void {
+    pub fn AcceptWithPin(self: *@This(), pin: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AcceptWithPin(@ptrCast(self), pin);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1757,9 +1757,9 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_DeviceInformation: *const fn(self: *anyopaque, _r: **DeviceInformation) callconv(.winapi) HRESULT,
         get_PairingKind: *const fn(self: *anyopaque, _r: *DevicePairingKinds) callconv(.winapi) HRESULT,
-        get_Pin: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Pin: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Accept: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        AcceptWithPin: *const fn(self: *anyopaque, pin: HSTRING) callconv(.winapi) HRESULT,
+        AcceptWithPin: *const fn(self: *anyopaque, pin: ?HSTRING) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **Deferral) callconv(.winapi) HRESULT,
     };
 };
@@ -1786,7 +1786,7 @@ pub const IDevicePairingRequestedEventArgs2 = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs3 = extern struct {
     vtable: *const VTable,
-    pub fn AcceptWithAddress(self: *@This(), address: HSTRING) core.HResult!void {
+    pub fn AcceptWithAddress(self: *@This(), address: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AcceptWithAddress(@ptrCast(self), address);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1802,7 +1802,7 @@ pub const IDevicePairingRequestedEventArgs3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AcceptWithAddress: *const fn(self: *anyopaque, address: HSTRING) callconv(.winapi) HRESULT,
+        AcceptWithAddress: *const fn(self: *anyopaque, address: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDevicePairingResult = extern struct {
@@ -1902,8 +1902,8 @@ pub const IDevicePicker = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRequestedProperties(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getRequestedProperties(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_RequestedProperties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1962,7 +1962,7 @@ pub const IDevicePicker = extern struct {
         const _c = self.vtable.Hide(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetDisplayStatus(self: *@This(), device: *DeviceInformation, status: HSTRING, options: DevicePickerDisplayStatusOptions) core.HResult!void {
+    pub fn SetDisplayStatus(self: *@This(), device: *DeviceInformation, status: ?HSTRING, options: DevicePickerDisplayStatusOptions) core.HResult!void {
         const _c = self.vtable.SetDisplayStatus(@ptrCast(self), device, status, options);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1980,7 +1980,7 @@ pub const IDevicePicker = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Filter: *const fn(self: *anyopaque, _r: **DevicePickerFilter) callconv(.winapi) HRESULT,
         get_Appearance: *const fn(self: *anyopaque, _r: **DevicePickerAppearance) callconv(.winapi) HRESULT,
-        get_RequestedProperties: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_RequestedProperties: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         add_DeviceSelected: *const fn(self: *anyopaque, handler: *TypedEventHandler(DevicePicker,DeviceSelectedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DeviceSelected: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_DisconnectButtonClicked: *const fn(self: *anyopaque, handler: *TypedEventHandler(DevicePicker,DeviceDisconnectButtonClickedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1992,18 +1992,18 @@ pub const IDevicePicker = extern struct {
         PickSingleDeviceAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
         PickSingleDeviceAsyncWithPlacement: *const fn(self: *anyopaque, selection: Rect, placement: Placement, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
         Hide: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        SetDisplayStatus: *const fn(self: *anyopaque, device: *DeviceInformation, status: HSTRING, options: DevicePickerDisplayStatusOptions) callconv(.winapi) HRESULT,
+        SetDisplayStatus: *const fn(self: *anyopaque, device: *DeviceInformation, status: ?HSTRING, options: DevicePickerDisplayStatusOptions) callconv(.winapi) HRESULT,
     };
 };
 pub const IDevicePickerAppearance = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2079,8 +2079,8 @@ pub const IDevicePickerAppearance = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ForegroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         put_ForegroundColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
         get_BackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
@@ -2103,8 +2103,8 @@ pub const IDevicePickerFilter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedDeviceSelectors(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSupportedDeviceSelectors(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedDeviceSelectors(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2122,7 +2122,7 @@ pub const IDevicePickerFilter = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_SupportedDeviceClasses: *const fn(self: *anyopaque, _r: **IVector(DeviceClass)) callconv(.winapi) HRESULT,
-        get_SupportedDeviceSelectors: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_SupportedDeviceSelectors: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceSelectedEventArgs = extern struct {

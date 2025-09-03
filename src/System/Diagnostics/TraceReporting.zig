@@ -7,13 +7,13 @@ pub const IPlatformDiagnosticActionsStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryEscalateScenario(self: *@This(), scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(HSTRING,HSTRING)) core.HResult!bool {
+    pub fn TryEscalateScenario(self: *@This(), scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: ?HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(?HSTRING,?HSTRING)) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryEscalateScenario(@ptrCast(self), scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DownloadLatestSettingsForNamespace(self: *@This(), partner: HSTRING, feature: HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
+    pub fn DownloadLatestSettingsForNamespace(self: *@This(), partner: ?HSTRING, feature: ?HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
         var _r: PlatformDiagnosticActionState = undefined;
         const _c = self.vtable.DownloadLatestSettingsForNamespace(@ptrCast(self), partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -62,8 +62,8 @@ pub const IPlatformDiagnosticActionsStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsScenarioEnabled: *const fn(self: *anyopaque, scenarioId: *Guid, _r: *bool) callconv(.winapi) HRESULT,
-        TryEscalateScenario: *const fn(self: *anyopaque, scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(HSTRING,HSTRING), _r: *bool) callconv(.winapi) HRESULT,
-        DownloadLatestSettingsForNamespace: *const fn(self: *anyopaque, partner: HSTRING, feature: HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool, _r: *PlatformDiagnosticActionState) callconv(.winapi) HRESULT,
+        TryEscalateScenario: *const fn(self: *anyopaque, scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: ?HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(?HSTRING,?HSTRING), _r: *bool) callconv(.winapi) HRESULT,
+        DownloadLatestSettingsForNamespace: *const fn(self: *anyopaque, partner: ?HSTRING, feature: ?HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool, _r: *PlatformDiagnosticActionState) callconv(.winapi) HRESULT,
         GetActiveScenarioList: *const fn(self: *anyopaque, _r: **IVectorView(Guid)) callconv(.winapi) HRESULT,
         ForceUpload: *const fn(self: *anyopaque, latency: PlatformDiagnosticEventBufferLatencies, uploadOverCostedNetwork: bool, uploadOverBattery: bool, _r: *PlatformDiagnosticActionState) callconv(.winapi) HRESULT,
         IsTraceRunning: *const fn(self: *anyopaque, slotType: PlatformDiagnosticTraceSlotType, scenarioId: *Guid, traceProfileHash: u64, _r: *PlatformDiagnosticTraceSlotState) callconv(.winapi) HRESULT,
@@ -173,11 +173,11 @@ pub const PlatformDiagnosticActions = extern struct {
         const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.IsScenarioEnabled(scenarioId);
     }
-    pub fn TryEscalateScenario(scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(HSTRING,HSTRING)) core.HResult!bool {
+    pub fn TryEscalateScenario(scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: ?HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(?HSTRING,?HSTRING)) core.HResult!bool {
         const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.TryEscalateScenario(scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers);
     }
-    pub fn DownloadLatestSettingsForNamespace(partner: HSTRING, feature: HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
+    pub fn DownloadLatestSettingsForNamespace(partner: ?HSTRING, feature: ?HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
         const _f = try @This()._IPlatformDiagnosticActionsStaticsCache.get();
         return try _f.DownloadLatestSettingsForNamespace(partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery);
     }

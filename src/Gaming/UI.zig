@@ -1,19 +1,19 @@
 // ----- This code is automatically generated -----
 pub const GameChatMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameChatMessageReceivedEventArgs = @ptrCast(self);
         return try this.getAppId();
     }
-    pub fn getAppDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameChatMessageReceivedEventArgs = @ptrCast(self);
         return try this.getAppDisplayName();
     }
-    pub fn getSenderName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSenderName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameChatMessageReceivedEventArgs = @ptrCast(self);
         return try this.getSenderName();
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameChatMessageReceivedEventArgs = @ptrCast(self);
         return try this.getMessage();
     }
@@ -57,26 +57,26 @@ pub const GameChatOverlayMessageSource = extern struct {
 };
 pub const IGameChatMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSenderName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSenderName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SenderName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -99,10 +99,10 @@ pub const IGameChatMessageReceivedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AppId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AppDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SenderName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AppDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SenderName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Origin: *const fn(self: *anyopaque, _r: *GameChatMessageOrigin) callconv(.winapi) HRESULT,
     };
 };
@@ -248,7 +248,7 @@ pub const GameChatOverlay = extern struct {
         const this: *IGameChatOverlay = @ptrCast(self);
         return try this.putDesiredPosition(value);
     }
-    pub fn AddMessage(self: *@This(), sender: HSTRING, message: HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
+    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
         const this: *IGameChatOverlay = @ptrCast(self);
         return try this.AddMessage(sender, message, origin);
     }
@@ -342,7 +342,7 @@ pub const IGameChatOverlay = extern struct {
         const _c = self.vtable.put_DesiredPosition(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddMessage(self: *@This(), sender: HSTRING, message: HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
+    pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
         const _c = self.vtable.AddMessage(@ptrCast(self), sender, message, origin);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -360,7 +360,7 @@ pub const IGameChatOverlay = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_DesiredPosition: *const fn(self: *anyopaque, _r: *GameChatOverlayPosition) callconv(.winapi) HRESULT,
         put_DesiredPosition: *const fn(self: *anyopaque, value: GameChatOverlayPosition) callconv(.winapi) HRESULT,
-        AddMessage: *const fn(self: *anyopaque, sender: HSTRING, message: HSTRING, origin: GameChatMessageOrigin) callconv(.winapi) HRESULT,
+        AddMessage: *const fn(self: *anyopaque, sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) callconv(.winapi) HRESULT,
     };
 };
 pub const IGameChatOverlayStatics = extern struct {

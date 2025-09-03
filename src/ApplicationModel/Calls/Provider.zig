@@ -1,33 +1,33 @@
 // ----- This code is automatically generated -----
 pub const IPhoneCallOrigin = extern struct {
     vtable: *const VTable,
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCategory(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCategory(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Category(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCategoryDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCategoryDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CategoryDescription(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCategoryDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCategoryDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CategoryDescription(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Location(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -43,23 +43,23 @@ pub const IPhoneCallOrigin = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Category: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Category: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CategoryDescription: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CategoryDescription: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Location: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Location: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Category: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Category: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CategoryDescription: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CategoryDescription: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Location: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Location: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallOrigin2 = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -75,8 +75,8 @@ pub const IPhoneCallOrigin2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneCallOrigin3 = extern struct {
@@ -188,37 +188,37 @@ pub const IPhoneCallOriginManagerStatics3 = extern struct {
 };
 pub const PhoneCallOrigin = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCategory(self: *@This()) core.HResult!HSTRING {
+    pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.getCategory();
     }
-    pub fn putCategory(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCategory(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.putCategory(value);
     }
-    pub fn getCategoryDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getCategoryDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.getCategoryDescription();
     }
-    pub fn putCategoryDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCategoryDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.putCategoryDescription(value);
     }
-    pub fn getLocation(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocation(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.getLocation();
     }
-    pub fn putLocation(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocation(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPhoneCallOrigin = @ptrCast(self);
         return try this.putLocation(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhoneCallOrigin2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneCallOrigin2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPhoneCallOrigin2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneCallOrigin2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

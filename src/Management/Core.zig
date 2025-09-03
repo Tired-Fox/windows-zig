@@ -4,7 +4,7 @@ pub const ApplicationDataManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateForPackageFamily(packageFamilyName: HSTRING) core.HResult!*ApplicationData {
+    pub fn CreateForPackageFamily(packageFamilyName: ?HSTRING) core.HResult!*ApplicationData {
         const _f = try @This()._IApplicationDataManagerStaticsCache.get();
         return try _f.CreateForPackageFamily(packageFamilyName);
     }
@@ -33,7 +33,7 @@ pub const IApplicationDataManager = extern struct {
 };
 pub const IApplicationDataManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateForPackageFamily(self: *@This(), packageFamilyName: HSTRING) core.HResult!*ApplicationData {
+    pub fn CreateForPackageFamily(self: *@This(), packageFamilyName: ?HSTRING) core.HResult!*ApplicationData {
         var _r: *ApplicationData = undefined;
         const _c = self.vtable.CreateForPackageFamily(@ptrCast(self), packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -51,7 +51,7 @@ pub const IApplicationDataManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateForPackageFamily: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **ApplicationData) callconv(.winapi) HRESULT,
+        CreateForPackageFamily: *const fn(self: *anyopaque, packageFamilyName: ?HSTRING, _r: **ApplicationData) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

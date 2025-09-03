@@ -88,43 +88,43 @@ pub const HostMessageReceivedCallback = extern struct {
 };
 pub const IIsolatedWindowsEnvironment = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartProcessSilentlyAsync(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
+    pub fn StartProcessSilentlyAsync(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) = undefined;
         const _c = self.vtable.StartProcessSilentlyAsync(@ptrCast(self), hostExePath, arguments, activator, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
+    pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) = undefined;
         const _c = self.vtable.StartProcessSilentlyAsyncWithTelemetryParameters(@ptrCast(self), hostExePath, arguments, activator, telemetryParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShareFolderAsync(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
+    pub fn ShareFolderAsync(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) = undefined;
         const _c = self.vtable.ShareFolderAsync(@ptrCast(self), hostFolder, requestOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
+    pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) = undefined;
         const _c = self.vtable.ShareFolderAsyncWithTelemetryParameters(@ptrCast(self), hostFolder, requestOptions, telemetryParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
+    pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) = undefined;
         const _c = self.vtable.LaunchFileWithUIAsync(@ptrCast(self), appExePath, argumentsTemplate, filePath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
+    pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) = undefined;
         const _c = self.vtable.LaunchFileWithUIAsyncWithTelemetryParameters(@ptrCast(self), appExePath, argumentsTemplate, filePath, telemetryParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -162,13 +162,13 @@ pub const IIsolatedWindowsEnvironment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        StartProcessSilentlyAsync: *const fn(self: *anyopaque, hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, _r: **IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult)) callconv(.winapi) HRESULT,
-        StartProcessSilentlyAsyncWithTelemetryParameters: *const fn(self: *anyopaque, hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult)) callconv(.winapi) HRESULT,
-        ShareFolderAsync: *const fn(self: *anyopaque, hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult)) callconv(.winapi) HRESULT,
-        ShareFolderAsyncWithTelemetryParameters: *const fn(self: *anyopaque, hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult)) callconv(.winapi) HRESULT,
-        LaunchFileWithUIAsync: *const fn(self: *anyopaque, appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, _r: **IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult)) callconv(.winapi) HRESULT,
-        LaunchFileWithUIAsyncWithTelemetryParameters: *const fn(self: *anyopaque, appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        StartProcessSilentlyAsync: *const fn(self: *anyopaque, hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator, _r: **IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult)) callconv(.winapi) HRESULT,
+        StartProcessSilentlyAsyncWithTelemetryParameters: *const fn(self: *anyopaque, hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult)) callconv(.winapi) HRESULT,
+        ShareFolderAsync: *const fn(self: *anyopaque, hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult)) callconv(.winapi) HRESULT,
+        ShareFolderAsyncWithTelemetryParameters: *const fn(self: *anyopaque, hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult)) callconv(.winapi) HRESULT,
+        LaunchFileWithUIAsync: *const fn(self: *anyopaque, appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING, _r: **IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult)) callconv(.winapi) HRESULT,
+        LaunchFileWithUIAsyncWithTelemetryParameters: *const fn(self: *anyopaque, appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult)) callconv(.winapi) HRESULT,
         TerminateAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TerminateAsyncWithTelemetryParameters: *const fn(self: *anyopaque, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RegisterMessageReceiver: *const fn(self: *anyopaque, receiverId: *Guid, messageReceivedCallback: *MessageReceivedCallback) callconv(.winapi) HRESULT,
@@ -213,13 +213,13 @@ pub const IIsolatedWindowsEnvironment3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShareFileAsync(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
+    pub fn ShareFileAsync(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) = undefined;
         const _c = self.vtable.ShareFileAsync(@ptrCast(self), filePath, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
+    pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var _r: *IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) = undefined;
         const _c = self.vtable.ShareFileAsyncWithTelemetryParameters(@ptrCast(self), filePath, options, telemetryParameters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -238,8 +238,8 @@ pub const IIsolatedWindowsEnvironment3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetUserInfo: *const fn(self: *anyopaque, _r: **IsolatedWindowsEnvironmentUserInfo) callconv(.winapi) HRESULT,
-        ShareFileAsync: *const fn(self: *anyopaque, filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult)) callconv(.winapi) HRESULT,
-        ShareFileAsyncWithTelemetryParameters: *const fn(self: *anyopaque, filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult)) callconv(.winapi) HRESULT,
+        ShareFileAsync: *const fn(self: *anyopaque, filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult)) callconv(.winapi) HRESULT,
+        ShareFileAsyncWithTelemetryParameters: *const fn(self: *anyopaque, filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironment4 = extern struct {
@@ -335,13 +335,13 @@ pub const IIsolatedWindowsEnvironmentFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetById(self: *@This(), environmentId: HSTRING) core.HResult!*IsolatedWindowsEnvironment {
+    pub fn GetById(self: *@This(), environmentId: ?HSTRING) core.HResult!*IsolatedWindowsEnvironment {
         var _r: *IsolatedWindowsEnvironment = undefined;
         const _c = self.vtable.GetById(@ptrCast(self), environmentId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindByOwnerId(self: *@This(), environmentOwnerId: HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
+    pub fn FindByOwnerId(self: *@This(), environmentOwnerId: ?HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
         var _r: *IVectorView(IsolatedWindowsEnvironment) = undefined;
         const _c = self.vtable.FindByOwnerId(@ptrCast(self), environmentOwnerId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -361,8 +361,8 @@ pub const IIsolatedWindowsEnvironmentFactory = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, options: *IsolatedWindowsEnvironmentOptions, _r: **IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress)) callconv(.winapi) HRESULT,
         CreateAsyncWithTelemetryParameters: *const fn(self: *anyopaque, options: *IsolatedWindowsEnvironmentOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters, _r: **IAsyncOperationWithProgress(IsolatedWindowsEnvironmentCreateResult,IsolatedWindowsEnvironmentCreateProgress)) callconv(.winapi) HRESULT,
-        GetById: *const fn(self: *anyopaque, environmentId: HSTRING, _r: **IsolatedWindowsEnvironment) callconv(.winapi) HRESULT,
-        FindByOwnerId: *const fn(self: *anyopaque, environmentOwnerId: HSTRING, _r: **IVectorView(IsolatedWindowsEnvironment)) callconv(.winapi) HRESULT,
+        GetById: *const fn(self: *anyopaque, environmentId: ?HSTRING, _r: **IsolatedWindowsEnvironment) callconv(.winapi) HRESULT,
+        FindByOwnerId: *const fn(self: *anyopaque, environmentOwnerId: ?HSTRING, _r: **IVectorView(IsolatedWindowsEnvironment)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironmentFile = extern struct {
@@ -373,8 +373,8 @@ pub const IIsolatedWindowsEnvironmentFile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHostPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHostPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HostPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -396,14 +396,14 @@ pub const IIsolatedWindowsEnvironmentFile = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_HostPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HostPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Close: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironmentFile2 = extern struct {
     vtable: *const VTable,
-    pub fn getGuestPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGuestPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GuestPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -426,7 +426,7 @@ pub const IIsolatedWindowsEnvironmentFile2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_GuestPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_GuestPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsReadOnly: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
@@ -499,13 +499,13 @@ pub const IIsolatedWindowsEnvironmentLaunchFileResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOptions = extern struct {
     vtable: *const VTable,
-    pub fn getEnvironmentOwnerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnvironmentOwnerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentOwnerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putEnvironmentOwnerId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnvironmentOwnerId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_EnvironmentOwnerId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -539,19 +539,19 @@ pub const IIsolatedWindowsEnvironmentOptions = extern struct {
         const _c = self.vtable.put_AvailablePrinters(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSharedHostFolderPath(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSharedHostFolderPath(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SharedHostFolderPath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSharedFolderNameInEnvironment(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSharedFolderNameInEnvironment(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SharedFolderNameInEnvironment(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShareHostFolderForUntrustedItems(self: *@This(), SharedHostFolderPath: HSTRING, ShareFolderNameInEnvironment: HSTRING) core.HResult!void {
+    pub fn ShareHostFolderForUntrustedItems(self: *@This(), SharedHostFolderPath: ?HSTRING, ShareFolderNameInEnvironment: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ShareHostFolderForUntrustedItems(@ptrCast(self), SharedHostFolderPath, ShareFolderNameInEnvironment);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -597,17 +597,17 @@ pub const IIsolatedWindowsEnvironmentOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnvironmentOwnerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_EnvironmentOwnerId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_EnvironmentOwnerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_EnvironmentOwnerId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_AllowedClipboardFormats: *const fn(self: *anyopaque, _r: *IsolatedWindowsEnvironmentAllowedClipboardFormats) callconv(.winapi) HRESULT,
         put_AllowedClipboardFormats: *const fn(self: *anyopaque, value: IsolatedWindowsEnvironmentAllowedClipboardFormats) callconv(.winapi) HRESULT,
         get_ClipboardCopyPasteDirections: *const fn(self: *anyopaque, _r: *IsolatedWindowsEnvironmentClipboardCopyPasteDirections) callconv(.winapi) HRESULT,
         put_ClipboardCopyPasteDirections: *const fn(self: *anyopaque, value: IsolatedWindowsEnvironmentClipboardCopyPasteDirections) callconv(.winapi) HRESULT,
         get_AvailablePrinters: *const fn(self: *anyopaque, _r: *IsolatedWindowsEnvironmentAvailablePrinters) callconv(.winapi) HRESULT,
         put_AvailablePrinters: *const fn(self: *anyopaque, value: IsolatedWindowsEnvironmentAvailablePrinters) callconv(.winapi) HRESULT,
-        get_SharedHostFolderPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SharedFolderNameInEnvironment: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ShareHostFolderForUntrustedItems: *const fn(self: *anyopaque, SharedHostFolderPath: HSTRING, ShareFolderNameInEnvironment: HSTRING) callconv(.winapi) HRESULT,
+        get_SharedHostFolderPath: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SharedFolderNameInEnvironment: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ShareHostFolderForUntrustedItems: *const fn(self: *anyopaque, SharedHostFolderPath: ?HSTRING, ShareFolderNameInEnvironment: ?HSTRING) callconv(.winapi) HRESULT,
         get_PersistUserProfile: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_PersistUserProfile: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_AllowGraphicsHardwareAcceleration: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -618,13 +618,13 @@ pub const IIsolatedWindowsEnvironmentOptions = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOptions2 = extern struct {
     vtable: *const VTable,
-    pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WindowAnnotationOverride(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putWindowAnnotationOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWindowAnnotationOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WindowAnnotationOverride(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -640,8 +640,8 @@ pub const IIsolatedWindowsEnvironmentOptions2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_WindowAnnotationOverride: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_WindowAnnotationOverride: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_WindowAnnotationOverride: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_WindowAnnotationOverride: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironmentOptions3 = extern struct {
@@ -698,26 +698,26 @@ pub const IIsolatedWindowsEnvironmentOptions3 = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
     vtable: *const VTable,
-    pub fn getShareableFolders(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getShareableFolders(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ShareableFolders(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProcessesRunnableAsSystem(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getProcessesRunnableAsSystem(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ProcessesRunnableAsSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProcessesRunnableAsUser(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getProcessesRunnableAsUser(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ProcessesRunnableAsUser(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getActivationFileExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getActivationFileExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ActivationFileExtensions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -734,10 +734,10 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ShareableFolders: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_ProcessesRunnableAsSystem: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_ProcessesRunnableAsUser: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_ActivationFileExtensions: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ShareableFolders: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ProcessesRunnableAsSystem: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ProcessesRunnableAsUser: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ActivationFileExtensions: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
@@ -772,13 +772,13 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationResult = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentOwnerRegistrationStatics = extern struct {
     vtable: *const VTable,
-    pub fn Register(self: *@This(), ownerName: HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
+    pub fn Register(self: *@This(), ownerName: ?HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
         var _r: *IsolatedWindowsEnvironmentOwnerRegistrationResult = undefined;
         const _c = self.vtable.Register(@ptrCast(self), ownerName, ownerRegistrationData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Unregister(self: *@This(), ownerName: HSTRING) core.HResult!void {
+    pub fn Unregister(self: *@This(), ownerName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Unregister(@ptrCast(self), ownerName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -794,8 +794,8 @@ pub const IIsolatedWindowsEnvironmentOwnerRegistrationStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, ownerName: HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData, _r: **IsolatedWindowsEnvironmentOwnerRegistrationResult) callconv(.winapi) HRESULT,
-        Unregister: *const fn(self: *anyopaque, ownerName: HSTRING) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, ownerName: ?HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData, _r: **IsolatedWindowsEnvironmentOwnerRegistrationResult) callconv(.winapi) HRESULT,
+        Unregister: *const fn(self: *anyopaque, ownerName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsEnvironmentPostMessageResult = extern struct {
@@ -1065,14 +1065,14 @@ pub const IIsolatedWindowsEnvironmentTelemetryParameters = extern struct {
 };
 pub const IIsolatedWindowsEnvironmentUserInfo = extern struct {
     vtable: *const VTable,
-    pub fn getEnvironmentUserSid(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnvironmentUserSid(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentUserSid(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEnvironmentUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEnvironmentUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnvironmentUserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1095,8 +1095,8 @@ pub const IIsolatedWindowsEnvironmentUserInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EnvironmentUserSid: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EnvironmentUserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EnvironmentUserSid: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EnvironmentUserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         TryWaitForSignInAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -1129,7 +1129,7 @@ pub const IIsolatedWindowsHostMessengerStatics = extern struct {
         const _c = self.vtable.PostMessageToReceiver(@ptrCast(self), receiverId, message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetFileId(self: *@This(), filePath: HSTRING) core.HResult!*Guid {
+    pub fn GetFileId(self: *@This(), filePath: ?HSTRING) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.GetFileId(@ptrCast(self), filePath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1148,7 +1148,7 @@ pub const IIsolatedWindowsHostMessengerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         PostMessageToReceiver: *const fn(self: *anyopaque, receiverId: *Guid, message: *IVectorView(IInspectable)) callconv(.winapi) HRESULT,
-        GetFileId: *const fn(self: *anyopaque, filePath: HSTRING, _r: **Guid) callconv(.winapi) HRESULT,
+        GetFileId: *const fn(self: *anyopaque, filePath: ?HSTRING, _r: **Guid) callconv(.winapi) HRESULT,
     };
 };
 pub const IIsolatedWindowsHostMessengerStatics2 = extern struct {
@@ -1179,31 +1179,31 @@ pub const IIsolatedWindowsHostMessengerStatics2 = extern struct {
 };
 pub const IsolatedWindowsEnvironment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.getId();
     }
-    pub fn StartProcessSilentlyAsync(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
+    pub fn StartProcessSilentlyAsync(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.StartProcessSilentlyAsync(hostExePath, arguments, activator);
     }
-    pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
+    pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: ?HSTRING, arguments: ?HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.StartProcessSilentlyAsyncWithTelemetryParameters(hostExePath, arguments, activator, telemetryParameters);
     }
-    pub fn ShareFolderAsync(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
+    pub fn ShareFolderAsync(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.ShareFolderAsync(hostFolder, requestOptions);
     }
-    pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
+    pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: ?HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.ShareFolderAsyncWithTelemetryParameters(hostFolder, requestOptions, telemetryParameters);
     }
-    pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
+    pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.LaunchFileWithUIAsync(appExePath, argumentsTemplate, filePath);
     }
-    pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
+    pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: ?HSTRING, argumentsTemplate: ?HSTRING, filePath: ?HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.LaunchFileWithUIAsyncWithTelemetryParameters(appExePath, argumentsTemplate, filePath, telemetryParameters);
     }
@@ -1241,13 +1241,13 @@ pub const IsolatedWindowsEnvironment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUserInfo();
     }
-    pub fn ShareFileAsync(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
+    pub fn ShareFileAsync(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShareFileAsync(filePath, options);
     }
-    pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
+    pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1270,11 +1270,11 @@ pub const IsolatedWindowsEnvironment = extern struct {
         const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.CreateAsyncWithTelemetryParameters(options, telemetryParameters);
     }
-    pub fn GetById(environmentId: HSTRING) core.HResult!*IsolatedWindowsEnvironment {
+    pub fn GetById(environmentId: ?HSTRING) core.HResult!*IsolatedWindowsEnvironment {
         const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.GetById(environmentId);
     }
-    pub fn FindByOwnerId(environmentOwnerId: HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
+    pub fn FindByOwnerId(environmentOwnerId: ?HSTRING) core.HResult!*IVectorView(IsolatedWindowsEnvironment) {
         const _f = try @This()._IIsolatedWindowsEnvironmentFactoryCache.get();
         return try _f.FindByOwnerId(environmentOwnerId);
     }
@@ -1352,7 +1352,7 @@ pub const IsolatedWindowsEnvironmentFile = extern struct {
         const this: *IIsolatedWindowsEnvironmentFile = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getHostPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getHostPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentFile = @ptrCast(self);
         return try this.getHostPath();
     }
@@ -1360,7 +1360,7 @@ pub const IsolatedWindowsEnvironmentFile = extern struct {
         const this: *IIsolatedWindowsEnvironmentFile = @ptrCast(self);
         return try this.Close();
     }
-    pub fn getGuestPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getGuestPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentFile2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1432,11 +1432,11 @@ pub const IsolatedWindowsEnvironmentLaunchFileStatus = enum(i32) {
 };
 pub const IsolatedWindowsEnvironmentOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEnvironmentOwnerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnvironmentOwnerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.getEnvironmentOwnerId();
     }
-    pub fn putEnvironmentOwnerId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putEnvironmentOwnerId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.putEnvironmentOwnerId(value);
     }
@@ -1464,15 +1464,15 @@ pub const IsolatedWindowsEnvironmentOptions = extern struct {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.putAvailablePrinters(value);
     }
-    pub fn getSharedHostFolderPath(self: *@This()) core.HResult!HSTRING {
+    pub fn getSharedHostFolderPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.getSharedHostFolderPath();
     }
-    pub fn getSharedFolderNameInEnvironment(self: *@This()) core.HResult!HSTRING {
+    pub fn getSharedFolderNameInEnvironment(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.getSharedFolderNameInEnvironment();
     }
-    pub fn ShareHostFolderForUntrustedItems(self: *@This(), SharedHostFolderPath: HSTRING, ShareFolderNameInEnvironment: HSTRING) core.HResult!void {
+    pub fn ShareHostFolderForUntrustedItems(self: *@This(), SharedHostFolderPath: ?HSTRING, ShareFolderNameInEnvironment: ?HSTRING) core.HResult!void {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.ShareHostFolderForUntrustedItems(SharedHostFolderPath, ShareFolderNameInEnvironment);
     }
@@ -1500,13 +1500,13 @@ pub const IsolatedWindowsEnvironmentOptions = extern struct {
         const this: *IIsolatedWindowsEnvironmentOptions = @ptrCast(self);
         return try this.putAllowCameraAndMicrophoneAccess(value);
     }
-    pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!HSTRING {
+    pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWindowAnnotationOverride();
     }
-    pub fn putWindowAnnotationOverride(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWindowAnnotationOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1567,11 +1567,11 @@ pub const IsolatedWindowsEnvironmentOwnerRegistration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Register(ownerName: HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
+    pub fn Register(ownerName: ?HSTRING, ownerRegistrationData: *IsolatedWindowsEnvironmentOwnerRegistrationData) core.HResult!*IsolatedWindowsEnvironmentOwnerRegistrationResult {
         const _f = try @This()._IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
         return try _f.Register(ownerName, ownerRegistrationData);
     }
-    pub fn Unregister(ownerName: HSTRING) core.HResult!void {
+    pub fn Unregister(ownerName: ?HSTRING) core.HResult!void {
         const _f = try @This()._IIsolatedWindowsEnvironmentOwnerRegistrationStaticsCache.get();
         return try _f.Unregister(ownerName);
     }
@@ -1581,19 +1581,19 @@ pub const IsolatedWindowsEnvironmentOwnerRegistration = extern struct {
 };
 pub const IsolatedWindowsEnvironmentOwnerRegistrationData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getShareableFolders(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getShareableFolders(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIsolatedWindowsEnvironmentOwnerRegistrationData = @ptrCast(self);
         return try this.getShareableFolders();
     }
-    pub fn getProcessesRunnableAsSystem(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getProcessesRunnableAsSystem(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIsolatedWindowsEnvironmentOwnerRegistrationData = @ptrCast(self);
         return try this.getProcessesRunnableAsSystem();
     }
-    pub fn getProcessesRunnableAsUser(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getProcessesRunnableAsUser(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIsolatedWindowsEnvironmentOwnerRegistrationData = @ptrCast(self);
         return try this.getProcessesRunnableAsUser();
     }
-    pub fn getActivationFileExtensions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getActivationFileExtensions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIsolatedWindowsEnvironmentOwnerRegistrationData = @ptrCast(self);
         return try this.getActivationFileExtensions();
     }
@@ -1857,11 +1857,11 @@ pub const IsolatedWindowsEnvironmentTelemetryParameters = extern struct {
 };
 pub const IsolatedWindowsEnvironmentUserInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEnvironmentUserSid(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnvironmentUserSid(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentUserInfo = @ptrCast(self);
         return try this.getEnvironmentUserSid();
     }
-    pub fn getEnvironmentUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getEnvironmentUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIsolatedWindowsEnvironmentUserInfo = @ptrCast(self);
         return try this.getEnvironmentUserName();
     }
@@ -1898,7 +1898,7 @@ pub const IsolatedWindowsHostMessenger = extern struct {
         const _f = try @This()._IIsolatedWindowsHostMessengerStaticsCache.get();
         return try _f.PostMessageToReceiver(receiverId, message);
     }
-    pub fn GetFileId(filePath: HSTRING) core.HResult!*Guid {
+    pub fn GetFileId(filePath: ?HSTRING) core.HResult!*Guid {
         const _f = try @This()._IIsolatedWindowsHostMessengerStaticsCache.get();
         return try _f.GetFileId(filePath);
     }

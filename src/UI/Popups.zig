@@ -1,13 +1,13 @@
 // ----- This code is automatically generated -----
 pub const IMessageDialog = extern struct {
     vtable: *const VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -37,13 +37,13 @@ pub const IMessageDialog = extern struct {
         const _c = self.vtable.put_CancelCommandIndex(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContent(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContent(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContent(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContent(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Content(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -75,15 +75,15 @@ pub const IMessageDialog = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
         get_DefaultCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_DefaultCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
         get_CancelCommandIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_CancelCommandIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_Content: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Content: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Content: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Content: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
         get_Options: *const fn(self: *anyopaque, _r: *MessageDialogOptions) callconv(.winapi) HRESULT,
         put_Options: *const fn(self: *anyopaque, value: MessageDialogOptions) callconv(.winapi) HRESULT,
@@ -91,13 +91,13 @@ pub const IMessageDialog = extern struct {
 };
 pub const IMessageDialogFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), content: HSTRING) core.HResult!*MessageDialog {
+    pub fn Create(self: *@This(), content: ?HSTRING) core.HResult!*MessageDialog {
         var _r: *MessageDialog = undefined;
         const _c = self.vtable.Create(@ptrCast(self), content, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTitle(self: *@This(), content: HSTRING, title: HSTRING) core.HResult!*MessageDialog {
+    pub fn CreateWithTitle(self: *@This(), content: ?HSTRING, title: ?HSTRING) core.HResult!*MessageDialog {
         var _r: *MessageDialog = undefined;
         const _c = self.vtable.CreateWithTitle(@ptrCast(self), content, title, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -115,8 +115,8 @@ pub const IMessageDialogFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, content: HSTRING, _r: **MessageDialog) callconv(.winapi) HRESULT,
-        CreateWithTitle: *const fn(self: *anyopaque, content: HSTRING, title: HSTRING, _r: **MessageDialog) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, content: ?HSTRING, _r: **MessageDialog) callconv(.winapi) HRESULT,
+        CreateWithTitle: *const fn(self: *anyopaque, content: ?HSTRING, title: ?HSTRING, _r: **MessageDialog) callconv(.winapi) HRESULT,
     };
 };
 pub const IPopupMenu = extern struct {
@@ -165,13 +165,13 @@ pub const IPopupMenu = extern struct {
 };
 pub const IUICommand = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -207,8 +207,8 @@ pub const IUICommand = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Invoked: *const fn(self: *anyopaque, _r: **UICommandInvokedHandler) callconv(.winapi) HRESULT,
         put_Invoked: *const fn(self: *anyopaque, value: *UICommandInvokedHandler) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -217,19 +217,19 @@ pub const IUICommand = extern struct {
 };
 pub const IUICommandFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), label: HSTRING) core.HResult!*UICommand {
+    pub fn Create(self: *@This(), label: ?HSTRING) core.HResult!*UICommand {
         var _r: *UICommand = undefined;
         const _c = self.vtable.Create(@ptrCast(self), label, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithHandler(self: *@This(), label: HSTRING, action: *UICommandInvokedHandler) core.HResult!*UICommand {
+    pub fn CreateWithHandler(self: *@This(), label: ?HSTRING, action: *UICommandInvokedHandler) core.HResult!*UICommand {
         var _r: *UICommand = undefined;
         const _c = self.vtable.CreateWithHandler(@ptrCast(self), label, action, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithHandlerAndId(self: *@This(), label: HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable) core.HResult!*UICommand {
+    pub fn CreateWithHandlerAndId(self: *@This(), label: ?HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable) core.HResult!*UICommand {
         var _r: *UICommand = undefined;
         const _c = self.vtable.CreateWithHandlerAndId(@ptrCast(self), label, action, commandId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -247,18 +247,18 @@ pub const IUICommandFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, label: HSTRING, _r: **UICommand) callconv(.winapi) HRESULT,
-        CreateWithHandler: *const fn(self: *anyopaque, label: HSTRING, action: *UICommandInvokedHandler, _r: **UICommand) callconv(.winapi) HRESULT,
-        CreateWithHandlerAndId: *const fn(self: *anyopaque, label: HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable, _r: **UICommand) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, label: ?HSTRING, _r: **UICommand) callconv(.winapi) HRESULT,
+        CreateWithHandler: *const fn(self: *anyopaque, label: ?HSTRING, action: *UICommandInvokedHandler, _r: **UICommand) callconv(.winapi) HRESULT,
+        CreateWithHandlerAndId: *const fn(self: *anyopaque, label: ?HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable, _r: **UICommand) callconv(.winapi) HRESULT,
     };
 };
 pub const MessageDialog = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.getTitle();
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.putTitle(value);
     }
@@ -282,11 +282,11 @@ pub const MessageDialog = extern struct {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.putCancelCommandIndex(value);
     }
-    pub fn getContent(self: *@This()) core.HResult!HSTRING {
+    pub fn getContent(self: *@This()) core.HResult!?HSTRING {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.getContent();
     }
-    pub fn putContent(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContent(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.putContent(value);
     }
@@ -305,11 +305,11 @@ pub const MessageDialog = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(content: HSTRING) core.HResult!*MessageDialog {
+    pub fn Create(content: ?HSTRING) core.HResult!*MessageDialog {
         const _f = try @This()._IMessageDialogFactoryCache.get();
         return try _f.Create(content);
     }
-    pub fn CreateWithTitle(content: HSTRING, title: HSTRING) core.HResult!*MessageDialog {
+    pub fn CreateWithTitle(content: ?HSTRING, title: ?HSTRING) core.HResult!*MessageDialog {
         const _f = try @This()._IMessageDialogFactoryCache.get();
         return try _f.CreateWithTitle(content, title);
     }
@@ -365,11 +365,11 @@ pub const PopupMenu = extern struct {
 };
 pub const UICommand = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -396,15 +396,15 @@ pub const UICommand = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUICommand.IID)));
     }
-    pub fn Create(label: HSTRING) core.HResult!*UICommand {
+    pub fn Create(label: ?HSTRING) core.HResult!*UICommand {
         const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.Create(label);
     }
-    pub fn CreateWithHandler(label: HSTRING, action: *UICommandInvokedHandler) core.HResult!*UICommand {
+    pub fn CreateWithHandler(label: ?HSTRING, action: *UICommandInvokedHandler) core.HResult!*UICommand {
         const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.CreateWithHandler(label, action);
     }
-    pub fn CreateWithHandlerAndId(label: HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable) core.HResult!*UICommand {
+    pub fn CreateWithHandlerAndId(label: ?HSTRING, action: *UICommandInvokedHandler, commandId: *IInspectable) core.HResult!*UICommand {
         const _f = try @This()._IUICommandFactoryCache.get();
         return try _f.CreateWithHandlerAndId(label, action, commandId);
     }
@@ -505,11 +505,11 @@ pub const UICommandInvokedHandler = extern struct {
 };
 pub const UICommandSeparator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putLabel(value);
     }

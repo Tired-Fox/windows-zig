@@ -6,19 +6,19 @@ pub const AddContactResult = enum(i32) {
 };
 pub const ContactPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddContactWithIdAndContact(self: *@This(), id: HSTRING, contact: *Contact) core.HResult!AddContactResult {
+    pub fn AddContactWithIdAndContact(self: *@This(), id: ?HSTRING, contact: *Contact) core.HResult!AddContactResult {
         const this: *IContactPickerUI = @ptrCast(self);
         return try this.AddContactWithIdAndContact(id, contact);
     }
-    pub fn RemoveContact(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn RemoveContact(self: *@This(), id: ?HSTRING) core.HResult!void {
         const this: *IContactPickerUI = @ptrCast(self);
         return try this.RemoveContact(id);
     }
-    pub fn ContainsContact(self: *@This(), id: HSTRING) core.HResult!bool {
+    pub fn ContainsContact(self: *@This(), id: ?HSTRING) core.HResult!bool {
         const this: *IContactPickerUI = @ptrCast(self);
         return try this.ContainsContact(id);
     }
-    pub fn getDesiredFields(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getDesiredFields(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IContactPickerUI = @ptrCast(self);
         return try this.getDesiredFields();
     }
@@ -54,7 +54,7 @@ pub const ContactPickerUI = extern struct {
 };
 pub const ContactRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactRemovedEventArgs = @ptrCast(self);
         return try this.getId();
     }
@@ -66,24 +66,24 @@ pub const ContactRemovedEventArgs = extern struct {
 };
 pub const IContactPickerUI = extern struct {
     vtable: *const VTable,
-    pub fn AddContact(self: *@This(), id: HSTRING, contact: *Contact) core.HResult!AddContactResult {
+    pub fn AddContact(self: *@This(), id: ?HSTRING, contact: *Contact) core.HResult!AddContactResult {
         var _r: AddContactResult = undefined;
         const _c = self.vtable.AddContact(@ptrCast(self), id, contact, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveContact(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn RemoveContact(self: *@This(), id: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveContact(@ptrCast(self), id);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ContainsContact(self: *@This(), id: HSTRING) core.HResult!bool {
+    pub fn ContainsContact(self: *@This(), id: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ContainsContact(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDesiredFields(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getDesiredFields(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_DesiredFields(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -116,10 +116,10 @@ pub const IContactPickerUI = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddContact: *const fn(self: *anyopaque, id: HSTRING, contact: *Contact, _r: *AddContactResult) callconv(.winapi) HRESULT,
-        RemoveContact: *const fn(self: *anyopaque, id: HSTRING) callconv(.winapi) HRESULT,
-        ContainsContact: *const fn(self: *anyopaque, id: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        get_DesiredFields: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        AddContact: *const fn(self: *anyopaque, id: ?HSTRING, contact: *Contact, _r: *AddContactResult) callconv(.winapi) HRESULT,
+        RemoveContact: *const fn(self: *anyopaque, id: ?HSTRING) callconv(.winapi) HRESULT,
+        ContainsContact: *const fn(self: *anyopaque, id: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        get_DesiredFields: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_SelectionMode: *const fn(self: *anyopaque, _r: *ContactSelectionMode) callconv(.winapi) HRESULT,
         add_ContactRemoved: *const fn(self: *anyopaque, handler: *TypedEventHandler(ContactPickerUI,ContactRemovedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ContactRemoved: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -157,8 +157,8 @@ pub const IContactPickerUI2 = extern struct {
 };
 pub const IContactRemovedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -175,7 +175,7 @@ pub const IContactRemovedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

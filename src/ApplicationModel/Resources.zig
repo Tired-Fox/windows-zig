@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const IResourceLoader = extern struct {
     vtable: *const VTable,
-    pub fn GetString(self: *@This(), resource: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetString(self: *@This(), resource: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), resource, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -19,13 +19,13 @@ pub const IResourceLoader = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetString: *const fn(self: *anyopaque, resource: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetString: *const fn(self: *anyopaque, resource: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoader2 = extern struct {
     vtable: *const VTable,
-    pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringForUri(@ptrCast(self), uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -42,12 +42,12 @@ pub const IResourceLoader2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStringForUri: *const fn(self: *anyopaque, uri: *Uri, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStringForUri: *const fn(self: *anyopaque, uri: *Uri, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoaderFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateResourceLoaderByName(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn CreateResourceLoaderByName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.CreateResourceLoaderByName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -65,13 +65,13 @@ pub const IResourceLoaderFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateResourceLoaderByName: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
+        CreateResourceLoaderByName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoaderStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetStringForReference(self: *@This(), uri: *Uri) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStringForReference(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringForReference(@ptrCast(self), uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -88,7 +88,7 @@ pub const IResourceLoaderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetStringForReference: *const fn(self: *anyopaque, uri: *Uri, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStringForReference: *const fn(self: *anyopaque, uri: *Uri, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoaderStatics2 = extern struct {
@@ -99,7 +99,7 @@ pub const IResourceLoaderStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetForCurrentViewWithName(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForCurrentViewWithName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForCurrentViewWithName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -111,7 +111,7 @@ pub const IResourceLoaderStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetForViewIndependentUseWithName(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForViewIndependentUseWithName(self: *@This(), name: ?HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
         const _c = self.vtable.GetForViewIndependentUseWithName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -130,9 +130,9 @@ pub const IResourceLoaderStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetForCurrentView: *const fn(self: *anyopaque, _r: **ResourceLoader) callconv(.winapi) HRESULT,
-        GetForCurrentViewWithName: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
+        GetForCurrentViewWithName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
         GetForViewIndependentUse: *const fn(self: *anyopaque, _r: **ResourceLoader) callconv(.winapi) HRESULT,
-        GetForViewIndependentUseWithName: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
+        GetForViewIndependentUseWithName: *const fn(self: *anyopaque, name: ?HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoaderStatics3 = extern struct {
@@ -160,8 +160,8 @@ pub const IResourceLoaderStatics3 = extern struct {
 };
 pub const IResourceLoaderStatics4 = extern struct {
     vtable: *const VTable,
-    pub fn GetDefaultPriPath(self: *@This(), packageFullName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDefaultPriPath(self: *@This(), packageFullName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDefaultPriPath(@ptrCast(self), packageFullName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -178,16 +178,16 @@ pub const IResourceLoaderStatics4 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDefaultPriPath: *const fn(self: *anyopaque, packageFullName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDefaultPriPath: *const fn(self: *anyopaque, packageFullName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ResourceLoader = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetString(self: *@This(), resource: HSTRING) core.HResult!HSTRING {
+    pub fn GetString(self: *@This(), resource: ?HSTRING) core.HResult!?HSTRING {
         const this: *IResourceLoader = @ptrCast(self);
         return try this.GetString(resource);
     }
-    pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!HSTRING {
+    pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
         var this: ?*IResourceLoader2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IResourceLoader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -200,7 +200,7 @@ pub const ResourceLoader = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IResourceLoader.IID)));
     }
-    pub fn CreateResourceLoaderByName(name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn CreateResourceLoaderByName(name: ?HSTRING) core.HResult!*ResourceLoader {
         const _f = try @This()._IResourceLoaderFactoryCache.get();
         return try _f.CreateResourceLoaderByName(name);
     }
@@ -208,7 +208,7 @@ pub const ResourceLoader = extern struct {
         const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForCurrentView();
     }
-    pub fn GetForCurrentViewWithName(name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForCurrentViewWithName(name: ?HSTRING) core.HResult!*ResourceLoader {
         const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForCurrentViewWithName(name);
     }
@@ -216,15 +216,15 @@ pub const ResourceLoader = extern struct {
         const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForViewIndependentUse();
     }
-    pub fn GetForViewIndependentUseWithName(name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForViewIndependentUseWithName(name: ?HSTRING) core.HResult!*ResourceLoader {
         const _f = try @This()._IResourceLoaderStatics2Cache.get();
         return try _f.GetForViewIndependentUseWithName(name);
     }
-    pub fn GetStringForReference(uri: *Uri) core.HResult!HSTRING {
+    pub fn GetStringForReference(uri: *Uri) core.HResult!?HSTRING {
         const _f = try @This()._IResourceLoaderStaticsCache.get();
         return try _f.GetStringForReference(uri);
     }
-    pub fn GetDefaultPriPath(packageFullName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDefaultPriPath(packageFullName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IResourceLoaderStatics4Cache.get();
         return try _f.GetDefaultPriPath(packageFullName);
     }

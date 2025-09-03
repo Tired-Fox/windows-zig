@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const AppCapability = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCapabilityName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCapabilityName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppCapability = @ptrCast(self);
         return try this.getCapabilityName();
     }
@@ -25,13 +25,13 @@ pub const AppCapability = extern struct {
         const this: *IAppCapability = @ptrCast(self);
         return try this.removeAccessChanged(token);
     }
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppCapability2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayMessage();
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppCapability2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -40,19 +40,19 @@ pub const AppCapability = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn RequestAccessForCapabilitiesAsync(capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
+    pub fn RequestAccessForCapabilitiesAsync(capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
         const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.RequestAccessForCapabilitiesAsync(capabilityNames);
     }
-    pub fn RequestAccessForCapabilitiesForUserAsync(user: *User, capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
+    pub fn RequestAccessForCapabilitiesForUserAsync(user: *User, capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
         const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.RequestAccessForCapabilitiesForUserAsync(user, capabilityNames);
     }
-    pub fn Create(capabilityName: HSTRING) core.HResult!*AppCapability {
+    pub fn Create(capabilityName: ?HSTRING) core.HResult!*AppCapability {
         const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.Create(capabilityName);
     }
-    pub fn CreateWithProcessIdForUser(user: *User, capabilityName: HSTRING, pid: u32) core.HResult!*AppCapability {
+    pub fn CreateWithProcessIdForUser(user: *User, capabilityName: ?HSTRING, pid: u32) core.HResult!*AppCapability {
         const _f = try @This()._IAppCapabilityStaticsCache.get();
         return try _f.CreateWithProcessIdForUser(user, capabilityName, pid);
     }
@@ -80,8 +80,8 @@ pub const AppCapabilityAccessStatus = enum(i32) {
 };
 pub const IAppCapability = extern struct {
     vtable: *const VTable,
-    pub fn getCapabilityName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapabilityName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapabilityName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -126,7 +126,7 @@ pub const IAppCapability = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CapabilityName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CapabilityName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(AppCapabilityAccessStatus)) callconv(.winapi) HRESULT,
         CheckAccess: *const fn(self: *anyopaque, _r: *AppCapabilityAccessStatus) callconv(.winapi) HRESULT,
@@ -136,13 +136,13 @@ pub const IAppCapability = extern struct {
 };
 pub const IAppCapability2 = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -158,8 +158,8 @@ pub const IAppCapability2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppCapabilityAccessChangedEventArgs = extern struct {
@@ -180,25 +180,25 @@ pub const IAppCapabilityAccessChangedEventArgs = extern struct {
 };
 pub const IAppCapabilityStatics = extern struct {
     vtable: *const VTable,
-    pub fn RequestAccessForCapabilitiesAsync(self: *@This(), capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) = undefined;
+    pub fn RequestAccessForCapabilitiesAsync(self: *@This(), capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) = undefined;
         const _c = self.vtable.RequestAccessForCapabilitiesAsync(@ptrCast(self), capabilityNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForCapabilitiesForUserAsync(self: *@This(), user: *User, capabilityNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus)) = undefined;
+    pub fn RequestAccessForCapabilitiesForUserAsync(self: *@This(), user: *User, capabilityNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus)) = undefined;
         const _c = self.vtable.RequestAccessForCapabilitiesForUserAsync(@ptrCast(self), user, capabilityNames, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), capabilityName: HSTRING) core.HResult!*AppCapability {
+    pub fn Create(self: *@This(), capabilityName: ?HSTRING) core.HResult!*AppCapability {
         var _r: *AppCapability = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capabilityName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithProcessIdForUser(self: *@This(), user: *User, capabilityName: HSTRING, pid: u32) core.HResult!*AppCapability {
+    pub fn CreateWithProcessIdForUser(self: *@This(), user: *User, capabilityName: ?HSTRING, pid: u32) core.HResult!*AppCapability {
         var _r: *AppCapability = undefined;
         const _c = self.vtable.CreateWithProcessIdForUser(@ptrCast(self), user, capabilityName, pid, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -216,10 +216,10 @@ pub const IAppCapabilityStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RequestAccessForCapabilitiesAsync: *const fn(self: *anyopaque, capabilityNames: *IIterable(HSTRING), _r: **IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus))) callconv(.winapi) HRESULT,
-        RequestAccessForCapabilitiesForUserAsync: *const fn(self: *anyopaque, user: *User, capabilityNames: *IIterable(HSTRING), _r: **IAsyncOperation(IMapView(HSTRING,AppCapabilityAccessStatus))) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, capabilityName: HSTRING, _r: **AppCapability) callconv(.winapi) HRESULT,
-        CreateWithProcessIdForUser: *const fn(self: *anyopaque, user: *User, capabilityName: HSTRING, pid: u32, _r: **AppCapability) callconv(.winapi) HRESULT,
+        RequestAccessForCapabilitiesAsync: *const fn(self: *anyopaque, capabilityNames: *IIterable(?HSTRING), _r: **IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus))) callconv(.winapi) HRESULT,
+        RequestAccessForCapabilitiesForUserAsync: *const fn(self: *anyopaque, user: *User, capabilityNames: *IIterable(?HSTRING), _r: **IAsyncOperation(IMapView(?HSTRING,AppCapabilityAccessStatus))) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, capabilityName: ?HSTRING, _r: **AppCapability) callconv(.winapi) HRESULT,
+        CreateWithProcessIdForUser: *const fn(self: *anyopaque, user: *User, capabilityName: ?HSTRING, pid: u32, _r: **AppCapability) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

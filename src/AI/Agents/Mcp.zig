@@ -52,7 +52,7 @@ pub const IMcpNamedPipeConnectionResult = extern struct {
 };
 pub const IMcpNamedPipeConnectionServer = extern struct {
     vtable: *const VTable,
-    pub fn Connect(self: *@This(), hostContext: *AgentContext, pipeName: HSTRING, connectionResult: *McpNamedPipeConnectionResult) core.HResult!*McpNamedPipeConnectionResult {
+    pub fn Connect(self: *@This(), hostContext: *AgentContext, pipeName: ?HSTRING, connectionResult: *McpNamedPipeConnectionResult) core.HResult!*McpNamedPipeConnectionResult {
         var _r: *McpNamedPipeConnectionResult = undefined;
         const _c = self.vtable.Connect(@ptrCast(self), hostContext, pipeName, connectionResult, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -70,7 +70,7 @@ pub const IMcpNamedPipeConnectionServer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Connect: *const fn(self: *anyopaque, hostContext: *AgentContext, pipeName: HSTRING, connectionResult: *McpNamedPipeConnectionResult, _r: **McpNamedPipeConnectionResult) callconv(.winapi) HRESULT,
+        Connect: *const fn(self: *anyopaque, hostContext: *AgentContext, pipeName: ?HSTRING, connectionResult: *McpNamedPipeConnectionResult, _r: **McpNamedPipeConnectionResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IMcpServerRegistry = extern struct {
@@ -151,14 +151,14 @@ pub const IMcpSseConnectionServer = extern struct {
 };
 pub const IMcpStdioConnectionInfo = extern struct {
     vtable: *const VTable,
-    pub fn getCommand(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCommand(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Command(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCommandArguments(self: *@This()) core.HResult![*]HSTRING {
-        var _r: [*]HSTRING = undefined;
+    pub fn GetCommandArguments(self: *@This()) core.HResult!?[*]HSTRING {
+        var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.GetCommandArguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -181,8 +181,8 @@ pub const IMcpStdioConnectionInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Command: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetCommandArguments: *const fn(self: *anyopaque, _r: *[*]HSTRING) callconv(.winapi) HRESULT,
+        get_Command: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetCommandArguments: *const fn(self: *anyopaque, _r: *?[*]HSTRING) callconv(.winapi) HRESULT,
         get_Info: *const fn(self: *anyopaque, _r: **AgentInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -240,11 +240,11 @@ pub const McpServerRegistry = extern struct {
 };
 pub const McpStdioConnectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCommand(self: *@This()) core.HResult!HSTRING {
+    pub fn getCommand(self: *@This()) core.HResult!?HSTRING {
         const this: *IMcpStdioConnectionInfo = @ptrCast(self);
         return try this.getCommand();
     }
-    pub fn GetCommandArguments(self: *@This()) core.HResult![*]HSTRING {
+    pub fn GetCommandArguments(self: *@This()) core.HResult!?[*]HSTRING {
         const this: *IMcpStdioConnectionInfo = @ptrCast(self);
         return try this.GetCommandArguments();
     }

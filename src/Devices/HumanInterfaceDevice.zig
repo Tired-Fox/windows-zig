@@ -190,15 +190,15 @@ pub const HidDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(usagePage: u16, usageId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(usagePage: u16, usageId: u16) core.HResult!?HSTRING {
         const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.GetDeviceSelector(usagePage, usageId);
     }
-    pub fn GetDeviceSelectorWithVendorIdAndProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!?HSTRING {
         const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithVendorIdAndProductId(usagePage, usageId, vendorId, productId);
     }
-    pub fn FromIdAsync(deviceId: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
         const _f = try @This()._IHidDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId, accessMode);
     }
@@ -784,19 +784,19 @@ pub const IHidDevice = extern struct {
 };
 pub const IHidDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), usagePage: u16, usageId: u16) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This(), usagePage: u16, usageId: u16) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), usagePage, usageId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithVendorIdAndProductId(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithVendorIdAndProductId(@ptrCast(self), usagePage, usageId, vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
         var _r: *IAsyncOperation(HidDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, accessMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -814,9 +814,9 @@ pub const IHidDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithVendorIdAndProductId: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(HidDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithVendorIdAndProductId: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(HidDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHidFeatureReport = extern struct {

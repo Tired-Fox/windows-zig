@@ -29,27 +29,27 @@ pub const CryptographicBuffer = extern struct {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.CopyToByteArray(buffer, value);
     }
-    pub fn DecodeFromHexString(value: HSTRING) core.HResult!*IBuffer {
+    pub fn DecodeFromHexString(value: ?HSTRING) core.HResult!*IBuffer {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.DecodeFromHexString(value);
     }
-    pub fn EncodeToHexString(buffer: *IBuffer) core.HResult!HSTRING {
+    pub fn EncodeToHexString(buffer: *IBuffer) core.HResult!?HSTRING {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.EncodeToHexString(buffer);
     }
-    pub fn DecodeFromBase64String(value: HSTRING) core.HResult!*IBuffer {
+    pub fn DecodeFromBase64String(value: ?HSTRING) core.HResult!*IBuffer {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.DecodeFromBase64String(value);
     }
-    pub fn EncodeToBase64String(buffer: *IBuffer) core.HResult!HSTRING {
+    pub fn EncodeToBase64String(buffer: *IBuffer) core.HResult!?HSTRING {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.EncodeToBase64String(buffer);
     }
-    pub fn ConvertStringToBinary(value: HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
+    pub fn ConvertStringToBinary(value: ?HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.ConvertStringToBinary(value, encoding);
     }
-    pub fn ConvertBinaryToString(encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!HSTRING {
+    pub fn ConvertBinaryToString(encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!?HSTRING {
         const _f = try @This()._ICryptographicBufferStaticsCache.get();
         return try _f.ConvertBinaryToString(encoding, buffer);
     }
@@ -87,38 +87,38 @@ pub const ICryptographicBufferStatics = extern struct {
         const _c = self.vtable.CopyToByteArray(@ptrCast(self), buffer, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn DecodeFromHexString(self: *@This(), value: HSTRING) core.HResult!*IBuffer {
+    pub fn DecodeFromHexString(self: *@This(), value: ?HSTRING) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.DecodeFromHexString(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EncodeToHexString(self: *@This(), buffer: *IBuffer) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn EncodeToHexString(self: *@This(), buffer: *IBuffer) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.EncodeToHexString(@ptrCast(self), buffer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DecodeFromBase64String(self: *@This(), value: HSTRING) core.HResult!*IBuffer {
+    pub fn DecodeFromBase64String(self: *@This(), value: ?HSTRING) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.DecodeFromBase64String(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EncodeToBase64String(self: *@This(), buffer: *IBuffer) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn EncodeToBase64String(self: *@This(), buffer: *IBuffer) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.EncodeToBase64String(@ptrCast(self), buffer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertStringToBinary(self: *@This(), value: HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
+    pub fn ConvertStringToBinary(self: *@This(), value: ?HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.ConvertStringToBinary(@ptrCast(self), value, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertBinaryToString(self: *@This(), encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn ConvertBinaryToString(self: *@This(), encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.ConvertBinaryToString(@ptrCast(self), encoding, buffer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -140,12 +140,12 @@ pub const ICryptographicBufferStatics = extern struct {
         GenerateRandomNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         CreateFromByteArray: *const fn(self: *anyopaque, value: [*]u8, _r: **IBuffer) callconv(.winapi) HRESULT,
         CopyToByteArray: *const fn(self: *anyopaque, buffer: *IBuffer, value: u8) callconv(.winapi) HRESULT,
-        DecodeFromHexString: *const fn(self: *anyopaque, value: HSTRING, _r: **IBuffer) callconv(.winapi) HRESULT,
-        EncodeToHexString: *const fn(self: *anyopaque, buffer: *IBuffer, _r: *HSTRING) callconv(.winapi) HRESULT,
-        DecodeFromBase64String: *const fn(self: *anyopaque, value: HSTRING, _r: **IBuffer) callconv(.winapi) HRESULT,
-        EncodeToBase64String: *const fn(self: *anyopaque, buffer: *IBuffer, _r: *HSTRING) callconv(.winapi) HRESULT,
-        ConvertStringToBinary: *const fn(self: *anyopaque, value: HSTRING, encoding: BinaryStringEncoding, _r: **IBuffer) callconv(.winapi) HRESULT,
-        ConvertBinaryToString: *const fn(self: *anyopaque, encoding: BinaryStringEncoding, buffer: *IBuffer, _r: *HSTRING) callconv(.winapi) HRESULT,
+        DecodeFromHexString: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IBuffer) callconv(.winapi) HRESULT,
+        EncodeToHexString: *const fn(self: *anyopaque, buffer: *IBuffer, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        DecodeFromBase64String: *const fn(self: *anyopaque, value: ?HSTRING, _r: **IBuffer) callconv(.winapi) HRESULT,
+        EncodeToBase64String: *const fn(self: *anyopaque, buffer: *IBuffer, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        ConvertStringToBinary: *const fn(self: *anyopaque, value: ?HSTRING, encoding: BinaryStringEncoding, _r: **IBuffer) callconv(.winapi) HRESULT,
+        ConvertBinaryToString: *const fn(self: *anyopaque, encoding: BinaryStringEncoding, buffer: *IBuffer, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../root.zig").IUnknown;

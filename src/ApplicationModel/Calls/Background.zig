@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const IPhoneCallBlockedTriggerDetails = extern struct {
     vtable: *const VTable,
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -31,7 +31,7 @@ pub const IPhoneCallBlockedTriggerDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LineId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_CallBlockedReason: *const fn(self: *anyopaque, _r: *PhoneCallBlockedReason) callconv(.winapi) HRESULT,
     };
@@ -44,8 +44,8 @@ pub const IPhoneCallOriginDataRequestTriggerDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -63,7 +63,7 @@ pub const IPhoneCallOriginDataRequestTriggerDetails = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_RequestId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
@@ -74,14 +74,14 @@ pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -92,8 +92,8 @@ pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTextReplyMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextReplyMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextReplyMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -117,10 +117,10 @@ pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LineId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_DismissalTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_TextReplyMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TextReplyMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Reason: *const fn(self: *anyopaque, _r: *PhoneIncomingCallDismissedReason) callconv(.winapi) HRESULT,
     };
 };
@@ -132,8 +132,8 @@ pub const IPhoneIncomingCallNotificationTriggerDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCallId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -151,7 +151,7 @@ pub const IPhoneIncomingCallNotificationTriggerDetails = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LineId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
-        get_CallId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CallId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPhoneLineChangedTriggerDetails = extern struct {
@@ -205,8 +205,8 @@ pub const IPhoneNewVoicemailMessageTriggerDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOperatorMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOperatorMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OperatorMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -225,7 +225,7 @@ pub const IPhoneNewVoicemailMessageTriggerDetails = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LineId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_VoicemailCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        get_OperatorMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OperatorMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const PhoneCallBlockedReason = enum(i32) {
@@ -235,7 +235,7 @@ pub const PhoneCallBlockedReason = enum(i32) {
 };
 pub const PhoneCallBlockedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallBlockedTriggerDetails = @ptrCast(self);
         return try this.getPhoneNumber();
     }
@@ -259,7 +259,7 @@ pub const PhoneCallOriginDataRequestTriggerDetails = extern struct {
         const this: *IPhoneCallOriginDataRequestTriggerDetails = @ptrCast(self);
         return try this.getRequestId();
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallOriginDataRequestTriggerDetails = @ptrCast(self);
         return try this.getPhoneNumber();
     }
@@ -281,11 +281,11 @@ pub const PhoneIncomingCallDismissedTriggerDetails = extern struct {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getLineId();
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getPhoneNumber();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -293,7 +293,7 @@ pub const PhoneIncomingCallDismissedTriggerDetails = extern struct {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getDismissalTime();
     }
-    pub fn getTextReplyMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getTextReplyMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getTextReplyMessage();
     }
@@ -313,7 +313,7 @@ pub const PhoneIncomingCallNotificationTriggerDetails = extern struct {
         const this: *IPhoneIncomingCallNotificationTriggerDetails = @ptrCast(self);
         return try this.getLineId();
     }
-    pub fn getCallId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneIncomingCallNotificationTriggerDetails = @ptrCast(self);
         return try this.getCallId();
     }
@@ -370,7 +370,7 @@ pub const PhoneNewVoicemailMessageTriggerDetails = extern struct {
         const this: *IPhoneNewVoicemailMessageTriggerDetails = @ptrCast(self);
         return try this.getVoicemailCount();
     }
-    pub fn getOperatorMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getOperatorMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneNewVoicemailMessageTriggerDetails = @ptrCast(self);
         return try this.getOperatorMessage();
     }

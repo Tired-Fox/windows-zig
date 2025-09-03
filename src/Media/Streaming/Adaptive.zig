@@ -156,7 +156,7 @@ pub const AdaptiveMediaSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn IsContentTypeSupported(contentType: HSTRING) core.HResult!bool {
+    pub fn IsContentTypeSupported(contentType: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IAdaptiveMediaSourceStaticsCache.get();
         return try _f.IsContentTypeSupported(contentType);
     }
@@ -168,11 +168,11 @@ pub const AdaptiveMediaSource = extern struct {
         const _f = try @This()._IAdaptiveMediaSourceStaticsCache.get();
         return try _f.CreateFromUriAsyncWithHttpClient(uri, httpClient);
     }
-    pub fn CreateFromStreamAsync(stream: *IInputStream, uri: *Uri, contentType: HSTRING) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsync(stream: *IInputStream, uri: *Uri, contentType: ?HSTRING) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         const _f = try @This()._IAdaptiveMediaSourceStaticsCache.get();
         return try _f.CreateFromStreamAsync(stream, uri, contentType);
     }
-    pub fn CreateFromStreamAsyncWithHttpClient(stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsyncWithHttpClient(stream: *IInputStream, uri: *Uri, contentType: ?HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         const _f = try @This()._IAdaptiveMediaSourceStaticsCache.get();
         return try _f.CreateFromStreamAsyncWithHttpClient(stream, uri, contentType, httpClient);
     }
@@ -320,7 +320,7 @@ pub const AdaptiveMediaSourceDiagnosticAvailableEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDiagnosticAvailableEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -436,7 +436,7 @@ pub const AdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -500,7 +500,7 @@ pub const AdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -568,7 +568,7 @@ pub const AdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadRequestedEventArgs3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadRequestedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -606,11 +606,11 @@ pub const AdaptiveMediaSourceDownloadResult = extern struct {
         const this: *IAdaptiveMediaSourceDownloadResult = @ptrCast(self);
         return try this.putBuffer(value);
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IAdaptiveMediaSourceDownloadResult = @ptrCast(self);
         return try this.getContentType();
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAdaptiveMediaSourceDownloadResult = @ptrCast(self);
         return try this.putContentType(value);
     }
@@ -1220,8 +1220,8 @@ pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1239,7 +1239,7 @@ pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ResourceDuration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_ResourceContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveMediaSourceDiagnostics = extern struct {
@@ -1419,8 +1419,8 @@ pub const IAdaptiveMediaSourceDownloadCompletedEventArgs3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1438,7 +1438,7 @@ pub const IAdaptiveMediaSourceDownloadCompletedEventArgs3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ResourceDuration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_ResourceContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
@@ -1544,8 +1544,8 @@ pub const IAdaptiveMediaSourceDownloadFailedEventArgs3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1563,7 +1563,7 @@ pub const IAdaptiveMediaSourceDownloadFailedEventArgs3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ResourceDuration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_ResourceContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveMediaSourceDownloadRequestedDeferral = extern struct {
@@ -1683,8 +1683,8 @@ pub const IAdaptiveMediaSourceDownloadRequestedEventArgs3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResourceContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResourceContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1702,7 +1702,7 @@ pub const IAdaptiveMediaSourceDownloadRequestedEventArgs3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ResourceDuration: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
-        get_ResourceContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ResourceContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveMediaSourceDownloadResult = extern struct {
@@ -1737,13 +1737,13 @@ pub const IAdaptiveMediaSourceDownloadResult = extern struct {
         const _c = self.vtable.put_Buffer(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putContentType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putContentType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ContentType(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1775,8 +1775,8 @@ pub const IAdaptiveMediaSourceDownloadResult = extern struct {
         put_InputStream: *const fn(self: *anyopaque, value: *IInputStream) callconv(.winapi) HRESULT,
         get_Buffer: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         put_Buffer: *const fn(self: *anyopaque, value: *IBuffer) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ContentType: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ContentType: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_ExtendedStatus: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ExtendedStatus: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
     };
@@ -1904,7 +1904,7 @@ pub const IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceStatics = extern struct {
     vtable: *const VTable,
-    pub fn IsContentTypeSupported(self: *@This(), contentType: HSTRING) core.HResult!bool {
+    pub fn IsContentTypeSupported(self: *@This(), contentType: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContentTypeSupported(@ptrCast(self), contentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1922,13 +1922,13 @@ pub const IAdaptiveMediaSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamAsync(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: HSTRING) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsync(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: ?HSTRING) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         var _r: *IAsyncOperation(AdaptiveMediaSourceCreationResult) = undefined;
         const _c = self.vtable.CreateFromStreamAsync(@ptrCast(self), stream, uri, contentType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamAsyncWithHttpClient(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsyncWithHttpClient(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: ?HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         var _r: *IAsyncOperation(AdaptiveMediaSourceCreationResult) = undefined;
         const _c = self.vtable.CreateFromStreamAsyncWithHttpClient(@ptrCast(self), stream, uri, contentType, httpClient, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1946,11 +1946,11 @@ pub const IAdaptiveMediaSourceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsContentTypeSupported: *const fn(self: *anyopaque, contentType: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        IsContentTypeSupported: *const fn(self: *anyopaque, contentType: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         CreateFromUriAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
         CreateFromUriAsyncWithHttpClient: *const fn(self: *anyopaque, uri: *Uri, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
-        CreateFromStreamAsync: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: HSTRING, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
-        CreateFromStreamAsyncWithHttpClient: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
+        CreateFromStreamAsync: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: ?HSTRING, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
+        CreateFromStreamAsyncWithHttpClient: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: ?HSTRING, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;

@@ -30,7 +30,7 @@ pub const DiagnosticInvoker = extern struct {
         const this: *IDiagnosticInvoker = @ptrCast(self);
         return try this.RunDiagnosticActionAsync(context);
     }
-    pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
+    pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: ?HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         var this: ?*IDiagnosticInvoker2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDiagnosticInvoker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -113,7 +113,7 @@ pub const IDiagnosticInvoker = extern struct {
 };
 pub const IDiagnosticInvoker2 = extern struct {
     vtable: *const VTable,
-    pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
+    pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: ?HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         var _r: *IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) = undefined;
         const _c = self.vtable.RunDiagnosticActionFromStringAsync(@ptrCast(self), context, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -131,7 +131,7 @@ pub const IDiagnosticInvoker2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RunDiagnosticActionFromStringAsync: *const fn(self: *anyopaque, context: HSTRING, _r: **IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState)) callconv(.winapi) HRESULT,
+        RunDiagnosticActionFromStringAsync: *const fn(self: *anyopaque, context: ?HSTRING, _r: **IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDiagnosticInvokerStatics = extern struct {
@@ -232,8 +232,8 @@ pub const IProcessDiagnosticInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getExecutableFileName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExecutableFileName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExecutableFileName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -281,7 +281,7 @@ pub const IProcessDiagnosticInfo = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ProcessId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_ExecutableFileName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ExecutableFileName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Parent: *const fn(self: *anyopaque, _r: **ProcessDiagnosticInfo) callconv(.winapi) HRESULT,
         get_ProcessStartTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_DiskUsage: *const fn(self: *anyopaque, _r: **ProcessDiskUsage) callconv(.winapi) HRESULT,
@@ -813,7 +813,7 @@ pub const ProcessDiagnosticInfo = extern struct {
         const this: *IProcessDiagnosticInfo = @ptrCast(self);
         return try this.getProcessId();
     }
-    pub fn getExecutableFileName(self: *@This()) core.HResult!HSTRING {
+    pub fn getExecutableFileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IProcessDiagnosticInfo = @ptrCast(self);
         return try this.getExecutableFileName();
     }

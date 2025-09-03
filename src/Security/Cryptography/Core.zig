@@ -4,87 +4,87 @@ pub const AsymmetricAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEcdsaSha256() core.HResult!HSTRING {
+    pub fn getEcdsaSha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdsaSha256();
     }
-    pub fn getEcdsaSha384() core.HResult!HSTRING {
+    pub fn getEcdsaSha384() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdsaSha384();
     }
-    pub fn getEcdsaSha512() core.HResult!HSTRING {
+    pub fn getEcdsaSha512() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStatics2Cache.get();
         return try _f.getEcdsaSha512();
     }
-    pub fn getRsaPkcs1() core.HResult!HSTRING {
+    pub fn getRsaPkcs1() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaPkcs1();
     }
-    pub fn getRsaOaepSha1() core.HResult!HSTRING {
+    pub fn getRsaOaepSha1() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaOaepSha1();
     }
-    pub fn getRsaOaepSha256() core.HResult!HSTRING {
+    pub fn getRsaOaepSha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaOaepSha256();
     }
-    pub fn getRsaOaepSha384() core.HResult!HSTRING {
+    pub fn getRsaOaepSha384() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaOaepSha384();
     }
-    pub fn getRsaOaepSha512() core.HResult!HSTRING {
+    pub fn getRsaOaepSha512() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaOaepSha512();
     }
-    pub fn getEcdsaP256Sha256() core.HResult!HSTRING {
+    pub fn getEcdsaP256Sha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsaP256Sha256();
     }
-    pub fn getEcdsaP384Sha384() core.HResult!HSTRING {
+    pub fn getEcdsaP384Sha384() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsaP384Sha384();
     }
-    pub fn getEcdsaP521Sha512() core.HResult!HSTRING {
+    pub fn getEcdsaP521Sha512() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getEcdsaP521Sha512();
     }
-    pub fn getDsaSha1() core.HResult!HSTRING {
+    pub fn getDsaSha1() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDsaSha1();
     }
-    pub fn getDsaSha256() core.HResult!HSTRING {
+    pub fn getDsaSha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDsaSha256();
     }
-    pub fn getRsaSignPkcs1Sha1() core.HResult!HSTRING {
+    pub fn getRsaSignPkcs1Sha1() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPkcs1Sha1();
     }
-    pub fn getRsaSignPkcs1Sha256() core.HResult!HSTRING {
+    pub fn getRsaSignPkcs1Sha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPkcs1Sha256();
     }
-    pub fn getRsaSignPkcs1Sha384() core.HResult!HSTRING {
+    pub fn getRsaSignPkcs1Sha384() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPkcs1Sha384();
     }
-    pub fn getRsaSignPkcs1Sha512() core.HResult!HSTRING {
+    pub fn getRsaSignPkcs1Sha512() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPkcs1Sha512();
     }
-    pub fn getRsaSignPssSha1() core.HResult!HSTRING {
+    pub fn getRsaSignPssSha1() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPssSha1();
     }
-    pub fn getRsaSignPssSha256() core.HResult!HSTRING {
+    pub fn getRsaSignPssSha256() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPssSha256();
     }
-    pub fn getRsaSignPssSha384() core.HResult!HSTRING {
+    pub fn getRsaSignPssSha384() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPssSha384();
     }
-    pub fn getRsaSignPssSha512() core.HResult!HSTRING {
+    pub fn getRsaSignPssSha512() core.HResult!?HSTRING {
         const _f = try @This()._IAsymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRsaSignPssSha512();
     }
@@ -95,7 +95,7 @@ pub const AsymmetricAlgorithmNames = extern struct {
 };
 pub const AsymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
     }
@@ -119,7 +119,7 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.ImportPublicKeyWithBlobType(keyBlob, BlobType);
     }
-    pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: HSTRING) core.HResult!*CryptographicKey {
+    pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: ?HSTRING) core.HResult!*CryptographicKey {
         var this: ?*IAsymmetricKeyAlgorithmProvider2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsymmetricKeyAlgorithmProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -134,7 +134,7 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
+    pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
         const _f = try @This()._IAsymmetricKeyAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
     }
@@ -276,187 +276,187 @@ pub const EccCurveNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBrainpoolP160r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP160r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP160r1();
     }
-    pub fn getBrainpoolP160t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP160t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP160t1();
     }
-    pub fn getBrainpoolP192r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP192r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP192r1();
     }
-    pub fn getBrainpoolP192t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP192t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP192t1();
     }
-    pub fn getBrainpoolP224r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP224r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP224r1();
     }
-    pub fn getBrainpoolP224t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP224t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP224t1();
     }
-    pub fn getBrainpoolP256r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP256r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP256r1();
     }
-    pub fn getBrainpoolP256t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP256t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP256t1();
     }
-    pub fn getBrainpoolP320r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP320r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP320r1();
     }
-    pub fn getBrainpoolP320t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP320t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP320t1();
     }
-    pub fn getBrainpoolP384r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP384r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP384r1();
     }
-    pub fn getBrainpoolP384t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP384t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP384t1();
     }
-    pub fn getBrainpoolP512r1() core.HResult!HSTRING {
+    pub fn getBrainpoolP512r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP512r1();
     }
-    pub fn getBrainpoolP512t1() core.HResult!HSTRING {
+    pub fn getBrainpoolP512t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getBrainpoolP512t1();
     }
-    pub fn getCurve25519() core.HResult!HSTRING {
+    pub fn getCurve25519() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getCurve25519();
     }
-    pub fn getEc192wapi() core.HResult!HSTRING {
+    pub fn getEc192wapi() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getEc192wapi();
     }
-    pub fn getNistP192() core.HResult!HSTRING {
+    pub fn getNistP192() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNistP192();
     }
-    pub fn getNistP224() core.HResult!HSTRING {
+    pub fn getNistP224() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNistP224();
     }
-    pub fn getNistP256() core.HResult!HSTRING {
+    pub fn getNistP256() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNistP256();
     }
-    pub fn getNistP384() core.HResult!HSTRING {
+    pub fn getNistP384() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNistP384();
     }
-    pub fn getNistP521() core.HResult!HSTRING {
+    pub fn getNistP521() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNistP521();
     }
-    pub fn getNumsP256t1() core.HResult!HSTRING {
+    pub fn getNumsP256t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNumsP256t1();
     }
-    pub fn getNumsP384t1() core.HResult!HSTRING {
+    pub fn getNumsP384t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNumsP384t1();
     }
-    pub fn getNumsP512t1() core.HResult!HSTRING {
+    pub fn getNumsP512t1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getNumsP512t1();
     }
-    pub fn getSecP160k1() core.HResult!HSTRING {
+    pub fn getSecP160k1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP160k1();
     }
-    pub fn getSecP160r1() core.HResult!HSTRING {
+    pub fn getSecP160r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP160r1();
     }
-    pub fn getSecP160r2() core.HResult!HSTRING {
+    pub fn getSecP160r2() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP160r2();
     }
-    pub fn getSecP192k1() core.HResult!HSTRING {
+    pub fn getSecP192k1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP192k1();
     }
-    pub fn getSecP192r1() core.HResult!HSTRING {
+    pub fn getSecP192r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP192r1();
     }
-    pub fn getSecP224k1() core.HResult!HSTRING {
+    pub fn getSecP224k1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP224k1();
     }
-    pub fn getSecP224r1() core.HResult!HSTRING {
+    pub fn getSecP224r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP224r1();
     }
-    pub fn getSecP256k1() core.HResult!HSTRING {
+    pub fn getSecP256k1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP256k1();
     }
-    pub fn getSecP256r1() core.HResult!HSTRING {
+    pub fn getSecP256r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP256r1();
     }
-    pub fn getSecP384r1() core.HResult!HSTRING {
+    pub fn getSecP384r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP384r1();
     }
-    pub fn getSecP521r1() core.HResult!HSTRING {
+    pub fn getSecP521r1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getSecP521r1();
     }
-    pub fn getWtls7() core.HResult!HSTRING {
+    pub fn getWtls7() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getWtls7();
     }
-    pub fn getWtls9() core.HResult!HSTRING {
+    pub fn getWtls9() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getWtls9();
     }
-    pub fn getWtls12() core.HResult!HSTRING {
+    pub fn getWtls12() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getWtls12();
     }
-    pub fn getX962P192v1() core.HResult!HSTRING {
+    pub fn getX962P192v1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P192v1();
     }
-    pub fn getX962P192v2() core.HResult!HSTRING {
+    pub fn getX962P192v2() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P192v2();
     }
-    pub fn getX962P192v3() core.HResult!HSTRING {
+    pub fn getX962P192v3() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P192v3();
     }
-    pub fn getX962P239v1() core.HResult!HSTRING {
+    pub fn getX962P239v1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P239v1();
     }
-    pub fn getX962P239v2() core.HResult!HSTRING {
+    pub fn getX962P239v2() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P239v2();
     }
-    pub fn getX962P239v3() core.HResult!HSTRING {
+    pub fn getX962P239v3() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P239v3();
     }
-    pub fn getX962P256v1() core.HResult!HSTRING {
+    pub fn getX962P256v1() core.HResult!?HSTRING {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getX962P256v1();
     }
-    pub fn getAllEccCurveNames() core.HResult!*IVectorView(HSTRING) {
+    pub fn getAllEccCurveNames() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IEccCurveNamesStaticsCache.get();
         return try _f.getAllEccCurveNames();
     }
@@ -485,23 +485,23 @@ pub const HashAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMd5() core.HResult!HSTRING {
+    pub fn getMd5() core.HResult!?HSTRING {
         const _f = try @This()._IHashAlgorithmNamesStaticsCache.get();
         return try _f.getMd5();
     }
-    pub fn getSha1() core.HResult!HSTRING {
+    pub fn getSha1() core.HResult!?HSTRING {
         const _f = try @This()._IHashAlgorithmNamesStaticsCache.get();
         return try _f.getSha1();
     }
-    pub fn getSha256() core.HResult!HSTRING {
+    pub fn getSha256() core.HResult!?HSTRING {
         const _f = try @This()._IHashAlgorithmNamesStaticsCache.get();
         return try _f.getSha256();
     }
-    pub fn getSha384() core.HResult!HSTRING {
+    pub fn getSha384() core.HResult!?HSTRING {
         const _f = try @This()._IHashAlgorithmNamesStaticsCache.get();
         return try _f.getSha384();
     }
-    pub fn getSha512() core.HResult!HSTRING {
+    pub fn getSha512() core.HResult!?HSTRING {
         const _f = try @This()._IHashAlgorithmNamesStaticsCache.get();
         return try _f.getSha512();
     }
@@ -511,7 +511,7 @@ pub const HashAlgorithmNames = extern struct {
 };
 pub const HashAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHashAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
     }
@@ -530,7 +530,7 @@ pub const HashAlgorithmProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*HashAlgorithmProvider {
+    pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*HashAlgorithmProvider {
         const _f = try @This()._IHashAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
     }
@@ -543,110 +543,110 @@ pub const HashAlgorithmProvider = extern struct {
 };
 pub const IAsymmetricAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getRsaPkcs1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaPkcs1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaPkcs1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaOaepSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaOaepSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaOaepSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaOaepSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaOaepSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaOaepSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaOaepSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaOaepSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaOaepSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaOaepSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaOaepSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaOaepSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsaP256Sha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaP256Sha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaP256Sha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsaP384Sha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaP384Sha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaP384Sha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsaP521Sha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaP521Sha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaP521Sha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDsaSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDsaSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DsaSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDsaSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDsaSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DsaSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPkcs1Sha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPkcs1Sha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPkcs1Sha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPkcs1Sha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPkcs1Sha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPkcs1Sha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPkcs1Sha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPkcs1Sha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPkcs1Sha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPkcs1Sha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPkcs1Sha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPkcs1Sha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPssSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPssSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPssSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPssSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPssSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPssSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPssSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPssSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPssSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRsaSignPssSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRsaSignPssSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaSignPssSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -663,42 +663,42 @@ pub const IAsymmetricAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RsaPkcs1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaOaepSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaOaepSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaOaepSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaOaepSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EcdsaP256Sha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EcdsaP384Sha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EcdsaP521Sha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DsaSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DsaSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPkcs1Sha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPkcs1Sha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPkcs1Sha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPkcs1Sha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPssSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPssSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPssSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_RsaSignPssSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RsaPkcs1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaOaepSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaOaepSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaOaepSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaOaepSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaP256Sha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaP384Sha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaP521Sha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DsaSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DsaSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPkcs1Sha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPkcs1Sha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPkcs1Sha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPkcs1Sha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPssSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPssSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPssSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_RsaSignPssSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAsymmetricAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getEcdsaSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsaSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEcdsaSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEcdsaSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -715,15 +715,15 @@ pub const IAsymmetricAlgorithmNamesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_EcdsaSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EcdsaSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_EcdsaSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_EcdsaSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IAsymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -770,7 +770,7 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         CreateKeyPair: *const fn(self: *anyopaque, keySize: u32, _r: **CryptographicKey) callconv(.winapi) HRESULT,
         ImportKeyPair: *const fn(self: *anyopaque, keyBlob: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
         ImportKeyPairWithBlobType: *const fn(self: *anyopaque, keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType, _r: **CryptographicKey) callconv(.winapi) HRESULT,
@@ -780,7 +780,7 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
 };
 pub const IAsymmetricKeyAlgorithmProvider2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: HSTRING) core.HResult!*CryptographicKey {
+    pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: ?HSTRING) core.HResult!*CryptographicKey {
         var _r: *CryptographicKey = undefined;
         const _c = self.vtable.CreateKeyPairWithCurveName(@ptrCast(self), curveName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -804,13 +804,13 @@ pub const IAsymmetricKeyAlgorithmProvider2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateKeyPairWithCurveName: *const fn(self: *anyopaque, curveName: HSTRING, _r: **CryptographicKey) callconv(.winapi) HRESULT,
+        CreateKeyPairWithCurveName: *const fn(self: *anyopaque, curveName: ?HSTRING, _r: **CryptographicKey) callconv(.winapi) HRESULT,
         CreateKeyPairWithCurveParameters: *const fn(self: *anyopaque, parameters: [*]u8, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
 };
 pub const IAsymmetricKeyAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenAlgorithm(self: *@This(), algorithm: HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
+    pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
         var _r: *AsymmetricKeyAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -828,7 +828,7 @@ pub const IAsymmetricKeyAlgorithmProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: HSTRING, _r: **AsymmetricKeyAlgorithmProvider) callconv(.winapi) HRESULT,
+        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: ?HSTRING, _r: **AsymmetricKeyAlgorithmProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const ICryptographicEngineStatics = extern struct {
@@ -1000,278 +1000,278 @@ pub const ICryptographicKey = extern struct {
 };
 pub const IEccCurveNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getBrainpoolP160r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP160r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP160r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP160t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP160t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP160t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP192r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP192r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP192r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP192t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP192t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP192t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP224r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP224r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP224r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP224t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP224t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP224t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP256r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP256r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP256r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP256t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP256t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP256t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP320r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP320r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP320r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP320t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP320t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP320t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP384r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP384r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP384r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP384t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP384t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP384t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP512r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP512r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP512r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBrainpoolP512t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBrainpoolP512t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP512t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCurve25519(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurve25519(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Curve25519(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getEc192wapi(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getEc192wapi(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ec192wapi(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNistP192(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNistP192(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NistP192(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNistP224(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNistP224(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NistP224(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNistP256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNistP256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NistP256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNistP384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNistP384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NistP384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNistP521(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNistP521(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NistP521(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNumsP256t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumsP256t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumsP256t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNumsP384t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumsP384t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumsP384t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNumsP512t1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumsP512t1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumsP512t1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP160k1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP160k1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP160k1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP160r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP160r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP160r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP160r2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP160r2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP160r2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP192k1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP192k1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP192k1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP192r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP192r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP192r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP224k1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP224k1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP224k1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP224r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP224r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP224r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP256k1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP256k1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP256k1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP256r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP256r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP256r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP384r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP384r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP384r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSecP521r1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSecP521r1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SecP521r1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWtls7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWtls7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wtls7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWtls9(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWtls9(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wtls9(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWtls12(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWtls12(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wtls12(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P192v1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P192v1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P192v1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P192v2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P192v2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P192v2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P192v3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P192v3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P192v3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P239v1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P239v1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P239v1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P239v2(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P239v2(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P239v2(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P239v3(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P239v3(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P239v3(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getX962P256v1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getX962P256v1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_X962P256v1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAllEccCurveNames(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAllEccCurveNames(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AllEccCurveNames(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1288,52 +1288,52 @@ pub const IEccCurveNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_BrainpoolP160r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP160t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP192r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP192t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP224r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP224t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP256r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP256t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP320r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP320t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP384r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP384t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP512r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BrainpoolP512t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Curve25519: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Ec192wapi: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NistP192: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NistP224: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NistP256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NistP384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NistP521: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NumsP256t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NumsP384t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NumsP512t1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP160k1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP160r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP160r2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP192k1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP192r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP224k1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP224r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP256k1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP256r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP384r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SecP521r1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wtls7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wtls9: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wtls12: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P192v1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P192v2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P192v3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P239v1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P239v2: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P239v3: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_X962P256v1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AllEccCurveNames: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_BrainpoolP160r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP160t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP192r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP192t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP224r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP224t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP256r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP256t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP320r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP320t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP384r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP384t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP512r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BrainpoolP512t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Curve25519: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Ec192wapi: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NistP192: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NistP224: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NistP256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NistP384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NistP521: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NumsP256t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NumsP384t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NumsP512t1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP160k1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP160r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP160r2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP192k1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP192r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP224k1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP224r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP256k1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP256r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP384r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SecP521r1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wtls7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wtls9: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wtls12: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P192v1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P192v2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P192v3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P239v1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P239v2: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P239v3: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_X962P256v1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AllEccCurveNames: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEncryptedAndAuthenticatedData = extern struct {
@@ -1368,32 +1368,32 @@ pub const IEncryptedAndAuthenticatedData = extern struct {
 };
 pub const IHashAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getMd5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMd5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Md5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1410,17 +1410,17 @@ pub const IHashAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Md5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Md5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHashAlgorithmProvider = extern struct {
     vtable: *const VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1455,7 +1455,7 @@ pub const IHashAlgorithmProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_HashLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         HashData: *const fn(self: *anyopaque, data: *IBuffer, _r: **IBuffer) callconv(.winapi) HRESULT,
         CreateHash: *const fn(self: *anyopaque, _r: **CryptographicHash) callconv(.winapi) HRESULT,
@@ -1463,7 +1463,7 @@ pub const IHashAlgorithmProvider = extern struct {
 };
 pub const IHashAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenAlgorithm(self: *@This(), algorithm: HSTRING) core.HResult!*HashAlgorithmProvider {
+    pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*HashAlgorithmProvider {
         var _r: *HashAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1481,7 +1481,7 @@ pub const IHashAlgorithmProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: HSTRING, _r: **HashAlgorithmProvider) callconv(.winapi) HRESULT,
+        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: ?HSTRING, _r: **HashAlgorithmProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const IHashComputation = extern struct {
@@ -1514,92 +1514,92 @@ pub const IHashComputation = extern struct {
 };
 pub const IKeyDerivationAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getPbkdf2Md5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPbkdf2Md5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Md5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPbkdf2Sha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPbkdf2Sha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Sha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPbkdf2Sha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPbkdf2Sha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Sha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPbkdf2Sha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPbkdf2Sha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Sha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPbkdf2Sha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPbkdf2Sha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Sha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp800108CtrHmacMd5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp800108CtrHmacMd5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp800108CtrHmacMd5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp800108CtrHmacSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp800108CtrHmacSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp800108CtrHmacSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp800108CtrHmacSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp800108CtrHmacSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp800108CtrHmacSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp800108CtrHmacSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp800108CtrHmacSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp800108CtrHmacSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp800108CtrHmacSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp800108CtrHmacSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp800108CtrHmacSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp80056aConcatMd5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp80056aConcatMd5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp80056aConcatMd5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp80056aConcatSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp80056aConcatSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp80056aConcatSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp80056aConcatSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp80056aConcatSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp80056aConcatSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp80056aConcatSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp80056aConcatSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp80056aConcatSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSp80056aConcatSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSp80056aConcatSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Sp80056aConcatSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1616,51 +1616,51 @@ pub const IKeyDerivationAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Pbkdf2Md5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pbkdf2Sha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pbkdf2Sha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pbkdf2Sha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Pbkdf2Sha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp800108CtrHmacMd5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp800108CtrHmacSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp800108CtrHmacSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp800108CtrHmacSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp800108CtrHmacSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp80056aConcatMd5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp80056aConcatSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp80056aConcatSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp80056aConcatSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Sp80056aConcatSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Pbkdf2Md5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pbkdf2Sha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pbkdf2Sha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pbkdf2Sha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Pbkdf2Sha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp800108CtrHmacMd5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp800108CtrHmacSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp800108CtrHmacSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp800108CtrHmacSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp800108CtrHmacSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp80056aConcatMd5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp80056aConcatSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp80056aConcatSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp80056aConcatSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Sp80056aConcatSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyDerivationAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn getCapiKdfMd5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapiKdfMd5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfMd5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCapiKdfSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapiKdfSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCapiKdfSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapiKdfSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCapiKdfSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapiKdfSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCapiKdfSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCapiKdfSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1677,17 +1677,17 @@ pub const IKeyDerivationAlgorithmNamesStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CapiKdfMd5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CapiKdfSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CapiKdfSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CapiKdfSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CapiKdfSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CapiKdfMd5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CapiKdfSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CapiKdfSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CapiKdfSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CapiKdfSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyDerivationAlgorithmProvider = extern struct {
     vtable: *const VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1710,13 +1710,13 @@ pub const IKeyDerivationAlgorithmProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         CreateKey: *const fn(self: *anyopaque, keyMaterial: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyDerivationAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenAlgorithm(self: *@This(), algorithm: HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
+    pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
         var _r: *KeyDerivationAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1734,7 +1734,7 @@ pub const IKeyDerivationAlgorithmProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: HSTRING, _r: **KeyDerivationAlgorithmProvider) callconv(.winapi) HRESULT,
+        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: ?HSTRING, _r: **KeyDerivationAlgorithmProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyDerivationParameters = extern struct {
@@ -1862,38 +1862,38 @@ pub const IKeyDerivationParametersStatics2 = extern struct {
 };
 pub const IMacAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getHmacMd5(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHmacMd5(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacMd5(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHmacSha1(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHmacSha1(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacSha1(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHmacSha256(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHmacSha256(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacSha256(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHmacSha384(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHmacSha384(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacSha384(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHmacSha512(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHmacSha512(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacSha512(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesCmac(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesCmac(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesCmac(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1910,18 +1910,18 @@ pub const IMacAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_HmacMd5: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HmacSha1: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HmacSha256: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HmacSha384: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HmacSha512: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesCmac: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HmacMd5: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HmacSha1: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HmacSha256: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HmacSha384: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HmacSha512: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesCmac: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMacAlgorithmProvider = extern struct {
     vtable: *const VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1950,7 +1950,7 @@ pub const IMacAlgorithmProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MacLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         CreateKey: *const fn(self: *anyopaque, keyMaterial: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
@@ -1980,7 +1980,7 @@ pub const IMacAlgorithmProvider2 = extern struct {
 };
 pub const IMacAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenAlgorithm(self: *@This(), algorithm: HSTRING) core.HResult!*MacAlgorithmProvider {
+    pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*MacAlgorithmProvider {
         var _r: *MacAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1998,18 +1998,18 @@ pub const IMacAlgorithmProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: HSTRING, _r: **MacAlgorithmProvider) callconv(.winapi) HRESULT,
+        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: ?HSTRING, _r: **MacAlgorithmProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const IPersistedKeyProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenKeyPairFromCertificateAsync(self: *@This(), certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
+    pub fn OpenKeyPairFromCertificateAsync(self: *@This(), certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
         var _r: *IAsyncOperation(CryptographicKey) = undefined;
         const _c = self.vtable.OpenKeyPairFromCertificateAsync(@ptrCast(self), certificate, hashAlgorithmName, padding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenPublicKeyFromCertificate(self: *@This(), certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*CryptographicKey {
+    pub fn OpenPublicKeyFromCertificate(self: *@This(), certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding) core.HResult!*CryptographicKey {
         var _r: *CryptographicKey = undefined;
         const _c = self.vtable.OpenPublicKeyFromCertificate(@ptrCast(self), certificate, hashAlgorithmName, padding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2027,122 +2027,122 @@ pub const IPersistedKeyProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenKeyPairFromCertificateAsync: *const fn(self: *anyopaque, certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding, _r: **IAsyncOperation(CryptographicKey)) callconv(.winapi) HRESULT,
-        OpenPublicKeyFromCertificate: *const fn(self: *anyopaque, certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding, _r: **CryptographicKey) callconv(.winapi) HRESULT,
+        OpenKeyPairFromCertificateAsync: *const fn(self: *anyopaque, certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding, _r: **IAsyncOperation(CryptographicKey)) callconv(.winapi) HRESULT,
+        OpenPublicKeyFromCertificate: *const fn(self: *anyopaque, certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
 };
 pub const ISymmetricAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getDesCbc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDesCbc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DesCbc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDesEcb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDesEcb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DesEcb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTripleDesCbc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTripleDesCbc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TripleDesCbc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTripleDesEcb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTripleDesEcb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TripleDesEcb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRc2Cbc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRc2Cbc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rc2Cbc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRc2Ecb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRc2Ecb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rc2Ecb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesCbc(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesCbc(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesCbc(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesEcb(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesEcb(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesEcb(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesGcm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesGcm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesGcm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesCcm(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesCcm(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesCcm(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesCbcPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesCbcPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesCbcPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAesEcbPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAesEcbPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AesEcbPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDesCbcPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDesCbcPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DesCbcPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDesEcbPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDesEcbPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DesEcbPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTripleDesCbcPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTripleDesCbcPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TripleDesCbcPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTripleDesEcbPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTripleDesEcbPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TripleDesEcbPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRc2CbcPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRc2CbcPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rc2CbcPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRc2EcbPkcs7(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRc2EcbPkcs7(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rc2EcbPkcs7(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRc4(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRc4(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rc4(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2159,31 +2159,31 @@ pub const ISymmetricAlgorithmNamesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DesCbc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DesEcb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TripleDesCbc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TripleDesEcb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rc2Cbc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rc2Ecb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesCbc: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesEcb: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesGcm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesCcm: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesCbcPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AesEcbPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DesCbcPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DesEcbPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TripleDesCbcPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TripleDesEcbPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rc2CbcPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rc2EcbPkcs7: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Rc4: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DesCbc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DesEcb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TripleDesCbc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TripleDesEcb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rc2Cbc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rc2Ecb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesCbc: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesEcb: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesGcm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesCcm: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesCbcPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AesEcbPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DesCbcPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DesEcbPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TripleDesCbcPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TripleDesEcbPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rc2CbcPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rc2EcbPkcs7: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Rc4: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2212,14 +2212,14 @@ pub const ISymmetricKeyAlgorithmProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AlgorithmName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_BlockLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         CreateSymmetricKey: *const fn(self: *anyopaque, keyMaterial: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
 };
 pub const ISymmetricKeyAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
-    pub fn OpenAlgorithm(self: *@This(), algorithm: HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
+    pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
         var _r: *SymmetricKeyAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2237,7 +2237,7 @@ pub const ISymmetricKeyAlgorithmProviderStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: HSTRING, _r: **SymmetricKeyAlgorithmProvider) callconv(.winapi) HRESULT,
+        OpenAlgorithm: *const fn(self: *anyopaque, algorithm: ?HSTRING, _r: **SymmetricKeyAlgorithmProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const KeyDerivationAlgorithmNames = extern struct {
@@ -2245,83 +2245,83 @@ pub const KeyDerivationAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPbkdf2Md5() core.HResult!HSTRING {
+    pub fn getPbkdf2Md5() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getPbkdf2Md5();
     }
-    pub fn getPbkdf2Sha1() core.HResult!HSTRING {
+    pub fn getPbkdf2Sha1() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getPbkdf2Sha1();
     }
-    pub fn getPbkdf2Sha256() core.HResult!HSTRING {
+    pub fn getPbkdf2Sha256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getPbkdf2Sha256();
     }
-    pub fn getPbkdf2Sha384() core.HResult!HSTRING {
+    pub fn getPbkdf2Sha384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getPbkdf2Sha384();
     }
-    pub fn getPbkdf2Sha512() core.HResult!HSTRING {
+    pub fn getPbkdf2Sha512() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getPbkdf2Sha512();
     }
-    pub fn getSp800108CtrHmacMd5() core.HResult!HSTRING {
+    pub fn getSp800108CtrHmacMd5() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp800108CtrHmacMd5();
     }
-    pub fn getSp800108CtrHmacSha1() core.HResult!HSTRING {
+    pub fn getSp800108CtrHmacSha1() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp800108CtrHmacSha1();
     }
-    pub fn getSp800108CtrHmacSha256() core.HResult!HSTRING {
+    pub fn getSp800108CtrHmacSha256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp800108CtrHmacSha256();
     }
-    pub fn getSp800108CtrHmacSha384() core.HResult!HSTRING {
+    pub fn getSp800108CtrHmacSha384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp800108CtrHmacSha384();
     }
-    pub fn getSp800108CtrHmacSha512() core.HResult!HSTRING {
+    pub fn getSp800108CtrHmacSha512() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp800108CtrHmacSha512();
     }
-    pub fn getSp80056aConcatMd5() core.HResult!HSTRING {
+    pub fn getSp80056aConcatMd5() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp80056aConcatMd5();
     }
-    pub fn getSp80056aConcatSha1() core.HResult!HSTRING {
+    pub fn getSp80056aConcatSha1() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp80056aConcatSha1();
     }
-    pub fn getSp80056aConcatSha256() core.HResult!HSTRING {
+    pub fn getSp80056aConcatSha256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp80056aConcatSha256();
     }
-    pub fn getSp80056aConcatSha384() core.HResult!HSTRING {
+    pub fn getSp80056aConcatSha384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp80056aConcatSha384();
     }
-    pub fn getSp80056aConcatSha512() core.HResult!HSTRING {
+    pub fn getSp80056aConcatSha512() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStaticsCache.get();
         return try _f.getSp80056aConcatSha512();
     }
-    pub fn getCapiKdfMd5() core.HResult!HSTRING {
+    pub fn getCapiKdfMd5() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStatics2Cache.get();
         return try _f.getCapiKdfMd5();
     }
-    pub fn getCapiKdfSha1() core.HResult!HSTRING {
+    pub fn getCapiKdfSha1() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStatics2Cache.get();
         return try _f.getCapiKdfSha1();
     }
-    pub fn getCapiKdfSha256() core.HResult!HSTRING {
+    pub fn getCapiKdfSha256() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStatics2Cache.get();
         return try _f.getCapiKdfSha256();
     }
-    pub fn getCapiKdfSha384() core.HResult!HSTRING {
+    pub fn getCapiKdfSha384() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStatics2Cache.get();
         return try _f.getCapiKdfSha384();
     }
-    pub fn getCapiKdfSha512() core.HResult!HSTRING {
+    pub fn getCapiKdfSha512() core.HResult!?HSTRING {
         const _f = try @This()._IKeyDerivationAlgorithmNamesStatics2Cache.get();
         return try _f.getCapiKdfSha512();
     }
@@ -2332,7 +2332,7 @@ pub const KeyDerivationAlgorithmNames = extern struct {
 };
 pub const KeyDerivationAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyDerivationAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
     }
@@ -2343,7 +2343,7 @@ pub const KeyDerivationAlgorithmProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
+    pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
         const _f = try @This()._IKeyDerivationAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
     }
@@ -2412,27 +2412,27 @@ pub const MacAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHmacMd5() core.HResult!HSTRING {
+    pub fn getHmacMd5() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getHmacMd5();
     }
-    pub fn getHmacSha1() core.HResult!HSTRING {
+    pub fn getHmacSha1() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getHmacSha1();
     }
-    pub fn getHmacSha256() core.HResult!HSTRING {
+    pub fn getHmacSha256() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getHmacSha256();
     }
-    pub fn getHmacSha384() core.HResult!HSTRING {
+    pub fn getHmacSha384() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getHmacSha384();
     }
-    pub fn getHmacSha512() core.HResult!HSTRING {
+    pub fn getHmacSha512() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getHmacSha512();
     }
-    pub fn getAesCmac() core.HResult!HSTRING {
+    pub fn getAesCmac() core.HResult!?HSTRING {
         const _f = try @This()._IMacAlgorithmNamesStaticsCache.get();
         return try _f.getAesCmac();
     }
@@ -2442,7 +2442,7 @@ pub const MacAlgorithmNames = extern struct {
 };
 pub const MacAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMacAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
     }
@@ -2463,7 +2463,7 @@ pub const MacAlgorithmProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*MacAlgorithmProvider {
+    pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*MacAlgorithmProvider {
         const _f = try @This()._IMacAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
     }
@@ -2479,11 +2479,11 @@ pub const PersistedKeyProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenKeyPairFromCertificateAsync(certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
+    pub fn OpenKeyPairFromCertificateAsync(certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
         const _f = try @This()._IPersistedKeyProviderStaticsCache.get();
         return try _f.OpenKeyPairFromCertificateAsync(certificate, hashAlgorithmName, padding);
     }
-    pub fn OpenPublicKeyFromCertificate(certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*CryptographicKey {
+    pub fn OpenPublicKeyFromCertificate(certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding) core.HResult!*CryptographicKey {
         const _f = try @This()._IPersistedKeyProviderStaticsCache.get();
         return try _f.OpenPublicKeyFromCertificate(certificate, hashAlgorithmName, padding);
     }
@@ -2496,79 +2496,79 @@ pub const SymmetricAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDesCbc() core.HResult!HSTRING {
+    pub fn getDesCbc() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDesCbc();
     }
-    pub fn getDesEcb() core.HResult!HSTRING {
+    pub fn getDesEcb() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDesEcb();
     }
-    pub fn getTripleDesCbc() core.HResult!HSTRING {
+    pub fn getTripleDesCbc() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getTripleDesCbc();
     }
-    pub fn getTripleDesEcb() core.HResult!HSTRING {
+    pub fn getTripleDesEcb() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getTripleDesEcb();
     }
-    pub fn getRc2Cbc() core.HResult!HSTRING {
+    pub fn getRc2Cbc() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRc2Cbc();
     }
-    pub fn getRc2Ecb() core.HResult!HSTRING {
+    pub fn getRc2Ecb() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRc2Ecb();
     }
-    pub fn getAesCbc() core.HResult!HSTRING {
+    pub fn getAesCbc() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesCbc();
     }
-    pub fn getAesEcb() core.HResult!HSTRING {
+    pub fn getAesEcb() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesEcb();
     }
-    pub fn getAesGcm() core.HResult!HSTRING {
+    pub fn getAesGcm() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesGcm();
     }
-    pub fn getAesCcm() core.HResult!HSTRING {
+    pub fn getAesCcm() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesCcm();
     }
-    pub fn getAesCbcPkcs7() core.HResult!HSTRING {
+    pub fn getAesCbcPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesCbcPkcs7();
     }
-    pub fn getAesEcbPkcs7() core.HResult!HSTRING {
+    pub fn getAesEcbPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getAesEcbPkcs7();
     }
-    pub fn getDesCbcPkcs7() core.HResult!HSTRING {
+    pub fn getDesCbcPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDesCbcPkcs7();
     }
-    pub fn getDesEcbPkcs7() core.HResult!HSTRING {
+    pub fn getDesEcbPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getDesEcbPkcs7();
     }
-    pub fn getTripleDesCbcPkcs7() core.HResult!HSTRING {
+    pub fn getTripleDesCbcPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getTripleDesCbcPkcs7();
     }
-    pub fn getTripleDesEcbPkcs7() core.HResult!HSTRING {
+    pub fn getTripleDesEcbPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getTripleDesEcbPkcs7();
     }
-    pub fn getRc2CbcPkcs7() core.HResult!HSTRING {
+    pub fn getRc2CbcPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRc2CbcPkcs7();
     }
-    pub fn getRc2EcbPkcs7() core.HResult!HSTRING {
+    pub fn getRc2EcbPkcs7() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRc2EcbPkcs7();
     }
-    pub fn getRc4() core.HResult!HSTRING {
+    pub fn getRc4() core.HResult!?HSTRING {
         const _f = try @This()._ISymmetricAlgorithmNamesStaticsCache.get();
         return try _f.getRc4();
     }
@@ -2578,7 +2578,7 @@ pub const SymmetricAlgorithmNames = extern struct {
 };
 pub const SymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAlgorithmName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
     }
@@ -2593,7 +2593,7 @@ pub const SymmetricKeyAlgorithmProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
+    pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
         const _f = try @This()._ISymmetricKeyAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
     }

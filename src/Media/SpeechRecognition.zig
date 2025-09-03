@@ -172,13 +172,13 @@ pub const ISpeechRecognitionConstraint = extern struct {
         const _c = self.vtable.put_IsEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -212,8 +212,8 @@ pub const ISpeechRecognitionConstraint = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IsEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *SpeechRecognitionConstraintType) callconv(.winapi) HRESULT,
         get_Probability: *const fn(self: *anyopaque, _r: *SpeechRecognitionConstraintProbability) callconv(.winapi) HRESULT,
         put_Probability: *const fn(self: *anyopaque, value: SpeechRecognitionConstraintProbability) callconv(.winapi) HRESULT,
@@ -250,7 +250,7 @@ pub const ISpeechRecognitionGrammarFileConstraintFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTag(self: *@This(), file: *StorageFile, tag: HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
+    pub fn CreateWithTag(self: *@This(), file: *StorageFile, tag: ?HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
         var _r: *SpeechRecognitionGrammarFileConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), file, tag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -269,13 +269,13 @@ pub const ISpeechRecognitionGrammarFileConstraintFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, file: *StorageFile, _r: **SpeechRecognitionGrammarFileConstraint) callconv(.winapi) HRESULT,
-        CreateWithTag: *const fn(self: *anyopaque, file: *StorageFile, tag: HSTRING, _r: **SpeechRecognitionGrammarFileConstraint) callconv(.winapi) HRESULT,
+        CreateWithTag: *const fn(self: *anyopaque, file: *StorageFile, tag: ?HSTRING, _r: **SpeechRecognitionGrammarFileConstraint) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionHypothesis = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -292,7 +292,7 @@ pub const ISpeechRecognitionHypothesis = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
@@ -320,8 +320,8 @@ pub const ISpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
 };
 pub const ISpeechRecognitionListConstraint = extern struct {
     vtable: *const VTable,
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -338,18 +338,18 @@ pub const ISpeechRecognitionListConstraint = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Commands: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_Commands: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionListConstraintFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), commands: *IIterable(HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
+    pub fn Create(self: *@This(), commands: *IIterable(?HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
         var _r: *SpeechRecognitionListConstraint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), commands, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTag(self: *@This(), commands: *IIterable(HSTRING), tag: HSTRING) core.HResult!*SpeechRecognitionListConstraint {
+    pub fn CreateWithTag(self: *@This(), commands: *IIterable(?HSTRING), tag: ?HSTRING) core.HResult!*SpeechRecognitionListConstraint {
         var _r: *SpeechRecognitionListConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), commands, tag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -367,8 +367,8 @@ pub const ISpeechRecognitionListConstraintFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, commands: *IIterable(HSTRING), _r: **SpeechRecognitionListConstraint) callconv(.winapi) HRESULT,
-        CreateWithTag: *const fn(self: *anyopaque, commands: *IIterable(HSTRING), tag: HSTRING, _r: **SpeechRecognitionListConstraint) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, commands: *IIterable(?HSTRING), _r: **SpeechRecognitionListConstraint) callconv(.winapi) HRESULT,
+        CreateWithTag: *const fn(self: *anyopaque, commands: *IIterable(?HSTRING), tag: ?HSTRING, _r: **SpeechRecognitionListConstraint) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionQualityDegradingEventArgs = extern struct {
@@ -402,8 +402,8 @@ pub const ISpeechRecognitionResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -432,8 +432,8 @@ pub const ISpeechRecognitionResult = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRulePath(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getRulePath(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_RulePath(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -457,12 +457,12 @@ pub const ISpeechRecognitionResult = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *SpeechRecognitionResultStatus) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Confidence: *const fn(self: *anyopaque, _r: *SpeechRecognitionConfidence) callconv(.winapi) HRESULT,
         get_SemanticInterpretation: *const fn(self: *anyopaque, _r: **SpeechRecognitionSemanticInterpretation) callconv(.winapi) HRESULT,
         GetAlternates: *const fn(self: *anyopaque, maxAlternates: u32, _r: **IVectorView(SpeechRecognitionResult)) callconv(.winapi) HRESULT,
         get_Constraint: *const fn(self: *anyopaque, _r: **ISpeechRecognitionConstraint) callconv(.winapi) HRESULT,
-        get_RulePath: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_RulePath: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_RawConfidence: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
     };
 };
@@ -498,8 +498,8 @@ pub const ISpeechRecognitionResult2 = extern struct {
 };
 pub const ISpeechRecognitionSemanticInterpretation = extern struct {
     vtable: *const VTable,
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IVectorView(HSTRING)) {
-        var _r: *IMapView(HSTRING,IVectorView(HSTRING)) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IVectorView(?HSTRING)) {
+        var _r: *IMapView(?HSTRING,IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -516,7 +516,7 @@ pub const ISpeechRecognitionSemanticInterpretation = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionTopicConstraint = extern struct {
@@ -527,8 +527,8 @@ pub const ISpeechRecognitionTopicConstraint = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTopicHint(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTopicHint(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TopicHint(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -546,18 +546,18 @@ pub const ISpeechRecognitionTopicConstraint = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Scenario: *const fn(self: *anyopaque, _r: *SpeechRecognitionScenario) callconv(.winapi) HRESULT,
-        get_TopicHint: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_TopicHint: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionTopicConstraintFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
+    pub fn Create(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         var _r: *SpeechRecognitionTopicConstraint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), scenario, topicHint, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithTag(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: HSTRING, tag: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
+    pub fn CreateWithTag(self: *@This(), scenario: SpeechRecognitionScenario, topicHint: ?HSTRING, tag: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         var _r: *SpeechRecognitionTopicConstraint = undefined;
         const _c = self.vtable.CreateWithTag(@ptrCast(self), scenario, topicHint, tag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -575,8 +575,8 @@ pub const ISpeechRecognitionTopicConstraintFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, scenario: SpeechRecognitionScenario, topicHint: HSTRING, _r: **SpeechRecognitionTopicConstraint) callconv(.winapi) HRESULT,
-        CreateWithTag: *const fn(self: *anyopaque, scenario: SpeechRecognitionScenario, topicHint: HSTRING, tag: HSTRING, _r: **SpeechRecognitionTopicConstraint) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, scenario: SpeechRecognitionScenario, topicHint: ?HSTRING, _r: **SpeechRecognitionTopicConstraint) callconv(.winapi) HRESULT,
+        CreateWithTag: *const fn(self: *anyopaque, scenario: SpeechRecognitionScenario, topicHint: ?HSTRING, tag: ?HSTRING, _r: **SpeechRecognitionTopicConstraint) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
@@ -893,23 +893,23 @@ pub const ISpeechRecognizerTimeouts = extern struct {
 };
 pub const ISpeechRecognizerUIOptions = extern struct {
     vtable: *const VTable,
-    pub fn getExampleText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getExampleText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExampleText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putExampleText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExampleText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ExampleText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAudiblePrompt(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAudiblePrompt(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AudiblePrompt(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAudiblePrompt(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudiblePrompt(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AudiblePrompt(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -945,10 +945,10 @@ pub const ISpeechRecognizerUIOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ExampleText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ExampleText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AudiblePrompt: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_AudiblePrompt: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ExampleText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ExampleText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AudiblePrompt: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_AudiblePrompt: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsReadBackEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsReadBackEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ShowConfirmation: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -1095,13 +1095,13 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1132,7 +1132,7 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
         const _f = try @This()._ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
         return try _f.Create(file);
     }
-    pub fn CreateWithTag(file: *StorageFile, tag: HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
+    pub fn CreateWithTag(file: *StorageFile, tag: ?HSTRING) core.HResult!*SpeechRecognitionGrammarFileConstraint {
         const _f = try @This()._ISpeechRecognitionGrammarFileConstraintFactoryCache.get();
         return try _f.CreateWithTag(file, tag);
     }
@@ -1145,7 +1145,7 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
 };
 pub const SpeechRecognitionHypothesis = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechRecognitionHypothesis = @ptrCast(self);
         return try this.getText();
     }
@@ -1169,7 +1169,7 @@ pub const SpeechRecognitionHypothesisGeneratedEventArgs = extern struct {
 };
 pub const SpeechRecognitionListConstraint = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCommands(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getCommands(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISpeechRecognitionListConstraint = @ptrCast(self);
         return try this.getCommands();
     }
@@ -1185,13 +1185,13 @@ pub const SpeechRecognitionListConstraint = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1218,11 +1218,11 @@ pub const SpeechRecognitionListConstraint = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(commands: *IIterable(HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
+    pub fn Create(commands: *IIterable(?HSTRING)) core.HResult!*SpeechRecognitionListConstraint {
         const _f = try @This()._ISpeechRecognitionListConstraintFactoryCache.get();
         return try _f.Create(commands);
     }
-    pub fn CreateWithTag(commands: *IIterable(HSTRING), tag: HSTRING) core.HResult!*SpeechRecognitionListConstraint {
+    pub fn CreateWithTag(commands: *IIterable(?HSTRING), tag: ?HSTRING) core.HResult!*SpeechRecognitionListConstraint {
         const _f = try @This()._ISpeechRecognitionListConstraintFactoryCache.get();
         return try _f.CreateWithTag(commands, tag);
     }
@@ -1251,7 +1251,7 @@ pub const SpeechRecognitionResult = extern struct {
         const this: *ISpeechRecognitionResult = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechRecognitionResult = @ptrCast(self);
         return try this.getText();
     }
@@ -1271,7 +1271,7 @@ pub const SpeechRecognitionResult = extern struct {
         const this: *ISpeechRecognitionResult = @ptrCast(self);
         return try this.getConstraint();
     }
-    pub fn getRulePath(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getRulePath(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISpeechRecognitionResult = @ptrCast(self);
         return try this.getRulePath();
     }
@@ -1317,7 +1317,7 @@ pub const SpeechRecognitionScenario = enum(i32) {
 };
 pub const SpeechRecognitionSemanticInterpretation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,IVectorView(HSTRING)) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IVectorView(?HSTRING)) {
         const this: *ISpeechRecognitionSemanticInterpretation = @ptrCast(self);
         return try this.getProperties();
     }
@@ -1333,7 +1333,7 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
         const this: *ISpeechRecognitionTopicConstraint = @ptrCast(self);
         return try this.getScenario();
     }
-    pub fn getTopicHint(self: *@This()) core.HResult!HSTRING {
+    pub fn getTopicHint(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechRecognitionTopicConstraint = @ptrCast(self);
         return try this.getTopicHint();
     }
@@ -1349,13 +1349,13 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1382,11 +1382,11 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(scenario: SpeechRecognitionScenario, topicHint: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
+    pub fn Create(scenario: SpeechRecognitionScenario, topicHint: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         const _f = try @This()._ISpeechRecognitionTopicConstraintFactoryCache.get();
         return try _f.Create(scenario, topicHint);
     }
-    pub fn CreateWithTag(scenario: SpeechRecognitionScenario, topicHint: HSTRING, tag: HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
+    pub fn CreateWithTag(scenario: SpeechRecognitionScenario, topicHint: ?HSTRING, tag: ?HSTRING) core.HResult!*SpeechRecognitionTopicConstraint {
         const _f = try @This()._ISpeechRecognitionTopicConstraintFactoryCache.get();
         return try _f.CreateWithTag(scenario, topicHint, tag);
     }
@@ -1411,13 +1411,13 @@ pub const SpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1621,19 +1621,19 @@ pub const SpeechRecognizerTimeouts = extern struct {
 };
 pub const SpeechRecognizerUIOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getExampleText(self: *@This()) core.HResult!HSTRING {
+    pub fn getExampleText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechRecognizerUIOptions = @ptrCast(self);
         return try this.getExampleText();
     }
-    pub fn putExampleText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putExampleText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISpeechRecognizerUIOptions = @ptrCast(self);
         return try this.putExampleText(value);
     }
-    pub fn getAudiblePrompt(self: *@This()) core.HResult!HSTRING {
+    pub fn getAudiblePrompt(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpeechRecognizerUIOptions = @ptrCast(self);
         return try this.getAudiblePrompt();
     }
-    pub fn putAudiblePrompt(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAudiblePrompt(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISpeechRecognizerUIOptions = @ptrCast(self);
         return try this.putAudiblePrompt(value);
     }

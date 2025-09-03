@@ -25,19 +25,19 @@ pub const AgentProvisioningProgressReport = extern struct {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.putEstimatedTimeRemaining(value);
     }
-    pub fn getDisplayProgress(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayProgress(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.getDisplayProgress();
     }
-    pub fn putDisplayProgress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayProgress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.putDisplayProgress(value);
     }
-    pub fn getDisplayProgressSecondary(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayProgressSecondary(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.getDisplayProgressSecondary();
     }
-    pub fn putDisplayProgressSecondary(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayProgressSecondary(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.putDisplayProgressSecondary(value);
     }
@@ -87,7 +87,7 @@ pub const DeploymentSessionConnectionChange = enum(i32) {
 };
 pub const DeploymentSessionConnectionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentSessionConnectionChangedEventArgs = @ptrCast(self);
         return try this.getSessionId();
     }
@@ -211,7 +211,7 @@ pub const DeploymentSessionStateChange = enum(i32) {
 };
 pub const DeploymentSessionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentSessionStateChangedEventArgs = @ptrCast(self);
         return try this.getSessionId();
     }
@@ -227,15 +227,15 @@ pub const DeploymentSessionStateChangedEventArgs = extern struct {
 };
 pub const DeploymentWorkload = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayFriendlyName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getDisplayFriendlyName();
     }
-    pub fn putDisplayFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putDisplayFriendlyName(value);
     }
@@ -263,27 +263,27 @@ pub const DeploymentWorkload = extern struct {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putErrorCode(value);
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getErrorMessage();
     }
-    pub fn putErrorMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putErrorMessage(value);
     }
-    pub fn getPossibleCause(self: *@This()) core.HResult!HSTRING {
+    pub fn getPossibleCause(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getPossibleCause();
     }
-    pub fn putPossibleCause(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPossibleCause(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putPossibleCause(value);
     }
-    pub fn getPossibleResolution(self: *@This()) core.HResult!HSTRING {
+    pub fn getPossibleResolution(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getPossibleResolution();
     }
-    pub fn putPossibleResolution(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPossibleResolution(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putPossibleResolution(value);
     }
@@ -295,18 +295,18 @@ pub const DeploymentWorkload = extern struct {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putState(value);
     }
-    pub fn getStateDetails(self: *@This()) core.HResult!HSTRING {
+    pub fn getStateDetails(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getStateDetails();
     }
-    pub fn putStateDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStateDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putStateDetails(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(id: HSTRING) core.HResult!*DeploymentWorkload {
+    pub fn CreateInstance(id: ?HSTRING) core.HResult!*DeploymentWorkload {
         const _f = try @This()._IDeploymentWorkloadFactoryCache.get();
         return try _f.CreateInstance(id);
     }
@@ -323,11 +323,11 @@ pub const DeploymentWorkloadBatch = extern struct {
         const this: *IDeploymentWorkloadBatch = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayCategoryTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayCategoryTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkloadBatch = @ptrCast(self);
         return try this.getDisplayCategoryTitle();
     }
-    pub fn putDisplayCategoryTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayCategoryTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDeploymentWorkloadBatch = @ptrCast(self);
         return try this.putDisplayCategoryTitle(value);
     }
@@ -361,7 +361,7 @@ pub const DeploymentWorkloadState = enum(i32) {
 };
 pub const DevicePreparationExecutionContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IDevicePreparationExecutionContext = @ptrCast(self);
         return try this.getContext();
     }
@@ -403,23 +403,23 @@ pub const IAgentProvisioningProgressReport = extern struct {
         const _c = self.vtable.put_EstimatedTimeRemaining(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayProgress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayProgress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayProgress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayProgress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayProgress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayProgress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayProgressSecondary(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayProgressSecondary(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayProgressSecondary(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayProgressSecondary(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayProgressSecondary(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayProgressSecondary(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -457,10 +457,10 @@ pub const IAgentProvisioningProgressReport = extern struct {
         put_ProgressPercentage: *const fn(self: *anyopaque, value: f64) callconv(.winapi) HRESULT,
         get_EstimatedTimeRemaining: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_EstimatedTimeRemaining: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
-        get_DisplayProgress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayProgress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayProgressSecondary: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayProgressSecondary: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayProgress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayProgress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayProgressSecondary: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayProgressSecondary: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Batches: *const fn(self: *anyopaque, _r: **IVector(DeploymentWorkloadBatch)) callconv(.winapi) HRESULT,
         get_CurrentBatchIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_CurrentBatchIndex: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
@@ -468,8 +468,8 @@ pub const IAgentProvisioningProgressReport = extern struct {
 };
 pub const IDeploymentSessionConnectionChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -492,7 +492,7 @@ pub const IDeploymentSessionConnectionChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Change: *const fn(self: *anyopaque, _r: *DeploymentSessionConnectionChange) callconv(.winapi) HRESULT,
     };
 };
@@ -526,8 +526,8 @@ pub const IDeploymentSessionHeartbeatRequestedEventArgs = extern struct {
 };
 pub const IDeploymentSessionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getSessionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -550,25 +550,25 @@ pub const IDeploymentSessionStateChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SessionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SessionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Change: *const fn(self: *anyopaque, _r: *DeploymentSessionStateChange) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeploymentWorkload = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayFriendlyName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayFriendlyName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayFriendlyName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayFriendlyName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayFriendlyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayFriendlyName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -602,33 +602,33 @@ pub const IDeploymentWorkload = extern struct {
         const _c = self.vtable.put_ErrorCode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getErrorMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorMessage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putErrorMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ErrorMessage(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPossibleCause(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPossibleCause(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PossibleCause(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPossibleCause(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPossibleCause(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PossibleCause(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPossibleResolution(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPossibleResolution(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PossibleResolution(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPossibleResolution(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPossibleResolution(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PossibleResolution(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -642,13 +642,13 @@ pub const IDeploymentWorkload = extern struct {
         const _c = self.vtable.put_State(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getStateDetails(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStateDetails(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StateDetails(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putStateDetails(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putStateDetails(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_StateDetails(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -664,25 +664,25 @@ pub const IDeploymentWorkload = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayFriendlyName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayFriendlyName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayFriendlyName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayFriendlyName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_StartTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_StartTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_EndTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
         put_EndTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_ErrorCode: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_ErrorCode: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        get_ErrorMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ErrorMessage: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PossibleCause: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PossibleCause: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PossibleResolution: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PossibleResolution: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_ErrorMessage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ErrorMessage: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PossibleCause: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PossibleCause: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PossibleResolution: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PossibleResolution: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *DeploymentWorkloadState) callconv(.winapi) HRESULT,
         put_State: *const fn(self: *anyopaque, value: DeploymentWorkloadState) callconv(.winapi) HRESULT,
-        get_StateDetails: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_StateDetails: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_StateDetails: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_StateDetails: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeploymentWorkloadBatch = extern struct {
@@ -693,13 +693,13 @@ pub const IDeploymentWorkloadBatch = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayCategoryTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayCategoryTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayCategoryTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayCategoryTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayCategoryTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayCategoryTitle(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -722,8 +722,8 @@ pub const IDeploymentWorkloadBatch = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_DisplayCategoryTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayCategoryTitle: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayCategoryTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayCategoryTitle: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_BatchWorkloads: *const fn(self: *anyopaque, _r: **IVector(DeploymentWorkload)) callconv(.winapi) HRESULT,
     };
 };
@@ -752,7 +752,7 @@ pub const IDeploymentWorkloadBatchFactory = extern struct {
 };
 pub const IDeploymentWorkloadFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), id: HSTRING) core.HResult!*DeploymentWorkload {
+    pub fn CreateInstance(self: *@This(), id: ?HSTRING) core.HResult!*DeploymentWorkload {
         var _r: *DeploymentWorkload = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -770,13 +770,13 @@ pub const IDeploymentWorkloadFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, id: HSTRING, _r: **DeploymentWorkload) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, id: ?HSTRING, _r: **DeploymentWorkload) callconv(.winapi) HRESULT,
     };
 };
 pub const IDevicePreparationExecutionContext = extern struct {
     vtable: *const VTable,
-    pub fn getContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -793,7 +793,7 @@ pub const IDevicePreparationExecutionContext = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Context: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Context: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMachineProvisioningProgressReporter = extern struct {

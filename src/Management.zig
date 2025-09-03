@@ -1,13 +1,13 @@
 // ----- This code is automatically generated -----
 pub const IMdmAlert = extern struct {
     vtable: *const VTable,
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Data(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -31,13 +31,13 @@ pub const IMdmAlert = extern struct {
         const _c = self.vtable.put_Mark(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Source(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -47,23 +47,23 @@ pub const IMdmAlert = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTarget(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTarget(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Target(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Type(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -79,19 +79,19 @@ pub const IMdmAlert = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Data: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Data: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Data: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Data: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Format: *const fn(self: *anyopaque, _r: *MdmAlertDataType) callconv(.winapi) HRESULT,
         put_Format: *const fn(self: *anyopaque, value: MdmAlertDataType) callconv(.winapi) HRESULT,
         get_Mark: *const fn(self: *anyopaque, _r: *MdmAlertMark) callconv(.winapi) HRESULT,
         put_Mark: *const fn(self: *anyopaque, value: MdmAlertMark) callconv(.winapi) HRESULT,
-        get_Source: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Source: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Source: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Source: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_Target: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Target: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Type: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Type: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Target: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Target: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Type: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Type: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IMdmSession = extern struct {
@@ -108,8 +108,8 @@ pub const IMdmSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -156,7 +156,7 @@ pub const IMdmSession = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Alerts: *const fn(self: *anyopaque, _r: **IVectorView(MdmAlert)) callconv(.winapi) HRESULT,
         get_ExtendedError: *const fn(self: *anyopaque, _r: *HResult) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *MdmSessionState) callconv(.winapi) HRESULT,
         AttachAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         Delete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -166,8 +166,8 @@ pub const IMdmSession = extern struct {
 };
 pub const IMdmSessionManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn getSessionIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSessionIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SessionIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -178,11 +178,11 @@ pub const IMdmSessionManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteSessionById(self: *@This(), sessionId: HSTRING) core.HResult!void {
+    pub fn DeleteSessionById(self: *@This(), sessionId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.DeleteSessionById(@ptrCast(self), sessionId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetSessionById(self: *@This(), sessionId: HSTRING) core.HResult!*MdmSession {
+    pub fn GetSessionById(self: *@This(), sessionId: ?HSTRING) core.HResult!*MdmSession {
         var _r: *MdmSession = undefined;
         const _c = self.vtable.GetSessionById(@ptrCast(self), sessionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -200,19 +200,19 @@ pub const IMdmSessionManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SessionIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_SessionIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         TryCreateSession: *const fn(self: *anyopaque, _r: **MdmSession) callconv(.winapi) HRESULT,
-        DeleteSessionById: *const fn(self: *anyopaque, sessionId: HSTRING) callconv(.winapi) HRESULT,
-        GetSessionById: *const fn(self: *anyopaque, sessionId: HSTRING, _r: **MdmSession) callconv(.winapi) HRESULT,
+        DeleteSessionById: *const fn(self: *anyopaque, sessionId: ?HSTRING) callconv(.winapi) HRESULT,
+        GetSessionById: *const fn(self: *anyopaque, sessionId: ?HSTRING, _r: **MdmSession) callconv(.winapi) HRESULT,
     };
 };
 pub const MdmAlert = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getData(self: *@This()) core.HResult!HSTRING {
+    pub fn getData(self: *@This()) core.HResult!?HSTRING {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.getData();
     }
-    pub fn putData(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.putData(value);
     }
@@ -232,11 +232,11 @@ pub const MdmAlert = extern struct {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.putMark(value);
     }
-    pub fn getSource(self: *@This()) core.HResult!HSTRING {
+    pub fn getSource(self: *@This()) core.HResult!?HSTRING {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.getSource();
     }
-    pub fn putSource(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.putSource(value);
     }
@@ -244,19 +244,19 @@ pub const MdmAlert = extern struct {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn getTarget(self: *@This()) core.HResult!HSTRING {
+    pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.getTarget();
     }
-    pub fn putTarget(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTarget(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.putTarget(value);
     }
-    pub fn getType(self: *@This()) core.HResult!HSTRING {
+    pub fn getType(self: *@This()) core.HResult!?HSTRING {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.getType();
     }
-    pub fn putType(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putType(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IMdmAlert = @ptrCast(self);
         return try this.putType(value);
     }
@@ -297,7 +297,7 @@ pub const MdmSession = extern struct {
         const this: *IMdmSession = @ptrCast(self);
         return try this.getExtendedError();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMdmSession = @ptrCast(self);
         return try this.getId();
     }
@@ -332,7 +332,7 @@ pub const MdmSessionManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSessionIds() core.HResult!*IVectorView(HSTRING) {
+    pub fn getSessionIds() core.HResult!*IVectorView(?HSTRING) {
         const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.getSessionIds();
     }
@@ -340,11 +340,11 @@ pub const MdmSessionManager = extern struct {
         const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.TryCreateSession();
     }
-    pub fn DeleteSessionById(sessionId: HSTRING) core.HResult!void {
+    pub fn DeleteSessionById(sessionId: ?HSTRING) core.HResult!void {
         const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.DeleteSessionById(sessionId);
     }
-    pub fn GetSessionById(sessionId: HSTRING) core.HResult!*MdmSession {
+    pub fn GetSessionById(sessionId: ?HSTRING) core.HResult!*MdmSession {
         const _f = try @This()._IMdmSessionManagerStaticsCache.get();
         return try _f.GetSessionById(sessionId);
     }

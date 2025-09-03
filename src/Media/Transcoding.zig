@@ -41,19 +41,19 @@ pub const IMediaTranscoder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddAudioEffect(self: *@This(), activatableClassId: HSTRING) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), activatableClassId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddAudioEffect(@ptrCast(self), activatableClassId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddAudioEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddAudioEffectWithEffectRequiredAndConfiguration(@ptrCast(self), activatableClassId, effectRequired, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddVideoEffect(self: *@This(), activatableClassId: HSTRING) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), activatableClassId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddVideoEffect(@ptrCast(self), activatableClassId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddVideoEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.AddVideoEffectWithEffectRequiredAndConfiguration(@ptrCast(self), activatableClassId, effectRequired, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -93,10 +93,10 @@ pub const IMediaTranscoder = extern struct {
         get_AlwaysReencode: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_HardwareAccelerationEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_HardwareAccelerationEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        AddAudioEffect: *const fn(self: *anyopaque, activatableClassId: HSTRING) callconv(.winapi) HRESULT,
-        AddAudioEffectWithEffectRequiredAndConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
-        AddVideoEffect: *const fn(self: *anyopaque, activatableClassId: HSTRING) callconv(.winapi) HRESULT,
-        AddVideoEffectWithEffectRequiredAndConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        AddAudioEffect: *const fn(self: *anyopaque, activatableClassId: ?HSTRING) callconv(.winapi) HRESULT,
+        AddAudioEffectWithEffectRequiredAndConfiguration: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        AddVideoEffect: *const fn(self: *anyopaque, activatableClassId: ?HSTRING) callconv(.winapi) HRESULT,
+        AddVideoEffectWithEffectRequiredAndConfiguration: *const fn(self: *anyopaque, activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         ClearEffects: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         PrepareFileTranscodeAsync: *const fn(self: *anyopaque, source: *IStorageFile, destination: *IStorageFile, profile: *MediaEncodingProfile, _r: **IAsyncOperation(PrepareTranscodeResult)) callconv(.winapi) HRESULT,
         PrepareStreamTranscodeAsync: *const fn(self: *anyopaque, source: *IRandomAccessStream, destination: *IRandomAccessStream, profile: *MediaEncodingProfile, _r: **IAsyncOperation(PrepareTranscodeResult)) callconv(.winapi) HRESULT,
@@ -208,19 +208,19 @@ pub const MediaTranscoder = extern struct {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.getHardwareAccelerationEnabled();
     }
-    pub fn AddAudioEffect(self: *@This(), activatableClassId: HSTRING) core.HResult!void {
+    pub fn AddAudioEffect(self: *@This(), activatableClassId: ?HSTRING) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddAudioEffect(activatableClassId);
     }
-    pub fn AddAudioEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddAudioEffectWithEffectRequiredAndConfiguration(activatableClassId, effectRequired, configuration);
     }
-    pub fn AddVideoEffect(self: *@This(), activatableClassId: HSTRING) core.HResult!void {
+    pub fn AddVideoEffect(self: *@This(), activatableClassId: ?HSTRING) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddVideoEffect(activatableClassId);
     }
-    pub fn AddVideoEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffectWithEffectRequiredAndConfiguration(self: *@This(), activatableClassId: ?HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddVideoEffectWithEffectRequiredAndConfiguration(activatableClassId, effectRequired, configuration);
     }

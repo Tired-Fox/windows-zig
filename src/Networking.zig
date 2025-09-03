@@ -13,11 +13,11 @@ pub const EndpointPair = extern struct {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.putLocalHostName(value);
     }
-    pub fn getLocalServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLocalServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.getLocalServiceName();
     }
-    pub fn putLocalServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.putLocalServiceName(value);
     }
@@ -29,18 +29,18 @@ pub const EndpointPair = extern struct {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.putRemoteHostName(value);
     }
-    pub fn getRemoteServiceName(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.getRemoteServiceName();
     }
-    pub fn putRemoteServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.putRemoteServiceName(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateEndpointPair(localHostName: *HostName, localServiceName: HSTRING, remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*EndpointPair {
+    pub fn CreateEndpointPair(localHostName: *HostName, localServiceName: ?HSTRING, remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*EndpointPair {
         const _f = try @This()._IEndpointPairFactoryCache.get();
         return try _f.CreateEndpointPair(localHostName, localServiceName, remoteHostName, remoteServiceName);
     }
@@ -57,15 +57,15 @@ pub const HostName = extern struct {
         const this: *IHostName = @ptrCast(self);
         return try this.getIPInformation();
     }
-    pub fn getRawName(self: *@This()) core.HResult!HSTRING {
+    pub fn getRawName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHostName = @ptrCast(self);
         return try this.getRawName();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHostName = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn getCanonicalName(self: *@This()) core.HResult!HSTRING {
+    pub fn getCanonicalName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHostName = @ptrCast(self);
         return try this.getCanonicalName();
     }
@@ -77,7 +77,7 @@ pub const HostName = extern struct {
         const this: *IHostName = @ptrCast(self);
         return try this.IsEqual(hostName);
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -86,11 +86,11 @@ pub const HostName = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateHostName(hostName: HSTRING) core.HResult!*HostName {
+    pub fn CreateHostName(hostName: ?HSTRING) core.HResult!*HostName {
         const _f = try @This()._IHostNameFactoryCache.get();
         return try _f.CreateHostName(hostName);
     }
-    pub fn Compare(value1: HSTRING, value2: HSTRING) core.HResult!i32 {
+    pub fn Compare(value1: ?HSTRING, value2: ?HSTRING) core.HResult!i32 {
         const _f = try @This()._IHostNameStaticsCache.get();
         return try _f.Compare(value1, value2);
     }
@@ -124,13 +124,13 @@ pub const IEndpointPair = extern struct {
         const _c = self.vtable.put_LocalHostName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLocalServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLocalServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLocalServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLocalServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LocalServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -144,13 +144,13 @@ pub const IEndpointPair = extern struct {
         const _c = self.vtable.put_RemoteHostName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteServiceName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteServiceName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteServiceName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteServiceName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteServiceName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteServiceName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -168,17 +168,17 @@ pub const IEndpointPair = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_LocalHostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
         put_LocalHostName: *const fn(self: *anyopaque, value: *HostName) callconv(.winapi) HRESULT,
-        get_LocalServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LocalServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_LocalServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LocalServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_RemoteHostName: *const fn(self: *anyopaque, _r: **HostName) callconv(.winapi) HRESULT,
         put_RemoteHostName: *const fn(self: *anyopaque, value: *HostName) callconv(.winapi) HRESULT,
-        get_RemoteServiceName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteServiceName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteServiceName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteServiceName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IEndpointPairFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateEndpointPair(self: *@This(), localHostName: *HostName, localServiceName: HSTRING, remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*EndpointPair {
+    pub fn CreateEndpointPair(self: *@This(), localHostName: *HostName, localServiceName: ?HSTRING, remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*EndpointPair {
         var _r: *EndpointPair = undefined;
         const _c = self.vtable.CreateEndpointPair(@ptrCast(self), localHostName, localServiceName, remoteHostName, remoteServiceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -196,7 +196,7 @@ pub const IEndpointPairFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateEndpointPair: *const fn(self: *anyopaque, localHostName: *HostName, localServiceName: HSTRING, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **EndpointPair) callconv(.winapi) HRESULT,
+        CreateEndpointPair: *const fn(self: *anyopaque, localHostName: *HostName, localServiceName: ?HSTRING, remoteHostName: *HostName, remoteServiceName: ?HSTRING, _r: **EndpointPair) callconv(.winapi) HRESULT,
     };
 };
 pub const IHostName = extern struct {
@@ -207,20 +207,20 @@ pub const IHostName = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getRawName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRawName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCanonicalName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCanonicalName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CanonicalName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -250,16 +250,16 @@ pub const IHostName = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_IPInformation: *const fn(self: *anyopaque, _r: **IPInformation) callconv(.winapi) HRESULT,
-        get_RawName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CanonicalName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RawName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CanonicalName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *HostNameType) callconv(.winapi) HRESULT,
         IsEqual: *const fn(self: *anyopaque, hostName: *HostName, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IHostNameFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateHostName(self: *@This(), hostName: HSTRING) core.HResult!*HostName {
+    pub fn CreateHostName(self: *@This(), hostName: ?HSTRING) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.CreateHostName(@ptrCast(self), hostName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -277,12 +277,12 @@ pub const IHostNameFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateHostName: *const fn(self: *anyopaque, hostName: HSTRING, _r: **HostName) callconv(.winapi) HRESULT,
+        CreateHostName: *const fn(self: *anyopaque, hostName: ?HSTRING, _r: **HostName) callconv(.winapi) HRESULT,
     };
 };
 pub const IHostNameStatics = extern struct {
     vtable: *const VTable,
-    pub fn Compare(self: *@This(), value1: HSTRING, value2: HSTRING) core.HResult!i32 {
+    pub fn Compare(self: *@This(), value1: ?HSTRING, value2: ?HSTRING) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.Compare(@ptrCast(self), value1, value2, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -300,7 +300,7 @@ pub const IHostNameStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Compare: *const fn(self: *anyopaque, value1: HSTRING, value2: HSTRING, _r: *i32) callconv(.winapi) HRESULT,
+        Compare: *const fn(self: *anyopaque, value1: ?HSTRING, value2: ?HSTRING, _r: *i32) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("./root.zig").IUnknown;

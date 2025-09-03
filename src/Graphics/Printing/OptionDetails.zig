@@ -1,22 +1,22 @@
 // ----- This code is automatically generated -----
 pub const IPrintBindingOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -33,30 +33,30 @@ pub const IPrintBindingOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintBorderingOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -73,30 +73,30 @@ pub const IPrintBorderingOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCollationOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -113,30 +113,30 @@ pub const IPrintCollationOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintColorModeOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -153,30 +153,30 @@ pub const IPrintColorModeOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCopiesOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -193,26 +193,26 @@ pub const IPrintCopiesOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomItemDetails = extern struct {
     vtable: *const VTable,
-    pub fn getItemId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ItemId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putItemDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putItemDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ItemDisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getItemDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getItemDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ItemDisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -229,14 +229,14 @@ pub const IPrintCustomItemDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ItemId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ItemDisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ItemDisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ItemId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ItemDisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ItemDisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomItemListOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn AddItem(self: *@This(), itemId: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn AddItem(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddItem(@ptrCast(self), itemId, displayName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -252,12 +252,12 @@ pub const IPrintCustomItemListOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddItem: *const fn(self: *anyopaque, itemId: HSTRING, displayName: HSTRING) callconv(.winapi) HRESULT,
+        AddItem: *const fn(self: *anyopaque, itemId: ?HSTRING, displayName: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomItemListOptionDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn AddItem(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
+    pub fn AddItem(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING, description: ?HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
         const _c = self.vtable.AddItem(@ptrCast(self), itemId, displayName, description, icon);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -273,27 +273,27 @@ pub const IPrintCustomItemListOptionDetails2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddItem: *const fn(self: *anyopaque, itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
+        AddItem: *const fn(self: *anyopaque, itemId: ?HSTRING, displayName: ?HSTRING, description: ?HSTRING, icon: *IRandomAccessStreamWithContentType) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomItemListOptionDetails3 = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -310,20 +310,20 @@ pub const IPrintCustomItemListOptionDetails3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -340,8 +340,8 @@ pub const IPrintCustomOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomTextOptionDetails = extern struct {
@@ -374,22 +374,22 @@ pub const IPrintCustomTextOptionDetails = extern struct {
 };
 pub const IPrintCustomTextOptionDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -406,30 +406,30 @@ pub const IPrintCustomTextOptionDetails2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintCustomToggleOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -446,30 +446,30 @@ pub const IPrintCustomToggleOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintDuplexOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -486,30 +486,30 @@ pub const IPrintDuplexOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintHolePunchOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -526,10 +526,10 @@ pub const IPrintHolePunchOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintItemListOptionDetails = extern struct {
@@ -557,22 +557,22 @@ pub const IPrintItemListOptionDetails = extern struct {
 };
 pub const IPrintMediaSizeOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -589,30 +589,30 @@ pub const IPrintMediaSizeOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintMediaTypeOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -629,10 +629,10 @@ pub const IPrintMediaTypeOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintNumberOptionDetails = extern struct {
@@ -667,8 +667,8 @@ pub const IPrintNumberOptionDetails = extern struct {
 };
 pub const IPrintOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OptionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -679,12 +679,12 @@ pub const IPrintOptionDetails = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ErrorText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ErrorText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -723,10 +723,10 @@ pub const IPrintOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_OptionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_OptionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_OptionType: *const fn(self: *anyopaque, _r: *PrintOptionType) callconv(.winapi) HRESULT,
-        put_ErrorText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ErrorText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_ErrorText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ErrorText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_State: *const fn(self: *anyopaque, value: PrintOptionStates) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *PrintOptionStates) callconv(.winapi) HRESULT,
         get_Value: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -735,22 +735,22 @@ pub const IPrintOptionDetails = extern struct {
 };
 pub const IPrintOrientationOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -767,30 +767,30 @@ pub const IPrintOrientationOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintPageRangeOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -807,30 +807,30 @@ pub const IPrintPageRangeOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintQualityOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -847,30 +847,30 @@ pub const IPrintQualityOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintStapleOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_WarningText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WarningText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -887,10 +887,10 @@ pub const IPrintStapleOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_WarningText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_WarningText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_WarningText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_WarningText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTaskOptionChangedEventArgs = extern struct {
@@ -918,19 +918,19 @@ pub const IPrintTaskOptionChangedEventArgs = extern struct {
 };
 pub const IPrintTaskOptionDetails = extern struct {
     vtable: *const VTable,
-    pub fn getOptions(self: *@This()) core.HResult!*IMapView(HSTRING,IPrintOptionDetails) {
-        var _r: *IMapView(HSTRING,IPrintOptionDetails) = undefined;
+    pub fn getOptions(self: *@This()) core.HResult!*IMapView(?HSTRING,IPrintOptionDetails) {
+        var _r: *IMapView(?HSTRING,IPrintOptionDetails) = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateItemListOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomItemListOptionDetails {
+    pub fn CreateItemListOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomItemListOptionDetails {
         var _r: *PrintCustomItemListOptionDetails = undefined;
         const _c = self.vtable.CreateItemListOption(@ptrCast(self), optionId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomTextOptionDetails {
+    pub fn CreateTextOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomTextOptionDetails {
         var _r: *PrintCustomTextOptionDetails = undefined;
         const _c = self.vtable.CreateTextOption(@ptrCast(self), optionId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -968,9 +968,9 @@ pub const IPrintTaskOptionDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Options: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,IPrintOptionDetails)) callconv(.winapi) HRESULT,
-        CreateItemListOption: *const fn(self: *anyopaque, optionId: HSTRING, displayName: HSTRING, _r: **PrintCustomItemListOptionDetails) callconv(.winapi) HRESULT,
-        CreateTextOption: *const fn(self: *anyopaque, optionId: HSTRING, displayName: HSTRING, _r: **PrintCustomTextOptionDetails) callconv(.winapi) HRESULT,
+        get_Options: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,IPrintOptionDetails)) callconv(.winapi) HRESULT,
+        CreateItemListOption: *const fn(self: *anyopaque, optionId: ?HSTRING, displayName: ?HSTRING, _r: **PrintCustomItemListOptionDetails) callconv(.winapi) HRESULT,
+        CreateTextOption: *const fn(self: *anyopaque, optionId: ?HSTRING, displayName: ?HSTRING, _r: **PrintCustomTextOptionDetails) callconv(.winapi) HRESULT,
         add_OptionChanged: *const fn(self: *anyopaque, eventHandler: *TypedEventHandler(PrintTaskOptionDetails,PrintTaskOptionChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_OptionChanged: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_BeginValidation: *const fn(self: *anyopaque, eventHandler: *TypedEventHandler(PrintTaskOptionDetails,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -979,7 +979,7 @@ pub const IPrintTaskOptionDetails = extern struct {
 };
 pub const IPrintTaskOptionDetails2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateToggleOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomToggleOptionDetails {
+    pub fn CreateToggleOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomToggleOptionDetails {
         var _r: *PrintCustomToggleOptionDetails = undefined;
         const _c = self.vtable.CreateToggleOption(@ptrCast(self), optionId, displayName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -997,7 +997,7 @@ pub const IPrintTaskOptionDetails2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateToggleOption: *const fn(self: *anyopaque, optionId: HSTRING, displayName: HSTRING, _r: **PrintCustomToggleOptionDetails) callconv(.winapi) HRESULT,
+        CreateToggleOption: *const fn(self: *anyopaque, optionId: ?HSTRING, displayName: ?HSTRING, _r: **PrintCustomToggleOptionDetails) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTaskOptionDetailsStatic = extern struct {
@@ -1048,7 +1048,7 @@ pub const IPrintTextOptionDetails = extern struct {
 };
 pub const PrintBindingOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1056,11 +1056,11 @@ pub const PrintBindingOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1086,25 +1086,25 @@ pub const PrintBindingOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBindingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBindingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBindingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBindingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1118,7 +1118,7 @@ pub const PrintBindingOptionDetails = extern struct {
 };
 pub const PrintBorderingOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1126,11 +1126,11 @@ pub const PrintBorderingOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1156,25 +1156,25 @@ pub const PrintBorderingOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBorderingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBorderingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBorderingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBorderingOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1188,7 +1188,7 @@ pub const PrintBorderingOptionDetails = extern struct {
 };
 pub const PrintCollationOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1196,11 +1196,11 @@ pub const PrintCollationOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1226,25 +1226,25 @@ pub const PrintCollationOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCollationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCollationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCollationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCollationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1258,7 +1258,7 @@ pub const PrintCollationOptionDetails = extern struct {
 };
 pub const PrintColorModeOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1266,11 +1266,11 @@ pub const PrintColorModeOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1296,25 +1296,25 @@ pub const PrintColorModeOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintColorModeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintColorModeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintColorModeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintColorModeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1328,7 +1328,7 @@ pub const PrintColorModeOptionDetails = extern struct {
 };
 pub const PrintCopiesOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1336,11 +1336,11 @@ pub const PrintCopiesOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1372,25 +1372,25 @@ pub const PrintCopiesOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxValue();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCopiesOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCopiesOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCopiesOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCopiesOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1404,15 +1404,15 @@ pub const PrintCopiesOptionDetails = extern struct {
 };
 pub const PrintCustomItemDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getItemId(self: *@This()) core.HResult!HSTRING {
+    pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintCustomItemDetails = @ptrCast(self);
         return try this.getItemId();
     }
-    pub fn putItemDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putItemDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintCustomItemDetails = @ptrCast(self);
         return try this.putItemDisplayName(value);
     }
-    pub fn getItemDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getItemDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintCustomItemDetails = @ptrCast(self);
         return try this.getItemDisplayName();
     }
@@ -1424,7 +1424,7 @@ pub const PrintCustomItemDetails = extern struct {
 };
 pub const PrintCustomItemListOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1432,11 +1432,11 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1456,13 +1456,13 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.TrySetValue(value);
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1474,37 +1474,37 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn AddItem(self: *@This(), itemId: HSTRING, displayName: HSTRING) core.HResult!void {
+    pub fn AddItem(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItem(itemId, displayName);
     }
-    pub fn AddItemWithDescriptionAndIcon(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
+    pub fn AddItemWithDescriptionAndIcon(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING, description: ?HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItemWithDescriptionAndIcon(itemId, displayName, description, icon);
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1518,7 +1518,7 @@ pub const PrintCustomItemListOptionDetails = extern struct {
 };
 pub const PrintCustomTextOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1526,11 +1526,11 @@ pub const PrintCustomTextOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1550,13 +1550,13 @@ pub const PrintCustomTextOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.TrySetValue(value);
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1574,25 +1574,25 @@ pub const PrintCustomTextOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxCharacters();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1606,7 +1606,7 @@ pub const PrintCustomTextOptionDetails = extern struct {
 };
 pub const PrintCustomToggleOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1614,11 +1614,11 @@ pub const PrintCustomToggleOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1638,37 +1638,37 @@ pub const PrintCustomToggleOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.TrySetValue(value);
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1682,7 +1682,7 @@ pub const PrintCustomToggleOptionDetails = extern struct {
 };
 pub const PrintDuplexOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1690,11 +1690,11 @@ pub const PrintDuplexOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1720,25 +1720,25 @@ pub const PrintDuplexOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintDuplexOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintDuplexOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintDuplexOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintDuplexOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1752,7 +1752,7 @@ pub const PrintDuplexOptionDetails = extern struct {
 };
 pub const PrintHolePunchOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1760,11 +1760,11 @@ pub const PrintHolePunchOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1790,25 +1790,25 @@ pub const PrintHolePunchOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1822,7 +1822,7 @@ pub const PrintHolePunchOptionDetails = extern struct {
 };
 pub const PrintMediaSizeOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1830,11 +1830,11 @@ pub const PrintMediaSizeOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1860,25 +1860,25 @@ pub const PrintMediaSizeOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1892,7 +1892,7 @@ pub const PrintMediaSizeOptionDetails = extern struct {
 };
 pub const PrintMediaTypeOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1900,11 +1900,11 @@ pub const PrintMediaTypeOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -1930,25 +1930,25 @@ pub const PrintMediaTypeOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1974,7 +1974,7 @@ pub const PrintOptionType = enum(i32) {
 };
 pub const PrintOrientationOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -1982,11 +1982,11 @@ pub const PrintOrientationOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -2012,25 +2012,25 @@ pub const PrintOrientationOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintOrientationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintOrientationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintOrientationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintOrientationOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2044,7 +2044,7 @@ pub const PrintOrientationOptionDetails = extern struct {
 };
 pub const PrintPageRangeOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -2052,11 +2052,11 @@ pub const PrintPageRangeOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -2076,25 +2076,25 @@ pub const PrintPageRangeOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.TrySetValue(value);
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2108,7 +2108,7 @@ pub const PrintPageRangeOptionDetails = extern struct {
 };
 pub const PrintQualityOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -2116,11 +2116,11 @@ pub const PrintQualityOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -2146,25 +2146,25 @@ pub const PrintQualityOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintQualityOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintQualityOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintQualityOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintQualityOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2178,7 +2178,7 @@ pub const PrintQualityOptionDetails = extern struct {
 };
 pub const PrintStapleOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getOptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionId();
     }
@@ -2186,11 +2186,11 @@ pub const PrintStapleOptionDetails = extern struct {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getOptionType();
     }
-    pub fn putErrorText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putErrorText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.putErrorText(value);
     }
-    pub fn getErrorText(self: *@This()) core.HResult!HSTRING {
+    pub fn getErrorText(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintOptionDetails = @ptrCast(self);
         return try this.getErrorText();
     }
@@ -2216,25 +2216,25 @@ pub const PrintStapleOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
-    pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintStapleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
-    pub fn getWarningText(self: *@This()) core.HResult!HSTRING {
+    pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintStapleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintStapleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintStapleOptionDetails = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2260,15 +2260,15 @@ pub const PrintTaskOptionChangedEventArgs = extern struct {
 };
 pub const PrintTaskOptionDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOptions(self: *@This()) core.HResult!*IMapView(HSTRING,IPrintOptionDetails) {
+    pub fn getOptions(self: *@This()) core.HResult!*IMapView(?HSTRING,IPrintOptionDetails) {
         const this: *IPrintTaskOptionDetails = @ptrCast(self);
         return try this.getOptions();
     }
-    pub fn CreateItemListOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomItemListOptionDetails {
+    pub fn CreateItemListOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomItemListOptionDetails {
         const this: *IPrintTaskOptionDetails = @ptrCast(self);
         return try this.CreateItemListOption(optionId, displayName);
     }
-    pub fn CreateTextOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomTextOptionDetails {
+    pub fn CreateTextOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomTextOptionDetails {
         const this: *IPrintTaskOptionDetails = @ptrCast(self);
         return try this.CreateTextOption(optionId, displayName);
     }
@@ -2294,13 +2294,13 @@ pub const PrintTaskOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPageDescription(jobPageNumber);
     }
-    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IPrintTaskOptionsCoreUIConfiguration = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreUIConfiguration.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayedOptions();
     }
-    pub fn CreateToggleOption(self: *@This(), optionId: HSTRING, displayName: HSTRING) core.HResult!*PrintCustomToggleOptionDetails {
+    pub fn CreateToggleOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomToggleOptionDetails {
         var this: ?*IPrintTaskOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

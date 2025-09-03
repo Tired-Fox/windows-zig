@@ -1,113 +1,113 @@
 // ----- This code is automatically generated -----
 pub const IPaymentAddress = extern struct {
     vtable: *const VTable,
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Country(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCountry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCountry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Country(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAddressLines(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getAddressLines(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_AddressLines(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAddressLines(self: *@This(), value: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn putAddressLines(self: *@This(), value: *IVectorView(?HSTRING)) core.HResult!void {
         const _c = self.vtable.put_AddressLines(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Region(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_City(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCity(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_City(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDependentLocality(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDependentLocality(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DependentLocality(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDependentLocality(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDependentLocality(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DependentLocality(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PostalCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPostalCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPostalCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PostalCode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSortingCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSortingCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SortingCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSortingCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSortingCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SortingCode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguageCode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguageCode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageCode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguageCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguageCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LanguageCode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getOrganization(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOrganization(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Organization(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putOrganization(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOrganization(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Organization(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRecipient(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecipient(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Recipient(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRecipient(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRecipient(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Recipient(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPhoneNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPhoneNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PhoneNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -129,28 +129,28 @@ pub const IPaymentAddress = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Country: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Country: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AddressLines: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        put_AddressLines: *const fn(self: *anyopaque, value: *IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_Region: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Region: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_City: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_City: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DependentLocality: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DependentLocality: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PostalCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PostalCode: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SortingCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SortingCode: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_LanguageCode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LanguageCode: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Organization: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Organization: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Recipient: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Recipient: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PhoneNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Country: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Country: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AddressLines: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        put_AddressLines: *const fn(self: *anyopaque, value: *IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_Region: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Region: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_City: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_City: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DependentLocality: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DependentLocality: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PostalCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PostalCode: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SortingCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SortingCode: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_LanguageCode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LanguageCode: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Organization: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Organization: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Recipient: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Recipient: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PhoneNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
 };
@@ -202,33 +202,33 @@ pub const IPaymentCanMakePaymentResultFactory = extern struct {
 };
 pub const IPaymentCurrencyAmount = extern struct {
     vtable: *const VTable,
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Currency(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCurrency(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrency(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Currency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCurrencySystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrencySystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrencySystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCurrencySystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrencySystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CurrencySystem(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Value(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -244,23 +244,23 @@ pub const IPaymentCurrencyAmount = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Currency: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Currency: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CurrencySystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CurrencySystem: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Value: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Currency: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Currency: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CurrencySystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CurrencySystem: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Value: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentCurrencyAmountFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), value: HSTRING, currency: HSTRING) core.HResult!*PaymentCurrencyAmount {
+    pub fn Create(self: *@This(), value: ?HSTRING, currency: ?HSTRING) core.HResult!*PaymentCurrencyAmount {
         var _r: *PaymentCurrencyAmount = undefined;
         const _c = self.vtable.Create(@ptrCast(self), value, currency, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithCurrencySystem(self: *@This(), value: HSTRING, currency: HSTRING, currencySystem: HSTRING) core.HResult!*PaymentCurrencyAmount {
+    pub fn CreateWithCurrencySystem(self: *@This(), value: ?HSTRING, currency: ?HSTRING, currencySystem: ?HSTRING) core.HResult!*PaymentCurrencyAmount {
         var _r: *PaymentCurrencyAmount = undefined;
         const _c = self.vtable.CreateWithCurrencySystem(@ptrCast(self), value, currency, currencySystem, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -278,8 +278,8 @@ pub const IPaymentCurrencyAmountFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, value: HSTRING, currency: HSTRING, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
-        CreateWithCurrencySystem: *const fn(self: *anyopaque, value: HSTRING, currency: HSTRING, currencySystem: HSTRING, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, value: ?HSTRING, currency: ?HSTRING, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
+        CreateWithCurrencySystem: *const fn(self: *anyopaque, value: ?HSTRING, currency: ?HSTRING, currencySystem: ?HSTRING, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentDetails = extern struct {
@@ -378,14 +378,14 @@ pub const IPaymentDetailsFactory = extern struct {
 };
 pub const IPaymentDetailsModifier = extern struct {
     vtable: *const VTable,
-    pub fn getJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedMethodIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -414,27 +414,27 @@ pub const IPaymentDetailsModifier = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_JsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SupportedMethodIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_JsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedMethodIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_Total: *const fn(self: *anyopaque, _r: **PaymentItem) callconv(.winapi) HRESULT,
         get_AdditionalDisplayItems: *const fn(self: *anyopaque, _r: **IVectorView(PaymentItem)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentDetailsModifierFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem) core.HResult!*PaymentDetailsModifier {
+    pub fn Create(self: *@This(), supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem) core.HResult!*PaymentDetailsModifier {
         var _r: *PaymentDetailsModifier = undefined;
         const _c = self.vtable.Create(@ptrCast(self), supportedMethodIds, total, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithAdditionalDisplayItems(self: *@This(), supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetailsModifier {
+    pub fn CreateWithAdditionalDisplayItems(self: *@This(), supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetailsModifier {
         var _r: *PaymentDetailsModifier = undefined;
         const _c = self.vtable.CreateWithAdditionalDisplayItems(@ptrCast(self), supportedMethodIds, total, additionalDisplayItems, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithAdditionalDisplayItemsAndJsonData(self: *@This(), supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: HSTRING) core.HResult!*PaymentDetailsModifier {
+    pub fn CreateWithAdditionalDisplayItemsAndJsonData(self: *@This(), supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: ?HSTRING) core.HResult!*PaymentDetailsModifier {
         var _r: *PaymentDetailsModifier = undefined;
         const _c = self.vtable.CreateWithAdditionalDisplayItemsAndJsonData(@ptrCast(self), supportedMethodIds, total, additionalDisplayItems, jsonData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -452,20 +452,20 @@ pub const IPaymentDetailsModifierFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
-        CreateWithAdditionalDisplayItems: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
-        CreateWithAdditionalDisplayItemsAndJsonData: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: HSTRING, _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
+        CreateWithAdditionalDisplayItems: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
+        CreateWithAdditionalDisplayItemsAndJsonData: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: ?HSTRING, _r: **PaymentDetailsModifier) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentItem = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -501,8 +501,8 @@ pub const IPaymentItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Amount: *const fn(self: *anyopaque, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
         put_Amount: *const fn(self: *anyopaque, value: *PaymentCurrencyAmount) callconv(.winapi) HRESULT,
         get_Pending: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -511,7 +511,7 @@ pub const IPaymentItem = extern struct {
 };
 pub const IPaymentItemFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentItem {
+    pub fn Create(self: *@This(), label: ?HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentItem {
         var _r: *PaymentItem = undefined;
         const _c = self.vtable.Create(@ptrCast(self), label, amount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -529,13 +529,13 @@ pub const IPaymentItemFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, label: HSTRING, amount: *PaymentCurrencyAmount, _r: **PaymentItem) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, label: ?HSTRING, amount: *PaymentCurrencyAmount, _r: **PaymentItem) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentMediator = extern struct {
     vtable: *const VTable,
-    pub fn GetSupportedMethodIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
+    pub fn GetSupportedMethodIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
+        var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetSupportedMethodIdsAsync(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -564,7 +564,7 @@ pub const IPaymentMediator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetSupportedMethodIdsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetSupportedMethodIdsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(?HSTRING))) callconv(.winapi) HRESULT,
         SubmitPaymentRequestAsync: *const fn(self: *anyopaque, paymentRequest: *PaymentRequest, _r: **IAsyncOperation(PaymentRequestSubmitResult)) callconv(.winapi) HRESULT,
         SubmitPaymentRequestAsyncWithChangeHandler: *const fn(self: *anyopaque, paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler, _r: **IAsyncOperation(PaymentRequestSubmitResult)) callconv(.winapi) HRESULT,
     };
@@ -594,8 +594,8 @@ pub const IPaymentMediator2 = extern struct {
 };
 pub const IPaymentMerchantInfo = extern struct {
     vtable: *const VTable,
-    pub fn getPackageFullName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPackageFullName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageFullName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -618,7 +618,7 @@ pub const IPaymentMerchantInfo = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PackageFullName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PackageFullName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
@@ -647,14 +647,14 @@ pub const IPaymentMerchantInfoFactory = extern struct {
 };
 pub const IPaymentMethodData = extern struct {
     vtable: *const VTable,
-    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedMethodIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJsonData(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJsonData(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JsonData(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -671,19 +671,19 @@ pub const IPaymentMethodData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SupportedMethodIds: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_JsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SupportedMethodIds: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_JsonData: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentMethodDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), supportedMethodIds: *IIterable(HSTRING)) core.HResult!*PaymentMethodData {
+    pub fn Create(self: *@This(), supportedMethodIds: *IIterable(?HSTRING)) core.HResult!*PaymentMethodData {
         var _r: *PaymentMethodData = undefined;
         const _c = self.vtable.Create(@ptrCast(self), supportedMethodIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithJsonData(self: *@This(), supportedMethodIds: *IIterable(HSTRING), jsonData: HSTRING) core.HResult!*PaymentMethodData {
+    pub fn CreateWithJsonData(self: *@This(), supportedMethodIds: *IIterable(?HSTRING), jsonData: ?HSTRING) core.HResult!*PaymentMethodData {
         var _r: *PaymentMethodData = undefined;
         const _c = self.vtable.CreateWithJsonData(@ptrCast(self), supportedMethodIds, jsonData, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -701,8 +701,8 @@ pub const IPaymentMethodDataFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(HSTRING), _r: **PaymentMethodData) callconv(.winapi) HRESULT,
-        CreateWithJsonData: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(HSTRING), jsonData: HSTRING, _r: **PaymentMethodData) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(?HSTRING), _r: **PaymentMethodData) callconv(.winapi) HRESULT,
+        CreateWithJsonData: *const fn(self: *anyopaque, supportedMethodIds: *IIterable(?HSTRING), jsonData: ?HSTRING, _r: **PaymentMethodData) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentOptions = extern struct {
@@ -827,8 +827,8 @@ pub const IPaymentRequest = extern struct {
 };
 pub const IPaymentRequest2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -845,7 +845,7 @@ pub const IPaymentRequest2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentRequestChangedArgs = extern struct {
@@ -902,13 +902,13 @@ pub const IPaymentRequestChangedResult = extern struct {
         const _c = self.vtable.put_ChangeAcceptedByMerchant(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Message(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -936,8 +936,8 @@ pub const IPaymentRequestChangedResult = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ChangeAcceptedByMerchant: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_ChangeAcceptedByMerchant: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_Message: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Message: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Message: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Message: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_UpdatedPaymentDetails: *const fn(self: *anyopaque, _r: **PaymentDetails) callconv(.winapi) HRESULT,
         put_UpdatedPaymentDetails: *const fn(self: *anyopaque, value: *PaymentDetails) callconv(.winapi) HRESULT,
     };
@@ -1011,7 +1011,7 @@ pub const IPaymentRequestFactory = extern struct {
 };
 pub const IPaymentRequestFactory2 = extern struct {
     vtable: *const VTable,
-    pub fn CreateWithMerchantInfoOptionsAndId(self: *@This(), details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: HSTRING) core.HResult!*PaymentRequest {
+    pub fn CreateWithMerchantInfoOptionsAndId(self: *@This(), details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: ?HSTRING) core.HResult!*PaymentRequest {
         var _r: *PaymentRequest = undefined;
         const _c = self.vtable.CreateWithMerchantInfoOptionsAndId(@ptrCast(self), details, methodData, merchantInfo, options, id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1029,7 +1029,7 @@ pub const IPaymentRequestFactory2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWithMerchantInfoOptionsAndId: *const fn(self: *anyopaque, details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: HSTRING, _r: **PaymentRequest) callconv(.winapi) HRESULT,
+        CreateWithMerchantInfoOptionsAndId: *const fn(self: *anyopaque, details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: ?HSTRING, _r: **PaymentRequest) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentRequestSubmitResult = extern struct {
@@ -1082,20 +1082,20 @@ pub const IPaymentResponse = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPayerEmail(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerEmail(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerEmail(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPayerName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PayerPhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1121,21 +1121,21 @@ pub const IPaymentResponse = extern struct {
         get_PaymentToken: *const fn(self: *anyopaque, _r: **PaymentToken) callconv(.winapi) HRESULT,
         get_ShippingOption: *const fn(self: *anyopaque, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
         get_ShippingAddress: *const fn(self: *anyopaque, _r: **PaymentAddress) callconv(.winapi) HRESULT,
-        get_PayerEmail: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PayerName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PayerPhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PayerEmail: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PayerName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PayerPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         CompleteAsync: *const fn(self: *anyopaque, status: PaymentRequestCompletionStatus, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentShippingOption = extern struct {
     vtable: *const VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Label(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1149,13 +1149,13 @@ pub const IPaymentShippingOption = extern struct {
         const _c = self.vtable.put_Amount(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1181,31 +1181,31 @@ pub const IPaymentShippingOption = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Label: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Label: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Label: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Label: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Amount: *const fn(self: *anyopaque, _r: **PaymentCurrencyAmount) callconv(.winapi) HRESULT,
         put_Amount: *const fn(self: *anyopaque, value: *PaymentCurrencyAmount) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsSelected: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsSelected: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentShippingOptionFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentShippingOption {
+    pub fn Create(self: *@This(), label: ?HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentShippingOption {
         var _r: *PaymentShippingOption = undefined;
         const _c = self.vtable.Create(@ptrCast(self), label, amount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithSelected(self: *@This(), label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool) core.HResult!*PaymentShippingOption {
+    pub fn CreateWithSelected(self: *@This(), label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool) core.HResult!*PaymentShippingOption {
         var _r: *PaymentShippingOption = undefined;
         const _c = self.vtable.CreateWithSelected(@ptrCast(self), label, amount, selected, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithSelectedAndTag(self: *@This(), label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: HSTRING) core.HResult!*PaymentShippingOption {
+    pub fn CreateWithSelectedAndTag(self: *@This(), label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: ?HSTRING) core.HResult!*PaymentShippingOption {
         var _r: *PaymentShippingOption = undefined;
         const _c = self.vtable.CreateWithSelectedAndTag(@ptrCast(self), label, amount, selected, tag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1223,21 +1223,21 @@ pub const IPaymentShippingOptionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, label: HSTRING, amount: *PaymentCurrencyAmount, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
-        CreateWithSelected: *const fn(self: *anyopaque, label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
-        CreateWithSelectedAndTag: *const fn(self: *anyopaque, label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: HSTRING, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, label: ?HSTRING, amount: *PaymentCurrencyAmount, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
+        CreateWithSelected: *const fn(self: *anyopaque, label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
+        CreateWithSelectedAndTag: *const fn(self: *anyopaque, label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: ?HSTRING, _r: **PaymentShippingOption) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentToken = extern struct {
     vtable: *const VTable,
-    pub fn getPaymentMethodId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPaymentMethodId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PaymentMethodId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getJsonDetails(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getJsonDetails(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_JsonDetails(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1254,19 +1254,19 @@ pub const IPaymentToken = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PaymentMethodId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_JsonDetails: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PaymentMethodId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_JsonDetails: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentTokenFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), paymentMethodId: HSTRING) core.HResult!*PaymentToken {
+    pub fn Create(self: *@This(), paymentMethodId: ?HSTRING) core.HResult!*PaymentToken {
         var _r: *PaymentToken = undefined;
         const _c = self.vtable.Create(@ptrCast(self), paymentMethodId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithJsonDetails(self: *@This(), paymentMethodId: HSTRING, jsonDetails: HSTRING) core.HResult!*PaymentToken {
+    pub fn CreateWithJsonDetails(self: *@This(), paymentMethodId: ?HSTRING, jsonDetails: ?HSTRING) core.HResult!*PaymentToken {
         var _r: *PaymentToken = undefined;
         const _c = self.vtable.CreateWithJsonDetails(@ptrCast(self), paymentMethodId, jsonDetails, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1284,97 +1284,97 @@ pub const IPaymentTokenFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, paymentMethodId: HSTRING, _r: **PaymentToken) callconv(.winapi) HRESULT,
-        CreateWithJsonDetails: *const fn(self: *anyopaque, paymentMethodId: HSTRING, jsonDetails: HSTRING, _r: **PaymentToken) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, paymentMethodId: ?HSTRING, _r: **PaymentToken) callconv(.winapi) HRESULT,
+        CreateWithJsonDetails: *const fn(self: *anyopaque, paymentMethodId: ?HSTRING, jsonDetails: ?HSTRING, _r: **PaymentToken) callconv(.winapi) HRESULT,
     };
 };
 pub const PaymentAddress = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCountry(self: *@This()) core.HResult!HSTRING {
+    pub fn getCountry(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getCountry();
     }
-    pub fn putCountry(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCountry(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putCountry(value);
     }
-    pub fn getAddressLines(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getAddressLines(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getAddressLines();
     }
-    pub fn putAddressLines(self: *@This(), value: *IVectorView(HSTRING)) core.HResult!void {
+    pub fn putAddressLines(self: *@This(), value: *IVectorView(?HSTRING)) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putAddressLines(value);
     }
-    pub fn getRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getRegion();
     }
-    pub fn putRegion(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putRegion(value);
     }
-    pub fn getCity(self: *@This()) core.HResult!HSTRING {
+    pub fn getCity(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getCity();
     }
-    pub fn putCity(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putCity(value);
     }
-    pub fn getDependentLocality(self: *@This()) core.HResult!HSTRING {
+    pub fn getDependentLocality(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getDependentLocality();
     }
-    pub fn putDependentLocality(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDependentLocality(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putDependentLocality(value);
     }
-    pub fn getPostalCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getPostalCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getPostalCode();
     }
-    pub fn putPostalCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPostalCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putPostalCode(value);
     }
-    pub fn getSortingCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getSortingCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getSortingCode();
     }
-    pub fn putSortingCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSortingCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putSortingCode(value);
     }
-    pub fn getLanguageCode(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguageCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getLanguageCode();
     }
-    pub fn putLanguageCode(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguageCode(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putLanguageCode(value);
     }
-    pub fn getOrganization(self: *@This()) core.HResult!HSTRING {
+    pub fn getOrganization(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getOrganization();
     }
-    pub fn putOrganization(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putOrganization(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putOrganization(value);
     }
-    pub fn getRecipient(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecipient(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getRecipient();
     }
-    pub fn putRecipient(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRecipient(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putRecipient(value);
     }
-    pub fn getPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.getPhoneNumber();
     }
-    pub fn putPhoneNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPhoneNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentAddress = @ptrCast(self);
         return try this.putPhoneNumber(value);
     }
@@ -1427,38 +1427,38 @@ pub const PaymentCanMakePaymentResultStatus = enum(i32) {
 };
 pub const PaymentCurrencyAmount = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.getCurrency();
     }
-    pub fn putCurrency(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrency(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.putCurrency(value);
     }
-    pub fn getCurrencySystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrencySystem(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.getCurrencySystem();
     }
-    pub fn putCurrencySystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrencySystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.putCurrencySystem(value);
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.getValue();
     }
-    pub fn putValue(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentCurrencyAmount = @ptrCast(self);
         return try this.putValue(value);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(value: HSTRING, currency: HSTRING) core.HResult!*PaymentCurrencyAmount {
+    pub fn Create(value: ?HSTRING, currency: ?HSTRING) core.HResult!*PaymentCurrencyAmount {
         const _f = try @This()._IPaymentCurrencyAmountFactoryCache.get();
         return try _f.Create(value, currency);
     }
-    pub fn CreateWithCurrencySystem(value: HSTRING, currency: HSTRING, currencySystem: HSTRING) core.HResult!*PaymentCurrencyAmount {
+    pub fn CreateWithCurrencySystem(value: ?HSTRING, currency: ?HSTRING, currencySystem: ?HSTRING) core.HResult!*PaymentCurrencyAmount {
         const _f = try @This()._IPaymentCurrencyAmountFactoryCache.get();
         return try _f.CreateWithCurrencySystem(value, currency, currencySystem);
     }
@@ -1528,11 +1528,11 @@ pub const PaymentDetails = extern struct {
 };
 pub const PaymentDetailsModifier = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentDetailsModifier = @ptrCast(self);
         return try this.getJsonData();
     }
-    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPaymentDetailsModifier = @ptrCast(self);
         return try this.getSupportedMethodIds();
     }
@@ -1547,15 +1547,15 @@ pub const PaymentDetailsModifier = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem) core.HResult!*PaymentDetailsModifier {
+    pub fn Create(supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem) core.HResult!*PaymentDetailsModifier {
         const _f = try @This()._IPaymentDetailsModifierFactoryCache.get();
         return try _f.Create(supportedMethodIds, total);
     }
-    pub fn CreateWithAdditionalDisplayItems(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetailsModifier {
+    pub fn CreateWithAdditionalDisplayItems(supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetailsModifier {
         const _f = try @This()._IPaymentDetailsModifierFactoryCache.get();
         return try _f.CreateWithAdditionalDisplayItems(supportedMethodIds, total, additionalDisplayItems);
     }
-    pub fn CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: HSTRING) core.HResult!*PaymentDetailsModifier {
+    pub fn CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds: *IIterable(?HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: ?HSTRING) core.HResult!*PaymentDetailsModifier {
         const _f = try @This()._IPaymentDetailsModifierFactoryCache.get();
         return try _f.CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds, total, additionalDisplayItems, jsonData);
     }
@@ -1568,11 +1568,11 @@ pub const PaymentDetailsModifier = extern struct {
 };
 pub const PaymentItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentItem = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentItem = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -1595,7 +1595,7 @@ pub const PaymentItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentItem {
+    pub fn Create(label: ?HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentItem {
         const _f = try @This()._IPaymentItemFactoryCache.get();
         return try _f.Create(label, amount);
     }
@@ -1608,7 +1608,7 @@ pub const PaymentItem = extern struct {
 };
 pub const PaymentMediator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetSupportedMethodIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetSupportedMethodIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *IPaymentMediator = @ptrCast(self);
         return try this.GetSupportedMethodIdsAsync();
     }
@@ -1642,7 +1642,7 @@ pub const PaymentMediator = extern struct {
 };
 pub const PaymentMerchantInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPackageFullName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPackageFullName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentMerchantInfo = @ptrCast(self);
         return try this.getPackageFullName();
     }
@@ -1671,22 +1671,22 @@ pub const PaymentMerchantInfo = extern struct {
 };
 pub const PaymentMethodData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getSupportedMethodIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPaymentMethodData = @ptrCast(self);
         return try this.getSupportedMethodIds();
     }
-    pub fn getJsonData(self: *@This()) core.HResult!HSTRING {
+    pub fn getJsonData(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentMethodData = @ptrCast(self);
         return try this.getJsonData();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(supportedMethodIds: *IIterable(HSTRING)) core.HResult!*PaymentMethodData {
+    pub fn Create(supportedMethodIds: *IIterable(?HSTRING)) core.HResult!*PaymentMethodData {
         const _f = try @This()._IPaymentMethodDataFactoryCache.get();
         return try _f.Create(supportedMethodIds);
     }
-    pub fn CreateWithJsonData(supportedMethodIds: *IIterable(HSTRING), jsonData: HSTRING) core.HResult!*PaymentMethodData {
+    pub fn CreateWithJsonData(supportedMethodIds: *IIterable(?HSTRING), jsonData: ?HSTRING) core.HResult!*PaymentMethodData {
         const _f = try @This()._IPaymentMethodDataFactoryCache.get();
         return try _f.CreateWithJsonData(supportedMethodIds, jsonData);
     }
@@ -1776,7 +1776,7 @@ pub const PaymentRequest = extern struct {
         const this: *IPaymentRequest = @ptrCast(self);
         return try this.getOptions();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPaymentRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPaymentRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1785,7 +1785,7 @@ pub const PaymentRequest = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWithMerchantInfoOptionsAndId(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: HSTRING) core.HResult!*PaymentRequest {
+    pub fn CreateWithMerchantInfoOptionsAndId(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: ?HSTRING) core.HResult!*PaymentRequest {
         const _f = try @This()._IPaymentRequestFactory2Cache.get();
         return try _f.CreateWithMerchantInfoOptionsAndId(details, methodData, merchantInfo, options, id);
     }
@@ -1934,11 +1934,11 @@ pub const PaymentRequestChangedResult = extern struct {
         const this: *IPaymentRequestChangedResult = @ptrCast(self);
         return try this.putChangeAcceptedByMerchant(value);
     }
-    pub fn getMessage(self: *@This()) core.HResult!HSTRING {
+    pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentRequestChangedResult = @ptrCast(self);
         return try this.getMessage();
     }
-    pub fn putMessage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentRequestChangedResult = @ptrCast(self);
         return try this.putMessage(value);
     }
@@ -2008,15 +2008,15 @@ pub const PaymentResponse = extern struct {
         const this: *IPaymentResponse = @ptrCast(self);
         return try this.getShippingAddress();
     }
-    pub fn getPayerEmail(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerEmail(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentResponse = @ptrCast(self);
         return try this.getPayerEmail();
     }
-    pub fn getPayerName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentResponse = @ptrCast(self);
         return try this.getPayerName();
     }
-    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getPayerPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentResponse = @ptrCast(self);
         return try this.getPayerPhoneNumber();
     }
@@ -2032,11 +2032,11 @@ pub const PaymentResponse = extern struct {
 };
 pub const PaymentShippingOption = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLabel(self: *@This()) core.HResult!HSTRING {
+    pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentShippingOption = @ptrCast(self);
         return try this.getLabel();
     }
-    pub fn putLabel(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentShippingOption = @ptrCast(self);
         return try this.putLabel(value);
     }
@@ -2048,11 +2048,11 @@ pub const PaymentShippingOption = extern struct {
         const this: *IPaymentShippingOption = @ptrCast(self);
         return try this.putAmount(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentShippingOption = @ptrCast(self);
         return try this.getTag();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPaymentShippingOption = @ptrCast(self);
         return try this.putTag(value);
     }
@@ -2067,15 +2067,15 @@ pub const PaymentShippingOption = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentShippingOption {
+    pub fn Create(label: ?HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentShippingOption {
         const _f = try @This()._IPaymentShippingOptionFactoryCache.get();
         return try _f.Create(label, amount);
     }
-    pub fn CreateWithSelected(label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool) core.HResult!*PaymentShippingOption {
+    pub fn CreateWithSelected(label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool) core.HResult!*PaymentShippingOption {
         const _f = try @This()._IPaymentShippingOptionFactoryCache.get();
         return try _f.CreateWithSelected(label, amount, selected);
     }
-    pub fn CreateWithSelectedAndTag(label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: HSTRING) core.HResult!*PaymentShippingOption {
+    pub fn CreateWithSelectedAndTag(label: ?HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: ?HSTRING) core.HResult!*PaymentShippingOption {
         const _f = try @This()._IPaymentShippingOptionFactoryCache.get();
         return try _f.CreateWithSelectedAndTag(label, amount, selected, tag);
     }
@@ -2093,22 +2093,22 @@ pub const PaymentShippingType = enum(i32) {
 };
 pub const PaymentToken = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPaymentMethodId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPaymentMethodId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentToken = @ptrCast(self);
         return try this.getPaymentMethodId();
     }
-    pub fn getJsonDetails(self: *@This()) core.HResult!HSTRING {
+    pub fn getJsonDetails(self: *@This()) core.HResult!?HSTRING {
         const this: *IPaymentToken = @ptrCast(self);
         return try this.getJsonDetails();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(paymentMethodId: HSTRING) core.HResult!*PaymentToken {
+    pub fn Create(paymentMethodId: ?HSTRING) core.HResult!*PaymentToken {
         const _f = try @This()._IPaymentTokenFactoryCache.get();
         return try _f.Create(paymentMethodId);
     }
-    pub fn CreateWithJsonDetails(paymentMethodId: HSTRING, jsonDetails: HSTRING) core.HResult!*PaymentToken {
+    pub fn CreateWithJsonDetails(paymentMethodId: ?HSTRING, jsonDetails: ?HSTRING) core.HResult!*PaymentToken {
         const _f = try @This()._IPaymentTokenFactoryCache.get();
         return try _f.CreateWithJsonDetails(paymentMethodId, jsonDetails);
     }

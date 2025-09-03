@@ -246,19 +246,19 @@ pub const ISpatialAnchorStatics = extern struct {
 };
 pub const ISpatialAnchorStore = extern struct {
     vtable: *const VTable,
-    pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(HSTRING,SpatialAnchor) {
-        var _r: *IMapView(HSTRING,SpatialAnchor) = undefined;
+    pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(?HSTRING,SpatialAnchor) {
+        var _r: *IMapView(?HSTRING,SpatialAnchor) = undefined;
         const _c = self.vtable.GetAllSavedAnchors(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySave(self: *@This(), id: HSTRING, anchor: *SpatialAnchor) core.HResult!bool {
+    pub fn TrySave(self: *@This(), id: ?HSTRING, anchor: *SpatialAnchor) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySave(@ptrCast(self), id, anchor, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Remove(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), id: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Remove(@ptrCast(self), id);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -278,21 +278,21 @@ pub const ISpatialAnchorStore = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetAllSavedAnchors: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,SpatialAnchor)) callconv(.winapi) HRESULT,
-        TrySave: *const fn(self: *anyopaque, id: HSTRING, anchor: *SpatialAnchor, _r: *bool) callconv(.winapi) HRESULT,
-        Remove: *const fn(self: *anyopaque, id: HSTRING) callconv(.winapi) HRESULT,
+        GetAllSavedAnchors: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,SpatialAnchor)) callconv(.winapi) HRESULT,
+        TrySave: *const fn(self: *anyopaque, id: ?HSTRING, anchor: *SpatialAnchor, _r: *bool) callconv(.winapi) HRESULT,
+        Remove: *const fn(self: *anyopaque, id: ?HSTRING) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAnchorTransferManagerStatics = extern struct {
     vtable: *const VTable,
-    pub fn TryImportAnchorsAsync(self: *@This(), stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(HSTRING,SpatialAnchor)) {
-        var _r: *IAsyncOperation(IMapView(HSTRING,SpatialAnchor)) = undefined;
+    pub fn TryImportAnchorsAsync(self: *@This(), stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(?HSTRING,SpatialAnchor)) {
+        var _r: *IAsyncOperation(IMapView(?HSTRING,SpatialAnchor)) = undefined;
         const _c = self.vtable.TryImportAnchorsAsync(@ptrCast(self), stream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryExportAnchorsAsync(self: *@This(), anchors: *IIterable(IKeyValuePair(HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryExportAnchorsAsync(self: *@This(), anchors: *IIterable(IKeyValuePair(?HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryExportAnchorsAsync(@ptrCast(self), anchors, stream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -316,8 +316,8 @@ pub const ISpatialAnchorTransferManagerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        TryImportAnchorsAsync: *const fn(self: *anyopaque, stream: *IInputStream, _r: **IAsyncOperation(IMapView(HSTRING,SpatialAnchor))) callconv(.winapi) HRESULT,
-        TryExportAnchorsAsync: *const fn(self: *anyopaque, anchors: *IIterable(IKeyValuePair(HSTRING,SpatialAnchor)), stream: *IOutputStream, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryImportAnchorsAsync: *const fn(self: *anyopaque, stream: *IInputStream, _r: **IAsyncOperation(IMapView(?HSTRING,SpatialAnchor))) callconv(.winapi) HRESULT,
+        TryExportAnchorsAsync: *const fn(self: *anyopaque, anchors: *IIterable(IKeyValuePair(?HSTRING,SpatialAnchor)), stream: *IOutputStream, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SpatialPerceptionAccessStatus)) callconv(.winapi) HRESULT,
     };
 };
@@ -406,8 +406,8 @@ pub const ISpatialCoordinateSystem = extern struct {
 };
 pub const ISpatialEntity = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -436,7 +436,7 @@ pub const ISpatialEntity = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Anchor: *const fn(self: *anyopaque, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
@@ -1237,15 +1237,15 @@ pub const SpatialAnchorRawCoordinateSystemAdjustedEventArgs = extern struct {
 };
 pub const SpatialAnchorStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(HSTRING,SpatialAnchor) {
+    pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(?HSTRING,SpatialAnchor) {
         const this: *ISpatialAnchorStore = @ptrCast(self);
         return try this.GetAllSavedAnchors();
     }
-    pub fn TrySave(self: *@This(), id: HSTRING, anchor: *SpatialAnchor) core.HResult!bool {
+    pub fn TrySave(self: *@This(), id: ?HSTRING, anchor: *SpatialAnchor) core.HResult!bool {
         const this: *ISpatialAnchorStore = @ptrCast(self);
         return try this.TrySave(id, anchor);
     }
-    pub fn Remove(self: *@This(), id: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), id: ?HSTRING) core.HResult!void {
         const this: *ISpatialAnchorStore = @ptrCast(self);
         return try this.Remove(id);
     }
@@ -1264,11 +1264,11 @@ pub const SpatialAnchorTransferManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn TryImportAnchorsAsync(stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(HSTRING,SpatialAnchor)) {
+    pub fn TryImportAnchorsAsync(stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(?HSTRING,SpatialAnchor)) {
         const _f = try @This()._ISpatialAnchorTransferManagerStaticsCache.get();
         return try _f.TryImportAnchorsAsync(stream);
     }
-    pub fn TryExportAnchorsAsync(anchors: *IIterable(IKeyValuePair(HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryExportAnchorsAsync(anchors: *IIterable(IKeyValuePair(?HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
         const _f = try @This()._ISpatialAnchorTransferManagerStaticsCache.get();
         return try _f.TryExportAnchorsAsync(anchors, stream);
     }
@@ -1343,7 +1343,7 @@ pub const SpatialCoordinateSystem = extern struct {
 };
 pub const SpatialEntity = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpatialEntity = @ptrCast(self);
         return try this.getId();
     }

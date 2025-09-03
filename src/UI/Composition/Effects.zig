@@ -157,13 +157,13 @@ pub const SceneLightingEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReflectanceModel(value);
     }
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGraphicsEffect = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
-    pub fn putName(self: *@This(), name: HSTRING) core.HResult!void {
+    pub fn putName(self: *@This(), name: ?HSTRING) core.HResult!void {
         var this: ?*IGraphicsEffect = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

@@ -1,7 +1,7 @@
 // ----- This code is automatically generated -----
 pub const ICredentialFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreatePasswordCredential(self: *@This(), resource: HSTRING, userName: HSTRING, password: HSTRING) core.HResult!*PasswordCredential {
+    pub fn CreatePasswordCredential(self: *@This(), resource: ?HSTRING, userName: ?HSTRING, password: ?HSTRING) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.CreatePasswordCredential(@ptrCast(self), resource, userName, password, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -19,13 +19,13 @@ pub const ICredentialFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreatePasswordCredential: *const fn(self: *anyopaque, resource: HSTRING, userName: HSTRING, password: HSTRING, _r: **PasswordCredential) callconv(.winapi) HRESULT,
+        CreatePasswordCredential: *const fn(self: *anyopaque, resource: ?HSTRING, userName: ?HSTRING, password: ?HSTRING, _r: **PasswordCredential) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyCredential = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -66,7 +66,7 @@ pub const IKeyCredential = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         RetrievePublicKey: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         RetrievePublicKeyWithBlobType: *const fn(self: *anyopaque, blobType: CryptographicPublicKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
         RequestSignAsync: *const fn(self: *anyopaque, data: *IBuffer, _r: **IAsyncOperation(KeyCredentialOperationResult)) callconv(.winapi) HRESULT,
@@ -124,19 +124,19 @@ pub const IKeyCredentialManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestCreateAsync(self: *@This(), name: HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
+    pub fn RequestCreateAsync(self: *@This(), name: ?HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
         var _r: *IAsyncOperation(KeyCredentialRetrievalResult) = undefined;
         const _c = self.vtable.RequestCreateAsync(@ptrCast(self), name, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
+    pub fn OpenAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
         var _r: *IAsyncOperation(KeyCredentialRetrievalResult) = undefined;
         const _c = self.vtable.OpenAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DeleteAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -156,9 +156,9 @@ pub const IKeyCredentialManagerStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsSupportedAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RenewAttestationAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RequestCreateAsync: *const fn(self: *anyopaque, name: HSTRING, option: KeyCredentialCreationOption, _r: **IAsyncOperation(KeyCredentialRetrievalResult)) callconv(.winapi) HRESULT,
-        OpenAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(KeyCredentialRetrievalResult)) callconv(.winapi) HRESULT,
-        DeleteAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RequestCreateAsync: *const fn(self: *anyopaque, name: ?HSTRING, option: KeyCredentialCreationOption, _r: **IAsyncOperation(KeyCredentialRetrievalResult)) callconv(.winapi) HRESULT,
+        OpenAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncOperation(KeyCredentialRetrievalResult)) callconv(.winapi) HRESULT,
+        DeleteAsync: *const fn(self: *anyopaque, name: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyCredentialOperationResult = extern struct {
@@ -223,33 +223,33 @@ pub const IKeyCredentialRetrievalResult = extern struct {
 };
 pub const IPasswordCredential = extern struct {
     vtable: *const VTable,
-    pub fn getResource(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResource(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Resource(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putResource(self: *@This(), resource: HSTRING) core.HResult!void {
+    pub fn putResource(self: *@This(), resource: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Resource(@ptrCast(self), resource);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUserName(self: *@This(), userName: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), userName: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UserName(@ptrCast(self), userName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Password(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPassword(self: *@This(), password: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), password: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Password(@ptrCast(self), password);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -275,12 +275,12 @@ pub const IPasswordCredential = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Resource: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Resource: *const fn(self: *anyopaque, resource: HSTRING) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UserName: *const fn(self: *anyopaque, userName: HSTRING) callconv(.winapi) HRESULT,
-        get_Password: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Password: *const fn(self: *anyopaque, password: HSTRING) callconv(.winapi) HRESULT,
+        get_Resource: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Resource: *const fn(self: *anyopaque, resource: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UserName: *const fn(self: *anyopaque, userName: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Password: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Password: *const fn(self: *anyopaque, password: ?HSTRING) callconv(.winapi) HRESULT,
         RetrievePassword: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IPropertySet) callconv(.winapi) HRESULT,
     };
@@ -295,19 +295,19 @@ pub const IPasswordVault = extern struct {
         const _c = self.vtable.Remove(@ptrCast(self), credential);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Retrieve(self: *@This(), resource: HSTRING, userName: HSTRING) core.HResult!*PasswordCredential {
+    pub fn Retrieve(self: *@This(), resource: ?HSTRING, userName: ?HSTRING) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.Retrieve(@ptrCast(self), resource, userName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllByResource(self: *@This(), resource: HSTRING) core.HResult!*IVectorView(PasswordCredential) {
+    pub fn FindAllByResource(self: *@This(), resource: ?HSTRING) core.HResult!*IVectorView(PasswordCredential) {
         var _r: *IVectorView(PasswordCredential) = undefined;
         const _c = self.vtable.FindAllByResource(@ptrCast(self), resource, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllByUserName(self: *@This(), userName: HSTRING) core.HResult!*IVectorView(PasswordCredential) {
+    pub fn FindAllByUserName(self: *@This(), userName: ?HSTRING) core.HResult!*IVectorView(PasswordCredential) {
         var _r: *IVectorView(PasswordCredential) = undefined;
         const _c = self.vtable.FindAllByUserName(@ptrCast(self), userName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -333,9 +333,9 @@ pub const IPasswordVault = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Add: *const fn(self: *anyopaque, credential: *PasswordCredential) callconv(.winapi) HRESULT,
         Remove: *const fn(self: *anyopaque, credential: *PasswordCredential) callconv(.winapi) HRESULT,
-        Retrieve: *const fn(self: *anyopaque, resource: HSTRING, userName: HSTRING, _r: **PasswordCredential) callconv(.winapi) HRESULT,
-        FindAllByResource: *const fn(self: *anyopaque, resource: HSTRING, _r: **IVectorView(PasswordCredential)) callconv(.winapi) HRESULT,
-        FindAllByUserName: *const fn(self: *anyopaque, userName: HSTRING, _r: **IVectorView(PasswordCredential)) callconv(.winapi) HRESULT,
+        Retrieve: *const fn(self: *anyopaque, resource: ?HSTRING, userName: ?HSTRING, _r: **PasswordCredential) callconv(.winapi) HRESULT,
+        FindAllByResource: *const fn(self: *anyopaque, resource: ?HSTRING, _r: **IVectorView(PasswordCredential)) callconv(.winapi) HRESULT,
+        FindAllByUserName: *const fn(self: *anyopaque, userName: ?HSTRING, _r: **IVectorView(PasswordCredential)) callconv(.winapi) HRESULT,
         RetrieveAll: *const fn(self: *anyopaque, _r: **IVectorView(PasswordCredential)) callconv(.winapi) HRESULT,
     };
 };
@@ -347,8 +347,8 @@ pub const IWebAccount = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -372,20 +372,20 @@ pub const IWebAccount = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_WebAccountProvider: *const fn(self: *anyopaque, _r: **WebAccountProvider) callconv(.winapi) HRESULT,
-        get_UserName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UserName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_State: *const fn(self: *anyopaque, _r: *WebAccountState) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccount2 = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var _r: *IMapView(HSTRING,HSTRING) = undefined;
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
+        var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -402,7 +402,7 @@ pub const IWebAccount2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SignOutAsyncWithClientId(self: *@This(), clientId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SignOutAsyncWithClientId(self: *@This(), clientId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SignOutAsyncWithClientId(@ptrCast(self), clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -420,16 +420,16 @@ pub const IWebAccount2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Properties: *const fn(self: *anyopaque, _r: **IMapView(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         GetPictureAsync: *const fn(self: *anyopaque, desizedSize: WebAccountPictureSize, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
         SignOutAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SignOutAsyncWithClientId: *const fn(self: *anyopaque, clientId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SignOutAsyncWithClientId: *const fn(self: *anyopaque, clientId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWebAccount(self: *@This(), webAccountProvider: *WebAccountProvider, userName: HSTRING, state: WebAccountState) core.HResult!*WebAccount {
+    pub fn CreateWebAccount(self: *@This(), webAccountProvider: *WebAccountProvider, userName: ?HSTRING, state: WebAccountState) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.CreateWebAccount(@ptrCast(self), webAccountProvider, userName, state, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -447,19 +447,19 @@ pub const IWebAccountFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWebAccount: *const fn(self: *anyopaque, webAccountProvider: *WebAccountProvider, userName: HSTRING, state: WebAccountState, _r: **WebAccount) callconv(.winapi) HRESULT,
+        CreateWebAccount: *const fn(self: *anyopaque, webAccountProvider: *WebAccountProvider, userName: ?HSTRING, state: WebAccountState, _r: **WebAccount) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountProvider = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -482,21 +482,21 @@ pub const IWebAccountProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IconUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountProvider2 = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayPurpose(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayPurpose(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayPurpose(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAuthority(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthority(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Authority(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -513,8 +513,8 @@ pub const IWebAccountProvider2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayPurpose: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Authority: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayPurpose: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Authority: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountProvider3 = extern struct {
@@ -565,7 +565,7 @@ pub const IWebAccountProvider4 = extern struct {
 };
 pub const IWebAccountProviderFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateWebAccountProvider(self: *@This(), id: HSTRING, displayName: HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
+    pub fn CreateWebAccountProvider(self: *@This(), id: ?HSTRING, displayName: ?HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.CreateWebAccountProvider(@ptrCast(self), id, displayName, iconUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -583,12 +583,12 @@ pub const IWebAccountProviderFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateWebAccountProvider: *const fn(self: *anyopaque, id: HSTRING, displayName: HSTRING, iconUri: *Uri, _r: **WebAccountProvider) callconv(.winapi) HRESULT,
+        CreateWebAccountProvider: *const fn(self: *anyopaque, id: ?HSTRING, displayName: ?HSTRING, iconUri: *Uri, _r: **WebAccountProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const KeyCredential = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyCredential = @ptrCast(self);
         return try this.getName();
     }
@@ -657,15 +657,15 @@ pub const KeyCredentialManager = extern struct {
         const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.RenewAttestationAsync();
     }
-    pub fn RequestCreateAsync(name: HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
+    pub fn RequestCreateAsync(name: ?HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
         const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.RequestCreateAsync(name, option);
     }
-    pub fn OpenAsync(name: HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
+    pub fn OpenAsync(name: ?HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
         const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.OpenAsync(name);
     }
-    pub fn DeleteAsync(name: HSTRING) core.HResult!*IAsyncAction {
+    pub fn DeleteAsync(name: ?HSTRING) core.HResult!*IAsyncAction {
         const _f = try @This()._IKeyCredentialManagerStaticsCache.get();
         return try _f.DeleteAsync(name);
     }
@@ -716,27 +716,27 @@ pub const KeyCredentialStatus = enum(i32) {
 };
 pub const PasswordCredential = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getResource(self: *@This()) core.HResult!HSTRING {
+    pub fn getResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.getResource();
     }
-    pub fn putResource(self: *@This(), resource: HSTRING) core.HResult!void {
+    pub fn putResource(self: *@This(), resource: ?HSTRING) core.HResult!void {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.putResource(resource);
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.getUserName();
     }
-    pub fn putUserName(self: *@This(), userName: HSTRING) core.HResult!void {
+    pub fn putUserName(self: *@This(), userName: ?HSTRING) core.HResult!void {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.putUserName(userName);
     }
-    pub fn getPassword(self: *@This()) core.HResult!HSTRING {
+    pub fn getPassword(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.getPassword();
     }
-    pub fn putPassword(self: *@This(), password: HSTRING) core.HResult!void {
+    pub fn putPassword(self: *@This(), password: ?HSTRING) core.HResult!void {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.putPassword(password);
     }
@@ -755,7 +755,7 @@ pub const PasswordCredential = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordCredential.IID)));
     }
-    pub fn CreatePasswordCredential(resource: HSTRING, userName: HSTRING, password: HSTRING) core.HResult!*PasswordCredential {
+    pub fn CreatePasswordCredential(resource: ?HSTRING, userName: ?HSTRING, password: ?HSTRING) core.HResult!*PasswordCredential {
         const _f = try @This()._ICredentialFactoryCache.get();
         return try _f.CreatePasswordCredential(resource, userName, password);
     }
@@ -769,38 +769,38 @@ pub const PasswordCredential = extern struct {
 };
 pub const PasswordCredentialPropertyStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
-        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
+        var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
+        var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
+        var this: ?*IMap(?HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -829,15 +829,15 @@ pub const PasswordVault = extern struct {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.Remove(credential);
     }
-    pub fn Retrieve(self: *@This(), resource: HSTRING, userName: HSTRING) core.HResult!*PasswordCredential {
+    pub fn Retrieve(self: *@This(), resource: ?HSTRING, userName: ?HSTRING) core.HResult!*PasswordCredential {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.Retrieve(resource, userName);
     }
-    pub fn FindAllByResource(self: *@This(), resource: HSTRING) core.HResult!*IVectorView(PasswordCredential) {
+    pub fn FindAllByResource(self: *@This(), resource: ?HSTRING) core.HResult!*IVectorView(PasswordCredential) {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.FindAllByResource(resource);
     }
-    pub fn FindAllByUserName(self: *@This(), userName: HSTRING) core.HResult!*IVectorView(PasswordCredential) {
+    pub fn FindAllByUserName(self: *@This(), userName: ?HSTRING) core.HResult!*IVectorView(PasswordCredential) {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.FindAllByUserName(userName);
     }
@@ -865,7 +865,7 @@ pub const WebAccount = extern struct {
         const this: *IWebAccount = @ptrCast(self);
         return try this.getWebAccountProvider();
     }
-    pub fn getUserName(self: *@This()) core.HResult!HSTRING {
+    pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAccount = @ptrCast(self);
         return try this.getUserName();
     }
@@ -873,13 +873,13 @@ pub const WebAccount = extern struct {
         const this: *IWebAccount = @ptrCast(self);
         return try this.getState();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebAccount2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
-    pub fn getProperties(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var this: ?*IWebAccount2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -897,7 +897,7 @@ pub const WebAccount = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SignOutAsync();
     }
-    pub fn SignOutAsyncWithClientId(self: *@This(), clientId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SignOutAsyncWithClientId(self: *@This(), clientId: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IWebAccount2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -906,7 +906,7 @@ pub const WebAccount = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWebAccount(webAccountProvider: *WebAccountProvider, userName: HSTRING, state: WebAccountState) core.HResult!*WebAccount {
+    pub fn CreateWebAccount(webAccountProvider: *WebAccountProvider, userName: ?HSTRING, state: WebAccountState) core.HResult!*WebAccount {
         const _f = try @This()._IWebAccountFactoryCache.get();
         return try _f.CreateWebAccount(webAccountProvider, userName, state);
     }
@@ -925,11 +925,11 @@ pub const WebAccountPictureSize = enum(i32) {
 };
 pub const WebAccountProvider = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAccountProvider = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAccountProvider = @ptrCast(self);
         return try this.getDisplayName();
     }
@@ -937,13 +937,13 @@ pub const WebAccountProvider = extern struct {
         const this: *IWebAccountProvider = @ptrCast(self);
         return try this.getIconUri();
     }
-    pub fn getDisplayPurpose(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayPurpose(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebAccountProvider2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayPurpose();
     }
-    pub fn getAuthority(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthority(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebAccountProvider2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -964,7 +964,7 @@ pub const WebAccountProvider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateWebAccountProvider(id: HSTRING, displayName: HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
+    pub fn CreateWebAccountProvider(id: ?HSTRING, displayName: ?HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
         const _f = try @This()._IWebAccountProviderFactoryCache.get();
         return try _f.CreateWebAccountProvider(id, displayName, iconUri);
     }

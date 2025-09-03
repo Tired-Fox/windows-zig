@@ -4,19 +4,19 @@ pub const AdaptiveNotificationContentKind = enum(i32) {
 };
 pub const AdaptiveNotificationText = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IAdaptiveNotificationText = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAdaptiveNotificationText = @ptrCast(self);
         return try this.putText(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IAdaptiveNotificationText = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAdaptiveNotificationText = @ptrCast(self);
         return try this.putLanguage(value);
     }
@@ -26,7 +26,7 @@ pub const AdaptiveNotificationText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
-    pub fn getHints(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getHints(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var this: ?*IAdaptiveNotificationContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveNotificationContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -87,11 +87,11 @@ pub const BadgeUpdateManager = extern struct {
         const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForApplication();
     }
-    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(applicationId: ?HSTRING) core.HResult!*BadgeUpdater {
         const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForApplicationWithApplicationId(applicationId);
     }
-    pub fn CreateBadgeUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForSecondaryTile(tileId: ?HSTRING) core.HResult!*BadgeUpdater {
         const _f = try @This()._IBadgeUpdateManagerStaticsCache.get();
         return try _f.CreateBadgeUpdaterForSecondaryTile(tileId);
     }
@@ -114,11 +114,11 @@ pub const BadgeUpdateManagerForUser = extern struct {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
         return try this.CreateBadgeUpdaterForApplication();
     }
-    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*BadgeUpdater {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
         return try this.CreateBadgeUpdaterForApplicationWithApplicationId(applicationId);
     }
-    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*BadgeUpdater {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
         return try this.CreateBadgeUpdaterForSecondaryTile(tileId);
     }
@@ -168,8 +168,8 @@ pub const IAdaptiveNotificationContent = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHints(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getHints(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Hints(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -187,28 +187,28 @@ pub const IAdaptiveNotificationContent = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Kind: *const fn(self: *anyopaque, _r: *AdaptiveNotificationContentKind) callconv(.winapi) HRESULT,
-        get_Hints: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Hints: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAdaptiveNotificationText = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -224,10 +224,10 @@ pub const IAdaptiveNotificationText = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IBadgeNotification = extern struct {
@@ -296,13 +296,13 @@ pub const IBadgeUpdateManagerForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*BadgeUpdater {
         var _r: *BadgeUpdater = undefined;
         const _c = self.vtable.CreateBadgeUpdaterForApplicationWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*BadgeUpdater {
         var _r: *BadgeUpdater = undefined;
         const _c = self.vtable.CreateBadgeUpdaterForSecondaryTile(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -327,8 +327,8 @@ pub const IBadgeUpdateManagerForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateBadgeUpdaterForApplication: *const fn(self: *anyopaque, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
-        CreateBadgeUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
-        CreateBadgeUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
+        CreateBadgeUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
+        CreateBadgeUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
 };
@@ -340,13 +340,13 @@ pub const IBadgeUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*BadgeUpdater {
         var _r: *BadgeUpdater = undefined;
         const _c = self.vtable.CreateBadgeUpdaterForApplicationWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*BadgeUpdater {
         var _r: *BadgeUpdater = undefined;
         const _c = self.vtable.CreateBadgeUpdaterForSecondaryTile(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -371,8 +371,8 @@ pub const IBadgeUpdateManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateBadgeUpdaterForApplication: *const fn(self: *anyopaque, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
-        CreateBadgeUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
-        CreateBadgeUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
+        CreateBadgeUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
+        CreateBadgeUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
         GetTemplateContent: *const fn(self: *anyopaque, ty: BadgeTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
@@ -442,38 +442,38 @@ pub const IBadgeUpdater = extern struct {
 };
 pub const IKnownAdaptiveNotificationHintsStatics = extern struct {
     vtable: *const VTable,
-    pub fn getStyle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStyle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Style(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWrap(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getWrap(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Wrap(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMaxLines(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMaxLines(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaxLines(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMinLines(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMinLines(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MinLines(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTextStacking(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTextStacking(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TextStacking(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAlign(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAlign(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Align(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -490,126 +490,126 @@ pub const IKnownAdaptiveNotificationHintsStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Style: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Wrap: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MaxLines: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MinLines: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TextStacking: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Align: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Style: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Wrap: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MaxLines: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MinLines: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TextStacking: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Align: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownAdaptiveNotificationTextStylesStatics = extern struct {
     vtable: *const VTable,
-    pub fn getCaption(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaption(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Caption(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBase(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBase(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Base(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subtitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubheader(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubheader(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subheader(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeader(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeader(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Header(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitleNumeral(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitleNumeral(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleNumeral(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubheaderNumeral(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubheaderNumeral(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubheaderNumeral(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderNumeral(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderNumeral(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderNumeral(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCaptionSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCaptionSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CaptionSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBodySubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBodySubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BodySubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBaseSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBaseSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BaseSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubtitleSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubtitleSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubtitleSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTitleSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitleSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TitleSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubheaderSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubheaderSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubheaderSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSubheaderNumeralSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSubheaderNumeralSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubheaderNumeralSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaderNumeralSubtle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHeaderNumeralSubtle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HeaderNumeralSubtle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -626,31 +626,31 @@ pub const IKnownAdaptiveNotificationTextStylesStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Base: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subtitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Subheader: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Header: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TitleNumeral: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SubheaderNumeral: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HeaderNumeral: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_CaptionSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BodySubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_BaseSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SubtitleSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TitleSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SubheaderSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SubheaderNumeralSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HeaderSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HeaderNumeralSubtle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Caption: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Base: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subtitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Subheader: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Header: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TitleNumeral: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SubheaderNumeral: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderNumeral: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_CaptionSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BodySubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_BaseSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SubtitleSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TitleSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SubheaderSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SubheaderNumeralSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HeaderNumeralSubtle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IKnownNotificationBindingsStatics = extern struct {
     vtable: *const VTable,
-    pub fn getToastGeneric(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getToastGeneric(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ToastGeneric(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -667,7 +667,7 @@ pub const IKnownNotificationBindingsStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_ToastGeneric: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_ToastGeneric: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INotification = extern struct {
@@ -712,28 +712,28 @@ pub const INotification = extern struct {
 };
 pub const INotificationBinding = extern struct {
     vtable: *const VTable,
-    pub fn getTemplate(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTemplate(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Template(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTemplate(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTemplate(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Template(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getHints(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getHints(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Hints(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -756,18 +756,18 @@ pub const INotificationBinding = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Template: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Template: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Hints: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Template: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Template: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Hints: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         GetTextElements: *const fn(self: *anyopaque, _r: **IVectorView(AdaptiveNotificationText)) callconv(.winapi) HRESULT,
     };
 };
 pub const INotificationData = extern struct {
     vtable: *const VTable,
-    pub fn getValues(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getValues(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Values(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -794,20 +794,20 @@ pub const INotificationData = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Values: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Values: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
         get_SequenceNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_SequenceNumber: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
     };
 };
 pub const INotificationDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateNotificationDataWithSequenceNumber(self: *@This(), initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
+    pub fn CreateNotificationDataWithSequenceNumber(self: *@This(), initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
         var _r: *NotificationData = undefined;
         const _c = self.vtable.CreateNotificationDataWithSequenceNumber(@ptrCast(self), initialValues, sequenceNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateNotificationData(self: *@This(), initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*NotificationData {
+    pub fn CreateNotificationData(self: *@This(), initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*NotificationData {
         var _r: *NotificationData = undefined;
         const _c = self.vtable.CreateNotificationData(@ptrCast(self), initialValues, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -825,19 +825,19 @@ pub const INotificationDataFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateNotificationDataWithSequenceNumber: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32, _r: **NotificationData) callconv(.winapi) HRESULT,
-        CreateNotificationData: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **NotificationData) callconv(.winapi) HRESULT,
+        CreateNotificationDataWithSequenceNumber: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), sequenceNumber: u32, _r: **NotificationData) callconv(.winapi) HRESULT,
+        CreateNotificationData: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), _r: **NotificationData) callconv(.winapi) HRESULT,
     };
 };
 pub const INotificationVisual = extern struct {
     vtable: *const VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Language(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -847,7 +847,7 @@ pub const INotificationVisual = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetBinding(self: *@This(), templateName: HSTRING) core.HResult!*NotificationBinding {
+    pub fn GetBinding(self: *@This(), templateName: ?HSTRING) core.HResult!*NotificationBinding {
         var _r: *NotificationBinding = undefined;
         const _c = self.vtable.GetBinding(@ptrCast(self), templateName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -865,10 +865,10 @@ pub const INotificationVisual = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Language: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Language: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Bindings: *const fn(self: *anyopaque, _r: **IVector(NotificationBinding)) callconv(.winapi) HRESULT,
-        GetBinding: *const fn(self: *anyopaque, templateName: HSTRING, _r: **NotificationBinding) callconv(.winapi) HRESULT,
+        GetBinding: *const fn(self: *anyopaque, templateName: ?HSTRING, _r: **NotificationBinding) callconv(.winapi) HRESULT,
     };
 };
 pub const IScheduledTileNotification = extern struct {
@@ -895,22 +895,22 @@ pub const IScheduledTileNotification = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -931,10 +931,10 @@ pub const IScheduledTileNotification = extern struct {
         get_DeliveryTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         put_ExpirationTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_ExpirationTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IScheduledTileNotificationFactory = extern struct {
@@ -986,12 +986,12 @@ pub const IScheduledToastNotification = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1012,28 +1012,28 @@ pub const IScheduledToastNotification = extern struct {
         get_DeliveryTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         get_SnoozeInterval: *const fn(self: *anyopaque, _r: **IReference(TimeSpan)) callconv(.winapi) HRESULT,
         get_MaximumSnoozeCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        put_Id: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Id: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IScheduledToastNotification2 = extern struct {
     vtable: *const VTable,
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Group(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1060,10 +1060,10 @@ pub const IScheduledToastNotification2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Group: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Group: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Group: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Group: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_SuppressPopup: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_SuppressPopup: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -1080,13 +1080,13 @@ pub const IScheduledToastNotification3 = extern struct {
         const _c = self.vtable.put_NotificationMirroring(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1104,8 +1104,8 @@ pub const IScheduledToastNotification3 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_NotificationMirroring: *const fn(self: *anyopaque, _r: *NotificationMirroring) callconv(.winapi) HRESULT,
         put_NotificationMirroring: *const fn(self: *anyopaque, value: NotificationMirroring) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IScheduledToastNotification4 = extern struct {
@@ -1210,8 +1210,8 @@ pub const IScheduledToastNotificationShowingEventArgs = extern struct {
 };
 pub const IShownTileNotification = extern struct {
     vtable: *const VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1228,7 +1228,7 @@ pub const IShownTileNotification = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileFlyoutNotification = extern struct {
@@ -1297,13 +1297,13 @@ pub const ITileFlyoutUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*TileFlyoutUpdater {
+    pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*TileFlyoutUpdater {
         var _r: *TileFlyoutUpdater = undefined;
         const _c = self.vtable.CreateTileFlyoutUpdaterForApplicationWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileFlyoutUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*TileFlyoutUpdater {
+    pub fn CreateTileFlyoutUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*TileFlyoutUpdater {
         var _r: *TileFlyoutUpdater = undefined;
         const _c = self.vtable.CreateTileFlyoutUpdaterForSecondaryTile(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1328,8 +1328,8 @@ pub const ITileFlyoutUpdateManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateTileFlyoutUpdaterForApplication: *const fn(self: *anyopaque, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
-        CreateTileFlyoutUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
-        CreateTileFlyoutUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
+        CreateTileFlyoutUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
+        CreateTileFlyoutUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
         GetTemplateContent: *const fn(self: *anyopaque, ty: TileFlyoutTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
@@ -1399,12 +1399,12 @@ pub const ITileNotification = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1424,8 +1424,8 @@ pub const ITileNotification = extern struct {
         get_Content: *const fn(self: *anyopaque, _r: **XmlDocument) callconv(.winapi) HRESULT,
         put_ExpirationTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_ExpirationTime: *const fn(self: *anyopaque, _r: **IReference(DateTime)) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileNotificationFactory = extern struct {
@@ -1459,13 +1459,13 @@ pub const ITileUpdateManagerForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileUpdaterForApplication(self: *@This(), applicationId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForApplication(self: *@This(), applicationId: ?HSTRING) core.HResult!*TileUpdater {
         var _r: *TileUpdater = undefined;
         const _c = self.vtable.CreateTileUpdaterForApplication(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*TileUpdater {
         var _r: *TileUpdater = undefined;
         const _c = self.vtable.CreateTileUpdaterForSecondaryTile(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1490,8 +1490,8 @@ pub const ITileUpdateManagerForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateTileUpdaterForApplicationForUser: *const fn(self: *anyopaque, _r: **TileUpdater) callconv(.winapi) HRESULT,
-        CreateTileUpdaterForApplication: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
-        CreateTileUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
+        CreateTileUpdaterForApplication: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
+        CreateTileUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
 };
@@ -1503,13 +1503,13 @@ pub const ITileUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*TileUpdater {
         var _r: *TileUpdater = undefined;
         const _c = self.vtable.CreateTileUpdaterForApplicationWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*TileUpdater {
         var _r: *TileUpdater = undefined;
         const _c = self.vtable.CreateTileUpdaterForSecondaryTile(@ptrCast(self), tileId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1534,8 +1534,8 @@ pub const ITileUpdateManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateTileUpdaterForApplication: *const fn(self: *anyopaque, _r: **TileUpdater) callconv(.winapi) HRESULT,
-        CreateTileUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
-        CreateTileUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
+        CreateTileUpdaterForApplicationWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
+        CreateTileUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: ?HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
         GetTemplateContent: *const fn(self: *anyopaque, ty: TileTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
@@ -1675,8 +1675,8 @@ pub const ITileUpdater2 = extern struct {
 };
 pub const IToastActivatedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1693,7 +1693,7 @@ pub const IToastActivatedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Arguments: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Arguments: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastActivatedEventArgs2 = extern struct {
@@ -1721,29 +1721,29 @@ pub const IToastActivatedEventArgs2 = extern struct {
 };
 pub const IToastCollection = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getLaunchArgs(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLaunchArgs(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LaunchArgs(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putLaunchArgs(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLaunchArgs(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_LaunchArgs(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1769,18 +1769,18 @@ pub const IToastCollection = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_DisplayName: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_LaunchArgs: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_LaunchArgs: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_DisplayName: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_LaunchArgs: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_LaunchArgs: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Icon: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Icon: *const fn(self: *anyopaque, value: *Uri) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastCollectionFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), collectionId: HSTRING, displayName: HSTRING, launchArgs: HSTRING, iconUri: *Uri) core.HResult!*ToastCollection {
+    pub fn CreateInstance(self: *@This(), collectionId: ?HSTRING, displayName: ?HSTRING, launchArgs: ?HSTRING, iconUri: *Uri) core.HResult!*ToastCollection {
         var _r: *ToastCollection = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), collectionId, displayName, launchArgs, iconUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1798,7 +1798,7 @@ pub const IToastCollectionFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, collectionId: HSTRING, displayName: HSTRING, launchArgs: HSTRING, iconUri: *Uri, _r: **ToastCollection) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, collectionId: ?HSTRING, displayName: ?HSTRING, launchArgs: ?HSTRING, iconUri: *Uri, _r: **ToastCollection) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastCollectionManager = extern struct {
@@ -1815,13 +1815,13 @@ pub const IToastCollectionManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetToastCollectionAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastCollection) {
+    pub fn GetToastCollectionAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastCollection) {
         var _r: *IAsyncOperation(ToastCollection) = undefined;
         const _c = self.vtable.GetToastCollectionAsync(@ptrCast(self), collectionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RemoveToastCollectionAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RemoveToastCollectionAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RemoveToastCollectionAsync(@ptrCast(self), collectionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1839,8 +1839,8 @@ pub const IToastCollectionManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1859,11 +1859,11 @@ pub const IToastCollectionManager = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SaveToastCollectionAsync: *const fn(self: *anyopaque, collection: *ToastCollection, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FindAllToastCollectionsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ToastCollection))) callconv(.winapi) HRESULT,
-        GetToastCollectionAsync: *const fn(self: *anyopaque, collectionId: HSTRING, _r: **IAsyncOperation(ToastCollection)) callconv(.winapi) HRESULT,
-        RemoveToastCollectionAsync: *const fn(self: *anyopaque, collectionId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GetToastCollectionAsync: *const fn(self: *anyopaque, collectionId: ?HSTRING, _r: **IAsyncOperation(ToastCollection)) callconv(.winapi) HRESULT,
+        RemoveToastCollectionAsync: *const fn(self: *anyopaque, collectionId: ?HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RemoveAllToastCollectionsAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
-        get_AppId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastDismissedEventArgs = extern struct {
@@ -1985,22 +1985,22 @@ pub const IToastNotification = extern struct {
 };
 pub const IToastNotification2 = extern struct {
     vtable: *const VTable,
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Tag(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Group(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2027,10 +2027,10 @@ pub const IToastNotification2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        put_Tag: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Group: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Group: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Tag: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Group: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Group: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         put_SuppressPopup: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_SuppressPopup: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -2047,13 +2047,13 @@ pub const IToastNotification3 = extern struct {
         const _c = self.vtable.put_NotificationMirroring(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_RemoteId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2071,8 +2071,8 @@ pub const IToastNotification3 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_NotificationMirroring: *const fn(self: *anyopaque, _r: *NotificationMirroring) callconv(.winapi) HRESULT,
         put_NotificationMirroring: *const fn(self: *anyopaque, value: NotificationMirroring) callconv(.winapi) HRESULT,
-        get_RemoteId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_RemoteId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_RemoteId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_RemoteId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotification4 = extern struct {
@@ -2145,8 +2145,8 @@ pub const IToastNotification6 = extern struct {
 };
 pub const IToastNotificationActionTriggerDetail = extern struct {
     vtable: *const VTable,
-    pub fn getArgument(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Argument(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2169,7 +2169,7 @@ pub const IToastNotificationActionTriggerDetail = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Argument: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Argument: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_UserInput: *const fn(self: *anyopaque, _r: **ValueSet) callconv(.winapi) HRESULT,
     };
 };
@@ -2198,23 +2198,23 @@ pub const IToastNotificationFactory = extern struct {
 };
 pub const IToastNotificationHistory = extern struct {
     vtable: *const VTable,
-    pub fn RemoveGroup(self: *@This(), group: HSTRING) core.HResult!void {
+    pub fn RemoveGroup(self: *@This(), group: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveGroup(@ptrCast(self), group);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveGroupWithApplicationId(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveGroupWithApplicationId(self: *@This(), group: ?HSTRING, applicationId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveGroupWithApplicationId(@ptrCast(self), group, applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveWithGroupAndApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroupAndApplicationId(self: *@This(), tag: ?HSTRING, group: ?HSTRING, applicationId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveWithGroupAndApplicationId(@ptrCast(self), tag, group, applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveWithGroup(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroup(self: *@This(), tag: ?HSTRING, group: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RemoveWithGroup(@ptrCast(self), tag, group);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Remove(self: *@This(), tag: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), tag: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Remove(@ptrCast(self), tag);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2222,7 +2222,7 @@ pub const IToastNotificationHistory = extern struct {
         const _c = self.vtable.Clear(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ClearWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!void {
+    pub fn ClearWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearWithApplicationId(@ptrCast(self), applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2238,13 +2238,13 @@ pub const IToastNotificationHistory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        RemoveGroup: *const fn(self: *anyopaque, group: HSTRING) callconv(.winapi) HRESULT,
-        RemoveGroupWithApplicationId: *const fn(self: *anyopaque, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
-        RemoveWithGroupAndApplicationId: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
-        RemoveWithGroup: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING) callconv(.winapi) HRESULT,
-        Remove: *const fn(self: *anyopaque, tag: HSTRING) callconv(.winapi) HRESULT,
+        RemoveGroup: *const fn(self: *anyopaque, group: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveGroupWithApplicationId: *const fn(self: *anyopaque, group: ?HSTRING, applicationId: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveWithGroupAndApplicationId: *const fn(self: *anyopaque, tag: ?HSTRING, group: ?HSTRING, applicationId: ?HSTRING) callconv(.winapi) HRESULT,
+        RemoveWithGroup: *const fn(self: *anyopaque, tag: ?HSTRING, group: ?HSTRING) callconv(.winapi) HRESULT,
+        Remove: *const fn(self: *anyopaque, tag: ?HSTRING) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ClearWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING) callconv(.winapi) HRESULT,
+        ClearWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationHistory2 = extern struct {
@@ -2255,7 +2255,7 @@ pub const IToastNotificationHistory2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IVectorView(ToastNotification) {
+    pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IVectorView(ToastNotification) {
         var _r: *IVectorView(ToastNotification) = undefined;
         const _c = self.vtable.GetHistoryWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2274,7 +2274,7 @@ pub const IToastNotificationHistory2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetHistory: *const fn(self: *anyopaque, _r: **IVectorView(ToastNotification)) callconv(.winapi) HRESULT,
-        GetHistoryWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IVectorView(ToastNotification)) callconv(.winapi) HRESULT,
+        GetHistoryWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **IVectorView(ToastNotification)) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationHistoryChangedTriggerDetail = extern struct {
@@ -2302,8 +2302,8 @@ pub const IToastNotificationHistoryChangedTriggerDetail = extern struct {
 };
 pub const IToastNotificationHistoryChangedTriggerDetail2 = extern struct {
     vtable: *const VTable,
-    pub fn getCollectionId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCollectionId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CollectionId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2320,7 +2320,7 @@ pub const IToastNotificationHistoryChangedTriggerDetail2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CollectionId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CollectionId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationManagerForUser = extern struct {
@@ -2331,7 +2331,7 @@ pub const IToastNotificationManagerForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotifier {
         var _r: *ToastNotifier = undefined;
         const _c = self.vtable.CreateToastNotifierWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2362,20 +2362,20 @@ pub const IToastNotificationManagerForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateToastNotifier: *const fn(self: *anyopaque, _r: **ToastNotifier) callconv(.winapi) HRESULT,
-        CreateToastNotifierWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **ToastNotifier) callconv(.winapi) HRESULT,
+        CreateToastNotifierWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **ToastNotifier) callconv(.winapi) HRESULT,
         get_History: *const fn(self: *anyopaque, _r: **ToastNotificationHistory) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationManagerForUser2 = extern struct {
     vtable: *const VTable,
-    pub fn GetToastNotifierForToastCollectionIdAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastNotifier) {
+    pub fn GetToastNotifierForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotifier) {
         var _r: *IAsyncOperation(ToastNotifier) = undefined;
         const _c = self.vtable.GetToastNotifierForToastCollectionIdAsync(@ptrCast(self), collectionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHistoryForToastCollectionIdAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastNotificationHistory) {
+    pub fn GetHistoryForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotificationHistory) {
         var _r: *IAsyncOperation(ToastNotificationHistory) = undefined;
         const _c = self.vtable.GetHistoryForToastCollectionIdAsync(@ptrCast(self), collectionId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2387,7 +2387,7 @@ pub const IToastNotificationManagerForUser2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: HSTRING) core.HResult!*ToastCollectionManager {
+    pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: ?HSTRING) core.HResult!*ToastCollectionManager {
         var _r: *ToastCollectionManager = undefined;
         const _c = self.vtable.GetToastCollectionManagerWithAppId(@ptrCast(self), appId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2405,10 +2405,10 @@ pub const IToastNotificationManagerForUser2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetToastNotifierForToastCollectionIdAsync: *const fn(self: *anyopaque, collectionId: HSTRING, _r: **IAsyncOperation(ToastNotifier)) callconv(.winapi) HRESULT,
-        GetHistoryForToastCollectionIdAsync: *const fn(self: *anyopaque, collectionId: HSTRING, _r: **IAsyncOperation(ToastNotificationHistory)) callconv(.winapi) HRESULT,
+        GetToastNotifierForToastCollectionIdAsync: *const fn(self: *anyopaque, collectionId: ?HSTRING, _r: **IAsyncOperation(ToastNotifier)) callconv(.winapi) HRESULT,
+        GetHistoryForToastCollectionIdAsync: *const fn(self: *anyopaque, collectionId: ?HSTRING, _r: **IAsyncOperation(ToastNotificationHistory)) callconv(.winapi) HRESULT,
         GetToastCollectionManager: *const fn(self: *anyopaque, _r: **ToastCollectionManager) callconv(.winapi) HRESULT,
-        GetToastCollectionManagerWithAppId: *const fn(self: *anyopaque, appId: HSTRING, _r: **ToastCollectionManager) callconv(.winapi) HRESULT,
+        GetToastCollectionManagerWithAppId: *const fn(self: *anyopaque, appId: ?HSTRING, _r: **ToastCollectionManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationManagerForUser3 = extern struct {
@@ -2454,7 +2454,7 @@ pub const IToastNotificationManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotifier {
         var _r: *ToastNotifier = undefined;
         const _c = self.vtable.CreateToastNotifierWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2479,7 +2479,7 @@ pub const IToastNotificationManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateToastNotifier: *const fn(self: *anyopaque, _r: **ToastNotifier) callconv(.winapi) HRESULT,
-        CreateToastNotifierWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **ToastNotifier) callconv(.winapi) HRESULT,
+        CreateToastNotifierWithApplicationId: *const fn(self: *anyopaque, applicationId: ?HSTRING, _r: **ToastNotifier) callconv(.winapi) HRESULT,
         GetTemplateContent: *const fn(self: *anyopaque, ty: ToastTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
@@ -2609,13 +2609,13 @@ pub const IToastNotifier = extern struct {
 };
 pub const IToastNotifier2 = extern struct {
     vtable: *const VTable,
-    pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: ?HSTRING, group: ?HSTRING) core.HResult!NotificationUpdateResult {
         var _r: NotificationUpdateResult = undefined;
         const _c = self.vtable.UpdateWithGroup(@ptrCast(self), data, tag, group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn Update(self: *@This(), data: *NotificationData, tag: ?HSTRING) core.HResult!NotificationUpdateResult {
         var _r: NotificationUpdateResult = undefined;
         const _c = self.vtable.Update(@ptrCast(self), data, tag, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2633,8 +2633,8 @@ pub const IToastNotifier2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        UpdateWithGroup: *const fn(self: *anyopaque, data: *NotificationData, tag: HSTRING, group: HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
-        Update: *const fn(self: *anyopaque, data: *NotificationData, tag: HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
+        UpdateWithGroup: *const fn(self: *anyopaque, data: *NotificationData, tag: ?HSTRING, group: ?HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
+        Update: *const fn(self: *anyopaque, data: *NotificationData, tag: ?HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotifier3 = extern struct {
@@ -2744,27 +2744,27 @@ pub const KnownAdaptiveNotificationHints = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getStyle() core.HResult!HSTRING {
+    pub fn getStyle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getStyle();
     }
-    pub fn getWrap() core.HResult!HSTRING {
+    pub fn getWrap() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getWrap();
     }
-    pub fn getMaxLines() core.HResult!HSTRING {
+    pub fn getMaxLines() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getMaxLines();
     }
-    pub fn getMinLines() core.HResult!HSTRING {
+    pub fn getMinLines() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getMinLines();
     }
-    pub fn getTextStacking() core.HResult!HSTRING {
+    pub fn getTextStacking() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getTextStacking();
     }
-    pub fn getAlign() core.HResult!HSTRING {
+    pub fn getAlign() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try _f.getAlign();
     }
@@ -2777,79 +2777,79 @@ pub const KnownAdaptiveNotificationTextStyles = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCaption() core.HResult!HSTRING {
+    pub fn getCaption() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getCaption();
     }
-    pub fn getBody() core.HResult!HSTRING {
+    pub fn getBody() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBody();
     }
-    pub fn getBase() core.HResult!HSTRING {
+    pub fn getBase() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBase();
     }
-    pub fn getSubtitle() core.HResult!HSTRING {
+    pub fn getSubtitle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubtitle();
     }
-    pub fn getTitle() core.HResult!HSTRING {
+    pub fn getTitle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitle();
     }
-    pub fn getSubheader() core.HResult!HSTRING {
+    pub fn getSubheader() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheader();
     }
-    pub fn getHeader() core.HResult!HSTRING {
+    pub fn getHeader() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeader();
     }
-    pub fn getTitleNumeral() core.HResult!HSTRING {
+    pub fn getTitleNumeral() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitleNumeral();
     }
-    pub fn getSubheaderNumeral() core.HResult!HSTRING {
+    pub fn getSubheaderNumeral() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderNumeral();
     }
-    pub fn getHeaderNumeral() core.HResult!HSTRING {
+    pub fn getHeaderNumeral() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderNumeral();
     }
-    pub fn getCaptionSubtle() core.HResult!HSTRING {
+    pub fn getCaptionSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getCaptionSubtle();
     }
-    pub fn getBodySubtle() core.HResult!HSTRING {
+    pub fn getBodySubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBodySubtle();
     }
-    pub fn getBaseSubtle() core.HResult!HSTRING {
+    pub fn getBaseSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getBaseSubtle();
     }
-    pub fn getSubtitleSubtle() core.HResult!HSTRING {
+    pub fn getSubtitleSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubtitleSubtle();
     }
-    pub fn getTitleSubtle() core.HResult!HSTRING {
+    pub fn getTitleSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getTitleSubtle();
     }
-    pub fn getSubheaderSubtle() core.HResult!HSTRING {
+    pub fn getSubheaderSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderSubtle();
     }
-    pub fn getSubheaderNumeralSubtle() core.HResult!HSTRING {
+    pub fn getSubheaderNumeralSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getSubheaderNumeralSubtle();
     }
-    pub fn getHeaderSubtle() core.HResult!HSTRING {
+    pub fn getHeaderSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderSubtle();
     }
-    pub fn getHeaderNumeralSubtle() core.HResult!HSTRING {
+    pub fn getHeaderNumeralSubtle() core.HResult!?HSTRING {
         const _f = try @This()._IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try _f.getHeaderNumeralSubtle();
     }
@@ -2862,7 +2862,7 @@ pub const KnownNotificationBindings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getToastGeneric() core.HResult!HSTRING {
+    pub fn getToastGeneric() core.HResult!?HSTRING {
         const _f = try @This()._IKnownNotificationBindingsStaticsCache.get();
         return try _f.getToastGeneric();
     }
@@ -2904,23 +2904,23 @@ pub const Notification = extern struct {
 };
 pub const NotificationBinding = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTemplate(self: *@This()) core.HResult!HSTRING {
+    pub fn getTemplate(self: *@This()) core.HResult!?HSTRING {
         const this: *INotificationBinding = @ptrCast(self);
         return try this.getTemplate();
     }
-    pub fn putTemplate(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTemplate(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *INotificationBinding = @ptrCast(self);
         return try this.putTemplate(value);
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *INotificationBinding = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *INotificationBinding = @ptrCast(self);
         return try this.putLanguage(value);
     }
-    pub fn getHints(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getHints(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *INotificationBinding = @ptrCast(self);
         return try this.getHints();
     }
@@ -2936,7 +2936,7 @@ pub const NotificationBinding = extern struct {
 };
 pub const NotificationData = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getValues(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getValues(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *INotificationData = @ptrCast(self);
         return try this.getValues();
     }
@@ -2955,11 +2955,11 @@ pub const NotificationData = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INotificationData.IID)));
     }
-    pub fn CreateNotificationDataWithSequenceNumber(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
+    pub fn CreateNotificationDataWithSequenceNumber(initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
         const _f = try @This()._INotificationDataFactoryCache.get();
         return try _f.CreateNotificationDataWithSequenceNumber(initialValues, sequenceNumber);
     }
-    pub fn CreateNotificationData(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*NotificationData {
+    pub fn CreateNotificationData(initialValues: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*NotificationData {
         const _f = try @This()._INotificationDataFactoryCache.get();
         return try _f.CreateNotificationData(initialValues);
     }
@@ -2993,11 +2993,11 @@ pub const NotificationUpdateResult = enum(i32) {
 };
 pub const NotificationVisual = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *INotificationVisual = @ptrCast(self);
         return try this.getLanguage();
     }
-    pub fn putLanguage(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *INotificationVisual = @ptrCast(self);
         return try this.putLanguage(value);
     }
@@ -3005,7 +3005,7 @@ pub const NotificationVisual = extern struct {
         const this: *INotificationVisual = @ptrCast(self);
         return try this.getBindings();
     }
-    pub fn GetBinding(self: *@This(), templateName: HSTRING) core.HResult!*NotificationBinding {
+    pub fn GetBinding(self: *@This(), templateName: ?HSTRING) core.HResult!*NotificationBinding {
         const this: *INotificationVisual = @ptrCast(self);
         return try this.GetBinding(templateName);
     }
@@ -3040,19 +3040,19 @@ pub const ScheduledTileNotification = extern struct {
         const this: *IScheduledTileNotification = @ptrCast(self);
         return try this.getExpirationTime();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IScheduledTileNotification = @ptrCast(self);
         return try this.putTag(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *IScheduledTileNotification = @ptrCast(self);
         return try this.getTag();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IScheduledTileNotification = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IScheduledTileNotification = @ptrCast(self);
         return try this.getId();
     }
@@ -3088,33 +3088,33 @@ pub const ScheduledToastNotification = extern struct {
         const this: *IScheduledToastNotification = @ptrCast(self);
         return try this.getMaximumSnoozeCount();
     }
-    pub fn putId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IScheduledToastNotification = @ptrCast(self);
         return try this.putId(value);
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IScheduledToastNotification = @ptrCast(self);
         return try this.getId();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3144,13 +3144,13 @@ pub const ScheduledToastNotification = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNotificationMirroring(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3212,7 +3212,7 @@ pub const ScheduledToastNotificationShowingEventArgs = extern struct {
 };
 pub const ShownTileNotification = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *IShownTileNotification = @ptrCast(self);
         return try this.getArguments();
     }
@@ -3262,11 +3262,11 @@ pub const TileFlyoutUpdateManager = extern struct {
         const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForApplication();
     }
-    pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileFlyoutUpdater {
+    pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId: ?HSTRING) core.HResult!*TileFlyoutUpdater {
         const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId);
     }
-    pub fn CreateTileFlyoutUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileFlyoutUpdater {
+    pub fn CreateTileFlyoutUpdaterForSecondaryTile(tileId: ?HSTRING) core.HResult!*TileFlyoutUpdater {
         const _f = try @This()._ITileFlyoutUpdateManagerStaticsCache.get();
         return try _f.CreateTileFlyoutUpdaterForSecondaryTile(tileId);
     }
@@ -3324,11 +3324,11 @@ pub const TileNotification = extern struct {
         const this: *ITileNotification = @ptrCast(self);
         return try this.getExpirationTime();
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITileNotification = @ptrCast(self);
         return try this.putTag(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ITileNotification = @ptrCast(self);
         return try this.getTag();
     }
@@ -3483,11 +3483,11 @@ pub const TileUpdateManager = extern struct {
         const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForApplication();
     }
-    pub fn CreateTileUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForApplicationWithApplicationId(applicationId: ?HSTRING) core.HResult!*TileUpdater {
         const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForApplicationWithApplicationId(applicationId);
     }
-    pub fn CreateTileUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForSecondaryTile(tileId: ?HSTRING) core.HResult!*TileUpdater {
         const _f = try @This()._ITileUpdateManagerStaticsCache.get();
         return try _f.CreateTileUpdaterForSecondaryTile(tileId);
     }
@@ -3510,11 +3510,11 @@ pub const TileUpdateManagerForUser = extern struct {
         const this: *ITileUpdateManagerForUser = @ptrCast(self);
         return try this.CreateTileUpdaterForApplicationForUser();
     }
-    pub fn CreateTileUpdaterForApplication(self: *@This(), applicationId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForApplication(self: *@This(), applicationId: ?HSTRING) core.HResult!*TileUpdater {
         const this: *ITileUpdateManagerForUser = @ptrCast(self);
         return try this.CreateTileUpdaterForApplication(applicationId);
     }
-    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForSecondaryTile(self: *@This(), tileId: ?HSTRING) core.HResult!*TileUpdater {
         const this: *ITileUpdateManagerForUser = @ptrCast(self);
         return try this.CreateTileUpdaterForSecondaryTile(tileId);
     }
@@ -3604,7 +3604,7 @@ pub const TileUpdater = extern struct {
 };
 pub const ToastActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArguments(self: *@This()) core.HResult!HSTRING {
+    pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastActivatedEventArgs = @ptrCast(self);
         return try this.getArguments();
     }
@@ -3622,23 +3622,23 @@ pub const ToastActivatedEventArgs = extern struct {
 };
 pub const ToastCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastCollection = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastCollection = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn putDisplayName(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IToastCollection = @ptrCast(self);
         return try this.putDisplayName(value);
     }
-    pub fn getLaunchArgs(self: *@This()) core.HResult!HSTRING {
+    pub fn getLaunchArgs(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastCollection = @ptrCast(self);
         return try this.getLaunchArgs();
     }
-    pub fn putLaunchArgs(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putLaunchArgs(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IToastCollection = @ptrCast(self);
         return try this.putLaunchArgs(value);
     }
@@ -3653,7 +3653,7 @@ pub const ToastCollection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(collectionId: HSTRING, displayName: HSTRING, launchArgs: HSTRING, iconUri: *Uri) core.HResult!*ToastCollection {
+    pub fn CreateInstance(collectionId: ?HSTRING, displayName: ?HSTRING, launchArgs: ?HSTRING, iconUri: *Uri) core.HResult!*ToastCollection {
         const _f = try @This()._IToastCollectionFactoryCache.get();
         return try _f.CreateInstance(collectionId, displayName, launchArgs, iconUri);
     }
@@ -3674,11 +3674,11 @@ pub const ToastCollectionManager = extern struct {
         const this: *IToastCollectionManager = @ptrCast(self);
         return try this.FindAllToastCollectionsAsync();
     }
-    pub fn GetToastCollectionAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastCollection) {
+    pub fn GetToastCollectionAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastCollection) {
         const this: *IToastCollectionManager = @ptrCast(self);
         return try this.GetToastCollectionAsync(collectionId);
     }
-    pub fn RemoveToastCollectionAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn RemoveToastCollectionAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *IToastCollectionManager = @ptrCast(self);
         return try this.RemoveToastCollectionAsync(collectionId);
     }
@@ -3690,7 +3690,7 @@ pub const ToastCollectionManager = extern struct {
         const this: *IToastCollectionManager = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn getAppId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastCollectionManager = @ptrCast(self);
         return try this.getAppId();
     }
@@ -3773,25 +3773,25 @@ pub const ToastNotification = extern struct {
         const this: *IToastNotification = @ptrCast(self);
         return try this.removeFailed(token);
     }
-    pub fn putTag(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
-    pub fn putGroup(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
-    pub fn getGroup(self: *@This()) core.HResult!HSTRING {
+    pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3821,13 +3821,13 @@ pub const ToastNotification = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNotificationMirroring(value);
     }
-    pub fn getRemoteId(self: *@This()) core.HResult!HSTRING {
+    pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
-    pub fn putRemoteId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3885,7 +3885,7 @@ pub const ToastNotification = extern struct {
 };
 pub const ToastNotificationActionTriggerDetail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getArgument(self: *@This()) core.HResult!HSTRING {
+    pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastNotificationActionTriggerDetail = @ptrCast(self);
         return try this.getArgument();
     }
@@ -3907,29 +3907,29 @@ pub const ToastNotificationHistory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistory();
     }
-    pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IVectorView(ToastNotification) {
+    pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IVectorView(ToastNotification) {
         var this: ?*IToastNotificationHistory2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistory2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistoryWithApplicationId(applicationId);
     }
-    pub fn RemoveGroup(self: *@This(), group: HSTRING) core.HResult!void {
+    pub fn RemoveGroup(self: *@This(), group: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveGroup(group);
     }
-    pub fn RemoveGroupWithApplicationId(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveGroupWithApplicationId(self: *@This(), group: ?HSTRING, applicationId: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveGroupWithApplicationId(group, applicationId);
     }
-    pub fn RemoveWithGroupAndApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroupAndApplicationId(self: *@This(), tag: ?HSTRING, group: ?HSTRING, applicationId: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveWithGroupAndApplicationId(tag, group, applicationId);
     }
-    pub fn RemoveWithGroup(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroup(self: *@This(), tag: ?HSTRING, group: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveWithGroup(tag, group);
     }
-    pub fn Remove(self: *@This(), tag: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), tag: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.Remove(tag);
     }
@@ -3937,7 +3937,7 @@ pub const ToastNotificationHistory = extern struct {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn ClearWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!void {
+    pub fn ClearWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.ClearWithApplicationId(applicationId);
     }
@@ -3953,7 +3953,7 @@ pub const ToastNotificationHistoryChangedTriggerDetail = extern struct {
         const this: *IToastNotificationHistoryChangedTriggerDetail = @ptrCast(self);
         return try this.getChangeType();
     }
-    pub fn getCollectionId(self: *@This()) core.HResult!HSTRING {
+    pub fn getCollectionId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotificationHistoryChangedTriggerDetail2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistoryChangedTriggerDetail2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3990,7 +3990,7 @@ pub const ToastNotificationManager = extern struct {
         const _f = try @This()._IToastNotificationManagerStaticsCache.get();
         return try _f.CreateToastNotifier();
     }
-    pub fn CreateToastNotifierWithApplicationId(applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(applicationId: ?HSTRING) core.HResult!*ToastNotifier {
         const _f = try @This()._IToastNotificationManagerStaticsCache.get();
         return try _f.CreateToastNotifierWithApplicationId(applicationId);
     }
@@ -4011,7 +4011,7 @@ pub const ToastNotificationManagerForUser = extern struct {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
         return try this.CreateToastNotifier();
     }
-    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotifier {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
         return try this.CreateToastNotifierWithApplicationId(applicationId);
     }
@@ -4023,13 +4023,13 @@ pub const ToastNotificationManagerForUser = extern struct {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
         return try this.getUser();
     }
-    pub fn GetToastNotifierForToastCollectionIdAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastNotifier) {
+    pub fn GetToastNotifierForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotifier) {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastNotifierForToastCollectionIdAsync(collectionId);
     }
-    pub fn GetHistoryForToastCollectionIdAsync(self: *@This(), collectionId: HSTRING) core.HResult!*IAsyncOperation(ToastNotificationHistory) {
+    pub fn GetHistoryForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotificationHistory) {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4041,7 +4041,7 @@ pub const ToastNotificationManagerForUser = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastCollectionManager();
     }
-    pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: HSTRING) core.HResult!*ToastCollectionManager {
+    pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: ?HSTRING) core.HResult!*ToastCollectionManager {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4106,13 +4106,13 @@ pub const ToastNotifier = extern struct {
         const this: *IToastNotifier = @ptrCast(self);
         return try this.GetScheduledToastNotifications();
     }
-    pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: ?HSTRING, group: ?HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateWithGroup(data, tag, group);
     }
-    pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn Update(self: *@This(), data: *NotificationData, tag: ?HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

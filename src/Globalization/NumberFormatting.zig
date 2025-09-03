@@ -1,21 +1,21 @@
 // ----- This code is automatically generated -----
 pub const CurrencyFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyFormatter = @ptrCast(self);
         return try this.getCurrency();
     }
-    pub fn putCurrency(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrency(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICurrencyFormatter = @ptrCast(self);
         return try this.putCurrency(value);
     }
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguages();
     }
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -69,79 +69,79 @@ pub const CurrencyFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNumeralSystem(value);
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedLanguage();
     }
-    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatWithValueUInt64(value);
     }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Format(value);
     }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatInt(value);
     }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatUInt(value);
     }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatDouble(value);
     }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+    pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseInt(text);
     }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+    pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseUInt(text);
     }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+    pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -204,11 +204,11 @@ pub const CurrencyFormatter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateCurrencyFormatterCode(currencyCode: HSTRING) core.HResult!*CurrencyFormatter {
+    pub fn CreateCurrencyFormatterCode(currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
         const _f = try @This()._ICurrencyFormatterFactoryCache.get();
         return try _f.CreateCurrencyFormatterCode(currencyCode);
     }
-    pub fn CreateCurrencyFormatterCodeContext(currencyCode: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*CurrencyFormatter {
+    pub fn CreateCurrencyFormatterCodeContext(currencyCode: ?HSTRING, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*CurrencyFormatter {
         const _f = try @This()._ICurrencyFormatterFactoryCache.get();
         return try _f.CreateCurrencyFormatterCodeContext(currencyCode, languages, geographicRegion);
     }
@@ -225,13 +225,13 @@ pub const CurrencyFormatterMode = enum(i32) {
 };
 pub const DecimalFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguages();
     }
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -285,73 +285,73 @@ pub const DecimalFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNumeralSystem(value);
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedLanguage();
     }
-    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueUInt64(value);
     }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.Format(value);
     }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatInt(value);
     }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatUInt(value);
     }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatDouble(value);
     }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+    pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseInt(text);
     }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+    pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseUInt(text);
     }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+    pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -400,7 +400,7 @@ pub const DecimalFormatter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
-    pub fn CreateDecimalFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*DecimalFormatter {
+    pub fn CreateDecimalFormatter(languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*DecimalFormatter {
         const _f = try @This()._IDecimalFormatterFactoryCache.get();
         return try _f.CreateDecimalFormatter(languages, geographicRegion);
     }
@@ -414,13 +414,13 @@ pub const DecimalFormatter = extern struct {
 };
 pub const ICurrencyFormatter = extern struct {
     vtable: *const VTable,
-    pub fn getCurrency(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Currency(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCurrency(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCurrency(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Currency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -436,8 +436,8 @@ pub const ICurrencyFormatter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Currency: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Currency: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Currency: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Currency: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ICurrencyFormatter2 = extern struct {
@@ -475,13 +475,13 @@ pub const ICurrencyFormatter2 = extern struct {
 };
 pub const ICurrencyFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateCurrencyFormatterCode(self: *@This(), currencyCode: HSTRING) core.HResult!*CurrencyFormatter {
+    pub fn CreateCurrencyFormatterCode(self: *@This(), currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
         var _r: *CurrencyFormatter = undefined;
         const _c = self.vtable.CreateCurrencyFormatterCode(@ptrCast(self), currencyCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCurrencyFormatterCodeContext(self: *@This(), currencyCode: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*CurrencyFormatter {
+    pub fn CreateCurrencyFormatterCodeContext(self: *@This(), currencyCode: ?HSTRING, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*CurrencyFormatter {
         var _r: *CurrencyFormatter = undefined;
         const _c = self.vtable.CreateCurrencyFormatterCodeContext(@ptrCast(self), currencyCode, languages, geographicRegion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -499,13 +499,13 @@ pub const ICurrencyFormatterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateCurrencyFormatterCode: *const fn(self: *anyopaque, currencyCode: HSTRING, _r: **CurrencyFormatter) callconv(.winapi) HRESULT,
-        CreateCurrencyFormatterCodeContext: *const fn(self: *anyopaque, currencyCode: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING, _r: **CurrencyFormatter) callconv(.winapi) HRESULT,
+        CreateCurrencyFormatterCode: *const fn(self: *anyopaque, currencyCode: ?HSTRING, _r: **CurrencyFormatter) callconv(.winapi) HRESULT,
+        CreateCurrencyFormatterCodeContext: *const fn(self: *anyopaque, currencyCode: ?HSTRING, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, _r: **CurrencyFormatter) callconv(.winapi) HRESULT,
     };
 };
 pub const IDecimalFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateDecimalFormatter(self: *@This(), languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*DecimalFormatter {
+    pub fn CreateDecimalFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*DecimalFormatter {
         var _r: *DecimalFormatter = undefined;
         const _c = self.vtable.CreateDecimalFormatter(@ptrCast(self), languages, geographicRegion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -523,7 +523,7 @@ pub const IDecimalFormatterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateDecimalFormatter: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), geographicRegion: HSTRING, _r: **DecimalFormatter) callconv(.winapi) HRESULT,
+        CreateDecimalFormatter: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, _r: **DecimalFormatter) callconv(.winapi) HRESULT,
     };
 };
 pub const IIncrementNumberRounder = extern struct {
@@ -568,20 +568,20 @@ pub const IIncrementNumberRounder = extern struct {
 };
 pub const INumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithValueInt64(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithValueUInt64(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -598,27 +598,27 @@ pub const INumberFormatter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FormatWithValueInt64: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatWithValueUInt64: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        Format: *const fn(self: *anyopaque, value: f64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValueInt64: *const fn(self: *anyopaque, value: i64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValueUInt64: *const fn(self: *anyopaque, value: u64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        Format: *const fn(self: *anyopaque, value: f64, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INumberFormatter2 = extern struct {
     vtable: *const VTable,
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatInt(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatUInt(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatDouble(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -635,21 +635,21 @@ pub const INumberFormatter2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FormatInt: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatUInt: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatDouble: *const fn(self: *anyopaque, value: f64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatInt: *const fn(self: *anyopaque, value: i64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatUInt: *const fn(self: *anyopaque, value: u64, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FormatDouble: *const fn(self: *anyopaque, value: f64, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INumberFormatterOptions = extern struct {
     vtable: *const VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GeographicRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -694,24 +694,24 @@ pub const INumberFormatterOptions = extern struct {
         const _c = self.vtable.put_IsDecimalPointAlwaysDisplayed(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedGeographicRegion(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -728,8 +728,8 @@ pub const INumberFormatterOptions = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_GeographicRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_GeographicRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IntegerDigits: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         put_IntegerDigits: *const fn(self: *anyopaque, value: i32) callconv(.winapi) HRESULT,
         get_FractionDigits: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -738,27 +738,27 @@ pub const INumberFormatterOptions = extern struct {
         put_IsGrouped: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_IsDecimalPointAlwaysDisplayed: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDecimalPointAlwaysDisplayed: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        get_NumeralSystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NumeralSystem: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ResolvedGeographicRegion: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_NumeralSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NumeralSystem: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ResolvedGeographicRegion: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INumberParser = extern struct {
     vtable: *const VTable,
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+    pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var _r: *IReference(i64) = undefined;
         const _c = self.vtable.ParseInt(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+    pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.ParseUInt(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+    pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.ParseDouble(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -776,9 +776,9 @@ pub const INumberParser = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        ParseInt: *const fn(self: *anyopaque, text: HSTRING, _r: **IReference(i64)) callconv(.winapi) HRESULT,
-        ParseUInt: *const fn(self: *anyopaque, text: HSTRING, _r: **IReference(u64)) callconv(.winapi) HRESULT,
-        ParseDouble: *const fn(self: *anyopaque, text: HSTRING, _r: **IReference(f64)) callconv(.winapi) HRESULT,
+        ParseInt: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IReference(i64)) callconv(.winapi) HRESULT,
+        ParseUInt: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IReference(u64)) callconv(.winapi) HRESULT,
+        ParseDouble: *const fn(self: *anyopaque, text: ?HSTRING, _r: **IReference(f64)) callconv(.winapi) HRESULT,
     };
 };
 pub const INumberRounder = extern struct {
@@ -869,30 +869,30 @@ pub const INumberRounderOption = extern struct {
 };
 pub const INumeralSystemTranslator = extern struct {
     vtable: *const VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NumeralSystem(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_NumeralSystem(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TranslateNumerals(self: *@This(), value: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn TranslateNumerals(self: *@This(), value: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.TranslateNumerals(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -909,16 +909,16 @@ pub const INumeralSystemTranslator = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
-        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NumeralSystem: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_NumeralSystem: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        TranslateNumerals: *const fn(self: *anyopaque, value: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
+        get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NumeralSystem: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_NumeralSystem: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        TranslateNumerals: *const fn(self: *anyopaque, value: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const INumeralSystemTranslatorFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), languages: *IIterable(HSTRING)) core.HResult!*NumeralSystemTranslator {
+    pub fn Create(self: *@This(), languages: *IIterable(?HSTRING)) core.HResult!*NumeralSystemTranslator {
         var _r: *NumeralSystemTranslator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languages, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -936,12 +936,12 @@ pub const INumeralSystemTranslatorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), _r: **NumeralSystemTranslator) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), _r: **NumeralSystemTranslator) callconv(.winapi) HRESULT,
     };
 };
 pub const IPercentFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreatePercentFormatter(self: *@This(), languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PercentFormatter {
+    pub fn CreatePercentFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PercentFormatter {
         var _r: *PercentFormatter = undefined;
         const _c = self.vtable.CreatePercentFormatter(@ptrCast(self), languages, geographicRegion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -959,12 +959,12 @@ pub const IPercentFormatterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreatePercentFormatter: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), geographicRegion: HSTRING, _r: **PercentFormatter) callconv(.winapi) HRESULT,
+        CreatePercentFormatter: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, _r: **PercentFormatter) callconv(.winapi) HRESULT,
     };
 };
 pub const IPermilleFormatterFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreatePermilleFormatter(self: *@This(), languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PermilleFormatter {
+    pub fn CreatePermilleFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PermilleFormatter {
         var _r: *PermilleFormatter = undefined;
         const _c = self.vtable.CreatePermilleFormatter(@ptrCast(self), languages, geographicRegion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -982,7 +982,7 @@ pub const IPermilleFormatterFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreatePermilleFormatter: *const fn(self: *anyopaque, languages: *IIterable(HSTRING), geographicRegion: HSTRING, _r: **PermilleFormatter) callconv(.winapi) HRESULT,
+        CreatePermilleFormatter: *const fn(self: *anyopaque, languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING, _r: **PermilleFormatter) callconv(.winapi) HRESULT,
     };
 };
 pub const ISignedZeroOption = extern struct {
@@ -1147,23 +1147,23 @@ pub const IncrementNumberRounder = extern struct {
 };
 pub const NumeralSystemTranslator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.getLanguages();
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.getResolvedLanguage();
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.putNumeralSystem(value);
     }
-    pub fn TranslateNumerals(self: *@This(), value: HSTRING) core.HResult!HSTRING {
+    pub fn TranslateNumerals(self: *@This(), value: ?HSTRING) core.HResult!?HSTRING {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.TranslateNumerals(value);
     }
@@ -1174,7 +1174,7 @@ pub const NumeralSystemTranslator = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumeralSystemTranslator.IID)));
     }
-    pub fn Create(languages: *IIterable(HSTRING)) core.HResult!*NumeralSystemTranslator {
+    pub fn Create(languages: *IIterable(?HSTRING)) core.HResult!*NumeralSystemTranslator {
         const _f = try @This()._INumeralSystemTranslatorFactoryCache.get();
         return try _f.Create(languages);
     }
@@ -1188,13 +1188,13 @@ pub const NumeralSystemTranslator = extern struct {
 };
 pub const PercentFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguages();
     }
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1248,73 +1248,73 @@ pub const PercentFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNumeralSystem(value);
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedLanguage();
     }
-    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueUInt64(value);
     }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.Format(value);
     }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatInt(value);
     }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatUInt(value);
     }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatDouble(value);
     }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+    pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseInt(text);
     }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+    pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseUInt(text);
     }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+    pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1363,7 +1363,7 @@ pub const PercentFormatter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
-    pub fn CreatePercentFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PercentFormatter {
+    pub fn CreatePercentFormatter(languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PercentFormatter {
         const _f = try @This()._IPercentFormatterFactoryCache.get();
         return try _f.CreatePercentFormatter(languages, geographicRegion);
     }
@@ -1377,13 +1377,13 @@ pub const PercentFormatter = extern struct {
 };
 pub const PermilleFormatter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguages();
     }
-    pub fn getGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1437,73 +1437,73 @@ pub const PermilleFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDecimalPointAlwaysDisplayed(value);
     }
-    pub fn getNumeralSystem(self: *@This()) core.HResult!HSTRING {
+    pub fn getNumeralSystem(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumeralSystem();
     }
-    pub fn putNumeralSystem(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putNumeralSystem(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNumeralSystem(value);
     }
-    pub fn getResolvedLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedLanguage();
     }
-    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!HSTRING {
+    pub fn getResolvedGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.FormatWithValueUInt64(value);
     }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn Format(self: *@This(), value: f64) core.HResult!?HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
         return try this.Format(value);
     }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatInt(value);
     }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatUInt(value);
     }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!?HSTRING {
         var this: ?*INumberFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatDouble(value);
     }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+    pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseInt(text);
     }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+    pub fn ParseUInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(u64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ParseUInt(text);
     }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+    pub fn ParseDouble(self: *@This(), text: ?HSTRING) core.HResult!*IReference(f64) {
         var this: ?*INumberParser = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1552,7 +1552,7 @@ pub const PermilleFormatter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
-    pub fn CreatePermilleFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PermilleFormatter {
+    pub fn CreatePermilleFormatter(languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PermilleFormatter {
         const _f = try @This()._IPermilleFormatterFactoryCache.get();
         return try _f.CreatePermilleFormatter(languages, geographicRegion);
     }

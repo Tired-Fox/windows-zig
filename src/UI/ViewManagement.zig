@@ -71,7 +71,7 @@ pub const AccessibilitySettings = extern struct {
         const this: *IAccessibilitySettings = @ptrCast(self);
         return try this.getHighContrast();
     }
-    pub fn getHighContrastScheme(self: *@This()) core.HResult!HSTRING {
+    pub fn getHighContrastScheme(self: *@This()) core.HResult!?HSTRING {
         const this: *IAccessibilitySettings = @ptrCast(self);
         return try this.getHighContrastScheme();
     }
@@ -147,11 +147,11 @@ pub const ApplicationView = extern struct {
         const this: *IApplicationView = @ptrCast(self);
         return try this.putIsScreenCaptureEnabled(value);
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IApplicationView = @ptrCast(self);
         return try this.putTitle(value);
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IApplicationView = @ptrCast(self);
         return try this.getTitle();
     }
@@ -293,13 +293,13 @@ pub const ApplicationView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryConsolidateAsync();
     }
-    pub fn getPersistedStateId(self: *@This()) core.HResult!HSTRING {
+    pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IApplicationView7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPersistedStateId();
     }
-    pub fn putPersistedStateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IApplicationView7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -374,7 +374,7 @@ pub const ApplicationView = extern struct {
         const _f = try @This()._IApplicationViewStatics4Cache.get();
         return try _f.ClearAllPersistedState();
     }
-    pub fn ClearPersistedState(key: HSTRING) core.HResult!void {
+    pub fn ClearPersistedState(key: ?HSTRING) core.HResult!void {
         const _f = try @This()._IApplicationViewStatics4Cache.get();
         return try _f.ClearPersistedState(key);
     }
@@ -607,7 +607,7 @@ pub const ApplicationViewTransferContext = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IApplicationViewTransferContext.IID)));
     }
-    pub fn getDataPackageFormatId() core.HResult!HSTRING {
+    pub fn getDataPackageFormatId() core.HResult!?HSTRING {
         const _f = try @This()._IApplicationViewTransferContextStaticsCache.get();
         return try _f.getDataPackageFormatId();
     }
@@ -642,8 +642,8 @@ pub const IAccessibilitySettings = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHighContrastScheme(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHighContrastScheme(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HighContrastScheme(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -671,7 +671,7 @@ pub const IAccessibilitySettings = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_HighContrast: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_HighContrastScheme: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_HighContrastScheme: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         add_HighContrastChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(AccessibilitySettings,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_HighContrastChanged: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -755,12 +755,12 @@ pub const IApplicationView = extern struct {
         const _c = self.vtable.put_IsScreenCaptureEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn putTitle(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Title(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -800,8 +800,8 @@ pub const IApplicationView = extern struct {
         get_IsOnLockScreen: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsScreenCaptureEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsScreenCaptureEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
-        put_Title: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Title: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_Title: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Title: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         add_Consolidated: *const fn(self: *anyopaque, handler: *TypedEventHandler(ApplicationView,ApplicationViewConsolidatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Consolidated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -992,13 +992,13 @@ pub const IApplicationView4 = extern struct {
 };
 pub const IApplicationView7 = extern struct {
     vtable: *const VTable,
-    pub fn getPersistedStateId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PersistedStateId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPersistedStateId(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PersistedStateId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1014,8 +1014,8 @@ pub const IApplicationView7 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_PersistedStateId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PersistedStateId: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_PersistedStateId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PersistedStateId: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IApplicationView9 = extern struct {
@@ -1251,7 +1251,7 @@ pub const IApplicationViewStatics4 = extern struct {
         const _c = self.vtable.ClearAllPersistedState(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ClearPersistedState(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn ClearPersistedState(self: *@This(), key: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ClearPersistedState(@ptrCast(self), key);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1268,7 +1268,7 @@ pub const IApplicationViewStatics4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ClearAllPersistedState: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ClearPersistedState: *const fn(self: *anyopaque, key: HSTRING) callconv(.winapi) HRESULT,
+        ClearPersistedState: *const fn(self: *anyopaque, key: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IApplicationViewSwitcherStatics = extern struct {
@@ -1582,8 +1582,8 @@ pub const IApplicationViewTransferContext = extern struct {
 };
 pub const IApplicationViewTransferContextStatics = extern struct {
     vtable: *const VTable,
-    pub fn getDataPackageFormatId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDataPackageFormatId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataPackageFormatId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1600,7 +1600,7 @@ pub const IApplicationViewTransferContextStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DataPackageFormatId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DataPackageFormatId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IApplicationViewWithContext = extern struct {
@@ -1888,8 +1888,8 @@ pub const IProjectionManagerStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1909,7 +1909,7 @@ pub const IProjectionManagerStatics2 = extern struct {
         StartProjectingAsync: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RequestStartProjectingAsync: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestStartProjectingAsyncWithPrefferedPlacement: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IUISettings = extern struct {
@@ -2517,7 +2517,7 @@ pub const ProjectionManager = extern struct {
         const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.RequestStartProjectingAsyncWithPrefferedPlacement(projectionViewId, anchorViewId, selection, prefferedPlacement);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IProjectionManagerStatics2Cache.get();
         return try _f.GetDeviceSelector();
     }

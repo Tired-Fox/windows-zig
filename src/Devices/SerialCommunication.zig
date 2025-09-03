@@ -153,8 +153,8 @@ pub const ISerialDevice = extern struct {
         const _c = self.vtable.put_Parity(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPortName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPortName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PortName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -263,7 +263,7 @@ pub const ISerialDevice = extern struct {
         put_IsRequestToSendEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Parity: *const fn(self: *anyopaque, _r: *SerialParity) callconv(.winapi) HRESULT,
         put_Parity: *const fn(self: *anyopaque, value: SerialParity) callconv(.winapi) HRESULT,
-        get_PortName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_PortName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_ReadTimeout: *const fn(self: *anyopaque, _r: *TimeSpan) callconv(.winapi) HRESULT,
         put_ReadTimeout: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         get_StopBits: *const fn(self: *anyopaque, _r: *SerialStopBitCount) callconv(.winapi) HRESULT,
@@ -282,25 +282,25 @@ pub const ISerialDevice = extern struct {
 };
 pub const ISerialDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithPortName(self: *@This(), portName: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorWithPortName(self: *@This(), portName: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithPortName(@ptrCast(self), portName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromUsbVidPid(self: *@This(), vendorId: u16, productId: u16) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelectorFromUsbVidPid(self: *@This(), vendorId: u16, productId: u16) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorFromUsbVidPid(@ptrCast(self), vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(SerialDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SerialDevice) {
         var _r: *IAsyncOperation(SerialDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -318,10 +318,10 @@ pub const ISerialDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithPortName: *const fn(self: *anyopaque, portName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromUsbVidPid: *const fn(self: *anyopaque, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(SerialDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithPortName: *const fn(self: *anyopaque, portName: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromUsbVidPid: *const fn(self: *anyopaque, vendorId: u16, productId: u16, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SerialDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const PinChangedEventArgs = extern struct {
@@ -410,7 +410,7 @@ pub const SerialDevice = extern struct {
         const this: *ISerialDevice = @ptrCast(self);
         return try this.putParity(value);
     }
-    pub fn getPortName(self: *@This()) core.HResult!HSTRING {
+    pub fn getPortName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISerialDevice = @ptrCast(self);
         return try this.getPortName();
     }
@@ -479,19 +479,19 @@ pub const SerialDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn GetDeviceSelectorWithPortName(portName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithPortName(portName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithPortName(portName);
     }
-    pub fn GetDeviceSelectorFromUsbVidPid(vendorId: u16, productId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromUsbVidPid(vendorId: u16, productId: u16) core.HResult!?HSTRING {
         const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorFromUsbVidPid(vendorId, productId);
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SerialDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SerialDevice) {
         const _f = try @This()._ISerialDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }

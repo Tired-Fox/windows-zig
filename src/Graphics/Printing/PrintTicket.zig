@@ -1,14 +1,14 @@
 // ----- This code is automatically generated -----
 pub const IPrintTicketCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -109,13 +109,13 @@ pub const IPrintTicketCapabilities = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFeature(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketFeature {
+    pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.GetFeature(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetParameterDefinition(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketParameterDefinition {
+    pub fn GetParameterDefinition(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterDefinition {
         var _r: *PrintTicketParameterDefinition = undefined;
         const _c = self.vtable.GetParameterDefinition(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -133,8 +133,8 @@ pub const IPrintTicketCapabilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
         get_DocumentBindingFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         get_DocumentCollateFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
@@ -151,20 +151,20 @@ pub const IPrintTicketCapabilities = extern struct {
         get_PageOutputColorFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         get_PageOutputQualityFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         get_PageResolutionFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
-        GetFeature: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
-        GetParameterDefinition: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketParameterDefinition) callconv(.winapi) HRESULT,
+        GetFeature: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
+        GetParameterDefinition: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketParameterDefinition) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTicketFeature = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -175,13 +175,13 @@ pub const IPrintTicketFeature = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetOption(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketOption {
+    pub fn GetOption(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketOption {
         var _r: *PrintTicketOption = undefined;
         const _c = self.vtable.GetOption(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -221,11 +221,11 @@ pub const IPrintTicketFeature = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetOption: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketOption) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetOption: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketOption) callconv(.winapi) HRESULT,
         get_Options: *const fn(self: *anyopaque, _r: **IVectorView(PrintTicketOption)) callconv(.winapi) HRESULT,
         GetSelectedOption: *const fn(self: *anyopaque, _r: **PrintTicketOption) callconv(.winapi) HRESULT,
         SetSelectedOption: *const fn(self: *anyopaque, value: *PrintTicketOption) callconv(.winapi) HRESULT,
@@ -234,14 +234,14 @@ pub const IPrintTicketFeature = extern struct {
 };
 pub const IPrintTicketOption = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -252,31 +252,31 @@ pub const IPrintTicketOption = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertyNode(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetPropertyNode(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetScoredPropertyNode(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetScoredPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.GetScoredPropertyNode(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPropertyValue(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketValue {
+    pub fn GetPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         var _r: *PrintTicketValue = undefined;
         const _c = self.vtable.GetPropertyValue(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetScoredPropertyValue(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketValue {
+    pub fn GetScoredPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         var _r: *PrintTicketValue = undefined;
         const _c = self.vtable.GetScoredPropertyValue(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -294,26 +294,26 @@ pub const IPrintTicketOption = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetPropertyNode: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        GetScoredPropertyNode: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
-        GetPropertyValue: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketValue) callconv(.winapi) HRESULT,
-        GetScoredPropertyValue: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketValue) callconv(.winapi) HRESULT,
+        get_DisplayName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetPropertyNode: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        GetScoredPropertyNode: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **IXmlNode) callconv(.winapi) HRESULT,
+        GetPropertyValue: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketValue) callconv(.winapi) HRESULT,
+        GetScoredPropertyValue: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketValue) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTicketParameterDefinition = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -330,8 +330,8 @@ pub const IPrintTicketParameterDefinition = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnitType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnitType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnitType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -360,25 +360,25 @@ pub const IPrintTicketParameterDefinition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
         get_DataType: *const fn(self: *anyopaque, _r: *PrintTicketParameterDataType) callconv(.winapi) HRESULT,
-        get_UnitType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_UnitType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_RangeMin: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_RangeMax: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTicketParameterInitializer = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -411,8 +411,8 @@ pub const IPrintTicketParameterInitializer = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
         put_Value: *const fn(self: *anyopaque, value: *PrintTicketValue) callconv(.winapi) HRESULT,
         get_Value: *const fn(self: *anyopaque, _r: **PrintTicketValue) callconv(.winapi) HRESULT,
@@ -432,8 +432,8 @@ pub const IPrintTicketValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetValueAsString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetValueAsString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetValueAsString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -452,19 +452,19 @@ pub const IPrintTicketValue = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *PrintTicketValueType) callconv(.winapi) HRESULT,
         GetValueAsInteger: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        GetValueAsString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetValueAsString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWorkflowPrintTicket = extern struct {
     vtable: *const VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_XmlNamespace(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -571,7 +571,7 @@ pub const IWorkflowPrintTicket = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFeature(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketFeature {
+    pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         var _r: *PrintTicketFeature = undefined;
         const _c = self.vtable.GetFeature(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -589,19 +589,19 @@ pub const IWorkflowPrintTicket = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetParameterInitializer(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketParameterInitializer {
+    pub fn GetParameterInitializer(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.GetParameterInitializer(@ptrCast(self), name, xmlNamespace, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetParameterInitializerAsInteger(self: *@This(), name: HSTRING, xmlNamespace: HSTRING, integerValue: i32) core.HResult!*PrintTicketParameterInitializer {
+    pub fn SetParameterInitializerAsInteger(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, integerValue: i32) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.SetParameterInitializerAsInteger(@ptrCast(self), name, xmlNamespace, integerValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetParameterInitializerAsString(self: *@This(), name: HSTRING, xmlNamespace: HSTRING, stringValue: HSTRING) core.HResult!*PrintTicketParameterInitializer {
+    pub fn SetParameterInitializerAsString(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, stringValue: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         var _r: *PrintTicketParameterInitializer = undefined;
         const _c = self.vtable.SetParameterInitializerAsString(@ptrCast(self), name, xmlNamespace, stringValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -625,8 +625,8 @@ pub const IWorkflowPrintTicket = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_XmlNamespace: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Name: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_XmlNamespace: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_XmlNode: *const fn(self: *anyopaque, _r: **IXmlNode) callconv(.winapi) HRESULT,
         GetCapabilities: *const fn(self: *anyopaque, _r: **PrintTicketCapabilities) callconv(.winapi) HRESULT,
         get_DocumentBindingFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
@@ -644,12 +644,12 @@ pub const IWorkflowPrintTicket = extern struct {
         get_PageOutputColorFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         get_PageOutputQualityFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         get_PageResolutionFeature: *const fn(self: *anyopaque, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
-        GetFeature: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
+        GetFeature: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketFeature) callconv(.winapi) HRESULT,
         NotifyXmlChangedAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ValidateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(WorkflowPrintTicketValidationResult)) callconv(.winapi) HRESULT,
-        GetParameterInitializer: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
-        SetParameterInitializerAsInteger: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, integerValue: i32, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
-        SetParameterInitializerAsString: *const fn(self: *anyopaque, name: HSTRING, xmlNamespace: HSTRING, stringValue: HSTRING, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
+        GetParameterInitializer: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
+        SetParameterInitializerAsInteger: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, integerValue: i32, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
+        SetParameterInitializerAsString: *const fn(self: *anyopaque, name: ?HSTRING, xmlNamespace: ?HSTRING, stringValue: ?HSTRING, _r: **PrintTicketParameterInitializer) callconv(.winapi) HRESULT,
         MergeAndValidateTicket: *const fn(self: *anyopaque, deltaShemaTicket: *WorkflowPrintTicket, _r: **WorkflowPrintTicket) callconv(.winapi) HRESULT,
     };
 };
@@ -685,11 +685,11 @@ pub const IWorkflowPrintTicketValidationResult = extern struct {
 };
 pub const PrintTicketCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketCapabilities = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketCapabilities = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -757,11 +757,11 @@ pub const PrintTicketCapabilities = extern struct {
         const this: *IPrintTicketCapabilities = @ptrCast(self);
         return try this.getPageResolutionFeature();
     }
-    pub fn GetFeature(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketFeature {
+    pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         const this: *IPrintTicketCapabilities = @ptrCast(self);
         return try this.GetFeature(name, xmlNamespace);
     }
-    pub fn GetParameterDefinition(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketParameterDefinition {
+    pub fn GetParameterDefinition(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterDefinition {
         const this: *IPrintTicketCapabilities = @ptrCast(self);
         return try this.GetParameterDefinition(name, xmlNamespace);
     }
@@ -773,11 +773,11 @@ pub const PrintTicketCapabilities = extern struct {
 };
 pub const PrintTicketFeature = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketFeature = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketFeature = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -785,11 +785,11 @@ pub const PrintTicketFeature = extern struct {
         const this: *IPrintTicketFeature = @ptrCast(self);
         return try this.getXmlNode();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketFeature = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn GetOption(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketOption {
+    pub fn GetOption(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketOption {
         const this: *IPrintTicketFeature = @ptrCast(self);
         return try this.GetOption(name, xmlNamespace);
     }
@@ -821,11 +821,11 @@ pub const PrintTicketFeatureSelectionType = enum(i32) {
 };
 pub const PrintTicketOption = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -833,23 +833,23 @@ pub const PrintTicketOption = extern struct {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.getXmlNode();
     }
-    pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
+    pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.getDisplayName();
     }
-    pub fn GetPropertyNode(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.GetPropertyNode(name, xmlNamespace);
     }
-    pub fn GetScoredPropertyNode(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*IXmlNode {
+    pub fn GetScoredPropertyNode(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*IXmlNode {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.GetScoredPropertyNode(name, xmlNamespace);
     }
-    pub fn GetPropertyValue(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketValue {
+    pub fn GetPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.GetPropertyValue(name, xmlNamespace);
     }
-    pub fn GetScoredPropertyValue(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketValue {
+    pub fn GetScoredPropertyValue(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketValue {
         const this: *IPrintTicketOption = @ptrCast(self);
         return try this.GetScoredPropertyValue(name, xmlNamespace);
     }
@@ -866,11 +866,11 @@ pub const PrintTicketParameterDataType = enum(i32) {
 };
 pub const PrintTicketParameterDefinition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketParameterDefinition = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketParameterDefinition = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -882,7 +882,7 @@ pub const PrintTicketParameterDefinition = extern struct {
         const this: *IPrintTicketParameterDefinition = @ptrCast(self);
         return try this.getDataType();
     }
-    pub fn getUnitType(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnitType(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketParameterDefinition = @ptrCast(self);
         return try this.getUnitType();
     }
@@ -902,11 +902,11 @@ pub const PrintTicketParameterDefinition = extern struct {
 };
 pub const PrintTicketParameterInitializer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketParameterInitializer = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketParameterInitializer = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -938,7 +938,7 @@ pub const PrintTicketValue = extern struct {
         const this: *IPrintTicketValue = @ptrCast(self);
         return try this.GetValueAsInteger();
     }
-    pub fn GetValueAsString(self: *@This()) core.HResult!HSTRING {
+    pub fn GetValueAsString(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintTicketValue = @ptrCast(self);
         return try this.GetValueAsString();
     }
@@ -955,11 +955,11 @@ pub const PrintTicketValueType = enum(i32) {
 };
 pub const WorkflowPrintTicket = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!HSTRING {
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.getName();
     }
-    pub fn getXmlNamespace(self: *@This()) core.HResult!HSTRING {
+    pub fn getXmlNamespace(self: *@This()) core.HResult!?HSTRING {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.getXmlNamespace();
     }
@@ -1031,7 +1031,7 @@ pub const WorkflowPrintTicket = extern struct {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.getPageResolutionFeature();
     }
-    pub fn GetFeature(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketFeature {
+    pub fn GetFeature(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketFeature {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.GetFeature(name, xmlNamespace);
     }
@@ -1043,15 +1043,15 @@ pub const WorkflowPrintTicket = extern struct {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.ValidateAsync();
     }
-    pub fn GetParameterInitializer(self: *@This(), name: HSTRING, xmlNamespace: HSTRING) core.HResult!*PrintTicketParameterInitializer {
+    pub fn GetParameterInitializer(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.GetParameterInitializer(name, xmlNamespace);
     }
-    pub fn SetParameterInitializerAsInteger(self: *@This(), name: HSTRING, xmlNamespace: HSTRING, integerValue: i32) core.HResult!*PrintTicketParameterInitializer {
+    pub fn SetParameterInitializerAsInteger(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, integerValue: i32) core.HResult!*PrintTicketParameterInitializer {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.SetParameterInitializerAsInteger(name, xmlNamespace, integerValue);
     }
-    pub fn SetParameterInitializerAsString(self: *@This(), name: HSTRING, xmlNamespace: HSTRING, stringValue: HSTRING) core.HResult!*PrintTicketParameterInitializer {
+    pub fn SetParameterInitializerAsString(self: *@This(), name: ?HSTRING, xmlNamespace: ?HSTRING, stringValue: ?HSTRING) core.HResult!*PrintTicketParameterInitializer {
         const this: *IWorkflowPrintTicket = @ptrCast(self);
         return try this.SetParameterInitializerAsString(name, xmlNamespace, stringValue);
     }

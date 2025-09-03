@@ -106,8 +106,8 @@ pub const IKeyEventReceivedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUnicode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnicode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Unicode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -160,7 +160,7 @@ pub const IKeyEventReceivedEventArgs = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_VirtualKey: *const fn(self: *anyopaque, _r: *VirtualKey) callconv(.winapi) HRESULT,
         get_KeyStatus: *const fn(self: *anyopaque, _r: *CorePhysicalKeyStatus) callconv(.winapi) HRESULT,
-        get_Unicode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Unicode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: *KeyEventDeviceType) callconv(.winapi) HRESULT,
         IsKeyPressed: *const fn(self: *anyopaque, vkey: VirtualKey, _r: *bool) callconv(.winapi) HRESULT,
         IsToggleKeyOn: *const fn(self: *anyopaque, vkey: VirtualKey, _r: *bool) callconv(.winapi) HRESULT,
@@ -171,8 +171,8 @@ pub const IKeyEventReceivedEventArgs = extern struct {
 };
 pub const IKeyboardInputProcessor = extern struct {
     vtable: *const VTable,
-    pub fn getInputProfile(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInputProfile(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputProfile(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -341,7 +341,7 @@ pub const IKeyboardInputProcessor = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_InputProfile: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_InputProfile: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_HasFocusedTextBox: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_FocusedTextBoxId: *const fn(self: *anyopaque, _r: *TextBoxId) callconv(.winapi) HRESULT,
@@ -454,14 +454,14 @@ pub const ITextBoxInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getUrl(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUrl(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Url(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -492,8 +492,8 @@ pub const ITextBoxInfo = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Id: *const fn(self: *anyopaque, _r: *TextBoxId) callconv(.winapi) HRESULT,
         get_InputScope: *const fn(self: *anyopaque, _r: *CoreTextInputScope) callconv(.winapi) HRESULT,
-        get_AppName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Url: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AppName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Url: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Settings: *const fn(self: *anyopaque, _r: *TextBoxSettings) callconv(.winapi) HRESULT,
         get_DisabledFeatures: *const fn(self: *anyopaque, _r: *TextBoxFeatures) callconv(.winapi) HRESULT,
     };
@@ -523,8 +523,8 @@ pub const ITextBoxInfoChangedEventArgs = extern struct {
 };
 pub const ITextComposition = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -551,7 +551,7 @@ pub const ITextComposition = extern struct {
         const _c = self.vtable.put_CaretPosition(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertText(self: *@This(), text: HSTRING) core.HResult!*TextCompositionSegment {
+    pub fn InsertText(self: *@This(), text: ?HSTRING) core.HResult!*TextCompositionSegment {
         var _r: *TextCompositionSegment = undefined;
         const _c = self.vtable.InsertText(@ptrCast(self), text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -581,12 +581,12 @@ pub const ITextComposition = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_FirstSegment: *const fn(self: *anyopaque, _r: **TextCompositionSegment) callconv(.winapi) HRESULT,
         get_SelectedSegment: *const fn(self: *anyopaque, _r: **TextCompositionSegment) callconv(.winapi) HRESULT,
         get_CaretPosition: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         put_CaretPosition: *const fn(self: *anyopaque, value: u32) callconv(.winapi) HRESULT,
-        InsertText: *const fn(self: *anyopaque, text: HSTRING, _r: **TextCompositionSegment) callconv(.winapi) HRESULT,
+        InsertText: *const fn(self: *anyopaque, text: ?HSTRING, _r: **TextCompositionSegment) callconv(.winapi) HRESULT,
         Complete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         CompleteUnconverted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         CompleteFirstSegment: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -594,33 +594,33 @@ pub const ITextComposition = extern struct {
 };
 pub const ITextCompositionSegment = extern struct {
     vtable: *const VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Text(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getConvertedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getConvertedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConvertedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putConvertedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConvertedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ConvertedText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getUnconvertedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getUnconvertedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnconvertedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putUnconvertedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUnconvertedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_UnconvertedText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -674,12 +674,12 @@ pub const ITextCompositionSegment = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Text: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Text: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_ConvertedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_ConvertedText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_UnconvertedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_UnconvertedText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Text: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Text: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_ConvertedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_ConvertedText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_UnconvertedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_UnconvertedText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Range: *const fn(self: *anyopaque, _r: *CoreTextRange) callconv(.winapi) HRESULT,
         get_ConversionState: *const fn(self: *anyopaque, _r: *CoreTextFormatUpdatingReason) callconv(.winapi) HRESULT,
         put_ConversionState: *const fn(self: *anyopaque, value: CoreTextFormatUpdatingReason) callconv(.winapi) HRESULT,
@@ -715,8 +715,8 @@ pub const ITextEditSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetText(self: *@This(), range: CoreTextRange) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetText(self: *@This(), range: CoreTextRange) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetText(@ptrCast(self), range, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -731,7 +731,7 @@ pub const ITextEditSession = extern struct {
         const _c = self.vtable.SetSelectedRange(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReplaceText(self: *@This(), replaceRange: CoreTextRange, text: HSTRING) core.HResult!CoreTextRange {
+    pub fn ReplaceText(self: *@This(), replaceRange: CoreTextRange, text: ?HSTRING) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.ReplaceText(@ptrCast(self), replaceRange, text, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -783,10 +783,10 @@ pub const ITextEditSession = extern struct {
         get_TextLength: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_PopulatedRange: *const fn(self: *anyopaque, _r: *CoreTextRange) callconv(.winapi) HRESULT,
         PopulateAsync: *const fn(self: *anyopaque, range: CoreTextRange, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GetText: *const fn(self: *anyopaque, range: CoreTextRange, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetText: *const fn(self: *anyopaque, range: CoreTextRange, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetSelectedRange: *const fn(self: *anyopaque, _r: *CoreTextRange) callconv(.winapi) HRESULT,
         SetSelectedRange: *const fn(self: *anyopaque, value: CoreTextRange) callconv(.winapi) HRESULT,
-        ReplaceText: *const fn(self: *anyopaque, replaceRange: CoreTextRange, text: HSTRING, _r: *CoreTextRange) callconv(.winapi) HRESULT,
+        ReplaceText: *const fn(self: *anyopaque, replaceRange: CoreTextRange, text: ?HSTRING, _r: *CoreTextRange) callconv(.winapi) HRESULT,
         get_Composition: *const fn(self: *anyopaque, _r: **TextComposition) callconv(.winapi) HRESULT,
         StartComposition: *const fn(self: *anyopaque, _r: **TextComposition) callconv(.winapi) HRESULT,
         StartReconversion: *const fn(self: *anyopaque, range: CoreTextRange, _r: **TextComposition) callconv(.winapi) HRESULT,
@@ -962,13 +962,13 @@ pub const ITextInputProvider = extern struct {
 };
 pub const ITextInputService = extern struct {
     vtable: *const VTable,
-    pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: HSTRING) core.HResult!*KeyboardInputProcessor {
+    pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: ?HSTRING) core.HResult!*KeyboardInputProcessor {
         var _r: *KeyboardInputProcessor = undefined;
         const _c = self.vtable.CreateKeyboardInputProcessor(@ptrCast(self), inputProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTextInputProvider(self: *@This(), inputProfile: HSTRING) core.HResult!*TextInputProvider {
+    pub fn CreateTextInputProvider(self: *@This(), inputProfile: ?HSTRING) core.HResult!*TextInputProvider {
         var _r: *TextInputProvider = undefined;
         const _c = self.vtable.CreateTextInputProvider(@ptrCast(self), inputProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -986,8 +986,8 @@ pub const ITextInputService = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateKeyboardInputProcessor: *const fn(self: *anyopaque, inputProfile: HSTRING, _r: **KeyboardInputProcessor) callconv(.winapi) HRESULT,
-        CreateTextInputProvider: *const fn(self: *anyopaque, inputProfile: HSTRING, _r: **TextInputProvider) callconv(.winapi) HRESULT,
+        CreateKeyboardInputProcessor: *const fn(self: *anyopaque, inputProfile: ?HSTRING, _r: **KeyboardInputProcessor) callconv(.winapi) HRESULT,
+        CreateTextInputProvider: *const fn(self: *anyopaque, inputProfile: ?HSTRING, _r: **TextInputProvider) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextInputServiceStatics = extern struct {
@@ -1042,7 +1042,7 @@ pub const KeyEventReceivedEventArgs = extern struct {
         const this: *IKeyEventReceivedEventArgs = @ptrCast(self);
         return try this.getKeyStatus();
     }
-    pub fn getUnicode(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnicode(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyEventReceivedEventArgs = @ptrCast(self);
         return try this.getUnicode();
     }
@@ -1078,7 +1078,7 @@ pub const KeyEventReceivedEventArgs = extern struct {
 };
 pub const KeyboardInputProcessor = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getInputProfile(self: *@This()) core.HResult!HSTRING {
+    pub fn getInputProfile(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyboardInputProcessor = @ptrCast(self);
         return try this.getInputProfile();
     }
@@ -1275,11 +1275,11 @@ pub const TextBoxInfo = extern struct {
         const this: *ITextBoxInfo = @ptrCast(self);
         return try this.getInputScope();
     }
-    pub fn getAppName(self: *@This()) core.HResult!HSTRING {
+    pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBoxInfo = @ptrCast(self);
         return try this.getAppName();
     }
-    pub fn getUrl(self: *@This()) core.HResult!HSTRING {
+    pub fn getUrl(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextBoxInfo = @ptrCast(self);
         return try this.getUrl();
     }
@@ -1327,7 +1327,7 @@ pub const TextChangeSource = enum(i32) {
 };
 pub const TextComposition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextComposition = @ptrCast(self);
         return try this.getText();
     }
@@ -1347,7 +1347,7 @@ pub const TextComposition = extern struct {
         const this: *ITextComposition = @ptrCast(self);
         return try this.putCaretPosition(value);
     }
-    pub fn InsertText(self: *@This(), text: HSTRING) core.HResult!*TextCompositionSegment {
+    pub fn InsertText(self: *@This(), text: ?HSTRING) core.HResult!*TextCompositionSegment {
         const this: *ITextComposition = @ptrCast(self);
         return try this.InsertText(text);
     }
@@ -1371,27 +1371,27 @@ pub const TextComposition = extern struct {
 };
 pub const TextCompositionSegment = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getText(self: *@This()) core.HResult!HSTRING {
+    pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.getText();
     }
-    pub fn putText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.putText(value);
     }
-    pub fn getConvertedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getConvertedText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.getConvertedText();
     }
-    pub fn putConvertedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putConvertedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.putConvertedText(value);
     }
-    pub fn getUnconvertedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getUnconvertedText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.getUnconvertedText();
     }
-    pub fn putUnconvertedText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putUnconvertedText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.putUnconvertedText(value);
     }
@@ -1461,7 +1461,7 @@ pub const TextEditSession = extern struct {
         const this: *ITextEditSession = @ptrCast(self);
         return try this.PopulateAsync(range);
     }
-    pub fn GetText(self: *@This(), range: CoreTextRange) core.HResult!HSTRING {
+    pub fn GetText(self: *@This(), range: CoreTextRange) core.HResult!?HSTRING {
         const this: *ITextEditSession = @ptrCast(self);
         return try this.GetText(range);
     }
@@ -1473,7 +1473,7 @@ pub const TextEditSession = extern struct {
         const this: *ITextEditSession = @ptrCast(self);
         return try this.SetSelectedRange(value);
     }
-    pub fn ReplaceText(self: *@This(), replaceRange: CoreTextRange, text: HSTRING) core.HResult!CoreTextRange {
+    pub fn ReplaceText(self: *@This(), replaceRange: CoreTextRange, text: ?HSTRING) core.HResult!CoreTextRange {
         const this: *ITextEditSession = @ptrCast(self);
         return try this.ReplaceText(replaceRange, text);
     }
@@ -1609,11 +1609,11 @@ pub const TextInputProvider = extern struct {
 };
 pub const TextInputService = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: HSTRING) core.HResult!*KeyboardInputProcessor {
+    pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: ?HSTRING) core.HResult!*KeyboardInputProcessor {
         const this: *ITextInputService = @ptrCast(self);
         return try this.CreateKeyboardInputProcessor(inputProfile);
     }
-    pub fn CreateTextInputProvider(self: *@This(), inputProfile: HSTRING) core.HResult!*TextInputProvider {
+    pub fn CreateTextInputProvider(self: *@This(), inputProfile: ?HSTRING) core.HResult!*TextInputProvider {
         const this: *ITextInputService = @ptrCast(self);
         return try this.CreateTextInputProvider(inputProfile);
     }

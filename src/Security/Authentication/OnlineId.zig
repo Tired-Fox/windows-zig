@@ -40,8 +40,8 @@ pub const IOnlineIdAuthenticator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAuthenticatedSafeCustomerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAuthenticatedSafeCustomerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AuthenticatedSafeCustomerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -64,13 +64,13 @@ pub const IOnlineIdAuthenticator = extern struct {
         put_ApplicationId: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
         get_ApplicationId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         get_CanSignOut: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        get_AuthenticatedSafeCustomerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AuthenticatedSafeCustomerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlineIdServiceTicket = extern struct {
     vtable: *const VTable,
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -99,21 +99,21 @@ pub const IOnlineIdServiceTicket = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Request: *const fn(self: *anyopaque, _r: **OnlineIdServiceTicketRequest) callconv(.winapi) HRESULT,
         get_ErrorCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlineIdServiceTicketRequest = extern struct {
     vtable: *const VTable,
-    pub fn getService(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getService(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Service(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPolicy(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPolicy(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -130,19 +130,19 @@ pub const IOnlineIdServiceTicketRequest = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Service: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Policy: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Service: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Policy: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlineIdServiceTicketRequestFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateOnlineIdServiceTicketRequest(self: *@This(), service: HSTRING, policy: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
+    pub fn CreateOnlineIdServiceTicketRequest(self: *@This(), service: ?HSTRING, policy: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         var _r: *OnlineIdServiceTicketRequest = undefined;
         const _c = self.vtable.CreateOnlineIdServiceTicketRequest(@ptrCast(self), service, policy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateOnlineIdServiceTicketRequestAdvanced(self: *@This(), service: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
+    pub fn CreateOnlineIdServiceTicketRequestAdvanced(self: *@This(), service: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         var _r: *OnlineIdServiceTicketRequest = undefined;
         const _c = self.vtable.CreateOnlineIdServiceTicketRequestAdvanced(@ptrCast(self), service, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -160,8 +160,8 @@ pub const IOnlineIdServiceTicketRequestFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateOnlineIdServiceTicketRequest: *const fn(self: *anyopaque, service: HSTRING, policy: HSTRING, _r: **OnlineIdServiceTicketRequest) callconv(.winapi) HRESULT,
-        CreateOnlineIdServiceTicketRequestAdvanced: *const fn(self: *anyopaque, service: HSTRING, _r: **OnlineIdServiceTicketRequest) callconv(.winapi) HRESULT,
+        CreateOnlineIdServiceTicketRequest: *const fn(self: *anyopaque, service: ?HSTRING, policy: ?HSTRING, _r: **OnlineIdServiceTicketRequest) callconv(.winapi) HRESULT,
+        CreateOnlineIdServiceTicketRequestAdvanced: *const fn(self: *anyopaque, service: ?HSTRING, _r: **OnlineIdServiceTicketRequest) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlineIdSystemAuthenticatorForUser = extern struct {
@@ -244,8 +244,8 @@ pub const IOnlineIdSystemIdentity = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -263,7 +263,7 @@ pub const IOnlineIdSystemIdentity = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Ticket: *const fn(self: *anyopaque, _r: **OnlineIdServiceTicket) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IOnlineIdSystemTicketResult = extern struct {
@@ -311,32 +311,32 @@ pub const IUserIdentity = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSafeCustomerId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSafeCustomerId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SafeCustomerId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSignInName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSignInName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SignInName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLastName(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LastName(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -366,11 +366,11 @@ pub const IUserIdentity = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Tickets: *const fn(self: *anyopaque, _r: **IVectorView(OnlineIdServiceTicket)) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SafeCustomerId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_SignInName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_FirstName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_LastName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SafeCustomerId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_SignInName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_FirstName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_LastName: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IsBetaAccount: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_IsConfirmedPC: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -401,7 +401,7 @@ pub const OnlineIdAuthenticator = extern struct {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.getCanSignOut();
     }
-    pub fn getAuthenticatedSafeCustomerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getAuthenticatedSafeCustomerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.getAuthenticatedSafeCustomerId();
     }
@@ -421,7 +421,7 @@ pub const OnlineIdAuthenticator = extern struct {
 };
 pub const OnlineIdServiceTicket = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicket = @ptrCast(self);
         return try this.getValue();
     }
@@ -441,22 +441,22 @@ pub const OnlineIdServiceTicket = extern struct {
 };
 pub const OnlineIdServiceTicketRequest = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getService(self: *@This()) core.HResult!HSTRING {
+    pub fn getService(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicketRequest = @ptrCast(self);
         return try this.getService();
     }
-    pub fn getPolicy(self: *@This()) core.HResult!HSTRING {
+    pub fn getPolicy(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicketRequest = @ptrCast(self);
         return try this.getPolicy();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateOnlineIdServiceTicketRequest(service: HSTRING, policy: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
+    pub fn CreateOnlineIdServiceTicketRequest(service: ?HSTRING, policy: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         const _f = try @This()._IOnlineIdServiceTicketRequestFactoryCache.get();
         return try _f.CreateOnlineIdServiceTicketRequest(service, policy);
     }
-    pub fn CreateOnlineIdServiceTicketRequestAdvanced(service: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
+    pub fn CreateOnlineIdServiceTicketRequestAdvanced(service: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         const _f = try @This()._IOnlineIdServiceTicketRequestFactoryCache.get();
         return try _f.CreateOnlineIdServiceTicketRequestAdvanced(service);
     }
@@ -514,7 +514,7 @@ pub const OnlineIdSystemIdentity = extern struct {
         const this: *IOnlineIdSystemIdentity = @ptrCast(self);
         return try this.getTicket();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdSystemIdentity = @ptrCast(self);
         return try this.getId();
     }
@@ -651,23 +651,23 @@ pub const UserIdentity = extern struct {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getTickets();
     }
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getId();
     }
-    pub fn getSafeCustomerId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSafeCustomerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getSafeCustomerId();
     }
-    pub fn getSignInName(self: *@This()) core.HResult!HSTRING {
+    pub fn getSignInName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getSignInName();
     }
-    pub fn getFirstName(self: *@This()) core.HResult!HSTRING {
+    pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getFirstName();
     }
-    pub fn getLastName(self: *@This()) core.HResult!HSTRING {
+    pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getLastName();
     }

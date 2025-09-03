@@ -11,8 +11,8 @@ pub const IWebViewControl = extern struct {
         const _c = self.vtable.put_Source(@ptrCast(self), source);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDocumentTitle(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DocumentTitle(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -77,7 +77,7 @@ pub const IWebViewControl = extern struct {
         const _c = self.vtable.Navigate(@ptrCast(self), source);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn NavigateToString(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn NavigateToString(self: *@This(), text: ?HSTRING) core.HResult!void {
         const _c = self.vtable.NavigateToString(@ptrCast(self), text);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -89,8 +89,8 @@ pub const IWebViewControl = extern struct {
         const _c = self.vtable.NavigateWithHttpRequestMessage(@ptrCast(self), requestMessage);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InvokeScriptAsync(self: *@This(), scriptName: HSTRING, arguments: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(HSTRING) {
-        var _r: *IAsyncOperation(HSTRING) = undefined;
+    pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
+        var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.InvokeScriptAsync(@ptrCast(self), scriptName, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -107,7 +107,7 @@ pub const IWebViewControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: HSTRING, relativePath: HSTRING) core.HResult!*Uri {
+    pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.BuildLocalStreamUri(@ptrCast(self), contentIdentifier, relativePath, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -301,7 +301,7 @@ pub const IWebViewControl = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         put_Source: *const fn(self: *anyopaque, source: *Uri) callconv(.winapi) HRESULT,
-        get_DocumentTitle: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DocumentTitle: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CanGoBack: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_CanGoForward: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_DefaultBackgroundColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
@@ -314,13 +314,13 @@ pub const IWebViewControl = extern struct {
         Refresh: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Navigate: *const fn(self: *anyopaque, source: *Uri) callconv(.winapi) HRESULT,
-        NavigateToString: *const fn(self: *anyopaque, text: HSTRING) callconv(.winapi) HRESULT,
+        NavigateToString: *const fn(self: *anyopaque, text: ?HSTRING) callconv(.winapi) HRESULT,
         NavigateToLocalStreamUri: *const fn(self: *anyopaque, source: *Uri, streamResolver: *IUriToStreamResolver) callconv(.winapi) HRESULT,
         NavigateWithHttpRequestMessage: *const fn(self: *anyopaque, requestMessage: *HttpRequestMessage) callconv(.winapi) HRESULT,
-        InvokeScriptAsync: *const fn(self: *anyopaque, scriptName: HSTRING, arguments: *IIterable(HSTRING), _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        InvokeScriptAsync: *const fn(self: *anyopaque, scriptName: ?HSTRING, arguments: *IIterable(?HSTRING), _r: **IAsyncOperation(?HSTRING)) callconv(.winapi) HRESULT,
         CapturePreviewToStreamAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         CaptureSelectedContentToDataPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DataPackage)) callconv(.winapi) HRESULT,
-        BuildLocalStreamUri: *const fn(self: *anyopaque, contentIdentifier: HSTRING, relativePath: HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
+        BuildLocalStreamUri: *const fn(self: *anyopaque, contentIdentifier: ?HSTRING, relativePath: ?HSTRING, _r: **Uri) callconv(.winapi) HRESULT,
         GetDeferredPermissionRequestById: *const fn(self: *anyopaque, id: u32, result: *WebViewControlDeferredPermissionRequest) callconv(.winapi) HRESULT,
         add_NavigationStarting: *const fn(self: *anyopaque, handler: *TypedEventHandler(IWebViewControl,WebViewControlNavigationStartingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_NavigationStarting: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -360,7 +360,7 @@ pub const IWebViewControl = extern struct {
 };
 pub const IWebViewControl2 = extern struct {
     vtable: *const VTable,
-    pub fn AddInitializeScript(self: *@This(), script: HSTRING) core.HResult!void {
+    pub fn AddInitializeScript(self: *@This(), script: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AddInitializeScript(@ptrCast(self), script);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -376,7 +376,7 @@ pub const IWebViewControl2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AddInitializeScript: *const fn(self: *anyopaque, script: HSTRING) callconv(.winapi) HRESULT,
+        AddInitializeScript: *const fn(self: *anyopaque, script: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebViewControlContentLoadingEventArgs = extern struct {
@@ -746,8 +746,8 @@ pub const IWebViewControlScriptNotifyEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -765,7 +765,7 @@ pub const IWebViewControlScriptNotifyEventArgs = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_Value: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Value: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebViewControlSettings = extern struct {
@@ -869,8 +869,8 @@ pub const IWebViewControlUnviewableContentIdentifiedEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -889,7 +889,7 @@ pub const IWebViewControlUnviewableContentIdentifiedEventArgs = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_Referrer: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
-        get_MediaType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MediaType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebViewControlWebResourceRequestedEventArgs = extern struct {
@@ -1157,7 +1157,7 @@ pub const WebViewControlScriptNotifyEventArgs = extern struct {
         const this: *IWebViewControlScriptNotifyEventArgs = @ptrCast(self);
         return try this.getUri();
     }
-    pub fn getValue(self: *@This()) core.HResult!HSTRING {
+    pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewControlScriptNotifyEventArgs = @ptrCast(self);
         return try this.getValue();
     }
@@ -1229,7 +1229,7 @@ pub const WebViewControlUnviewableContentIdentifiedEventArgs = extern struct {
         const this: *IWebViewControlUnviewableContentIdentifiedEventArgs = @ptrCast(self);
         return try this.getReferrer();
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebViewControlUnviewableContentIdentifiedEventArgs = @ptrCast(self);
         return try this.getMediaType();
     }

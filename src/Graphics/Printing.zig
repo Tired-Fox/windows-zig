@@ -672,8 +672,8 @@ pub const IPrintTaskOptionsCoreProperties = extern struct {
 };
 pub const IPrintTaskOptionsCoreUIConfiguration = extern struct {
     vtable: *const VTable,
-    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DisplayedOptions(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -690,7 +690,7 @@ pub const IPrintTaskOptionsCoreUIConfiguration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DisplayedOptions: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_DisplayedOptions: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPrintTaskProgressingEventArgs = extern struct {
@@ -724,7 +724,7 @@ pub const IPrintTaskRequest = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreatePrintTask(self: *@This(), title: HSTRING, handler: *PrintTaskSourceRequestedHandler) core.HResult!*PrintTask {
+    pub fn CreatePrintTask(self: *@This(), title: ?HSTRING, handler: *PrintTaskSourceRequestedHandler) core.HResult!*PrintTask {
         var _r: *PrintTask = undefined;
         const _c = self.vtable.CreatePrintTask(@ptrCast(self), title, handler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -749,7 +749,7 @@ pub const IPrintTaskRequest = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Deadline: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        CreatePrintTask: *const fn(self: *anyopaque, title: HSTRING, handler: *PrintTaskSourceRequestedHandler, _r: **PrintTask) callconv(.winapi) HRESULT,
+        CreatePrintTask: *const fn(self: *anyopaque, title: ?HSTRING, handler: *PrintTaskSourceRequestedHandler, _r: **PrintTask) callconv(.winapi) HRESULT,
         GetDeferral: *const fn(self: *anyopaque, _r: **PrintTaskRequestedDeferral) callconv(.winapi) HRESULT,
     };
 };
@@ -895,80 +895,80 @@ pub const IPrintTaskTargetDeviceSupport = extern struct {
 };
 pub const IStandardPrintTaskOptionsStatic = extern struct {
     vtable: *const VTable,
-    pub fn getMediaSize(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaSize(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaSize(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getMediaType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getOrientation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getOrientation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPrintQuality(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPrintQuality(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrintQuality(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getColorMode(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getColorMode(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ColorMode(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDuplex(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDuplex(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Duplex(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCollation(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCollation(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Collation(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getStaple(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getStaple(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Staple(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHolePunch(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getHolePunch(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HolePunch(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBinding(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBinding(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Binding(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getCopies(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCopies(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Copies(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getNUp(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getNUp(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NUp(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getInputBin(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getInputBin(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputBin(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -985,25 +985,25 @@ pub const IStandardPrintTaskOptionsStatic = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_MediaSize: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_MediaType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Orientation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PrintQuality: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ColorMode: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Duplex: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Collation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Staple: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_HolePunch: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Binding: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Copies: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_NUp: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_InputBin: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_MediaSize: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_MediaType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Orientation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PrintQuality: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ColorMode: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Duplex: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Collation: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Staple: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_HolePunch: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Binding: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Copies: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_NUp: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_InputBin: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardPrintTaskOptionsStatic2 = extern struct {
     vtable: *const VTable,
-    pub fn getBordering(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBordering(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bordering(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1020,13 +1020,13 @@ pub const IStandardPrintTaskOptionsStatic2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Bordering: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Bordering: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IStandardPrintTaskOptionsStatic3 = extern struct {
     vtable: *const VTable,
-    pub fn getCustomPageRanges(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCustomPageRanges(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomPageRanges(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1043,7 +1043,7 @@ pub const IStandardPrintTaskOptionsStatic3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_CustomPageRanges: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_CustomPageRanges: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const PrintBinding = enum(i32) {
@@ -1762,7 +1762,7 @@ pub const PrintTaskOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumberOfCopies();
     }
-    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IPrintTaskOptionsCoreUIConfiguration = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreUIConfiguration.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1822,7 +1822,7 @@ pub const PrintTaskRequest = extern struct {
         const this: *IPrintTaskRequest = @ptrCast(self);
         return try this.getDeadline();
     }
-    pub fn CreatePrintTask(self: *@This(), title: HSTRING, handler: *PrintTaskSourceRequestedHandler) core.HResult!*PrintTask {
+    pub fn CreatePrintTask(self: *@This(), title: ?HSTRING, handler: *PrintTaskSourceRequestedHandler) core.HResult!*PrintTask {
         const this: *IPrintTaskRequest = @ptrCast(self);
         return try this.CreatePrintTask(title, handler);
     }
@@ -1984,63 +1984,63 @@ pub const StandardPrintTaskOptions = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBordering() core.HResult!HSTRING {
+    pub fn getBordering() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStatic2Cache.get();
         return try _f.getBordering();
     }
-    pub fn getCustomPageRanges() core.HResult!HSTRING {
+    pub fn getCustomPageRanges() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStatic3Cache.get();
         return try _f.getCustomPageRanges();
     }
-    pub fn getMediaSize() core.HResult!HSTRING {
+    pub fn getMediaSize() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getMediaSize();
     }
-    pub fn getMediaType() core.HResult!HSTRING {
+    pub fn getMediaType() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getMediaType();
     }
-    pub fn getOrientation() core.HResult!HSTRING {
+    pub fn getOrientation() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getOrientation();
     }
-    pub fn getPrintQuality() core.HResult!HSTRING {
+    pub fn getPrintQuality() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getPrintQuality();
     }
-    pub fn getColorMode() core.HResult!HSTRING {
+    pub fn getColorMode() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getColorMode();
     }
-    pub fn getDuplex() core.HResult!HSTRING {
+    pub fn getDuplex() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getDuplex();
     }
-    pub fn getCollation() core.HResult!HSTRING {
+    pub fn getCollation() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getCollation();
     }
-    pub fn getStaple() core.HResult!HSTRING {
+    pub fn getStaple() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getStaple();
     }
-    pub fn getHolePunch() core.HResult!HSTRING {
+    pub fn getHolePunch() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getHolePunch();
     }
-    pub fn getBinding() core.HResult!HSTRING {
+    pub fn getBinding() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getBinding();
     }
-    pub fn getCopies() core.HResult!HSTRING {
+    pub fn getCopies() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getCopies();
     }
-    pub fn getNUp() core.HResult!HSTRING {
+    pub fn getNUp() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getNUp();
     }
-    pub fn getInputBin() core.HResult!HSTRING {
+    pub fn getInputBin() core.HResult!?HSTRING {
         const _f = try @This()._IStandardPrintTaskOptionsStaticCache.get();
         return try _f.getInputBin();
     }

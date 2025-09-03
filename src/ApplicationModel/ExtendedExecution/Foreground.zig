@@ -27,11 +27,11 @@ pub const ExtendedExecutionForegroundRevokedReason = enum(i32) {
 };
 pub const ExtendedExecutionForegroundSession = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IExtendedExecutionForegroundSession = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IExtendedExecutionForegroundSession = @ptrCast(self);
         return try this.putDescription(value);
     }
@@ -100,13 +100,13 @@ pub const IExtendedExecutionForegroundRevokedEventArgs = extern struct {
 };
 pub const IExtendedExecutionForegroundSession = extern struct {
     vtable: *const VTable,
-    pub fn getDescription(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putDescription(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Description(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -148,8 +148,8 @@ pub const IExtendedExecutionForegroundSession = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Description: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Description: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_Description: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Description: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         add_Revoked: *const fn(self: *anyopaque, handler: *TypedEventHandler(IInspectable,ExtendedExecutionForegroundRevokedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_Revoked: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         RequestExtensionAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ExtendedExecutionForegroundResult)) callconv(.winapi) HRESULT,

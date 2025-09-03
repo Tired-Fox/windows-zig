@@ -1,8 +1,8 @@
 // ----- This code is automatically generated -----
 pub const IInkAnalysisInkBullet = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -19,7 +19,7 @@ pub const IInkAnalysisInkBullet = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisInkDrawing = extern struct {
@@ -61,14 +61,14 @@ pub const IInkAnalysisInkDrawing = extern struct {
 };
 pub const IInkAnalysisInkWord = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTextAlternates(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getTextAlternates(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_TextAlternates(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -85,14 +85,14 @@ pub const IInkAnalysisInkWord = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_TextAlternates: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_TextAlternates: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisLine = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -115,14 +115,14 @@ pub const IInkAnalysisLine = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_IndentLevel: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisListItem = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -139,7 +139,7 @@ pub const IInkAnalysisListItem = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisNode = extern struct {
@@ -209,8 +209,8 @@ pub const IInkAnalysisNode = extern struct {
 };
 pub const IInkAnalysisParagraph = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -227,7 +227,7 @@ pub const IInkAnalysisParagraph = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisResult = extern struct {
@@ -255,8 +255,8 @@ pub const IInkAnalysisResult = extern struct {
 };
 pub const IInkAnalysisRoot = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -279,14 +279,14 @@ pub const IInkAnalysisRoot = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         FindNodes: *const fn(self: *anyopaque, nodeKind: InkAnalysisNodeKind, _r: **IVectorView(IInkAnalysisNode)) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalysisWritingRegion = extern struct {
     vtable: *const VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -303,7 +303,7 @@ pub const IInkAnalysisWritingRegion = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_RecognizedText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_RecognizedText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IInkAnalyzer = extern struct {
@@ -420,7 +420,7 @@ pub const InkAnalysisDrawingKind = enum(i32) {
 };
 pub const InkAnalysisInkBullet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisInkBullet = @ptrCast(self);
         return try this.getRecognizedText();
     }
@@ -536,11 +536,11 @@ pub const InkAnalysisInkDrawing = extern struct {
 };
 pub const InkAnalysisInkWord = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisInkWord = @ptrCast(self);
         return try this.getRecognizedText();
     }
-    pub fn getTextAlternates(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getTextAlternates(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IInkAnalysisInkWord = @ptrCast(self);
         return try this.getTextAlternates();
     }
@@ -594,7 +594,7 @@ pub const InkAnalysisInkWord = extern struct {
 };
 pub const InkAnalysisLine = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisLine = @ptrCast(self);
         return try this.getRecognizedText();
     }
@@ -652,7 +652,7 @@ pub const InkAnalysisLine = extern struct {
 };
 pub const InkAnalysisListItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisListItem = @ptrCast(self);
         return try this.getRecognizedText();
     }
@@ -753,7 +753,7 @@ pub const InkAnalysisNodeKind = enum(i32) {
 };
 pub const InkAnalysisParagraph = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisParagraph = @ptrCast(self);
         return try this.getRecognizedText();
     }
@@ -819,7 +819,7 @@ pub const InkAnalysisResult = extern struct {
 };
 pub const InkAnalysisRoot = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisRoot = @ptrCast(self);
         return try this.getRecognizedText();
     }
@@ -886,7 +886,7 @@ pub const InkAnalysisStrokeKind = enum(i32) {
 };
 pub const InkAnalysisWritingRegion = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRecognizedText(self: *@This()) core.HResult!HSTRING {
+    pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisWritingRegion = @ptrCast(self);
         return try this.getRecognizedText();
     }

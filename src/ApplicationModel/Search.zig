@@ -17,18 +17,18 @@ pub const ILocalContentSuggestionSettings = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putAqsFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAqsFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_AqsFilter(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getAqsFilter(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAqsFilter(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AqsFilter(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getPropertiesToMatch(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getPropertiesToMatch(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_PropertiesToMatch(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -48,15 +48,15 @@ pub const ILocalContentSuggestionSettings = extern struct {
         put_Enabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Enabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_Locations: *const fn(self: *anyopaque, _r: **IVector(StorageFolder)) callconv(.winapi) HRESULT,
-        put_AqsFilter: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_AqsFilter: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_PropertiesToMatch: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        put_AqsFilter: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_AqsFilter: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_PropertiesToMatch: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchPaneQueryLinguisticDetails = extern struct {
     vtable: *const VTable,
-    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_QueryTextAlternatives(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -85,15 +85,15 @@ pub const ISearchPaneQueryLinguisticDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryTextAlternatives: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_QueryTextAlternatives: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_QueryTextCompositionStart: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_QueryTextCompositionLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchQueryLinguisticDetails = extern struct {
     vtable: *const VTable,
-    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(HSTRING) {
-        var _r: *IVectorView(HSTRING) = undefined;
+    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_QueryTextAlternatives(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -122,14 +122,14 @@ pub const ISearchQueryLinguisticDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryTextAlternatives: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
+        get_QueryTextAlternatives: *const fn(self: *anyopaque, _r: **IVectorView(?HSTRING)) callconv(.winapi) HRESULT,
         get_QueryTextCompositionStart: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_QueryTextCompositionLength: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchQueryLinguisticDetailsFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), queryTextAlternatives: *IIterable(HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
+    pub fn CreateInstance(self: *@This(), queryTextAlternatives: *IIterable(?HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
         var _r: *SearchQueryLinguisticDetails = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -147,7 +147,7 @@ pub const ISearchQueryLinguisticDetailsFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, queryTextAlternatives: *IIterable(HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, queryTextAlternatives: *IIterable(?HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32, _r: **SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchSuggestionCollection = extern struct {
@@ -158,19 +158,19 @@ pub const ISearchSuggestionCollection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendQuerySuggestion(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn AppendQuerySuggestion(self: *@This(), text: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AppendQuerySuggestion(@ptrCast(self), text);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AppendQuerySuggestions(self: *@This(), suggestions: *IIterable(HSTRING)) core.HResult!void {
+    pub fn AppendQuerySuggestions(self: *@This(), suggestions: *IIterable(?HSTRING)) core.HResult!void {
         const _c = self.vtable.AppendQuerySuggestions(@ptrCast(self), suggestions);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AppendResultSuggestion(self: *@This(), text: HSTRING, detailText: HSTRING, tag: HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: HSTRING) core.HResult!void {
+    pub fn AppendResultSuggestion(self: *@This(), text: ?HSTRING, detailText: ?HSTRING, tag: ?HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AppendResultSuggestion(@ptrCast(self), text, detailText, tag, image, imageAlternateText);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AppendSearchSeparator(self: *@This(), label: HSTRING) core.HResult!void {
+    pub fn AppendSearchSeparator(self: *@This(), label: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AppendSearchSeparator(@ptrCast(self), label);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -187,10 +187,10 @@ pub const ISearchSuggestionCollection = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Size: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        AppendQuerySuggestion: *const fn(self: *anyopaque, text: HSTRING) callconv(.winapi) HRESULT,
-        AppendQuerySuggestions: *const fn(self: *anyopaque, suggestions: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
-        AppendResultSuggestion: *const fn(self: *anyopaque, text: HSTRING, detailText: HSTRING, tag: HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: HSTRING) callconv(.winapi) HRESULT,
-        AppendSearchSeparator: *const fn(self: *anyopaque, label: HSTRING) callconv(.winapi) HRESULT,
+        AppendQuerySuggestion: *const fn(self: *anyopaque, text: ?HSTRING) callconv(.winapi) HRESULT,
+        AppendQuerySuggestions: *const fn(self: *anyopaque, suggestions: *IIterable(?HSTRING)) callconv(.winapi) HRESULT,
+        AppendResultSuggestion: *const fn(self: *anyopaque, text: ?HSTRING, detailText: ?HSTRING, tag: ?HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: ?HSTRING) callconv(.winapi) HRESULT,
+        AppendSearchSeparator: *const fn(self: *anyopaque, label: ?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchSuggestionsRequest = extern struct {
@@ -265,15 +265,15 @@ pub const LocalContentSuggestionSettings = extern struct {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.getLocations();
     }
-    pub fn putAqsFilter(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putAqsFilter(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.putAqsFilter(value);
     }
-    pub fn getAqsFilter(self: *@This()) core.HResult!HSTRING {
+    pub fn getAqsFilter(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.getAqsFilter();
     }
-    pub fn getPropertiesToMatch(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getPropertiesToMatch(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.getPropertiesToMatch();
     }
@@ -293,7 +293,7 @@ pub const LocalContentSuggestionSettings = extern struct {
 };
 pub const SearchPaneQueryLinguisticDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISearchPaneQueryLinguisticDetails = @ptrCast(self);
         return try this.getQueryTextAlternatives();
     }
@@ -313,7 +313,7 @@ pub const SearchPaneQueryLinguisticDetails = extern struct {
 };
 pub const SearchQueryLinguisticDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISearchQueryLinguisticDetails = @ptrCast(self);
         return try this.getQueryTextAlternatives();
     }
@@ -328,7 +328,7 @@ pub const SearchQueryLinguisticDetails = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateInstance(queryTextAlternatives: *IIterable(HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
+    pub fn CreateInstance(queryTextAlternatives: *IIterable(?HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
         const _f = try @This()._ISearchQueryLinguisticDetailsFactoryCache.get();
         return try _f.CreateInstance(queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength);
     }
@@ -345,19 +345,19 @@ pub const SearchSuggestionCollection = extern struct {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn AppendQuerySuggestion(self: *@This(), text: HSTRING) core.HResult!void {
+    pub fn AppendQuerySuggestion(self: *@This(), text: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.AppendQuerySuggestion(text);
     }
-    pub fn AppendQuerySuggestions(self: *@This(), suggestions: *IIterable(HSTRING)) core.HResult!void {
+    pub fn AppendQuerySuggestions(self: *@This(), suggestions: *IIterable(?HSTRING)) core.HResult!void {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.AppendQuerySuggestions(suggestions);
     }
-    pub fn AppendResultSuggestion(self: *@This(), text: HSTRING, detailText: HSTRING, tag: HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: HSTRING) core.HResult!void {
+    pub fn AppendResultSuggestion(self: *@This(), text: ?HSTRING, detailText: ?HSTRING, tag: ?HSTRING, image: *IRandomAccessStreamReference, imageAlternateText: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.AppendResultSuggestion(text, detailText, tag, image, imageAlternateText);
     }
-    pub fn AppendSearchSeparator(self: *@This(), label: HSTRING) core.HResult!void {
+    pub fn AppendSearchSeparator(self: *@This(), label: ?HSTRING) core.HResult!void {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.AppendSearchSeparator(label);
     }
@@ -411,34 +411,34 @@ pub const ISearchPane = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SearchHistoryContext(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SearchHistoryContext(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PlaceholderText(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PlaceholderText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -507,7 +507,7 @@ pub const ISearchPane = extern struct {
         const _c = self.vtable.Show(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ShowWithQuery(self: *@This(), query: HSTRING) core.HResult!void {
+    pub fn ShowWithQuery(self: *@This(), query: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ShowWithQuery(@ptrCast(self), query);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -521,7 +521,7 @@ pub const ISearchPane = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetQueryText(self: *@This(), query: HSTRING) core.HResult!bool {
+    pub fn TrySetQueryText(self: *@This(), query: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetQueryText(@ptrCast(self), query, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -541,12 +541,12 @@ pub const ISearchPane = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         put_SearchHistoryEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_SearchHistoryEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        put_SearchHistoryContext: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_PlaceholderText: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_PlaceholderText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        put_SearchHistoryContext: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_SearchHistoryContext: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_PlaceholderText: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_PlaceholderText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Visible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         add_VisibilityChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(SearchPane,SearchPaneVisibilityChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_VisibilityChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -560,22 +560,22 @@ pub const ISearchPane = extern struct {
         remove_ResultSuggestionChosen: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         SetLocalContentSuggestionSettings: *const fn(self: *anyopaque, settings: *LocalContentSuggestionSettings) callconv(.winapi) HRESULT,
         Show: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ShowWithQuery: *const fn(self: *anyopaque, query: HSTRING) callconv(.winapi) HRESULT,
+        ShowWithQuery: *const fn(self: *anyopaque, query: ?HSTRING) callconv(.winapi) HRESULT,
         put_ShowOnKeyboardInput: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ShowOnKeyboardInput: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        TrySetQueryText: *const fn(self: *anyopaque, query: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        TrySetQueryText: *const fn(self: *anyopaque, query: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchPaneQueryChangedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -598,21 +598,21 @@ pub const ISearchPaneQueryChangedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_LinguisticDetails: *const fn(self: *anyopaque, _r: **SearchPaneQueryLinguisticDetails) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchPaneQuerySubmittedEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -629,8 +629,8 @@ pub const ISearchPaneQuerySubmittedEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_QueryText: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Language: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_QueryText: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Language: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails = extern struct {
@@ -658,8 +658,8 @@ pub const ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails = extern struc
 };
 pub const ISearchPaneResultSuggestionChosenEventArgs = extern struct {
     vtable: *const VTable,
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -676,7 +676,7 @@ pub const ISearchPaneResultSuggestionChosenEventArgs = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Tag: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Tag: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISearchPaneStatics = extern struct {
@@ -837,27 +837,27 @@ pub const SearchPane = extern struct {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getSearchHistoryEnabled();
     }
-    pub fn putSearchHistoryContext(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSearchHistoryContext(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);
         return try this.putSearchHistoryContext(value);
     }
-    pub fn getSearchHistoryContext(self: *@This()) core.HResult!HSTRING {
+    pub fn getSearchHistoryContext(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getSearchHistoryContext();
     }
-    pub fn putPlaceholderText(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);
         return try this.putPlaceholderText(value);
     }
-    pub fn getPlaceholderText(self: *@This()) core.HResult!HSTRING {
+    pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getPlaceholderText();
     }
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -913,7 +913,7 @@ pub const SearchPane = extern struct {
         const this: *ISearchPane = @ptrCast(self);
         return try this.Show();
     }
-    pub fn ShowWithQuery(self: *@This(), query: HSTRING) core.HResult!void {
+    pub fn ShowWithQuery(self: *@This(), query: ?HSTRING) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);
         return try this.ShowWithQuery(query);
     }
@@ -925,7 +925,7 @@ pub const SearchPane = extern struct {
         const this: *ISearchPane = @ptrCast(self);
         return try this.getShowOnKeyboardInput();
     }
-    pub fn TrySetQueryText(self: *@This(), query: HSTRING) core.HResult!bool {
+    pub fn TrySetQueryText(self: *@This(), query: ?HSTRING) core.HResult!bool {
         const this: *ISearchPane = @ptrCast(self);
         return try this.TrySetQueryText(query);
     }
@@ -950,11 +950,11 @@ pub const SearchPane = extern struct {
 };
 pub const SearchPaneQueryChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQueryChangedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQueryChangedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -970,11 +970,11 @@ pub const SearchPaneQueryChangedEventArgs = extern struct {
 };
 pub const SearchPaneQuerySubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getLanguage();
     }
@@ -992,7 +992,7 @@ pub const SearchPaneQuerySubmittedEventArgs = extern struct {
 };
 pub const SearchPaneResultSuggestionChosenEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTag(self: *@This()) core.HResult!HSTRING {
+    pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneResultSuggestionChosenEventArgs = @ptrCast(self);
         return try this.getTag();
     }
@@ -1040,13 +1040,13 @@ pub const SearchPaneSuggestionsRequestedEventArgs = extern struct {
         const this: *ISearchPaneSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
     }
-    pub fn getQueryText(self: *@This()) core.HResult!HSTRING {
+    pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISearchPaneQueryChangedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQueryChangedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getQueryText();
     }
-    pub fn getLanguage(self: *@This()) core.HResult!HSTRING {
+    pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISearchPaneQueryChangedEventArgs = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQueryChangedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

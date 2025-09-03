@@ -13,8 +13,8 @@ pub const IJsonArray = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetStringAt(self: *@This(), index: u32) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetStringAt(self: *@This(), index: u32) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetStringAt(@ptrCast(self), index, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -45,20 +45,20 @@ pub const IJsonArray = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetObjectAt: *const fn(self: *anyopaque, index: u32, _r: **JsonObject) callconv(.winapi) HRESULT,
         GetArrayAt: *const fn(self: *anyopaque, index: u32, _r: **JsonArray) callconv(.winapi) HRESULT,
-        GetStringAt: *const fn(self: *anyopaque, index: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetStringAt: *const fn(self: *anyopaque, index: u32, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetNumberAt: *const fn(self: *anyopaque, index: u32, _r: *f64) callconv(.winapi) HRESULT,
         GetBooleanAt: *const fn(self: *anyopaque, index: u32, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonArrayStatics = extern struct {
     vtable: *const VTable,
-    pub fn Parse(self: *@This(), input: HSTRING) core.HResult!*JsonArray {
+    pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParse(self: *@This(), input: HSTRING, result: *JsonArray) core.HResult!bool {
+    pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonArray) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -76,8 +76,8 @@ pub const IJsonArrayStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Parse: *const fn(self: *anyopaque, input: HSTRING, _r: **JsonArray) callconv(.winapi) HRESULT,
-        TryParse: *const fn(self: *anyopaque, input: HSTRING, result: *JsonArray, _r: *bool) callconv(.winapi) HRESULT,
+        Parse: *const fn(self: *anyopaque, input: ?HSTRING, _r: **JsonArray) callconv(.winapi) HRESULT,
+        TryParse: *const fn(self: *anyopaque, input: ?HSTRING, result: *JsonArray, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonErrorStatics2 = extern struct {
@@ -105,41 +105,41 @@ pub const IJsonErrorStatics2 = extern struct {
 };
 pub const IJsonObject = extern struct {
     vtable: *const VTable,
-    pub fn GetNamedValue(self: *@This(), name: HSTRING) core.HResult!*JsonValue {
+    pub fn GetNamedValue(self: *@This(), name: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetNamedValue(self: *@This(), name: HSTRING, value: *IJsonValue) core.HResult!void {
+    pub fn SetNamedValue(self: *@This(), name: ?HSTRING, value: *IJsonValue) core.HResult!void {
         const _c = self.vtable.SetNamedValue(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetNamedObject(self: *@This(), name: HSTRING) core.HResult!*JsonObject {
+    pub fn GetNamedObject(self: *@This(), name: ?HSTRING) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetNamedObject(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedArray(self: *@This(), name: HSTRING) core.HResult!*JsonArray {
+    pub fn GetNamedArray(self: *@This(), name: ?HSTRING) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetNamedArray(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedString(self: *@This(), name: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNamedString(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNamedString(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedNumber(self: *@This(), name: HSTRING) core.HResult!f64 {
+    pub fn GetNamedNumber(self: *@This(), name: ?HSTRING) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNamedNumber(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedBoolean(self: *@This(), name: HSTRING) core.HResult!bool {
+    pub fn GetNamedBoolean(self: *@This(), name: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetNamedBoolean(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -157,24 +157,24 @@ pub const IJsonObject = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetNamedValue: *const fn(self: *anyopaque, name: HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
-        SetNamedValue: *const fn(self: *anyopaque, name: HSTRING, value: *IJsonValue) callconv(.winapi) HRESULT,
-        GetNamedObject: *const fn(self: *anyopaque, name: HSTRING, _r: **JsonObject) callconv(.winapi) HRESULT,
-        GetNamedArray: *const fn(self: *anyopaque, name: HSTRING, _r: **JsonArray) callconv(.winapi) HRESULT,
-        GetNamedString: *const fn(self: *anyopaque, name: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetNamedNumber: *const fn(self: *anyopaque, name: HSTRING, _r: *f64) callconv(.winapi) HRESULT,
-        GetNamedBoolean: *const fn(self: *anyopaque, name: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
+        GetNamedValue: *const fn(self: *anyopaque, name: ?HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
+        SetNamedValue: *const fn(self: *anyopaque, name: ?HSTRING, value: *IJsonValue) callconv(.winapi) HRESULT,
+        GetNamedObject: *const fn(self: *anyopaque, name: ?HSTRING, _r: **JsonObject) callconv(.winapi) HRESULT,
+        GetNamedArray: *const fn(self: *anyopaque, name: ?HSTRING, _r: **JsonArray) callconv(.winapi) HRESULT,
+        GetNamedString: *const fn(self: *anyopaque, name: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetNamedNumber: *const fn(self: *anyopaque, name: ?HSTRING, _r: *f64) callconv(.winapi) HRESULT,
+        GetNamedBoolean: *const fn(self: *anyopaque, name: ?HSTRING, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonObjectStatics = extern struct {
     vtable: *const VTable,
-    pub fn Parse(self: *@This(), input: HSTRING) core.HResult!*JsonObject {
+    pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParse(self: *@This(), input: HSTRING, result: *JsonObject) core.HResult!bool {
+    pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonObject) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -192,43 +192,43 @@ pub const IJsonObjectStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Parse: *const fn(self: *anyopaque, input: HSTRING, _r: **JsonObject) callconv(.winapi) HRESULT,
-        TryParse: *const fn(self: *anyopaque, input: HSTRING, result: *JsonObject, _r: *bool) callconv(.winapi) HRESULT,
+        Parse: *const fn(self: *anyopaque, input: ?HSTRING, _r: **JsonObject) callconv(.winapi) HRESULT,
+        TryParse: *const fn(self: *anyopaque, input: ?HSTRING, result: *JsonObject, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonObjectWithDefaultValues = extern struct {
     vtable: *const VTable,
-    pub fn GetNamedValue(self: *@This(), name: HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
+    pub fn GetNamedValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedObject(self: *@This(), name: HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
+    pub fn GetNamedObject(self: *@This(), name: ?HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetNamedObject(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedString(self: *@This(), name: HSTRING, defaultValue: HSTRING) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetNamedString(self: *@This(), name: ?HSTRING, defaultValue: ?HSTRING) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNamedString(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedArray(self: *@This(), name: HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
+    pub fn GetNamedArray(self: *@This(), name: ?HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.GetNamedArray(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedNumber(self: *@This(), name: HSTRING, defaultValue: f64) core.HResult!f64 {
+    pub fn GetNamedNumber(self: *@This(), name: ?HSTRING, defaultValue: f64) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.GetNamedNumber(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetNamedBoolean(self: *@This(), name: HSTRING, defaultValue: bool) core.HResult!bool {
+    pub fn GetNamedBoolean(self: *@This(), name: ?HSTRING, defaultValue: bool) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.GetNamedBoolean(@ptrCast(self), name, defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -246,12 +246,12 @@ pub const IJsonObjectWithDefaultValues = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetNamedValue: *const fn(self: *anyopaque, name: HSTRING, defaultValue: *JsonValue, _r: **JsonValue) callconv(.winapi) HRESULT,
-        GetNamedObject: *const fn(self: *anyopaque, name: HSTRING, defaultValue: *JsonObject, _r: **JsonObject) callconv(.winapi) HRESULT,
-        GetNamedString: *const fn(self: *anyopaque, name: HSTRING, defaultValue: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetNamedArray: *const fn(self: *anyopaque, name: HSTRING, defaultValue: *JsonArray, _r: **JsonArray) callconv(.winapi) HRESULT,
-        GetNamedNumber: *const fn(self: *anyopaque, name: HSTRING, defaultValue: f64, _r: *f64) callconv(.winapi) HRESULT,
-        GetNamedBoolean: *const fn(self: *anyopaque, name: HSTRING, defaultValue: bool, _r: *bool) callconv(.winapi) HRESULT,
+        GetNamedValue: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: *JsonValue, _r: **JsonValue) callconv(.winapi) HRESULT,
+        GetNamedObject: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: *JsonObject, _r: **JsonObject) callconv(.winapi) HRESULT,
+        GetNamedString: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: ?HSTRING, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetNamedArray: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: *JsonArray, _r: **JsonArray) callconv(.winapi) HRESULT,
+        GetNamedNumber: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: f64, _r: *f64) callconv(.winapi) HRESULT,
+        GetNamedBoolean: *const fn(self: *anyopaque, name: ?HSTRING, defaultValue: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonValue = extern struct {
@@ -262,14 +262,14 @@ pub const IJsonValue = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Stringify(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.Stringify(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetString(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -311,8 +311,8 @@ pub const IJsonValue = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_ValueType: *const fn(self: *anyopaque, _r: *JsonValueType) callconv(.winapi) HRESULT,
-        Stringify: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetString: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        Stringify: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        GetString: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         GetNumber: *const fn(self: *anyopaque, _r: *f64) callconv(.winapi) HRESULT,
         GetBoolean: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         GetArray: *const fn(self: *anyopaque, _r: **JsonArray) callconv(.winapi) HRESULT,
@@ -321,13 +321,13 @@ pub const IJsonValue = extern struct {
 };
 pub const IJsonValueStatics = extern struct {
     vtable: *const VTable,
-    pub fn Parse(self: *@This(), input: HSTRING) core.HResult!*JsonValue {
+    pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParse(self: *@This(), input: HSTRING, result: *JsonValue) core.HResult!bool {
+    pub fn TryParse(self: *@This(), input: ?HSTRING, result: *JsonValue) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), input, result, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -345,7 +345,7 @@ pub const IJsonValueStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStringValue(self: *@This(), input: HSTRING) core.HResult!*JsonValue {
+    pub fn CreateStringValue(self: *@This(), input: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateStringValue(@ptrCast(self), input, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -363,11 +363,11 @@ pub const IJsonValueStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Parse: *const fn(self: *anyopaque, input: HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
-        TryParse: *const fn(self: *anyopaque, input: HSTRING, result: *JsonValue, _r: *bool) callconv(.winapi) HRESULT,
+        Parse: *const fn(self: *anyopaque, input: ?HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
+        TryParse: *const fn(self: *anyopaque, input: ?HSTRING, result: *JsonValue, _r: *bool) callconv(.winapi) HRESULT,
         CreateBooleanValue: *const fn(self: *anyopaque, input: bool, _r: **JsonValue) callconv(.winapi) HRESULT,
         CreateNumberValue: *const fn(self: *anyopaque, input: f64, _r: **JsonValue) callconv(.winapi) HRESULT,
-        CreateStringValue: *const fn(self: *anyopaque, input: HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
+        CreateStringValue: *const fn(self: *anyopaque, input: ?HSTRING, _r: **JsonValue) callconv(.winapi) HRESULT,
     };
 };
 pub const IJsonValueStatics2 = extern struct {
@@ -403,7 +403,7 @@ pub const JsonArray = extern struct {
         const this: *IJsonArray = @ptrCast(self);
         return try this.GetArrayAt(index);
     }
-    pub fn GetStringAt(self: *@This(), index: u32) core.HResult!HSTRING {
+    pub fn GetStringAt(self: *@This(), index: u32) core.HResult!?HSTRING {
         const this: *IJsonArray = @ptrCast(self);
         return try this.GetStringAt(index);
     }
@@ -421,13 +421,13 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValueType();
     }
-    pub fn Stringify(self: *@This()) core.HResult!HSTRING {
+    pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stringify();
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -493,7 +493,7 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -506,11 +506,11 @@ pub const JsonArray = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonArray.IID)));
     }
-    pub fn Parse(input: HSTRING) core.HResult!*JsonArray {
+    pub fn Parse(input: ?HSTRING) core.HResult!*JsonArray {
         const _f = try @This()._IJsonArrayStaticsCache.get();
         return try _f.Parse(input);
     }
-    pub fn TryParse(input: HSTRING, result: *JsonArray) core.HResult!bool {
+    pub fn TryParse(input: ?HSTRING, result: *JsonArray) core.HResult!bool {
         const _f = try @This()._IJsonArrayStaticsCache.get();
         return try _f.TryParse(input, result);
     }
@@ -544,31 +544,31 @@ pub const JsonErrorStatus = enum(i32) {
 };
 pub const JsonObject = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetNamedValue(self: *@This(), name: HSTRING) core.HResult!*JsonValue {
+    pub fn GetNamedValue(self: *@This(), name: ?HSTRING) core.HResult!*JsonValue {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedValue(name);
     }
-    pub fn SetNamedValue(self: *@This(), name: HSTRING, value: *IJsonValue) core.HResult!void {
+    pub fn SetNamedValue(self: *@This(), name: ?HSTRING, value: *IJsonValue) core.HResult!void {
         const this: *IJsonObject = @ptrCast(self);
         return try this.SetNamedValue(name, value);
     }
-    pub fn GetNamedObject(self: *@This(), name: HSTRING) core.HResult!*JsonObject {
+    pub fn GetNamedObject(self: *@This(), name: ?HSTRING) core.HResult!*JsonObject {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedObject(name);
     }
-    pub fn GetNamedArray(self: *@This(), name: HSTRING) core.HResult!*JsonArray {
+    pub fn GetNamedArray(self: *@This(), name: ?HSTRING) core.HResult!*JsonArray {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedArray(name);
     }
-    pub fn GetNamedString(self: *@This(), name: HSTRING) core.HResult!HSTRING {
+    pub fn GetNamedString(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedString(name);
     }
-    pub fn GetNamedNumber(self: *@This(), name: HSTRING) core.HResult!f64 {
+    pub fn GetNamedNumber(self: *@This(), name: ?HSTRING) core.HResult!f64 {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedNumber(name);
     }
-    pub fn GetNamedBoolean(self: *@This(), name: HSTRING) core.HResult!bool {
+    pub fn GetNamedBoolean(self: *@This(), name: ?HSTRING) core.HResult!bool {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedBoolean(name);
     }
@@ -578,13 +578,13 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValueType();
     }
-    pub fn Stringify(self: *@This()) core.HResult!HSTRING {
+    pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stringify();
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IJsonValue = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonValue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -615,66 +615,66 @@ pub const JsonObject = extern struct {
         return try this.?.GetObject();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
+        var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IJsonValue) {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IJsonValue) {
+        var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
+        var this: ?*IMap(?HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IJsonValue)) {
-        var this: ?*IIterable(IKeyValuePair(HSTRING,IJsonValue)) = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IJsonValue)) {
+        var this: ?*IIterable(IKeyValuePair(?HSTRING,IJsonValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn GetNamedValueWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
+    pub fn GetNamedValueWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedValueWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedObjectWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
+    pub fn GetNamedObjectWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedObjectWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedStringWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: HSTRING) core.HResult!HSTRING {
+    pub fn GetNamedStringWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedStringWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedArrayWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
+    pub fn GetNamedArrayWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedArrayWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedNumberWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: f64) core.HResult!f64 {
+    pub fn GetNamedNumberWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: f64) core.HResult!f64 {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedNumberWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedBooleanWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: bool) core.HResult!bool {
+    pub fn GetNamedBooleanWithDefaultValue(self: *@This(), name: ?HSTRING, defaultValue: bool) core.HResult!bool {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNamedBooleanWithDefaultValue(name, defaultValue);
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -687,11 +687,11 @@ pub const JsonObject = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonObject.IID)));
     }
-    pub fn Parse(input: HSTRING) core.HResult!*JsonObject {
+    pub fn Parse(input: ?HSTRING) core.HResult!*JsonObject {
         const _f = try @This()._IJsonObjectStaticsCache.get();
         return try _f.Parse(input);
     }
-    pub fn TryParse(input: HSTRING, result: *JsonObject) core.HResult!bool {
+    pub fn TryParse(input: ?HSTRING, result: *JsonObject) core.HResult!bool {
         const _f = try @This()._IJsonObjectStaticsCache.get();
         return try _f.TryParse(input, result);
     }
@@ -709,11 +709,11 @@ pub const JsonValue = extern struct {
         const this: *IJsonValue = @ptrCast(self);
         return try this.getValueType();
     }
-    pub fn Stringify(self: *@This()) core.HResult!HSTRING {
+    pub fn Stringify(self: *@This()) core.HResult!?HSTRING {
         const this: *IJsonValue = @ptrCast(self);
         return try this.Stringify();
     }
-    pub fn GetString(self: *@This()) core.HResult!HSTRING {
+    pub fn GetString(self: *@This()) core.HResult!?HSTRING {
         const this: *IJsonValue = @ptrCast(self);
         return try this.GetString();
     }
@@ -733,7 +733,7 @@ pub const JsonValue = extern struct {
         const this: *IJsonValue = @ptrCast(self);
         return try this.GetObject();
     }
-    pub fn ToString(self: *@This()) core.HResult!HSTRING {
+    pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -742,11 +742,11 @@ pub const JsonValue = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Parse(input: HSTRING) core.HResult!*JsonValue {
+    pub fn Parse(input: ?HSTRING) core.HResult!*JsonValue {
         const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.Parse(input);
     }
-    pub fn TryParse(input: HSTRING, result: *JsonValue) core.HResult!bool {
+    pub fn TryParse(input: ?HSTRING, result: *JsonValue) core.HResult!bool {
         const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.TryParse(input, result);
     }
@@ -758,7 +758,7 @@ pub const JsonValue = extern struct {
         const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.CreateNumberValue(input);
     }
-    pub fn CreateStringValue(input: HSTRING) core.HResult!*JsonValue {
+    pub fn CreateStringValue(input: ?HSTRING) core.HResult!*JsonValue {
         const _f = try @This()._IJsonValueStaticsCache.get();
         return try _f.CreateStringValue(input);
     }

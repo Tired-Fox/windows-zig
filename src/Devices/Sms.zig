@@ -299,8 +299,8 @@ pub const ISmsDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -357,7 +357,7 @@ pub const ISmsDevice = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, message: *ISmsMessage, _r: **SendSmsMessageOperation) callconv(.winapi) HRESULT,
         CalculateLength: *const fn(self: *anyopaque, message: *SmsTextMessage, _r: *SmsEncodedLength) callconv(.winapi) HRESULT,
-        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
         get_MessageStore: *const fn(self: *anyopaque, _r: **SmsDeviceMessageStore) callconv(.winapi) HRESULT,
         get_DeviceStatus: *const fn(self: *anyopaque, _r: *SmsDeviceStatus) callconv(.winapi) HRESULT,
@@ -420,13 +420,13 @@ pub const ISmsDeviceMessageStore = extern struct {
 };
 pub const ISmsDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromIdAsync(self: *@This(), deviceId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+    pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -450,14 +450,14 @@ pub const ISmsDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromIdAsync: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmsDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+    pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.FromNetworkAccountIdAsync(@ptrCast(self), networkAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -475,7 +475,7 @@ pub const ISmsDeviceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FromNetworkAccountIdAsync: *const fn(self: *anyopaque, networkAccountId: HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
+        FromNetworkAccountIdAsync: *const fn(self: *anyopaque, networkAccountId: ?HSTRING, _r: **IAsyncOperation(SmsDevice)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmsMessage = extern struct {
@@ -540,8 +540,8 @@ pub const ISmsMessageReceivedEventArgs = extern struct {
 };
 pub const ISmsReceivedEventDetails = extern struct {
     vtable: *const VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -564,7 +564,7 @@ pub const ISmsReceivedEventDetails = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MessageIndex: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
     };
 };
@@ -624,33 +624,33 @@ pub const ISmsTextMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_From(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -686,12 +686,12 @@ pub const ISmsTextMessage = extern struct {
         get_PartReferenceId: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_PartNumber: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_PartCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_To: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_From: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_From: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Encoding: *const fn(self: *anyopaque, _r: *SmsEncoding) callconv(.winapi) HRESULT,
         put_Encoding: *const fn(self: *anyopaque, value: SmsEncoding) callconv(.winapi) HRESULT,
         ToBinaryMessages: *const fn(self: *anyopaque, format: SmsDataFormat, _r: **IVectorView(ISmsBinaryMessage)) callconv(.winapi) HRESULT,
@@ -831,7 +831,7 @@ pub const SmsDevice = extern struct {
         const this: *ISmsDevice = @ptrCast(self);
         return try this.CalculateLength(message);
     }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice = @ptrCast(self);
         return try this.getAccountPhoneNumber();
     }
@@ -866,15 +866,15 @@ pub const SmsDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn FromNetworkAccountIdAsync(networkAccountId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+    pub fn FromNetworkAccountIdAsync(networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         const _f = try @This()._ISmsDeviceStatics2Cache.get();
         return try _f.FromNetworkAccountIdAsync(networkAccountId);
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISmsDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
+    pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         const _f = try @This()._ISmsDeviceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
     }
@@ -1117,7 +1117,7 @@ pub const SmsMessageReceivedEventHandler = extern struct {
 };
 pub const SmsReceivedEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsReceivedEventDetails = @ptrCast(self);
         return try this.getDeviceId();
     }
@@ -1161,27 +1161,27 @@ pub const SmsTextMessage = extern struct {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.getPartCount();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.putTo(value);
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn putFrom(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.putFrom(value);
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.getBody();
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.putBody(value);
     }
@@ -1245,39 +1245,39 @@ pub const ISmsAppMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCallbackNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallbackNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCallbackNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallbackNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -1364,13 +1364,13 @@ pub const ISmsAppMessage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_To: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_CallbackNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CallbackNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_CallbackNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CallbackNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsDeliveryNotificationEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDeliveryNotificationEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_RetryAttemptCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -1395,14 +1395,14 @@ pub const ISmsBroadcastMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1462,8 +1462,8 @@ pub const ISmsBroadcastMessage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Channel: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_GeographicalScope: *const fn(self: *anyopaque, _r: *SmsGeographicalScope) callconv(.winapi) HRESULT,
         get_MessageCode: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -1475,30 +1475,30 @@ pub const ISmsBroadcastMessage = extern struct {
 };
 pub const ISmsDevice2 = extern struct {
     vtable: *const VTable,
-    pub fn getSmscAddress(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSmscAddress(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmscAddress(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putSmscAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSmscAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_SmscAddress(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getParentDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getParentDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ParentDeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountPhoneNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1549,11 +1549,11 @@ pub const ISmsDevice2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_SmscAddress: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_SmscAddress: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ParentDeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SmscAddress: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_SmscAddress: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ParentDeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_AccountPhoneNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
         get_DeviceStatus: *const fn(self: *anyopaque, _r: *SmsDeviceStatus) callconv(.winapi) HRESULT,
         CalculateLength: *const fn(self: *anyopaque, message: *ISmsMessageBase, _r: *SmsEncodedLength) callconv(.winapi) HRESULT,
@@ -1564,13 +1564,13 @@ pub const ISmsDevice2 = extern struct {
 };
 pub const ISmsDevice2Statics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromId(self: *@This(), deviceId: HSTRING) core.HResult!*SmsDevice2 {
+    pub fn FromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         var _r: *SmsDevice2 = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), deviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1582,7 +1582,7 @@ pub const ISmsDevice2Statics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromParentId(self: *@This(), parentDeviceId: HSTRING) core.HResult!*SmsDevice2 {
+    pub fn FromParentId(self: *@This(), parentDeviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         var _r: *SmsDevice2 = undefined;
         const _c = self.vtable.FromParentId(@ptrCast(self), parentDeviceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1600,10 +1600,10 @@ pub const ISmsDevice2Statics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FromId: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **SmsDevice2) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        FromId: *const fn(self: *anyopaque, deviceId: ?HSTRING, _r: **SmsDevice2) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, _r: **SmsDevice2) callconv(.winapi) HRESULT,
-        FromParentId: *const fn(self: *anyopaque, parentDeviceId: HSTRING, _r: **SmsDevice2) callconv(.winapi) HRESULT,
+        FromParentId: *const fn(self: *anyopaque, parentDeviceId: ?HSTRING, _r: **SmsDevice2) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmsFilterRule = extern struct {
@@ -1614,26 +1614,26 @@ pub const ISmsFilterRule = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getImsiPrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getImsiPrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ImsiPrefixes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DeviceIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSenderNumbers(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getSenderNumbers(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SenderNumbers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTextMessagePrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getTextMessagePrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_TextMessagePrefixes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1666,14 +1666,14 @@ pub const ISmsFilterRule = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWapApplicationIds(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getWapApplicationIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_WapApplicationIds(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getWapContentTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
-        var _r: *IVector(HSTRING) = undefined;
+    pub fn getWapContentTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_WapContentTypes(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1703,17 +1703,17 @@ pub const ISmsFilterRule = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_MessageType: *const fn(self: *anyopaque, _r: *SmsMessageType) callconv(.winapi) HRESULT,
-        get_ImsiPrefixes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_DeviceIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_SenderNumbers: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_TextMessagePrefixes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_ImsiPrefixes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_DeviceIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_SenderNumbers: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_TextMessagePrefixes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_PortNumbers: *const fn(self: *anyopaque, _r: **IVector(i32)) callconv(.winapi) HRESULT,
         get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
         put_CellularClass: *const fn(self: *anyopaque, value: CellularClass) callconv(.winapi) HRESULT,
         get_ProtocolIds: *const fn(self: *anyopaque, _r: **IVector(i32)) callconv(.winapi) HRESULT,
         get_TeleserviceIds: *const fn(self: *anyopaque, _r: **IVector(i32)) callconv(.winapi) HRESULT,
-        get_WapApplicationIds: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
-        get_WapContentTypes: *const fn(self: *anyopaque, _r: **IVector(HSTRING)) callconv(.winapi) HRESULT,
+        get_WapApplicationIds: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
+        get_WapContentTypes: *const fn(self: *anyopaque, _r: **IVector(?HSTRING)) callconv(.winapi) HRESULT,
         get_BroadcastTypes: *const fn(self: *anyopaque, _r: **IVector(SmsBroadcastType)) callconv(.winapi) HRESULT,
         get_BroadcastChannels: *const fn(self: *anyopaque, _r: **IVector(i32)) callconv(.winapi) HRESULT,
     };
@@ -1802,8 +1802,8 @@ pub const ISmsMessageBase = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1820,8 +1820,8 @@ pub const ISmsMessageBase = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SimIccId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1839,10 +1839,10 @@ pub const ISmsMessageBase = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_MessageType: *const fn(self: *anyopaque, _r: *SmsMessageType) callconv(.winapi) HRESULT,
-        get_DeviceId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_DeviceId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_CellularClass: *const fn(self: *anyopaque, _r: *CellularClass) callconv(.winapi) HRESULT,
         get_MessageClass: *const fn(self: *anyopaque, _r: *SmsMessageClass) callconv(.winapi) HRESULT,
-        get_SimIccId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_SimIccId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmsMessageReceivedTriggerDetails = extern struct {
@@ -1922,8 +1922,8 @@ pub const ISmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const ISmsMessageRegistration = extern struct {
     vtable: *const VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -1954,7 +1954,7 @@ pub const ISmsMessageRegistration = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_Id: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_Id: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         Unregister: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         add_MessageReceived: *const fn(self: *anyopaque, eventHandler: *TypedEventHandler(SmsMessageRegistration,SmsMessageReceivedTriggerDetails), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_MessageReceived: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1968,7 +1968,7 @@ pub const ISmsMessageRegistrationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Register(self: *@This(), id: HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
+    pub fn Register(self: *@This(), id: ?HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
         var _r: *SmsMessageRegistration = undefined;
         const _c = self.vtable.Register(@ptrCast(self), id, filterRules, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1987,7 +1987,7 @@ pub const ISmsMessageRegistrationStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_AllRegistrations: *const fn(self: *anyopaque, _r: **IVectorView(SmsMessageRegistration)) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, id: HSTRING, filterRules: *SmsFilterRules, _r: **SmsMessageRegistration) callconv(.winapi) HRESULT,
+        Register: *const fn(self: *anyopaque, id: ?HSTRING, filterRules: *SmsFilterRules, _r: **SmsMessageRegistration) callconv(.winapi) HRESULT,
     };
 };
 pub const ISmsSendMessageResult = extern struct {
@@ -2057,20 +2057,20 @@ pub const ISmsSendMessageResult = extern struct {
 };
 pub const ISmsStatusMessage = extern struct {
     vtable: *const VTable,
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2111,9 +2111,9 @@ pub const ISmsStatusMessage = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_Status: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_MessageReferenceNumber: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_ServiceCenterTimestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
@@ -2128,29 +2128,29 @@ pub const ISmsTextMessage2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_To(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Body(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2164,13 +2164,13 @@ pub const ISmsTextMessage2 = extern struct {
         const _c = self.vtable.put_Encoding(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn getCallbackNumber(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallbackNumber(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn putCallbackNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_CallbackNumber(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
@@ -2219,15 +2219,15 @@ pub const ISmsTextMessage2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_To: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_Body: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_To: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_Body: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_Encoding: *const fn(self: *anyopaque, _r: *SmsEncoding) callconv(.winapi) HRESULT,
         put_Encoding: *const fn(self: *anyopaque, value: SmsEncoding) callconv(.winapi) HRESULT,
-        get_CallbackNumber: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        put_CallbackNumber: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
+        get_CallbackNumber: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        put_CallbackNumber: *const fn(self: *anyopaque, value: ?HSTRING) callconv(.winapi) HRESULT,
         get_IsDeliveryNotificationEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsDeliveryNotificationEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_RetryAttemptCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
@@ -2244,14 +2244,14 @@ pub const ISmsVoicemailMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Body(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2275,8 +2275,8 @@ pub const ISmsVoicemailMessage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_Body: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_Body: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_MessageCount: *const fn(self: *anyopaque, _r: **IReference(i32)) callconv(.winapi) HRESULT,
     };
 };
@@ -2288,26 +2288,26 @@ pub const ISmsWapMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getApplicationId(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getApplicationId(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ApplicationId(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var _r: HSTRING = undefined;
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
+        var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2318,8 +2318,8 @@ pub const ISmsWapMessage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn getHeaders(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
-        var _r: *IMap(HSTRING,HSTRING) = undefined;
+    pub fn getHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
+        var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
@@ -2337,12 +2337,12 @@ pub const ISmsWapMessage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Timestamp: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        get_To: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_From: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ApplicationId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        get_ContentType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
+        get_To: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_From: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ApplicationId: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
+        get_ContentType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
         get_BinaryBody: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        get_Headers: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
+        get_Headers: *const fn(self: *anyopaque, _r: **IMap(?HSTRING,?HSTRING)) callconv(.winapi) HRESULT,
     };
 };
 pub const SmsAppMessage = extern struct {
@@ -2351,31 +2351,31 @@ pub const SmsAppMessage = extern struct {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.putTo(value);
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getBody();
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.putBody(value);
     }
-    pub fn getCallbackNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getCallbackNumber();
     }
-    pub fn putCallbackNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.putCallbackNumber(value);
     }
@@ -2441,7 +2441,7 @@ pub const SmsAppMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2459,7 +2459,7 @@ pub const SmsAppMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2485,11 +2485,11 @@ pub const SmsBroadcastMessage = extern struct {
         const this: *ISmsBroadcastMessage = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsBroadcastMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsBroadcastMessage = @ptrCast(self);
         return try this.getBody();
     }
@@ -2527,7 +2527,7 @@ pub const SmsBroadcastMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2545,7 +2545,7 @@ pub const SmsBroadcastMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2583,23 +2583,23 @@ pub const SmsDataFormat = enum(i32) {
 };
 pub const SmsDevice2 = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getSmscAddress(self: *@This()) core.HResult!HSTRING {
+    pub fn getSmscAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.getSmscAddress();
     }
-    pub fn putSmscAddress(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putSmscAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.putSmscAddress(value);
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn getParentDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getParentDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.getParentDeviceId();
     }
-    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getAccountPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.getAccountPhoneNumber();
     }
@@ -2630,11 +2630,11 @@ pub const SmsDevice2 = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector() core.HResult!HSTRING {
+    pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.GetDeviceSelector();
     }
-    pub fn FromId(deviceId: HSTRING) core.HResult!*SmsDevice2 {
+    pub fn FromId(deviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.FromId(deviceId);
     }
@@ -2642,7 +2642,7 @@ pub const SmsDevice2 = extern struct {
         const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.GetDefault();
     }
-    pub fn FromParentId(parentDeviceId: HSTRING) core.HResult!*SmsDevice2 {
+    pub fn FromParentId(parentDeviceId: ?HSTRING) core.HResult!*SmsDevice2 {
         const _f = try @This()._ISmsDevice2StaticsCache.get();
         return try _f.FromParentId(parentDeviceId);
     }
@@ -2695,19 +2695,19 @@ pub const SmsFilterRule = extern struct {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getMessageType();
     }
-    pub fn getImsiPrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getImsiPrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getImsiPrefixes();
     }
-    pub fn getDeviceIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getDeviceIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getDeviceIds();
     }
-    pub fn getSenderNumbers(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getSenderNumbers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getSenderNumbers();
     }
-    pub fn getTextMessagePrefixes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getTextMessagePrefixes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getTextMessagePrefixes();
     }
@@ -2731,11 +2731,11 @@ pub const SmsFilterRule = extern struct {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getTeleserviceIds();
     }
-    pub fn getWapApplicationIds(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getWapApplicationIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getWapApplicationIds();
     }
-    pub fn getWapContentTypes(self: *@This()) core.HResult!*IVector(HSTRING) {
+    pub fn getWapContentTypes(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getWapContentTypes();
     }
@@ -2845,7 +2845,7 @@ pub const SmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const SmsMessageRegistration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getId(self: *@This()) core.HResult!HSTRING {
+    pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsMessageRegistration = @ptrCast(self);
         return try this.getId();
     }
@@ -2868,7 +2868,7 @@ pub const SmsMessageRegistration = extern struct {
         const _f = try @This()._ISmsMessageRegistrationStaticsCache.get();
         return try _f.getAllRegistrations();
     }
-    pub fn Register(id: HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
+    pub fn Register(id: ?HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
         const _f = try @This()._ISmsMessageRegistrationStaticsCache.get();
         return try _f.Register(id, filterRules);
     }
@@ -2940,15 +2940,15 @@ pub const SmsSendMessageResult = extern struct {
 };
 pub const SmsStatusMessage = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsStatusMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsStatusMessage = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsStatusMessage = @ptrCast(self);
         return try this.getBody();
     }
@@ -2974,7 +2974,7 @@ pub const SmsStatusMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2992,7 +2992,7 @@ pub const SmsStatusMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3010,23 +3010,23 @@ pub const SmsTextMessage2 = extern struct {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn putTo(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putTo(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.putTo(value);
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getBody();
     }
-    pub fn putBody(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putBody(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.putBody(value);
     }
@@ -3038,11 +3038,11 @@ pub const SmsTextMessage2 = extern struct {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.putEncoding(value);
     }
-    pub fn getCallbackNumber(self: *@This()) core.HResult!HSTRING {
+    pub fn getCallbackNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getCallbackNumber();
     }
-    pub fn putCallbackNumber(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn putCallbackNumber(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.putCallbackNumber(value);
     }
@@ -3076,7 +3076,7 @@ pub const SmsTextMessage2 = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3094,7 +3094,7 @@ pub const SmsTextMessage2 = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3120,11 +3120,11 @@ pub const SmsVoicemailMessage = extern struct {
         const this: *ISmsVoicemailMessage = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsVoicemailMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn getBody(self: *@This()) core.HResult!HSTRING {
+    pub fn getBody(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsVoicemailMessage = @ptrCast(self);
         return try this.getBody();
     }
@@ -3138,7 +3138,7 @@ pub const SmsVoicemailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3156,7 +3156,7 @@ pub const SmsVoicemailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3174,19 +3174,19 @@ pub const SmsWapMessage = extern struct {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getTimestamp();
     }
-    pub fn getTo(self: *@This()) core.HResult!HSTRING {
+    pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getTo();
     }
-    pub fn getFrom(self: *@This()) core.HResult!HSTRING {
+    pub fn getFrom(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getFrom();
     }
-    pub fn getApplicationId(self: *@This()) core.HResult!HSTRING {
+    pub fn getApplicationId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getApplicationId();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+    pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getContentType();
     }
@@ -3194,7 +3194,7 @@ pub const SmsWapMessage = extern struct {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getBinaryBody();
     }
-    pub fn getHeaders(self: *@This()) core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn getHeaders(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getHeaders();
     }
@@ -3204,7 +3204,7 @@ pub const SmsWapMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageType();
     }
-    pub fn getDeviceId(self: *@This()) core.HResult!HSTRING {
+    pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3222,7 +3222,7 @@ pub const SmsWapMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn getSimIccId(self: *@This()) core.HResult!HSTRING {
+    pub fn getSimIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmsMessageBase = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmsMessageBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
