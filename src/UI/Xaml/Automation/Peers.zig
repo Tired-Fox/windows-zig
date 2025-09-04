@@ -1794,8 +1794,8 @@ pub const IAppBarAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -1816,8 +1816,8 @@ pub const IAppBarAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **AppBarAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -1833,8 +1833,8 @@ pub const IAppBarButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -1855,8 +1855,8 @@ pub const IAppBarButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **AppBarButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -1872,8 +1872,8 @@ pub const IAppBarToggleButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -1894,8 +1894,8 @@ pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *AppBarToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **AppBarToggleButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -1911,8 +1911,8 @@ pub const IAutoSuggestBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -1933,8 +1933,8 @@ pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *AutoSuggestBox, _r: **AutoSuggestBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -2138,8 +2138,8 @@ pub const IAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_EventsSource: *const fn(self: *anyopaque, _r: **AutomationPeer) callconv(.winapi) HRESULT,
         put_EventsSource: *const fn(self: *anyopaque, value: *AutomationPeer) callconv(.winapi) HRESULT,
@@ -2187,8 +2187,8 @@ pub const IAutomationPeer2 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -2267,8 +2267,8 @@ pub const IAutomationPeer3 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Navigate: *const fn(self: *anyopaque, direction: AutomationNavigationDirection, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetElementFromPoint: *const fn(self: *anyopaque, pointInWindowCoordinates: Point, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -2307,8 +2307,8 @@ pub const IAutomationPeer4 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetLandmarkType: *const fn(self: *anyopaque, _r: *AutomationLandmarkType) callconv(.winapi) HRESULT,
         GetLocalizedLandmarkType: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
@@ -2343,8 +2343,8 @@ pub const IAutomationPeer5 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsPeripheral: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsDataValidForForm: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2368,8 +2368,8 @@ pub const IAutomationPeer6 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCulture: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
     };
@@ -2389,8 +2389,8 @@ pub const IAutomationPeer7 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RaiseNotificationEvent: *const fn(self: *anyopaque, notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) callconv(.winapi) HRESULT,
     };
@@ -2412,8 +2412,8 @@ pub const IAutomationPeer8 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetHeadingLevel: *const fn(self: *anyopaque, _r: *AutomationHeadingLevel) callconv(.winapi) HRESULT,
     };
@@ -2435,8 +2435,8 @@ pub const IAutomationPeer9 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsDialog: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -2472,8 +2472,8 @@ pub const IAutomationPeerAnnotation = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *AnnotationType) callconv(.winapi) HRESULT,
         put_Type: *const fn(self: *anyopaque, value: AnnotationType) callconv(.winapi) HRESULT,
@@ -2504,8 +2504,8 @@ pub const IAutomationPeerAnnotationFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, ty: AnnotationType, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
         CreateWithPeerParameter: *const fn(self: *anyopaque, ty: AnnotationType, peer: *AutomationPeer, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
@@ -2534,8 +2534,8 @@ pub const IAutomationPeerAnnotationStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_TypeProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
         get_PeerProperty: *const fn(self: *anyopaque, _r: **DependencyProperty) callconv(.winapi) HRESULT,
@@ -2558,8 +2558,8 @@ pub const IAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **AutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -2735,8 +2735,8 @@ pub const IAutomationPeerOverrides = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetPatternCore: *const fn(self: *anyopaque, patternInterface: PatternInterface, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetAcceleratorKeyCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
@@ -2788,8 +2788,8 @@ pub const IAutomationPeerOverrides2 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ShowContextMenuCore: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         GetControlledPeersCore: *const fn(self: *anyopaque, _r: **IVectorView(AutomationPeer)) callconv(.winapi) HRESULT,
@@ -2848,8 +2848,8 @@ pub const IAutomationPeerOverrides3 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         NavigateCore: *const fn(self: *anyopaque, direction: AutomationNavigationDirection, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetElementFromPointCore: *const fn(self: *anyopaque, pointInWindowCoordinates: Point, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -2883,8 +2883,8 @@ pub const IAutomationPeerOverrides4 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetLandmarkTypeCore: *const fn(self: *anyopaque, _r: *AutomationLandmarkType) callconv(.winapi) HRESULT,
         GetLocalizedLandmarkTypeCore: *const fn(self: *anyopaque, _r: *?HSTRING) callconv(.winapi) HRESULT,
@@ -2937,8 +2937,8 @@ pub const IAutomationPeerOverrides5 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsPeripheralCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         IsDataValidForFormCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -2965,8 +2965,8 @@ pub const IAutomationPeerOverrides6 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCultureCore: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
     };
@@ -2988,8 +2988,8 @@ pub const IAutomationPeerOverrides8 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetHeadingLevelCore: *const fn(self: *anyopaque, _r: *AutomationHeadingLevel) callconv(.winapi) HRESULT,
     };
@@ -3011,8 +3011,8 @@ pub const IAutomationPeerOverrides9 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsDialogCore: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -3040,8 +3040,8 @@ pub const IAutomationPeerProtected = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         PeerFromProvider: *const fn(self: *anyopaque, provider: *IRawElementProviderSimple, _r: **AutomationPeer) callconv(.winapi) HRESULT,
         ProviderFromPeer: *const fn(self: *anyopaque, peer: *AutomationPeer, _r: **IRawElementProviderSimple) callconv(.winapi) HRESULT,
@@ -3064,8 +3064,8 @@ pub const IAutomationPeerStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ListenerExists: *const fn(self: *anyopaque, eventId: AutomationEvents, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -3087,8 +3087,8 @@ pub const IAutomationPeerStatics3 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GenerateRawElementProviderRuntimeId: *const fn(self: *anyopaque, _r: *RawElementProviderRuntimeId) callconv(.winapi) HRESULT,
     };
@@ -3104,8 +3104,8 @@ pub const IButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3126,8 +3126,8 @@ pub const IButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3143,8 +3143,8 @@ pub const IButtonBaseAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3165,8 +3165,8 @@ pub const IButtonBaseAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ButtonBase, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ButtonBaseAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3182,8 +3182,8 @@ pub const ICalendarDatePickerAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3204,8 +3204,8 @@ pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **CalendarDatePickerAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3221,8 +3221,8 @@ pub const ICaptureElementAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3243,8 +3243,8 @@ pub const ICaptureElementAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *CaptureElement, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **CaptureElementAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3260,8 +3260,8 @@ pub const ICheckBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3282,8 +3282,8 @@ pub const ICheckBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *CheckBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **CheckBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3299,8 +3299,8 @@ pub const IColorPickerSliderAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3321,8 +3321,8 @@ pub const IColorPickerSliderAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ColorPickerSlider, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ColorPickerSliderAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3338,8 +3338,8 @@ pub const IColorSpectrumAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3360,8 +3360,8 @@ pub const IColorSpectrumAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ColorSpectrum, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ColorSpectrumAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3377,8 +3377,8 @@ pub const IComboBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3399,8 +3399,8 @@ pub const IComboBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ComboBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3416,8 +3416,8 @@ pub const IComboBoxItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3438,8 +3438,8 @@ pub const IComboBoxItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ComboBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ComboBoxItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3455,8 +3455,8 @@ pub const IComboBoxItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3477,8 +3477,8 @@ pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ComboBoxItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3494,8 +3494,8 @@ pub const IDatePickerAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3516,8 +3516,8 @@ pub const IDatePickerAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *DatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **DatePickerAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3533,8 +3533,8 @@ pub const IDatePickerFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3549,8 +3549,8 @@ pub const IFlipViewAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3571,8 +3571,8 @@ pub const IFlipViewAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *FlipView, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FlipViewAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3588,8 +3588,8 @@ pub const IFlipViewItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3610,8 +3610,8 @@ pub const IFlipViewItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *FlipViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FlipViewItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3627,8 +3627,8 @@ pub const IFlipViewItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3649,8 +3649,8 @@ pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FlipViewItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3666,8 +3666,8 @@ pub const IFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3688,8 +3688,8 @@ pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *FlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FlyoutPresenterAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3711,8 +3711,8 @@ pub const IFrameworkElementAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Owner: *const fn(self: *anyopaque, _r: **UIElement) callconv(.winapi) HRESULT,
     };
@@ -3734,8 +3734,8 @@ pub const IFrameworkElementAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *FrameworkElement, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **FrameworkElementAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3763,8 +3763,8 @@ pub const IFrameworkElementAutomationPeerStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FromElement: *const fn(self: *anyopaque, element: *UIElement, _r: **AutomationPeer) callconv(.winapi) HRESULT,
         CreatePeerForElement: *const fn(self: *anyopaque, element: *UIElement, _r: **AutomationPeer) callconv(.winapi) HRESULT,
@@ -3781,8 +3781,8 @@ pub const IGridViewAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3803,8 +3803,8 @@ pub const IGridViewAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *GridView, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **GridViewAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3820,8 +3820,8 @@ pub const IGridViewHeaderItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3842,8 +3842,8 @@ pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *GridViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **GridViewHeaderItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3859,8 +3859,8 @@ pub const IGridViewItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3881,8 +3881,8 @@ pub const IGridViewItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *GridViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **GridViewItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3898,8 +3898,8 @@ pub const IGridViewItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3920,8 +3920,8 @@ pub const IGridViewItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **GridViewItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3937,8 +3937,8 @@ pub const IGroupItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3959,8 +3959,8 @@ pub const IGroupItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *GroupItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **GroupItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -3976,8 +3976,8 @@ pub const IHubAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -3998,8 +3998,8 @@ pub const IHubAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Hub, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HubAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4015,8 +4015,8 @@ pub const IHubSectionAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4037,8 +4037,8 @@ pub const IHubSectionAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HubSectionAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4054,8 +4054,8 @@ pub const IHyperlinkButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4076,8 +4076,8 @@ pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **HyperlinkButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4093,8 +4093,8 @@ pub const IImageAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4115,8 +4115,8 @@ pub const IImageAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Image, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ImageAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4132,8 +4132,8 @@ pub const IInkToolbarAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4160,8 +4160,8 @@ pub const IItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Item: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         get_ItemsControlAutomationPeer: *const fn(self: *anyopaque, _r: **ItemsControlAutomationPeer) callconv(.winapi) HRESULT,
@@ -4184,8 +4184,8 @@ pub const IItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4201,8 +4201,8 @@ pub const IItemsControlAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4223,8 +4223,8 @@ pub const IItemsControlAutomationPeer2 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateItemAutomationPeer: *const fn(self: *anyopaque, item: *IInspectable, _r: **ItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4246,8 +4246,8 @@ pub const IItemsControlAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ItemsControlAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4269,8 +4269,8 @@ pub const IItemsControlAutomationPeerOverrides2 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         OnCreateItemAutomationPeer: *const fn(self: *anyopaque, item: *IInspectable, _r: **ItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4286,8 +4286,8 @@ pub const IListBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4308,8 +4308,8 @@ pub const IListBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4325,8 +4325,8 @@ pub const IListBoxItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4347,8 +4347,8 @@ pub const IListBoxItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListBoxItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4364,8 +4364,8 @@ pub const IListBoxItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4386,8 +4386,8 @@ pub const IListBoxItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListBoxItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4403,8 +4403,8 @@ pub const IListPickerFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4419,8 +4419,8 @@ pub const IListViewAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4441,8 +4441,8 @@ pub const IListViewAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListView, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4458,8 +4458,8 @@ pub const IListViewBaseAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4480,8 +4480,8 @@ pub const IListViewBaseAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewBaseAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4497,8 +4497,8 @@ pub const IListViewBaseHeaderItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4519,8 +4519,8 @@ pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListViewBaseHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewBaseHeaderItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4536,8 +4536,8 @@ pub const IListViewHeaderItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4558,8 +4558,8 @@ pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewHeaderItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4575,8 +4575,8 @@ pub const IListViewItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4597,8 +4597,8 @@ pub const IListViewItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ListViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4614,8 +4614,8 @@ pub const IListViewItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4636,8 +4636,8 @@ pub const IListViewItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ListViewItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4653,8 +4653,8 @@ pub const ILoopingSelectorAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4669,8 +4669,8 @@ pub const ILoopingSelectorItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4685,8 +4685,8 @@ pub const ILoopingSelectorItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4701,8 +4701,8 @@ pub const IMapControlAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4717,8 +4717,8 @@ pub const IMediaElementAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4739,8 +4739,8 @@ pub const IMediaElementAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *MediaElement, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MediaElementAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4756,8 +4756,8 @@ pub const IMediaPlayerElementAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4778,8 +4778,8 @@ pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *MediaPlayerElement, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MediaPlayerElementAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4795,8 +4795,8 @@ pub const IMediaTransportControlsAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4817,8 +4817,8 @@ pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *MediaTransportControls, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MediaTransportControlsAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4834,8 +4834,8 @@ pub const IMenuBarAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4856,8 +4856,8 @@ pub const IMenuBarAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, owner: *MenuBar, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MenuBarAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4873,8 +4873,8 @@ pub const IMenuBarItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4895,8 +4895,8 @@ pub const IMenuBarItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MenuBarItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4912,8 +4912,8 @@ pub const IMenuFlyoutItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4934,8 +4934,8 @@ pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MenuFlyoutItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4951,8 +4951,8 @@ pub const IMenuFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -4973,8 +4973,8 @@ pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *MenuFlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **MenuFlyoutPresenterAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -4990,8 +4990,8 @@ pub const INavigationViewItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5012,8 +5012,8 @@ pub const INavigationViewItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *NavigationViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **NavigationViewItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5029,8 +5029,8 @@ pub const IPasswordBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5051,8 +5051,8 @@ pub const IPasswordBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *PasswordBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **PasswordBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5068,8 +5068,8 @@ pub const IPersonPictureAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5090,8 +5090,8 @@ pub const IPersonPictureAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *PersonPicture, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **PersonPictureAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5107,8 +5107,8 @@ pub const IPickerFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5123,8 +5123,8 @@ pub const IPivotAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5145,8 +5145,8 @@ pub const IPivotAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Pivot, _r: **PivotAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5162,8 +5162,8 @@ pub const IPivotItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5184,8 +5184,8 @@ pub const IPivotItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *PivotItem, _r: **PivotItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5201,8 +5201,8 @@ pub const IPivotItemDataAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5223,8 +5223,8 @@ pub const IPivotItemDataAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *PivotAutomationPeer, _r: **PivotItemDataAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5240,8 +5240,8 @@ pub const IProgressBarAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5262,8 +5262,8 @@ pub const IProgressBarAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ProgressBar, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ProgressBarAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5279,8 +5279,8 @@ pub const IProgressRingAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5301,8 +5301,8 @@ pub const IProgressRingAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ProgressRing, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ProgressRingAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5318,8 +5318,8 @@ pub const IRadioButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5340,8 +5340,8 @@ pub const IRadioButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RadioButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5357,8 +5357,8 @@ pub const IRangeBaseAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5379,8 +5379,8 @@ pub const IRangeBaseAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RangeBaseAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5396,8 +5396,8 @@ pub const IRatingControlAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5418,8 +5418,8 @@ pub const IRatingControlAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RatingControl, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RatingControlAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5435,8 +5435,8 @@ pub const IRepeatButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5457,8 +5457,8 @@ pub const IRepeatButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RepeatButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5474,8 +5474,8 @@ pub const IRichEditBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5496,8 +5496,8 @@ pub const IRichEditBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RichEditBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RichEditBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5513,8 +5513,8 @@ pub const IRichTextBlockAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5535,8 +5535,8 @@ pub const IRichTextBlockAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RichTextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RichTextBlockAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5552,8 +5552,8 @@ pub const IRichTextBlockOverflowAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5574,8 +5574,8 @@ pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *RichTextBlockOverflow, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **RichTextBlockOverflowAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5591,8 +5591,8 @@ pub const IScrollBarAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5613,8 +5613,8 @@ pub const IScrollBarAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ScrollBar, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ScrollBarAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5630,8 +5630,8 @@ pub const IScrollViewerAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5652,8 +5652,8 @@ pub const IScrollViewerAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ScrollViewerAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5669,8 +5669,8 @@ pub const ISearchBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5691,8 +5691,8 @@ pub const ISearchBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *SearchBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SearchBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5708,8 +5708,8 @@ pub const ISelectorAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5730,8 +5730,8 @@ pub const ISelectorAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SelectorAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5747,8 +5747,8 @@ pub const ISelectorItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5769,8 +5769,8 @@ pub const ISelectorItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithParentAndItem: *const fn(self: *anyopaque, item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SelectorItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5786,8 +5786,8 @@ pub const ISemanticZoomAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5808,8 +5808,8 @@ pub const ISemanticZoomAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SemanticZoomAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5825,8 +5825,8 @@ pub const ISettingsFlyoutAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5847,8 +5847,8 @@ pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *SettingsFlyout, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SettingsFlyoutAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5864,8 +5864,8 @@ pub const ISliderAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5886,8 +5886,8 @@ pub const ISliderAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Slider, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **SliderAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5903,8 +5903,8 @@ pub const ITextBlockAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5925,8 +5925,8 @@ pub const ITextBlockAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *TextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **TextBlockAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5942,8 +5942,8 @@ pub const ITextBoxAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -5964,8 +5964,8 @@ pub const ITextBoxAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *TextBox, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **TextBoxAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -5981,8 +5981,8 @@ pub const IThumbAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6003,8 +6003,8 @@ pub const IThumbAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *Thumb, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ThumbAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6020,8 +6020,8 @@ pub const ITimePickerAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6042,8 +6042,8 @@ pub const ITimePickerAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *TimePicker, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **TimePickerAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6059,8 +6059,8 @@ pub const ITimePickerFlyoutPresenterAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6075,8 +6075,8 @@ pub const IToggleButtonAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6097,8 +6097,8 @@ pub const IToggleButtonAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ToggleButtonAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6114,8 +6114,8 @@ pub const IToggleMenuFlyoutItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6136,8 +6136,8 @@ pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ToggleMenuFlyoutItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6153,8 +6153,8 @@ pub const IToggleSwitchAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6175,8 +6175,8 @@ pub const IToggleSwitchAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **ToggleSwitchAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6192,8 +6192,8 @@ pub const ITreeViewItemAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6214,8 +6214,8 @@ pub const ITreeViewItemAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **TreeViewItemAutomationPeer) callconv(.winapi) HRESULT,
     };
@@ -6231,8 +6231,8 @@ pub const ITreeViewListAutomationPeer = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -6253,8 +6253,8 @@ pub const ITreeViewListAutomationPeerFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstanceWithOwner: *const fn(self: *anyopaque, owner: *TreeViewList, baseInterface: *IInspectable, innerInterface: *IInspectable, _r: **TreeViewListAutomationPeer) callconv(.winapi) HRESULT,
     };

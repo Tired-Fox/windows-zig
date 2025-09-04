@@ -268,8 +268,8 @@ pub const IXamlDirect = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetObject: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetXamlDirectObject: *const fn(self: *anyopaque, object: *IInspectable, _r: **IXamlDirectObject) callconv(.winapi) HRESULT,
@@ -336,8 +336,8 @@ pub const IXamlDirectObject = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
@@ -358,8 +358,8 @@ pub const IXamlDirectStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, _r: **XamlDirect) callconv(.winapi) HRESULT,
     };

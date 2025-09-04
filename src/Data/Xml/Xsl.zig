@@ -16,8 +16,8 @@ pub const IXsltProcessor = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TransformToString: *const fn(self: *anyopaque, inputNode: *IXmlNode, _r: *?HSTRING) callconv(.winapi) HRESULT,
     };
@@ -39,8 +39,8 @@ pub const IXsltProcessor2 = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TransformToDocument: *const fn(self: *anyopaque, inputNode: *IXmlNode, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
@@ -62,8 +62,8 @@ pub const IXsltProcessorFactory = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstance: *const fn(self: *anyopaque, document: *XmlDocument, _r: **XsltProcessor) callconv(.winapi) HRESULT,
     };

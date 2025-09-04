@@ -27,8 +27,8 @@ pub const ICorePerceptionAutomationStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetActivationFactoryProvider: *const fn(self: *anyopaque, provider: *IGetActivationFactory) callconv(.winapi) HRESULT,
     };

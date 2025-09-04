@@ -16,8 +16,8 @@ pub const IInkWorkspaceHostedAppManager = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetThumbnailAsync: *const fn(self: *anyopaque, bitmap: *SoftwareBitmap, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -39,8 +39,8 @@ pub const IInkWorkspaceHostedAppManagerStatics = extern struct {
         QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,
         Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetForCurrentApp: *const fn(self: *anyopaque, _r: **InkWorkspaceHostedAppManager) callconv(.winapi) HRESULT,
     };
