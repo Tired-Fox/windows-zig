@@ -23,7 +23,7 @@ pub const FileExtensionVector = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(?HSTRING) {
         var this: ?*IIterable(?HSTRING) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(?HSTRING).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -149,7 +149,7 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IVector(?HSTRING))) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IVector(?HSTRING))).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -167,7 +167,7 @@ pub const FilePickerSelectedFilesArray = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(StorageFile) {
         var this: ?*IIterable(StorageFile) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(StorageFile).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

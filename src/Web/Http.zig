@@ -286,7 +286,7 @@ pub const HttpCookieCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(HttpCookie) {
         var this: ?*IIterable(HttpCookie) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(HttpCookie).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -595,7 +595,7 @@ pub const HttpMultipartContent = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -684,7 +684,7 @@ pub const HttpMultipartFormDataContent = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IHttpContent).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

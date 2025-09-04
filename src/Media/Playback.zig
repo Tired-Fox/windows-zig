@@ -3694,7 +3694,7 @@ pub const MediaPlaybackAudioTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(AudioTrack) {
         var this: ?*IIterable(AudioTrack) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(AudioTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -4808,7 +4808,7 @@ pub const MediaPlaybackTimedMetadataTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(TimedMetadataTrack) {
         var this: ?*IIterable(TimedMetadataTrack) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(TimedMetadataTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -4850,7 +4850,7 @@ pub const MediaPlaybackVideoTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(VideoTrack) {
         var this: ?*IIterable(VideoTrack) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(VideoTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -5542,7 +5542,7 @@ pub const PlaybackMediaMarkerSequence = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PlaybackMediaMarker) {
         var this: ?*IIterable(PlaybackMediaMarker) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PlaybackMediaMarker).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

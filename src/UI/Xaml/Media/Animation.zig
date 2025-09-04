@@ -484,7 +484,7 @@ pub const ColorKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ColorKeyFrame) {
         var this: ?*IIterable(ColorKeyFrame) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ColorKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -1141,7 +1141,7 @@ pub const DoubleKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(DoubleKeyFrame) {
         var this: ?*IIterable(DoubleKeyFrame) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(DoubleKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -7133,7 +7133,7 @@ pub const ObjectKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ObjectKeyFrame) {
         var this: ?*IIterable(ObjectKeyFrame) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ObjectKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -7314,7 +7314,7 @@ pub const PointKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PointKeyFrame) {
         var this: ?*IIterable(PointKeyFrame) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PointKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -8408,7 +8408,7 @@ pub const TimelineCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Timeline) {
         var this: ?*IIterable(Timeline) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Timeline).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -8450,7 +8450,7 @@ pub const TransitionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Transition) {
         var this: ?*IIterable(Transition) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Transition).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

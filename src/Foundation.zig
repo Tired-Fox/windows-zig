@@ -2629,13 +2629,13 @@ pub const WwwFormUrlDecoder = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
         var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }

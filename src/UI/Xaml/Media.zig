@@ -495,7 +495,7 @@ pub const BrushCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Brush) {
         var this: ?*IIterable(Brush) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Brush).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -769,7 +769,7 @@ pub const DoubleCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(f64) {
         var this: ?*IIterable(f64) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(f64).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -940,7 +940,7 @@ pub const GeometryCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Geometry) {
         var this: ?*IIterable(Geometry) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Geometry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -1134,7 +1134,7 @@ pub const GradientStopCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(GradientStop) {
         var this: ?*IIterable(GradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(GradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -6147,7 +6147,7 @@ pub const PathFigureCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PathFigure) {
         var this: ?*IIterable(PathFigure) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PathFigure).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -6230,7 +6230,7 @@ pub const PathSegmentCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PathSegment) {
         var this: ?*IIterable(PathSegment) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PathSegment).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -6452,7 +6452,7 @@ pub const PointCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Point) {
         var this: ?*IIterable(Point) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Point).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -7208,7 +7208,7 @@ pub const TimelineMarkerCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(TimelineMarker) {
         var this: ?*IIterable(TimelineMarker) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(TimelineMarker).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -7362,7 +7362,7 @@ pub const TransformCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Transform) {
         var this: ?*IIterable(Transform) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Transform).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

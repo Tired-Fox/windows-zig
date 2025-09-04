@@ -129,7 +129,7 @@ pub const DnssdServiceInstanceCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(DnssdServiceInstance) {
         var this: ?*IIterable(DnssdServiceInstance) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(DnssdServiceInstance).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }

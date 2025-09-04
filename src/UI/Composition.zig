@@ -828,7 +828,7 @@ pub const CompositionAnimationGroup = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionAnimation) {
         var this: ?*IIterable(CompositionAnimation) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionAnimation).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -1067,37 +1067,37 @@ pub const CompositionColorGradientStopCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionColorGradientStop) {
         var this: ?*IIterable(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IVectorView(CompositionColorGradientStop) {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
@@ -1935,7 +1935,7 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowCaster) {
         var this: ?*IIterable(CompositionProjectedShadowCaster) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionProjectedShadowCaster).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -1989,7 +1989,7 @@ pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct 
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowReceiver) {
         var this: ?*IIterable(CompositionProjectedShadowReceiver) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionProjectedShadowReceiver).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -2243,7 +2243,7 @@ pub const CompositionShapeCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionShape) {
         var this: ?*IIterable(CompositionShape) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionShape).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -2389,7 +2389,7 @@ pub const CompositionStrokeDashArray = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(f32) {
         var this: ?*IIterable(f32) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(f32).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -10992,25 +10992,25 @@ pub const ImplicitAnimationCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,ICompositionAnimationBase) {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
@@ -11036,7 +11036,7 @@ pub const InitialValueExpressionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,?HSTRING)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,?HSTRING)) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,?HSTRING)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -11794,7 +11794,7 @@ pub const VisualCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
         var this: ?*IIterable(Visual) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Visual).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
@@ -11824,7 +11824,7 @@ pub const VisualUnorderedCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
         var this: ?*IIterable(Visual) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Visual).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
