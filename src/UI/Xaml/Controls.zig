@@ -1970,11 +1970,12 @@ pub const BackClickEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -3723,11 +3724,12 @@ pub const CalendarViewDayItemChangingEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -4129,11 +4131,12 @@ pub const CleanUpVirtualizedItemEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -6040,11 +6043,12 @@ pub const ContextMenuOpeningEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -6790,11 +6794,12 @@ pub const DragItemsStartingEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -8882,11 +8887,12 @@ pub const HubSectionHeaderClickEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -49675,11 +49681,12 @@ pub const ItemClickEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -50614,11 +50621,12 @@ pub const ListViewItemToKeyHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -50702,11 +50710,12 @@ pub const ListViewKeyToItemHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -53241,11 +53250,12 @@ pub const NotifyEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -58127,11 +58137,12 @@ pub const SectionsInViewChangedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -58239,11 +58250,12 @@ pub const SelectionChangedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -58501,11 +58513,12 @@ pub const SemanticZoomViewChangedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -60993,11 +61006,12 @@ pub const TextChangedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -61193,11 +61207,12 @@ pub const TextControlPasteEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -63711,11 +63726,12 @@ pub const WebViewNavigationFailedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);

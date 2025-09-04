@@ -5572,11 +5572,12 @@ pub const MediaCaptureFailedEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
@@ -6224,11 +6225,12 @@ pub const RecordLimitationExceededEventHandler = extern struct {
         _ = Release(@ptrCast(self));
     }
     fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const std = @import("std");
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (core.wiredGuidEql(riid, &IID) or
-            core.wiredGuidEql(riid, &IUnknown.IID) or
-            core.wiredGuidEql(riid, &IAgileObject.IID))
+        if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = AddRef(self);
